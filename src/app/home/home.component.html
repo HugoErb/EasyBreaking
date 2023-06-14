@@ -1,5 +1,6 @@
 <main>
     <div class="container">
         <h1>Easy Breaking</h1>
+        <p-autoComplete [(ngModel)]="selectedCountry" [dropdown]="true" [suggestions]="filteredCountries" (completeMethod)="filterCountry($event)" field="name"></p-autoComplete>
     </div>
 </main>
