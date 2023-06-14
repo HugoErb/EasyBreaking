@@ -1,0 +1,418 @@
+[
+  {
+    "Name": "Ga PA",
+    "Stat": "Point d'action",
+    "Normal": 100,
+    "Pa Weight": null,
+    "Ra Weight": null,
+    "Max Over": 1
+  },
+  {
+    "Name": "Ga PM",
+    "Stat": "Point de mouvement",
+    "Normal": 90,
+    "Pa Weight": null,
+    "Ra Weight": null,
+    "Max Over": 1
+  },
+  {
+    "Name": "Po",
+    "Stat": "Porté",
+    "Normal": 51,
+    "Pa Weight": null,
+    "Ra Weight": null,
+    "Max Over": 1
+  },
+  {
+    "Name": "Invo",
+    "Stat": "Invocation",
+    "Normal": 30,
+    "Pa Weight": null,
+    "Ra Weight": null,
+    "Max Over": 3
+  },
+  {
+    "Name": "Do",
+    "Stat": "Dommage",
+    "Normal": 20,
+    "Pa Weight": null,
+    "Ra Weight": null,
+    "Max Over": 5
+  },
+  {
+    "Name": "Do Per Ar",
+    "Stat": "% Dommages d'armes",
+    "Normal": 15,
+    "Pa Weight": null,
+    "Ra Weight": null,
+    "Max Over": 6
+  },
+  {
+    "Name": "Do Per Di",
+    "Stat": "% Dommages distance",
+    "Normal": 15,
+    "Pa Weight": null,
+    "Ra Weight": null,
+    "Max Over": 6
+  },
+  {
+    "Name": "Do per Mé",
+    "Stat": "% Dommages mêlée",
+    "Normal": 15,
+    "Pa Weight": null,
+    "Ra Weight": null,
+    "Max Over": 6
+  },
+  {
+    "Name": "Do Per So",
+    "Stat": "% Dommages aux sorts",
+    "Normal": 15,
+    "Pa Weight": null,
+    "Ra Weight": null,
+    "Max Over": 6
+  },
+  {
+    "Name": "Ré Per Di",
+    "Stat": "% Résistance distance",
+    "Normal": 15,
+    "Pa Weight": null,
+    "Ra Weight": null,
+    "Max Over": 6
+  },
+  {
+    "Name": "Ré Per Mé",
+    "Stat": "% Résistance mêlée",
+    "Normal": 15,
+    "Pa Weight": null,
+    "Ra Weight": null,
+    "Max Over": 6
+  },
+  {
+    "Name": "Soin",
+    "Stat": "Soin",
+    "Normal": 10,
+    "Pa Weight": 30,
+    "Ra Weight": null,
+    "Max Over": 10
+  },
+  {
+    "Name": "Cri",
+    "Stat": "% Critique",
+    "Normal": 10,
+    "Pa Weight": null,
+    "Ra Weight": null,
+    "Max Over": 10
+  },
+  {
+    "Name": "Do Ren",
+    "Stat": "Renvoi de dommage",
+    "Normal": 10,
+    "Pa Weight": null,
+    "Ra Weight": null,
+    "Max Over": 20
+  },
+  {
+    "Name": "Ret Pme",
+    "Stat": "Retrait PM",
+    "Normal": 7,
+    "Pa Weight": 21,
+    "Ra Weight": null,
+    "Max Over": 14
+  },
+  {
+    "Name": "Ret PA",
+    "Stat": "Retrait Pa",
+    "Normal": 7,
+    "Pa Weight": 21,
+    "Ra Weight": null,
+    "Max Over": 14
+  },
+  {
+    "Name": "Ré Pme",
+    "Stat": "Esquive PM",
+    "Normal": 7,
+    "Pa Weight": 21,
+    "Ra Weight": null,
+    "Max Over": 14
+  },
+  {
+    "Name": "Ré PA",
+    "Stat": "Esquive Pa",
+    "Normal": 7,
+    "Pa Weight": 21,
+    "Ra Weight": null,
+    "Max Over": 14
+  },
+  {
+    "Name": "Ré Per Terre",
+    "Stat": "% Résistance Terre",
+    "Normal": 6,
+    "Pa Weight": null,
+    "Ra Weight": null,
+    "Max Over": 16
+  },
+  {
+    "Name": "Ré Per Eau",
+    "Stat": "% Résistance Eau",
+    "Normal": 6,
+    "Pa Weight": null,
+    "Ra Weight": null,
+    "Max Over": 16
+  },
+  {
+    "Name": "Ré Per Feu",
+    "Stat": "% Résistance Feu",
+    "Normal": 6,
+    "Pa Weight": null,
+    "Ra Weight": null,
+    "Max Over": 16
+  },
+  {
+    "Name": "Ré Per Air",
+    "Stat": "% Résistance Air",
+    "Normal": 6,
+    "Pa Weight": null,
+    "Ra Weight": null,
+    "Max Over": 16
+  },
+  {
+    "Name": "Ré Per Neutre",
+    "Stat": "% Résistance Neutre",
+    "Normal": 6,
+    "Pa Weight": null,
+    "Ra Weight": null,
+    "Max Over": 16
+  },
+  {
+    "Name": "Do Terre",
+    "Stat": "Dommages Terre",
+    "Normal": 5,
+    "Pa Weight": 15,
+    "Ra Weight": null,
+    "Max Over": 20
+  },
+  {
+    "Name": "Do Eau",
+    "Stat": "Dommages Eau",
+    "Normal": 5,
+    "Pa Weight": 15,
+    "Ra Weight": null,
+    "Max Over": 20
+  },
+  {
+    "Name": "Do Feu",
+    "Stat": "Dommages Feu",
+    "Normal": 5,
+    "Pa Weight": 15,
+    "Ra Weight": null,
+    "Max Over": 20
+  },
+  {
+    "Name": "Do Air",
+    "Stat": "Dommages Air",
+    "Normal": 5,
+    "Pa Weight": 15,
+    "Ra Weight": null,
+    "Max Over": 20
+  },
+  {
+    "Name": "Do Neutre",
+    "Stat": "Dommages Neutre",
+    "Normal": 5,
+    "Pa Weight": 15,
+    "Ra Weight": null,
+    "Max Over": 20
+  },
+  {
+    "Name": "Do Cri",
+    "Stat": "Dommage Critique",
+    "Normal": 5,
+    "Pa Weight": 15,
+    "Ra Weight": null,
+    "Max Over": 20
+  },
+  {
+    "Name": "Do Pou",
+    "Stat": "Dommage de poussé",
+    "Normal": 5,
+    "Pa Weight": 15,
+    "Ra Weight": null,
+    "Max Over": 20
+  },
+  {
+    "Name": "Do Pi",
+    "Stat": "Dommage piège",
+    "Normal": 5,
+    "Pa Weight": 15,
+    "Ra Weight": null,
+    "Max Over": 20
+  },
+  {
+    "Name": "Chasse",
+    "Stat": "Chasse",
+    "Normal": 5,
+    "Pa Weight": null,
+    "Ra Weight": null,
+    "Max Over": null
+  },
+  {
+    "Name": "Tac",
+    "Stat": "Tacle",
+    "Normal": 4,
+    "Pa Weight": 12,
+    "Ra Weight": null,
+    "Max Over": 25
+  },
+  {
+    "Name": "Fui",
+    "Stat": "Fuite",
+    "Normal": 4,
+    "Pa Weight": 12,
+    "Ra Weight": null,
+    "Max Over": 25
+  },
+  {
+    "Name": "Prospe",
+    "Stat": "Prospection",
+    "Normal": 3,
+    "Pa Weight": 9,
+    "Ra Weight": null,
+    "Max Over": 33
+  },
+  {
+    "Name": "Sa",
+    "Stat": "Sagesse",
+    "Normal": 3,
+    "Pa Weight": 9,
+    "Ra Weight": 30,
+    "Max Over": 33
+  },
+  {
+    "Name": "Pi Per",
+    "Stat": "Puissance Piège",
+    "Normal": 2,
+    "Pa Weight": 6,
+    "Ra Weight": 20,
+    "Max Over": 50
+  },
+  {
+    "Name": "Pui",
+    "Stat": "Puissance",
+    "Normal": 2,
+    "Pa Weight": 6,
+    "Ra Weight": 20,
+    "Max Over": 50
+  },
+  {
+    "Name": "Ré Terre",
+    "Stat": "Résistance fixe terre",
+    "Normal": 2,
+    "Pa Weight": null,
+    "Ra Weight": null,
+    "Max Over": 50
+  },
+  {
+    "Name": "Ré Eau",
+    "Stat": "Résistance fixe eau",
+    "Normal": 2,
+    "Pa Weight": null,
+    "Ra Weight": null,
+    "Max Over": 50
+  },
+  {
+    "Name": "Ré Feu",
+    "Stat": "Résistance fixe feu",
+    "Normal": 2,
+    "Pa Weight": null,
+    "Ra Weight": null,
+    "Max Over": 50
+  },
+  {
+    "Name": "Ré Air",
+    "Stat": "Résistance fixe air",
+    "Normal": 2,
+    "Pa Weight": null,
+    "Ra Weight": null,
+    "Max Over": 50
+  },
+  {
+    "Name": "Ré Neutre",
+    "Stat": "Résistance fixe neutre",
+    "Normal": 2,
+    "Pa Weight": null,
+    "Ra Weight": null,
+    "Max Over": 50
+  },
+  {
+    "Name": "Ré Cri",
+    "Stat": "Résistance Critique",
+    "Normal": 2,
+    "Pa Weight": 6,
+    "Ra Weight": null,
+    "Max Over": 50
+  },
+  {
+    "Name": "Ré Pou",
+    "Stat": "Résistance Poussé",
+    "Normal": 2,
+    "Pa Weight": 6,
+    "Ra Weight": null,
+    "Max Over": 50
+  },
+  {
+    "Name": "Fo",
+    "Stat": "Force",
+    "Normal": 1,
+    "Pa Weight": 3,
+    "Ra Weight": 10,
+    "Max Over": 101
+  },
+  {
+    "Name": "Ine",
+    "Stat": "Intelligence",
+    "Normal": 1,
+    "Pa Weight": 3,
+    "Ra Weight": 10,
+    "Max Over": 101
+  },
+  {
+    "Name": "Cha",
+    "Stat": "Chance",
+    "Normal": 1,
+    "Pa Weight": 3,
+    "Ra Weight": 10,
+    "Max Over": 101
+  },
+  {
+    "Name": "Age",
+    "Stat": "Agilité",
+    "Normal": 1,
+    "Pa Weight": 3,
+    "Ra Weight": 10,
+    "Max Over": 101
+  },
+  {
+    "Name": "Pod",
+    "Stat": "Pods",
+    "Normal": 2.5,
+    "Pa Weight": 7.5,
+    "Ra Weight": 25,
+    "Max Over": 404
+  },
+  {
+    "Name": "Vi",
+    "Stat": "Vitalité",
+    "Normal": 1,
+    "Pa Weight": 3,
+    "Ra Weight": 10,
+    "Max Over": 101
+  },
+  {
+    "Name": "Ini",
+    "Stat": "Initiative",
+    "Normal": 1,
+    "Pa Weight": 3,
+    "Ra Weight": 10,
+    "Max Over": 1010
+  }
+]
