@@ -6,7 +6,7 @@ main {
 
 main .container {
     position: absolute;
-    top: 50%;
+    top: 45%;
     left: 50%;
     transform: translate(-50%, -50%);
 }
@@ -19,4 +19,26 @@ main h1 {
     font-family: 'Enriqueta', arial, serif;
     text-align: center;
     font-size: 5em;
+}
+
+main .select {
+    margin-top: 25px;
+    text-align: center;
+}
+
+::ng-deep .p-inputtext{
+  width: 400px !important;
+}
+
+::ng-deep .p-inputtext:enabled:focus{
+    box-shadow: none;
+    border-color: #ced4da;
+}
+
+::ng-deep .p-inputtext:enabled:hover{
+    border-color: #ced4da;
+}
+
+::ng-deep .p-button:focus{
+    box-shadow: none !important;
 }

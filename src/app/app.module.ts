@@ -7,6 +7,7 @@ import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
 import { AutoCompleteModule } from 'primeng/autocomplete';
 import { FormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
     declarations: [
@@ -18,7 +19,8 @@ import { FormsModule } from '@angular/forms';
         BrowserAnimationsModule,
         FormsModule,
         AppRoutingModule,
-        AutoCompleteModule
+        AutoCompleteModule,
+        HttpClientModule
     ],
     providers: [],
     bootstrap: [AppComponent]
