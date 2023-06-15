@@ -42,3 +42,25 @@ main .select {
 ::ng-deep .p-button:focus{
     box-shadow: none !important;
 }
+
+::ng-deep .p-button{
+    background-color: #366cff;
+}
+
+.itemTable{
+    width: 100%;
+    color: rgb(209, 209, 209);
+    font-family: 'Enriqueta', arial, serif;
+    text-align: center;
+    vertical-align: center;
+    margin-top: 15px;
+}
+
+.itemTable thead{
+    font-weight: bold;
+}
+
+.itemTable td{
+    padding: 15px;
+    width: fit-content;
+}

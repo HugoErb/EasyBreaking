@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { forkJoin } from 'rxjs';
+
 
 @Component({
   selector: 'app-home',
@@ -14,31 +16,25 @@ export class HomeComponent {
   filteredItems: any[] = [];
 
   ngOnInit() {
+    const armes$ = this.http.get<any[]>('assets/jsons/armes.json');
+    const equipements$ = this.http.get<any[]>('assets/jsons/equipements.json');
 
-    // Récuperation des armes
-    this.http.get('assets/jsons/armes.json').subscribe((data: any) => {
-      data.forEach((item: any) => {
-        this.items.push({
-          id: item.id,
-          img: item.img,
-          name: item.text,
-          effects: item.effects,
-        });
-      });
+    forkJoin([armes$, equipements$]).subscribe(([armesData, equipementsData]) => {
+      const armes = this.processData(armesData);
+      const equipements = this.processData(equipementsData);
+
+      this.items = [...armes, ...equipements];
+      this.items.sort((a, b) => a.name.localeCompare(b.name));
     });
+  }
 
-    // Récuperation des équipements
-    this.http.get('assets/jsons/equipements.json').subscribe((data: any) => {
-      data.forEach((item: any) => {
-        this.items.push({
-          id: item.id,
-          img: item.img,
-          name: item.text,
-          effects: item.effects,
-        });
-      });
-    });
-
+  private processData(data: any[]): any[] {
+    return data.map((item: any) => ({
+      id: item.id,
+      img: item.img,
+      name: item.text,
+      effects: item.effects,
+    }));
   }
 
   filterItem(event: any) {
@@ -53,6 +49,10 @@ export class HomeComponent {
     }
 
     this.filteredItems = filtered;
+  }
+
+  selectItem(selectedItem: any) {
+    console.log(selectedItem);
   }
 
 }
