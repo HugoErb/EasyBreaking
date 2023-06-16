@@ -49,7 +49,7 @@ main .select {
 
 .itemTable{
     width: 100%;
-    color: rgb(209, 209, 209);
+    color: rgb(198, 193, 185);
     font-family: 'Enriqueta', arial, serif;
     text-align: center;
     vertical-align: center;
@@ -63,7 +63,7 @@ main .select {
 }
 
 .itemTable td{
-    padding: 15px;
     width: fit-content;
-    border: 0.5px solid grey;
+    border: 0.5px solid #858585;
+    padding: 0.75em 1em;
 }
