@@ -4,7 +4,7 @@
         <div class="select">
             <p-autoComplete [(ngModel)]="selectedItem" [dropdown]="true" [suggestions]="filteredItems"
                 (completeMethod)="filterItem($event)" field="name" (onSelect)="selectItem($event)"
-                placeholder="Entrez le nom d'un item..."></p-autoComplete>
+                placeholder="Entrez le nom d'un item..." (keyup)="checkEmptyText()"></p-autoComplete>
         </div>
         <!-- <img src="https://api.dofusdb.fr/img/items/6015.png"> -->
         <table class="itemTable">

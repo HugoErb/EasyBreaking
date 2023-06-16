@@ -31,8 +31,8 @@ export class HomeComponent {
   private processData(data: any[]): any[] {
     return data.map((item: any) => ({
       id: item.id,
-      img: item.img,
-      name: item.text,
+      level: item.level,
+      name: item.name,
       effects: item.effects,
     }));
   }
@@ -52,7 +52,19 @@ export class HomeComponent {
   }
 
   selectItem(selectedItem: any) {
-    console.log(selectedItem);
+    const itemTableElement = document.querySelector('.itemTable') as HTMLElement;
+
+    if (itemTableElement) {
+      itemTableElement.style.display = 'block';
+    }
+  }
+
+  checkEmptyText() {
+    const itemTableElement = document.querySelector('.itemTable') as HTMLElement;
+
+    if (itemTableElement) {
+      itemTableElement.style.display = 'none';
+    }
   }
 
 }

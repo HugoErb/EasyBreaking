@@ -2,15 +2,15 @@
   {
     "Name": "Ga PA",
     "Stat": "Point d'action",
-    "Price": 0,
+    "Price": 54993,
     "Weight": 100,
     "Pa Price": null,
     "Ra Price": null
   },
   {
-    "Name": "Ga PM",
+    "Name": "Ga Pme",
     "Stat": "Point de mouvement",
-    "Price": 0,
+    "Price": 23329,
     "Weight": 90,
     "Pa Price": null,
     "Ra Price": null
@@ -18,7 +18,7 @@
   {
     "Name": "Po",
     "Stat": "Porté",
-    "Price": 0,
+    "Price": 8298,
     "Weight": 51,
     "Pa Price": null,
     "Ra Price": null
@@ -26,7 +26,7 @@
   {
     "Name": "Invo",
     "Stat": "Invocation",
-    "Price": 0,
+    "Price": 3593,
     "Weight": 30,
     "Pa Price": null,
     "Ra Price": null
@@ -34,7 +34,7 @@
   {
     "Name": "Do",
     "Stat": "Dommage",
-    "Price": 0,
+    "Price": 1493,
     "Weight": 20,
     "Pa Price": null,
     "Ra Price": null
@@ -42,7 +42,7 @@
   {
     "Name": "Do Per Ar",
     "Stat": "% Dommages d'armes",
-    "Price": 0,
+    "Price": 312,
     "Weight": 15,
     "Pa Price": null,
     "Ra Price": null
@@ -50,7 +50,7 @@
   {
     "Name": "Do Per Di",
     "Stat": "% Dommages distance",
-    "Price": 0,
+    "Price": 17410,
     "Weight": 15,
     "Pa Price": null,
     "Ra Price": null
@@ -58,7 +58,7 @@
   {
     "Name": "Do per Mé",
     "Stat": "% Dommages mêlée",
-    "Price": 0,
+    "Price": 4487,
     "Weight": 15,
     "Pa Price": null,
     "Ra Price": null
@@ -66,7 +66,7 @@
   {
     "Name": "Do Per So",
     "Stat": "% Dommages aux sorts",
-    "Price": 0,
+    "Price": 18461,
     "Weight": 15,
     "Pa Price": null,
     "Ra Price": null
@@ -74,7 +74,7 @@
   {
     "Name": "Ré Per Di",
     "Stat": "% Résistance distance",
-    "Price": 0,
+    "Price": 520,
     "Weight": 15,
     "Pa Price": null,
     "Ra Price": null
@@ -82,23 +82,23 @@
   {
     "Name": "Ré Per Mé",
     "Stat": "% Résistance mêlée",
-    "Price": 0,
+    "Price": 328,
     "Weight": 15,
     "Pa Price": null,
     "Ra Price": null
   },
   {
-    "Name": "Soin",
+    "Name": "So",
     "Stat": "Soin",
-    "Price": 0,
+    "Price": 155,
     "Weight": 10,
-    "Pa Price": 30,
+    "Pa Price": 822,
     "Ra Price": null
   },
   {
     "Name": "Cri",
-    "Stat": "% Critique",
-    "Price": 0,
+    "Stat": "% Critiques",
+    "Price": 1722,
     "Weight": 10,
     "Pa Price": null,
     "Ra Price": null
@@ -106,7 +106,7 @@
   {
     "Name": "Do Ren",
     "Stat": "Renvoi de dommage",
-    "Price": 0,
+    "Price": 521,
     "Weight": 10,
     "Pa Price": null,
     "Ra Price": null
@@ -114,39 +114,39 @@
   {
     "Name": "Ret Pme",
     "Stat": "Retrait PM",
-    "Price": 0,
+    "Price": 918,
     "Weight": 7,
-    "Pa Price": 21,
+    "Pa Price": 2818,
     "Ra Price": null
   },
   {
     "Name": "Ret PA",
     "Stat": "Retrait Pa",
-    "Price": 0,
+    "Price": 153,
     "Weight": 7,
-    "Pa Price": 21,
+    "Pa Price": 386,
     "Ra Price": null
   },
   {
     "Name": "Ré Pme",
     "Stat": "Esquive PM",
-    "Price": 0,
+    "Price": 1131,
     "Weight": 7,
-    "Pa Price": 21,
+    "Pa Price": 2514,
     "Ra Price": null
   },
   {
     "Name": "Ré PA",
     "Stat": "Esquive Pa",
     "Price": 0,
-    "Weight": 7,
-    "Pa Price": 21,
+    "Weight": 297,
+    "Pa Price": 989,
     "Ra Price": null
   },
   {
     "Name": "Ré Per Terre",
     "Stat": "% Résistance Terre",
-    "Price": 0,
+    "Price": 1236,
     "Weight": 6,
     "Pa Price": null,
     "Ra Price": null
@@ -154,7 +154,7 @@
   {
     "Name": "Ré Per Eau",
     "Stat": "% Résistance Eau",
-    "Price": 0,
+    "Price": 975,
     "Weight": 6,
     "Pa Price": null,
     "Ra Price": null
@@ -162,7 +162,7 @@
   {
     "Name": "Ré Per Feu",
     "Stat": "% Résistance Feu",
-    "Price": 0,
+    "Price": 1000,
     "Weight": 6,
     "Pa Price": null,
     "Ra Price": null
@@ -170,7 +170,7 @@
   {
     "Name": "Ré Per Air",
     "Stat": "% Résistance Air",
-    "Price": 0,
+    "Price": 947,
     "Weight": 6,
     "Pa Price": null,
     "Ra Price": null
@@ -178,7 +178,7 @@
   {
     "Name": "Ré Per Neutre",
     "Stat": "% Résistance Neutre",
-    "Price": 0,
+    "Price": 1197,
     "Weight": 6,
     "Pa Price": null,
     "Ra Price": null
@@ -186,71 +186,71 @@
   {
     "Name": "Do Terre",
     "Stat": "Dommages Terre",
-    "Price": 0,
+    "Price": 996,
     "Weight": 5,
-    "Pa Price": 15,
+    "Pa Price": 2252,
     "Ra Price": null
   },
   {
     "Name": "Do Eau",
     "Stat": "Dommages Eau",
-    "Price": 0,
+    "Price": 857,
     "Weight": 5,
-    "Pa Price": 15,
+    "Pa Price": 2788,
     "Ra Price": null
   },
   {
     "Name": "Do Feu",
     "Stat": "Dommages Feu",
-    "Price": 0,
+    "Price": 664,
     "Weight": 5,
-    "Pa Price": 15,
+    "Pa Price": 1856,
     "Ra Price": null
   },
   {
     "Name": "Do Air",
     "Stat": "Dommages Air",
-    "Price": 0,
+    "Price": 1147,
     "Weight": 5,
-    "Pa Price": 15,
+    "Pa Price": 2193,
     "Ra Price": null
   },
   {
     "Name": "Do Neutre",
     "Stat": "Dommages Neutre",
-    "Price": 0,
+    "Price": 796,
     "Weight": 5,
     "Pa Price": 15,
     "Ra Price": null
   },
   {
     "Name": "Do Cri",
-    "Stat": "Dommage Critique",
-    "Price": 0,
+    "Stat": "Dommage Critiques",
+    "Price": 977,
     "Weight": 5,
-    "Pa Price": 15,
+    "Pa Price": 2682,
     "Ra Price": null
   },
   {
     "Name": "Do Pou",
-    "Stat": "Dommage de poussé",
-    "Price": 0,
+    "Stat": "Dommage de Poussée",
+    "Price": 108,
     "Weight": 5,
-    "Pa Price": 15,
+    "Pa Price": 306,
     "Ra Price": null
   },
   {
     "Name": "Do Pi",
     "Stat": "Dommage piège",
-    "Price": 0,
+    "Price": 321,
     "Weight": 5,
-    "Pa Price": 15,
+    "Pa Price": 480,
     "Ra Price": null
   },
   {
     "Name": "Chasse",
     "Stat": "Chasse",
-    "Price": 0,
+    "Price": 1270,
     "Weight": 5,
     "Pa Price": null,
     "Ra Price": null
@@ -258,37 +258,37 @@
   {
     "Name": "Tac",
     "Stat": "Tacle",
-    "Price": 0,
+    "Price": 337,
     "Weight": 4,
-    "Pa Price": 12,
+    "Pa Price": 1154,
     "Ra Price": null
   },
   {
     "Name": "Fui",
     "Stat": "Fuite",
-    "Price": 0,
+    "Price": 292,
     "Weight": 4,
-    "Pa Price": 12,
+    "Pa Price": 762,
     "Ra Price": null
   },
   {
     "Name": "Prospe",
     "Stat": "Prospection",
-    "Price": 0,
+    "Price": 154,
     "Weight": 3,
-    "Pa Price": 9,
+    "Pa Price": 673,
     "Ra Price": null
   },
   {
     "Name": "Sa",
     "Stat": "Sagesse",
-    "Price": 0,
+    "Price": 85,
     "Weight": 3,
-    "Pa Price": 9,
-    "Ra Price": 30
+    "Pa Price": 284,
+    "Ra Price": 591
   },
   {
-    "Name": "Pi Per",
+    "Name": "Per Pi",
     "Stat": "Puissance Piège",
     "Price": 0,
     "Weight": 2,
@@ -298,121 +298,121 @@
   {
     "Name": "Pui",
     "Stat": "Puissance",
-    "Price": 0,
+    "Price": 108,
     "Weight": 2,
-    "Pa Price": 6,
-    "Ra Price": 20
+    "Pa Price": 272,
+    "Ra Price": 831
   },
   {
     "Name": "Ré Terre",
     "Stat": "Résistance fixe terre",
-    "Price": 0,
+    "Price": 510,
     "Weight": 2,
-    "Pa Price": null,
+    "Pa Price": 1837,
     "Ra Price": null
   },
   {
     "Name": "Ré Eau",
     "Stat": "Résistance fixe eau",
-    "Price": 0,
+    "Price": 39,
     "Weight": 2,
-    "Pa Price": null,
+    "Pa Price": 214,
     "Ra Price": null
   },
   {
     "Name": "Ré Feu",
     "Stat": "Résistance fixe feu",
-    "Price": 0,
+    "Price": 87,
     "Weight": 2,
-    "Pa Price": null,
+    "Pa Price": 367,
     "Ra Price": null
   },
   {
     "Name": "Ré Air",
     "Stat": "Résistance fixe air",
-    "Price": 0,
+    "Price": 181,
     "Weight": 2,
-    "Pa Price": null,
+    "Pa Price": 723,
     "Ra Price": null
   },
   {
     "Name": "Ré Neutre",
     "Stat": "Résistance fixe neutre",
-    "Price": 0,
+    "Price": 92,
     "Weight": 2,
-    "Pa Price": null,
+    "Pa Price": 162,
     "Ra Price": null
   },
   {
     "Name": "Ré Cri",
-    "Stat": "Résistance Critique",
-    "Price": 0,
+    "Stat": "Résistance Critiques",
+    "Price": 409,
     "Weight": 2,
-    "Pa Price": 6,
+    "Pa Price": 1495,
     "Ra Price": null
   },
   {
     "Name": "Ré Pou",
-    "Stat": "Résistance Poussé",
-    "Price": 0,
+    "Stat": "Résistance Poussée",
+    "Price": 217,
     "Weight": 2,
-    "Pa Price": 6,
+    "Pa Price": 658,
     "Ra Price": null
   },
   {
     "Name": "Fo",
     "Stat": "Force",
-    "Price": 0,
+    "Price": 45,
     "Weight": 1,
-    "Pa Price": 3,
-    "Ra Price": 10
+    "Pa Price": 149,
+    "Ra Price": 411
   },
   {
     "Name": "Ine",
     "Stat": "Intelligence",
-    "Price": 0,
+    "Price": 35,
     "Weight": 1,
-    "Pa Price": 3,
-    "Ra Price": 10
+    "Pa Price": 126,
+    "Ra Price": 337
   },
   {
     "Name": "Cha",
     "Stat": "Chance",
-    "Price": 0,
+    "Price": 41,
     "Weight": 1,
-    "Pa Price": 3,
-    "Ra Price": 10
+    "Pa Price": 147,
+    "Ra Price": 363
   },
   {
     "Name": "Age",
     "Stat": "Agilité",
-    "Price": 0,
+    "Price": 107,
     "Weight": 1,
-    "Pa Price": 3,
-    "Ra Price": 10
+    "Pa Price": 307,
+    "Ra Price": 889
   },
   {
     "Name": "Pod",
     "Stat": "Pods",
-    "Price": 0,
+    "Price": 248,
     "Weight": 2.5,
-    "Pa Price": 7.5,
-    "Ra Price": 25
+    "Pa Price": 691,
+    "Ra Price": 2532
   },
   {
     "Name": "Vi",
     "Stat": "Vitalité",
-    "Price": 0,
+    "Price": 170,
     "Weight": 1,
-    "Pa Price": 3,
-    "Ra Price": 10
+    "Pa Price": 590,
+    "Ra Price": 1663
   },
   {
     "Name": "Ini",
     "Stat": "Initiative",
-    "Price": 0,
+    "Price": 71,
     "Weight": 1,
-    "Pa Price": 3,
-    "Ra Price": 10
+    "Pa Price": 245,
+    "Ra Price": 369
   }
 ]
