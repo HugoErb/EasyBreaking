@@ -489,6 +489,16 @@
         ]
     },
     {
+        "id": "337",
+        "link": "https://www.dofus.com/fr/mmorpg/encyclopedie/armes/337-arc-bwork-archer",
+        "name": "Arc du Bwork Archer",
+        "level": "20",
+        "effects": [
+            "16 à 20 Force",
+            "1 Dommage Terre"
+        ]
+    },
+    {
         "id": "6485",
         "link": "https://www.dofus.com/fr/mmorpg/encyclopedie/armes/6485-arc-chafer-archer",
         "name": "Arc du Chafer Archer",
@@ -594,6 +604,17 @@
         ]
     },
     {
+        "id": "1351",
+        "link": "https://www.dofus.com/fr/mmorpg/encyclopedie/armes/1351-arc-xueluom",
+        "name": "Arc du Xueluom",
+        "level": "30",
+        "effects": [
+            "31 à 40 Vitalité",
+            "21 à 30 Chance",
+            "4 à 5 Fuite"
+        ]
+    },
+    {
         "id": "1120",
         "link": "https://www.dofus.com/fr/mmorpg/encyclopedie/armes/1120-arc-ecologique",
         "name": "Arc Ecologique",
@@ -614,6 +635,24 @@
             "16 à 20 Vitalité",
             "16 à 20 Force",
             "1 Portée"
+        ]
+    },
+    {
+        "id": "462",
+        "link": "https://www.dofus.com/fr/mmorpg/encyclopedie/armes/462-arc-racine-abraknyde",
+        "name": "Arc en Racine d'Abraknyde",
+        "level": "25",
+        "effects": [
+            "1 PA"
+        ]
+    },
+    {
+        "id": "829",
+        "link": "https://www.dofus.com/fr/mmorpg/encyclopedie/armes/829-arc-hade",
+        "name": "Arc Hade",
+        "level": "5",
+        "effects": [
+            "7 à 10 Intelligence"
         ]
     },
     {
@@ -685,6 +724,16 @@
             "31 à 50 Chance",
             "6 à 10 Dommage",
             "6 à 10% Résistance Air"
+        ]
+    },
+    {
+        "id": "1350",
+        "link": "https://www.dofus.com/fr/mmorpg/encyclopedie/armes/1350-arc-holic",
+        "name": "Arc Holic",
+        "level": "13",
+        "effects": [
+            "11 à 15 Chance",
+            "16 à 20 Vitalité"
         ]
     },
     {
@@ -824,6 +873,16 @@
             "21 à 35 Force",
             "11 à 20 Puissance",
             "5 à 7 Dommage"
+        ]
+    },
+    {
+        "id": "828",
+        "link": "https://www.dofus.com/fr/mmorpg/encyclopedie/armes/828-arc-sifflant",
+        "name": "Arc Sifflant",
+        "level": "11",
+        "effects": [
+            "3 à 4 Fuite",
+            "7 à 10 Puissance"
         ]
     },
     {
@@ -1794,6 +1853,17 @@
         "effects": [
             "21 à 30 Vitalité",
             "21 à 30 Agilité"
+        ]
+    },
+    {
+        "id": "251",
+        "link": "https://www.dofus.com/fr/mmorpg/encyclopedie/armes/251-barbe-grise",
+        "name": "Barbe Grise",
+        "level": "20",
+        "effects": [
+            "16 à 25 Vitalité",
+            "Arme de chasse",
+            "2 à 3 Tacle"
         ]
     },
     {
@@ -3722,6 +3792,16 @@
         ]
     },
     {
+        "id": "6780",
+        "link": "https://www.dofus.com/fr/mmorpg/encyclopedie/armes/6780-epee-initie",
+        "name": "Épée de l'initié",
+        "level": "12",
+        "effects": [
+            "10 Initiative",
+            "10 Vitalité"
+        ]
+    },
+    {
         "id": "17589",
         "link": "https://www.dofus.com/fr/mmorpg/encyclopedie/armes/17589-epee-ush",
         "name": "Épée de Ush",
@@ -4678,6 +4758,16 @@
         ]
     },
     {
+        "id": "10818",
+        "link": "https://www.dofus.com/fr/mmorpg/encyclopedie/armes/10818-hache-initie",
+        "name": "Hache de l'initié",
+        "level": "12",
+        "effects": [
+            "10 Initiative",
+            "10 Vitalité"
+        ]
+    },
+    {
         "id": "2615",
         "link": "https://www.dofus.com/fr/mmorpg/encyclopedie/armes/2615-hache-lookabeer",
         "name": "Hache de Lookabeer",
@@ -4768,19 +4858,6 @@
             "5 à 7% Résistance Air",
             "4 à 5 Tacle",
             "7 à 10 Résistance Critiques"
-        ]
-    },
-    {
-        "id": "8827",
-        "link": "https://www.dofus.com/fr/mmorpg/encyclopedie/armes/8827-hache-guerrier-zoth",
-        "name": "Hache du Guerrier Zoth",
-        "level": "139",
-        "effects": [
-            "251 à 300 Vitalité",
-            "26 à 35 Sagesse",
-            "3 à 4 Dommage",
-            "1 PA",
-            "11 à 15 Prospection"
         ]
     },
     {
@@ -6138,6 +6215,17 @@
         ]
     },
     {
+        "id": "357",
+        "link": "https://www.dofus.com/fr/mmorpg/encyclopedie/armes/357-queue",
+        "name": "La Queue",
+        "level": "13",
+        "effects": [
+            "21 à 25 Vitalité",
+            "7 à 10 Agilité",
+            "1 Dommage Air"
+        ]
+    },
+    {
         "id": "358",
         "link": "https://www.dofus.com/fr/mmorpg/encyclopedie/armes/358-queue-infernale",
         "name": "La Queue Infernale",
@@ -6940,16 +7028,6 @@
             "21 à 30 Vitalité",
             "2 à 3% Résistance Eau",
             "2 à 3% Résistance Air",
-            "1 Invocation"
-        ]
-    },
-    {
-        "id": "2416",
-        "link": "https://www.dofus.com/fr/mmorpg/encyclopedie/armes/2416-marteau-bouftou",
-        "name": "Marteau du Bouftou",
-        "level": "20",
-        "effects": [
-            "16 à 20 Vitalité",
             "1 Invocation"
         ]
     },
@@ -7997,6 +8075,26 @@
         ]
     },
     {
+        "id": "19093",
+        "link": "https://www.dofus.com/fr/mmorpg/encyclopedie/armes/19093-pelle-katrepat",
+        "name": "Pelle de Katrepat",
+        "level": "200",
+        "effects": [
+            "301 à 350 Vitalité",
+            "41 à 60 Intelligence",
+            "41 à 60 Chance",
+            "31 à 40 Sagesse",
+            "11 à 15 Prospection",
+            "11 à 15 Dommage Feu",
+            "11 à 15 Dommage Eau",
+            "7 à 10% Résistance Air",
+            "11 à 15 Esquive PA",
+            "9 à 12 Soin",
+            "1 Invocation",
+            "3 à 4% Critique"
+        ]
+    },
+    {
         "id": "1058",
         "link": "https://www.dofus.com/fr/mmorpg/encyclopedie/armes/1058-pelle-koutoulou",
         "name": "Pelle de Koutoulou",
@@ -8009,25 +8107,6 @@
         ]
     },
     {
-        "id": "15494",
-        "link": "https://www.dofus.com/fr/mmorpg/encyclopedie/armes/15494-pelle-cour-sombre",
-        "name": "Pelle de la Cour Sombre",
-        "level": "200",
-        "effects": [
-            "251 à 300 Vitalité",
-            "61 à 80 Agilité",
-            "21 à 30 Résistance Poussée",
-            "31 à 50 Sagesse",
-            "16 à 20 Prospection",
-            "9 à 12 Dommage Air",
-            "7 à 10% Résistance Terre",
-            "7 à 10% Résistance Eau",
-            "7 à 10 Esquive PA",
-            "2 à 3% Critique",
-            "1 Portée"
-        ]
-    },
-    {
         "id": "6786",
         "link": "https://www.dofus.com/fr/mmorpg/encyclopedie/armes/6786-pelle-initie",
         "name": "Pelle de l'initié",
@@ -8035,6 +8114,28 @@
         "effects": [
             "10 Initiative",
             "10 Vitalité"
+        ]
+    },
+    {
+        "id": "15218",
+        "link": "https://www.dofus.com/fr/mmorpg/encyclopedie/armes/15218-pelle-nidas",
+        "name": "Pelle de Nidas",
+        "level": "200",
+        "effects": [
+            "301 à 350 Vitalité",
+            "31 à 50 Force",
+            "31 à 50 Agilité",
+            "31 à 50 Chance",
+            "16 à 20 Puissance",
+            "9 à 12 Résistance Critiques",
+            "31 à 40 Sagesse",
+            "9 à 12 Dommage Air",
+            "9 à 12 Dommage Terre",
+            "9 à 12 Dommage Neutre",
+            "9 à 12 Dommage Eau",
+            "7 à 10% Résistance Feu",
+            "4 à 6 Retrait PM",
+            "4 à 6% Critique"
         ]
     },
     {
