@@ -12,10 +12,13 @@ export class HomeComponent {
 
   constructor(private http: HttpClient) { };
   items: any[] = [];
+  runes: any[] = [];
   selectedItem: any;
   filteredItems: any[] = [];
 
   ngOnInit() {
+
+    // Récupération des armes et des équipements
     const armes$ = this.http.get<any[]>('assets/jsons/armes.json');
     const equipements$ = this.http.get<any[]>('assets/jsons/equipements.json');
 
@@ -26,6 +29,22 @@ export class HomeComponent {
       this.items = [...armes, ...equipements];
       this.items.sort((a, b) => a.name.localeCompare(b.name));
     });
+
+    // Récuperation des runes
+    this.http.get('assets/jsons/runes.json').subscribe((data: any) => {
+      data.forEach((rune: any) => {
+        this.runes.push({
+          name: rune.Name,
+          stat: rune.Stat,
+          price: rune.Price,
+          weight: rune.Weight,
+          raPrice: rune.RaPrice,
+          paPrice: rune.PaPrice,
+        });
+      });
+    });
+    console.log(this.runes);
+    
   }
 
   private processData(data: any[]): any[] {

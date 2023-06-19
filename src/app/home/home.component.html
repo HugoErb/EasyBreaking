@@ -6,11 +6,11 @@
                 (completeMethod)="filterItem($event)" field="name" (onSelect)="selectItem($event)"
                 placeholder="Entrez le nom d'un item..." (keyup)="checkEmptyText()"></p-autoComplete>
         </div>
-        <!-- <img src="https://api.dofusdb.fr/img/items/6015.png"> -->
         <table class="itemTable">
             <thead>
                 <tr>
                     <td>Caractéristiques</td>
+                    <td>Nom des runes</td>
                     <td>Prix unitaire des runes</td>
                     <td>Quantité de runes (focus)</td>
                     <td>Prix des runes (focus)</td>
@@ -18,7 +18,8 @@
             </thead>
             <tbody>
                 <tr *ngFor="let row of selectedItem?.effects">
-                    <td>{{row}}</td>
+                    <td><img src="../../assets/imgs/agilite.png">{{row}}</td>
+                    <td>Nom des runes</td>
                     <td>Prix unitaire des runes</td>
                     <td>Quantité de runes (focus)</td>
                     <td>Prix des runes (focus)</td>

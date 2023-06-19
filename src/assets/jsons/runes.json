@@ -2,417 +2,469 @@
   {
     "Name": "Ga PA",
     "Stat": "Point d'action",
+    "Img": "../imgs/pa.png",
     "Price": 54993,
     "Weight": 100,
-    "Pa Price": null,
-    "Ra Price": null
+    "PaPrice": null,
+    "RaPrice": null
   },
   {
     "Name": "Ga Pme",
     "Stat": "Point de mouvement",
+    "Img": "../imgs/pm.png",
     "Price": 23329,
     "Weight": 90,
-    "Pa Price": null,
-    "Ra Price": null
+    "PaPrice": null,
+    "RaPrice": null
   },
   {
     "Name": "Po",
     "Stat": "Porté",
+    "Img": "../imgs/po.png",
     "Price": 8298,
     "Weight": 51,
-    "Pa Price": null,
-    "Ra Price": null
+    "PaPrice": null,
+    "RaPrice": null
   },
   {
     "Name": "Invo",
     "Stat": "Invocation",
+    "Img": "../imgs/invo.png",
     "Price": 3593,
     "Weight": 30,
-    "Pa Price": null,
-    "Ra Price": null
+    "PaPrice": null,
+    "RaPrice": null
   },
   {
     "Name": "Do",
     "Stat": "Dommage",
+    "Img": "../imgs/dommage.png",
     "Price": 1493,
     "Weight": 20,
-    "Pa Price": null,
-    "Ra Price": null
+    "PaPrice": null,
+    "RaPrice": null
   },
   {
     "Name": "Do Per Ar",
     "Stat": "% Dommages d'armes",
+    "Img": "../imgs/doarme.png",
     "Price": 312,
     "Weight": 15,
-    "Pa Price": null,
-    "Ra Price": null
+    "PaPrice": null,
+    "RaPrice": null
   },
   {
     "Name": "Do Per Di",
     "Stat": "% Dommages distance",
+    "Img": "../imgs/dodis.png",
     "Price": 17410,
     "Weight": 15,
-    "Pa Price": null,
-    "Ra Price": null
+    "PaPrice": null,
+    "RaPrice": null
   },
   {
     "Name": "Do per Mé",
     "Stat": "% Dommages mêlée",
+    "Img": "../imgs/domelee.png",
     "Price": 4487,
     "Weight": 15,
-    "Pa Price": null,
-    "Ra Price": null
+    "PaPrice": null,
+    "RaPrice": null
   },
   {
     "Name": "Do Per So",
     "Stat": "% Dommages aux sorts",
+    "Img": "../imgs/dosort.png",
     "Price": 18461,
     "Weight": 15,
-    "Pa Price": null,
-    "Ra Price": null
+    "PaPrice": null,
+    "RaPrice": null
   },
   {
     "Name": "Ré Per Di",
     "Stat": "% Résistance distance",
+    "Img": "../imgs/dodis.png",
     "Price": 520,
     "Weight": 15,
-    "Pa Price": null,
-    "Ra Price": null
+    "PaPrice": null,
+    "RaPrice": null
   },
   {
     "Name": "Ré Per Mé",
     "Stat": "% Résistance mêlée",
+    "Img": "../imgs/domelee.png",
     "Price": 328,
     "Weight": 15,
-    "Pa Price": null,
-    "Ra Price": null
+    "PaPrice": null,
+    "RaPrice": null
   },
   {
     "Name": "So",
     "Stat": "Soin",
+    "Img": "../imgs/soin.png",
     "Price": 155,
     "Weight": 10,
-    "Pa Price": 822,
-    "Ra Price": null
+    "PaPrice": 822,
+    "RaPrice": null
   },
   {
     "Name": "Cri",
     "Stat": "% Critiques",
+    "Img": "../imgs/critique.png",
     "Price": 1722,
     "Weight": 10,
-    "Pa Price": null,
-    "Ra Price": null
+    "PaPrice": null,
+    "RaPrice": null
   },
   {
     "Name": "Do Ren",
     "Stat": "Renvoi de dommage",
+    "Img": "../imgs/renvoi.png",
     "Price": 521,
     "Weight": 10,
-    "Pa Price": null,
-    "Ra Price": null
+    "PaPrice": null,
+    "RaPrice": null
   },
   {
     "Name": "Ret Pme",
     "Stat": "Retrait PM",
+    "Img": "../imgs/retpm.png",
     "Price": 918,
     "Weight": 7,
-    "Pa Price": 2818,
-    "Ra Price": null
+    "PaPrice": 2818,
+    "RaPrice": null
   },
   {
     "Name": "Ret PA",
     "Stat": "Retrait Pa",
+    "Img": "../imgs/retpa.png",
     "Price": 153,
     "Weight": 7,
-    "Pa Price": 386,
-    "Ra Price": null
+    "PaPrice": 386,
+    "RaPrice": null
   },
   {
     "Name": "Ré Pme",
     "Stat": "Esquive PM",
+    "Img": "../imgs/esquivepm.png",
     "Price": 1131,
     "Weight": 7,
-    "Pa Price": 2514,
-    "Ra Price": null
+    "PaPrice": 2514,
+    "RaPrice": null
   },
   {
     "Name": "Ré PA",
     "Stat": "Esquive Pa",
+    "Img": "../imgs/esquivepa.png",
     "Price": 0,
     "Weight": 297,
-    "Pa Price": 989,
-    "Ra Price": null
+    "PaPrice": 989,
+    "RaPrice": null
   },
   {
     "Name": "Ré Per Terre",
     "Stat": "% Résistance Terre",
+    "Img": "../imgs/force.png",
     "Price": 1236,
     "Weight": 6,
-    "Pa Price": null,
-    "Ra Price": null
+    "PaPrice": null,
+    "RaPrice": null
   },
   {
     "Name": "Ré Per Eau",
     "Stat": "% Résistance Eau",
+    "Img": "../imgs/chance.png",
     "Price": 975,
     "Weight": 6,
-    "Pa Price": null,
-    "Ra Price": null
+    "PaPrice": null,
+    "RaPrice": null
   },
   {
     "Name": "Ré Per Feu",
     "Stat": "% Résistance Feu",
+    "Img": "../imgs/intelligence.png",
     "Price": 1000,
     "Weight": 6,
-    "Pa Price": null,
-    "Ra Price": null
+    "PaPrice": null,
+    "RaPrice": null
   },
   {
     "Name": "Ré Per Air",
     "Stat": "% Résistance Air",
+    "Img": "../imgs/agilite.png",
     "Price": 947,
     "Weight": 6,
-    "Pa Price": null,
-    "Ra Price": null
+    "PaPrice": null,
+    "RaPrice": null
   },
   {
     "Name": "Ré Per Neutre",
     "Stat": "% Résistance Neutre",
+    "Img": "../imgs/neutre.png",
     "Price": 1197,
     "Weight": 6,
-    "Pa Price": null,
-    "Ra Price": null
+    "PaPrice": null,
+    "RaPrice": null
   },
   {
     "Name": "Do Terre",
     "Stat": "Dommages Terre",
+    "Img": "../imgs/force.png",
     "Price": 996,
     "Weight": 5,
-    "Pa Price": 2252,
-    "Ra Price": null
+    "PaPrice": 2252,
+    "RaPrice": null
   },
   {
     "Name": "Do Eau",
     "Stat": "Dommages Eau",
+    "Img": "../imgs/chance.png",
     "Price": 857,
     "Weight": 5,
-    "Pa Price": 2788,
-    "Ra Price": null
+    "PaPrice": 2788,
+    "RaPrice": null
   },
   {
     "Name": "Do Feu",
     "Stat": "Dommages Feu",
+    "Img": "../imgs/intelligence.png",
     "Price": 664,
     "Weight": 5,
-    "Pa Price": 1856,
-    "Ra Price": null
+    "PaPrice": 1856,
+    "RaPrice": null
   },
   {
     "Name": "Do Air",
     "Stat": "Dommages Air",
+    "Img": "../imgs/agilite.png",
     "Price": 1147,
     "Weight": 5,
-    "Pa Price": 2193,
-    "Ra Price": null
+    "PaPrice": 2193,
+    "RaPrice": null
   },
   {
     "Name": "Do Neutre",
     "Stat": "Dommages Neutre",
+    "Img": "../imgs/neutre.png",
     "Price": 796,
     "Weight": 5,
-    "Pa Price": 15,
-    "Ra Price": null
+    "PaPrice": 15,
+    "RaPrice": null
   },
   {
     "Name": "Do Cri",
     "Stat": "Dommage Critiques",
+    "Img": "../imgs/docrit.png",
     "Price": 977,
     "Weight": 5,
-    "Pa Price": 2682,
-    "Ra Price": null
+    "PaPrice": 2682,
+    "RaPrice": null
   },
   {
     "Name": "Do Pou",
     "Stat": "Dommage de Poussée",
+    "Img": "../imgs/dopou.png",
     "Price": 108,
     "Weight": 5,
-    "Pa Price": 306,
-    "Ra Price": null
+    "PaPrice": 306,
+    "RaPrice": null
   },
   {
     "Name": "Do Pi",
     "Stat": "Dommage piège",
+    "Img": "../imgs/dopiege.png",
     "Price": 321,
     "Weight": 5,
-    "Pa Price": 480,
-    "Ra Price": null
+    "PaPrice": 480,
+    "RaPrice": null
   },
   {
     "Name": "Chasse",
     "Stat": "Chasse",
+    "Img": "../imgs/invo.png",
     "Price": 1270,
     "Weight": 5,
-    "Pa Price": null,
-    "Ra Price": null
+    "PaPrice": null,
+    "RaPrice": null
   },
   {
     "Name": "Tac",
     "Stat": "Tacle",
+    "Img": "../imgs/tacle.png",
     "Price": 337,
     "Weight": 4,
-    "Pa Price": 1154,
-    "Ra Price": null
+    "PaPrice": 1154,
+    "RaPrice": null
   },
   {
     "Name": "Fui",
     "Stat": "Fuite",
+    "Img": "../imgs/fuite.png",
     "Price": 292,
     "Weight": 4,
-    "Pa Price": 762,
-    "Ra Price": null
+    "PaPrice": 762,
+    "RaPrice": null
   },
   {
     "Name": "Prospe",
     "Stat": "Prospection",
+    "Img": "../imgs/prospec.png",
     "Price": 154,
     "Weight": 3,
-    "Pa Price": 673,
-    "Ra Price": null
+    "PaPrice": 673,
+    "RaPrice": null
   },
   {
     "Name": "Sa",
     "Stat": "Sagesse",
+    "Img": "../imgs/sagesse.png",
     "Price": 85,
     "Weight": 3,
-    "Pa Price": 284,
-    "Ra Price": 591
+    "PaPrice": 284,
+    "RaPrice": 591
   },
   {
     "Name": "Per Pi",
     "Stat": "Puissance Piège",
+    "Img": "../imgs/puipiege.png",
     "Price": 0,
     "Weight": 2,
-    "Pa Price": 6,
-    "Ra Price": 20
+    "PaPrice": 6,
+    "RaPrice": 20
   },
   {
     "Name": "Pui",
     "Stat": "Puissance",
+    "Img": "../imgs/puissance.png",
     "Price": 108,
     "Weight": 2,
-    "Pa Price": 272,
-    "Ra Price": 831
+    "PaPrice": 272,
+    "RaPrice": 831
   },
   {
     "Name": "Ré Terre",
     "Stat": "Résistance fixe terre",
+    "Img": "../imgs/force.png",
     "Price": 510,
     "Weight": 2,
-    "Pa Price": 1837,
-    "Ra Price": null
+    "PaPrice": 1837,
+    "RaPrice": null
   },
   {
     "Name": "Ré Eau",
     "Stat": "Résistance fixe eau",
+    "Img": "../imgs/chance.png",
     "Price": 39,
     "Weight": 2,
-    "Pa Price": 214,
-    "Ra Price": null
+    "PaPrice": 214,
+    "RaPrice": null
   },
   {
     "Name": "Ré Feu",
     "Stat": "Résistance fixe feu",
+    "Img": "../imgs/intelligence.png",
     "Price": 87,
     "Weight": 2,
-    "Pa Price": 367,
-    "Ra Price": null
+    "PaPrice": 367,
+    "RaPrice": null
   },
   {
     "Name": "Ré Air",
     "Stat": "Résistance fixe air",
+    "Img": "../imgs/agilite.png",
     "Price": 181,
     "Weight": 2,
-    "Pa Price": 723,
-    "Ra Price": null
+    "PaPrice": 723,
+    "RaPrice": null
   },
   {
     "Name": "Ré Neutre",
     "Stat": "Résistance fixe neutre",
+    "Img": "../imgs/neutre.png",
     "Price": 92,
     "Weight": 2,
-    "Pa Price": 162,
-    "Ra Price": null
+    "PaPrice": 162,
+    "RaPrice": null
   },
   {
     "Name": "Ré Cri",
     "Stat": "Résistance Critiques",
+    "Img": "../imgs/rescrit.png",
     "Price": 409,
     "Weight": 2,
-    "Pa Price": 1495,
-    "Ra Price": null
+    "PaPrice": 1495,
+    "RaPrice": null
   },
   {
     "Name": "Ré Pou",
     "Stat": "Résistance Poussée",
+    "Img": "../imgs/respou.png",
     "Price": 217,
     "Weight": 2,
-    "Pa Price": 658,
-    "Ra Price": null
+    "PaPrice": 658,
+    "RaPrice": null
   },
   {
     "Name": "Fo",
     "Stat": "Force",
+    "Img": "../imgs/force.png",
     "Price": 45,
     "Weight": 1,
-    "Pa Price": 149,
-    "Ra Price": 411
+    "PaPrice": 149,
+    "RaPrice": 411
   },
   {
     "Name": "Ine",
     "Stat": "Intelligence",
+    "Img": "../imgs/intelligence.png",
     "Price": 35,
     "Weight": 1,
-    "Pa Price": 126,
-    "Ra Price": 337
+    "PaPrice": 126,
+    "RaPrice": 337
   },
   {
     "Name": "Cha",
     "Stat": "Chance",
+    "Img": "../imgs/chance.png",
     "Price": 41,
     "Weight": 1,
-    "Pa Price": 147,
-    "Ra Price": 363
+    "PaPrice": 147,
+    "RaPrice": 363
   },
   {
     "Name": "Age",
     "Stat": "Agilité",
+    "Img": "../imgs/agilite.png",
     "Price": 107,
     "Weight": 1,
-    "Pa Price": 307,
-    "Ra Price": 889
+    "PaPrice": 307,
+    "RaPrice": 889
   },
   {
     "Name": "Pod",
     "Stat": "Pods",
+    "Img": "../imgs/pods.png",
     "Price": 248,
     "Weight": 2.5,
-    "Pa Price": 691,
-    "Ra Price": 2532
+    "PaPrice": 691,
+    "RaPrice": 2532
   },
   {
     "Name": "Vi",
     "Stat": "Vitalité",
+    "Img": "../imgs/vitalite.png",
     "Price": 170,
     "Weight": 1,
-    "Pa Price": 590,
-    "Ra Price": 1663
+    "PaPrice": 590,
+    "RaPrice": 1663
   },
   {
     "Name": "Ini",
     "Stat": "Initiative",
+    "Img": "../imgs/initiative.png",
     "Price": 71,
     "Weight": 1,
-    "Pa Price": 245,
-    "Ra Price": 369
+    "PaPrice": 245,
+    "RaPrice": 369
   }
 ]
