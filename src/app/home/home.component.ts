@@ -15,8 +15,24 @@ export class HomeComponent {
   runes: any[] = [];
   selectedItem: any;
   filteredItems: any[] = [];
+  tableau: any[] = [];
 
   ngOnInit() {
+
+    // Récuperation des runes
+    this.http.get('assets/jsons/runes.json').subscribe((data: any) => {
+      data.forEach((rune: any) => {
+        this.runes.push({
+          name: rune.Name,
+          stat: rune.Stat,
+          img: rune.Img,
+          price: rune.Price,
+          weight: rune.Weight,
+          raPrice: rune.RaPrice,
+          paPrice: rune.PaPrice,
+        });
+      });
+    });
 
     // Récupération des armes et des équipements
     const armes$ = this.http.get<any[]>('assets/jsons/armes.json');
@@ -29,22 +45,6 @@ export class HomeComponent {
       this.items = [...armes, ...equipements];
       this.items.sort((a, b) => a.name.localeCompare(b.name));
     });
-
-    // Récuperation des runes
-    this.http.get('assets/jsons/runes.json').subscribe((data: any) => {
-      data.forEach((rune: any) => {
-        this.runes.push({
-          name: rune.Name,
-          stat: rune.Stat,
-          price: rune.Price,
-          weight: rune.Weight,
-          raPrice: rune.RaPrice,
-          paPrice: rune.PaPrice,
-        });
-      });
-    });
-    console.log(this.runes);
-    
   }
 
   private processData(data: any[]): any[] {
@@ -54,6 +54,11 @@ export class HomeComponent {
       name: item.name,
       effects: item.effects,
     }));
+  }
+
+  matchRunesWithEffects(stat: string, return_value: string) {
+    const runeObj = this.runes.filter((rune: any) => stat.includes(rune.stat))[0];
+    return runeObj[return_value];
   }
 
   filterItem(event: any) {
@@ -76,6 +81,62 @@ export class HomeComponent {
     if (itemTableElement) {
       itemTableElement.style.display = 'block';
     }
+    this.tableau = this.selectedItem.effects.map((value: string) => {
+      const runeObj = this.runes.filter((rune: any) => value.includes(rune.stat))[0]
+      return {
+        stat: value,
+        runeName: runeObj.name,
+        runePrice: runeObj.price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ' '),
+        runeImg: runeObj.img,
+        runeQuantity: this.calculateRuneQuantity(100, runeObj, value).toFixed(2).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ' '),
+        runeQuantityFocused: this.calculateRuneQuantityFocused(100, runeObj, value).toFixed(2).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ' '),
+        focusedRunePrice: Math.round(this.calculateRuneQuantityFocused(100, runeObj, value) * parseFloat(runeObj.price)).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ' ')
+      };
+    });
+  }
+
+  calculateAverage(value: string): number {
+
+    const numbers: number[] = [];
+    let start = -1;
+    let end = -1;
+
+    for (let i = 0; i < value.length; i++) {
+      const char = value[i];
+      if (char >= '0' && char <= '9') {
+        if (start === -1) {
+          start = i;
+        }
+        end = i;
+      } else if (char === 'à') {
+        if (start !== -1 && end !== -1) {
+          numbers.push(parseInt(value.substring(start, end + 1), 10));
+          start = -1;
+          end = -1;
+        }
+      }
+    }
+
+    if (start !== -1 && end !== -1) {
+      numbers.push(parseInt(value.substring(start, end + 1), 10));
+    }
+
+    if (numbers.length === 1) {
+      return numbers[0];
+    } else if (numbers.length >= 2) {
+      const sum = numbers.reduce((a, b) => a + b);
+      return sum / numbers.length;
+    } else {
+      return 0;
+    }
+  }
+
+  calculateRuneQuantity(taux: any, rune: any, stat: any) {
+    return (((3 * rune.weight * this.calculateAverage(stat) * this.selectedItem.level / 200 + 1) * 100 / 100) / rune.weight)
+  }
+
+  calculateRuneQuantityFocused(taux: any, rune: any, statFocused: any) {
+    return (((3 * rune.weight * this.calculateAverage(statFocused) * this.selectedItem.level / 200 + 1) * 100 / 100) / rune.weight)
   }
 
   checkEmptyText() {

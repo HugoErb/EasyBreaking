@@ -12,17 +12,19 @@
                     <td>Caractéristiques</td>
                     <td>Nom des runes</td>
                     <td>Prix unitaire des runes</td>
+                    <td>Quantité de runes</td>
                     <td>Quantité de runes (focus)</td>
                     <td>Prix des runes (focus)</td>
                 </tr>
             </thead>
             <tbody>
-                <tr *ngFor="let row of selectedItem?.effects">
-                    <td><img src="../../assets/imgs/agilite.png">{{row}}</td>
-                    <td>Nom des runes</td>
-                    <td>Prix unitaire des runes</td>
-                    <td>Quantité de runes (focus)</td>
-                    <td>Prix des runes (focus)</td>
+                <tr *ngFor="let row of tableau">
+                    <td><img src={{row.runeImg}}>{{row.stat}}</td>
+                    <td>{{row.runeName}}</td>
+                    <td>{{row.runePrice}}</td>
+                    <td>{{row.runeQuantity}}</td>
+                    <td>{{row.runeQuantityFocused}}</td>
+                    <td>{{row.focusedRunePrice}}</td>
                 </tr>
             </tbody>
         </table>
