@@ -76,6 +76,8 @@ export class HomeComponent {
   }
 
   selectItem(selectedItem: any) {
+    console.log(selectedItem);
+    
     const itemTableElement = document.querySelector('.itemTable') as HTMLElement;
 
     if (itemTableElement) {
@@ -83,6 +85,8 @@ export class HomeComponent {
     }
     this.tableau = this.selectedItem.effects.map((value: string) => {
       const runeObj = this.runes.filter((rune: any) => value.includes(rune.stat))[0]
+      console.log(value);
+      
       return {
         stat: value,
         runeName: runeObj.name,

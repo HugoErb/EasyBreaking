@@ -19,7 +19,7 @@
             </thead>
             <tbody>
                 <tr *ngFor="let row of tableau">
-                    <td><img src={{row.runeImg}}>{{row.stat}}</td>
+                    <td><img src={{row.runeImg}}><div class="text">{{row.stat}}</div></td>
                     <td>{{row.runeName}}</td>
                     <td>{{row.runePrice}}</td>
                     <td>{{row.runeQuantity}}</td>

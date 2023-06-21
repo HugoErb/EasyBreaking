@@ -19,7 +19,7 @@
   },
   {
     "Name": "Po",
-    "Stat": "PO",
+    "Stat": "Portée",
     "Img": "assets/imgs/po.png",
     "Price": 8298,
     "Weight": 51,
@@ -46,7 +46,7 @@
   },
   {
     "Name": "Do Per Ar",
-    "Stat": "% Dommages d'armes",
+    "Stat": "% Dommage d'armes",
     "Img": "assets/imgs/doarme.png",
     "Price": 312,
     "Weight": 15,
@@ -55,7 +55,7 @@
   },
   {
     "Name": "Do Per Di",
-    "Stat": "% Dommages distance",
+    "Stat": "% Dommage distance",
     "Img": "assets/imgs/dodis.png",
     "Price": 17410,
     "Weight": 15,
@@ -64,7 +64,7 @@
   },
   {
     "Name": "Do per Mé",
-    "Stat": "% Dommages mêlée",
+    "Stat": "% Dommage mêlée",
     "Img": "assets/imgs/domelee.png",
     "Price": 4487,
     "Weight": 15,
@@ -73,7 +73,7 @@
   },
   {
     "Name": "Do Per So",
-    "Stat": "% Dommages aux sorts",
+    "Stat": "% Dommage aux sorts",
     "Img": "assets/imgs/dosort.png",
     "Price": 18461,
     "Weight": 15,
@@ -109,7 +109,7 @@
   },
   {
     "Name": "Cri",
-    "Stat": "% Critiques",
+    "Stat": "% Critique",
     "Img": "assets/imgs/critique.png",
     "Price": 1722,
     "Weight": 10,
@@ -208,7 +208,7 @@
   },
   {
     "Name": "Do Terre",
-    "Stat": "Dommages Terre",
+    "Stat": "Dommage Terre",
     "Img": "assets/imgs/force.png",
     "Price": 996,
     "Weight": 5,
@@ -217,7 +217,7 @@
   },
   {
     "Name": "Do Eau",
-    "Stat": "Dommages Eau",
+    "Stat": "Dommage Eau",
     "Img": "assets/imgs/chance.png",
     "Price": 857,
     "Weight": 5,
@@ -226,7 +226,7 @@
   },
   {
     "Name": "Do Feu",
-    "Stat": "Dommages Feu",
+    "Stat": "Dommage Feu",
     "Img": "assets/imgs/intelligence.png",
     "Price": 664,
     "Weight": 5,
@@ -235,7 +235,7 @@
   },
   {
     "Name": "Do Air",
-    "Stat": "Dommages Air",
+    "Stat": "Dommage Air",
     "Img": "assets/imgs/agilite.png",
     "Price": 1147,
     "Weight": 5,
@@ -244,7 +244,7 @@
   },
   {
     "Name": "Do Neutre",
-    "Stat": "Dommages Neutre",
+    "Stat": "Dommage Neutre",
     "Img": "assets/imgs/neutre.png",
     "Price": 796,
     "Weight": 5,

@@ -26,28 +26,28 @@ main .select {
     text-align: center;
 }
 
-::ng-deep .p-inputtext{
-  width: 400px !important;
+::ng-deep .p-inputtext {
+    width: 400px !important;
 }
 
-::ng-deep .p-inputtext:enabled:focus{
+::ng-deep .p-inputtext:enabled:focus {
     box-shadow: none;
     border-color: #ced4da;
 }
 
-::ng-deep .p-inputtext:enabled:hover{
+::ng-deep .p-inputtext:enabled:hover {
     border-color: #ced4da;
 }
 
-::ng-deep .p-button:focus{
+::ng-deep .p-button:focus {
     box-shadow: none !important;
 }
 
-::ng-deep .p-button{
+::ng-deep .p-button {
     background-color: #366cff;
 }
 
-.itemTable{
+.itemTable {
     width: 100%;
     color: rgb(198, 193, 185);
     font-family: 'Enriqueta', arial, serif;
@@ -55,15 +55,28 @@ main .select {
     vertical-align: center;
     margin-top: 25px;
     border-collapse: collapse;
+    white-space: nowrap;
     display: none;
 }
 
-.itemTable thead{
+.itemTable thead {
     font-weight: bold;
 }
 
-.itemTable td{
+.itemTable td {
     width: fit-content;
     border: 0.5px solid #858585;
-    padding: 0.75em 1em;
+    padding: 0.5em 1em;
+}
+
+.itemTable td img {
+    display: inline-block;
+    vertical-align: middle;
+    text-align: left;
+}
+
+.text {
+    display: inline-block;
+    vertical-align: middle;
+    text-align: right;
 }
