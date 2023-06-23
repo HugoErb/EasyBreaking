@@ -280,7 +280,7 @@
   },
   {
     "Name": "Chasse",
-    "Stat": "Chasse",
+    "Stat": "Arme de chasse",
     "Img": "assets/imgs/invo.png",
     "Price": 1270,
     "Weight": 5,
@@ -445,7 +445,7 @@
     "Stat": "Pods",
     "Img": "assets/imgs/pods.png",
     "Price": 248,
-    "Weight": 2.5,
+    "Weight": 0.25,
     "PaPrice": 691,
     "RaPrice": 2532
   },
@@ -454,7 +454,7 @@
     "Stat": "Vitalité",
     "Img": "assets/imgs/vitalite.png",
     "Price": 170,
-    "Weight": 1,
+    "Weight": 0.2,
     "PaPrice": 590,
     "RaPrice": 1663
   },
@@ -463,7 +463,7 @@
     "Stat": "Initiative",
     "Img": "assets/imgs/initiative.png",
     "Price": 71,
-    "Weight": 1,
+    "Weight": 0.1,
     "PaPrice": 245,
     "RaPrice": 369
   }
