@@ -76,16 +76,17 @@ export class HomeComponent {
   }
 
   selectItem(selectedItem: any) {
-    console.log(selectedItem);
-    
+
     const itemTableElement = document.querySelector('.itemTable') as HTMLElement;
 
     if (itemTableElement) {
       itemTableElement.style.display = 'block';
     }
     this.tableau = this.selectedItem.effects.map((value: string) => {
-      const runeObj = this.runes.filter((rune: any) => value.includes(rune.stat))[0]
-      console.log(value);
+      const stats: string[] = this.runes.map((rune: any) => rune.stat);
+      const filteredStats: string[] = stats.filter((stat: string) => value.includes(stat));
+      filteredStats.sort(this.compareByLength);
+      const runeObj = this.runes.find((rune: any) => rune.stat === filteredStats[0]);
       
       return {
         stat: value,
@@ -97,6 +98,10 @@ export class HomeComponent {
         focusedRunePrice: Math.round(this.calculateRuneQuantityFocused(100, runeObj, value) * parseFloat(runeObj.price)).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ' ')
       };
     });
+  }
+
+  compareByLength(a: string, b: string): number {
+    return b.length - a.length;
   }
 
   calculateAverage(value: string): number {
