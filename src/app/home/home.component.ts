@@ -16,6 +16,9 @@ export class HomeComponent {
   selectedItem: any;
   filteredItems: any[] = [];
   tableau: any[] = [];
+  tauxBrisage : any;
+  prixCraft : any;
+  tauxRentabilite : any;
 
   ngOnInit() {
 

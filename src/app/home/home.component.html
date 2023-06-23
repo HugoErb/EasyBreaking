@@ -19,7 +19,9 @@
             </thead>
             <tbody>
                 <tr *ngFor="let row of tableau">
-                    <td><img src={{row.runeImg}}><div class="text">{{row.stat}}</div></td>
+                    <td><img src={{row.runeImg}}>
+                        <div class="text">{{row.stat}}</div>
+                    </td>
                     <td>{{row.runeName}}</td>
                     <td>{{row.runePrice}}</td>
                     <td>{{row.runeQuantity}}</td>
@@ -28,5 +30,16 @@
                 </tr>
             </tbody>
         </table>
+        <div class="inputTexts">
+            <span class="p-input-icon-right">
+                <i class="fa-solid fa-percent"></i>
+                <input pInputText pKeyFilter="int" placeholder="Taux de brisage" [(ngModel)]="tauxBrisage" />
+            </span>
+            <input pInputText pKeyFilter="int" placeholder="Prix du craft" [(ngModel)]="prixCraft" />
+            <span class="p-input-icon-right">
+                <i class="fa-solid fa-percent"></i>
+                <input pInputText pKeyFilter="int" placeholder="Taux de rentabilité" [(ngModel)]="tauxRentabilite" />
+            </span>
+        </div>
     </div>
 </main>

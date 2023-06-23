@@ -80,3 +80,14 @@ main .select {
     vertical-align: middle;
     text-align: right;
 }
+
+.inputTexts {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 15px;
+}
+
+.inputTexts ::ng-deep .p-inputtext {
+    width: 225px !important;
+}
