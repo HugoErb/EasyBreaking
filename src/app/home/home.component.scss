@@ -79,7 +79,6 @@ main .select {
     display: inline-block;
     vertical-align: middle;
     text-align: right;
-    margin-right: 50px !important;
 }
 
 .inputTexts {
@@ -92,5 +91,5 @@ main .select {
 }
 
 .inputTexts ::ng-deep .p-inputtext {
-    width: 225px !important;
+    width: 200px !important;
 }

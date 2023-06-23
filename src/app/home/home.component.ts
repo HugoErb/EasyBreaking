@@ -16,9 +16,9 @@ export class HomeComponent {
   selectedItem: any;
   filteredItems: any[] = [];
   tableau: any[] = [];
-  tauxBrisage : any;
-  prixCraft : any;
-  tauxRentabilite : any = 25;
+  tauxBrisage: any;
+  prixCraft: any;
+  tauxRentabilite: any = 25;
 
   ngOnInit() {
 
@@ -78,7 +78,7 @@ export class HomeComponent {
     this.filteredItems = filtered;
   }
 
-  selectItem(selectedItem: any) {
+  selectItem() {
 
     // On fait apparaître les tableau et les input texts
     const itemTableElement = document.querySelector('.itemTable') as HTMLElement;
@@ -91,21 +91,28 @@ export class HomeComponent {
       inputTexts.style.display = 'flex';
     }
 
+    let tauxBrisage: any;
+    if (this.tauxBrisage) {
+      tauxBrisage = parseInt(this.tauxBrisage)
+    } else {
+      tauxBrisage = 0
+    }
+
     //On crée les données du tableau selon l'item selectionné
     this.tableau = this.selectedItem.effects.map((value: string) => {
       const stats: string[] = this.runes.map((rune: any) => rune.stat);
       const filteredStats: string[] = stats.filter((stat: string) => value.includes(stat));
       filteredStats.sort(this.compareByLength);
       const runeObj = this.runes.find((rune: any) => rune.stat === filteredStats[0]);
-      
+
       return {
         stat: value,
         runeName: runeObj.name,
         runePrice: runeObj.price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ' '),
         runeImg: runeObj.img,
-        runeQuantity: this.calculateRuneQuantity(100, runeObj, value).toFixed(2).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ' '),
-        runeQuantityFocused: this.calculateRuneQuantityFocused(100, runeObj, value).toFixed(2).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ' '),
-        focusedRunePrice: Math.round(this.calculateRuneQuantityFocused(100, runeObj, value) * parseFloat(runeObj.price)).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ' ')
+        runeQuantity: this.calculateRuneQuantity(tauxBrisage, runeObj, value).toFixed(2).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ' '),
+        runeQuantityFocused: this.calculateRuneQuantityFocused(tauxBrisage, runeObj, value).toFixed(2).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ' '),
+        focusedRunePrice: Math.round(this.calculateRuneQuantityFocused(tauxBrisage, runeObj, value) * parseFloat(runeObj.price)).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ' ')
       };
     });
   }
@@ -151,11 +158,11 @@ export class HomeComponent {
   }
 
   calculateRuneQuantity(taux: any, rune: any, stat: any) {
-    return (((3 * rune.weight * this.calculateAverage(stat) * this.selectedItem.level / 200 + 1) * 100 / 100) / rune.weight)
+    return (((3 * rune.weight * this.calculateAverage(stat) * this.selectedItem.level / 200 + 1) * taux / 100) / rune.weight)
   }
 
   calculateRuneQuantityFocused(taux: any, rune: any, statFocused: any) {
-    return (((3 * rune.weight * this.calculateAverage(statFocused) * this.selectedItem.level / 200 + 1) * 100 / 100) / rune.weight)
+    return (((3 * rune.weight * this.calculateAverage(statFocused) * this.selectedItem.level / 200 + 1) * taux / 100) / rune.weight)
   }
 
   vanishDiv() {
@@ -165,7 +172,7 @@ export class HomeComponent {
     if (table) {
       table.style.display = 'none';
     }
-    
+
     if (inputTexts) {
       inputTexts.style.display = 'none';
     }

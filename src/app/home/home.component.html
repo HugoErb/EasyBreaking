@@ -3,7 +3,7 @@
         <h1>Easy Breaking</h1>
         <div class="select">
             <p-autoComplete [(ngModel)]="selectedItem" [dropdown]="true" [suggestions]="filteredItems"
-                (completeMethod)="filterItem($event)" field="name" (onSelect)="selectItem($event)"
+                (completeMethod)="filterItem($event)" field="name" (onSelect)="selectItem()"
                 placeholder="Entrez le nom d'un item..." (keyup)="vanishDiv()"></p-autoComplete>
         </div>
         <table class="itemTable">
@@ -33,7 +33,7 @@
         <div class="inputTexts">
             <span class="p-input-icon-right">
                 <i class="fa-solid fa-percent"></i>
-                <input pInputText pKeyFilter="int" placeholder="Taux de brisage" pattern="^(?:100|\d{1,2})$" oninput="this.value=this.value.replace(/[^0-9]/g,'')" maxlength="4" [(ngModel)]="tauxBrisage" />
+                <input pInputText pKeyFilter="int" placeholder="Taux de brisage" pattern="^(?:100|\d{1,2})$" oninput="this.value=this.value.replace(/[^0-9]/g,'')" maxlength="4" [(ngModel)]="tauxBrisage" (input)="selectItem()"/>
             </span>
             <input pInputText pKeyFilter="int" placeholder="Prix du craft" [(ngModel)]="prixCraft" />
             <span class="p-input-icon-right">
