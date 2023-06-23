@@ -343,7 +343,7 @@
   },
   {
     "Name": "Ré Terre",
-    "Stat": "Résistance fixe terre",
+    "Stat": "Résistance Terre",
     "Img": "assets/imgs/force.png",
     "Price": 510,
     "Weight": 2,
@@ -352,7 +352,7 @@
   },
   {
     "Name": "Ré Eau",
-    "Stat": "Résistance fixe eau",
+    "Stat": "Résistance Eau",
     "Img": "assets/imgs/chance.png",
     "Price": 39,
     "Weight": 2,
@@ -361,7 +361,7 @@
   },
   {
     "Name": "Ré Feu",
-    "Stat": "Résistance fixe feu",
+    "Stat": "Résistance Feu",
     "Img": "assets/imgs/intelligence.png",
     "Price": 87,
     "Weight": 2,
@@ -370,7 +370,7 @@
   },
   {
     "Name": "Ré Air",
-    "Stat": "Résistance fixe air",
+    "Stat": "Résistance Air",
     "Img": "assets/imgs/agilite.png",
     "Price": 181,
     "Weight": 2,
@@ -379,7 +379,7 @@
   },
   {
     "Name": "Ré Neutre",
-    "Stat": "Résistance fixe neutre",
+    "Stat": "Résistance Neutre",
     "Img": "assets/imgs/neutre.png",
     "Price": 92,
     "Weight": 2,
