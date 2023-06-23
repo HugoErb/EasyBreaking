@@ -18,7 +18,7 @@ export class HomeComponent {
   tableau: any[] = [];
   tauxBrisage : any;
   prixCraft : any;
-  tauxRentabilite : any;
+  tauxRentabilite : any = 25;
 
   ngOnInit() {
 
@@ -80,11 +80,18 @@ export class HomeComponent {
 
   selectItem(selectedItem: any) {
 
+    // On fait apparaître les tableau et les input texts
     const itemTableElement = document.querySelector('.itemTable') as HTMLElement;
+    const inputTexts = document.querySelector('.inputTexts') as HTMLElement;
 
     if (itemTableElement) {
       itemTableElement.style.display = 'block';
     }
+    if (inputTexts) {
+      inputTexts.style.display = 'flex';
+    }
+
+    //On crée les données du tableau selon l'item selectionné
     this.tableau = this.selectedItem.effects.map((value: string) => {
       const stats: string[] = this.runes.map((rune: any) => rune.stat);
       const filteredStats: string[] = stats.filter((stat: string) => value.includes(stat));
@@ -151,11 +158,16 @@ export class HomeComponent {
     return (((3 * rune.weight * this.calculateAverage(statFocused) * this.selectedItem.level / 200 + 1) * 100 / 100) / rune.weight)
   }
 
-  checkEmptyText() {
-    const itemTableElement = document.querySelector('.itemTable') as HTMLElement;
+  vanishDiv() {
+    const table = document.querySelector('.itemTable') as HTMLElement;
+    const inputTexts = document.querySelector('.inputTexts') as HTMLElement;
 
-    if (itemTableElement) {
-      itemTableElement.style.display = 'none';
+    if (table) {
+      table.style.display = 'none';
+    }
+    
+    if (inputTexts) {
+      inputTexts.style.display = 'none';
     }
   }
 
