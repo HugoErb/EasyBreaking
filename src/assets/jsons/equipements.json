@@ -93,6 +93,16 @@
         ]
     },
     {
+        "id": "836",
+        "link": "https://www.dofus.com/fr/mmorpg/encyclopedie/equipements/836-abranneau",
+        "name": "Abranneau",
+        "level": "40",
+        "effects": [
+            "1 PA",
+            "1 Portée"
+        ]
+    },
+    {
         "id": "1559",
         "link": "https://www.dofus.com/fr/mmorpg/encyclopedie/equipements/1559-abranneau-mou",
         "name": "Abranneau Mou",
@@ -244,15 +254,6 @@
             "51 à 100 Initiative",
             "31 à 35 Vitalité",
             "2% Critique"
-        ]
-    },
-    {
-        "id": "21711",
-        "link": "https://www.dofus.com/fr/mmorpg/encyclopedie/equipements/21711-ailes-bois-alourdies",
-        "name": "Ailes en bois alourdies",
-        "level": "1",
-        "effects": [
-            "Craft coopératif impossible."
         ]
     },
     {
@@ -4534,6 +4535,17 @@
         ]
     },
     {
+        "id": "10955",
+        "link": "https://www.dofus.com/fr/mmorpg/encyclopedie/equipements/10955-anneau-corbeau-noir",
+        "name": "Anneau du Corbeau Noir",
+        "level": "33",
+        "effects": [
+            "6 à 10 Sagesse",
+            "16 à 20 Agilité",
+            "2 à 3 Dommage Air"
+        ]
+    },
+    {
         "id": "14092",
         "link": "https://www.dofus.com/fr/mmorpg/encyclopedie/equipements/14092-anneau-cycloide",
         "name": "Anneau du Cycloïde",
@@ -5097,6 +5109,18 @@
             "11 à 15 Dommage Eau",
             "6 à 8 Fuite",
             "16 à 20 Résistance Critiques"
+        ]
+    },
+    {
+        "id": "7119",
+        "link": "https://www.dofus.com/fr/mmorpg/encyclopedie/equipements/7119-anneau",
+        "name": "Anneau Ha",
+        "level": "58",
+        "effects": [
+            "26 à 35 Vitalité",
+            "21 à 30 Agilité",
+            "2 à 3 Dommage",
+            "2 à 3% Critique"
         ]
     },
     {
@@ -5727,6 +5751,15 @@
         ]
     },
     {
+        "id": "12423",
+        "link": "https://www.dofus.com/fr/mmorpg/encyclopedie/equipements/12423-anneau-tetriste",
+        "name": "Anneau Tétriste",
+        "level": "10",
+        "effects": [
+            "1 Invocation"
+        ]
+    },
+    {
         "id": "6793",
         "link": "https://www.dofus.com/fr/mmorpg/encyclopedie/equipements/6793-anneau",
         "name": "Anneau Thé",
@@ -5941,22 +5974,6 @@
             "4 à 5 Retrait PM",
             "5 à 7 Soin",
             "1 Invocation"
-        ]
-    },
-    {
-        "id": "8720",
-        "link": "https://www.dofus.com/fr/mmorpg/encyclopedie/equipements/8720-anneau-zamour",
-        "name": "Anneau Zamour",
-        "level": "150",
-        "effects": [
-            "Désactive le lancer en ligne du sort Mot de Reconstitution",
-            "Réduit de 1 le coût en PA du sort Mot Fracassant",
-            "Augmente la portée maximale du sort Mot d'Amitié de 2",
-            "Réduit de 1 le coût en PA du sort Mot de Jouvence",
-            "Augmente de 1 le nombre de lancer maximal par cible du sort Mot de Solidarité",
-            "20% Critique sur le sort Mot Accablant",
-            "20% Critique sur le sort Mot Défendu",
-            "Réduit de 1 le coût en PA du sort Mot d'Affection"
         ]
     },
     {
@@ -6323,6 +6340,22 @@
             "21 à 25 Vitalité",
             "2 à 3 Tacle",
             "2 à 3 Fuite"
+        ]
+    },
+    {
+        "id": "22205",
+        "link": "https://www.dofus.com/fr/mmorpg/encyclopedie/equipements/22205-bague-corruption",
+        "name": "Bague de Corruption",
+        "level": "200",
+        "effects": [
+            "201 à 250 Vitalité",
+            "41 à 60 Force",
+            "16 à 20 Sagesse",
+            "9 à 12 Dommage Terre",
+            "9 à 12 Dommage Neutre",
+            "7 à 10% Résistance Eau",
+            "7 à 10 Dommage Critiques",
+            "4 à 7% Critique"
         ]
     },
     {
@@ -9684,6 +9717,27 @@
         ]
     },
     {
+        "id": "17572",
+        "link": "https://www.dofus.com/fr/mmorpg/encyclopedie/equipements/17572-bottes-roi-joueur",
+        "name": "Bottes du Roi Joueur",
+        "level": "200",
+        "effects": [
+            "301 à 350 Vitalité",
+            "41 à 60 Force",
+            "41 à 60 Intelligence",
+            "11 à 15 Prospection",
+            "11 à 15 Dommage Feu",
+            "11 à 15 Dommage Neutre",
+            "11 à 15 Dommage Terre",
+            "7 à 10% Résistance Eau",
+            "4 à 6 Retrait PM",
+            "4 à 6% Critique",
+            "1 Portée",
+            "1 PM",
+            "31 à 40 Sagesse"
+        ]
+    },
+    {
         "id": "11582",
         "link": "https://www.dofus.com/fr/mmorpg/encyclopedie/equipements/11582-bottes-royalmouth",
         "name": "Bottes du Royalmouth",
@@ -10838,6 +10892,16 @@
         ]
     },
     {
+        "id": "18665",
+        "link": "https://www.dofus.com/fr/mmorpg/encyclopedie/equipements/18665-bouclier-bowisse",
+        "name": "Bouclier de Bowisse",
+        "level": "30",
+        "effects": [
+            "7 à 10 Résistance Feu",
+            "4 à 6% Résistance Terre"
+        ]
+    },
+    {
         "id": "19084",
         "link": "https://www.dofus.com/fr/mmorpg/encyclopedie/equipements/19084-bouclier-choudini",
         "name": "Bouclier de Choudini",
@@ -11254,6 +11318,16 @@
         ]
     },
     {
+        "id": "2422",
+        "link": "https://www.dofus.com/fr/mmorpg/encyclopedie/equipements/2422-boufbottes",
+        "name": "Boufbottes",
+        "level": "20",
+        "effects": [
+            "11 à 15 Puissance",
+            "16 à 20 Vitalité"
+        ]
+    },
+    {
         "id": "2442",
         "link": "https://www.dofus.com/fr/mmorpg/encyclopedie/equipements/2442-boufbottes-royales",
         "name": "Boufbottes Royales",
@@ -11327,6 +11401,23 @@
         "effects": [
             "11 à 15 Chance",
             "2 Dommage Eau"
+        ]
+    },
+    {
+        "id": "16005",
+        "link": "https://www.dofus.com/fr/mmorpg/encyclopedie/equipements/16005-bracelet-fonds-marins",
+        "name": "Bracelet des Fonds marins",
+        "level": "200",
+        "effects": [
+            "201 à 250 Vitalité",
+            "41 à 60 Chance",
+            "31 à 50 Sagesse",
+            "7 à 10 Tacle",
+            "9 à 12 Dommage Eau",
+            "7 à 10% Résistance Feu",
+            "4 à 5 Esquive PM",
+            "2 à 3% Critique",
+            "1 Portée"
         ]
     },
     {
@@ -11972,6 +12063,17 @@
         ]
     },
     {
+        "id": "2445",
+        "link": "https://www.dofus.com/fr/mmorpg/encyclopedie/equipements/2445-cape-bouffante-royale",
+        "name": "Cape Bouffante Royale",
+        "level": "29",
+        "effects": [
+            "16 à 20 Vitalité",
+            "21 à 30 Force",
+            "2 à 3% Résistance Terre"
+        ]
+    },
+    {
         "id": "8458",
         "link": "https://www.dofus.com/fr/mmorpg/encyclopedie/equipements/8458-cape-ceremoniale-seigneur-rats",
         "name": "Cape Cérémoniale du Seigneur des Rats",
@@ -12202,18 +12304,6 @@
             "5 à 7 Esquive PM",
             "9 à 12 Soin",
             "1 Invocation"
-        ]
-    },
-    {
-        "id": "20362",
-        "link": "https://www.dofus.com/fr/mmorpg/encyclopedie/equipements/20362-cape-jahash-jurgen",
-        "name": "Cape de Jahash Jurgen",
-        "level": "200",
-        "effects": [
-            "Quand le porteur reçoit des dommages dans un élément, il gagne 3% de résistance dans cet élément pour 2 tours, cumulable 5 fois.",
-            "401 à 450 Vitalité",
-            "61 à 80 Puissance",
-            "7 à 10% Dommages aux sorts"
         ]
     },
     {
@@ -14477,6 +14567,25 @@
         ]
     },
     {
+        "id": "15207",
+        "link": "https://www.dofus.com/fr/mmorpg/encyclopedie/equipements/15207-cape-precieuse",
+        "name": "Cape Précieuse",
+        "level": "104",
+        "effects": [
+            "51 à 100 Vitalité",
+            "21 à 30 Force",
+            "21 à 30 Chance",
+            "16 à 20 Sagesse",
+            "7 à 10 Fuite",
+            "4 à 6 Dommage Terre",
+            "4 à 6 Dommage Eau",
+            "4 à 6 Dommage Neutre",
+            "4 à 6% Résistance Air",
+            "4 à 6% Résistance Feu",
+            "2% Critique"
+        ]
+    },
+    {
         "id": "13197",
         "link": "https://www.dofus.com/fr/mmorpg/encyclopedie/equipements/13197-cape-reski",
         "name": "Cape Reski",
@@ -14994,6 +15103,23 @@
         ]
     },
     {
+        "id": "9141",
+        "link": "https://www.dofus.com/fr/mmorpg/encyclopedie/equipements/9141-caprin",
+        "name": "Caprin",
+        "level": "181",
+        "effects": [
+            "201 à 250 Vitalité",
+            "41 à 60 Agilité",
+            "31 à 40 Sagesse",
+            "2 à 3% Critique",
+            "6 à 10 Dommage",
+            "21 à 30 Prospection",
+            "6 à 10 Résistance Feu",
+            "6 à 10% Résistance Terre",
+            "6 à 10 Résistance Neutre"
+        ]
+    },
+    {
         "id": "18431",
         "link": "https://www.dofus.com/fr/mmorpg/encyclopedie/equipements/18431-capterre",
         "name": "Capterre",
@@ -15448,15 +15574,6 @@
         "effects": [
             "26 à 30 Vitalité",
             "7 à 10 Fuite"
-        ]
-    },
-    {
-        "id": "21712",
-        "link": "https://www.dofus.com/fr/mmorpg/encyclopedie/equipements/21712-casque-alourdi",
-        "name": "Casque alourdi",
-        "level": "1",
-        "effects": [
-            "Craft coopératif impossible."
         ]
     },
     {
@@ -16365,22 +16482,6 @@
             "6 à 10% Résistance Air",
             "6 à 10% Résistance Terre",
             "6 à 10% Résistance Neutre"
-        ]
-    },
-    {
-        "id": "13264",
-        "link": "https://www.dofus.com/fr/mmorpg/encyclopedie/equipements/13264-ceinture-blot",
-        "name": "Ceinture Blot",
-        "level": "130",
-        "effects": [
-            "Augmente la portée maximale du sort Évolution de 2",
-            "Rend la portée du sort Embuscade modifiable",
-            "Désactive la ligne de vue du sort Transition",
-            "Augmente de 1 le nombre de lancer maximal par tour du sort Sonar",
-            "Augmente la portée maximale du sort Courant de 2",
-            "Augmente la portée maximale du sort Harmattan de 1",
-            "Augmente de 1 le nombre de lancer maximal par cible du sort Ressac",
-            "Réduit de 1 le coût en PA du sort Selpâtre"
         ]
     },
     {
@@ -17756,6 +17857,17 @@
         ]
     },
     {
+        "id": "17734",
+        "link": "https://www.dofus.com/fr/mmorpg/encyclopedie/equipements/17734-ceinture-dragocourse",
+        "name": "Ceinture Dragocourse",
+        "level": "40",
+        "effects": [
+            "51 à 100 Initiative",
+            "31 à 40 Vitalité",
+            "11 à 15 Puissance"
+        ]
+    },
+    {
         "id": "6925",
         "link": "https://www.dofus.com/fr/mmorpg/encyclopedie/equipements/6925-ceinture-bandit",
         "name": "Ceinture du Bandit",
@@ -18142,20 +18254,6 @@
         ]
     },
     {
-        "id": "8008",
-        "link": "https://www.dofus.com/fr/mmorpg/encyclopedie/equipements/8008-ceinture-koalak",
-        "name": "Ceinture du Koalak",
-        "level": "60",
-        "effects": [
-            "201 à 300 Initiative",
-            "151 à 200 Pod",
-            "7 à 10 Sagesse",
-            "11 à 15 Prospection",
-            "5 à 7 Soin",
-            "1 Invocation"
-        ]
-    },
-    {
         "id": "789",
         "link": "https://www.dofus.com/fr/mmorpg/encyclopedie/equipements/789-ceinture-kobeer",
         "name": "Ceinture du Kobeer",
@@ -18380,6 +18478,16 @@
         ]
     },
     {
+        "id": "8240",
+        "link": "https://www.dofus.com/fr/mmorpg/encyclopedie/equipements/8240-ceinture-piou-vert",
+        "name": "Ceinture du Piou Vert",
+        "level": "9",
+        "effects": [
+            "16 à 20 Agilité",
+            "1 Dommage Air"
+        ]
+    },
+    {
         "id": "8239",
         "link": "https://www.dofus.com/fr/mmorpg/encyclopedie/equipements/8239-ceinture-piou-violet",
         "name": "Ceinture du Piou Violet",
@@ -18513,28 +18621,6 @@
         "effects": [
             "2 à 3 Fuite",
             "2% Critique"
-        ]
-    },
-    {
-        "id": "14095",
-        "link": "https://www.dofus.com/fr/mmorpg/encyclopedie/equipements/14095-ceinture-strigide",
-        "name": "Ceinture du Strigide",
-        "level": "200",
-        "effects": [
-            "301 à 350 Vitalité",
-            "31 à 50 Sagesse",
-            "5 à 7 Soin",
-            "5 à 7% Critique",
-            "41 à 60 Puissance",
-            "301 à 400 Initiative",
-            "7 à 10 Dommage Neutre",
-            "7 à 10 Dommage Terre",
-            "7 à 10 Dommage Feu",
-            "7 à 10 Dommage Eau",
-            "7 à 10 Dommage Air",
-            "6 à 8% Résistance Neutre",
-            "7 à 10 Tacle",
-            "11 à 15 Dommage Critiques"
         ]
     },
     {
@@ -19442,20 +19528,6 @@
             "7 à 10% Résistance Neutre",
             "4 à 5% Critique",
             "1 Portée"
-        ]
-    },
-    {
-        "id": "13017",
-        "link": "https://www.dofus.com/fr/mmorpg/encyclopedie/equipements/13017-ceinturoduvet",
-        "name": "Ceinturoduvet",
-        "level": "60",
-        "effects": [
-            "16 à 20 Vitalité",
-            "16 à 20 Puissance",
-            "1 Invocation",
-            "7 à 10 Prospection",
-            "4 à 5% Résistance Eau",
-            "4 à 5 Fuite"
         ]
     },
     {
@@ -21472,6 +21544,19 @@
         ]
     },
     {
+        "id": "7145",
+        "link": "https://www.dofus.com/fr/mmorpg/encyclopedie/equipements/7145-coiffe-gaddie",
+        "name": "Coiffe du Gaddie",
+        "level": "106",
+        "effects": [
+            "201 à 250 Vitalité",
+            "6 à 10 Résistance Neutre",
+            "6 à 10 Résistance Eau",
+            "6 à 10% Résistance Neutre",
+            "6 à 10% Résistance Eau"
+        ]
+    },
+    {
         "id": "12116",
         "link": "https://www.dofus.com/fr/mmorpg/encyclopedie/equipements/12116-coiffe-glourseleste",
         "name": "Coiffe du Glourséleste",
@@ -23333,6 +23418,15 @@
         ]
     },
     {
+        "id": "7113",
+        "link": "https://www.dofus.com/fr/mmorpg/encyclopedie/equipements/7113-dofawa",
+        "name": "Dofawa",
+        "level": "6",
+        "effects": [
+            "1 Vitalité"
+        ]
+    },
+    {
         "id": "18043",
         "link": "https://www.dofus.com/fr/mmorpg/encyclopedie/equipements/18043-dofus-abyssal",
         "name": "Dofus Abyssal",
@@ -23586,15 +23680,6 @@
         "effects": [
             "11 à 50 Intelligence",
             "11 à 20 Sagesse"
-        ]
-    },
-    {
-        "id": "23408",
-        "link": "https://www.dofus.com/fr/mmorpg/encyclopedie/equipements/23408-dorigami",
-        "name": "Dorigami",
-        "level": "150",
-        "effects": [
-            "20 Esquive PM"
         ]
     },
     {
@@ -25383,6 +25468,24 @@
         ]
     },
     {
+        "id": "22190",
+        "link": "https://www.dofus.com/fr/mmorpg/encyclopedie/equipements/22190-heaume-guerre",
+        "name": "Heaume de Guerre",
+        "level": "200",
+        "effects": [
+            "401 à 450 Vitalité",
+            "81 à 100 Intelligence",
+            "31 à 40 Sagesse",
+            "11 à 15 Tacle",
+            "11 à 15 Dommage Feu",
+            "7 à 10% Résistance Terre",
+            "4 à 7% Résistance Air",
+            "11 à 15 Retrait PM",
+            "4 à 5% Critique",
+            "7 à 10 Dommage Critiques"
+        ]
+    },
+    {
         "id": "27551",
         "link": "https://www.dofus.com/fr/mmorpg/encyclopedie/equipements/27551-heaume-erik",
         "name": "Heaume Erik",
@@ -26068,6 +26171,23 @@
         ]
     },
     {
+        "id": "23255",
+        "link": "https://www.dofus.com/fr/mmorpg/encyclopedie/equipements/23255-kwaflaque",
+        "name": "Kwaflaque",
+        "level": "128",
+        "effects": [
+            "201 à 300 Initiative",
+            "101 à 150 Vitalité",
+            "41 à 60 Chance",
+            "7 à 10 Résistance Eau",
+            "21 à 30 Sagesse",
+            "16 à 20 Prospection",
+            "4 à 6 Dommage Eau",
+            "5 à 8% Résistance Feu",
+            "5 à 8 Esquive PA"
+        ]
+    },
+    {
         "id": "2418",
         "link": "https://www.dofus.com/fr/mmorpg/encyclopedie/equipements/2418-kwakanneau-flammes",
         "name": "Kwakanneau de Flammes",
@@ -26177,18 +26297,6 @@
             "21 à 30 Chance",
             "7 à 10 Sagesse",
             "5% Résistance Eau"
-        ]
-    },
-    {
-        "id": "6760",
-        "link": "https://www.dofus.com/fr/mmorpg/encyclopedie/equipements/6760-kwakoiffe-terre",
-        "name": "Kwakoiffe de Terre",
-        "level": "41",
-        "effects": [
-            "16 à 20 Vitalité",
-            "21 à 30 Force",
-            "7 à 10 Sagesse",
-            "5% Résistance Terre"
         ]
     },
     {
@@ -26468,6 +26576,16 @@
         ]
     },
     {
+        "id": "8534",
+        "link": "https://www.dofus.com/fr/mmorpg/encyclopedie/equipements/8534-cape-loque",
+        "name": "La Cape S'loque",
+        "level": "1",
+        "effects": [
+            "4 à 6 Force",
+            "3 à 4 Sagesse"
+        ]
+    },
+    {
         "id": "161",
         "link": "https://www.dofus.com/fr/mmorpg/encyclopedie/equipements/161-celebrite",
         "name": "La Célébrité",
@@ -26475,6 +26593,16 @@
         "effects": [
             "1 Portée",
             "4 Vitalité"
+        ]
+    },
+    {
+        "id": "1490",
+        "link": "https://www.dofus.com/fr/mmorpg/encyclopedie/equipements/1490-chaine-nhanor-kibrill",
+        "name": "La Chaîne Nhanor Kibrill",
+        "level": "13",
+        "effects": [
+            "7 à 10 Intelligence",
+            "3 à 4 Fuite"
         ]
     },
     {
@@ -27969,6 +28097,23 @@
         ]
     },
     {
+        "id": "8820",
+        "link": "https://www.dofus.com/fr/mmorpg/encyclopedie/equipements/8820-masque-sergent-zoth",
+        "name": "Masque du Sergent Zoth",
+        "level": "133",
+        "effects": [
+            "151 à 200 Vitalité",
+            "11 à 20 Sagesse",
+            "41 à 60 Chance",
+            "4 à 5% Critique",
+            "5 à 7 Dommage",
+            "201 à 400 Initiative",
+            "11 à 20 Prospection",
+            "6 à 10% Résistance Eau",
+            "6 à 10% Résistance Terre"
+        ]
+    },
+    {
         "id": "10102",
         "link": "https://www.dofus.com/fr/mmorpg/encyclopedie/equipements/10102-masque-vampyre",
         "name": "Masque du Vampyre",
@@ -28247,6 +28392,19 @@
             "16 à 20 Intelligence",
             "11 à 15 Sagesse",
             "4 à 5 Soin"
+        ]
+    },
+    {
+        "id": "1331",
+        "link": "https://www.dofus.com/fr/mmorpg/encyclopedie/equipements/1331-medaille-oly",
+        "name": "Médaille Oly",
+        "level": "51",
+        "effects": [
+            "21 à 30 Force",
+            "7 à 10 Puissance",
+            "3 Dommage Terre",
+            "7 à 10 Dommage Critiques",
+            "4 à 5% Critique"
         ]
     },
     {
@@ -32187,6 +32345,22 @@
         "level": "50",
         "effects": [
             "24 Résistance Poussée"
+        ]
+    },
+    {
+        "id": "7143",
+        "link": "https://www.dofus.com/fr/mmorpg/encyclopedie/equipements/7143-solomonk",
+        "name": "Solomonk",
+        "level": "118",
+        "effects": [
+            "31 à 50 Force",
+            "201 à 250 Vitalité",
+            "31 à 50 Agilité",
+            "5 à 7% Critique",
+            "6 à 10 Dommage",
+            "21 à 30 Dommage Pièges",
+            "16 à 25 Puissance",
+            "300 Initiative"
         ]
     },
     {

@@ -2413,20 +2413,6 @@
         ]
     },
     {
-        "id": "7206",
-        "link": "https://www.dofus.com/fr/mmorpg/encyclopedie/armes/7206-baton-sandanwa",
-        "name": "Bâton du Sandanwa",
-        "level": "77",
-        "effects": [
-            "251 à 300 Initiative",
-            "51 à 70 Vitalité",
-            "36 à 45 Intelligence",
-            "36 à 45 Agilité",
-            "4 à 5 Fuite",
-            "11 à 15 Soin"
-        ]
-    },
-    {
         "id": "11634",
         "link": "https://www.dofus.com/fr/mmorpg/encyclopedie/armes/11634-baton-shamansot",
         "name": "Bâton du Shamansot",
@@ -2511,8 +2497,7 @@
             "3 à 4% Résistance Feu",
             "3 à 5% Critique",
             "1 Portée",
-            "16 à 20 Sagesse",
-            "Craft coopératif impossible."
+            "16 à 20 Sagesse"
         ]
     },
     {
@@ -2983,6 +2968,21 @@
             "7 à 10% Résistance Neutre",
             "4 à 6 Tacle",
             "5 à 7 Dommage Critiques"
+        ]
+    },
+    {
+        "id": "9137",
+        "link": "https://www.dofus.com/fr/mmorpg/encyclopedie/armes/9137-couteaux-champignons",
+        "name": "Couteaux à Champignons",
+        "level": "187",
+        "effects": [
+            "31 à 50 Agilité",
+            "201 à 250 Vitalité",
+            "21 à 30 Sagesse",
+            "2 à 3% Critique",
+            "5 à 7 Dommage",
+            "301 à 400 Initiative",
+            "11 à 15 Prospection"
         ]
     },
     {
@@ -3751,16 +3751,6 @@
         ]
     },
     {
-        "id": "44",
-        "link": "https://www.dofus.com/fr/mmorpg/encyclopedie/armes/44-epee-boisaille",
-        "name": "Epée de Boisaille",
-        "level": "7",
-        "effects": [
-            "7 à 10 Force",
-            "1 Dommage Terre"
-        ]
-    },
-    {
         "id": "49",
         "link": "https://www.dofus.com/fr/mmorpg/encyclopedie/armes/49-epee-fouraille",
         "name": "Epée de Fouraille",
@@ -4270,26 +4260,6 @@
             "4 à 5 Prospection",
             "4 à 5 Dommage",
             "4 à 5% Critique"
-        ]
-    },
-    {
-        "id": "26011",
-        "link": "https://www.dofus.com/fr/mmorpg/encyclopedie/armes/26011-faux-chaotique",
-        "name": "Faux Chaotique",
-        "level": "200",
-        "effects": [
-            "201 à 300 Initiative",
-            "301 à 350 Vitalité",
-            "31 à 40 Intelligence",
-            "31 à 40 Chance",
-            "16 à 20 Puissance",
-            "26 à 35 Sagesse",
-            "9 à 12 Tacle",
-            "14 à 18 Dommage Feu",
-            "14 à 18 Dommage Eau",
-            "7 à 10% Résistance Eau",
-            "9 à 12 Soin",
-            "1 PM"
         ]
     },
     {
@@ -4861,6 +4831,19 @@
         ]
     },
     {
+        "id": "8827",
+        "link": "https://www.dofus.com/fr/mmorpg/encyclopedie/armes/8827-hache-guerrier-zoth",
+        "name": "Hache du Guerrier Zoth",
+        "level": "139",
+        "effects": [
+            "251 à 300 Vitalité",
+            "26 à 35 Sagesse",
+            "3 à 4 Dommage",
+            "1 PA",
+            "11 à 15 Prospection"
+        ]
+    },
+    {
         "id": "11711",
         "link": "https://www.dofus.com/fr/mmorpg/encyclopedie/armes/11711-hache-korriandre",
         "name": "Hache du Korriandre",
@@ -5221,21 +5204,6 @@
         ]
     },
     {
-        "id": "2606",
-        "link": "https://www.dofus.com/fr/mmorpg/encyclopedie/armes/2606-hachette-savante",
-        "name": "Hachette Savante",
-        "level": "81",
-        "effects": [
-            "71 à 100 Vitalité",
-            "31 à 40 Intelligence",
-            "31 à 40 Agilité",
-            "21 à 30 Puissance",
-            "11 à 15 Sagesse",
-            "4 à 5 Fuite",
-            "5 à 7 Dommage"
-        ]
-    },
-    {
         "id": "2590",
         "link": "https://www.dofus.com/fr/mmorpg/encyclopedie/armes/2590-hache-om",
         "name": "Hache Vôr'Om",
@@ -5299,24 +5267,6 @@
             "5 à 7 Dommage Neutre",
             "4 à 5% Résistance Neutre",
             "5 à 7 Soin"
-        ]
-    },
-    {
-        "id": "18013",
-        "link": "https://www.dofus.com/fr/mmorpg/encyclopedie/armes/18013-harpelle",
-        "name": "Harpelle",
-        "level": "200",
-        "effects": [
-            "301 à 400 Vitalité",
-            "61 à 80 Intelligence",
-            "31 à 50 Sagesse",
-            "11 à 15 Tacle",
-            "5 à 7 Dommage Feu",
-            "5 à 7% Résistance Neutre",
-            "5 à 7% Résistance Air",
-            "11 à 15 Soin",
-            "16 à 20 Dommage Critiques",
-            "2% Critique"
         ]
     },
     {
@@ -5465,7 +5415,6 @@
         "name": "Katana de la Feuille",
         "level": "120",
         "effects": [
-            "Craft coopératif impossible.",
             "41 à 60 Puissance",
             "21 à 30 Sagesse",
             "5 à 7 Tacle",
@@ -5484,7 +5433,6 @@
         "name": "Katana de la Flamme",
         "level": "120",
         "effects": [
-            "Craft coopératif impossible.",
             "61 à 80 Intelligence",
             "21 à 30 Sagesse",
             "5 à 7 Tacle",
@@ -5500,7 +5448,6 @@
         "name": "Katana de la Marée",
         "level": "120",
         "effects": [
-            "Craft coopératif impossible.",
             "61 à 80 Chance",
             "21 à 30 Sagesse",
             "5 à 7 Tacle",
@@ -5516,7 +5463,6 @@
         "name": "Katana de la Roche",
         "level": "120",
         "effects": [
-            "Craft coopératif impossible.",
             "61 à 80 Force",
             "21 à 30 Sagesse",
             "5 à 7 Tacle",
@@ -5532,7 +5478,6 @@
         "name": "Katana de la Tempête",
         "level": "120",
         "effects": [
-            "Craft coopératif impossible.",
             "61 à 80 Agilité",
             "21 à 30 Sagesse",
             "5 à 7 Tacle",
@@ -6636,19 +6581,6 @@
         ]
     },
     {
-        "id": "1360",
-        "link": "https://www.dofus.com/fr/mmorpg/encyclopedie/armes/1360-hyldegarde",
-        "name": "L'Hyldegarde",
-        "level": "48",
-        "effects": [
-            "31 à 40 Intelligence",
-            "21 à 30 Chance",
-            "2 à 3 Dommage Feu",
-            "5 à 7 Dommage Eau",
-            "5 à 7 Soin"
-        ]
-    },
-    {
         "id": "1399",
         "link": "https://www.dofus.com/fr/mmorpg/encyclopedie/armes/1399-maillet-aclou",
         "name": "Maillet Aclou",
@@ -7028,6 +6960,16 @@
             "21 à 30 Vitalité",
             "2 à 3% Résistance Eau",
             "2 à 3% Résistance Air",
+            "1 Invocation"
+        ]
+    },
+    {
+        "id": "2416",
+        "link": "https://www.dofus.com/fr/mmorpg/encyclopedie/armes/2416-marteau-bouftou",
+        "name": "Marteau du Bouftou",
+        "level": "20",
+        "effects": [
+            "16 à 20 Vitalité",
             "1 Invocation"
         ]
     },
@@ -8104,6 +8046,25 @@
             "21 à 30 Intelligence",
             "11 à 15 Sagesse",
             "2 à 3% Critique"
+        ]
+    },
+    {
+        "id": "15494",
+        "link": "https://www.dofus.com/fr/mmorpg/encyclopedie/armes/15494-pelle-cour-sombre",
+        "name": "Pelle de la Cour Sombre",
+        "level": "200",
+        "effects": [
+            "251 à 300 Vitalité",
+            "61 à 80 Agilité",
+            "21 à 30 Résistance Poussée",
+            "31 à 50 Sagesse",
+            "16 à 20 Prospection",
+            "9 à 12 Dommage Air",
+            "7 à 10% Résistance Terre",
+            "7 à 10% Résistance Eau",
+            "7 à 10 Esquive PA",
+            "2 à 3% Critique",
+            "1 Portée"
         ]
     },
     {
@@ -9310,20 +9271,6 @@
         ]
     },
     {
-        "id": "20848",
-        "link": "https://www.dofus.com/fr/mmorpg/encyclopedie/armes/20848-sceptre-zor",
-        "name": "Sceptre Zor",
-        "level": "61",
-        "effects": [
-            "76 à 100 Initiative",
-            "26 à 30 Vitalité",
-            "16 à 20 Force",
-            "16 à 20 Agilité",
-            "13 à 20 Puissance",
-            "29 à 45 Sagesse"
-        ]
-    },
-    {
         "id": "27539",
         "link": "https://www.dofus.com/fr/mmorpg/encyclopedie/armes/27539-serpe-aigrie",
         "name": "Serpe Aigrie",
@@ -9366,6 +9313,26 @@
             "101 à 150 Vitalité",
             "5 à 6% Critique",
             "16 à 20 Dommage Pièges"
+        ]
+    },
+    {
+        "id": "20935",
+        "link": "https://www.dofus.com/fr/mmorpg/encyclopedie/armes/20935-spatule-tranche-gourmands",
+        "name": "Spatule Tranche-Gourmands",
+        "level": "200",
+        "effects": [
+            "351 à 400 Vitalité",
+            "41 à 60 Force",
+            "41 à 60 Agilité",
+            "31 à 40 Sagesse",
+            "9 à 12 Tacle",
+            "7 à 10 Dommage Terre",
+            "7 à 10 Dommage Air",
+            "7 à 10 Dommage Neutre",
+            "4 à 7% Résistance Neutre",
+            "4 à 7% Résistance Eau",
+            "7 à 10 Retrait PM",
+            "1 à 2% Critique"
         ]
     },
     {
