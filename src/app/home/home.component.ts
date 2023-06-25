@@ -99,22 +99,29 @@ export class HomeComponent {
     }
 
     //On crée les données du tableau selon l'item selectionné
-    this.tableau = this.selectedItem.effects.map((value: string) => {
-      const stats: string[] = this.runes.map((rune: any) => rune.stat);
-      const filteredStats: string[] = stats.filter((stat: string) => value.includes(stat));
-      filteredStats.sort(this.compareByLength);
-      const runeObj = this.runes.find((rune: any) => rune.stat === filteredStats[0]);
+    this.tableau = this.selectedItem.effects.map((effect: string) => {
+      const runeObj = this.findMatchingRune(effect);
+      let runeQuantityFocused = this.calculateRuneQuantityFocused(tauxBrisage, effect, this.selectedItem.effects);
 
       return {
-        stat: value,
+        stat: effect,
         runeName: runeObj.name,
         runePrice: runeObj.price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ' '),
         runeImg: runeObj.img,
-        runeQuantity: this.calculateRuneQuantity(tauxBrisage, runeObj, value).toFixed(2).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ' '),
-        runeQuantityFocused: this.calculateRuneQuantityFocused(tauxBrisage, runeObj, value).toFixed(2).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ' '),
-        focusedRunePrice: Math.round(this.calculateRuneQuantityFocused(tauxBrisage, runeObj, value) * parseFloat(runeObj.price)).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ' ')
+        runeQuantity: this.calculateRuneQuantity(tauxBrisage, runeObj, effect).toFixed(2).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ' '),
+        runeQuantityFocused: runeQuantityFocused.toFixed(2).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ' '),
+        focusedRunePrice: Math.round(runeQuantityFocused * parseFloat(runeObj.price)).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ' ')
       };
     });
+  }
+
+  findMatchingRune(itemStatistic: any) {
+    const stats: string[] = this.runes.map((rune: any) => rune.stat);
+    const filteredStats: string[] = stats.filter((stat: string) => itemStatistic.includes(stat));
+    filteredStats.sort(this.compareByLength);
+    console.log(filteredStats);
+    
+    return this.runes.find((rune: any) => rune.stat === filteredStats[0]);
   }
 
   compareByLength(a: string, b: string): number {
@@ -157,12 +164,34 @@ export class HomeComponent {
     }
   }
 
-  calculateRuneQuantity(taux: any, rune: any, stat: any) {
-    return (((3 * rune.weight * this.calculateAverage(stat) * this.selectedItem.level / 200 + 1) * taux / 100) / rune.weight)
+  getRealRuneWeight(rune: any) {
+    let runeWeight = rune.weight;
+    if (rune.stat === 'Vitalité' || rune.stat === 'Initiative') {
+      runeWeight = 1;
+    } else if (rune.stat === 'Pods') {
+      runeWeight = 2.5;
+    }
+    return runeWeight;
   }
 
-  calculateRuneQuantityFocused(taux: any, rune: any, statFocused: any) {
-    return (((3 * rune.weight * this.calculateAverage(statFocused) * this.selectedItem.level / 200 + 1) * taux / 100) / rune.weight)
+  calculateRuneQuantity(taux: any, rune: any, effect: any) {
+    let realRuneWeight = this.getRealRuneWeight(rune);
+    return (((3 * rune.weight * this.calculateAverage(effect) * this.selectedItem.level / 200 + 1) * taux / 100) / realRuneWeight)
+  }
+
+  calculateRuneQuantityFocused(taux: any, statFocused: any, effectsList: any[]) {
+    let runeQuantityFocused = 0;
+    let runeFocused = this.findMatchingRune(statFocused);
+    let realRuneWeight = this.getRealRuneWeight(runeFocused);
+    effectsList.forEach(effect => {
+      let runeEffect = this.findMatchingRune(statFocused);
+      let res = this.calculateRuneQuantity(taux, runeEffect, effect);
+      if (effect != statFocused) {
+        res = res / 2;
+      }
+      runeQuantityFocused += res;
+    });
+    return runeQuantityFocused / realRuneWeight;
   }
 
   vanishDiv() {
