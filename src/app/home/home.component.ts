@@ -119,8 +119,7 @@ export class HomeComponent {
     const stats: string[] = this.runes.map((rune: any) => rune.stat);
     const filteredStats: string[] = stats.filter((stat: string) => itemStatistic.includes(stat));
     filteredStats.sort(this.compareByLength);
-    console.log(filteredStats);
-    
+
     return this.runes.find((rune: any) => rune.stat === filteredStats[0]);
   }
 
@@ -184,14 +183,14 @@ export class HomeComponent {
     let runeFocused = this.findMatchingRune(statFocused);
     let realRuneWeight = this.getRealRuneWeight(runeFocused);
     effectsList.forEach(effect => {
-      let runeEffect = this.findMatchingRune(statFocused);
-      let res = this.calculateRuneQuantity(taux, runeEffect, effect);
+      let effectRune = this.findMatchingRune(effect);
+      let res = 3 * effectRune.weight * this.calculateAverage(effect) * this.selectedItem.level / 200 + 1;
       if (effect != statFocused) {
         res = res / 2;
       }
       runeQuantityFocused += res;
     });
-    return runeQuantityFocused / realRuneWeight;
+    return runeQuantityFocused / realRuneWeight * taux / 100;
   }
 
   vanishDiv() {
