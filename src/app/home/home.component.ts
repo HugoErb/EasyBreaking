@@ -102,6 +102,7 @@ export class HomeComponent {
     this.tableau = this.selectedItem.effects.map((effect: string) => {
       const runeObj = this.findMatchingRune(effect);
       let runeQuantityFocused = this.calculateRuneQuantityFocused(tauxBrisage, effect, this.selectedItem.effects);
+      let runeQuantity = this.calculateRuneQuantity(tauxBrisage, runeObj, effect);
 
       return {
         stat: effect,
@@ -109,8 +110,9 @@ export class HomeComponent {
         runePrice: runeObj.price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ' '),
         runeImg: runeObj.img,
         runeQuantity: this.calculateRuneQuantity(tauxBrisage, runeObj, effect).toFixed(2).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ' '),
+        kamasEarned: Math.round(runeQuantity* parseFloat(runeObj.price)).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ' '),
         runeQuantityFocused: runeQuantityFocused.toFixed(2).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ' '),
-        focusedRunePrice: Math.round(runeQuantityFocused * parseFloat(runeObj.price)).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ' ')
+        focusedKamasEarned: Math.round(runeQuantityFocused * parseFloat(runeObj.price)).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ' ')
       };
     });
   }
