@@ -18,7 +18,10 @@ export class HomeComponent {
   tableau: any[] = [];
   tauxBrisage: any;
   prixCraft: any;
-  tauxRentabilite: any = 25;
+  tauxRentabilite: number = 25;
+  sumKamasEarned: number = 0;
+  maxFocusedKamasEarned?: number;
+  maxValue?: number;
 
   ngOnInit() {
 
@@ -98,23 +101,29 @@ export class HomeComponent {
       tauxBrisage = 0
     }
 
+    this.sumKamasEarned = 0;
+
     //On crée les données du tableau selon l'item selectionné
     this.tableau = this.selectedItem.effects.map((effect: string) => {
       const runeObj = this.findMatchingRune(effect);
       let runeQuantityFocused = this.calculateRuneQuantityFocused(tauxBrisage, effect, this.selectedItem.effects);
       let runeQuantity = this.calculateRuneQuantity(tauxBrisage, runeObj, effect);
+      let kamasEarned = Math.round(runeQuantity * parseFloat(runeObj.price))* 0.98;
+      this.sumKamasEarned += kamasEarned;
 
       return {
         stat: effect,
         runeName: runeObj.name,
-        runePrice: runeObj.price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ' '),
+        runePrice: runeObj.price,
         runeImg: runeObj.img,
-        runeQuantity: this.calculateRuneQuantity(tauxBrisage, runeObj, effect).toFixed(2).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ' '),
-        kamasEarned: Math.round(runeQuantity* parseFloat(runeObj.price)).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ' '),
-        runeQuantityFocused: runeQuantityFocused.toFixed(2).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ' '),
-        focusedKamasEarned: Math.round(runeQuantityFocused * parseFloat(runeObj.price)).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ' ')
+        runeQuantity: this.calculateRuneQuantity(tauxBrisage, runeObj, effect).toFixed(2),
+        kamasEarned: kamasEarned,
+        runeQuantityFocused: runeQuantityFocused.toFixed(2),
+        focusedKamasEarned: Math.round(runeQuantityFocused * parseFloat(runeObj.price)) * 0.98
       };
     });
+    this.maxFocusedKamasEarned = Math.max(...this.tableau.map(item => item.focusedKamasEarned));
+    this.maxValue = Math.max(this.maxFocusedKamasEarned, this.sumKamasEarned);
   }
 
   findMatchingRune(itemStatistic: any) {

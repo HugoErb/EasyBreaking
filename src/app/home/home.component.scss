@@ -93,3 +93,13 @@ main .select {
 .inputTexts ::ng-deep .p-inputtext {
     width: 200px !important;
 }
+
+.firstNoBorder{
+    border-left: none !important;
+    border-bottom: none !important;
+}
+
+.lastNoBorder{
+    border-right: none !important;
+    border-bottom: none !important;
+}

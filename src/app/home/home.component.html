@@ -19,18 +19,25 @@
                 </tr>
             </thead>
             <tbody>
-                <tr *ngFor="let row of tableau">
+                <tr *ngFor="let row of tableau;">
                     <td><img src={{row.runeImg}}>
                         <div class="text">{{row.stat}}</div>
                     </td>
                     <td>{{row.runeName}}</td>
-                    <td>{{row.runePrice}}</td>
-                    <td>{{row.runeQuantity}}</td>
-                    <td>{{row.kamasEarned}}</td>
-                    <td>{{row.runeQuantityFocused}}</td>
-                    <td>{{row.focusedKamasEarned}}</td>
+                    <td>{{row.runePrice | number: '1.0-0'}}</td>
+                    <td>{{row.runeQuantity| number: '1.0-2'}}</td>
+                    <td>{{row.kamasEarned | number: '1.0-0'}}</td>
+                    <td>{{row.runeQuantityFocused| number: '1.0-2'}}</td>
+                    <td [ngStyle]="{'background-color': row.focusedKamasEarned === maxValue && row.focusedKamasEarned !== 0 ? 'green' : ''}">{{row.focusedKamasEarned | number: '1.0-0'}}</td>
                 </tr>
             </tbody>
+            <tfoot>
+                <tr>
+                    <td class="firstNoBorder" colspan="4"></td>
+                    <td [ngStyle]="{'background-color': sumKamasEarned === maxValue && sumKamasEarned !== 0 ? 'green' : ''}">{{sumKamasEarned | number: '1.0-0'}}</td>
+                    <td class="lastNoBorder" colspan="2"></td>
+                </tr>
+            </tfoot>
         </table>
         <div class="inputTexts">
             <span class="p-input-icon-right">

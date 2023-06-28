@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { NgModule, LOCALE_ID } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
@@ -9,6 +9,11 @@ import { AutoCompleteModule } from 'primeng/autocomplete';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { InputTextModule } from 'primeng/inputtext';
+
+import { registerLocaleData } from '@angular/common';
+import localeFr from '@angular/common/locales/fr';
+
+registerLocaleData(localeFr, 'fr');
 
 @NgModule({
     declarations: [
@@ -24,7 +29,7 @@ import { InputTextModule } from 'primeng/inputtext';
         InputTextModule,
         HttpClientModule
     ],
-    providers: [],
+    providers: [{ provide: LOCALE_ID, useValue: 'fr' }],
     bootstrap: [AppComponent]
 })
 export class AppModule { }
