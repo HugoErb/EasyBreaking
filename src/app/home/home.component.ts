@@ -17,11 +17,12 @@ export class HomeComponent {
   filteredItems: any[] = [];
   tableau: any[] = [];
   tauxBrisage: any;
-  prixCraft: any;
+  prixCraft?: number;
   tauxRentabilite: number = 25;
   sumKamasEarned: number = 0;
   maxFocusedKamasEarned?: number;
   maxValue?: number;
+  maxCellColor: string = 'darkgreen';
 
   ngOnInit() {
 
@@ -124,6 +125,19 @@ export class HomeComponent {
     });
     this.maxFocusedKamasEarned = Math.max(...this.tableau.map(item => item.focusedKamasEarned));
     this.maxValue = Math.max(this.maxFocusedKamasEarned, this.sumKamasEarned);
+    this.defineCellColor();
+  }
+
+  defineCellColor(){
+    if(this.prixCraft != undefined && this.tauxRentabilite != undefined){
+      let valeurRentable = Number(this.prixCraft) + Number(this.prixCraft) * Number(this.tauxRentabilite) / 100;
+      console.log(valeurRentable);
+      if(valeurRentable > this.maxValue!){
+        this.maxCellColor = 'darkred';
+      }else{
+        this.maxCellColor = 'darkgreen';
+      }
+    }
   }
 
   findMatchingRune(itemStatistic: any) {

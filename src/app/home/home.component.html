@@ -28,13 +28,13 @@
                     <td>{{row.runeQuantity| number: '1.0-2'}}</td>
                     <td>{{row.kamasEarned | number: '1.0-0'}}</td>
                     <td>{{row.runeQuantityFocused| number: '1.0-2'}}</td>
-                    <td [ngStyle]="{'background-color': row.focusedKamasEarned === maxValue && row.focusedKamasEarned !== 0 ? 'green' : ''}">{{row.focusedKamasEarned | number: '1.0-0'}}</td>
+                    <td [ngStyle]="{'background-color': row.focusedKamasEarned === maxValue && row.focusedKamasEarned !== 0 ? this.maxCellColor : ''}">{{row.focusedKamasEarned | number: '1.0-0'}}</td>
                 </tr>
             </tbody>
             <tfoot>
                 <tr>
                     <td class="firstNoBorder" colspan="4"></td>
-                    <td [ngStyle]="{'background-color': sumKamasEarned === maxValue && sumKamasEarned !== 0 ? 'green' : ''}">{{sumKamasEarned | number: '1.0-0'}}</td>
+                    <td [ngStyle]="{'background-color': sumKamasEarned === maxValue && sumKamasEarned !== 0 ? this.maxCellColor : ''}">{{sumKamasEarned | number: '1.0-0'}}</td>
                     <td class="lastNoBorder" colspan="2"></td>
                 </tr>
             </tfoot>
@@ -44,10 +44,10 @@
                 <i class="fa-solid fa-percent"></i>
                 <input pInputText pKeyFilter="int" placeholder="Taux de brisage" pattern="^(?:100|\d{1,2})$" oninput="this.value=this.value.replace(/[^0-9]/g,'')" maxlength="4" [(ngModel)]="tauxBrisage" (input)="selectItem()"/>
             </span>
-            <input pInputText pKeyFilter="int" placeholder="Prix du craft" [(ngModel)]="prixCraft" />
+            <input pInputText pKeyFilter="int" placeholder="Prix du craft" [(ngModel)]="prixCraft" (input)="selectItem()"/>
             <span class="p-input-icon-right">
                 <i class="fa-solid fa-percent"></i>
-                <input pInputText pKeyFilter="int" placeholder="Taux de rentabilité" pattern="^(?:100|\d{1,2})$" oninput="this.value=this.value.replace(/[^0-9]/g,'')" maxlength="4" [(ngModel)]="tauxRentabilite" />
+                <input pInputText pKeyFilter="int" placeholder="Taux de rentabilité" pattern="^(?:100|\d{1,2})$" oninput="this.value=this.value.replace(/[^0-9]/g,'')" maxlength="4" [(ngModel)]="tauxRentabilite" (input)="selectItem()"/>
             </span>
         </div>
     </div>
