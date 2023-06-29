@@ -154,9 +154,9 @@
   },
   {
     "Name": "Ré PA",
-    "Stat": "Esquive Pa",
+    "Stat": "Esquive PA",
     "Img": "assets/imgs/esquivepa.png",
-    "Price": 0,
+    "Price": 1200,
     "Weight": 297,
     "PaPrice": 989,
     "RaPrice": null
