@@ -17,7 +17,7 @@ export class HomeComponent {
   filteredItems: any[] = [];
   tableau: any[] = [];
   tauxBrisage: any;
-  prixCraft?: number;
+  prixCraft?: any;
   tauxRentabilite: number = 25;
   sumKamasEarned: number = 0;
   maxFocusedKamasEarned?: number;
@@ -130,7 +130,8 @@ export class HomeComponent {
 
   defineCellColor(){
     if(this.prixCraft != undefined && this.tauxRentabilite != undefined){
-      let valeurRentable = Number(this.prixCraft) + Number(this.prixCraft) * Number(this.tauxRentabilite) / 100;
+      let prixCraft = Number(this.prixCraft.replace(/\s/g, ""));
+      let valeurRentable = prixCraft + prixCraft * Number(this.tauxRentabilite) / 100;
       console.log(valeurRentable);
       if(valeurRentable > this.maxValue!){
         this.maxCellColor = 'darkred';
