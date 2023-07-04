@@ -208,6 +208,7 @@ export class HomeComponent {
     let runeQuantityFocused = 0;
     let runeFocused = this.findMatchingRune(statFocused);
     let realRuneWeight = this.getRealRuneWeight(runeFocused);
+    
     effectsList.forEach(effect => {
       let effectRune = this.findMatchingRune(effect);
       let res = 3 * effectRune.weight * this.calculateAverage(effect) * this.selectedItem.level / 200 + 1;
@@ -216,6 +217,7 @@ export class HomeComponent {
       }
       runeQuantityFocused += res;
     });
+    
     return runeQuantityFocused / realRuneWeight * taux / 100;
   }
 

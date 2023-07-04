@@ -12,7 +12,7 @@
     "Name": "Ga Pme",
     "Stat": "PM",
     "Img": "assets/imgs/pm.png",
-    "Price": 21026,
+    "Price": 21826,
     "Weight": 90,
     "PaPrice": null,
     "RaPrice": null
@@ -21,7 +21,7 @@
     "Name": "Po",
     "Stat": "Portée",
     "Img": "assets/imgs/po.png",
-    "Price": 8298,
+    "Price": 8306,
     "Weight": 51,
     "PaPrice": null,
     "RaPrice": null
@@ -157,8 +157,8 @@
     "Stat": "Esquive PA",
     "Img": "assets/imgs/esquivepa.png",
     "Price": 1200,
-    "Weight": 297,
-    "PaPrice": 989,
+    "Weight": 7,
+    "PaPrice": 297,
     "RaPrice": null
   },
   {
