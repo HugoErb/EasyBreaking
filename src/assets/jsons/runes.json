@@ -271,7 +271,7 @@
   },
   {
     "Name": "Do Pi",
-    "Stat": "Dommage piège",
+    "Stat": "Dommage Pièges",
     "Img": "assets/imgs/dopiege.png",
     "Price": 321,
     "Weight": 5,
