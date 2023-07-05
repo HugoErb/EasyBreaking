@@ -63,18 +63,17 @@ export class HomeComponent {
     }));
   }
 
-  matchRunesWithEffects(stat: string, return_value: string) {
-    const runeObj = this.runes.filter((rune: any) => stat.includes(rune.stat))[0];
-    return runeObj[return_value];
-  }
+  /**
+ * Filtre les items en fonction de l'item recherché.
+ *
+ * @param event - L'événement contenant l'item recherché.
+ */
+  filterItem(event: any): void {
+    const filtered: any[] = [];
+    const query: string = event.query.toLowerCase();
 
-  filterItem(event: any) {
-    let filtered: any[] = [];
-    let query = event.query;
-
-    for (let i = 0; i < this.items.length; i++) {
-      let item = this.items[i];
-      if (item.name.toLowerCase().indexOf(query.toLowerCase()) >= 0) {
+    for (const item of this.items) {
+      if (item.name.toLowerCase().includes(query)) {
         filtered.push(item);
       }
     }
@@ -82,9 +81,12 @@ export class HomeComponent {
     this.filteredItems = filtered;
   }
 
-  selectItem() {
-
-    // On fait apparaître les tableau et les input texts
+  /**
+ * Sélectionne un item et met à jour les données du tableau en fonction de cet item.
+ * Affiche les tableaux et les champs de saisie correspondants.
+ */
+  selectItem(): void {
+    // On fait apparaître les tableaux et les champs de saisie
     const itemTableElement = document.querySelector('.itemTable') as HTMLElement;
     const inputTexts = document.querySelector('.inputTexts') as HTMLElement;
 
@@ -95,21 +97,15 @@ export class HomeComponent {
       inputTexts.style.display = 'flex';
     }
 
-    let tauxBrisage: any;
-    if (this.tauxBrisage) {
-      tauxBrisage = parseInt(this.tauxBrisage)
-    } else {
-      tauxBrisage = 0
-    }
-
+    const tauxBrisage: number = this.tauxBrisage ? parseInt(this.tauxBrisage) : 0;
     this.sumKamasEarned = 0;
 
-    //On crée les données du tableau selon l'item selectionné
+    // On crée les données du tableau selon l'item sélectionné
     this.tableau = this.selectedItem.effects.map((effect: string) => {
       const runeObj = this.findMatchingRune(effect);
-      let runeQuantityFocused = this.calculateRuneQuantityFocused(tauxBrisage, effect, this.selectedItem.effects);
-      let runeQuantity = this.calculateRuneQuantity(tauxBrisage, runeObj, effect);
-      let kamasEarned = Math.round(runeQuantity * parseFloat(runeObj.price))* 0.98;
+      const runeQuantityFocused = this.calculateRuneQuantityFocused(tauxBrisage, effect, this.selectedItem.effects);
+      const runeQuantity = this.calculateRuneQuantity(tauxBrisage, runeObj, effect);
+      const kamasEarned = Math.round(runeQuantity * parseFloat(runeObj.price)) * 0.98;
       this.sumKamasEarned += kamasEarned;
 
       return {
@@ -117,31 +113,50 @@ export class HomeComponent {
         runeName: runeObj.name,
         runePrice: runeObj.price,
         runeImg: runeObj.img,
-        runeQuantity: this.calculateRuneQuantity(tauxBrisage, runeObj, effect).toFixed(2),
+        runeQuantity: runeQuantity.toFixed(2),
         kamasEarned: kamasEarned,
         runeQuantityFocused: runeQuantityFocused.toFixed(2),
         focusedKamasEarned: Math.round(runeQuantityFocused * parseFloat(runeObj.price)) * 0.98
       };
     });
+
     this.maxFocusedKamasEarned = Math.max(...this.tableau.map(item => item.focusedKamasEarned));
     this.maxValue = Math.max(this.maxFocusedKamasEarned, this.sumKamasEarned);
     this.defineCellColor();
   }
 
-  defineCellColor(){
-    if(this.prixCraft != undefined && this.tauxRentabilite != undefined){
-      let prixCraft = Number(this.prixCraft.replace(/\s/g, ""));
-      let valeurRentable = prixCraft + prixCraft * Number(this.tauxRentabilite) / 100;
-      console.log(valeurRentable);
-      if(valeurRentable > this.maxValue!){
+  getItemPrice(itemName: string) {
+    const url = 'https://www.vulbis.com/?server=Hell%20Mina&gids=&percent=0&craftableonly=false&select-type=-1&sellchoice=false&buyqty=1&sellqty=1&percentsell=0';
+
+  }
+
+
+  /**
+ * Détermine la couleur de la cellule en fonction des valeurs de prixCraft, tauxRentabilite et maxValue.
+ * Met à jour la valeur de maxCellColor correspondante.
+ */
+  defineCellColor(): void {
+    if (this.prixCraft != undefined && this.tauxRentabilite != undefined) {
+      const prixCraft: number = Number(this.prixCraft.replace(/\s/g, ""));
+      const valeurRentable: number = prixCraft * (1 + Number(this.tauxRentabilite) / 100);
+
+      if (valeurRentable >= this.maxValue! && this.maxValue! < prixCraft) {
         this.maxCellColor = 'darkred';
-      }else{
+      } else if (this.maxValue! > prixCraft && this.maxValue! < valeurRentable) {
+        this.maxCellColor = '#d15959';
+      } else {
         this.maxCellColor = 'darkgreen';
       }
     }
   }
 
-  findMatchingRune(itemStatistic: any) {
+  /**
+ * Trouve la rune correspondante à une statistique d'objet donnée.
+ *
+ * @param itemStatistic - La statistique de l'objet pour laquelle on souhaite trouver la rune correspondante.
+ * @returns La rune correspondante trouvée, ou undefined si aucune rune correspondante n'est trouvée.
+ */
+  findMatchingRune(itemStatistic: any): any {
     const stats: string[] = this.runes.map((rune: any) => rune.stat);
     const filteredStats: string[] = stats.filter((stat: string) => itemStatistic.includes(stat));
     filteredStats.sort(this.compareByLength);
@@ -149,34 +164,30 @@ export class HomeComponent {
     return this.runes.find((rune: any) => rune.stat === filteredStats[0]);
   }
 
-  compareByLength(a: string, b: string): number {
-    return b.length - a.length;
+  /**
+ * Compare deux chaînes de caractères en fonction de leur longueur.
+ *
+ * @param strA - La première chaîne de caractères à comparer.
+ * @param strB - La deuxième chaîne de caractères à comparer.
+ * @returns Un nombre positif si strB est plus longue que strA, un nombre négatif si strA est plus longue que strB, ou 0 si les deux sont de même longueur.
+ */
+  compareByLength(strA: string, strB: string): number {
+    return strB.length - strA.length;
   }
 
+  /**
+   * Calcule la moyenne des nombres extraits d'une chaîne de caractères.
+   *
+   * @param value - La chaîne de caractères à analyser.
+   * @returns La moyenne des nombres extraits, ou 0 si aucun nombre n'est trouvé.
+   */
   calculateAverage(value: string): number {
-
     const numbers: number[] = [];
-    let start = -1;
-    let end = -1;
+    const regex = /[0-9]+/g;
+    let match: RegExpExecArray | null;
 
-    for (let i = 0; i < value.length; i++) {
-      const char = value[i];
-      if (char >= '0' && char <= '9') {
-        if (start === -1) {
-          start = i;
-        }
-        end = i;
-      } else if (char === 'à') {
-        if (start !== -1 && end !== -1) {
-          numbers.push(parseInt(value.substring(start, end + 1), 10));
-          start = -1;
-          end = -1;
-        }
-      }
-    }
-
-    if (start !== -1 && end !== -1) {
-      numbers.push(parseInt(value.substring(start, end + 1), 10));
+    while ((match = regex.exec(value)) !== null) {
+      numbers.push(Number(match[0]));
     }
 
     if (numbers.length === 1) {
@@ -189,39 +200,68 @@ export class HomeComponent {
     }
   }
 
-  getRealRuneWeight(rune: any) {
-    let runeWeight = rune.weight;
+  /**
+ * Obtient le poids réel d'une rune.
+ *
+ * @param rune - La rune dont on souhaite obtenir le poids réel.
+ * @returns Le poids réel de la rune.
+ */
+  getRealRuneWeight(rune: any): number {
+    let runeWeight: number;
+
     if (rune.stat === 'Vitalité' || rune.stat === 'Initiative') {
       runeWeight = 1;
     } else if (rune.stat === 'Pods') {
       runeWeight = 2.5;
+    } else {
+      runeWeight = rune.weight;
     }
+
     return runeWeight;
   }
 
+  /**
+ * Calcule la quantité de runes en fonction du taux, de la rune et de l'effet.
+ *
+ * @param taux - Le taux de réussite du craft des runes.
+ * @param rune - La rune pour laquelle on souhaite calculer la quantité.
+ * @param effect - L'effet utilisé dans le calcul.
+ * @returns La quantité de runes calculée.
+ */
   calculateRuneQuantity(taux: any, rune: any, effect: any) {
     let realRuneWeight = this.getRealRuneWeight(rune);
     return (((3 * rune.weight * this.calculateAverage(effect) * this.selectedItem.level / 200 + 1) * taux / 100) / realRuneWeight)
   }
 
-  calculateRuneQuantityFocused(taux: any, statFocused: any, effectsList: any[]) {
+  /**
+ * Calcule la quantité de runes pour une statistique spécifique en fonction du taux, de la statistique ciblée et de la liste d'effets.
+ *
+ * @param taux - Le taux de réussite du craft des runes.
+ * @param statFocused - La statistique ciblée pour laquelle on souhaite calculer la quantité de runes.
+ * @param effectsList - La liste des effets utilisés dans le calcul.
+ * @returns La quantité de runes calculée pour la statistique ciblée.
+ */
+  calculateRuneQuantityFocused(taux: any, statFocused: any, effectsList: any[]): number {
     let runeQuantityFocused = 0;
     let runeFocused = this.findMatchingRune(statFocused);
     let realRuneWeight = this.getRealRuneWeight(runeFocused);
-    
+
     effectsList.forEach(effect => {
       let effectRune = this.findMatchingRune(effect);
-      let res = 3 * effectRune.weight * this.calculateAverage(effect) * this.selectedItem.level / 200 + 1;
-      if (effect != statFocused) {
-        res = res / 2;
+      let res = (3 * effectRune.weight * this.calculateAverage(effect) * this.selectedItem.level / 200 + 1);
+      if (effect !== statFocused) {
+        res /= 2;
       }
       runeQuantityFocused += res;
     });
-    
-    return runeQuantityFocused / realRuneWeight * taux / 100;
+
+    return (runeQuantityFocused / realRuneWeight) * (taux / 100);
   }
 
-  vanishDiv() {
+  /**
+   * Masque les éléments de tableau et de texte en les rendant invisibles.
+   */
+  vanishDiv(): void {
     const table = document.querySelector('.itemTable') as HTMLElement;
     const inputTexts = document.querySelector('.inputTexts') as HTMLElement;
 
