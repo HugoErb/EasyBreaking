@@ -2,7 +2,6 @@ import { Component } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { forkJoin } from 'rxjs';
 
-
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
@@ -124,12 +123,6 @@ export class HomeComponent {
     this.maxValue = Math.max(this.maxFocusedKamasEarned, this.sumKamasEarned);
     this.defineCellColor();
   }
-
-  getItemPrice(itemName: string) {
-    const url = 'https://www.vulbis.com/?server=Hell%20Mina&gids=&percent=0&craftableonly=false&select-type=-1&sellchoice=false&buyqty=1&sellqty=1&percentsell=0';
-
-  }
-
 
   /**
  * Détermine la couleur de la cellule en fonction des valeurs de prixCraft, tauxRentabilite et maxValue.
