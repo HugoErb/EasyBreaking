@@ -1,7 +1,8 @@
 main {
     background: linear-gradient(to right, #141E30, #29323c);
     width: 100%;
-    height: 100vh;
+    min-height: 100vh;
+    height: fit-content;
 }
 
 main .container {
