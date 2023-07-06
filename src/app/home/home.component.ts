@@ -22,6 +22,7 @@ export class HomeComponent {
   maxFocusedKamasEarned?: number;
   maxValue?: number;
   maxCellColor: string = 'darkgreen';
+  maxCellTextColor: string = 'rgb(198, 193, 185)';
 
   ngOnInit() {
 
@@ -135,11 +136,16 @@ export class HomeComponent {
 
       if (valeurRentable >= this.maxValue! && this.maxValue! < prixCraft) {
         this.maxCellColor = 'darkred';
+        this.maxCellTextColor = 'rgb(198, 193, 185)';
       } else if (this.maxValue! > prixCraft && this.maxValue! < valeurRentable) {
-        this.maxCellColor = '#d15959';
+        this.maxCellColor = '#e6d600';
+        this.maxCellTextColor = '#404d5c';
       } else {
         this.maxCellColor = 'darkgreen';
+        this.maxCellTextColor = 'rgb(198, 193, 185)';
       }
+      console.log(this.maxCellTextColor);
+      
     }
   }
 
