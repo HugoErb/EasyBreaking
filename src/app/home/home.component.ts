@@ -133,15 +133,14 @@ export class HomeComponent {
  */
   defineCellColor(): void {
     if (this.prixCraft != undefined && this.tauxRentabiliteVise != undefined) {
-      const prixCraft: number = Number(this.prixCraft.replace(/\s/g, ""));
-      const valeurRentable: number = prixCraft * (1 + Number(this.tauxRentabiliteVise) / 100);
-      this.tauxRentabilitePourcent = parseFloat(((this.maxValue! - prixCraft) / prixCraft * 100).toFixed(2));
-      this.tauxRentabiliteKamas = Math.round(this.maxValue! - prixCraft);
+      const valeurRentable: number = this.prixCraft * (1 + Number(this.tauxRentabiliteVise) / 100);
+      this.tauxRentabilitePourcent = parseFloat(((this.maxValue! - this.prixCraft) / this.prixCraft * 100).toFixed(2));
+      this.tauxRentabiliteKamas = Math.round(this.maxValue! - this.prixCraft);
 
-      if (valeurRentable >= this.maxValue! && this.maxValue! < prixCraft) {
+      if (valeurRentable >= this.maxValue! && this.maxValue! < this.prixCraft) {
         this.maxCellColor = 'darkred';
         this.maxCellTextColor = 'rgb(198, 193, 185)';
-      } else if (this.maxValue! > prixCraft && this.maxValue! < valeurRentable) {
+      } else if (this.maxValue! > this.prixCraft && this.maxValue! < valeurRentable) {
         this.maxCellColor = '#e6d600';
         this.maxCellTextColor = '#404d5c';
       } else {
