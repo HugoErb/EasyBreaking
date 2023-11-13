@@ -104,3 +104,21 @@ main .select {
     border-right: none !important;
     border-bottom: none !important;
 }
+
+// ***********************************************************************
+
+.helpSign{
+    position: absolute;
+    top: 0;
+    right: 0;
+    color: #3B82F6;
+    padding: 7px;
+    margin: 10px;
+    font-size: 30px;
+    cursor: pointer;
+    transition: ease-in-out 0.2s;
+}
+
+.helpSign:hover{
+    color: #74a9ff;
+}

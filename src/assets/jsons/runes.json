@@ -3,7 +3,7 @@
     "Name": "Ga PA",
     "Stat": "PA",
     "Img": "assets/imgs/pa.png",
-    "Price": 54993,
+    "Price": 49993,
     "Weight": 100,
     "PaPrice": null,
     "RaPrice": null
@@ -21,7 +21,7 @@
     "Name": "Po",
     "Stat": "Portée",
     "Img": "assets/imgs/po.png",
-    "Price": 8306,
+    "Price": 4985,
     "Weight": 51,
     "PaPrice": null,
     "RaPrice": null
@@ -111,7 +111,7 @@
     "Name": "Cri",
     "Stat": "% Critique",
     "Img": "assets/imgs/critique.png",
-    "Price": 1722,
+    "Price": 1627,
     "Weight": 10,
     "PaPrice": null,
     "RaPrice": null
