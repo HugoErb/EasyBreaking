@@ -48,18 +48,18 @@
         <div class="inputTexts">
             <span class="p-input-icon-right">
                 <i class="fa-solid fa-percent"></i>
-                <input pInputText pKeyFilter="int" placeholder="Taux de brisage" pattern="^(?:100|\d{1,2})$"
-                    oninput="this.value=this.value.replace(/[^0-9]/g,'')" maxlength="4" [(ngModel)]="tauxBrisage"
-                    (input)="selectItem()" />
+                <p-inputNumber inputId="tauxBrisage" placeholder="Taux de brisage" [(ngModel)]="tauxBrisage"
+                    (onInput)="selectItem()" [min]="0" [max]="1000"></p-inputNumber>
             </span>
-            <input pInputText pKeyFilter="int" placeholder="Prix du craft" [(ngModel)]="prixCraft"
-                (input)="selectItem()" />
+            <p-inputNumber inputId="prixCraft" placeholder="Prix du craft" [(ngModel)]="prixCraft"
+                (onInput)="selectItem()" [min]="0"></p-inputNumber>
             <span class="p-input-icon-right">
                 <i class="fa-solid fa-percent"></i>
-                <input pInputText pKeyFilter="int" placeholder="Taux de rentabilité" pattern="^(?:100|\d{1,2})$"
-                    oninput="this.value=this.value.replace(/[^0-9]/g,'')" maxlength="4" [(ngModel)]="tauxRentabilite"
-                    (input)="selectItem()" />
+                <p-inputNumber inputId="tauxRentabiliteVise" placeholder="Taux de rentabilité"
+                    [(ngModel)]="tauxRentabiliteVise" (onInput)="selectItem()" [min]="0"></p-inputNumber>
             </span>
+            <div class="tauxRentabilite">Taux de rentabilité (%) : {{tauxRentabilitePourcent}} %<br>Taux de rentabilité
+                (kamas): {{tauxRentabiliteKamas}} k</div>
         </div>
     </div>
     <div class="helpSign"><i class="fa-regular fa-circle-question"></i></div>

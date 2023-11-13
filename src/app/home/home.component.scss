@@ -3,6 +3,8 @@ main {
     width: 100%;
     min-height: 100vh;
     height: fit-content;
+    font-family: 'Enriqueta', arial, serif;
+    overflow: auto;
 }
 
 main .container {
@@ -17,10 +19,11 @@ main h1 {
     background-clip: text;
     -webkit-background-clip: text;
     color: transparent;
-    font-family: 'Enriqueta', arial, serif;
     text-align: center;
     font-size: 5em;
 }
+
+// ***********************************************************************
 
 main .select {
     margin-top: 25px;
@@ -47,6 +50,12 @@ main .select {
 ::ng-deep .p-button {
     background-color: #366cff;
 }
+
+.inputTexts ::ng-deep .p-inputtext {
+    width: 200px !important;
+}
+
+// ***********************************************************************
 
 .itemTable {
     width: 100%;
@@ -91,10 +100,6 @@ main .select {
     display: none;
 }
 
-.inputTexts ::ng-deep .p-inputtext {
-    width: 200px !important;
-}
-
 .firstNoBorder{
     border-left: none !important;
     border-bottom: none !important;
@@ -107,18 +112,19 @@ main .select {
 
 // ***********************************************************************
 
+.tauxRentabilite{
+    color: rgb(198, 193, 185);
+}
+
+// ***********************************************************************
+
 .helpSign{
     position: absolute;
     top: 0;
     right: 0;
-    color: #3B82F6;
+    color: #488eff;
     padding: 7px;
     margin: 10px;
     font-size: 30px;
     cursor: pointer;
-    transition: ease-in-out 0.2s;
-}
-
-.helpSign:hover{
-    color: #74a9ff;
 }

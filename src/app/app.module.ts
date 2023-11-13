@@ -8,7 +8,7 @@ import { HomeComponent } from './home/home.component';
 import { AutoCompleteModule } from 'primeng/autocomplete';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
-import { InputTextModule } from 'primeng/inputtext';
+import { InputNumberModule } from 'primeng/inputnumber';
 
 import { registerLocaleData } from '@angular/common';
 import localeFr from '@angular/common/locales/fr';
@@ -26,7 +26,7 @@ registerLocaleData(localeFr, 'fr');
         FormsModule,
         AppRoutingModule,
         AutoCompleteModule,
-        InputTextModule,
+        InputNumberModule,
         HttpClientModule
     ],
     providers: [{ provide: LOCALE_ID, useValue: 'fr' }],

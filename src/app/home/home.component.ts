@@ -17,7 +17,9 @@ export class HomeComponent {
   tableau: any[] = [];
   tauxBrisage: any;
   prixCraft?: any;
-  tauxRentabilite: number = 25;
+  tauxRentabiliteVise: number = 25;
+  tauxRentabilitePourcent: number = 0;
+  tauxRentabiliteKamas: number = 0;
   sumKamasEarned: number = 0;
   maxFocusedKamasEarned?: number;
   maxValue?: number;
@@ -126,13 +128,15 @@ export class HomeComponent {
   }
 
   /**
- * Détermine la couleur de la cellule en fonction des valeurs de prixCraft, tauxRentabilite et maxValue.
+ * Détermine la couleur de la cellule en fonction des valeurs de prixCraft, tauxRentabiliteVise et maxValue.
  * Met à jour la valeur de maxCellColor correspondante.
  */
   defineCellColor(): void {
-    if (this.prixCraft != undefined && this.tauxRentabilite != undefined) {
+    if (this.prixCraft != undefined && this.tauxRentabiliteVise != undefined) {
       const prixCraft: number = Number(this.prixCraft.replace(/\s/g, ""));
-      const valeurRentable: number = prixCraft * (1 + Number(this.tauxRentabilite) / 100);
+      const valeurRentable: number = prixCraft * (1 + Number(this.tauxRentabiliteVise) / 100);
+      this.tauxRentabilitePourcent = parseFloat(((this.maxValue! - prixCraft) / prixCraft * 100).toFixed(2));
+      this.tauxRentabiliteKamas = Math.round(this.maxValue! - prixCraft);
 
       if (valeurRentable >= this.maxValue! && this.maxValue! < prixCraft) {
         this.maxCellColor = 'darkred';
@@ -144,8 +148,6 @@ export class HomeComponent {
         this.maxCellColor = 'darkgreen';
         this.maxCellTextColor = 'rgb(198, 193, 185)';
       }
-      console.log(this.maxCellTextColor);
-      
     }
   }
 
