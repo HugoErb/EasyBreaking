@@ -2,16 +2,16 @@ main {
     background: linear-gradient(to right, #141E30, #29323c);
     width: 100%;
     min-height: 100vh;
-    height: fit-content;
     font-family: 'Enriqueta', arial, serif;
     overflow: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 25px;
 }
 
-main .container {
-    position: absolute;
-    top: 45%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+main .container{
+    margin-bottom: 6vw;
 }
 
 main h1 {
@@ -114,6 +114,12 @@ main .select {
 
 .tauxRentabilite{
     color: rgb(198, 193, 185);
+}
+
+// ***********************************************************************
+
+.recipe{
+    display: None;
 }
 
 // ***********************************************************************

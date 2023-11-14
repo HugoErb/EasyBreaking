@@ -93,12 +93,16 @@ export class HomeComponent {
     // On fait apparaître les tableaux et les champs de saisie
     const itemTableElement = document.querySelector('.itemTable') as HTMLElement;
     const inputTexts = document.querySelector('.inputTexts') as HTMLElement;
+    const recipe = document.querySelector('.recipe') as HTMLElement;
 
     if (itemTableElement) {
       itemTableElement.style.display = 'block';
     }
     if (inputTexts) {
       inputTexts.style.display = 'flex';
+    }
+    if (recipe) {
+      recipe.style.display = 'block';
     }
 
     const tauxBrisage: number = this.tauxBrisage ? parseInt(this.tauxBrisage) : 0;
@@ -124,6 +128,7 @@ export class HomeComponent {
       };
     });
 
+    this.recipe = this.selectedItem.recipe;
     this.maxFocusedKamasEarned = Math.max(...this.tableauEffects.map(item => item.focusedKamasEarned));
     this.maxValue = Math.max(this.maxFocusedKamasEarned, this.sumKamasEarned);
     this.defineCellColor();
@@ -266,6 +271,7 @@ export class HomeComponent {
   vanishDiv(): void {
     const table = document.querySelector('.itemTable') as HTMLElement;
     const inputTexts = document.querySelector('.inputTexts') as HTMLElement;
+    const recipe = document.querySelector('.recipe') as HTMLElement;
 
     if (table) {
       table.style.display = 'none';
@@ -273,6 +279,10 @@ export class HomeComponent {
 
     if (inputTexts) {
       inputTexts.style.display = 'none';
+    }
+    
+    if (recipe) {
+      recipe.style.display = 'none';
     }
   }
 

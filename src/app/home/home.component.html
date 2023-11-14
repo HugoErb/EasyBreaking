@@ -64,7 +64,11 @@
             </div>
         </div>
         <div class="recipe">
-            <div *ngFor="let row of recipe;"></div>
+            <div *ngFor="let ingredient of recipe">
+                <p>Nom de l'ingrédient : {{ ingredient.name }}</p>
+                <p>Quantité : {{ ingredient.quantite }}</p>
+                <p>Niveau : {{ ingredient.level }}</p>
+            </div>
         </div>
     </div>
     <div class="helpSign"><i class="fa-regular fa-circle-question"></i></div>
