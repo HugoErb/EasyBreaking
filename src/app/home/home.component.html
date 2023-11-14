@@ -58,16 +58,20 @@
                 <p-inputNumber inputId="tauxRentabiliteVise" placeholder="Taux de rentabilité"
                     [(ngModel)]="tauxRentabiliteVise" (onInput)="selectItem()" [min]="0" [max]="9999"></p-inputNumber>
             </span>
+        </div>
+        <div class="rentabilite">
+            <h2 class="sectionH2">Rentabilité</h2>
             <div class="tauxRentabilite">
                 Rentabilité (%) : {{tauxRentabilitePourcent}} %<br>
                 Rentabilité (kamas): {{tauxRentabiliteKamas}} k
             </div>
         </div>
         <div class="recipe">
-            <div *ngFor="let ingredient of recipe">
-                <p>Nom de l'ingrédient : {{ ingredient.name }}</p>
-                <p>Quantité : {{ ingredient.quantite }}</p>
-                <p>Niveau : {{ ingredient.level }}</p>
+            <h2 class="sectionH2">Recette</h2>
+            <div *ngFor="let ingredient of recipe" class="ingredient" pTooltip="Ingrédient copié" tooltipPosition="top" (click)="copyToClipboard(ingredient.name)">
+                <p class="ingredientName">{{ ingredient.name }}</p>
+                <p>{{ ingredient.quantite }}x</p>
+                <p>Niv : {{ ingredient.level }}</p>
             </div>
         </div>
     </div>

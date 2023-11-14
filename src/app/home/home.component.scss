@@ -10,7 +10,7 @@ main {
     padding: 25px;
 }
 
-main .container{
+main .container {
     margin-bottom: 6vw;
 }
 
@@ -100,19 +100,34 @@ main .select {
     display: none;
 }
 
-.firstNoBorder{
+.firstNoBorder {
     border-left: none !important;
     border-bottom: none !important;
 }
 
-.lastNoBorder{
+.lastNoBorder {
     border-right: none !important;
     border-bottom: none !important;
 }
 
 // ***********************************************************************
 
-.tauxRentabilite{
+.sectionH2{
+    letter-spacing: 1px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+// ***********************************************************************
+
+.rentabilite{
+    display: None;
+    margin-bottom: 0;
+    margin-top: 25px;
+    color: rgb(198, 193, 185);
+}
+
+.tauxRentabilite {
     color: rgb(198, 193, 185);
 }
 
@@ -120,11 +135,37 @@ main .select {
 
 .recipe{
     display: None;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    margin-bottom: 0;
+    margin-top: 25px;
+    color: rgb(198, 193, 185);
+}
+
+.ingredient {
+    border: 1px solid rgb(198, 193, 185);
+    box-sizing: border-box;
+    display: inline-flex;
+    flex-direction: column;
+    flex: 1 0 150px;
+    width: 200px;
+    padding: 13px;
+    margin: 5px;
+    text-align: left;
+    cursor: pointer;
+}
+
+.ingredient:hover {
+    background-color: rgb(198, 193, 185, 0.20);
+}
+
+.ingredientName {
+    font-weight: bold;
 }
 
 // ***********************************************************************
 
-.helpSign{
+.helpSign {
     position: absolute;
     top: 0;
     right: 0;

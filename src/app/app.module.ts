@@ -6,6 +6,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
 import { AutoCompleteModule } from 'primeng/autocomplete';
+import { TooltipModule } from 'primeng/tooltip';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { InputNumberModule } from 'primeng/inputnumber';
@@ -26,6 +27,7 @@ registerLocaleData(localeFr, 'fr');
         FormsModule,
         AppRoutingModule,
         AutoCompleteModule,
+        TooltipModule,
         InputNumberModule,
         HttpClientModule
     ],

@@ -26,6 +26,7 @@ export class HomeComponent {
   maxValue?: number;
   maxCellColor: string = 'darkgreen';
   maxCellTextColor: string = 'rgb(198, 193, 185)';
+  tooltipVisible = false;
 
   ngOnInit() {
 
@@ -90,20 +91,7 @@ export class HomeComponent {
  * Affiche les tableaux et les champs de saisie correspondants.
  */
   selectItem(): void {
-    // On fait apparaître les tableaux et les champs de saisie
-    const itemTableElement = document.querySelector('.itemTable') as HTMLElement;
-    const inputTexts = document.querySelector('.inputTexts') as HTMLElement;
-    const recipe = document.querySelector('.recipe') as HTMLElement;
-
-    if (itemTableElement) {
-      itemTableElement.style.display = 'block';
-    }
-    if (inputTexts) {
-      inputTexts.style.display = 'flex';
-    }
-    if (recipe) {
-      recipe.style.display = 'block';
-    }
+    this.unVanishDiv()
 
     const tauxBrisage: number = this.tauxBrisage ? parseInt(this.tauxBrisage) : 0;
     this.sumKamasEarned = 0;
@@ -266,23 +254,75 @@ export class HomeComponent {
   }
 
   /**
-   * Masque les éléments de tableau et de texte en les rendant invisibles.
+ * Copie le nom de l'ingrédient dans le presse-papiers et affiche une infobulle.
+ *
+ * @param ingredientName Le nom de l'ingrédient à copier.
+ * @param event L'événement MouseEvent associé au clic.
+ */
+  copyToClipboard(ingredientName: string): void {
+    navigator.clipboard.writeText(ingredientName).then(() => {
+      console.log(`Copié dans le presse-papiers: ${ingredientName}`);
+      this.toggleTooltip();
+      // Vous pouvez ajouter ici une logique supplémentaire si nécessaire
+    }).catch(err => {
+      console.error('Erreur lors de la copie dans le presse-papiers: ', err);
+    });
+  }
+
+  toggleTooltip(): void {
+    this.tooltipVisible = !this.tooltipVisible;
+    setTimeout(() => this.tooltipVisible = false, 2000); // Cache la tooltip après 2 secondes
+  }
+
+  /**
+   * Fait apparaître les éléments en les rendant visibles.
+   */
+  unVanishDiv(): void {
+    const divTable = document.querySelector('.itemTable') as HTMLElement;
+    const divInputTexts = document.querySelector('.inputTexts') as HTMLElement;
+    const divRecipe = document.querySelector('.recipe') as HTMLElement;
+    const divRentabilite = document.querySelector('.rentabilite') as HTMLElement;
+
+    if (divTable) {
+      divTable.style.display = 'block';
+    }
+
+    if (divInputTexts) {
+      divInputTexts.style.display = 'flex';
+    }
+
+    if (divRecipe) {
+      divRecipe.style.display = 'block';
+    }
+
+    if (divRentabilite) {
+      divRentabilite.style.display = 'block';
+    }
+  }
+
+  /**
+   * Masque les éléments en les rendant invisibles.
    */
   vanishDiv(): void {
-    const table = document.querySelector('.itemTable') as HTMLElement;
-    const inputTexts = document.querySelector('.inputTexts') as HTMLElement;
-    const recipe = document.querySelector('.recipe') as HTMLElement;
+    const divTable = document.querySelector('.itemTable') as HTMLElement;
+    const divInputTexts = document.querySelector('.inputTexts') as HTMLElement;
+    const divRecipe = document.querySelector('.recipe') as HTMLElement;
+    const divRentabilite = document.querySelector('.rentabilite') as HTMLElement;
 
-    if (table) {
-      table.style.display = 'none';
+    if (divTable) {
+      divTable.style.display = 'none';
     }
 
-    if (inputTexts) {
-      inputTexts.style.display = 'none';
+    if (divInputTexts) {
+      divInputTexts.style.display = 'none';
     }
-    
-    if (recipe) {
-      recipe.style.display = 'none';
+
+    if (divRecipe) {
+      divRecipe.style.display = 'none';
+    }
+
+    if (divRentabilite) {
+      divRentabilite.style.display = 'none';
     }
   }
 

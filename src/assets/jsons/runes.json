@@ -3,7 +3,7 @@
     "Name": "Ga PA",
     "Stat": "PA",
     "Img": "assets/imgs/pa.png",
-    "Price": 49993,
+    "Price": 44163,
     "Weight": 100,
     "PaPrice": null,
     "RaPrice": null
@@ -12,7 +12,7 @@
     "Name": "Ga Pme",
     "Stat": "PM",
     "Img": "assets/imgs/pm.png",
-    "Price": 21826,
+    "Price": 20970,
     "Weight": 90,
     "PaPrice": null,
     "RaPrice": null
@@ -21,7 +21,7 @@
     "Name": "Po",
     "Stat": "Portée",
     "Img": "assets/imgs/po.png",
-    "Price": 4985,
+    "Price": 5099,
     "Weight": 51,
     "PaPrice": null,
     "RaPrice": null
@@ -30,7 +30,7 @@
     "Name": "Invo",
     "Stat": "Invocation",
     "Img": "assets/imgs/invo.png",
-    "Price": 3593,
+    "Price": 5384,
     "Weight": 30,
     "PaPrice": null,
     "RaPrice": null
@@ -39,7 +39,7 @@
     "Name": "Do",
     "Stat": "Dommage",
     "Img": "assets/imgs/dommage.png",
-    "Price": 1493,
+    "Price": 629,
     "Weight": 20,
     "PaPrice": null,
     "RaPrice": null
@@ -48,7 +48,7 @@
     "Name": "Do Per Ar",
     "Stat": "% Dommage d'armes",
     "Img": "assets/imgs/doarme.png",
-    "Price": 312,
+    "Price": 278,
     "Weight": 15,
     "PaPrice": null,
     "RaPrice": null
@@ -57,7 +57,7 @@
     "Name": "Do Per Di",
     "Stat": "% Dommage distance",
     "Img": "assets/imgs/dodis.png",
-    "Price": 17410,
+    "Price": 9670,
     "Weight": 15,
     "PaPrice": null,
     "RaPrice": null
@@ -66,7 +66,7 @@
     "Name": "Do per Mé",
     "Stat": "% Dommage mêlée",
     "Img": "assets/imgs/domelee.png",
-    "Price": 4487,
+    "Price": 1557,
     "Weight": 15,
     "PaPrice": null,
     "RaPrice": null
@@ -75,7 +75,7 @@
     "Name": "Do Per So",
     "Stat": "% Dommage aux sorts",
     "Img": "assets/imgs/dosort.png",
-    "Price": 18461,
+    "Price": 9797,
     "Weight": 15,
     "PaPrice": null,
     "RaPrice": null
@@ -84,7 +84,7 @@
     "Name": "Ré Per Di",
     "Stat": "% Résistance distance",
     "Img": "assets/imgs/dodis.png",
-    "Price": 520,
+    "Price": 685,
     "Weight": 15,
     "PaPrice": null,
     "RaPrice": null
@@ -93,7 +93,7 @@
     "Name": "Ré Per Mé",
     "Stat": "% Résistance mêlée",
     "Img": "assets/imgs/domelee.png",
-    "Price": 328,
+    "Price": 297,
     "Weight": 15,
     "PaPrice": null,
     "RaPrice": null
@@ -102,7 +102,7 @@
     "Name": "So",
     "Stat": "Soin",
     "Img": "assets/imgs/soin.png",
-    "Price": 155,
+    "Price": 190,
     "Weight": 10,
     "PaPrice": 822,
     "RaPrice": null
@@ -111,7 +111,7 @@
     "Name": "Cri",
     "Stat": "% Critique",
     "Img": "assets/imgs/critique.png",
-    "Price": 1627,
+    "Price": 1580,
     "Weight": 10,
     "PaPrice": null,
     "RaPrice": null
@@ -120,7 +120,7 @@
     "Name": "Do Ren",
     "Stat": "Renvoi de dommage",
     "Img": "assets/imgs/renvoi.png",
-    "Price": 521,
+    "Price": 300,
     "Weight": 10,
     "PaPrice": null,
     "RaPrice": null
@@ -129,43 +129,43 @@
     "Name": "Ret Pme",
     "Stat": "Retrait PM",
     "Img": "assets/imgs/retpm.png",
-    "Price": 918,
+    "Price": 443,
     "Weight": 7,
-    "PaPrice": 2818,
+    "PaPrice": 1019,
     "RaPrice": null
   },
   {
     "Name": "Ret PA",
     "Stat": "Retrait PA",
     "Img": "assets/imgs/retpa.png",
-    "Price": 153,
+    "Price": 94,
     "Weight": 7,
-    "PaPrice": 386,
+    "PaPrice": 253,
     "RaPrice": null
   },
   {
     "Name": "Ré Pme",
     "Stat": "Esquive PM",
     "Img": "assets/imgs/esquivepm.png",
-    "Price": 1131,
+    "Price": 999,
     "Weight": 7,
-    "PaPrice": 2514,
+    "PaPrice": 2892,
     "RaPrice": null
   },
   {
     "Name": "Ré PA",
     "Stat": "Esquive PA",
     "Img": "assets/imgs/esquivepa.png",
-    "Price": 1200,
+    "Price": 296,
     "Weight": 7,
-    "PaPrice": 297,
+    "PaPrice": 639,
     "RaPrice": null
   },
   {
     "Name": "Ré Per Terre",
     "Stat": "% Résistance Terre",
     "Img": "assets/imgs/force.png",
-    "Price": 1236,
+    "Price": 945,
     "Weight": 6,
     "PaPrice": null,
     "RaPrice": null
@@ -174,7 +174,7 @@
     "Name": "Ré Per Eau",
     "Stat": "% Résistance Eau",
     "Img": "assets/imgs/chance.png",
-    "Price": 975,
+    "Price": 1160,
     "Weight": 6,
     "PaPrice": null,
     "RaPrice": null
@@ -183,7 +183,7 @@
     "Name": "Ré Per Feu",
     "Stat": "% Résistance Feu",
     "Img": "assets/imgs/intelligence.png",
-    "Price": 1000,
+    "Price": 1038,
     "Weight": 6,
     "PaPrice": null,
     "RaPrice": null
@@ -192,7 +192,7 @@
     "Name": "Ré Per Air",
     "Stat": "% Résistance Air",
     "Img": "assets/imgs/agilite.png",
-    "Price": 947,
+    "Price": 1053,
     "Weight": 6,
     "PaPrice": null,
     "RaPrice": null
@@ -201,7 +201,7 @@
     "Name": "Ré Per Neutre",
     "Stat": "% Résistance Neutre",
     "Img": "assets/imgs/neutre.png",
-    "Price": 1197,
+    "Price": 985,
     "Weight": 6,
     "PaPrice": null,
     "RaPrice": null
@@ -210,79 +210,79 @@
     "Name": "Do Terre",
     "Stat": "Dommage Terre",
     "Img": "assets/imgs/force.png",
-    "Price": 996,
+    "Price": 799,
     "Weight": 5,
-    "PaPrice": 2252,
+    "PaPrice": 1707,
     "RaPrice": null
   },
   {
     "Name": "Do Eau",
     "Stat": "Dommage Eau",
     "Img": "assets/imgs/chance.png",
-    "Price": 857,
+    "Price": 981,
     "Weight": 5,
-    "PaPrice": 2788,
+    "PaPrice": 1940,
     "RaPrice": null
   },
   {
     "Name": "Do Feu",
     "Stat": "Dommage Feu",
     "Img": "assets/imgs/intelligence.png",
-    "Price": 664,
+    "Price": 845,
     "Weight": 5,
-    "PaPrice": 1856,
+    "PaPrice": 2049,
     "RaPrice": null
   },
   {
     "Name": "Do Air",
     "Stat": "Dommage Air",
     "Img": "assets/imgs/agilite.png",
-    "Price": 1147,
+    "Price": 848,
     "Weight": 5,
-    "PaPrice": 2193,
+    "PaPrice": 1491,
     "RaPrice": null
   },
   {
     "Name": "Do Neutre",
     "Stat": "Dommage Neutre",
     "Img": "assets/imgs/neutre.png",
-    "Price": 796,
+    "Price": 769,
     "Weight": 5,
-    "PaPrice": 15,
+    "PaPrice": 1161,
     "RaPrice": null
   },
   {
     "Name": "Do Cri",
     "Stat": "Dommage Critiques",
     "Img": "assets/imgs/docrit.png",
-    "Price": 977,
+    "Price": 677,
     "Weight": 5,
-    "PaPrice": 2682,
+    "PaPrice": 1961,
     "RaPrice": null
   },
   {
     "Name": "Do Pou",
     "Stat": "Dommage de Poussée",
     "Img": "assets/imgs/dopou.png",
-    "Price": 108,
+    "Price": 115,
     "Weight": 5,
-    "PaPrice": 306,
+    "PaPrice": 382,
     "RaPrice": null
   },
   {
     "Name": "Do Pi",
     "Stat": "Dommage Pièges",
     "Img": "assets/imgs/dopiege.png",
-    "Price": 321,
+    "Price": 281,
     "Weight": 5,
-    "PaPrice": 480,
+    "PaPrice": 294,
     "RaPrice": null
   },
   {
     "Name": "Chasse",
     "Stat": "Arme de chasse",
     "Img": "assets/imgs/invo.png",
-    "Price": 1270,
+    "Price": 767,
     "Weight": 5,
     "PaPrice": null,
     "RaPrice": null
@@ -291,43 +291,43 @@
     "Name": "Tac",
     "Stat": "Tacle",
     "Img": "assets/imgs/tacle.png",
-    "Price": 337,
+    "Price": 317,
     "Weight": 4,
-    "PaPrice": 1154,
+    "PaPrice": 987,
     "RaPrice": null
   },
   {
     "Name": "Fui",
     "Stat": "Fuite",
     "Img": "assets/imgs/fuite.png",
-    "Price": 292,
+    "Price": 600,
     "Weight": 4,
-    "PaPrice": 762,
+    "PaPrice": 1890,
     "RaPrice": null
   },
   {
     "Name": "Prospe",
     "Stat": "Prospection",
     "Img": "assets/imgs/prospec.png",
-    "Price": 154,
+    "Price": 45,
     "Weight": 3,
-    "PaPrice": 673,
+    "PaPrice": 180,
     "RaPrice": null
   },
   {
     "Name": "Sa",
     "Stat": "Sagesse",
     "Img": "assets/imgs/sagesse.png",
-    "Price": 85,
+    "Price": 215,
     "Weight": 3,
-    "PaPrice": 284,
-    "RaPrice": 591
+    "PaPrice": 497,
+    "RaPrice": 657
   },
   {
     "Name": "Per Pi",
     "Stat": "Puissance Piège",
     "Img": "assets/imgs/puipiege.png",
-    "Price": 0,
+    "Price": 65,
     "Weight": 2,
     "PaPrice": 6,
     "RaPrice": 20
@@ -338,8 +338,8 @@
     "Img": "assets/imgs/puissance.png",
     "Price": 108,
     "Weight": 2,
-    "PaPrice": 272,
-    "RaPrice": 831
+    "PaPrice": 323,
+    "RaPrice": 752
   },
   {
     "Name": "Ré Terre",
@@ -354,9 +354,9 @@
     "Name": "Ré Eau",
     "Stat": "Résistance Eau",
     "Img": "assets/imgs/chance.png",
-    "Price": 39,
+    "Price": 197,
     "Weight": 2,
-    "PaPrice": 214,
+    "PaPrice": 1166,
     "RaPrice": null
   },
   {
@@ -372,91 +372,91 @@
     "Name": "Ré Air",
     "Stat": "Résistance Air",
     "Img": "assets/imgs/agilite.png",
-    "Price": 181,
+    "Price": 79,
     "Weight": 2,
-    "PaPrice": 723,
+    "PaPrice": 489,
     "RaPrice": null
   },
   {
     "Name": "Ré Neutre",
     "Stat": "Résistance Neutre",
     "Img": "assets/imgs/neutre.png",
-    "Price": 92,
+    "Price": 64,
     "Weight": 2,
-    "PaPrice": 162,
+    "PaPrice": 343,
     "RaPrice": null
   },
   {
     "Name": "Ré Cri",
     "Stat": "Résistance Critiques",
     "Img": "assets/imgs/rescrit.png",
-    "Price": 409,
+    "Price": 326,
     "Weight": 2,
-    "PaPrice": 1495,
+    "PaPrice": 821,
     "RaPrice": null
   },
   {
     "Name": "Ré Pou",
     "Stat": "Résistance Poussée",
     "Img": "assets/imgs/respou.png",
-    "Price": 217,
+    "Price": 169,
     "Weight": 2,
-    "PaPrice": 658,
+    "PaPrice": 595,
     "RaPrice": null
   },
   {
     "Name": "Fo",
     "Stat": "Force",
     "Img": "assets/imgs/force.png",
-    "Price": 45,
+    "Price": 62,
     "Weight": 1,
-    "PaPrice": 149,
-    "RaPrice": 411
+    "PaPrice": 227,
+    "RaPrice": 283
   },
   {
     "Name": "Ine",
     "Stat": "Intelligence",
     "Img": "assets/imgs/intelligence.png",
-    "Price": 35,
+    "Price": 74,
     "Weight": 1,
-    "PaPrice": 126,
-    "RaPrice": 337
+    "PaPrice": 286,
+    "RaPrice": 589
   },
   {
     "Name": "Cha",
     "Stat": "Chance",
     "Img": "assets/imgs/chance.png",
-    "Price": 41,
+    "Price": 47,
     "Weight": 1,
-    "PaPrice": 147,
-    "RaPrice": 363
+    "PaPrice": 149,
+    "RaPrice": 457
   },
   {
     "Name": "Age",
     "Stat": "Agilité",
     "Img": "assets/imgs/agilite.png",
-    "Price": 107,
+    "Price": 94,
     "Weight": 1,
-    "PaPrice": 307,
-    "RaPrice": 889
+    "PaPrice": 256,
+    "RaPrice": 1177
   },
   {
     "Name": "Pod",
     "Stat": "Pods",
     "Img": "assets/imgs/pods.png",
-    "Price": 248,
+    "Price": 182,
     "Weight": 0.25,
-    "PaPrice": 691,
-    "RaPrice": 2532
+    "PaPrice": 438,
+    "RaPrice": 2845
   },
   {
     "Name": "Vi",
     "Stat": "Vitalité",
     "Img": "assets/imgs/vitalite.png",
-    "Price": 170,
+    "Price": 179,
     "Weight": 0.2,
-    "PaPrice": 590,
-    "RaPrice": 1663
+    "PaPrice": 608,
+    "RaPrice": 1634
   },
   {
     "Name": "Ini",
@@ -464,7 +464,7 @@
     "Img": "assets/imgs/initiative.png",
     "Price": 71,
     "Weight": 0.1,
-    "PaPrice": 245,
-    "RaPrice": 369
+    "PaPrice": 351,
+    "RaPrice": 444
   }
 ]
