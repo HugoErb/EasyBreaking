@@ -115,7 +115,7 @@ main .select {
 .sectionH2 {
     letter-spacing: 1px;
     margin-top: 40px;
-    margin-bottom: 20px;
+    margin-bottom: 5px;
     text-align: left;
 }
 
@@ -151,14 +151,21 @@ main .select {
     display: inline-flex;
     flex-direction: column;
     flex-basis: 20%;
-    padding: 13px;
+    padding: 12px 13px 12px 13px;
     margin: 5px;
     text-align: left;
     cursor: pointer;
+    margin-top: 15px;
 }
 
 .ingredient:hover {
     background-color: rgb(198, 193, 185, 0.20);
+}
+
+.ingredient p{
+    margin-top: 1px;
+    margin-bottom: 1px;
+    letter-spacing: 0.1px;
 }
 
 .ingredientName {
