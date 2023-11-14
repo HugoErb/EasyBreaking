@@ -68,7 +68,7 @@
         </div>
         <div class="recipe">
             <h2 class="sectionH2">Recette</h2>
-            <div *ngFor="let ingredient of recipe" class="ingredient" pTooltip="Ingrédient copié" tooltipPosition="top" (click)="copyToClipboard(ingredient.name)">
+            <div tabindex="0" *ngFor="let ingredient of recipe" class="ingredient" pTooltip="Ingrédient copié" tooltipEvent="focus" tooltipPosition="top" (click)="copyToClipboard($event, ingredient.name)">
                 <p class="ingredientName">{{ ingredient.name }}</p>
                 <p>{{ ingredient.quantite }}x</p>
                 <p>Niv : {{ ingredient.level }}</p>
