@@ -26,7 +26,6 @@ export class HomeComponent {
     maxValue?: number;
     maxCellColor: string = 'darkgreen';
     maxCellTextColor: string = 'rgb(198, 193, 185)';
-    tooltipVisible = false;
 
     ngOnInit() {
 
@@ -262,7 +261,6 @@ export class HomeComponent {
     copyToClipboard(event: MouseEvent, ingredientName: string): void {
         navigator.clipboard.writeText(ingredientName).then(() => {
             console.log(`Copié dans le presse-papiers: ${ingredientName}`);
-            this.toggleTooltip();
             // Vous pouvez ajouter ici une logique supplémentaire si nécessaire
         }).catch(err => {
             console.error('Erreur lors de la copie dans le presse-papiers: ', err);
@@ -272,11 +270,6 @@ export class HomeComponent {
 
         // Retire le focus après 2 secondes
         setTimeout(() => element.blur(), 1500);
-    }
-
-    toggleTooltip(): void {
-        this.tooltipVisible = !this.tooltipVisible;
-        setTimeout(() => this.tooltipVisible = false, 2000); // Cache la tooltip après 2 secondes
     }
 
     /**
