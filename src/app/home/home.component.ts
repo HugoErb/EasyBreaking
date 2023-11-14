@@ -14,7 +14,8 @@ export class HomeComponent {
   runes: any[] = [];
   selectedItem: any;
   filteredItems: any[] = [];
-  tableau: any[] = [];
+  tableauEffects: any[] = [];
+  recipe: any[] = [];
   tauxBrisage: any;
   prixCraft?: any;
   tauxRentabiliteVise: number = 25;
@@ -62,6 +63,7 @@ export class HomeComponent {
       level: item.level,
       name: item.name,
       effects: item.effects,
+      recipe: item.recipe
     }));
   }
 
@@ -103,7 +105,7 @@ export class HomeComponent {
     this.sumKamasEarned = 0;
 
     // On crée les données du tableau selon l'item sélectionné
-    this.tableau = this.selectedItem.effects.map((effect: string) => {
+    this.tableauEffects = this.selectedItem.effects.map((effect: string) => {
       const runeObj = this.findMatchingRune(effect);
       const runeQuantityFocused = this.calculateRuneQuantityFocused(tauxBrisage, effect, this.selectedItem.effects);
       const runeQuantity = this.calculateRuneQuantity(tauxBrisage, runeObj, effect);
@@ -122,7 +124,7 @@ export class HomeComponent {
       };
     });
 
-    this.maxFocusedKamasEarned = Math.max(...this.tableau.map(item => item.focusedKamasEarned));
+    this.maxFocusedKamasEarned = Math.max(...this.tableauEffects.map(item => item.focusedKamasEarned));
     this.maxValue = Math.max(this.maxFocusedKamasEarned, this.sumKamasEarned);
     this.defineCellColor();
   }

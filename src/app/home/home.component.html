@@ -19,7 +19,7 @@
                 </tr>
             </thead>
             <tbody>
-                <tr *ngFor="let row of tableau;">
+                <tr *ngFor="let row of tableauEffects;">
                     <td><img src={{row.runeImg}}>
                         <div class="text">{{row.stat}}</div>
                     </td>
@@ -58,8 +58,13 @@
                 <p-inputNumber inputId="tauxRentabiliteVise" placeholder="Taux de rentabilité"
                     [(ngModel)]="tauxRentabiliteVise" (onInput)="selectItem()" [min]="0" [max]="9999"></p-inputNumber>
             </span>
-            <div class="tauxRentabilite">Rentabilité (%) : {{tauxRentabilitePourcent}} %<br>Rentabilité
-                (kamas): {{tauxRentabiliteKamas}} k</div>
+            <div class="tauxRentabilite">
+                Rentabilité (%) : {{tauxRentabilitePourcent}} %<br>
+                Rentabilité (kamas): {{tauxRentabiliteKamas}} k
+            </div>
+        </div>
+        <div class="recipe">
+            <div *ngFor="let row of recipe;"></div>
         </div>
     </div>
     <div class="helpSign"><i class="fa-regular fa-circle-question"></i></div>
