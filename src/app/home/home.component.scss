@@ -112,18 +112,18 @@ main .select {
 
 // ***********************************************************************
 
-.sectionH2{
+.sectionH2 {
     letter-spacing: 1px;
-    margin-top: 10px;
-    margin-bottom: 10px;
+    margin-top: 30px;
+    margin-bottom: 15px;
+    text-align: left;
 }
 
 // ***********************************************************************
 
-.rentabilite{
+.rentabilite {
     display: None;
     margin-bottom: 0;
-    margin-top: 25px;
     color: rgb(198, 193, 185);
 }
 
@@ -133,13 +133,16 @@ main .select {
 
 // ***********************************************************************
 
-.recipe{
+.recipe {
     display: None;
+    margin-bottom: 0;
+    color: rgb(198, 193, 185);
+}
+
+.ingredientContainer {
+    display: flex;
     flex-wrap: wrap;
     justify-content: space-evenly;
-    margin-bottom: 0;
-    margin-top: 25px;
-    color: rgb(198, 193, 185);
 }
 
 .ingredient {
@@ -147,8 +150,7 @@ main .select {
     box-sizing: border-box;
     display: inline-flex;
     flex-direction: column;
-    flex: 1 0 150px;
-    width: 200px;
+    flex-basis: 20%;
     padding: 13px;
     margin: 5px;
     text-align: left;
