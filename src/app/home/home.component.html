@@ -52,11 +52,11 @@
                     (onInput)="selectItem()" [min]="0" [max]="1000"></p-inputNumber>
             </span>
             <p-inputNumber inputId="prixCraft" placeholder="Prix du craft" [(ngModel)]="prixCraft"
-                (onInput)="selectItem()" [min]="0"></p-inputNumber>
+                (onInput)="selectItem()" [min]="0" [max]="999999999"></p-inputNumber>
             <span class="p-input-icon-right">
                 <i class="fa-solid fa-percent"></i>
                 <p-inputNumber inputId="tauxRentabiliteVise" placeholder="Taux de rentabilité"
-                    [(ngModel)]="tauxRentabiliteVise" (onInput)="selectItem()" [min]="0"></p-inputNumber>
+                    [(ngModel)]="tauxRentabiliteVise" (onInput)="selectItem()" [min]="0" [max]="9999"></p-inputNumber>
             </span>
             <div class="tauxRentabilite">Rentabilité (%) : {{tauxRentabilitePourcent}} %<br>Rentabilité
                 (kamas): {{tauxRentabiliteKamas}} k</div>
