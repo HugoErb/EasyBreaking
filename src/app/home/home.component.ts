@@ -253,7 +253,7 @@ export class HomeComponent {
     }
 
     /**
-   * Copie le nom de l'ingrédient dans le presse-papiers et affiche une infobulle.
+   * Copie le nom de l'ingrédient dans le presse-papiers et affiche une tooltip.
    *
    * @param ingredientName Le nom de l'ingrédient à copier.
    * @param event L'événement MouseEvent associé au clic.
@@ -261,10 +261,11 @@ export class HomeComponent {
     copyToClipboard(event: MouseEvent, ingredientName: string): void {
         navigator.clipboard.writeText(ingredientName).then(() => {
             console.log(`Copié dans le presse-papiers: ${ingredientName}`);
-            // Vous pouvez ajouter ici une logique supplémentaire si nécessaire
         }).catch(err => {
             console.error('Erreur lors de la copie dans le presse-papiers: ', err);
         });
+
+        // Ajoute un focus pour faire apparaître la tooltip
         const element = event.currentTarget as HTMLElement;
         element.focus();
 
@@ -280,6 +281,7 @@ export class HomeComponent {
         const divInputTexts = document.querySelector('.inputTexts') as HTMLElement;
         const divRecipe = document.querySelector('.recipe') as HTMLElement;
         const divRentabilite = document.querySelector('.rentabilite') as HTMLElement;
+        const divMainContainer = document.querySelector('.container') as HTMLElement;
 
         if (divTable) {
             divTable.style.display = 'block';
@@ -296,6 +298,11 @@ export class HomeComponent {
         if (divRentabilite) {
             divRentabilite.style.display = 'block';
         }
+
+        if(divMainContainer){
+            divMainContainer.style.paddingTop = '25px'
+            divMainContainer.style.marginBottom = '25px'
+        }
     }
 
     /**
@@ -306,6 +313,7 @@ export class HomeComponent {
         const divInputTexts = document.querySelector('.inputTexts') as HTMLElement;
         const divRecipe = document.querySelector('.recipe') as HTMLElement;
         const divRentabilite = document.querySelector('.rentabilite') as HTMLElement;
+        const divMainContainer = document.querySelector('.container') as HTMLElement;
 
         if (divTable) {
             divTable.style.display = 'none';
@@ -321,6 +329,11 @@ export class HomeComponent {
 
         if (divRentabilite) {
             divRentabilite.style.display = 'none';
+        }
+
+        if(divMainContainer){
+            divMainContainer.style.paddingTop = '0'
+            divMainContainer.style.marginBottom = '6vw'
         }
     }
 
