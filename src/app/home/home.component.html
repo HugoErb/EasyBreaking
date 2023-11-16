@@ -82,5 +82,25 @@
             </div>
         </div>
     </div>
-    <div class="helpSign"><i class="fa-regular fa-circle-question"></i></div>
+    <div class="helpSign" (click)="showHelp()"><i class="fa-regular fa-circle-question"></i></div>
+    <p-dialog header="Aide" [(visible)]="helpDivvisible" [style]="{width: '50vw'}">
+        <p>
+            - Si tu lis t'es gay.
+        </p>
+        <p>
+            - Explication des couleurs des cellules :<br>
+        <p class="indent">- Couleur verte : vous êtes rentable au dessus du pourcentage de rentabilité que vous recherchez
+        </p>
+        <p class="indent">
+            - Couleur jaune: vous êtes rentable mais en dessous du pourcentage de rentabilité que vous recherchez
+        </p>
+        <p class="indent">- Couleur rouge: vous n'êtes pas rentable</p>
+        <p>
+            - Les estimations affichées prennent déjà en compte la taxe de mise en vente de 2%.
+        </p>
+        <p>
+            - Vous pouvez cliquer sur la case d'un ingrédient pour copier le nom de ce dernier dans votre presse
+            papier.
+        </p>
+    </p-dialog>
 </main>

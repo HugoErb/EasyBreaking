@@ -23,6 +23,7 @@ export class HomeComponent {
     tauxRentabiliteKamas: number = 0;
     nonProfitableBreakRate: number = 0;
     nonProfitableBreakRateVise: number = 0;
+    helpDivvisible: boolean = false;
     sumKamasEarned: number = 0;
     maxFocusedKamasEarned?: number;
     maxValue?: number;
@@ -120,6 +121,10 @@ export class HomeComponent {
         this.recipe = this.selectedItem.recipe;
         this.maxFocusedKamasEarned = Math.max(...this.tableauEffects.map(item => item.focusedKamasEarned));
         this.maxValue = Math.max(this.maxFocusedKamasEarned, this.sumKamasEarned);
+
+        this.tauxRentabilitePourcent = 0;
+        this.tauxRentabiliteKamas = 0;
+        this.nonProfitableBreakRate = 0;
         if (this.prixCraft != undefined && this.tauxBrisage != undefined) {
             this.tauxRentabilitePourcent = parseFloat(((this.maxValue! - this.prixCraft) / this.prixCraft * 100).toFixed(2));
             this.tauxRentabiliteKamas = Math.round(this.maxValue! - this.prixCraft);
@@ -390,4 +395,8 @@ export class HomeComponent {
         }
     }
 
+
+    showHelp() {
+        this.helpDivvisible = true;
+    }
 }

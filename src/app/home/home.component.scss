@@ -133,6 +133,14 @@ main .select {
     color: rgb(198, 193, 185);
 }
 
+.tauxRentabilite p {
+    margin-top: 5px;
+}
+
+.tauxRentabilite p:first-child {
+    margin-top: 0px;
+}
+
 // ***********************************************************************
 
 .recipe {
@@ -163,7 +171,7 @@ main .select {
     background-color: rgb(198, 193, 185, 0.20);
 }
 
-.ingredient p{
+.ingredient p {
     margin-top: 1px;
     margin-bottom: 1px;
     letter-spacing: 0.1px;
@@ -176,12 +184,25 @@ main .select {
 // ***********************************************************************
 
 .helpSign {
-    position: absolute;
+    position: fixed;
     top: 0;
     right: 0;
-    color: rgb(198, 193, 185);;
+    color: rgb(198, 193, 185);
     padding: 7px;
     margin: 10px;
     font-size: 30px;
     cursor: pointer;
+}
+
+p-dialog p {
+    margin-top: 15px;
+}
+
+p-dialog p:first-child {
+    margin-top: 0px;
+}
+
+.indent{
+    margin-left: 50px !important;
+    margin-top: 0px !important;
 }

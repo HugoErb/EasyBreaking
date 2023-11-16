@@ -10,6 +10,7 @@ import { TooltipModule } from 'primeng/tooltip';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { InputNumberModule } from 'primeng/inputnumber';
+import { DialogModule } from 'primeng/dialog';
 
 import { registerLocaleData } from '@angular/common';
 import localeFr from '@angular/common/locales/fr';
@@ -27,6 +28,7 @@ registerLocaleData(localeFr, 'fr');
         FormsModule,
         AppRoutingModule,
         AutoCompleteModule,
+        DialogModule,
         TooltipModule,
         InputNumberModule,
         HttpClientModule
