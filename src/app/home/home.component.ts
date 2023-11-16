@@ -21,6 +21,8 @@ export class HomeComponent {
     tauxRentabiliteVise: number = 25;
     tauxRentabilitePourcent: number = 0;
     tauxRentabiliteKamas: number = 0;
+    nonProfitableBreakRate: number = 0;
+    nonProfitableBreakRateVise: number = 0;
     sumKamasEarned: number = 0;
     maxFocusedKamasEarned?: number;
     maxValue?: number;
@@ -118,8 +120,61 @@ export class HomeComponent {
         this.recipe = this.selectedItem.recipe;
         this.maxFocusedKamasEarned = Math.max(...this.tableauEffects.map(item => item.focusedKamasEarned));
         this.maxValue = Math.max(this.maxFocusedKamasEarned, this.sumKamasEarned);
+        if (this.prixCraft != undefined && this.tauxBrisage != undefined) {
+            this.tauxRentabilitePourcent = parseFloat(((this.maxValue! - this.prixCraft) / this.prixCraft * 100).toFixed(2));
+            this.tauxRentabiliteKamas = Math.round(this.maxValue! - this.prixCraft);
+            this.nonProfitableBreakRate = this.findNonProfitableBreakRate();
+        }
         this.defineCellColor();
     }
+
+    /**
+     * Trouve le taux de brisage à partir duquel l'item n'est plus rentable.
+     *
+     * @returns Le taux de brisage à partir duquel briser l'item n'est plus rentable.
+     */
+    findNonProfitableBreakRate(): number {
+        let nonProfitableBreakRate = parseInt(this.tauxBrisage);
+
+        while (nonProfitableBreakRate > 0) {
+            const sumKamasEarned = this.calculateBenefit(nonProfitableBreakRate);
+            if (sumKamasEarned <= 0) {
+                return nonProfitableBreakRate + 1;
+            }
+            nonProfitableBreakRate--;
+        }
+        return 1;
+    }
+
+    /**
+     * Calcule le bénéfice total en Kamas pour un taux de brisage donné, en considérant
+     * à la fois le bénéfice global et le bénéfice maximal concentré sur un seul effet.
+     * 
+     * @param tauxBrisage Le taux de brisage à utiliser pour le calcul, exprimé en pourcentage.
+     * @returns Le bénéfice total en Kamas après soustraction du coût de production de l'item.
+     */
+    calculateBenefit(tauxBrisage: number): number {
+        let sumKamasEarned = 0;
+        let maxFocusedKamasEarned = 0;
+
+        this.selectedItem.effects.forEach((effect: string) => {
+            const runeObj = this.findMatchingRune(effect);
+            const runeQuantity = this.calculateRuneQuantity(tauxBrisage, runeObj, effect);
+            const kamasEarned = Math.round(runeQuantity * parseFloat(runeObj.price)) * 0.98;
+            sumKamasEarned += kamasEarned;
+
+            const runeQuantityFocused = this.calculateRuneQuantityFocused(tauxBrisage, effect, this.selectedItem.effects);
+            const focusedKamasEarned = Math.round(runeQuantityFocused * parseFloat(runeObj.price)) * 0.98;
+            if (focusedKamasEarned > maxFocusedKamasEarned) {
+                maxFocusedKamasEarned = focusedKamasEarned;
+            }
+        });
+
+        let maxValue = Math.max(maxFocusedKamasEarned, sumKamasEarned);
+        return Math.round(maxValue - this.prixCraft);
+    }
+
+
 
     /**
    * Détermine la couleur de la cellule en fonction des valeurs de prixCraft, tauxRentabiliteVise et maxValue.
@@ -128,8 +183,6 @@ export class HomeComponent {
     defineCellColor(): void {
         if (this.prixCraft != undefined && this.tauxRentabiliteVise != undefined) {
             const valeurRentable: number = this.prixCraft * (1 + Number(this.tauxRentabiliteVise) / 100);
-            this.tauxRentabilitePourcent = parseFloat(((this.maxValue! - this.prixCraft) / this.prixCraft * 100).toFixed(2));
-            this.tauxRentabiliteKamas = Math.round(this.maxValue! - this.prixCraft);
 
             if (valeurRentable >= this.maxValue! && this.maxValue! < this.prixCraft) {
                 this.maxCellColor = 'darkred';
@@ -299,7 +352,7 @@ export class HomeComponent {
             divRentabilite.style.display = 'block';
         }
 
-        if(divMainContainer){
+        if (divMainContainer) {
             divMainContainer.style.paddingTop = '25px'
             divMainContainer.style.marginBottom = '25px'
         }
@@ -331,7 +384,7 @@ export class HomeComponent {
             divRentabilite.style.display = 'none';
         }
 
-        if(divMainContainer){
+        if (divMainContainer) {
             divMainContainer.style.paddingTop = '0'
             divMainContainer.style.marginBottom = '6vw'
         }
