@@ -442,7 +442,7 @@
   },
   {
     "Name": "Pod",
-    "Stat": "Pods",
+    "Stat": "Pod",
     "Img": "assets/imgs/pods.png",
     "Price": 182,
     "Weight": 0.25,

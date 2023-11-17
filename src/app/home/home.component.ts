@@ -264,7 +264,7 @@ export class HomeComponent {
 
         if (rune.stat === 'Vitalité' || rune.stat === 'Initiative') {
             runeWeight = 1;
-        } else if (rune.stat === 'Pods') {
+        } else if (rune.stat === 'Pod') {
             runeWeight = 2.5;
         } else {
             runeWeight = rune.weight;
@@ -301,6 +301,7 @@ export class HomeComponent {
 
         effectsList.forEach(effect => {
             let effectRune = this.findMatchingRune(effect);
+            
             let res = (3 * effectRune.weight * this.calculateAverage(effect) * this.selectedItem.level / 200 + 1);
             if (effect !== statFocused) {
                 res /= 2;
