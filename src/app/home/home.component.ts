@@ -95,7 +95,8 @@ export class HomeComponent {
     selectItem(): void {
         this.unVanishDiv()
 
-        const tauxBrisage: number = this.tauxBrisage ? parseInt(this.tauxBrisage) : 0;
+        let tauxBrisage: number = this.tauxBrisage ? parseInt(this.tauxBrisage) : 0;
+        tauxBrisage = tauxBrisage > 4000 ? 4000 : tauxBrisage;
         this.sumKamasEarned = 0;
 
         // On crée les données du tableau selon l'item sélectionné
