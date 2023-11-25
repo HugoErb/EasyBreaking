@@ -301,7 +301,7 @@ export class HomeComponent {
 
         effectsList.forEach(effect => {
             let effectRune = this.findMatchingRune(effect);
-            
+
             let res = (3 * effectRune.weight * this.calculateAverage(effect) * this.selectedItem.level / 200 + 1);
             if (effect !== statFocused) {
                 res /= 2;
@@ -369,35 +369,39 @@ export class HomeComponent {
      * Masque les éléments en les rendant invisibles.
      */
     vanishDiv(): void {
-        const divTable = document.querySelector('.itemTable') as HTMLElement;
-        const divInputTexts = document.querySelector('.inputTexts') as HTMLElement;
-        const divRecipe = document.querySelector('.recipe') as HTMLElement;
-        const divRentabilite = document.querySelector('.rentabilite') as HTMLElement;
-        const divMainContainer = document.querySelector('.container') as HTMLElement;
+        if (this.selectedItem == "") {
+            const divTable = document.querySelector('.itemTable') as HTMLElement;
+            const divInputTexts = document.querySelector('.inputTexts') as HTMLElement;
+            const divRecipe = document.querySelector('.recipe') as HTMLElement;
+            const divRentabilite = document.querySelector('.rentabilite') as HTMLElement;
+            const divMainContainer = document.querySelector('.container') as HTMLElement;
 
-        if (divTable) {
-            divTable.style.display = 'none';
-        }
+            if (divTable) {
+                divTable.style.display = 'none';
+            }
 
-        if (divInputTexts) {
-            divInputTexts.style.display = 'none';
-        }
+            if (divInputTexts) {
+                divInputTexts.style.display = 'none';
+            }
 
-        if (divRecipe) {
-            divRecipe.style.display = 'none';
-        }
+            if (divRecipe) {
+                divRecipe.style.display = 'none';
+            }
 
-        if (divRentabilite) {
-            divRentabilite.style.display = 'none';
-        }
+            if (divRentabilite) {
+                divRentabilite.style.display = 'none';
+            }
 
-        if (divMainContainer) {
-            divMainContainer.style.paddingTop = '0'
-            divMainContainer.style.marginBottom = '6vw'
+            if (divMainContainer) {
+                divMainContainer.style.paddingTop = '0'
+                divMainContainer.style.marginBottom = '6vw'
+            }
         }
     }
 
-
+    /**
+     * Affiche la bulle d'aide.
+     */
     showHelp() {
         this.helpDivvisible = true;
     }

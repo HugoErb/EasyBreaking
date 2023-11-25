@@ -3,8 +3,8 @@
         <h1>Easy Breaking</h1>
         <div class="select">
             <p-autoComplete [(ngModel)]="selectedItem" [dropdown]="true" [suggestions]="filteredItems"
-                (completeMethod)="filterItem($event)" field="name" (onSelect)="selectItem()"
-                placeholder="Entrez le nom d'un item..." (keyup)="vanishDiv()"></p-autoComplete>
+                (completeMethod)="filterItem($event)" field="name" (onSelect)="selectItem()" (input)="vanishDiv()"
+                placeholder="Entrez le nom d'un item..."></p-autoComplete>
         </div>
         <table class="itemTable">
             <thead>
@@ -85,7 +85,14 @@
     <div class="helpSign" (click)="showHelp()"><i class="fa-regular fa-circle-question"></i></div>
     <p-dialog header="Aide" [(visible)]="helpDivvisible" [style]="{width: '50vw'}">
         <p>
-            - Si tu lis t'es gay.
+            - Les estimations de kamas affichées prennent déjà en compte la taxe de mise en vente de 2%.
+        </p>
+        <p>
+            - Les estimations de runes et kamas affichées prennent en compte le prix moyen des runes, et les jets moyens d'un item. Elles peuvent donc ne pas être exactes à 100%.
+        </p>
+        <p>
+            - Vous pouvez cliquer sur la case d'un ingrédient pour copier le nom de ce dernier dans votre presse
+            papier.
         </p>
         <p>
             - Explication des couleurs des cellules :<br>
@@ -95,12 +102,6 @@
             - Couleur jaune: vous êtes rentable mais en dessous du pourcentage de rentabilité que vous recherchez
         </p>
         <p class="indent">- Couleur rouge: vous n'êtes pas rentable</p>
-        <p>
-            - Les estimations affichées prennent déjà en compte la taxe de mise en vente de 2%.
-        </p>
-        <p>
-            - Vous pouvez cliquer sur la case d'un ingrédient pour copier le nom de ce dernier dans votre presse
-            papier.
-        </p>
+        
     </p-dialog>
 </main>
