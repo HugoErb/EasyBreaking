@@ -1,1 +1,31 @@
-<main></main>
+<main>
+    <div class="runes-table-container">
+        <table>
+            <thead>
+                <tr>
+                    <th>Image</th>
+                    <th>Nom</th>
+                    <th>Statistique</th>
+                    <th>Prix</th>
+                    <th>Prix Rune Pa</th>
+                    <th>Prix Rune Ra</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let rune of runes">
+                    <td><img [src]="rune.img" alt="Rune Image"></td>
+                    <td>{{ rune.name }}</td>
+                    <td>{{ rune.stat }}</td>
+                    <td><input type="number" [(ngModel)]="rune.price"></td>
+                    <td><input *ngIf="rune.paPrice !== null; else noPaPrice" type="number"
+                            [(ngModel)]="rune.paPrice"><ng-template #noPaPrice>/</ng-template>
+                    </td>
+                    <td><input *ngIf="rune.paPrice !== null; else noRaPrice" type="number"
+                            [(ngModel)]="rune.raPrice"><ng-template #noRaPrice>/</ng-template>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <button (click)="saveChanges()">Save</button>
+    </div>
+</main>
