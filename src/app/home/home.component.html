@@ -6,78 +6,81 @@
                 (completeMethod)="filterItem($event)" field="name" (onSelect)="selectItem()" (input)="vanishDiv()"
                 placeholder="Entrez le nom d'un item..."></p-autoComplete>
         </div>
-        <table class="itemTable">
-            <thead>
-                <tr>
-                    <td>Caractéristiques</td>
-                    <td>Nom des runes</td>
-                    <td>Prix unitaire des runes</td>
-                    <td>Quantité de runes</td>
-                    <td>Kamas obtenus</td>
-                    <td>Quantité de runes (focus)</td>
-                    <td>Kamas obtenus (focus)</td>
-                </tr>
-            </thead>
-            <tbody>
-                <tr *ngFor="let row of tableauEffects;">
-                    <td><img src={{row.runeImg}}>
-                        <div class="text">{{row.stat}}</div>
-                    </td>
-                    <td>{{row.runeName}}</td>
-                    <td>{{row.runePrice | number: '1.0-0'}}</td>
-                    <td>{{row.runeQuantity| number: '1.0-2'}}</td>
-                    <td>{{row.kamasEarned | number: '1.0-0'}}</td>
-                    <td>{{row.runeQuantityFocused| number: '1.0-2'}}</td>
-                    <td [style.backgroundColor]="row.focusedKamasEarned === maxValue && row.focusedKamasEarned !== 0 ? this.maxCellColor : ''"
-                        [style.color]="row.focusedKamasEarned === maxValue && row.focusedKamasEarned !== 0 ? maxCellTextColor : ''"
-                        [style.fontWeight]="row.focusedKamasEarned === maxValue && row.focusedKamasEarned !== 0 ? 'bold' : ''">
-                        {{row.focusedKamasEarned | number: '1.0-0'}}</td>
-                </tr>
-            </tbody>
-            <tfoot>
-                <tr>
-                    <td class="firstNoBorder" colspan="4"></td>
-                    <td [style.backgroundColor]="sumKamasEarned === maxValue && sumKamasEarned !== 0 ? this.maxCellColor : ''"
-                        [style.color]="sumKamasEarned === maxValue && sumKamasEarned !== 0 ? maxCellTextColor : ''"
-                        [style.fontWeight]="sumKamasEarned === maxValue && sumKamasEarned !== 0 ? 'bold' : ''">
-                        {{sumKamasEarned | number: '1.0-0'}}</td>
-                    <td class="lastNoBorder" colspan="2"></td>
-                </tr>
-            </tfoot>
-        </table>
-        <div class="inputTexts">
-            <span class="p-input-icon-right">
-                <i class="fa-solid fa-percent"></i>
-                <p-inputNumber inputId="tauxBrisage" placeholder="Taux de brisage" [(ngModel)]="tauxBrisage"
-                    (onInput)="selectItem()" [min]="0" [max]="4000"></p-inputNumber>
-            </span>
-            <span class="p-input-icon-right">
-                <i class="fa-solid fa-k"></i>
-                <p-inputNumber inputId="prixCraft" placeholder="Prix du craft" [(ngModel)]="prixCraft"
-                    (onInput)="selectItem()" [min]="1" [max]="999999999"></p-inputNumber>
+        <div class="vanishingDiv">
+            <table class="itemTable">
+                <thead>
+                    <tr>
+                        <td>Caractéristiques</td>
+                        <td>Nom des runes</td>
+                        <td>Prix unitaire des runes</td>
+                        <td>Quantité de runes</td>
+                        <td>Kamas obtenus</td>
+                        <td>Quantité de runes (focus)</td>
+                        <td>Kamas obtenus (focus)</td>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let row of tableauEffects;">
+                        <td><img src={{row.runeImg}}>
+                            <div class="text">{{row.stat}}</div>
+                        </td>
+                        <td>{{row.runeName}}</td>
+                        <td>{{row.runePrice | number: '1.0-0'}}</td>
+                        <td>{{row.runeQuantity| number: '1.0-2'}}</td>
+                        <td>{{row.kamasEarned | number: '1.0-0'}}</td>
+                        <td>{{row.runeQuantityFocused| number: '1.0-2'}}</td>
+                        <td [style.backgroundColor]="row.focusedKamasEarned === maxValue && row.focusedKamasEarned !== 0 ? this.maxCellColor : ''"
+                            [style.color]="row.focusedKamasEarned === maxValue && row.focusedKamasEarned !== 0 ? maxCellTextColor : ''"
+                            [style.fontWeight]="row.focusedKamasEarned === maxValue && row.focusedKamasEarned !== 0 ? 'bold' : ''">
+                            {{row.focusedKamasEarned | number: '1.0-0'}}</td>
+                    </tr>
+                </tbody>
+                <tfoot>
+                    <tr>
+                        <td class="firstNoBorder" colspan="4"></td>
+                        <td [style.backgroundColor]="sumKamasEarned === maxValue && sumKamasEarned !== 0 ? this.maxCellColor : ''"
+                            [style.color]="sumKamasEarned === maxValue && sumKamasEarned !== 0 ? maxCellTextColor : ''"
+                            [style.fontWeight]="sumKamasEarned === maxValue && sumKamasEarned !== 0 ? 'bold' : ''">
+                            {{sumKamasEarned | number: '1.0-0'}}</td>
+                        <td class="lastNoBorder" colspan="2"></td>
+                    </tr>
+                </tfoot>
+            </table>
+            <div class="inputTexts">
+                <span class="p-input-icon-right">
+                    <i class="fa-solid fa-percent"></i>
+                    <p-inputNumber inputId="tauxBrisage" placeholder="Taux de brisage" [(ngModel)]="tauxBrisage"
+                        (onInput)="selectItem()" [min]="0" [max]="4000"></p-inputNumber>
                 </span>
-            <span class="p-input-icon-right">
-                <i class="fa-solid fa-percent"></i>
-                <p-inputNumber inputId="tauxRentabiliteVise" placeholder="Taux de rentabilité"
-                    [(ngModel)]="tauxRentabiliteVise" (onInput)="selectItem()" [min]="0" [max]="9999"></p-inputNumber>
-            </span>
-        </div>
-        <div class="rentabilite">
-            <h2 class="sectionH2">Rentabilité</h2>
-            <div class="tauxRentabilite">
-                <p>Rentabilité (%) : {{tauxRentabilitePourcent}} %</p>
-                <p>Rentabilité (kamas): {{tauxRentabiliteKamas}} k</p>
-                <p>Rentable jusqu'au taux de brisage : {{nonProfitableBreakRate}} %</p>
+                <span class="p-input-icon-right">
+                    <i class="fa-solid fa-k"></i>
+                    <p-inputNumber inputId="prixCraft" placeholder="Prix du craft" [(ngModel)]="prixCraft"
+                        (onInput)="selectItem()" [min]="1" [max]="999999999"></p-inputNumber>
+                </span>
+                <span class="p-input-icon-right">
+                    <i class="fa-solid fa-percent"></i>
+                    <p-inputNumber inputId="tauxRentabiliteVise" placeholder="Taux de rentabilité"
+                        [(ngModel)]="tauxRentabiliteVise" (onInput)="selectItem()" [min]="0"
+                        [max]="9999"></p-inputNumber>
+                </span>
             </div>
-        </div>
-        <div class="recipe">
-            <h2 class="sectionH2">Recette</h2>
-            <div class="ingredientContainer">
-                <div tabindex="0" *ngFor="let ingredient of recipe" class="ingredient" pTooltip="Ingrédient copié"
-                    tooltipEvent="focus" tooltipPosition="top" (click)="copyToClipboard($event, ingredient.name)">
-                    <p class="ingredientName">{{ ingredient.name }}</p>
-                    <p>{{ ingredient.quantite }}x</p>
-                    <p>Niv : {{ ingredient.level }}</p>
+            <div class="rentabilite">
+                <h2 class="sectionH2">Rentabilité</h2>
+                <div class="tauxRentabilite">
+                    <p>Rentabilité (%) : {{tauxRentabilitePourcent}} %</p>
+                    <p>Rentabilité (kamas): {{tauxRentabiliteKamas}} k</p>
+                    <p>Rentable jusqu'au taux de brisage : {{nonProfitableBreakRate}} %</p>
+                </div>
+            </div>
+            <div class="recipe">
+                <h2 class="sectionH2">Recette</h2>
+                <div class="ingredientContainer">
+                    <div tabindex="0" *ngFor="let ingredient of recipe" class="ingredient" pTooltip="Ingrédient copié"
+                        tooltipEvent="focus" tooltipPosition="top" (click)="copyToClipboard($event, ingredient.name)">
+                        <p class="ingredientName">{{ ingredient.name }}</p>
+                        <p>{{ ingredient.quantite }}x</p>
+                        <p>Niv : {{ ingredient.level }}</p>
+                    </div>
                 </div>
             </div>
         </div>
@@ -88,7 +91,8 @@
             - Les estimations de kamas affichées prennent déjà en compte la taxe de mise en vente de 2%.
         </p>
         <p>
-            - Les estimations de runes et kamas affichées prennent en compte le prix moyen des runes, et les jets moyens d'un item. Elles peuvent donc ne pas être exactes à 100%.
+            - Les estimations de runes et kamas affichées prennent en compte le prix moyen des runes, et les jets moyens
+            d'un item. Elles peuvent donc ne pas être exactes à 100%.
         </p>
         <p>
             - Vous pouvez cliquer sur la case d'un ingrédient pour copier le nom de ce dernier dans votre presse
@@ -96,12 +100,13 @@
         </p>
         <p>
             - Explication des couleurs des cellules :<br>
-        <p class="indent">- Couleur verte : vous êtes rentable au dessus du pourcentage de rentabilité que vous recherchez
+        <p class="indent">- Couleur verte : vous êtes rentable au dessus du pourcentage de rentabilité que vous
+            recherchez
         </p>
         <p class="indent">
             - Couleur jaune: vous êtes rentable mais en dessous du pourcentage de rentabilité que vous recherchez
         </p>
         <p class="indent">- Couleur rouge: vous n'êtes pas rentable</p>
-        
+
     </p-dialog>
 </main>

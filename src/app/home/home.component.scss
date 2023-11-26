@@ -58,6 +58,12 @@ main .select {
 
 // ***********************************************************************
 
+.vanishingDiv{
+    display: none;
+}
+
+// ***********************************************************************
+
 .itemTable {
     width: 100%;
     color: rgb(198, 193, 185);
@@ -66,7 +72,6 @@ main .select {
     margin-top: 25px;
     border-collapse: collapse;
     white-space: nowrap;
-    display: none;
 }
 
 .itemTable thead {
@@ -109,7 +114,6 @@ main .select {
     align-items: center;
     width: 100%;
     margin-top: 25px;
-    display: none;
 }
 
 // ***********************************************************************
@@ -124,7 +128,6 @@ main .select {
 // ***********************************************************************
 
 .rentabilite {
-    display: None;
     margin-bottom: 0;
     color: rgb(198, 193, 185);
 }
@@ -144,7 +147,6 @@ main .select {
 // ***********************************************************************
 
 .recipe {
-    display: None;
     margin-bottom: 0;
     color: rgb(198, 193, 185);
 }

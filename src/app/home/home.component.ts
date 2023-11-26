@@ -337,26 +337,11 @@ export class HomeComponent {
      * Fait apparaître les éléments en les rendant visibles.
      */
     unVanishDiv(): void {
-        const divTable = document.querySelector('.itemTable') as HTMLElement;
-        const divInputTexts = document.querySelector('.inputTexts') as HTMLElement;
-        const divRecipe = document.querySelector('.recipe') as HTMLElement;
-        const divRentabilite = document.querySelector('.rentabilite') as HTMLElement;
+        const vanishingDiv = document.querySelector('.vanishingDiv') as HTMLElement;
         const divMainContainer = document.querySelector('.container') as HTMLElement;
 
-        if (divTable) {
-            divTable.style.display = 'block';
-        }
-
-        if (divInputTexts) {
-            divInputTexts.style.display = 'flex';
-        }
-
-        if (divRecipe) {
-            divRecipe.style.display = 'block';
-        }
-
-        if (divRentabilite) {
-            divRentabilite.style.display = 'block';
+        if (vanishingDiv) {
+            vanishingDiv.style.display = 'block';
         }
 
         if (divMainContainer) {
@@ -370,26 +355,11 @@ export class HomeComponent {
      */
     vanishDiv(): void {
         if (this.selectedItem == "") {
-            const divTable = document.querySelector('.itemTable') as HTMLElement;
-            const divInputTexts = document.querySelector('.inputTexts') as HTMLElement;
-            const divRecipe = document.querySelector('.recipe') as HTMLElement;
-            const divRentabilite = document.querySelector('.rentabilite') as HTMLElement;
+            const vanishingDiv = document.querySelector('.vanishingDiv') as HTMLElement;
             const divMainContainer = document.querySelector('.container') as HTMLElement;
 
-            if (divTable) {
-                divTable.style.display = 'none';
-            }
-
-            if (divInputTexts) {
-                divInputTexts.style.display = 'none';
-            }
-
-            if (divRecipe) {
-                divRecipe.style.display = 'none';
-            }
-
-            if (divRentabilite) {
-                divRentabilite.style.display = 'none';
+            if (vanishingDiv) {
+                vanishingDiv.style.display = 'none';
             }
 
             if (divMainContainer) {
