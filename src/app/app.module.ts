@@ -14,13 +14,15 @@ import { DialogModule } from 'primeng/dialog';
 
 import { registerLocaleData } from '@angular/common';
 import localeFr from '@angular/common/locales/fr';
+import { RunesManagerComponent } from './runes-manager/runes-manager.component';
 
 registerLocaleData(localeFr, 'fr');
 
 @NgModule({
     declarations: [
         AppComponent,
-        HomeComponent
+        HomeComponent,
+        RunesManagerComponent
     ],
     imports: [
         BrowserModule,
