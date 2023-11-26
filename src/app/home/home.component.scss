@@ -194,7 +194,7 @@ main .select {
     position: fixed;
     top: 0;
     right: 0;
-    color: rgb(198, 193, 185);
+    color: rgb(230, 227, 224);
     padding: 7px;
     margin: 10px;
     font-size: 30px;
@@ -212,4 +212,20 @@ p-dialog p:first-child {
 .indent{
     margin-left: 50px !important;
     margin-top: 0px !important;
+}
+
+// ***********************************************************************
+
+.runeSign {
+    position: fixed;
+    top: 0;
+    right: 50px;
+    padding: 5px;
+    margin: 8px;
+    margin-right: 10px;
+    cursor: pointer;
+}
+
+.runeImg {
+    width: 37px;
 }
