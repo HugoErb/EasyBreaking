@@ -29,6 +29,7 @@ export class HomeComponent {
     maxValue?: number;
     maxCellColor: string = 'darkgreen';
     maxCellTextColor: string = 'rgb(198, 193, 185)';
+    mergeRune: string = 'Aucune';
 
     ngOnInit() {
 
