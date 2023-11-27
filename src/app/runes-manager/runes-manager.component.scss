@@ -34,20 +34,28 @@ thead {
     font-weight: bold;
 }
 
-td.clicable:hover{
+td.clicable:hover {
     cursor: pointer;
     background-color: rgb(198, 193, 185, 0.20);
 }
 
+.buttonContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 button {
-    padding: 6px 12px;
-    background-color: #4CAF50;
-    color: white;
-    border: none;
-    border-radius: 4px;
+    margin-top: 25px;
+    padding: 15px 30px;
+    background-color: transparent;
+    color: rgb(198, 193, 185);
+    font-size: 16px;
+    border: 1px solid rgb(198, 193, 185);
+    border-radius: 6px;
     cursor: pointer;
 }
 
 button:hover {
-    background-color: #45a049;
+    background-color: rgb(198, 193, 185, 0.20);
 }
