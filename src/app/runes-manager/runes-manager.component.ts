@@ -35,7 +35,27 @@ export class RunesManagerComponent implements OnInit {
   }
 
   saveChanges(): void {
-    console.log(this.runes);
     localStorage.setItem('runesData', JSON.stringify(this.runes));
   }
+
+  /**
+   * Copie le nom de la rune dans le presse-papiers et affiche une tooltip.
+   *
+   * @param runeName Le nom de la rune à copier.
+   * @param event L'événement MouseEvent associé au clic.
+   */
+  copyToClipboard(event: MouseEvent, runeName: string): void {
+    navigator.clipboard.writeText(runeName).then(() => {
+        console.log(`Copié dans le presse-papiers: ${runeName}`);
+    }).catch(err => {
+        console.error('Erreur lors de la copie dans le presse-papiers: ', err);
+    });
+
+    // Ajoute un focus pour faire apparaître la tooltip
+    const element = event.currentTarget as HTMLElement;
+    element.focus();
+
+    // Retire le focus après 2 secondes
+    setTimeout(() => element.blur(), 1500);
+}
 }

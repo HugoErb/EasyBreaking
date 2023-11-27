@@ -34,6 +34,11 @@ thead {
     font-weight: bold;
 }
 
+td.clicable:hover{
+    cursor: pointer;
+    background-color: rgb(198, 193, 185, 0.20);
+}
+
 button {
     padding: 6px 12px;
     background-color: #4CAF50;

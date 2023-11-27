@@ -11,7 +11,8 @@
             </thead>
             <tbody>
                 <tr *ngFor="let rune of runes; let i = index">
-                    <td>
+                    <td class="clicable" tabindex="0" (click)="copyToClipboard($event, rune.name)" pTooltip="Rune copiée"
+                    tooltipEvent="focus" tooltipPosition="top">
                         <img [src]="rune.img">
                         <div class="nom-cellule">{{ rune.name }}</div>
                     </td>
