@@ -21,18 +21,19 @@
                     </td>
                     <td><span class="p-input-icon-right">
                             <i class="fa-solid fa-k"></i>
-                            <p-inputNumber inputId="prixCraft" placeholder="Prix de la rune" [(ngModel)]="rune.price"
-                                (change)="onPriceChange(i, 'price', $event)" [min]="1" [max]="999999"></p-inputNumber>
+                            <p-inputNumber [style]="{ width: '200px', padding:'3px', marginRight:'12px'}" inputId="prixCraft" placeholder="Prix de la rune"
+                                [(ngModel)]="rune.price" (change)="onPriceChange(i, 'price', $event)" [min]="1"
+                                [max]="999999"></p-inputNumber>
                         </span></td>
                     <td><span *ngIf="rune.paPrice !== null; else noPaPrice" class="p-input-icon-right">
                             <i class="fa-solid fa-k"></i>
-                            <p-inputNumber inputId="prixCraft" placeholder="Prix de la rune" [(ngModel)]="rune.paPrice"
+                            <p-inputNumber [style]="{ width: '200px', padding:'3px', marginRight:'12px'}" inputId="prixCraft" placeholder="Prix de la rune" [(ngModel)]="rune.paPrice"
                                 (change)="onPriceChange(i, 'paPrice', $event)" [min]="1" [max]="999999"></p-inputNumber>
                         </span><ng-template #noPaPrice>/</ng-template>
                     </td>
                     <td><span *ngIf="rune.raPrice !== null; else noPaPrice" class="p-input-icon-right">
                             <i class="fa-solid fa-k"></i>
-                            <p-inputNumber inputId="prixCraft" placeholder="Prix de la rune" [(ngModel)]="rune.raPrice"
+                            <p-inputNumber [style]="{ width: '200px', padding:'3px', marginRight:'12px'}" inputId="prixCraft" placeholder="Prix de la rune" [(ngModel)]="rune.raPrice"
                                 (change)="onPriceChange(i, 'raPrice', $event)" [min]="1" [max]="999999"></p-inputNumber>
                         </span><ng-template #noRaPrice>/</ng-template>
                     </td>
