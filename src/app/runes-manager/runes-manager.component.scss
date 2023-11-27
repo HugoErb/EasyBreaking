@@ -21,26 +21,17 @@ table {
     border-collapse: collapse;
 }
 
-th, td {
+th,
+td {
     text-align: center;
     padding: 8px;
     border: 1px solid rgb(198, 193, 185);
     vertical-align: middle;
-}
-
-td{
     color: rgb(198, 193, 185);
 }
 
-th {
-    background-color: #f4f4f4;
-}
-
-input[type="number"] {
-    width: 100%;
-    padding: 6px;
-    border: 1px solid rgb(198, 193, 185);
-    border-radius: 4px;
+thead {
+    font-weight: bold;
 }
 
 button {
