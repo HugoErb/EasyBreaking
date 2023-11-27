@@ -32,20 +32,8 @@ export class HomeComponent {
 
     ngOnInit() {
 
-        // Récuperation des runes
-        this.http.get('assets/jsons/runes.json').subscribe((data: any) => {
-            data.forEach((rune: any) => {
-                this.runes.push({
-                    name: rune.Name,
-                    stat: rune.Stat,
-                    img: rune.Img,
-                    price: rune.Price,
-                    weight: rune.Weight,
-                    raPrice: rune.RaPrice,
-                    paPrice: rune.PaPrice,
-                });
-            });
-        });
+        //Récupération des runes 
+        this.loadRunes();
 
         // Récupération des armes et des équipements
         const armes$ = this.http.get<any[]>('assets/jsons/armes.json');
@@ -57,6 +45,33 @@ export class HomeComponent {
 
             this.items = [...armes, ...equipements];
             this.items.sort((a, b) => a.name.localeCompare(b.name));
+        });
+    }
+
+    loadRunes() {
+        const storedRunes = localStorage.getItem('runesData');
+        if (storedRunes) {
+            const runesData = JSON.parse(storedRunes);
+            this.initializeRunes(runesData);
+        } else {
+            this.http.get('assets/jsons/runes.json').subscribe((data: any) => {
+                localStorage.setItem('runesData', JSON.stringify(data));
+                this.initializeRunes(data);
+            });
+        }
+    }
+
+    initializeRunes(data: any[]) {
+        data.forEach((rune: any) => {
+            this.runes.push({
+                name: rune.Name,
+                stat: rune.Stat,
+                img: rune.Img,
+                price: rune.Price,
+                weight: rune.Weight,
+                raPrice: rune.RaPrice,
+                paPrice: rune.PaPrice,
+            });
         });
     }
 
