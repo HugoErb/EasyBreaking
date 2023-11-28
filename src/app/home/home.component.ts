@@ -172,17 +172,20 @@ export class HomeComponent {
         this.tauxRentabiliteKamas = 0;
         this.nonProfitableBreakRate = 0;
         if (this.prixCraft != undefined && this.tauxBrisage != undefined) {
-            this.tauxRentabilitePourcent = parseFloat(((this.maxValue! - this.prixCraft) / this.prixCraft * 100).toFixed(2));
             this.tauxRentabiliteKamas = Math.round(this.maxValue! - this.prixCraft);
+            this.tauxRentabilitePourcent = parseFloat((this.tauxRentabiliteKamas / this.prixCraft * 100).toFixed(2));
+            
             this.nonProfitableBreakRate = this.findNonProfitableBreakRate(false);
         }
 
         this.tauxRentabilitePourcentPaRa = 0;
         this.tauxRentabiliteKamasPaRa = 0;
         this.nonProfitableBreakRatePaRa = 0;
-        if (this.prixCraft != undefined && this.tauxBrisage != undefined) {
+        if (this.prixCraft != undefined && this.tauxBrisage != undefined && this.mergeRune != 'Aucune') {
+            
             this.tauxRentabilitePourcentPaRa = parseFloat(((this.maxValuePaRa! - this.prixCraft) / this.prixCraft * 100).toFixed(2));
             this.tauxRentabiliteKamasPaRa = Math.round(this.maxValuePaRa! - this.prixCraft);
+            
             this.nonProfitableBreakRatePaRa = this.findNonProfitableBreakRate(true);
         }
         this.defineCellColor();
