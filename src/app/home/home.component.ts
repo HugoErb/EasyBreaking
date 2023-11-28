@@ -32,7 +32,7 @@ export class HomeComponent {
     maxCellColor: string = 'darkgreen';
     maxCellTextColor: string = 'rgb(198, 193, 185)';
     mergeRune: string = 'Aucune';
-    maxValuePaRa?: number;
+    maxValuePaRa?: number = 0;
 
     ngOnInit() {
 
@@ -139,27 +139,32 @@ export class HomeComponent {
         this.maxFocusedKamasEarned = Math.max(...this.tableauEffects.map(item => item.focusedKamasEarned));
         this.maxValue = Math.max(this.maxFocusedKamasEarned, this.sumKamasEarned);
 
-        // Trouver l'item avec maxFocusedKamasEarned
-        const itemWithMaxFocusedKamas = this.tableauEffects.find(item => item.focusedKamasEarned === this.maxFocusedKamasEarned);
 
-        if (itemWithMaxFocusedKamas) {
-            // Comparer les valeurs pour cet item spécifique
-            this.maxValuePaRa = Math.max(
-                this.maxFocusedKamasEarned,
-                itemWithMaxFocusedKamas.paKamasEarned ?? 0,
-                itemWithMaxFocusedKamas.raKamasEarned ?? 0
-            );
+        if (this.tauxBrisage != undefined) {
+            // Trouver l'item avec maxFocusedKamasEarned
+            const itemWithMaxFocusedKamas = this.tableauEffects.find(item => item.focusedKamasEarned === this.maxFocusedKamasEarned);
 
-            // Déterminer le type de rune le plus rentable
-            if (this.maxValuePaRa === itemWithMaxFocusedKamas.paKamasEarned) {
-                this.mergeRune = 'Pa';
-            } else if (this.maxValuePaRa === itemWithMaxFocusedKamas.raKamasEarned) {
-                this.mergeRune = 'Ra';
+            if (itemWithMaxFocusedKamas) {
+                // Comparer les valeurs pour cet item spécifique
+                this.maxValuePaRa = Math.max(
+                    this.maxFocusedKamasEarned,
+                    itemWithMaxFocusedKamas.paKamasEarned ?? 0,
+                    itemWithMaxFocusedKamas.raKamasEarned ?? 0
+                );
+
+                // Déterminer le type de rune le plus rentable
+                if (this.maxValuePaRa === itemWithMaxFocusedKamas.paKamasEarned) {
+                    this.mergeRune = 'Pa';
+                } else if (this.maxValuePaRa === itemWithMaxFocusedKamas.raKamasEarned) {
+                    this.mergeRune = 'Ra';
+                } else {
+                    this.mergeRune = 'Aucune';
+                    this.maxValuePaRa = 0;
+                }
             } else {
                 this.mergeRune = 'Aucune';
+                this.maxValuePaRa = 0;
             }
-        } else {
-            this.mergeRune = 'Aucune';
         }
 
 
@@ -190,7 +195,7 @@ export class HomeComponent {
      */
     findNonProfitableBreakRate(includePaRa: boolean): number {
         let nonProfitableBreakRate = parseInt(this.tauxBrisage);
-    
+
         while (nonProfitableBreakRate > 0) {
             const sumKamasEarned = this.calculateBenefit(nonProfitableBreakRate, includePaRa);
             if (sumKamasEarned <= 0) {
@@ -200,7 +205,7 @@ export class HomeComponent {
         }
         return 1;
     }
-    
+
 
     /**
      * Calcule le bénéfice total en Kamas pour un taux de brisage donné, en considérant

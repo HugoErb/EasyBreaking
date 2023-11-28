@@ -66,16 +66,20 @@
             </div>
             <div class="rentabilite">
                 <h2 class="sectionH2">Rentabilité</h2>
-                <div class="tauxRentabilite">
-                    <p>Rentabilité (%) : {{tauxRentabilitePourcent}} %</p>
-                    <p>Rentabilité (kamas): {{tauxRentabiliteKamas | number: '1.0-0'}} k</p>
-                    <p>Rentable jusqu'au taux de brisage : {{nonProfitableBreakRate}} %</p>
-                    <br>
-                    <p>Fusion de runes à faire : {{mergeRune}}</p>
-                    <p>Kamas obtenus en focus après fusion : {{maxValuePaRa | number: '1.0-0'}} k</p>
-                    <p>Rentabilité (%) après fusion : {{tauxRentabilitePourcentPaRa}} %</p>
-                    <p>Rentabilité (kamas) après fusion : {{tauxRentabiliteKamasPaRa | number: '1.0-0'}} k</p>
-                    <p>Rentable jusqu'au taux de brisage après fusion : {{nonProfitableBreakRatePaRa}} %</p>
+                <div class="tauxRentabiliteContainer">
+                    <div class="tauxRentabilite">
+                        <p>Kamas obtenus en focus : {{maxFocusedKamasEarned | number: '1.0-0'}} k</p>
+                        <p>Rentabilité (%) : {{tauxRentabilitePourcent}} %</p>
+                        <p>Rentabilité (kamas): {{tauxRentabiliteKamas | number: '1.0-0'}} k</p>
+                        <p>Rentable jusqu'au taux de brisage : {{nonProfitableBreakRate}} %</p>
+                    </div>
+                    <div class="tauxRentabilite tauxRentabiliteRight">
+                        <p>Fusion de runes à faire : {{mergeRune}}</p>
+                        <p>Kamas obtenus en focus après fusion : {{maxValuePaRa | number: '1.0-0'}} k</p>
+                        <p>Rentabilité (%) après fusion : {{tauxRentabilitePourcentPaRa}} %</p>
+                        <p>Rentabilité (kamas) après fusion : {{tauxRentabiliteKamasPaRa | number: '1.0-0'}} k</p>
+                        <p>Rentable jusqu'au taux de brisage après fusion : {{nonProfitableBreakRatePaRa}} %</p>
+                    </div>
                 </div>
             </div>
             <div class="recipe">

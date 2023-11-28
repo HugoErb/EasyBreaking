@@ -57,7 +57,7 @@ main .select {
 
 // ***********************************************************************
 
-.vanishingDiv{
+.vanishingDiv {
     display: none;
 }
 
@@ -131,16 +131,22 @@ main .select {
     color: rgb(198, 193, 185);
 }
 
-.tauxRentabilite {
-    color: rgb(198, 193, 185);
+.tauxRentabiliteContainer {
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+}
+
+.tauxRentabiliteRight{
+    margin-left: 100px;
 }
 
 .tauxRentabilite p {
-    margin-top: 5px;
+    margin-top: 6px;
 }
 
 .tauxRentabilite p:first-child {
-    margin-top: 0px;
+    margin-top: 0;
 }
 
 // ***********************************************************************
@@ -161,7 +167,7 @@ main .select {
 .ingredientContainer :last-child:nth-child(odd) {
     grid-column-start: auto;
     grid-column-end: auto;
-    width: 45%; 
+    width: 45%;
     grid-column: 1 / -1;
     justify-self: center;
 }
@@ -208,7 +214,7 @@ p-dialog p:first-child {
     margin-top: 0px;
 }
 
-.indent{
+.indent {
     margin-left: 50px !important;
     margin-top: 0px !important;
 }
