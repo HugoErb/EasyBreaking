@@ -22,7 +22,9 @@ export class HomeComponent {
     tauxRentabilitePourcent: number = 0;
     tauxRentabiliteKamas: number = 0;
     nonProfitableBreakRate: number = 0;
-    nonProfitableBreakRateVise: number = 0;
+    tauxRentabilitePourcentPaRa: number = 0;
+    tauxRentabiliteKamasPaRa: number = 0;
+    nonProfitableBreakRatePaRa: number = 0;
     helpDivvisible: boolean = false;
     sumKamasEarned: number = 0;
     maxFocusedKamasEarned?: number;
@@ -30,6 +32,7 @@ export class HomeComponent {
     maxCellColor: string = 'darkgreen';
     maxCellTextColor: string = 'rgb(198, 193, 185)';
     mergeRune: string = 'Aucune';
+    maxValuePaRa?: number;
 
     ngOnInit() {
 
@@ -104,9 +107,16 @@ export class HomeComponent {
         // On crée les données du tableau selon l'item sélectionné
         this.tableauEffects = this.selectedItem.effects.map((effect: string) => {
             const runeObj = this.findMatchingRune(effect);
+
             const runeQuantityFocused = this.calculateRuneQuantityFocused(tauxBrisage, effect, this.selectedItem.effects);
-            const runeQuantity = this.calculateRuneQuantity(tauxBrisage, runeObj, effect);
-            const kamasEarned = Math.round(runeQuantity * parseFloat(runeObj.price)) * 0.98;
+            const baseRuneQuantity = this.calculateRuneQuantity(tauxBrisage, runeObj, effect);
+            const paRuneQuantity = runeObj.paPrice ? runeQuantityFocused / 3 : 0;
+            const raRuneQuantity = runeObj.raPrice ? runeQuantityFocused / 6 : 0;
+
+            const kamasEarned = Math.round(baseRuneQuantity * parseFloat(runeObj.price)) * 0.98;
+            const paKamasEarned = Math.round(paRuneQuantity * (runeObj.paPrice ? parseFloat(runeObj.paPrice) : 0)) * 0.98;
+            const raKamasEarned = Math.round(raRuneQuantity * (runeObj.raPrice ? parseFloat(runeObj.raPrice) : 0)) * 0.98;
+
             this.sumKamasEarned += kamasEarned;
 
             return {
@@ -114,10 +124,14 @@ export class HomeComponent {
                 runeName: runeObj.name,
                 runePrice: runeObj.price,
                 runeImg: runeObj.img,
-                runeQuantity: runeQuantity.toFixed(2),
+                runeQuantity: baseRuneQuantity.toFixed(2),
                 kamasEarned: kamasEarned,
                 runeQuantityFocused: runeQuantityFocused.toFixed(2),
-                focusedKamasEarned: Math.round(runeQuantityFocused * parseFloat(runeObj.price)) * 0.98
+                focusedKamasEarned: Math.round(runeQuantityFocused * parseFloat(runeObj.price)) * 0.98,
+                paRuneQuantity: paRuneQuantity.toFixed(2),
+                paKamasEarned: paKamasEarned,
+                raRuneQuantity: raRuneQuantity.toFixed(2),
+                raKamasEarned: raKamasEarned
             };
         });
 
@@ -125,13 +139,46 @@ export class HomeComponent {
         this.maxFocusedKamasEarned = Math.max(...this.tableauEffects.map(item => item.focusedKamasEarned));
         this.maxValue = Math.max(this.maxFocusedKamasEarned, this.sumKamasEarned);
 
+        // Trouver l'item avec maxFocusedKamasEarned
+        const itemWithMaxFocusedKamas = this.tableauEffects.find(item => item.focusedKamasEarned === this.maxFocusedKamasEarned);
+
+        if (itemWithMaxFocusedKamas) {
+            // Comparer les valeurs pour cet item spécifique
+            this.maxValuePaRa = Math.max(
+                this.maxFocusedKamasEarned,
+                itemWithMaxFocusedKamas.paKamasEarned ?? 0,
+                itemWithMaxFocusedKamas.raKamasEarned ?? 0
+            );
+
+            // Déterminer le type de rune le plus rentable
+            if (this.maxValuePaRa === itemWithMaxFocusedKamas.paKamasEarned) {
+                this.mergeRune = 'Pa';
+            } else if (this.maxValuePaRa === itemWithMaxFocusedKamas.raKamasEarned) {
+                this.mergeRune = 'Ra';
+            } else {
+                this.mergeRune = 'Aucune';
+            }
+        } else {
+            this.mergeRune = 'Aucune';
+        }
+
+
         this.tauxRentabilitePourcent = 0;
         this.tauxRentabiliteKamas = 0;
         this.nonProfitableBreakRate = 0;
         if (this.prixCraft != undefined && this.tauxBrisage != undefined) {
             this.tauxRentabilitePourcent = parseFloat(((this.maxValue! - this.prixCraft) / this.prixCraft * 100).toFixed(2));
             this.tauxRentabiliteKamas = Math.round(this.maxValue! - this.prixCraft);
-            this.nonProfitableBreakRate = this.findNonProfitableBreakRate();
+            this.nonProfitableBreakRate = this.findNonProfitableBreakRate(false);
+        }
+
+        this.tauxRentabilitePourcentPaRa = 0;
+        this.tauxRentabiliteKamasPaRa = 0;
+        this.nonProfitableBreakRatePaRa = 0;
+        if (this.prixCraft != undefined && this.tauxBrisage != undefined) {
+            this.tauxRentabilitePourcentPaRa = parseFloat(((this.maxValuePaRa! - this.prixCraft) / this.prixCraft * 100).toFixed(2));
+            this.tauxRentabiliteKamasPaRa = Math.round(this.maxValuePaRa! - this.prixCraft);
+            this.nonProfitableBreakRatePaRa = this.findNonProfitableBreakRate(true);
         }
         this.defineCellColor();
     }
@@ -141,11 +188,11 @@ export class HomeComponent {
      *
      * @returns Le taux de brisage à partir duquel briser l'item n'est plus rentable.
      */
-    findNonProfitableBreakRate(): number {
+    findNonProfitableBreakRate(includePaRa: boolean): number {
         let nonProfitableBreakRate = parseInt(this.tauxBrisage);
-
+    
         while (nonProfitableBreakRate > 0) {
-            const sumKamasEarned = this.calculateBenefit(nonProfitableBreakRate);
+            const sumKamasEarned = this.calculateBenefit(nonProfitableBreakRate, includePaRa);
             if (sumKamasEarned <= 0) {
                 return nonProfitableBreakRate + 1;
             }
@@ -153,6 +200,7 @@ export class HomeComponent {
         }
         return 1;
     }
+    
 
     /**
      * Calcule le bénéfice total en Kamas pour un taux de brisage donné, en considérant
@@ -161,26 +209,49 @@ export class HomeComponent {
      * @param tauxBrisage Le taux de brisage à utiliser pour le calcul, exprimé en pourcentage.
      * @returns Le bénéfice total en Kamas après soustraction du coût de production de l'item.
      */
-    calculateBenefit(tauxBrisage: number): number {
+    calculateBenefit(tauxBrisage: number, includePaRa: boolean): number {
         let sumKamasEarned = 0;
         let maxFocusedKamasEarned = 0;
+        let maxPaRaKamasEarned = 0;
 
         this.selectedItem.effects.forEach((effect: string) => {
             const runeObj = this.findMatchingRune(effect);
+
+            // Calculs pour les runes standard
             const runeQuantity = this.calculateRuneQuantity(tauxBrisage, runeObj, effect);
             const kamasEarned = Math.round(runeQuantity * parseFloat(runeObj.price)) * 0.98;
             sumKamasEarned += kamasEarned;
 
+            // Calculs pour les runes focused
             const runeQuantityFocused = this.calculateRuneQuantityFocused(tauxBrisage, effect, this.selectedItem.effects);
             const focusedKamasEarned = Math.round(runeQuantityFocused * parseFloat(runeObj.price)) * 0.98;
             if (focusedKamasEarned > maxFocusedKamasEarned) {
                 maxFocusedKamasEarned = focusedKamasEarned;
             }
+
+            // Calculs pour les runes PA et RA, si applicable
+            if (includePaRa) {
+                const paRuneQuantity = runeObj.paPrice ? runeQuantityFocused / 3 : 0;
+                const raRuneQuantity = runeObj.raPrice ? runeQuantityFocused / 6 : 0;
+                const paKamasEarned = Math.round(paRuneQuantity * (runeObj.paPrice ? parseFloat(runeObj.paPrice) : 0)) * 0.98;
+                const raKamasEarned = Math.round(raRuneQuantity * (runeObj.raPrice ? parseFloat(runeObj.raPrice) : 0)) * 0.98;
+                const maxValuePaRa = Math.max(paKamasEarned, raKamasEarned);
+
+                if (maxValuePaRa > maxPaRaKamasEarned) {
+                    maxPaRaKamasEarned = maxValuePaRa;
+                }
+            }
         });
 
+        // Choix de la valeur maximale à retourner en fonction de includePaRa
         let maxValue = Math.max(maxFocusedKamasEarned, sumKamasEarned);
+        if (includePaRa && maxPaRaKamasEarned > maxValue) {
+            maxValue = maxPaRaKamasEarned;
+        }
+
         return Math.round(maxValue - this.prixCraft);
     }
+
 
 
 
