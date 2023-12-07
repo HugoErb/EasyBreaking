@@ -26,9 +26,9 @@
                         </td>
                         <td>{{row.runeName}}</td>
                         <td>{{row.runePrice | number: '1.0-0'}}</td>
-                        <td>{{row.runeQuantity| number: '1.0-2'}}</td>
+                        <td>{{row.runeQuantity | number: '1.0-2'}}</td>
                         <td>{{row.kamasEarned | number: '1.0-0'}}</td>
-                        <td>{{row.runeQuantityFocused| number: '1.0-2'}}</td>
+                        <td>{{row.runeQuantityFocused | number: '1.0-2'}}</td>
                         <td [style.backgroundColor]="row.focusedKamasEarned === maxValue && row.focusedKamasEarned !== 0 ? this.maxCellColor : ''"
                             [style.color]="row.focusedKamasEarned === maxValue && row.focusedKamasEarned !== 0 ? maxCellTextColor : ''"
                             [style.fontWeight]="row.focusedKamasEarned === maxValue && row.focusedKamasEarned !== 0 ? 'bold' : ''">
