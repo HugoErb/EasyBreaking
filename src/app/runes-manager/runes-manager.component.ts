@@ -20,15 +20,24 @@ export class RunesManagerComponent implements OnInit {
     const storedRunes = localStorage.getItem('runesData');
     if (storedRunes) {
       const runesData = JSON.parse(storedRunes);
-      this.runes = runesData;
-
+      this.runes = runesData.map((rune: any) => ({
+        ...rune,
+        paPrice: rune.paPrice !== null ? rune.paPrice : undefined,
+        raPrice: rune.raPrice !== null ? rune.raPrice : undefined
+      }));
     } else {
       this.http.get('assets/jsons/runes.json').subscribe((data: any) => {
-        localStorage.setItem('runesData', JSON.stringify(data));
-        this.runes = data;
+        const initializedData = data.map((rune: any) => ({
+          ...rune,
+          paPrice: rune.paPrice !== null ? rune.paPrice : undefined,
+          raPrice: rune.raPrice !== null ? rune.raPrice : undefined
+        }));
+        localStorage.setItem('runesData', JSON.stringify(initializedData));
+        this.runes = initializedData;
       });
     }
   }
+
 
   onPriceChange(runeIndex: number, priceType: string, event: any) {
     const newPrice = parseFloat(event.target.value);
