@@ -50,7 +50,7 @@ export class RunesManagerComponent implements OnInit {
   }
 
   goToHomePage() {
-    this.router.navigate(['']); // Utilisez le chemin approprié pour votre page d'accueil
+    this.router.navigate(['']);
   }
 
   /**
