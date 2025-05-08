@@ -71,7 +71,10 @@ export class HomeComponent {
             level: item.level,
             name: item.name,
             effects: item.effects,
-            recipe: item.recipe
+            recipe: item.recipe,
+            type: item.type,
+            set: item.set,
+            link: item.link
         }));
     }
 
@@ -174,7 +177,7 @@ export class HomeComponent {
         if (this.prixCraft != undefined && this.tauxBrisage != undefined) {
             this.tauxRentabiliteKamas = Math.round(this.maxValue! - this.prixCraft);
             this.tauxRentabilitePourcent = parseFloat((this.tauxRentabiliteKamas / this.prixCraft * 100).toFixed(2));
-            
+
             this.nonProfitableBreakRate = this.findNonProfitableBreakRate(false);
         }
 
@@ -182,10 +185,10 @@ export class HomeComponent {
         this.tauxRentabiliteKamasPaRa = 0;
         this.nonProfitableBreakRatePaRa = 0;
         if (this.prixCraft != undefined && this.tauxBrisage != undefined && this.mergeRune != 'Aucune') {
-            
+
             this.tauxRentabilitePourcentPaRa = parseFloat(((this.maxValuePaRa! - this.prixCraft) / this.prixCraft * 100).toFixed(2));
             this.tauxRentabiliteKamasPaRa = Math.round(this.maxValuePaRa! - this.prixCraft);
-            
+
             this.nonProfitableBreakRatePaRa = this.findNonProfitableBreakRate(true);
         }
         this.defineCellColor();
@@ -290,13 +293,24 @@ export class HomeComponent {
    * @param itemStatistic - La statistique de l'objet pour laquelle on souhaite trouver la rune correspondante.
    * @returns La rune correspondante trouvée, ou undefined si aucune rune correspondante n'est trouvée.
    */
-    findMatchingRune(itemStatistic: any): any {
+    findMatchingRune(itemStatistic: string): any {
+        const normalize = (str: string) => str
+            .toLowerCase()
+            .replace(/[^a-zàâçéèêëîïôûùüÿñæœ\s]/gi, '') // supprime ponctuation
+            .trim();
+
         const stats: string[] = this.runes.map((rune: any) => rune.stat);
-        const filteredStats: string[] = stats.filter((stat: string) => itemStatistic.includes(stat));
+        const normalizedItemStat = normalize(itemStatistic);
+
+        const filteredStats: string[] = stats.filter((stat: string) =>
+            normalizedItemStat.includes(normalize(stat))
+        );
+
         filteredStats.sort(this.compareByLength);
 
         return this.runes.find((rune: any) => rune.stat === filteredStats[0]);
     }
+
 
     /**
    * Compare deux chaînes de caractères en fonction de leur longueur.
