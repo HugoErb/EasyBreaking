@@ -33,6 +33,8 @@ export class HomeComponent {
     maxCellTextColor: string = 'rgb(198, 193, 185)';
     mergeRune: string = 'Aucune';
     maxValuePaRa?: number = 0;
+    nombreObjets: number = 1;
+
 
     ngOnInit() {
 

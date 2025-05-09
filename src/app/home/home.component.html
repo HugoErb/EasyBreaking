@@ -85,15 +85,27 @@
             </div>
             <div class="recipe">
                 <h2 class="sectionH2">Recette</h2>
+            
+                <div class="form-group">
+                    <label for="nbObjets">Nombre d'objets à créer :</label>
+                    <input id="nbObjets" type="number" min="1" [(ngModel)]="nombreObjets" />
+                </div>
+            
                 <div class="ingredientContainer">
                     <div tabindex="0" *ngFor="let ingredient of recipe" class="ingredient" pTooltip="Ingrédient copié"
                         tooltipEvent="focus" tooltipPosition="top" (click)="copyToClipboard($event, ingredient.name)">
+            
                         <p class="ingredientName">{{ ingredient.name }}</p>
-                        <p>{{ ingredient.quantite }}x</p>
-                        <p>Niv : {{ ingredient.level }}</p>
+                        <p>Quantité pour 1 objet : {{ ingredient.quantite }}</p>
+                        <p>Quantité pour {{ nombreObjets }} objet{{ nombreObjets > 1 ? 's' : '' }} :
+                            {{ ingredient.quantite * nombreObjets }}
+                        </p>
                     </div>
                 </div>
             </div>
+              
+              
+              
         </div>
     </div>
     <div class="helpSign" (click)="showHelp()"><i class="fa-regular fa-circle-question"></i></div>
