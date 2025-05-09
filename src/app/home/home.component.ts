@@ -296,10 +296,18 @@ export class HomeComponent {
    * @returns La rune correspondante trouvée, ou undefined si aucune rune correspondante n'est trouvée.
    */
     findMatchingRune(itemStatistic: string): any {
+        const hasPercent = itemStatistic.includes('%');
         const normalizedItemStat = this.normalizeStat(itemStatistic);
 
         const filteredRunes = this.runes.filter((rune: any) => {
             const normalizedRuneStat = this.normalizeStat(rune.stat);
+
+            // Cas particulier : différencier résistance fixe et %
+            if (normalizedItemStat.includes('résistance')) {
+                if (hasPercent && !rune.stat.startsWith('%')) return false;
+                if (!hasPercent && rune.stat.startsWith('%')) return false;
+            }
+
             return normalizedItemStat.includes(normalizedRuneStat);
         });
 
@@ -309,6 +317,7 @@ export class HomeComponent {
 
         return filteredRunes[0];
     }
+      
 
 
     /**
