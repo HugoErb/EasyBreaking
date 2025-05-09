@@ -156,20 +156,17 @@ main .select {
     color: rgb(198, 193, 185);
 }
 
+.nbObjetsInput{
+    margin-left: 10px;
+}
+
 .ingredientContainer {
+    margin-top: 20px;
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     gap: 30px;
     justify-content: space-evenly;
     padding: 0 20px 0 20px;
-}
-
-.ingredientContainer :last-child:nth-child(odd) {
-    grid-column-start: auto;
-    grid-column-end: auto;
-    width: 45%;
-    grid-column: 1 / -1;
-    justify-self: center;
 }
 
 .ingredient {
@@ -189,7 +186,8 @@ main .select {
     letter-spacing: 0.1px;
 }
 
-.ingredientName {
+.ingredient p.ingredientName {
+    margin-bottom: 10px;
     font-weight: bold;
 }
 
