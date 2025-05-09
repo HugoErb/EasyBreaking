@@ -160,6 +160,10 @@ main .select {
     margin-left: 10px;
 }
 
+.nbObjetsInput ::ng-deep .p-inputtext {
+    width: 100px !important; 
+}
+
 .ingredientContainer {
     margin-top: 20px;
     display: grid;
