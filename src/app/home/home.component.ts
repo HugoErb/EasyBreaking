@@ -296,31 +296,51 @@ export class HomeComponent {
    * @returns La rune correspondante trouvée, ou undefined si aucune rune correspondante n'est trouvée.
    */
     findMatchingRune(itemStatistic: string): any {
-        const normalize = (str: string) => str
-            .toLowerCase()
-            .replace(/[^a-zàâçéèêëîïôûùüÿñæœ\s]/gi, '') // supprime ponctuation
-            .trim();
+        const normalizedItemStat = this.normalizeStat(itemStatistic);
 
-        const stats: string[] = this.runes.map((rune: any) => rune.stat);
-        const normalizedItemStat = normalize(itemStatistic);
+        const filteredRunes = this.runes.filter((rune: any) => {
+            const normalizedRuneStat = this.normalizeStat(rune.stat);
+            return normalizedItemStat.includes(normalizedRuneStat);
+        });
 
-        const filteredStats: string[] = stats.filter((stat: string) =>
-            normalizedItemStat.includes(normalize(stat))
+        filteredRunes.sort((a: any, b: any) =>
+            this.compareByLength(a.stat, b.stat)
         );
 
-        filteredStats.sort(this.compareByLength);
-
-        return this.runes.find((rune: any) => rune.stat === filteredStats[0]);
+        return filteredRunes[0];
     }
 
 
     /**
-   * Compare deux chaînes de caractères en fonction de leur longueur.
-   *
-   * @param strA - La première chaîne de caractères à comparer.
-   * @param strB - La deuxième chaîne de caractères à comparer.
-   * @returns Un nombre positif si strB est plus longue que strA, un nombre négatif si strA est plus longue que strB, ou 0 si les deux sont de même longueur.
-   */
+    * Normalise une chaîne de caractères représentant une statistique d'objet ou de rune.
+    *
+    * @param stat - La chaîne représentant la statistique à normaliser.
+    * @returns La version normalisée de la statistique.
+    */
+    normalizeStat(stat: string): string {
+        return stat
+            .toLowerCase()
+            .replace(/[^a-zàâçéèêëîïôûùüÿñæœ\s]/gi, '') // supprime les % et autres
+            .replace(/\bpo\b/, 'portée')
+            .replace(/\bpa\b/, 'pa')
+            .replace(/\bpm\b/, 'pm')
+            .replace(/\b%?\s*critique(s)?\b/, 'critique')
+            .replace(/\bdommage(s)? de poussée\b/, 'dommage poussée')
+            .replace(/\bdommage(s)? critiques?\b/, 'dommage critiques')
+            .replace(/\b%?\s*résistance(s)?\b/, 'résistance')
+            .replace(/\b%?\s*dommage(s)?\b/, 'dommage')
+            .replace(/\s+/g, ' ')
+            .trim();
+    }
+
+
+    /**
+     * Compare deux chaînes de caractères en fonction de leur longueur.
+     *
+     * @param strA - La première chaîne de caractères à comparer.
+     * @param strB - La deuxième chaîne de caractères à comparer.
+     * @returns Un nombre positif si strB est plus longue que strA, un nombre négatif si strA est plus longue que strB, ou 0 si les deux sont de même longueur.
+     */
     compareByLength(strA: string, strB: string): number {
         return strB.length - strA.length;
     }
