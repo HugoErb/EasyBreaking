@@ -69,7 +69,7 @@ export class HomeComponent implements OnInit, OnDestroy {
     recipe: any[] = [];
 
     // Paramètres utilisateur
-    tauxBrisage = 0;
+    tauxBrisage: number | null = null;
     prixCraft?: number;
     tauxRentabiliteVise: number = 25;
 
@@ -200,7 +200,10 @@ export class HomeComponent implements OnInit, OnDestroy {
         this.unVanishDiv();
 
         const level = this.selectedItem.level;
-        this.tauxBrisage = Math.min(this.tauxBrisage, 4000);
+        if (this.tauxBrisage != null) {
+            this.tauxBrisage = Math.min(this.tauxBrisage, 4000);
+        }
+          
 
         this._cachedRunes = this.selectedItem.effects.map((effect: string) => {
             const rune = this.findMatchingRune(effect);
@@ -262,8 +265,9 @@ export class HomeComponent implements OnInit, OnDestroy {
      */
     @LogExecution
     private buildTableAndTotals(): void {
-        // Clamp du taux de brisage
-        this.tauxBrisage = Math.min(this.tauxBrisage, 4000);
+        if (this.tauxBrisage != null) {
+            this.tauxBrisage = Math.min(this.tauxBrisage, 4000);
+        }
         this.sumKamasEarned = 0;
 
         this.tableauEffects = this._cachedRunes.map(({ effect, rune }) => {
@@ -373,7 +377,6 @@ export class HomeComponent implements OnInit, OnDestroy {
         }
     }
 
-
     /**
      * Remet à zéro les statistiques de la partie "Rentabilité" (avant recalcul).
      */
@@ -393,7 +396,7 @@ export class HomeComponent implements OnInit, OnDestroy {
      */
     @LogExecution
     findNorProfitableBreakRate(includePaRa: boolean): number {
-        let nonProfitableBreakRate: number = this.tauxBrisage;
+        let nonProfitableBreakRate: number = this.tauxBrisage!;
         let sumKamasEarned: number = this.calculateBenefit(nonProfitableBreakRate, includePaRa);
 
         // Cas non rentable : on cherche vers le haut
@@ -474,10 +477,6 @@ export class HomeComponent implements OnInit, OnDestroy {
         return Math.round(maxValue - this.prixCraft);
     }
 
-
-
-
-
     /**
     * Détermine la couleur de la cellule en fonction des valeurs de prixCraft, tauxRentabiliteVise et maxValue.
     * Met à jour la valeur de maxCellColor correspondante.
@@ -530,8 +529,6 @@ export class HomeComponent implements OnInit, OnDestroy {
         return filteredRunes[0];
     }
 
-
-
     /**
     * Normalise une chaîne de caractères représentant une statistique d'objet ou de rune.
     *
@@ -553,7 +550,6 @@ export class HomeComponent implements OnInit, OnDestroy {
             .replace(/\s+/g, ' ')
             .trim();
     }
-
 
     /**
      * Compare deux chaînes de caractères en fonction de leur longueur.
