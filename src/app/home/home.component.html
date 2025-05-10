@@ -114,9 +114,9 @@
                     <div tabindex="0" *ngFor="let ingredient of recipe" class="ingredient" pTooltip="Ingrédient copié"
                         tooltipEvent="focus" tooltipPosition="top" (click)="copyToClipboard($event, ingredient.name)">
                         <p class="ingredientName">{{ ingredient.name }}</p>
-                        <p>Quantité pour 1 objet : {{ ingredient.quantite }}</p>
-                        <p> Quantité pour {{ nombreObjets | number: '1.0-0' }} objet{{ nombreObjets > 1 ? 's' : '' }} :
-                            {{ ingredient.quantite * nombreObjets | number: '1.0-0' }}
+                        <p>Quantité pour 1 objet : x{{ ingredient.quantite }}</p>
+                        <p> Quantité pour {{ nombreObjets | number: '1.0-0' }} objet{{ nombreObjets > 1 ? 's' : '' }} : 
+                            x{{ ingredient.quantite * nombreObjets | number: '1.0-0' }}
                         </p>
                     </div>
                 </div>

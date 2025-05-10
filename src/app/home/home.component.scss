@@ -185,12 +185,13 @@ main .select {
 }
 
 .ingredient p {
-    margin-top: 1px;
+    margin-top: 5px;
     margin-bottom: 1px;
     letter-spacing: 0.1px;
 }
 
 .ingredient p.ingredientName {
+    margin-top: 1px;
     margin-bottom: 10px;
     font-weight: bold;
 }
