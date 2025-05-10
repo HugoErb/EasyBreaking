@@ -25,25 +25,25 @@ function LogExecution(
     propertyKey: string,
     descriptor: PropertyDescriptor
 ) {
-    const original = descriptor.value;
-    descriptor.value = function (...args: any[]) {
-        const start = performance.now();
-        const result = original.apply(this, args);
-        const finish = () => {
-            const end = performance.now();
-            console.log(
-                `[Log] Exiting ${propertyKey}. Execution time: ${(end - start).toFixed(2)} ms`
-            );
-        };
-        if (result instanceof Promise) {
-            return result.then((res: any) => {
-                finish();
-                return res;
-            });
-        }
-        finish();
-        return result;
-    };
+    // const original = descriptor.value;
+    // descriptor.value = function (...args: any[]) {
+    //     const start = performance.now();
+    //     const result = original.apply(this, args);
+    //     const finish = () => {
+    //         const end = performance.now();
+    //         console.log(
+    //             `[Log] Exiting ${propertyKey}. Execution time: ${(end - start).toFixed(2)} ms`
+    //         );
+    //     };
+    //     if (result instanceof Promise) {
+    //         return result.then((res: any) => {
+    //             finish();
+    //             return res;
+    //         });
+    //     }
+    //     finish();
+    //     return result;
+    // };
 }
 
 /**
@@ -70,7 +70,7 @@ export class HomeComponent implements OnInit, OnDestroy {
 
     // Paramètres utilisateur
     tauxBrisage: number | null = null;
-    prixCraft?: number;
+    prixCraft?: number | null = null;
     tauxRentabiliteVise: number = 25;
 
     // Résultats de calculs
@@ -92,10 +92,6 @@ export class HomeComponent implements OnInit, OnDestroy {
     maxValuePaRa?: number = 0;
 
     nombreObjets: number = 1;
-
-    // Debounce / subscription
-    private inputsChange$ = new Subject<void>();
-    private inputsSub!: Subscription;
 
     // Cache des runes pour éviter les recherches répétées et calculs
     private _cachedRunes: CachedRune[] = [];
@@ -123,18 +119,9 @@ export class HomeComponent implements OnInit, OnDestroy {
             ].sort((a, b) => a.name.localeCompare(b.name));
             this.cdr.markForCheck(); // Permet à Angular de revérifier le composant pour màj le DOM avec vos nouvelles valeurs.
         });
-
-        // Débounce des changements d'input avant recalcul
-        this.inputsSub = this.inputsChange$
-            .pipe(debounceTime(200))
-            .subscribe(() => this.recalculate());
     }
 
-    /**
-     * Nettoyage des subscriptions lorsqu'on détruit le composant.
-     */
     ngOnDestroy(): void {
-        this.inputsSub.unsubscribe();
     }
 
     /**
@@ -194,12 +181,8 @@ export class HomeComponent implements OnInit, OnDestroy {
     onItemSelect(): void {
         if (!this.selectedItem) return;
         this.unVanishDiv();
-
+        this.tauxBrisage = null;
         const level = this.selectedItem.level;
-        if (this.tauxBrisage != null) {
-            this.tauxBrisage = Math.min(this.tauxBrisage, 4000);
-        }
-          
 
         this._cachedRunes = this.selectedItem.effects.map((effect: string) => {
             const rune = this.findMatchingRune(effect);
@@ -219,20 +202,12 @@ export class HomeComponent implements OnInit, OnDestroy {
     }
 
     /**
-     * Appelé à chaque changement d'un p-inputNumber (tauxBrisage, prixCraft, etc.)
-     * - Déclenche le debounce avant recalcul
-     */
-    onInputChange(): void {
-        this.inputsChange$.next();
-    }
-
-    /**
      * Recalcule :
      * - Le tableau d'effets + totaux
      * - Les indicateurs de rentabilité
      * - La couleur des cellules
      */
-    private recalculate(): void {
+    onInputChange(): void {
         if (!this.selectedItem) return;
         this.buildTableAndTotals();
         this.computeRentabilities();
@@ -250,7 +225,6 @@ export class HomeComponent implements OnInit, OnDestroy {
         this.defineCellColor();
         this.cdr.markForCheck(); // Permet à Angular de revérifier le composant pour màj le DOM avec vos nouvelles valeurs.
     }
-
 
     /**
      * Construit le tableau des effets (chaque ligne contient quantités et gains)
@@ -370,7 +344,7 @@ export class HomeComponent implements OnInit, OnDestroy {
     }
 
     /**
-     * Remet à zéro les statistiques de la partie "Rentabilité" (avant recalcul).
+     * Remet à zéro les statistiques de la partie "Rentabilité".
      */
     private resetStats(): void {
         this.tauxRentabilitePourcent = 0;
@@ -379,6 +353,7 @@ export class HomeComponent implements OnInit, OnDestroy {
         this.tauxRentabilitePourcentPaRa = 0;
         this.tauxRentabiliteKamasPaRa = 0;
         this.norProfitableBreakRatePaRa = 0;
+        this.prixCraft = null;
     }
 
     /**
@@ -388,23 +363,31 @@ export class HomeComponent implements OnInit, OnDestroy {
      */
     @LogExecution
     findNorProfitableBreakRate(includePaRa: boolean): number {
-        let norProfitableBreakRate: number = this.tauxBrisage!;
-        let sumKamasEarned: number = this.calculateBenefit(norProfitableBreakRate, includePaRa);
+        const MIN_BREAK_RATE = 0;
+        const MAX_BREAK_RATE = 4000;
 
-        // Cas non rentable : on cherche vers le haut
-        while (sumKamasEarned <= 0 || norProfitableBreakRate >= 4000) {
-            norProfitableBreakRate++;
-            sumKamasEarned = this.calculateBenefit(norProfitableBreakRate, includePaRa);
+        let low = MIN_BREAK_RATE;
+        let high = MAX_BREAK_RATE;
+
+        // Ce sera notre meilleur taux trouvé (rentable), initialisé à une valeur impossible
+        let minimalProfitableRate = MAX_BREAK_RATE;
+
+        // Recherche binaire classique
+        while (low <= high) {
+            const midRate = Math.floor((low + high) / 2);
+            const profit = this.calculateBenefit(midRate, includePaRa);
+
+            if (profit <= 0) {
+                // Pas rentable à ce taux, il faut tester plus haut
+                low = midRate + 1;
+            } else {
+                // Rentable → on mémorise ce taux comme possible, et on cherche plus bas
+                minimalProfitableRate = midRate;
+                high = midRate - 1;
+            }
         }
 
-        // Cas rentable : on cherche vers le bas
-        while (sumKamasEarned > 0) {
-            norProfitableBreakRate--;
-            sumKamasEarned = this.calculateBenefit(norProfitableBreakRate, includePaRa);
-        }
-
-        // À la sortie, on est passé juste en-dessous de la rentabilité
-        return norProfitableBreakRate + 1;
+        return minimalProfitableRate;
     }
 
     /**
