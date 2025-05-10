@@ -93,6 +93,10 @@ export class HomeComponent implements OnInit, OnDestroy {
 
     nombreObjets: number = 1;
 
+    // Caches pour calculateBenefit selon mode Pa/Ra
+    private profitCacheNoPa = new Map<number, number>();
+    private profitCacheWithPa = new Map<number, number>();
+
     // Debounce / subscription
     private inputsChange$ = new Subject<void>();
     private inputsSub!: Subscription;
@@ -199,6 +203,10 @@ export class HomeComponent implements OnInit, OnDestroy {
         if (!this.selectedItem) return;
         this.unVanishDiv();
 
+        // Réinitialise les caches de bénéfice
+        this.profitCacheNoPa.clear();
+        this.profitCacheWithPa.clear();
+
         const level = this.selectedItem.level;
         this.tauxBrisage = Math.min(this.tauxBrisage, 4000);
 
@@ -254,7 +262,7 @@ export class HomeComponent implements OnInit, OnDestroy {
         this.defineCellColor();
         this.cdr.markForCheck(); // Permet à Angular de revérifier le composant pour màj le DOM avec vos nouvelles valeurs.
     }
-    
+
 
     /**
      * Construit le tableau des effets (chaque ligne contient quantités et gains)
@@ -395,62 +403,45 @@ export class HomeComponent implements OnInit, OnDestroy {
     /**
      * Trouve le taux de brisage à partir duquel l'item n'est plus rentable.
      *
-     * Parcourt les taux de haut en bas en utilisant le cache pré-calculé
-     * pour éviter les boucles imbriquées coûteuses et garantir un comportement
-     * identique à l'original.
+     * Parcourt linéairement du taux maximum jusqu'à 0 en utilisant un cache
+     * pour éviter de recalculer calculateBenefit plusieurs fois.
      *
      * @param includePaRa – si true, inclure le calcul PA/RA.
-     * @returns Le plus petit taux de brisage à partir duquel le bénéfice net ≤ 0.
+     * @returns Le plus petit taux auquel on redevient rentable (rate+1
+     *          pour le rate qui a rendu profit ≤ 0). Renvoie 1 si on reste
+     *          toujours rentable jusqu'à 1%.
      */
     @LogExecution
     private findNonProfitableBreakRate(includePaRa: boolean): number {
-        const maxRate = this.tauxBrisage;
-        // Somme des numerators pour focus
-        const totalNumerator = this._cachedRunes.reduce((sum, cr) => sum + cr.runeNumerator, 0);
+        console.log("findNonProfitableBreakRate");
+        
+        const cache = includePaRa ? this.profitCacheWithPa : this.profitCacheNoPa;
 
-        // On teste chaque taux de brisage de maxRate → 1
-        for (let rate = maxRate; rate >= 1; rate--) {
-            const factor = rate / 100;
-            let sumKamas = 0;
-            let maxFocusedKamas = 0;
-            let maxPaRaKamas = 0;
+        // on part de this.tauxBrisage et on descend jusqu'à 0
+        for (let rate = this.tauxBrisage; rate >= 0; rate--) {
+            let profit: number;
 
-            for (const cr of this._cachedRunes) {
-                const baseQty = cr.runeNumerator * factor / cr.runeRealWeight;
-                const focusedQty = totalNumerator * factor / cr.runeRealWeight;
-                const paQty = cr.paRunePrice ? focusedQty / 3 : 0;
-                const raQty = cr.raRunePrice ? focusedQty / 6 : 0;
-
-                const kamas = Math.round(baseQty * cr.runePrice) * 0.98;
-                const focusedKamas = Math.round(focusedQty * cr.runePrice) * 0.98;
-                sumKamas += kamas;
-                if (focusedKamas > maxFocusedKamas) {
-                    maxFocusedKamas = focusedKamas;
-                }
-
-                if (includePaRa) {
-                    const paKamas = Math.round(paQty * cr.paRunePrice) * 0.98;
-                    const raKamas = Math.round(raQty * cr.raRunePrice) * 0.98;
-                    const bestPaRa = paKamas > raKamas ? paKamas : raKamas;
-                    if (bestPaRa > maxPaRaKamas) {
-                        maxPaRaKamas = bestPaRa;
-                    }
-                }
+            if (cache.has(rate)) {
+                profit = cache.get(rate)!;
+            } else {
+                profit = this.calculateBenefit(rate, includePaRa);
+                cache.set(rate, profit);
             }
 
-            // Choix de la meilleure valeur selon includePaRa
-            const best = includePaRa
-                ? Math.max(sumKamas, maxFocusedKamas, maxPaRaKamas)
-                : Math.max(sumKamas, maxFocusedKamas);
-            const netProfit = Math.round(best - (this.prixCraft ?? 0));
-
-            if (netProfit <= 0) {
+            // dès qu'on devient non rentable (profit ≤ 0) on renvoie rate+1
+            if (profit <= 0) {
                 return rate + 1;
             }
         }
 
+        // jamais non rentable → on renvoie 1%
         return 1;
     }
+
+
+
+
+
 
     /**
     * Calcule le bénéfice total en Kamas pour un taux de brisage donné, en considérant
