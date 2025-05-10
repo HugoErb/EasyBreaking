@@ -254,6 +254,7 @@ export class HomeComponent implements OnInit, OnDestroy {
         this.defineCellColor();
         this.cdr.markForCheck(); // Permet à Angular de revérifier le composant pour màj le DOM avec vos nouvelles valeurs.
     }
+    
 
     /**
      * Construit le tableau des effets (chaque ligne contient quantités et gains)
@@ -261,58 +262,51 @@ export class HomeComponent implements OnInit, OnDestroy {
      */
     @LogExecution
     private buildTableAndTotals(): void {
-        // Passage en fraction
-        const breakRateFactor = this.tauxBrisage / 100;
+        // Clamp du taux de brisage
+        this.tauxBrisage = Math.min(this.tauxBrisage, 4000);
+        this.sumKamasEarned = 0;
 
-        // Somme des numerators pour le calcul du focus
-        const totalNumeratorSum = this._cachedRunes
-            .reduce((sum, r) => sum + r.runeNumerator, 0);
+        this.tableauEffects = this._cachedRunes.map(({ effect, rune }) => {
+            // quantités brutes et focus
+            const baseQty = this.calculateRuneQuantity(this.tauxBrisage, rune, effect);
+            const focQty = this.calculateRuneQuantityFocused(
+                this.tauxBrisage,
+                effect,
+                this.selectedItem.effects
+            );
+            // quantités PA/RA
+            const paQty = rune.paPrice ? focQty / 3 : 0;
+            const raQty = rune.raPrice ? focQty / 6 : 0;
 
-        let sumKamas = 0;
-        let maxFocusedKamas = 0;
+            // fonction utilitaire pour arrondir et appliquer taxe
+            const calc = (qty: number, priceStr?: string) =>
+                Math.round(qty * (priceStr ? parseFloat(priceStr) : 0)) * 0.98;
 
-        this.tableauEffects = this._cachedRunes.map(cr => {
-            // Quantité de runes “standard”
-            const baseRuneQuantity = cr.runeNumerator * breakRateFactor / cr.runeRealWeight;
-
-            // Quantité de runes “focus” (tous les effets partagent la même somme)
-            const focusedRuneQuantity = totalNumeratorSum * breakRateFactor / cr.runeRealWeight;
-
-            // Quantités de runes PA / RA
-            const paRuneQuantity = cr.paRunePrice ? focusedRuneQuantity / 3 : 0;
-            const raRuneQuantity = cr.raRunePrice ? focusedRuneQuantity / 6 : 0;
-
-            // Kamas générés
-            const kamasEarned = Math.round(baseRuneQuantity * cr.runePrice) * 0.98;
-            const focusedKamasEarned = Math.round(focusedRuneQuantity * cr.runePrice) * 0.98;
-            const paKamasEarned = Math.round(paRuneQuantity * cr.paRunePrice) * 0.98;
-            const raKamasEarned = Math.round(raRuneQuantity * cr.raRunePrice) * 0.98;
-
-            sumKamas = sumKamas + kamasEarned;
-            if (focusedKamasEarned > maxFocusedKamas) {
-                maxFocusedKamas = focusedKamasEarned;
-            }
-
-            return {
-                stat: cr.effect,
-                runeName: cr.rune.name,
-                runePrice: cr.rune.price,
-                runeImg: cr.rune.img,
-                runeQuantity: baseRuneQuantity.toFixed(2),
-                kamasEarned,
-                runeQuantityFocused: focusedRuneQuantity.toFixed(2),
-                focusedKamasEarned,
-                paRuneQuantity: paRuneQuantity.toFixed(2),
-                paKamasEarned,
-                raRuneQuantity: raRuneQuantity.toFixed(2),
-                raKamasEarned
+            const row = {
+                stat: effect,
+                runeName: rune.name,
+                runePrice: rune.price,
+                runeImg: rune.img,
+                runeQuantity: baseQty.toFixed(2),
+                kamasEarned: calc(baseQty, rune.price),
+                runeQuantityFocused: focQty.toFixed(2),
+                focusedKamasEarned: calc(focQty, rune.price),
+                paRuneQuantity: paQty.toFixed(2),
+                paKamasEarned: calc(paQty, rune.paPrice),
+                raRuneQuantity: raQty.toFixed(2),
+                raKamasEarned: calc(raQty, rune.raPrice)
             };
+
+            this.sumKamasEarned += row.kamasEarned;
+            return row;
         });
 
-        // Mise à jour des totaux
-        this.sumKamasEarned = sumKamas;
-        this.maxFocusedKamasEarned = maxFocusedKamas;
-        this.maxValue = Math.max(sumKamas, maxFocusedKamas);
+        this.recipe = this.selectedItem.recipe;
+        this.maxFocusedKamasEarned = Math.max(
+            ...this.tableauEffects.map(r => r.focusedKamasEarned),
+            0
+        );
+        this.maxValue = Math.max(this.maxFocusedKamasEarned, this.sumKamasEarned);
 
         this.determineBestMergeRune();
     }
@@ -349,9 +343,9 @@ export class HomeComponent implements OnInit, OnDestroy {
     }
 
     /**
- * Met à jour tous les indicateurs de rentabilité (avec et sans fusion),
- * en appelant findNonProfitableBreakRate une seule fois par mode.
- */
+     * Met à jour tous les indicateurs de rentabilité (avec et sans fusion),
+     * en appelant findNonProfitableBreakRate une seule fois par mode.
+     */
     @LogExecution
     private computeRentabilities(): void {
         if (this.prixCraft == null) {
@@ -388,7 +382,6 @@ export class HomeComponent implements OnInit, OnDestroy {
     /**
      * Remet à zéro les statistiques de la partie "Rentabilité" (avant recalcul).
      */
-    @LogExecution
     private resetStats(): void {
         this.tauxRentabilitePourcent = 0;
         this.tauxRentabiliteKamas = 0;
