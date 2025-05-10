@@ -4,6 +4,49 @@ import { forkJoin, Subject, Subscription } from 'rxjs';
 import { debounceTime } from 'rxjs/operators';
 
 /**
+ * Représente une rune mise en cache pour accélérer les calculs.
+ */
+interface CachedRune {
+    effect: string;
+    rune: any;
+    runeNumerator: number;
+    runeRealWeight: number;
+    runePrice: number;
+    paRunePrice: number;
+    raRunePrice: number;
+}
+
+/**
+ * Décorateur de méthode pour logger l'entrée, la sortie,
+ * le temps d'exécution et la mémoire utilisée (si disponible).
+ */
+function LogExecution(
+    target: any,
+    propertyKey: string,
+    descriptor: PropertyDescriptor
+) {
+    // const original = descriptor.value;
+    // descriptor.value = function (...args: any[]) {
+    //     const start = performance.now();
+    //     const result = original.apply(this, args);
+    //     const finish = () => {
+    //         const end = performance.now();
+    //         console.log(
+    //             `[Log] Exiting ${propertyKey}. Execution time: ${(end - start).toFixed(2)} ms`
+    //         );
+    //     };
+    //     if (result instanceof Promise) {
+    //         return result.then((res: any) => {
+    //             finish();
+    //             return res;
+    //         });
+    //     }
+    //     finish();
+    //     return result;
+    // };
+}
+
+/**
  * Composant principal de l'application Easy Breaking.
  * Gère la sélection d'un item, l'affichage de ses effets,
  * le calcul des quantités de runes et de la rentabilité.
@@ -54,13 +97,10 @@ export class HomeComponent implements OnInit, OnDestroy {
     private inputsChange$ = new Subject<void>();
     private inputsSub!: Subscription;
 
-    // Cache des runes pour éviter les recherches répétées
-    private _cachedRunes: { effect: string; rune: any }[] = [];
+    // Cache des runes pour éviter les recherches répétées et calculs
+    private _cachedRunes: CachedRune[] = [];
 
-    constructor(
-        private http: HttpClient,
-        private cdr: ChangeDetectorRef
-    ) { }
+    constructor(private http: HttpClient, private cdr: ChangeDetectorRef) { }
 
     /**
      * Initialisation du composant :
@@ -68,6 +108,7 @@ export class HomeComponent implements OnInit, OnDestroy {
      * - Chargement des items (armes + équipements)
      * - Mise en place du debounce des inputs
      */
+    @LogExecution
     ngOnInit(): void {
         this.loadRunes();
 
@@ -92,6 +133,7 @@ export class HomeComponent implements OnInit, OnDestroy {
     /**
      * Nettoyage des subscriptions lorsqu'on détruit le composant.
      */
+    @LogExecution
     ngOnDestroy(): void {
         this.inputsSub.unsubscribe();
     }
@@ -100,6 +142,7 @@ export class HomeComponent implements OnInit, OnDestroy {
      * Charge les runes depuis le localStorage ou depuis le JSON
      * et met à jour this.runes.
      */
+    @LogExecution
     private loadRunes(): void {
         const stored = localStorage.getItem('runesData');
         if (stored) {
@@ -118,6 +161,7 @@ export class HomeComponent implements OnInit, OnDestroy {
      * @param data Liste brute d'items
      * @returns Liste d'items formatés
      */
+    @LogExecution
     private processData(data: any[]): any[] {
         return data.map(item => ({
             id: item.id,
@@ -135,6 +179,7 @@ export class HomeComponent implements OnInit, OnDestroy {
      * Filtre les items pour l'autocomplete.
      * @param event L'événement du composant PrimeNG contenant la query
      */
+    @LogExecution
     filterItem(event: any): void {
         const q = event.query.toLowerCase();
         this.filteredItems = this.items.filter(i =>
@@ -149,30 +194,36 @@ export class HomeComponent implements OnInit, OnDestroy {
      * - Construit le tableau initial
      * - Reset des stats de rentabilité
      */
+    @LogExecution
     onItemSelect(): void {
         if (!this.selectedItem) return;
-
         this.unVanishDiv();
 
-        // Mise en cache des runes
-        this._cachedRunes = this.selectedItem.effects.map((eff: string) => ({
-            effect: eff,
-            rune: this.findMatchingRune(eff)
-        }));
+        const level = this.selectedItem.level;
+        this.tauxBrisage = Math.min(this.tauxBrisage, 4000);
 
-        // Construction du tableau d'effets + totaux
+        this._cachedRunes = this.selectedItem.effects.map((effect: string) => {
+            const rune = this.findMatchingRune(effect);
+            const averageEffectValue = this.calculateAverage(effect);
+            const runeNumerator = 3 * rune.weight * averageEffectValue * level / 200 + 1;
+            const runeRealWeight = this.getRealRuneWeight(rune);
+            const runePrice = parseFloat(rune.price);
+            const paRunePrice = rune.paPrice ? parseFloat(rune.paPrice) : 0;
+            const raRunePrice = rune.raPrice ? parseFloat(rune.raPrice) : 0;
+
+            return { effect, rune, runeNumerator, runeRealWeight, runePrice, paRunePrice, raRunePrice };
+        });
+
         this.buildTableAndTotals();
-
-        // Reset des statistiques de rentabilité
         this.resetStats();
-
-        this.cdr.markForCheck(); // Permet à Angular de revérifier le composant pour màj le DOM avec vos nouvelles valeurs.
+        this.cdr.markForCheck();
     }
 
     /**
      * Appelé à chaque changement d'un p-inputNumber (tauxBrisage, prixCraft, etc.)
      * - Déclenche le debounce avant recalcul
      */
+    @LogExecution
     onInputChange(): void {
         this.inputsChange$.next();
     }
@@ -183,6 +234,7 @@ export class HomeComponent implements OnInit, OnDestroy {
      * - Les indicateurs de rentabilité
      * - La couleur des cellules
      */
+    @LogExecution
     private recalculate(): void {
         if (!this.selectedItem) return;
         this.buildTableAndTotals();
@@ -195,6 +247,7 @@ export class HomeComponent implements OnInit, OnDestroy {
      * Appelé seulement quand on change le prix de craft ou le taux de rentabilité visé.
      * Ne recalcule que la partie rentabilité, pas tout le tableau.
      */
+    @LogExecution
     onEconomicsInputChange(): void {
         if (!this.selectedItem) return;
         this.computeRentabilities();
@@ -206,52 +259,60 @@ export class HomeComponent implements OnInit, OnDestroy {
      * Construit le tableau des effets (chaque ligne contient quantités et gains)
      * et calcule sumKamasEarned, maxFocusedKamasEarned et maxValue.
      */
+    @LogExecution
     private buildTableAndTotals(): void {
-        // Clamp du taux de brisage
-        this.tauxBrisage = Math.min(this.tauxBrisage, 4000);
-        this.sumKamasEarned = 0;
+        // Passage en fraction
+        const breakRateFactor = this.tauxBrisage / 100;
 
-        this.tableauEffects = this._cachedRunes.map(({ effect, rune }) => {
-            // quantités brutes et focus
-            const baseQty = this.calculateRuneQuantity(this.tauxBrisage, rune, effect);
-            const focQty = this.calculateRuneQuantityFocused(
-                this.tauxBrisage,
-                effect,
-                this.selectedItem.effects
-            );
-            // quantités PA/RA
-            const paQty = rune.paPrice ? focQty / 3 : 0;
-            const raQty = rune.raPrice ? focQty / 6 : 0;
+        // Somme des numerators pour le calcul du focus
+        const totalNumeratorSum = this._cachedRunes
+            .reduce((sum, r) => sum + r.runeNumerator, 0);
 
-            // fonction utilitaire pour arrondir et appliquer taxe
-            const calc = (qty: number, priceStr?: string) =>
-                Math.round(qty * (priceStr ? parseFloat(priceStr) : 0)) * 0.98;
+        let sumKamas = 0;
+        let maxFocusedKamas = 0;
 
-            const row = {
-                stat: effect,
-                runeName: rune.name,
-                runePrice: rune.price,
-                runeImg: rune.img,
-                runeQuantity: baseQty.toFixed(2),
-                kamasEarned: calc(baseQty, rune.price),
-                runeQuantityFocused: focQty.toFixed(2),
-                focusedKamasEarned: calc(focQty, rune.price),
-                paRuneQuantity: paQty.toFixed(2),
-                paKamasEarned: calc(paQty, rune.paPrice),
-                raRuneQuantity: raQty.toFixed(2),
-                raKamasEarned: calc(raQty, rune.raPrice)
+        this.tableauEffects = this._cachedRunes.map(cr => {
+            // Quantité de runes “standard”
+            const baseRuneQuantity = cr.runeNumerator * breakRateFactor / cr.runeRealWeight;
+
+            // Quantité de runes “focus” (tous les effets partagent la même somme)
+            const focusedRuneQuantity = totalNumeratorSum * breakRateFactor / cr.runeRealWeight;
+
+            // Quantités de runes PA / RA
+            const paRuneQuantity = cr.paRunePrice ? focusedRuneQuantity / 3 : 0;
+            const raRuneQuantity = cr.raRunePrice ? focusedRuneQuantity / 6 : 0;
+
+            // Kamas générés
+            const kamasEarned = Math.round(baseRuneQuantity * cr.runePrice) * 0.98;
+            const focusedKamasEarned = Math.round(focusedRuneQuantity * cr.runePrice) * 0.98;
+            const paKamasEarned = Math.round(paRuneQuantity * cr.paRunePrice) * 0.98;
+            const raKamasEarned = Math.round(raRuneQuantity * cr.raRunePrice) * 0.98;
+
+            sumKamas = sumKamas + kamasEarned;
+            if (focusedKamasEarned > maxFocusedKamas) {
+                maxFocusedKamas = focusedKamasEarned;
+            }
+
+            return {
+                stat: cr.effect,
+                runeName: cr.rune.name,
+                runePrice: cr.rune.price,
+                runeImg: cr.rune.img,
+                runeQuantity: baseRuneQuantity.toFixed(2),
+                kamasEarned,
+                runeQuantityFocused: focusedRuneQuantity.toFixed(2),
+                focusedKamasEarned,
+                paRuneQuantity: paRuneQuantity.toFixed(2),
+                paKamasEarned,
+                raRuneQuantity: raRuneQuantity.toFixed(2),
+                raKamasEarned
             };
-
-            this.sumKamasEarned += row.kamasEarned;
-            return row;
         });
 
-        this.recipe = this.selectedItem.recipe;
-        this.maxFocusedKamasEarned = Math.max(
-            ...this.tableauEffects.map(r => r.focusedKamasEarned),
-            0
-        );
-        this.maxValue = Math.max(this.maxFocusedKamasEarned, this.sumKamasEarned);
+        // Mise à jour des totaux
+        this.sumKamasEarned = sumKamas;
+        this.maxFocusedKamasEarned = maxFocusedKamas;
+        this.maxValue = Math.max(sumKamas, maxFocusedKamas);
 
         this.determineBestMergeRune();
     }
@@ -260,6 +321,7 @@ export class HomeComponent implements OnInit, OnDestroy {
      * Détermine quelle fusion (Pa/Ra) rapporte le plus et stocke
      * mergeRune et maxValuePaRa.
      */
+    @LogExecution
     private determineBestMergeRune(): void {
         const bestRow = this.tableauEffects.find(
             r => r.focusedKamasEarned === this.maxFocusedKamasEarned
@@ -287,36 +349,46 @@ export class HomeComponent implements OnInit, OnDestroy {
     }
 
     /**
-     * Calcule tous les indicateurs de rentabilité en fonction du prix de craft et
-     * des valeurs max (avec ou sans PA/RA).
-     */
+ * Met à jour tous les indicateurs de rentabilité (avec et sans fusion),
+ * en appelant findNonProfitableBreakRate une seule fois par mode.
+ */
+    @LogExecution
     private computeRentabilities(): void {
-        if (this.prixCraft != null) {
-            // rentabilité sans fusion
-            this.tauxRentabiliteKamas = Math.round(this.maxValue! - this.prixCraft);
-            this.tauxRentabilitePourcent = parseFloat(
-                (this.tauxRentabiliteKamas / this.prixCraft * 100).toFixed(2)
-            );
-            this.nonProfitableBreakRate = this.findNonProfitableBreakRate(false);
+        if (this.prixCraft == null) {
+            // si pas de prix, on reset tout
+            this.resetStats();
+            return;
+        }
 
-            // rentabilité avec fusion Pa/RA
-            if (this.mergeRune !== 'Aucune') {
-                this.tauxRentabiliteKamasPaRa = Math.round(this.maxValuePaRa! - this.prixCraft);
-                this.tauxRentabilitePourcentPaRa = parseFloat(
-                    ((this.maxValuePaRa! - this.prixCraft) / this.prixCraft * 100).toFixed(2)
-                );
-                this.nonProfitableBreakRatePaRa = this.findNonProfitableBreakRate(true);
-            } else {
-                this.tauxRentabiliteKamasPaRa =
-                    this.tauxRentabilitePourcentPaRa =
-                    this.nonProfitableBreakRatePaRa = 0;
-            }
+        // bénéfice brut sans fusion
+        const baseProfit = Math.round(this.maxValue! - this.prixCraft);
+        this.tauxRentabiliteKamas = baseProfit;
+        this.tauxRentabilitePourcent = parseFloat(
+            (baseProfit / this.prixCraft * 100).toFixed(2)
+        );
+        // seuil de non-rentabilité sans fusion
+        this.nonProfitableBreakRate = this.findNonProfitableBreakRate(false);
+
+        // si fusion Pa/RA possible
+        if (this.mergeRune !== 'Aucune') {
+            const paRaProfit = Math.round(this.maxValuePaRa! - this.prixCraft);
+            this.tauxRentabiliteKamasPaRa = paRaProfit;
+            this.tauxRentabilitePourcentPaRa = parseFloat(
+                (paRaProfit / this.prixCraft * 100).toFixed(2)
+            );
+            // seuil de non-rentabilité avec fusion
+            this.nonProfitableBreakRatePaRa = this.findNonProfitableBreakRate(true);
+        } else {
+            this.tauxRentabiliteKamasPaRa =
+                this.tauxRentabilitePourcentPaRa =
+                this.nonProfitableBreakRatePaRa = 0;
         }
     }
 
     /**
      * Remet à zéro les statistiques de la partie "Rentabilité" (avant recalcul).
      */
+    @LogExecution
     private resetStats(): void {
         this.tauxRentabilitePourcent = 0;
         this.tauxRentabiliteKamas = 0;
@@ -330,21 +402,62 @@ export class HomeComponent implements OnInit, OnDestroy {
     /**
      * Trouve le taux de brisage à partir duquel l'item n'est plus rentable.
      *
-     * @returns Le taux de brisage à partir duquel briser l'item n'est plus rentable.
+     * Parcourt les taux de haut en bas en utilisant le cache pré-calculé
+     * pour éviter les boucles imbriquées coûteuses et garantir un comportement
+     * identique à l'original.
+     *
+     * @param includePaRa – si true, inclure le calcul PA/RA.
+     * @returns Le plus petit taux de brisage à partir duquel le bénéfice net ≤ 0.
      */
-    findNonProfitableBreakRate(includePaRa: boolean): number {
-        let nonProfitableBreakRate: number = this.tauxBrisage;
+    @LogExecution
+    private findNonProfitableBreakRate(includePaRa: boolean): number {
+        const maxRate = this.tauxBrisage;
+        // Somme des numerators pour focus
+        const totalNumerator = this._cachedRunes.reduce((sum, cr) => sum + cr.runeNumerator, 0);
 
-        while (nonProfitableBreakRate > 0) {
-            const sumKamasEarned = this.calculateBenefit(nonProfitableBreakRate, includePaRa);
-            if (sumKamasEarned <= 0) {
-                return nonProfitableBreakRate + 1;
+        // On teste chaque taux de brisage de maxRate → 1
+        for (let rate = maxRate; rate >= 1; rate--) {
+            const factor = rate / 100;
+            let sumKamas = 0;
+            let maxFocusedKamas = 0;
+            let maxPaRaKamas = 0;
+
+            for (const cr of this._cachedRunes) {
+                const baseQty = cr.runeNumerator * factor / cr.runeRealWeight;
+                const focusedQty = totalNumerator * factor / cr.runeRealWeight;
+                const paQty = cr.paRunePrice ? focusedQty / 3 : 0;
+                const raQty = cr.raRunePrice ? focusedQty / 6 : 0;
+
+                const kamas = Math.round(baseQty * cr.runePrice) * 0.98;
+                const focusedKamas = Math.round(focusedQty * cr.runePrice) * 0.98;
+                sumKamas += kamas;
+                if (focusedKamas > maxFocusedKamas) {
+                    maxFocusedKamas = focusedKamas;
+                }
+
+                if (includePaRa) {
+                    const paKamas = Math.round(paQty * cr.paRunePrice) * 0.98;
+                    const raKamas = Math.round(raQty * cr.raRunePrice) * 0.98;
+                    const bestPaRa = paKamas > raKamas ? paKamas : raKamas;
+                    if (bestPaRa > maxPaRaKamas) {
+                        maxPaRaKamas = bestPaRa;
+                    }
+                }
             }
-            nonProfitableBreakRate--;
+
+            // Choix de la meilleure valeur selon includePaRa
+            const best = includePaRa
+                ? Math.max(sumKamas, maxFocusedKamas, maxPaRaKamas)
+                : Math.max(sumKamas, maxFocusedKamas);
+            const netProfit = Math.round(best - (this.prixCraft ?? 0));
+
+            if (netProfit <= 0) {
+                return rate + 1;
+            }
         }
+
         return 1;
     }
-
 
     /**
     * Calcule le bénéfice total en Kamas pour un taux de brisage donné, en considérant
@@ -355,6 +468,7 @@ export class HomeComponent implements OnInit, OnDestroy {
     * @returns Le bénéfice total en Kamas après soustraction du coût de production de l'item,
     *          ou 0 si le prix de craft n'est pas renseigné.
     */
+    @LogExecution
     calculateBenefit(tauxBrisage: number, includePaRa: boolean): number {
         // Si le prix de craft n'est pas défini, on ne peut pas calculer de bénéfice
         if (this.prixCraft == null) {
@@ -412,9 +526,10 @@ export class HomeComponent implements OnInit, OnDestroy {
 
 
     /**
-   * Détermine la couleur de la cellule en fonction des valeurs de prixCraft, tauxRentabiliteVise et maxValue.
-   * Met à jour la valeur de maxCellColor correspondante.
-   */
+    * Détermine la couleur de la cellule en fonction des valeurs de prixCraft, tauxRentabiliteVise et maxValue.
+    * Met à jour la valeur de maxCellColor correspondante.
+    */
+    @LogExecution
     defineCellColor(): void {
         if (this.prixCraft != undefined && this.tauxRentabiliteVise != undefined) {
             const valeurRentable: number = this.prixCraft * (1 + Number(this.tauxRentabiliteVise) / 100);
@@ -433,11 +548,12 @@ export class HomeComponent implements OnInit, OnDestroy {
     }
 
     /**
-   * Trouve la rune correspondante à une statistique d'objet donnée.
-   *
-   * @param itemStatistic - La statistique de l'objet pour laquelle on souhaite trouver la rune correspondante.
-   * @returns La rune correspondante trouvée, ou undefined si aucune rune correspondante n'est trouvée.
-   */
+    * Trouve la rune correspondante à une statistique d'objet donnée.
+    *
+    * @param itemStatistic - La statistique de l'objet pour laquelle on souhaite trouver la rune correspondante.
+    * @returns La rune correspondante trouvée, ou undefined si aucune rune correspondante n'est trouvée.
+    */
+    @LogExecution
     findMatchingRune(itemStatistic: string): any {
         const hasPercent = itemStatistic.includes('%');
         const normalizedItemStat = this.normalizeStat(itemStatistic);
@@ -493,6 +609,7 @@ export class HomeComponent implements OnInit, OnDestroy {
      * @param strB - La deuxième chaîne de caractères à comparer.
      * @returns Un nombre positif si strB est plus longue que strA, un nombre négatif si strA est plus longue que strB, ou 0 si les deux sont de même longueur.
      */
+    @LogExecution
     compareByLength(strA: string, strB: string): number {
         return strB.length - strA.length;
     }
@@ -503,6 +620,7 @@ export class HomeComponent implements OnInit, OnDestroy {
      * @param value - La chaîne de caractères à analyser.
      * @returns La moyenne des nombres extraits, ou 0 si aucun nombre n'est trouvé.
      */
+    @LogExecution
     calculateAverage(value: string): number {
         const numbers: number[] = [];
         const regex = /[0-9]+/g;
@@ -523,11 +641,12 @@ export class HomeComponent implements OnInit, OnDestroy {
     }
 
     /**
-   * Obtient le poids réel d'une rune.
-   *
-   * @param rune - La rune dont on souhaite obtenir le poids réel.
-   * @returns Le poids réel de la rune.
-   */
+    * Obtient le poids réel d'une rune.
+    *
+    * @param rune - La rune dont on souhaite obtenir le poids réel.
+    * @returns Le poids réel de la rune.
+    */
+    @LogExecution
     getRealRuneWeight(rune: any): number {
         let runeWeight: number;
 
@@ -543,26 +662,28 @@ export class HomeComponent implements OnInit, OnDestroy {
     }
 
     /**
-   * Calcule la quantité de runes en fonction du taux, de la rune et de l'effet.
-   *
-   * @param taux - Le taux de réussite du craft des runes.
-   * @param rune - La rune pour laquelle on souhaite calculer la quantité.
-   * @param effect - L'effet utilisé dans le calcul.
-   * @returns La quantité de runes calculée.
-   */
+    * Calcule la quantité de runes en fonction du taux, de la rune et de l'effet.
+    *
+    * @param taux - Le taux de réussite du craft des runes.
+    * @param rune - La rune pour laquelle on souhaite calculer la quantité.
+    * @param effect - L'effet utilisé dans le calcul.
+    * @returns La quantité de runes calculée.
+    */
+    @LogExecution
     calculateRuneQuantity(taux: any, rune: any, effect: any) {
         let realRuneWeight = this.getRealRuneWeight(rune);
         return (((3 * rune.weight * this.calculateAverage(effect) * this.selectedItem.level / 200 + 1) * taux / 100) / realRuneWeight)
     }
 
     /**
-   * Calcule la quantité de runes pour une statistique spécifique en fonction du taux, de la statistique ciblée et de la liste d'effets.
-   *
-   * @param taux - Le taux de réussite du craft des runes.
-   * @param statFocused - La statistique ciblée pour laquelle on souhaite calculer la quantité de runes.
-   * @param effectsList - La liste des effets utilisés dans le calcul.
-   * @returns La quantité de runes calculée pour la statistique ciblée.
-   */
+    * Calcule la quantité de runes pour une statistique spécifique en fonction du taux, de la statistique ciblée et de la liste d'effets.
+    *
+    * @param taux - Le taux de réussite du craft des runes.
+    * @param statFocused - La statistique ciblée pour laquelle on souhaite calculer la quantité de runes.
+    * @param effectsList - La liste des effets utilisés dans le calcul.
+    * @returns La quantité de runes calculée pour la statistique ciblée.
+    */
+    @LogExecution
     calculateRuneQuantityFocused(taux: any, statFocused: any, effectsList: any[]): number {
         let runeQuantityFocused = 0;
         let runeFocused = this.findMatchingRune(statFocused);
@@ -582,11 +703,12 @@ export class HomeComponent implements OnInit, OnDestroy {
     }
 
     /**
-   * Copie le nom de l'ingrédient dans le presse-papiers et affiche une tooltip.
-   *
-   * @param ingredientName Le nom de l'ingrédient à copier.
-   * @param event L'événement MouseEvent associé au clic.
-   */
+    * Copie le nom de l'ingrédient dans le presse-papiers et affiche une tooltip.
+    *
+    * @param ingredientName Le nom de l'ingrédient à copier.
+    * @param event L'événement MouseEvent associé au clic.
+    */
+    @LogExecution
     copyToClipboard(event: MouseEvent, ingredientName: string): void {
         navigator.clipboard.writeText(ingredientName).then(() => {
             console.log(`Copié dans le presse-papiers: ${ingredientName}`);
@@ -605,6 +727,7 @@ export class HomeComponent implements OnInit, OnDestroy {
     /**
      * Fait apparaître les éléments en les rendant visibles.
      */
+    @LogExecution
     unVanishDiv(): void {
         const vanishingDiv = document.querySelector('.vanishingDiv') as HTMLElement;
         const divMainContainer = document.querySelector('.container') as HTMLElement;
@@ -622,6 +745,7 @@ export class HomeComponent implements OnInit, OnDestroy {
     /**
      * Masque les éléments en les rendant invisibles.
      */
+    @LogExecution
     vanishDiv(): void {
         if (this.selectedItem == "") {
             const vanishingDiv = document.querySelector('.vanishingDiv') as HTMLElement;
@@ -641,6 +765,7 @@ export class HomeComponent implements OnInit, OnDestroy {
     /**
      * Affiche la bulle d'aide.
      */
+    @LogExecution
     showHelp() {
         this.helpDivvisible = true;
     }
