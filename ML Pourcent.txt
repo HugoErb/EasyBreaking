@@ -1,0 +1,158 @@
+Bottes de Nexus, lvl 8, 2237 -> 2227 en 1
+Bottes de Nexus, lvl 8, 2227 -> 2220 en 1
+Bottes de Nexus, lvl 8, 2220 -> 1410 en 23
+Bottes de Nexus, lvl 8, 1410 -> 1033 en 23
+Bottes de Nexus, lvl 8, 1033 -> 838 en 20
+Bottes de Nexus, lvl 8, 838 -> 716 en 18
+Bottes de Nexus, lvl 8, 634 -> 548 en 22
+Bottes de Nexus, lvl 8, 548 -> 485 en 21
+Bottes de Nexus, lvl 8, 485 -> 435 en 21
+Bottes de Nexus, lvl 8, 435 -> 398 en 19
+Bottes de Nexus, lvl 8, 398 -> 370 en 17
+Bottes de Nexus, lvl 8, 370 -> 356 en 9
+Bottes de Nexus, lvl 8, 356 -> 348 en 6
+Bottes de Nexus, lvl 8, 348 -> 339 en 7
+Bottes de Nexus, lvl 8, 339 -> 337 en 1
+Bottes de Nexus, lvl 8, 337 -> 325 en 10
+
+Ceinture de chance, lvl 1 , 319 -> 316 en 7
+Ceinture de chance, lvl 1 , 316 -> 312 en 9
+Ceinture de chance, lvl 1 , 312 -> 309 en 7
+
+Ceinture d'endurance, lvl 27, 201 -> 197 en 4
+Ceinture d'endurance, lvl 27, 197 -> 194 en 3
+Ceinture d'endurance, lvl 27, 194 -> 191 en 3
+Ceinture d'endurance, lvl 27, 191 -> 188 en 3
+Ceinture d'endurance, lvl 27, 188 -> 186 en 2
+Ceinture d'endurance, lvl 27, 186 -> 184 en 2
+Ceinture d'endurance, lvl 27, 184 -> 182 en 2
+Ceinture d'endurance, lvl 27, 182 -> 181 en 2
+Ceinture d'endurance, lvl 27, 181 -> 179 en 2
+Ceinture d'endurance, lvl 27, 179 -> 177 en 2
+Ceinture d'endurance, lvl 27, 177 -> 175 en 2
+Ceinture d'endurance, lvl 27, 175 -> 173 en 2
+Ceinture d'endurance, lvl 27, 173 -> 172 en 2
+Ceinture d'endurance, lvl 27, 172 -> 171 en 1
+Ceinture d'endurance, lvl 27, 171 -> 170 en 1
+Ceinture d'endurance, lvl 27, 170 -> 169 en 1
+Ceinture d'endurance, lvl 27, 169 -> 168 en 1
+Ceinture d'endurance, lvl 27, 168 -> 168 en 1
+Ceinture d'endurance, lvl 27, 168 -> 167 en 1
+Ceinture d'endurance, lvl 27, 167 -> 166 en 1
+Ceinture d'endurance, lvl 27, 166 -> 165 en 1
+Ceinture d'endurance, lvl 27, 165 -> 164 en 1
+Ceinture d'endurance, lvl 27, 164 -> 164 en 1
+Ceinture d'endurance, lvl 27, 164 -> 163 en 1
+Ceinture d'endurance, lvl 27, 163 -> 162 en 1
+Ceinture d'endurance, lvl 27, 162 -> 161 en 1
+Ceinture d'endurance, lvl 27, 161 -> 161 en 1
+Ceinture d'endurance, lvl 27, 161 -> 160 en 1
+Ceinture d'endurance, lvl 27, 160 -> 159 en 1
+Ceinture d'endurance, lvl 27, 159 -> 158 en 1
+Ceinture d'endurance, lvl 27, 158 -> 158 en 1
+Ceinture d'endurance, lvl 27, 158 -> 157 en 1
+Ceinture d'endurance, lvl 27, 157 -> 156 en 1
+Ceinture d'endurance, lvl 27, 156 -> 155 en 1
+Ceinture d'endurance, lvl 27, 155 -> 155 en 1
+Ceinture d'endurance, lvl 27, 155 -> 154 en 1
+Ceinture d'endurance, lvl 27, 154 -> 153 en 1
+Ceinture d'endurance, lvl 27, 153 -> 153 en 1
+Ceinture d'endurance, lvl 27, 153 -> 152 en 1
+Ceinture d'endurance, lvl 27, 152 -> 151 en 1
+Ceinture d'endurance, lvl 27, 151 -> 151 en 1
+Ceinture d'endurance, lvl 27, 151 -> 150 en 1
+Ceinture d'endurance, lvl 27, 150 -> 149 en 1
+Ceinture d'endurance, lvl 27, 149 -> 149 en 1
+Ceinture d'endurance, lvl 27, 149 -> 148 en 1
+Ceinture d'endurance, lvl 27, 148 -> 147 en 1
+Ceinture d'endurance, lvl 27, 147 -> 147 en 1
+Ceinture d'endurance, lvl 27, 147 -> 146 en 1
+Ceinture d'endurance, lvl 27, 146 -> 146 en 1
+Ceinture d'endurance, lvl 27, 146 -> 145 en 1
+Ceinture d'endurance, lvl 27, 145 -> 144 en 1
+Ceinture d'endurance, lvl 27, 144 -> 144 en 1
+Ceinture d'endurance, lvl 27, 144 -> 143 en 1
+Ceinture d'endurance, lvl 27, 143 -> 143 en 1
+Ceinture d'endurance, lvl 27, 143 -> 142 en 1
+Ceinture d'endurance, lvl 27, 142 -> 141 en 1
+Ceinture d'endurance, lvl 27, 141 -> 141 en 1
+Ceinture d'endurance, lvl 27, 141 -> 140 en 1
+Ceinture d'endurance, lvl 27, 140 -> 139 en 1
+Ceinture d'endurance, lvl 27, 139 -> 139 en 1
+Ceinture d'endurance, lvl 27, 139 -> 138 en 1
+Ceinture d'endurance, lvl 27, 138 -> 137 en 1
+Ceinture d'endurance, lvl 27, 137 -> 137 en 1
+Ceinture d'endurance, lvl 27, 137 -> 136 en 1
+Ceinture d'endurance, lvl 27, 136 -> 136 en 1
+Ceinture d'endurance, lvl 27, 136 -> 135 en 1
+Ceinture d'endurance, lvl 27, 135 -> 134 en 1
+Ceinture d'endurance, lvl 27, 134 -> 134 en 1
+Ceinture d'endurance, lvl 27, 134 -> 133 en 1
+Ceinture d'endurance, lvl 27, 133 -> 133 en 1
+Ceinture d'endurance, lvl 27, 133 -> 132 en 1
+Ceinture d'endurance, lvl 27, 132 -> 132 en 1
+Ceinture d'endurance, lvl 27, 132 -> 131 en 1
+Ceinture d'endurance, lvl 27, 131 -> 130 en 1
+Ceinture d'endurance, lvl 27, 130 -> 130 en 1
+Ceinture d'endurance, lvl 27, 130 -> 129 en 1
+Ceinture d'endurance, lvl 27, 129 -> 129 en 1
+
+Ceinture du Directeur Grunob, lvl 36, 89 -> 88 en 1
+Ceinture du Directeur Grunob, lvl 36, 88 -> 88 en 1
+Ceinture du Directeur Grunob, lvl 36, 88 -> 88 en 1
+Ceinture du Directeur Grunob, lvl 36, 88 -> 87 en 1
+Ceinture du Directeur Grunob, lvl 36, 87 -> 87 en 1
+Ceinture du Directeur Grunob, lvl 36, 87 -> 87 en 1
+Ceinture du Directeur Grunob, lvl 36, 87 -> 86 en 1
+Ceinture du Directeur Grunob, lvl 36, 86 -> 86 en 1
+Ceinture du Directeur Grunob, lvl 36, 86 -> 86 en 1
+Ceinture du Directeur Grunob, lvl 36, 86 -> 85 en 1
+Ceinture du Directeur Grunob, lvl 36, 85 -> 85 en 1
+Ceinture du Directeur Grunob, lvl 36, 85 -> 85 en 1
+Ceinture du Directeur Grunob, lvl 36, 85 -> 85 en 1
+Ceinture du Directeur Grunob, lvl 36, 85 -> 84 en 1
+Ceinture du Directeur Grunob, lvl 36, 84 -> 84 en 1
+Ceinture du Directeur Grunob, lvl 36, 84 -> 84 en 1
+Ceinture du Directeur Grunob, lvl 36, 84 -> 84 en 1
+Ceinture du Directeur Grunob, lvl 36, 84 -> 84 en 1
+Ceinture du Directeur Grunob, lvl 36, 84 -> 83 en 1
+Ceinture du Directeur Grunob, lvl 36, 83 -> 83 en 1
+Ceinture du Directeur Grunob, lvl 36, 83 -> 83 en 1
+Ceinture du Directeur Grunob, lvl 36, 83 -> 83 en 1
+Ceinture du Directeur Grunob, lvl 36, 83 -> 82 en 1
+Ceinture du Directeur Grunob, lvl 36, 82 -> 82 en 1
+Ceinture du Directeur Grunob, lvl 36, 82 -> 82 en 1
+Ceinture du Directeur Grunob, lvl 36, 82 -> 82 en 1
+Ceinture du Directeur Grunob, lvl 36, 82 -> 81 en 1
+Ceinture du Directeur Grunob, lvl 36, 81 -> 81 en 1
+Ceinture du Directeur Grunob, lvl 36, 81 -> 81 en 1
+Ceinture du Directeur Grunob, lvl 36, 81 -> 81 en 1
+Ceinture du Directeur Grunob, lvl 36, 81 -> 80 en 1
+Ceinture du Directeur Grunob, lvl 36, 80 -> 80 en 1
+Ceinture du Directeur Grunob, lvl 36, 80 -> 80 en 1
+Ceinture du Directeur Grunob, lvl 36, 80 -> 80 en 1
+Ceinture du Directeur Grunob, lvl 36, 80 -> 79 en 1
+Ceinture du Directeur Grunob, lvl 36, 79 -> 79 en 1
+Ceinture du Directeur Grunob, lvl 36, 79 -> 79 en 1
+Ceinture du Directeur Grunob, lvl 36, 79 -> 79 en 1
+Ceinture du Directeur Grunob, lvl 36, 79 -> 78 en 1
+
+Geta Bernacle, lvl 100, 459 -> 253 en 20
+Chaussures Lepon-Davignon, lvl 100, 358 -> 346 en 1
+Chaussures Lepon-Davignon, lvl 100, 346 -> 335 en 1
+Chaussures Lepon-Davignon, lvl 100, 335 -> 325 en 1
+Chaussures Lepon-Davignon, lvl 100, 325 -> 315 en 1
+Chaussures Lepon-Davignon, lvl 100, 315 -> 305 en 1
+Chaussures Lepon-Davignon, lvl 100, 305 -> 297 en 1
+Chaussures Lepon-Davignon, lvl 100, 297 -> 288 en 1
+Chaussures Lepon-Davignon, lvl 100, 288 -> 281 en 1
+Chaussures Lepon-Davignon, lvl 100, 288 -> 281 en 1
+Chaussures Lepon-Davignon, lvl 100, 281 -> 273 en 1
+Chaussures Lepon-Davignon, lvl 100, 273 -> 266 en 1
+
+
+
+
+Manque : 
+bottananas
+ceinture de chance

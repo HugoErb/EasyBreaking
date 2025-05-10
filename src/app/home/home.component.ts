@@ -93,10 +93,6 @@ export class HomeComponent implements OnInit, OnDestroy {
 
     nombreObjets: number = 1;
 
-    // Caches pour calculateBenefit selon mode Pa/Ra
-    private profitCacheNoPa = new Map<number, number>();
-    private profitCacheWithPa = new Map<number, number>();
-
     // Debounce / subscription
     private inputsChange$ = new Subject<void>();
     private inputsSub!: Subscription;
@@ -202,10 +198,6 @@ export class HomeComponent implements OnInit, OnDestroy {
     onItemSelect(): void {
         if (!this.selectedItem) return;
         this.unVanishDiv();
-
-        // Réinitialise les caches de bénéfice
-        this.profitCacheNoPa.clear();
-        this.profitCacheWithPa.clear();
 
         const level = this.selectedItem.level;
         this.tauxBrisage = Math.min(this.tauxBrisage, 4000);
@@ -357,35 +349,30 @@ export class HomeComponent implements OnInit, OnDestroy {
     @LogExecution
     private computeRentabilities(): void {
         if (this.prixCraft == null) {
-            // si pas de prix, on reset tout
             this.resetStats();
             return;
         }
 
-        // bénéfice brut sans fusion
-        const baseProfit = Math.round(this.maxValue! - this.prixCraft);
-        this.tauxRentabiliteKamas = baseProfit;
-        this.tauxRentabilitePourcent = parseFloat(
-            (baseProfit / this.prixCraft * 100).toFixed(2)
-        );
-        // seuil de non-rentabilité sans fusion
-        this.nonProfitableBreakRate = this.findNonProfitableBreakRate(false);
+        const computeStats = (maxValue: number, includePaRa: boolean): [number, number, number] => {
+            const profit = Math.round(maxValue - this.prixCraft!);
+            const percent = parseFloat(((profit / this.prixCraft!) * 100).toFixed(2));
+            const breakRate = this.findNorProfitableBreakRate(includePaRa);
+            return [profit, percent, breakRate];
+        };
 
-        // si fusion Pa/RA possible
+        // Sans fusion
+        [this.tauxRentabiliteKamas, this.tauxRentabilitePourcent, this.nonProfitableBreakRate] = computeStats(this.maxValue!, false);
+
+        // Avec fusion Pa/RA si applicable
         if (this.mergeRune !== 'Aucune') {
-            const paRaProfit = Math.round(this.maxValuePaRa! - this.prixCraft);
-            this.tauxRentabiliteKamasPaRa = paRaProfit;
-            this.tauxRentabilitePourcentPaRa = parseFloat(
-                (paRaProfit / this.prixCraft * 100).toFixed(2)
-            );
-            // seuil de non-rentabilité avec fusion
-            this.nonProfitableBreakRatePaRa = this.findNonProfitableBreakRate(true);
+            [this.tauxRentabiliteKamasPaRa, this.tauxRentabilitePourcentPaRa, this.nonProfitableBreakRatePaRa] = computeStats(this.maxValuePaRa!, true);
         } else {
-            this.tauxRentabiliteKamasPaRa =
-                this.tauxRentabilitePourcentPaRa =
-                this.nonProfitableBreakRatePaRa = 0;
+            this.tauxRentabiliteKamasPaRa = 0;
+            this.tauxRentabilitePourcentPaRa = 0;
+            this.nonProfitableBreakRatePaRa = 0;
         }
     }
+
 
     /**
      * Remet à zéro les statistiques de la partie "Rentabilité" (avant recalcul).
@@ -399,49 +386,31 @@ export class HomeComponent implements OnInit, OnDestroy {
         this.nonProfitableBreakRatePaRa = 0;
     }
 
-
     /**
-     * Trouve le taux de brisage à partir duquel l'item n'est plus rentable.
+     * Trouve le taux de brisage à partir duquel l'item est (ou n'est plus) rentable.
      *
-     * Parcourt linéairement du taux maximum jusqu'à 0 en utilisant un cache
-     * pour éviter de recalculer calculateBenefit plusieurs fois.
-     *
-     * @param includePaRa – si true, inclure le calcul PA/RA.
-     * @returns Le plus petit taux auquel on redevient rentable (rate+1
-     *          pour le rate qui a rendu profit ≤ 0). Renvoie 1 si on reste
-     *          toujours rentable jusqu'à 1%.
+     * @returns Le taux de brisage à partir duquel briser l'item est (ou n'est plus) rentable.
      */
     @LogExecution
-    private findNonProfitableBreakRate(includePaRa: boolean): number {
-        console.log("findNonProfitableBreakRate");
-        
-        const cache = includePaRa ? this.profitCacheWithPa : this.profitCacheNoPa;
+    findNorProfitableBreakRate(includePaRa: boolean): number {
+        let nonProfitableBreakRate: number = this.tauxBrisage;
+        let sumKamasEarned: number = this.calculateBenefit(nonProfitableBreakRate, includePaRa);
 
-        // on part de this.tauxBrisage et on descend jusqu'à 0
-        for (let rate = this.tauxBrisage; rate >= 0; rate--) {
-            let profit: number;
-
-            if (cache.has(rate)) {
-                profit = cache.get(rate)!;
-            } else {
-                profit = this.calculateBenefit(rate, includePaRa);
-                cache.set(rate, profit);
-            }
-
-            // dès qu'on devient non rentable (profit ≤ 0) on renvoie rate+1
-            if (profit <= 0) {
-                return rate + 1;
-            }
+        // Cas non rentable : on cherche vers le haut
+        while (sumKamasEarned <= 0) {
+            nonProfitableBreakRate++;
+            sumKamasEarned = this.calculateBenefit(nonProfitableBreakRate, includePaRa);
         }
 
-        // jamais non rentable → on renvoie 1%
-        return 1;
+        // Cas rentable : on cherche vers le bas
+        while (sumKamasEarned > 0) {
+            nonProfitableBreakRate--;
+            sumKamasEarned = this.calculateBenefit(nonProfitableBreakRate, includePaRa);
+        }
+
+        // À la sortie, on est passé juste en-dessous de la rentabilité
+        return nonProfitableBreakRate + 1;
     }
-
-
-
-
-
 
     /**
     * Calcule le bénéfice total en Kamas pour un taux de brisage donné, en considérant
