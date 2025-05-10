@@ -25,25 +25,25 @@ function LogExecution(
     propertyKey: string,
     descriptor: PropertyDescriptor
 ) {
-    // const original = descriptor.value;
-    // descriptor.value = function (...args: any[]) {
-    //     const start = performance.now();
-    //     const result = original.apply(this, args);
-    //     const finish = () => {
-    //         const end = performance.now();
-    //         console.log(
-    //             `[Log] Exiting ${propertyKey}. Execution time: ${(end - start).toFixed(2)} ms`
-    //         );
-    //     };
-    //     if (result instanceof Promise) {
-    //         return result.then((res: any) => {
-    //             finish();
-    //             return res;
-    //         });
-    //     }
-    //     finish();
-    //     return result;
-    // };
+    const original = descriptor.value;
+    descriptor.value = function (...args: any[]) {
+        const start = performance.now();
+        const result = original.apply(this, args);
+        const finish = () => {
+            const end = performance.now();
+            console.log(
+                `[Log] Exiting ${propertyKey}. Execution time: ${(end - start).toFixed(2)} ms`
+            );
+        };
+        if (result instanceof Promise) {
+            return result.then((res: any) => {
+                finish();
+                return res;
+            });
+        }
+        finish();
+        return result;
+    };
 }
 
 /**
@@ -76,11 +76,11 @@ export class HomeComponent implements OnInit, OnDestroy {
     // Résultats de calculs
     tauxRentabilitePourcent: number = 0;
     tauxRentabiliteKamas: number = 0;
-    nonProfitableBreakRate: number = 0;
+    norProfitableBreakRate: number = 0;
 
     tauxRentabilitePourcentPaRa: number = 0;
     tauxRentabiliteKamasPaRa: number = 0;
-    nonProfitableBreakRatePaRa: number = 0;
+    norProfitableBreakRatePaRa: number = 0;
 
     helpDivvisible: boolean = false;
     sumKamasEarned: number = 0;
@@ -133,7 +133,6 @@ export class HomeComponent implements OnInit, OnDestroy {
     /**
      * Nettoyage des subscriptions lorsqu'on détruit le composant.
      */
-    @LogExecution
     ngOnDestroy(): void {
         this.inputsSub.unsubscribe();
     }
@@ -142,7 +141,6 @@ export class HomeComponent implements OnInit, OnDestroy {
      * Charge les runes depuis le localStorage ou depuis le JSON
      * et met à jour this.runes.
      */
-    @LogExecution
     private loadRunes(): void {
         const stored = localStorage.getItem('runesData');
         if (stored) {
@@ -161,7 +159,6 @@ export class HomeComponent implements OnInit, OnDestroy {
      * @param data Liste brute d'items
      * @returns Liste d'items formatés
      */
-    @LogExecution
     private processData(data: any[]): any[] {
         return data.map(item => ({
             id: item.id,
@@ -179,7 +176,6 @@ export class HomeComponent implements OnInit, OnDestroy {
      * Filtre les items pour l'autocomplete.
      * @param event L'événement du composant PrimeNG contenant la query
      */
-    @LogExecution
     filterItem(event: any): void {
         const q = event.query.toLowerCase();
         this.filteredItems = this.items.filter(i =>
@@ -226,7 +222,6 @@ export class HomeComponent implements OnInit, OnDestroy {
      * Appelé à chaque changement d'un p-inputNumber (tauxBrisage, prixCraft, etc.)
      * - Déclenche le debounce avant recalcul
      */
-    @LogExecution
     onInputChange(): void {
         this.inputsChange$.next();
     }
@@ -237,7 +232,6 @@ export class HomeComponent implements OnInit, OnDestroy {
      * - Les indicateurs de rentabilité
      * - La couleur des cellules
      */
-    @LogExecution
     private recalculate(): void {
         if (!this.selectedItem) return;
         this.buildTableAndTotals();
@@ -250,7 +244,6 @@ export class HomeComponent implements OnInit, OnDestroy {
      * Appelé seulement quand on change le prix de craft ou le taux de rentabilité visé.
      * Ne recalcule que la partie rentabilité, pas tout le tableau.
      */
-    @LogExecution
     onEconomicsInputChange(): void {
         if (!this.selectedItem) return;
         this.computeRentabilities();
@@ -319,7 +312,6 @@ export class HomeComponent implements OnInit, OnDestroy {
      * Détermine quelle fusion (Pa/Ra) rapporte le plus et stocke
      * mergeRune et maxValuePaRa.
      */
-    @LogExecution
     private determineBestMergeRune(): void {
         const bestRow = this.tableauEffects.find(
             r => r.focusedKamasEarned === this.maxFocusedKamasEarned
@@ -348,7 +340,7 @@ export class HomeComponent implements OnInit, OnDestroy {
 
     /**
      * Met à jour tous les indicateurs de rentabilité (avec et sans fusion),
-     * en appelant findNonProfitableBreakRate une seule fois par mode.
+     * en appelant findnorProfitableBreakRate une seule fois par mode.
      */
     @LogExecution
     private computeRentabilities(): void {
@@ -365,15 +357,15 @@ export class HomeComponent implements OnInit, OnDestroy {
         };
 
         // Sans fusion
-        [this.tauxRentabiliteKamas, this.tauxRentabilitePourcent, this.nonProfitableBreakRate] = computeStats(this.maxValue!, false);
+        [this.tauxRentabiliteKamas, this.tauxRentabilitePourcent, this.norProfitableBreakRate] = computeStats(this.maxValue!, false);
 
         // Avec fusion Pa/RA si applicable
         if (this.mergeRune !== 'Aucune') {
-            [this.tauxRentabiliteKamasPaRa, this.tauxRentabilitePourcentPaRa, this.nonProfitableBreakRatePaRa] = computeStats(this.maxValuePaRa!, true);
+            [this.tauxRentabiliteKamasPaRa, this.tauxRentabilitePourcentPaRa, this.norProfitableBreakRatePaRa] = computeStats(this.maxValuePaRa!, true);
         } else {
             this.tauxRentabiliteKamasPaRa = 0;
             this.tauxRentabilitePourcentPaRa = 0;
-            this.nonProfitableBreakRatePaRa = 0;
+            this.norProfitableBreakRatePaRa = 0;
         }
     }
 
@@ -383,10 +375,10 @@ export class HomeComponent implements OnInit, OnDestroy {
     private resetStats(): void {
         this.tauxRentabilitePourcent = 0;
         this.tauxRentabiliteKamas = 0;
-        this.nonProfitableBreakRate = 0;
+        this.norProfitableBreakRate = 0;
         this.tauxRentabilitePourcentPaRa = 0;
         this.tauxRentabiliteKamasPaRa = 0;
-        this.nonProfitableBreakRatePaRa = 0;
+        this.norProfitableBreakRatePaRa = 0;
     }
 
     /**
@@ -396,23 +388,23 @@ export class HomeComponent implements OnInit, OnDestroy {
      */
     @LogExecution
     findNorProfitableBreakRate(includePaRa: boolean): number {
-        let nonProfitableBreakRate: number = this.tauxBrisage!;
-        let sumKamasEarned: number = this.calculateBenefit(nonProfitableBreakRate, includePaRa);
+        let norProfitableBreakRate: number = this.tauxBrisage!;
+        let sumKamasEarned: number = this.calculateBenefit(norProfitableBreakRate, includePaRa);
 
         // Cas non rentable : on cherche vers le haut
-        while (sumKamasEarned <= 0) {
-            nonProfitableBreakRate++;
-            sumKamasEarned = this.calculateBenefit(nonProfitableBreakRate, includePaRa);
+        while (sumKamasEarned <= 0 || norProfitableBreakRate >= 4000) {
+            norProfitableBreakRate++;
+            sumKamasEarned = this.calculateBenefit(norProfitableBreakRate, includePaRa);
         }
 
         // Cas rentable : on cherche vers le bas
         while (sumKamasEarned > 0) {
-            nonProfitableBreakRate--;
-            sumKamasEarned = this.calculateBenefit(nonProfitableBreakRate, includePaRa);
+            norProfitableBreakRate--;
+            sumKamasEarned = this.calculateBenefit(norProfitableBreakRate, includePaRa);
         }
 
         // À la sortie, on est passé juste en-dessous de la rentabilité
-        return nonProfitableBreakRate + 1;
+        return norProfitableBreakRate + 1;
     }
 
     /**
