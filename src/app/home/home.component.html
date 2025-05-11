@@ -6,7 +6,14 @@
                 (completeMethod)="filterItem($event)" field="name" (onSelect)="onItemSelect()" (input)="vanishDiv()"
                 placeholder="Entrez le nom d'un item..."></p-autoComplete>
         </div>
-        <div class="vanishingDiv">
+        <div class="vanishingDiv" *ngIf="selectedItem">
+            <div class="selectedItemInfos">
+                <img class="selectedItemImage" [src]="selectedItem.image" alt="{{ selectedItem.name }}" />
+                <div class="selectedItemText">
+                    <div class="selectedItemLevel">Niveau : {{ selectedItem.level }}</div>
+                    <div class="selectedItemSet">Panoplie : {{ selectedItem.set }}</div>
+                </div>
+            </div>
             <table class="itemTable">
                 <thead>
                     <tr>
@@ -91,7 +98,7 @@
                     </div>
                     <div class="tauxRentabilite tauxRentabiliteRight">
                         <p>Fusion de runes à faire : {{ mergeRune }}</p>
-                        <p> Kamas obtenus en focus après fusion : {{ maxValuePaRa | number: '1.0-0' }} k </p>
+                        <p> Kamas obtenus en focus après fusion : {{ maxValuePaRa | number: ' 1.0-0' }} k </p>
                                 <p> Rentable jusqu'au taux de brisage après fusion : {{ norProfitableBreakRatePaRa }} %
                                 </p>
                     </div>
@@ -115,7 +122,7 @@
                         tooltipEvent="focus" tooltipPosition="top" (click)="copyToClipboard($event, ingredient.name)">
                         <p class="ingredientName">{{ ingredient.name }}</p>
                         <p>Quantité pour 1 objet : x{{ ingredient.quantite }}</p>
-                        <p> Quantité pour {{ nombreObjets | number: '1.0-0' }} objet{{ nombreObjets > 1 ? 's' : '' }} : 
+                        <p> Quantité pour {{ nombreObjets | number: '1.0-0' }} objet{{ nombreObjets > 1 ? 's' : '' }} :
                             x{{ ingredient.quantite * nombreObjets | number: '1.0-0' }}
                         </p>
                     </div>

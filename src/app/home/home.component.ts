@@ -154,7 +154,8 @@ export class HomeComponent implements OnInit, OnDestroy {
             recipe: item.recipe,
             type: item.type,
             set: item.set,
-            link: item.link
+            link: item.link,
+            image: item.image
         }));
     }
 

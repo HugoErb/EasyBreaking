@@ -61,6 +61,24 @@ main .select {
     display: none;
 }
 
+.selectedItemInfos {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    color: rgb(198, 193, 185);
+    margin-top: 20px;
+}
+
+.selectedItemImage {
+    width: 80px;
+    height: auto;
+    border: 0.5px solid #858585;
+}
+
+.selectedItemLevel,
+.selectedItemSet {
+    margin: 2px 0; }
+
 // ***********************************************************************
 
 .itemTable {
