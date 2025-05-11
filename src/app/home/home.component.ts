@@ -260,6 +260,8 @@ export class HomeComponent implements OnInit, OnDestroy {
                 stat: effect,
                 runeName: rune.name,
                 runePrice: rune.price,
+                paPrice: rune.paPrice,
+                raPrice: rune.raPrice,
                 runeImg: rune.img,
                 runeQuantity: baseQty.toFixed(2),
                 kamasEarned: calc(baseQty, rune.price),
@@ -286,32 +288,44 @@ export class HomeComponent implements OnInit, OnDestroy {
     }
 
     /**
-     * Détermine quelle fusion (Pa/Ra) rapporte le plus et stocke
-     * mergeRune et maxValuePaRa.
+     * Détermine si la fusion PA ou RA est la plus rentable
+     * et met à jour mergeRune et maxValuePaRa en conséquence.
      */
     private determineBestMergeRune(): void {
-        const bestRow = this.tableauEffects.find(
-            r => r.focusedKamasEarned === this.maxFocusedKamasEarned
-        );
-        if (!bestRow) {
-            this.mergeRune = 'Aucune';
-            this.maxValuePaRa = 0;
-            return;
-        }
-        // on construit la liste des candidats
-        const candidates = [
-            { type: 'Focused', value: bestRow.focusedKamasEarned },
-            { type: 'Pa', value: bestRow.paKamasEarned },
-            { type: 'Ra', value: bestRow.raKamasEarned }
-        ];
-        // on choisit le plus grand
-        const winner = candidates.reduce((a, b) => a.value >= b.value ? a : b);
-        if (winner.type === 'Pa' || winner.type === 'Ra') {
-            this.mergeRune = winner.type;
-            this.maxValuePaRa = winner.value;
-        } else {
-            this.mergeRune = 'Aucune';
-            this.maxValuePaRa = 0;
+        if (this.tauxBrisage != null) {
+            const bestRow = this.tableauEffects.find(
+                row => row.focusedKamasEarned === this.maxFocusedKamasEarned
+            );
+
+            if (!bestRow) {
+                this.mergeRune = 'Aucune';
+                this.maxValuePaRa = 0;
+                this.maxValuePaRa = 0;
+                return;
+            }
+
+            const costPA = bestRow.runePrice * 3;
+            const costRA = bestRow.runePrice * 9;
+
+            const paProfit = bestRow.paPrice - costPA;
+            const raProfit = bestRow.raPrice - costRA;
+
+            const paTotalKamas = Math.round(parseFloat(bestRow.paRuneQuantity) * bestRow.paPrice * 0.98);
+            const raTotalKamas = Math.round(parseFloat(bestRow.raRuneQuantity) * bestRow.raPrice * 0.98);
+
+            if (paProfit > raProfit && paProfit > 0) {
+                this.mergeRune = 'Pa';
+                this.maxValuePaRa = paProfit;
+                this.maxValuePaRa = paTotalKamas;
+            } else if (raProfit > 0) {
+                this.mergeRune = 'Ra';
+                this.maxValuePaRa = raProfit;
+                this.maxValuePaRa = raTotalKamas;
+            } else {
+                this.mergeRune = 'Aucune';
+                this.maxValuePaRa = 0;
+                this.maxValuePaRa = 0;
+            }
         }
     }
 
@@ -325,8 +339,8 @@ export class HomeComponent implements OnInit, OnDestroy {
             return;
         }
 
-        const computeStats = (maxValue: number, includePaRa: boolean): [number, number, number] => {
-            const profit = Math.round(maxValue - this.prixCraft!);
+        const computeStats = (totalKamas: number, includePaRa: boolean): [number, number, number] => {
+            const profit = Math.round(totalKamas - this.prixCraft!);
             const percent = parseFloat(((profit / this.prixCraft!) * 100).toFixed(2));
             const breakRate = this.findNorProfitableBreakRate(includePaRa);
             return [profit, percent, breakRate];
@@ -358,6 +372,7 @@ export class HomeComponent implements OnInit, OnDestroy {
         this.prixCraft = null;
         this.maxCellColor = 'darkgreen';
         this.maxCellTextColor = 'rgb(198, 193, 185)';
+        this.nombreObjets = 1;
     }
 
     /**
