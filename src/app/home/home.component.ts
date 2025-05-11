@@ -1,7 +1,6 @@
 import { Component, OnInit, OnDestroy, ChangeDetectionStrategy, ChangeDetectorRef } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { forkJoin, Subject, Subscription } from 'rxjs';
-import { debounceTime } from 'rxjs/operators';
+import { forkJoin } from 'rxjs';
 
 /**
  * Représente une rune mise en cache pour accélérer les calculs.
@@ -186,6 +185,10 @@ export class HomeComponent implements OnInit, OnDestroy {
 
         this._cachedRunes = this.selectedItem.effects.map((effect: string) => {
             const rune = this.findMatchingRune(effect);
+            if (!rune) {
+                console.error('[findMatchingRune] Rune introuvable pour l\'effet :', effect);
+                return null;
+            }
             const averageEffectValue = this.calculateAverage(effect);
             const runeNumerator = 3 * rune.weight * averageEffectValue * level / 200 + 1;
             const runeRealWeight = this.getRealRuneWeight(rune);
@@ -196,8 +199,8 @@ export class HomeComponent implements OnInit, OnDestroy {
             return { effect, rune, runeNumerator, runeRealWeight, runePrice, paRunePrice, raRunePrice };
         });
 
-        this.buildTableAndTotals();
         this.resetStats();
+        this.buildTableAndTotals();
         this.cdr.markForCheck();
     }
 
@@ -313,8 +316,7 @@ export class HomeComponent implements OnInit, OnDestroy {
     }
 
     /**
-     * Met à jour tous les indicateurs de rentabilité (avec et sans fusion),
-     * en appelant findnorProfitableBreakRate une seule fois par mode.
+     * Met à jour tous les indicateurs de rentabilité
      */
     @LogExecution
     private computeRentabilities(): void {
@@ -354,6 +356,8 @@ export class HomeComponent implements OnInit, OnDestroy {
         this.tauxRentabiliteKamasPaRa = 0;
         this.norProfitableBreakRatePaRa = 0;
         this.prixCraft = null;
+        this.maxCellColor = 'darkgreen';
+        this.maxCellTextColor = 'rgb(198, 193, 185)';
     }
 
     /**
