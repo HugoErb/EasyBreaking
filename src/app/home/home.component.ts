@@ -19,11 +19,7 @@ interface CachedRune {
  * Décorateur de méthode pour logger l'entrée, la sortie,
  * le temps d'exécution et la mémoire utilisée (si disponible).
  */
-function LogExecution(
-    target: any,
-    propertyKey: string,
-    descriptor: PropertyDescriptor
-) {
+function LogExecution(target: any, propertyKey: string, descriptor: PropertyDescriptor) {
     // const original = descriptor.value;
     // descriptor.value = function (...args: any[]) {
     //     const start = performance.now();
@@ -54,7 +50,7 @@ function LogExecution(
     selector: 'app-home',
     templateUrl: './home.component.html',
     styleUrls: ['./home.component.scss'],
-    changeDetection: ChangeDetectionStrategy.OnPush
+    changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class HomeComponent implements OnInit, OnDestroy {
     // Données de base
@@ -95,7 +91,7 @@ export class HomeComponent implements OnInit, OnDestroy {
     // Cache des runes pour éviter les recherches répétées et calculs
     private _cachedRunes: CachedRune[] = [];
 
-    constructor(private http: HttpClient, private cdr: ChangeDetectorRef) { }
+    constructor(private http: HttpClient, private cdr: ChangeDetectorRef) {}
 
     /**
      * Initialisation du composant :
@@ -112,16 +108,12 @@ export class HomeComponent implements OnInit, OnDestroy {
 
         // forkJoin pour charger les deux listes en parallèle
         forkJoin([armes$, equipements$]).subscribe(([armesData, equipementsData]) => {
-            this.items = [
-                ...this.processData(armesData),
-                ...this.processData(equipementsData)
-            ].sort((a, b) => a.name.localeCompare(b.name));
+            this.items = [...this.processData(armesData), ...this.processData(equipementsData)].sort((a, b) => a.name.localeCompare(b.name));
             this.cdr.markForCheck(); // Permet à Angular de revérifier le composant pour màj le DOM avec vos nouvelles valeurs.
         });
     }
 
-    ngOnDestroy(): void {
-    }
+    ngOnDestroy(): void {}
 
     /**
      * Charge les runes depuis le localStorage ou depuis le JSON
@@ -132,7 +124,7 @@ export class HomeComponent implements OnInit, OnDestroy {
         if (stored) {
             this.runes = JSON.parse(stored);
         } else {
-            this.http.get<any[]>('assets/jsons/runes.json').subscribe(data => {
+            this.http.get<any[]>('assets/jsons/runes.json').subscribe((data) => {
                 localStorage.setItem('runesData', JSON.stringify(data));
                 this.runes = data;
                 this.cdr.markForCheck(); // Permet à Angular de revérifier le composant pour màj le DOM avec vos nouvelles valeurs.
@@ -146,7 +138,7 @@ export class HomeComponent implements OnInit, OnDestroy {
      * @returns Liste d'items formatés
      */
     private processData(data: any[]): any[] {
-        return data.map(item => ({
+        return data.map((item) => ({
             id: item.id,
             level: item.level,
             name: item.name,
@@ -155,7 +147,7 @@ export class HomeComponent implements OnInit, OnDestroy {
             type: item.type,
             set: item.set,
             link: item.link,
-            image: item.image
+            image: item.image,
         }));
     }
 
@@ -165,9 +157,7 @@ export class HomeComponent implements OnInit, OnDestroy {
      */
     filterItem(event: any): void {
         const q = event.query.toLowerCase();
-        this.filteredItems = this.items.filter(i =>
-            i.name.toLowerCase().includes(q)
-        );
+        this.filteredItems = this.items.filter((i) => i.name.toLowerCase().includes(q));
     }
 
     /**
@@ -187,17 +177,25 @@ export class HomeComponent implements OnInit, OnDestroy {
         this._cachedRunes = this.selectedItem.effects.map((effect: string) => {
             const rune = this.findMatchingRune(effect);
             if (!rune) {
-                console.error('[findMatchingRune] Rune introuvable pour l\'effet :', effect);
+                console.error("[findMatchingRune] Rune introuvable pour l'effet :", effect);
                 return null;
             }
             const averageEffectValue = this.calculateAverage(effect);
-            const runeNumerator = 3 * rune.weight * averageEffectValue * level / 200 + 1;
+            const runeNumerator = (3 * rune.weight * averageEffectValue * level) / 200 + 1;
             const runeRealWeight = this.getRealRuneWeight(rune);
             const runePrice = parseFloat(rune.price);
             const paRunePrice = rune.paPrice ? parseFloat(rune.paPrice) : 0;
             const raRunePrice = rune.raPrice ? parseFloat(rune.raPrice) : 0;
 
-            return { effect, rune, runeNumerator, runeRealWeight, runePrice, paRunePrice, raRunePrice };
+            return {
+                effect,
+                rune,
+                runeNumerator,
+                runeRealWeight,
+                runePrice,
+                paRunePrice,
+                raRunePrice,
+            };
         });
 
         this.resetStats();
@@ -244,18 +242,13 @@ export class HomeComponent implements OnInit, OnDestroy {
         this.tableauEffects = this._cachedRunes.map(({ effect, rune }) => {
             // quantités brutes et focus
             const baseQty = this.calculateRuneQuantity(this.tauxBrisage, rune, effect);
-            const focQty = this.calculateRuneQuantityFocused(
-                this.tauxBrisage,
-                effect,
-                this.selectedItem.effects
-            );
+            const focQty = this.calculateRuneQuantityFocused(this.tauxBrisage, effect, this.selectedItem.effects);
             // quantités PA/RA
             const paQty = rune.paPrice ? focQty / 3 : 0;
             const raQty = rune.raPrice ? focQty / 6 : 0;
 
             // fonction utilitaire pour arrondir et appliquer taxe
-            const calc = (qty: number, priceStr?: string) =>
-                Math.round(qty * (priceStr ? parseFloat(priceStr) : 0)) * 0.98;
+            const calc = (qty: number, priceStr?: string) => Math.round(qty * (priceStr ? parseFloat(priceStr) : 0)) * 0.98;
 
             const row = {
                 stat: effect,
@@ -271,7 +264,7 @@ export class HomeComponent implements OnInit, OnDestroy {
                 paRuneQuantity: paQty.toFixed(2),
                 paKamasEarned: calc(paQty, rune.paPrice),
                 raRuneQuantity: raQty.toFixed(2),
-                raKamasEarned: calc(raQty, rune.raPrice)
+                raKamasEarned: calc(raQty, rune.raPrice),
             };
 
             this.sumKamasEarned += row.kamasEarned;
@@ -279,10 +272,7 @@ export class HomeComponent implements OnInit, OnDestroy {
         });
 
         this.recipe = this.selectedItem.recipe;
-        this.maxFocusedKamasEarned = Math.max(
-            ...this.tableauEffects.map(r => r.focusedKamasEarned),
-            0
-        );
+        this.maxFocusedKamasEarned = Math.max(...this.tableauEffects.map((r) => r.focusedKamasEarned), 0);
         this.maxValue = Math.max(this.maxFocusedKamasEarned, this.sumKamasEarned);
 
         this.determineBestMergeRune();
@@ -294,9 +284,7 @@ export class HomeComponent implements OnInit, OnDestroy {
      */
     private determineBestMergeRune(): void {
         if (this.tauxBrisage != null) {
-            const bestRow = this.tableauEffects.find(
-                row => row.focusedKamasEarned === this.maxFocusedKamasEarned
-            );
+            const bestRow = this.tableauEffects.find((row) => row.focusedKamasEarned === this.maxFocusedKamasEarned);
 
             if (!bestRow) {
                 this.mergeRune = 'Aucune';
@@ -411,14 +399,14 @@ export class HomeComponent implements OnInit, OnDestroy {
     }
 
     /**
-    * Calcule le bénéfice total en Kamas pour un taux de brisage donné, en considérant
-    * à la fois le bénéfice global et le bénéfice maximal concentré sur un seul effet.
-    * 
-    * @param tauxBrisage Le taux de brisage à utiliser pour le calcul, exprimé en pourcentage.
-    * @param includePaRa   Si true, on inclut aussi le calcul pour les runes PA/RA.
-    * @returns Le bénéfice total en Kamas après soustraction du coût de production de l'item,
-    *          ou 0 si le prix de craft n'est pas renseigné.
-    */
+     * Calcule le bénéfice total en Kamas pour un taux de brisage donné, en considérant
+     * à la fois le bénéfice global et le bénéfice maximal concentré sur un seul effet.
+     *
+     * @param tauxBrisage Le taux de brisage à utiliser pour le calcul, exprimé en pourcentage.
+     * @param includePaRa   Si true, on inclut aussi le calcul pour les runes PA/RA.
+     * @returns Le bénéfice total en Kamas après soustraction du coût de production de l'item,
+     *          ou 0 si le prix de craft n'est pas renseigné.
+     */
     @LogExecution
     calculateBenefit(tauxBrisage: number, includePaRa: boolean): number {
         // Si le prix de craft n'est pas défini, on ne peut pas calculer de bénéfice
@@ -439,11 +427,7 @@ export class HomeComponent implements OnInit, OnDestroy {
             sumKamasEarned += earned;
 
             // Calcul pour le focus sur cet effet
-            const qtyFoc = this.calculateRuneQuantityFocused(
-                tauxBrisage,
-                effect,
-                this.selectedItem.effects
-            );
+            const qtyFoc = this.calculateRuneQuantityFocused(tauxBrisage, effect, this.selectedItem.effects);
             const earnedFoc = Math.round(qtyFoc * parseFloat(runeObj.price)) * 0.98;
             if (earnedFoc > maxFocusedKamasEarned) {
                 maxFocusedKamasEarned = earnedFoc;
@@ -473,9 +457,9 @@ export class HomeComponent implements OnInit, OnDestroy {
     }
 
     /**
-    * Détermine la couleur de la cellule en fonction des valeurs de prixCraft, tauxRentabiliteVise et maxValue.
-    * Met à jour la valeur de maxCellColor correspondante.
-    */
+     * Détermine la couleur de la cellule en fonction des valeurs de prixCraft, tauxRentabiliteVise et maxValue.
+     * Met à jour la valeur de maxCellColor correspondante.
+     */
     @LogExecution
     defineCellColor(): void {
         if (this.prixCraft != undefined && this.tauxRentabiliteVise != undefined) {
@@ -495,11 +479,11 @@ export class HomeComponent implements OnInit, OnDestroy {
     }
 
     /**
-    * Trouve la rune correspondante à une statistique d'objet donnée.
-    *
-    * @param itemStatistic - La statistique de l'objet pour laquelle on souhaite trouver la rune correspondante.
-    * @returns La rune correspondante trouvée, ou undefined si aucune rune correspondante n'est trouvée.
-    */
+     * Trouve la rune correspondante à une statistique d'objet donnée.
+     *
+     * @param itemStatistic - La statistique de l'objet pour laquelle on souhaite trouver la rune correspondante.
+     * @returns La rune correspondante trouvée, ou undefined si aucune rune correspondante n'est trouvée.
+     */
     @LogExecution
     findMatchingRune(itemStatistic: string): any {
         const hasPercent = itemStatistic.includes('%');
@@ -517,19 +501,17 @@ export class HomeComponent implements OnInit, OnDestroy {
             return normalizedItemStat.includes(normalizedRuneStat);
         });
 
-        filteredRunes.sort((a: any, b: any) =>
-            this.compareByLength(a.stat, b.stat)
-        );
+        filteredRunes.sort((a: any, b: any) => this.compareByLength(a.stat, b.stat));
 
         return filteredRunes[0];
     }
 
     /**
-    * Normalise une chaîne de caractères représentant une statistique d'objet ou de rune.
-    *
-    * @param stat - La chaîne représentant la statistique à normaliser.
-    * @returns La version normalisée de la statistique.
-    */
+     * Normalise une chaîne de caractères représentant une statistique d'objet ou de rune.
+     *
+     * @param stat - La chaîne représentant la statistique à normaliser.
+     * @returns La version normalisée de la statistique.
+     */
     normalizeStat(stat: string): string {
         return stat
             .toLowerCase()
@@ -585,11 +567,11 @@ export class HomeComponent implements OnInit, OnDestroy {
     }
 
     /**
-    * Obtient le poids réel d'une rune.
-    *
-    * @param rune - La rune dont on souhaite obtenir le poids réel.
-    * @returns Le poids réel de la rune.
-    */
+     * Obtient le poids réel d'une rune.
+     *
+     * @param rune - La rune dont on souhaite obtenir le poids réel.
+     * @returns Le poids réel de la rune.
+     */
     @LogExecution
     getRealRuneWeight(rune: any): number {
         let runeWeight: number;
@@ -606,37 +588,37 @@ export class HomeComponent implements OnInit, OnDestroy {
     }
 
     /**
-    * Calcule la quantité de runes en fonction du taux, de la rune et de l'effet.
-    *
-    * @param taux - Le taux de réussite du craft des runes.
-    * @param rune - La rune pour laquelle on souhaite calculer la quantité.
-    * @param effect - L'effet utilisé dans le calcul.
-    * @returns La quantité de runes calculée.
-    */
+     * Calcule la quantité de runes en fonction du taux, de la rune et de l'effet.
+     *
+     * @param taux - Le taux de réussite du craft des runes.
+     * @param rune - La rune pour laquelle on souhaite calculer la quantité.
+     * @param effect - L'effet utilisé dans le calcul.
+     * @returns La quantité de runes calculée.
+     */
     @LogExecution
     calculateRuneQuantity(taux: any, rune: any, effect: any) {
         let realRuneWeight = this.getRealRuneWeight(rune);
-        return (((3 * rune.weight * this.calculateAverage(effect) * this.selectedItem.level / 200 + 1) * taux / 100) / realRuneWeight)
+        return (((3 * rune.weight * this.calculateAverage(effect) * this.selectedItem.level) / 200 + 1) * taux) / 100 / realRuneWeight;
     }
 
     /**
-    * Calcule la quantité de runes pour une statistique spécifique en fonction du taux, de la statistique ciblée et de la liste d'effets.
-    *
-    * @param taux - Le taux de réussite du craft des runes.
-    * @param statFocused - La statistique ciblée pour laquelle on souhaite calculer la quantité de runes.
-    * @param effectsList - La liste des effets utilisés dans le calcul.
-    * @returns La quantité de runes calculée pour la statistique ciblée.
-    */
+     * Calcule la quantité de runes pour une statistique spécifique en fonction du taux, de la statistique ciblée et de la liste d'effets.
+     *
+     * @param taux - Le taux de réussite du craft des runes.
+     * @param statFocused - La statistique ciblée pour laquelle on souhaite calculer la quantité de runes.
+     * @param effectsList - La liste des effets utilisés dans le calcul.
+     * @returns La quantité de runes calculée pour la statistique ciblée.
+     */
     @LogExecution
     calculateRuneQuantityFocused(taux: any, statFocused: any, effectsList: any[]): number {
         let runeQuantityFocused = 0;
         let runeFocused = this.findMatchingRune(statFocused);
         let realRuneWeight = this.getRealRuneWeight(runeFocused);
 
-        effectsList.forEach(effect => {
+        effectsList.forEach((effect) => {
             let effectRune = this.findMatchingRune(effect);
 
-            let res = (3 * effectRune.weight * this.calculateAverage(effect) * this.selectedItem.level / 200 + 1);
+            let res = (3 * effectRune.weight * this.calculateAverage(effect) * this.selectedItem.level) / 200 + 1;
             if (effect !== statFocused) {
                 res /= 2;
             }
@@ -647,18 +629,36 @@ export class HomeComponent implements OnInit, OnDestroy {
     }
 
     /**
-    * Copie le nom de l'ingrédient dans le presse-papiers et affiche une tooltip.
-    *
-    * @param ingredientName Le nom de l'ingrédient à copier.
-    * @param event L'événement MouseEvent associé au clic.
-    */
+     * Retourne le chemin local de l'image d'un ingrédient à partir de son URL distante en se basant sur son ID.
+     * @param ingredient - L'objet ingrédient contenant une propriété 'image' (URL distante).
+     * @returns Le chemin local de l'image correspondante dans le dossier assets.
+     */
+    getLocalIngredientImage(ingredient: any): string {
+        const url = ingredient.image;
+        const match = url.match(/\/(\d+_\d+)\.png$/);
+        if (match && match[1]) {
+            const id = match[1];
+            return `assets/imgs/ingredients/${id}.png`;
+        }
+        return '';
+    }
+
+    /**
+     * Copie le nom de l'ingrédient dans le presse-papiers et affiche une tooltip.
+     *
+     * @param ingredientName Le nom de l'ingrédient à copier.
+     * @param event L'événement MouseEvent associé au clic.
+     */
     @LogExecution
     copyToClipboard(event: MouseEvent, ingredientName: string): void {
-        navigator.clipboard.writeText(ingredientName).then(() => {
-            console.log(`Copié dans le presse-papiers: ${ingredientName}`);
-        }).catch(err => {
-            console.error('Erreur lors de la copie dans le presse-papiers: ', err);
-        });
+        navigator.clipboard
+            .writeText(ingredientName)
+            .then(() => {
+                console.log(`Copié dans le presse-papiers: ${ingredientName}`);
+            })
+            .catch((err) => {
+                console.error('Erreur lors de la copie dans le presse-papiers: ', err);
+            });
 
         // Ajoute un focus pour faire apparaître la tooltip
         const element = event.currentTarget as HTMLElement;
@@ -681,8 +681,8 @@ export class HomeComponent implements OnInit, OnDestroy {
         }
 
         if (divMainContainer) {
-            divMainContainer.style.paddingTop = '25px'
-            divMainContainer.style.marginBottom = '25px'
+            divMainContainer.style.paddingTop = '25px';
+            divMainContainer.style.marginBottom = '25px';
         }
     }
 
@@ -691,7 +691,7 @@ export class HomeComponent implements OnInit, OnDestroy {
      */
     @LogExecution
     vanishDiv(): void {
-        if (this.selectedItem == "") {
+        if (this.selectedItem == '') {
             const vanishingDiv = document.querySelector('.vanishingDiv') as HTMLElement;
             const divMainContainer = document.querySelector('.container') as HTMLElement;
 
@@ -700,8 +700,8 @@ export class HomeComponent implements OnInit, OnDestroy {
             }
 
             if (divMainContainer) {
-                divMainContainer.style.paddingTop = '0'
-                divMainContainer.style.marginBottom = '6vw'
+                divMainContainer.style.paddingTop = '0';
+                divMainContainer.style.marginBottom = '6vw';
             }
         }
     }

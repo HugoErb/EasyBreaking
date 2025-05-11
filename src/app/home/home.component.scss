@@ -1,8 +1,8 @@
 main {
-    background: linear-gradient(to right, #141E30, #29323c);
+    background: linear-gradient(to right, #141e30, #29323c);
     width: 100%;
     min-height: 100vh;
-    font-family: 'Enriqueta', arial, serif;
+    font-family: "Enriqueta", arial, serif;
     overflow: auto;
     display: flex;
     justify-content: center;
@@ -77,14 +77,15 @@ main .select {
 
 .selectedItemLevel,
 .selectedItemSet {
-    margin: 2px 0; }
+    margin: 2px 0;
+}
 
 // ***********************************************************************
 
 .itemTable {
     width: 100%;
     color: rgb(198, 193, 185);
-    font-family: 'Enriqueta', arial, serif;
+    font-family: "Enriqueta", arial, serif;
     text-align: center;
     margin-top: 25px;
     border-collapse: collapse;
@@ -155,7 +156,7 @@ main .select {
     align-items: flex-start;
 }
 
-.tauxRentabiliteRight{
+.tauxRentabiliteRight {
     margin-left: 100px;
 }
 
@@ -174,7 +175,7 @@ main .select {
     color: rgb(198, 193, 185);
 }
 
-.nbObjetsInput{
+.nbObjetsInput {
     margin-left: 10px;
 }
 
@@ -193,23 +194,38 @@ main .select {
 
 .ingredient {
     border: 1px solid rgb(198, 193, 185);
-    padding: 12px 13px 12px 13px;
-    text-align: left;
+    padding: 12px 13px;
     cursor: pointer;
+    display: flex;
+    /* ← met en ligne */
+    align-items: center;
+    gap: 16px;
+    background-color: transparent;
+    transition: background-color 0.2s ease;
 }
 
 .ingredient:hover {
-    background-color: rgb(198, 193, 185, 0.20);
+    background-color: rgba(198, 193, 185, 0.2);
 }
 
-.ingredient p {
-    margin-top: 5px;
-    margin-bottom: 1px;
+.ingredientImage {
+    width: 70px;
+    height: auto;
+}
+
+.ingredientText {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    flex: 1;
+}
+
+.ingredientText p {
+    margin: 5px 0 1px 0;
     letter-spacing: 0.1px;
 }
 
-.ingredient p.ingredientName {
-    margin-top: 1px;
+.ingredientText p.ingredientName {
     margin-bottom: 10px;
     font-weight: bold;
 }

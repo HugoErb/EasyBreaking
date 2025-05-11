@@ -14,28 +14,27 @@
             </thead>
             <tbody>
                 <tr *ngFor="let rune of runes; let i = index">
-                    <td class="clicable" tabindex="0" (click)="copyToClipboard($event, rune.name)"
-                        pTooltip="Rune copiée" tooltipEvent="focus" tooltipPosition="top">
-                        <img [src]="rune.img">
+                    <td class="clicable" tabindex="0" (click)="copyToClipboard($event, rune.name)" pTooltip="Rune copiée" tooltipEvent="focus" tooltipPosition="top">
+                        <img [src]="rune.img" />
                         <div class="nom-cellule">{{ rune.name }}</div>
                     </td>
-                    <td><span class="p-input-icon-right">
+                    <td>
+                        <span class="p-input-icon-right">
                             <i class="fa-solid fa-k"></i>
-                            <p-inputNumber [style]="{ width: '200px', padding:'3px', marginRight:'12px'}" inputId="prixCraft" placeholder="Prix de la rune"
-                                [(ngModel)]="rune.price" (change)="onPriceChange(i, 'price', $event)" [min]="1"
-                                [max]="999999"></p-inputNumber>
-                        </span></td>
-                    <td><span *ngIf="rune.paPrice !== undefined; else noPaPrice" class="p-input-icon-right">
-                            <i class="fa-solid fa-k"></i>
-                            <p-inputNumber [style]="{ width: '200px', padding:'3px', marginRight:'12px'}" inputId="prixCraft" placeholder="Prix de la rune" [(ngModel)]="rune.paPrice"
-                                (change)="onPriceChange(i, 'paPrice', $event)" [min]="1" [max]="999999"></p-inputNumber>
-                        </span><ng-template #noPaPrice>/</ng-template>
+                            <p-inputNumber [style]="{ width: '200px', padding: '3px', marginRight: '12px' }" inputId="prixCraft" placeholder="Prix de la rune" [(ngModel)]="rune.price" (change)="onPriceChange(i, 'price', $event)" [min]="1" [max]="999999"></p-inputNumber>
+                        </span>
                     </td>
-                    <td><span *ngIf="rune.raPrice !== undefined; else noPaPrice" class="p-input-icon-right">
+                    <td>
+                        <span *ngIf="rune.paPrice !== undefined; else noPaPrice" class="p-input-icon-right">
                             <i class="fa-solid fa-k"></i>
-                            <p-inputNumber [style]="{ width: '200px', padding:'3px', marginRight:'12px'}" inputId="prixCraft" placeholder="Prix de la rune" [(ngModel)]="rune.raPrice"
-                                (change)="onPriceChange(i, 'raPrice', $event)" [min]="1" [max]="999999"></p-inputNumber>
-                        </span><ng-template #noRaPrice>/</ng-template>
+                            <p-inputNumber [style]="{ width: '200px', padding: '3px', marginRight: '12px' }" inputId="prixCraft" placeholder="Prix de la rune" [(ngModel)]="rune.paPrice" (change)="onPriceChange(i, 'paPrice', $event)" [min]="1" [max]="999999"></p-inputNumber> </span
+                        ><ng-template #noPaPrice>/</ng-template>
+                    </td>
+                    <td>
+                        <span *ngIf="rune.raPrice !== undefined; else noPaPrice" class="p-input-icon-right">
+                            <i class="fa-solid fa-k"></i>
+                            <p-inputNumber [style]="{ width: '200px', padding: '3px', marginRight: '12px' }" inputId="prixCraft" placeholder="Prix de la rune" [(ngModel)]="rune.raPrice" (change)="onPriceChange(i, 'raPrice', $event)" [min]="1" [max]="999999"></p-inputNumber> </span
+                        ><ng-template #noRaPrice>/</ng-template>
                     </td>
                 </tr>
             </tbody>

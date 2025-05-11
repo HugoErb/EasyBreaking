@@ -2,9 +2,7 @@
     <div class="container">
         <h1>Easy Breaking</h1>
         <div class="select">
-            <p-autoComplete [(ngModel)]="selectedItem" [dropdown]="true" [suggestions]="filteredItems"
-                (completeMethod)="filterItem($event)" field="name" (onSelect)="onItemSelect()" (input)="vanishDiv()"
-                placeholder="Entrez le nom d'un item..."></p-autoComplete>
+            <p-autoComplete [(ngModel)]="selectedItem" [dropdown]="true" [suggestions]="filteredItems" (completeMethod)="filterItem($event)" field="name" (onSelect)="onItemSelect()" (input)="vanishDiv()" placeholder="Entrez le nom d'un item..."></p-autoComplete>
         </div>
         <div class="vanishingDiv" *ngIf="selectedItem">
             <div class="selectedItemInfos">
@@ -33,38 +31,19 @@
                             <div class="text">{{ row.stat }}</div>
                         </td>
                         <td>{{ row.runeName }}</td>
-                        <td>{{ row.runePrice | number: '1.0-0' }}</td>
-                        <td>{{ row.runeQuantity | number: '1.0-2' }}</td>
-                        <td>{{ row.kamasEarned | number: '1.0-0' }}</td>
-                        <td>{{ row.runeQuantityFocused | number: '1.0-2' }}</td>
-                        <td [style.backgroundColor]="
-                  row.focusedKamasEarned === maxValue && row.focusedKamasEarned !== 0 ? maxCellColor : ''"
-                            [style.color]="
-                  row.focusedKamasEarned === maxValue && row.focusedKamasEarned !== 0 ? maxCellTextColor : ''"
-                            [style.fontWeight]="
-                  row.focusedKamasEarned === maxValue && row.focusedKamasEarned !== 0? 'bold': ''">{{
-                            row.focusedKamasEarned | number: '1.0-0' }}
+                        <td>{{ row.runePrice | number : "1.0-0" }}</td>
+                        <td>{{ row.runeQuantity | number : "1.0-2" }}</td>
+                        <td>{{ row.kamasEarned | number : "1.0-0" }}</td>
+                        <td>{{ row.runeQuantityFocused | number : "1.0-2" }}</td>
+                        <td [style.backgroundColor]="row.focusedKamasEarned === maxValue && row.focusedKamasEarned !== 0 ? maxCellColor : ''" [style.color]="row.focusedKamasEarned === maxValue && row.focusedKamasEarned !== 0 ? maxCellTextColor : ''" [style.fontWeight]="row.focusedKamasEarned === maxValue && row.focusedKamasEarned !== 0 ? 'bold' : ''">
+                            {{ row.focusedKamasEarned | number : "1.0-0" }}
                         </td>
                     </tr>
                 </tbody>
                 <tfoot>
                     <tr>
                         <td class="firstNoBorder" colspan="4"></td>
-                        <td [style.backgroundColor]="
-                  sumKamasEarned === maxValue && sumKamasEarned !== 0
-                    ? maxCellColor
-                    : ''
-                " [style.color]="
-                  sumKamasEarned === maxValue && sumKamasEarned !== 0
-                    ? maxCellTextColor
-                    : ''
-                " [style.fontWeight]="
-                  sumKamasEarned === maxValue && sumKamasEarned !== 0
-                    ? 'bold'
-                    : ''
-                ">
-                            {{ sumKamasEarned | number: '1.0-0' }}
-                        </td>
+                        <td [style.backgroundColor]="sumKamasEarned === maxValue && sumKamasEarned !== 0 ? maxCellColor : ''" [style.color]="sumKamasEarned === maxValue && sumKamasEarned !== 0 ? maxCellTextColor : ''" [style.fontWeight]="sumKamasEarned === maxValue && sumKamasEarned !== 0 ? 'bold' : ''">{{ sumKamasEarned | number : "1.0-0" }}</td>
                         <td class="lastNoBorder" colspan="2"></td>
                     </tr>
                 </tfoot>
@@ -72,19 +51,15 @@
             <div class="inputTexts">
                 <span class="p-input-icon-right">
                     <i class="fa-solid fa-percent"></i>
-                    <p-inputNumber inputId="tauxBrisage" placeholder="Taux de brisage" [(ngModel)]="tauxBrisage"
-                        (onInput)="onInputChange()" [min]="0" [max]="4000" [allowEmpty]="true"></p-inputNumber>
+                    <p-inputNumber inputId="tauxBrisage" placeholder="Taux de brisage" [(ngModel)]="tauxBrisage" (onInput)="onInputChange()" [min]="0" [max]="4000" [allowEmpty]="true"></p-inputNumber>
                 </span>
                 <span class="p-input-icon-right">
                     <i class="fa-solid fa-k"></i>
-                    <p-inputNumber inputId="prixCraft" placeholder="Prix du craft" [(ngModel)]="prixCraft"
-                        (onInput)="onEconomicsInputChange()" [min]="1" [max]="999999999"></p-inputNumber>
+                    <p-inputNumber inputId="prixCraft" placeholder="Prix du craft" [(ngModel)]="prixCraft" (onInput)="onEconomicsInputChange()" [min]="1" [max]="999999999"></p-inputNumber>
                 </span>
                 <span class="p-input-icon-right">
                     <i class="fa-solid fa-percent"></i>
-                    <p-inputNumber inputId="tauxRentabiliteVise" placeholder="Taux de rentabilité"
-                        [(ngModel)]="tauxRentabiliteVise" (onInput)="onEconomicsInputChange()" [min]="0"
-                        [max]="9999"></p-inputNumber>
+                    <p-inputNumber inputId="tauxRentabiliteVise" placeholder="Taux de rentabilité" [(ngModel)]="tauxRentabiliteVise" (onInput)="onEconomicsInputChange()" [min]="0" [max]="9999"></p-inputNumber>
                 </span>
             </div>
             <div class="rentabilite">
@@ -92,19 +67,17 @@
                 <div class="tauxRentabiliteContainer">
                     <div class="tauxRentabilite">
                         <p>Rentabilité (%) : {{ tauxRentabilitePourcent }} %</p>
-                        <p>Rentabilité (kamas): {{ tauxRentabiliteKamas | number: '1.0-0' }} k</p>
-                        <p> {{ tauxRentabilitePourcent < 0 ? 'Rentable à partir du taux de brisage : '
-                                : 'Rentable jusqu\' au taux de brisage : ' }} {{ norProfitableBreakRate }} % </p>
+                        <p>Rentabilité (kamas): {{ tauxRentabiliteKamas | number : "1.0-0" }} k</p>
+                        <p>{{ tauxRentabilitePourcent < 0 ? "Rentable à partir du taux de brisage : " : "Rentable jusqu' au taux de brisage : " }} {{ norProfitableBreakRate }} %</p>
                     </div>
                     <div class="tauxRentabilite tauxRentabiliteRight">
                         <p>Fusion de runes à faire : {{ mergeRune }}</p>
-                        <p> Kamas obtenus en focus après fusion : {{ maxValuePaRa | number: ' 1.0-0' }} k </p>
-                                <p> Rentable jusqu'au taux de brisage après fusion : {{ norProfitableBreakRatePaRa }} %
-                                </p>
+                        <p>Kamas en focus après fusion : {{ maxValuePaRa | number : "1.0-0" }} k</p>
+                        <p>Rentable après fusion jusqu'au taux de brisage : {{ norProfitableBreakRatePaRa }} %</p>
                     </div>
                     <div class="tauxRentabilite tauxRentabiliteRight">
                         <p>Rentabilité (%) après fusion : {{ tauxRentabilitePourcentPaRa }} %</p>
-                        <p> Rentabilité (kamas) après fusion : {{ tauxRentabiliteKamasPaRa | number: '1.0-0' }} k </p>
+                        <p>Rentabilité (kamas) après fusion : {{ tauxRentabiliteKamasPaRa | number : "1.0-0" }} k</p>
                     </div>
                 </div>
             </div>
@@ -113,18 +86,17 @@
                 <div>
                     <label for="nbObjets">Nombre d'objets à créer :</label>
                     <span>
-                        <p-inputNumber class="nbObjetsInput" inputId="nbObjets" placeholder="Nombre d'objets à créer"
-                            [(ngModel)]="nombreObjets" [min]="1" [max]="9999" [showButtons]="true"></p-inputNumber>
+                        <p-inputNumber class="nbObjetsInput" inputId="nbObjets" placeholder="Nombre d'objets à créer" [(ngModel)]="nombreObjets" [min]="1" [max]="9999" [showButtons]="true"></p-inputNumber>
                     </span>
                 </div>
                 <div class="ingredientContainer">
-                    <div tabindex="0" *ngFor="let ingredient of recipe" class="ingredient" pTooltip="Ingrédient copié"
-                        tooltipEvent="focus" tooltipPosition="top" (click)="copyToClipboard($event, ingredient.name)">
-                        <p class="ingredientName">{{ ingredient.name }}</p>
-                        <p>Quantité pour 1 objet : x{{ ingredient.quantite }}</p>
-                        <p> Quantité pour {{ nombreObjets | number: '1.0-0' }} objet{{ nombreObjets > 1 ? 's' : '' }} :
-                            x{{ ingredient.quantite * nombreObjets | number: '1.0-0' }}
-                        </p>
+                    <div tabindex="0" *ngFor="let ingredient of recipe" class="ingredient" pTooltip="Ingrédient copié" tooltipEvent="focus" tooltipPosition="top" (click)="copyToClipboard($event, ingredient.name)">
+                        <img class="ingredientImage" [src]="getLocalIngredientImage(ingredient)" alt="{{ ingredient.name }}" />
+                        <div class="ingredientText">
+                            <p class="ingredientName">{{ ingredient.name }}</p>
+                            <p>Quantité pour 1 objet : x{{ ingredient.quantite }}</p>
+                            <p>Quantité pour {{ nombreObjets | number : "1.0-0" }} objet{{ nombreObjets > 1 ? "s" : "" }} : x{{ ingredient.quantite * nombreObjets | number : "1.0-0" }}</p>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -134,17 +106,13 @@
         <i class="fa-regular fa-circle-question"></i>
     </div>
     <p-dialog header="Aide" [(visible)]="helpDivvisible" [style]="{ width: '50vw' }">
-        <p> - Les estimations de kamas affichées prennent déjà en compte la taxe de mise en vente de 2%. </p>
-        <p> - Les estimations de runes et kamas affichées prennent en compte le prix moyen des runes, et les jets moyens
-            d'un item. Elles peuvent donc ne pas être exactes à 100%. </p>
-        <p> - Vous pouvez cliquer sur la case d'un ingrédient pour copier le nom de ce dernier dans votre presse-papier.
-        </p>
+        <p>- Les estimations de kamas affichées prennent déjà en compte la taxe de mise en vente de 2%.</p>
+        <p>- Les estimations de runes et kamas affichées prennent en compte le prix moyen des runes, et les jets moyens d'un item. Elles peuvent donc ne pas être exactes à 100%.</p>
+        <p>- Vous pouvez cliquer sur la case d'un ingrédient pour copier le nom de ce dernier dans votre presse-papier.</p>
         <p>- Explication des couleurs des cellules :</p>
-        <p class="indent"> - Couleur verte : vous êtes rentable au-dessus du pourcentage de rentabilité que vous
-            recherchez </p>
-        <p class="indent"> - Couleur jaune : vous êtes rentable mais en dessous du pourcentage de rentabilité que vous
-            recherchez </p>
-        <p class="indent"> - Couleur rouge : vous n'êtes pas rentable </p>
+        <p class="indent">- Couleur verte : vous êtes rentable au-dessus du pourcentage de rentabilité que vous recherchez</p>
+        <p class="indent">- Couleur jaune : vous êtes rentable mais en dessous du pourcentage de rentabilité que vous recherchez</p>
+        <p class="indent">- Couleur rouge : vous n'êtes pas rentable</p>
     </p-dialog>
     <div class="runeSign" routerLink="/runes-manager">
         <img class="runeImg" src="../../assets/imgs/rune.png" alt="Runes Manager" />
