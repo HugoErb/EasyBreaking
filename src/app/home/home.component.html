@@ -35,7 +35,7 @@
                         <td>
                             <span class="p-input-icon-right">
                                 <i class="fa-solid fa-k"></i>
-                                <p-inputNumber [(ngModel)]="row.runePrice" [min]="0" [max]="999999" [useGrouping]="false" (onInput)="updateRunePrice(row.runeName, row.runePrice)" />
+                                <p-inputNumber [(ngModel)]="row.runePrice" [min]="0" [max]="999999999" [useGrouping]="false" (onInput)="updateRunePrice(row.runeName, row.runePrice)" />
                             </span>
                         </td>
                         <td>{{ row.runeQuantity | number : "1.0-2" }}</td>

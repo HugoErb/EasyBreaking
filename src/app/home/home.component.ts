@@ -457,8 +457,8 @@ export class HomeComponent implements OnInit, OnDestroy {
     }
 
     /**
-     * Met à jour le prix d'une rune dans le localStorage lorsqu'on quitte le champ de saisie.
-     * Cela déclenche aussi un recalcul du tableau.
+     * Met à jour le prix d'une rune dans le localStorage et dans le cache.
+     * Déclenche aussi un recalcul du tableau.
      *
      * @param runeName - Le nom de la rune à modifier.
      * @param newPrice - Le nouveau prix saisi.
@@ -474,13 +474,32 @@ export class HomeComponent implements OnInit, OnDestroy {
                 runeList[runeIndex].price = newPrice;
                 localStorage.setItem('runesData', JSON.stringify(runeList));
 
+                // Met à jour le cache local aussi
                 const cacheIndex = this._cachedRunes.findIndex((r) => r.rune.name === runeName);
                 if (cacheIndex !== -1) {
                     this._cachedRunes[cacheIndex].rune.price = newPrice;
                 }
-            }
 
-            this.onInputChange();
+                // Met à jour la ligne concernée dans tableauEffects
+                const row = this.tableauEffects.find((r) => r.runeName === runeName);
+                if (row) {
+                    const qty = parseFloat(row.runeQuantity);
+                    const qtyFocus = parseFloat(row.runeQuantityFocused);
+                    const price = parseFloat(newPrice.toString());
+
+                    row.runePrice = newPrice;
+                    row.kamasEarned = Math.round(qty * price * 0.98);
+                    row.focusedKamasEarned = Math.round(qtyFocus * price * 0.98);
+                }
+
+                // Recalcule les totaux et couleurs
+                this.sumKamasEarned = this.tableauEffects.reduce((sum, r) => sum + (r.kamasEarned || 0), 0);
+                this.maxFocusedKamasEarned = Math.max(...this.tableauEffects.map((r) => r.focusedKamasEarned), 0);
+                this.maxValue = Math.max(this.maxFocusedKamasEarned, this.sumKamasEarned);
+                this.computeRentabilities();
+                this.defineCellColor();
+                this.cdr.markForCheck();
+            }
         } catch (e) {
             console.error('Erreur lors de la mise à jour du prix des runes dans le localStorage', e);
         }
