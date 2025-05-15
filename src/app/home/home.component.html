@@ -8,8 +8,9 @@
             <div class="selectedItemInfos">
                 <img class="selectedItemImage" [src]="selectedItem.image" alt="{{ selectedItem.name }}" />
                 <div class="selectedItemText">
-                    <div class="selectedItemLevel">Niveau : {{ selectedItem.level }}</div>
-                    <div class="selectedItemSet">Panoplie : {{ selectedItem.set }}</div>
+                    <div class="selectedItemInfo">Niveau : {{ selectedItem.level }}</div>
+                    <div class="selectedItemInfo">Type : {{ selectedItem.type }}</div>
+                    <div class="selectedItemInfo">Panoplie : {{ selectedItem.set }}</div>
                 </div>
             </div>
             <table class="itemTable">
