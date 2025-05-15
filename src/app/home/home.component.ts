@@ -457,6 +457,36 @@ export class HomeComponent implements OnInit, OnDestroy {
     }
 
     /**
+     * Met à jour le prix d'une rune dans le localStorage lorsqu'on quitte le champ de saisie.
+     * Cela déclenche aussi un recalcul du tableau.
+     *
+     * @param runeName - Le nom de la rune à modifier.
+     * @param newPrice - Le nouveau prix saisi.
+     */
+    updateRunePrice(runeName: string, newPrice: number): void {
+        const storedRunes = localStorage.getItem('runesData');
+        if (!storedRunes) return;
+
+        try {
+            const runeList = JSON.parse(storedRunes);
+            const runeIndex = runeList.findIndex((r: any) => r.name === runeName);
+            if (runeIndex !== -1) {
+                runeList[runeIndex].price = newPrice;
+                localStorage.setItem('runesData', JSON.stringify(runeList));
+
+                const cacheIndex = this._cachedRunes.findIndex((r) => r.rune.name === runeName);
+                if (cacheIndex !== -1) {
+                    this._cachedRunes[cacheIndex].rune.price = newPrice;
+                }
+            }
+
+            this.onInputChange();
+        } catch (e) {
+            console.error('Erreur lors de la mise à jour du prix des runes dans le localStorage', e);
+        }
+    }
+
+    /**
      * Détermine la couleur de la cellule en fonction des valeurs de prixCraft, tauxRentabiliteVise et maxValue.
      * Met à jour la valeur de maxCellColor correspondante.
      */
