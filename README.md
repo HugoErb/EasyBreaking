@@ -53,20 +53,13 @@ Voici un exemple de README pour votre projet Angular/Node.js de gestion des item
    ```bash
    npm install
    ```
-
-3. Lancez le backend Node.js :
-
-   ```bash
-   node server.js
-   ```
-
-4. Dans un autre terminal, lancez l’application Angular :
+3. Dans un autre terminal, lancez l’application Angular :
 
    ```bash
    ng serve
    ```
 
-5. Accédez à l'application dans votre navigateur via `http://localhost:4200`.
+4. Accédez à l'application dans votre navigateur via `http://localhost:4200`.
 
 ## Utilisation
 
