@@ -303,11 +303,11 @@ export class HomeComponent implements OnInit, OnDestroy {
             const raTotalKamas = Math.round(parseFloat(bestRow.raRuneQuantity) * bestRow.raPrice * 0.98);
 
             if (paProfit > raProfit && paProfit > 0) {
-                this.mergeRune = 'Pa';
+                this.mergeRune = 'Pa ' + bestRow.runeName;
                 this.maxValuePaRa = paProfit;
                 this.maxValuePaRa = paTotalKamas;
             } else if (raProfit > 0) {
-                this.mergeRune = 'Ra';
+                this.mergeRune = 'Ra ' + bestRow.runeName;
                 this.maxValuePaRa = raProfit;
                 this.maxValuePaRa = raTotalKamas;
             } else {

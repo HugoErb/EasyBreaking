@@ -14,7 +14,7 @@
                 </div>
             </div>
             <table class="itemTable">
-                <thead>
+                <thead class="bold">
                     <tr>
                         <td>Caractéristiques</td>
                         <td>Nom des runes</td>
@@ -72,7 +72,7 @@
                         <p>{{ tauxRentabilitePourcent < 0 ? "Rentable à partir du taux de brisage : " : "Rentable jusqu' au taux de brisage : " }} {{ norProfitableBreakRate }} %</p>
                     </div>
                     <div class="tauxRentabilite tauxRentabiliteRight">
-                        <p>Fusion de runes à faire : {{ mergeRune }}</p>
+                        <p>Fusion de runes à faire : <span class="bold">{{ mergeRune }}</span></p>
                         <p>Kamas en focus après fusion : {{ maxValuePaRa | number : "1.0-0" }} k</p>
                         <p>Rentable après fusion jusqu'au taux de brisage : {{ norProfitableBreakRatePaRa }} %</p>
                     </div>
@@ -94,7 +94,7 @@
                     <div tabindex="0" *ngFor="let ingredient of recipe" class="ingredient" pTooltip="Ingrédient copié" tooltipEvent="focus" tooltipPosition="top" (click)="copyToClipboard($event, ingredient.name)">
                         <img class="ingredientImage" [src]="getLocalIngredientImage(ingredient)" alt="{{ ingredient.name }}" />
                         <div class="ingredientText">
-                            <p class="ingredientName">{{ ingredient.name }}</p>
+                            <p class="ingredientName bold">{{ ingredient.name }}</p>
                             <p>Quantité pour 1 objet : x{{ ingredient.quantite }}</p>
                             <p>Quantité pour {{ nombreObjets | number : "1.0-0" }} objet{{ nombreObjets > 1 ? "s" : "" }} : x{{ ingredient.quantite * nombreObjets | number : "1.0-0" }}</p>
                         </div>

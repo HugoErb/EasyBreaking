@@ -23,6 +23,10 @@ main h1 {
     font-size: 5em;
 }
 
+.bold{
+    font-weight: bold;
+}
+
 // ***********************************************************************
 
 main .select {
@@ -89,10 +93,6 @@ main .select {
     margin-top: 25px;
     border-collapse: collapse;
     white-space: nowrap;
-}
-
-.itemTable thead {
-    font-weight: bold;
 }
 
 .itemTable td {
@@ -226,7 +226,6 @@ main .select {
 
 .ingredientText p.ingredientName {
     margin-bottom: 10px;
-    font-weight: bold;
 }
 
 // ***********************************************************************
