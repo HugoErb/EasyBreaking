@@ -107,6 +107,11 @@ main .select {
     text-align: left;
 }
 
+.runePriceInput ::ng-deep .p-inputtext {
+    width: auto !important;
+    padding: 4px 10px 4px 6px;
+}
+
 .firstNoBorder {
     border-left: none !important;
     border-bottom: none !important;
@@ -196,7 +201,6 @@ main .select {
     padding: 12px 13px;
     cursor: pointer;
     display: flex;
-    /* ← met en ligne */
     align-items: center;
     gap: 16px;
     background-color: transparent;
