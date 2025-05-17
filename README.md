@@ -53,7 +53,7 @@ Voici un exemple de README pour votre projet Angular/Node.js de gestion des item
    ```bash
    npm install
    ```
-3. Dans un autre terminal, lancez l’application Angular :
+3. Lancez le fichier "run.bat" à la racine, ou lancez l’application Angular via la commande :
 
    ```bash
    ng serve

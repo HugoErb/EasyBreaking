@@ -684,23 +684,6 @@ Blopture Coco, lvl 50, 230 -> 227 en 1
 Blopture Coco, lvl 50, 227 -> 225 en 1
 Blopture Coco, lvl 50, 225 -> 222 en 1
 Blopture Coco, lvl 50, 222 -> 220 en 1
-Blopture Coco, lvl 50, 220 -> 217 en 1
-Blopture Coco, lvl 50, 272 -> 268 en 1
-Blopture Coco, lvl 50, 272 -> 261 en 2
-Blopture Coco, lvl 50, 272 -> 258 en 1
-Blopture Coco, lvl 50, 272 -> 254 en 1
-Blopture Coco, lvl 50, 272 -> 251 en 1
-Blopture Coco, lvl 50, 272 -> 248 en 1
-Blopture Coco, lvl 50, 272 -> 245 en 1
-Blopture Coco, lvl 50, 272 -> 242 en 1
-Blopture Coco, lvl 50, 272 -> 239 en 1
-Blopture Coco, lvl 50, 272 -> 236 en 1
-Blopture Coco, lvl 50, 272 -> 233 en 1
-Blopture Coco, lvl 50, 272 -> 230 en 1
-Blopture Coco, lvl 50, 272 -> 227 en 1
-Blopture Coco, lvl 50, 272 -> 225 en 1
-Blopture Coco, lvl 50, 272 -> 222 en 1
-Blopture Coco, lvl 50, 272 -> 220 en 1
 Blopture Coco, lvl 50, 272 -> 217 en 1
 Blopture Coco, lvl 50, 272 -> 215 en 1
 Blopture Coco, lvl 50, 272 -> 212 en 1
@@ -735,3 +718,28 @@ Blopture Coco, lvl 50, 272 -> 162 en 1
 Blopture Coco, lvl 50, 272 -> 161 en 1
 Blopture Coco, lvl 50, 272 -> 160 en 1
 Blopture Coco, lvl 50, 272 -> 158 en 1
+
+Makiture,10,325,324,1
+Makiture,10,324,321,2
+Makiture,10,321,319,1
+Makiture,10,319,313,4
+Makiture,10,313,308,4
+Makiture,10,308,307,1
+Makiture,10,307,305,1
+Makiture,10,305,303,2
+Makiture,10,303,299,3
+Makiture,10,299,296,2
+Makiture,10,296,293,3
+Makiture,10,293,290,2
+Makiture,10,290,288,2
+Makiture,10,288,284,3
+Makiture,10,284,282,2
+Makiture,10,282,279,3
+Makiture,10,279,277,2
+Makiture,10,277,274,2
+Makiture,10,274,272,2
+Makiture,10,272,271,1
+Makiture,10,271,270,1
+Makiture,10,270,267,3
+Makiture,10,267,265,2
+Makiture,10,265,261,4
