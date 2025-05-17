@@ -36,15 +36,14 @@ Voici un exemple de README pour votre projet Angular/Node.js de gestion des item
 
 ## Prérequis
 
-- **Node.js** et **npm**
-- **Angular CLI** (pour le frontend)
+- **Node.js** et **git**
 
 ## Installation
 
-1. Téléchargez le code en zip sur le bouton vert "Code" en haut de la page, ou clonez le dépôt via la commande :
+1. Clonez le dépôt via la commande (pas de téléchargement ZIP, le projet ne fonctionnera pas) :
 
    ```bash
-   git clone https://github.com/yourusername/easy-breaking.git
+   git clone https://github.com/HugoErb/EasyBreaking.git
    ```
 
 2. Dans un invite de commande (cmd), placez vous à la racine du projet et installez les dépendances via la commande :
