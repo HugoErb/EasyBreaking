@@ -8662,7 +8662,8 @@
             "8 à 10 Soin",
             "101 à 200 Initiative",
             "6 à 7% Résistance Feu",
-            "6 à 7% Résistance Eau"
+            "6 à 7% Résistance Eau",
+            "Arme de chasse"
         ],
         "recipe": [
             {
@@ -8981,7 +8982,8 @@
             "7 à 10 Dommage Feu",
             "7 à 10 Dommage Eau",
             "11 à 15 Prospection",
-            "2 à 3 Fuite"
+            "2 à 3 Fuite",
+            "Arme de chasse"
         ],
         "recipe": [
             {
@@ -9753,7 +9755,8 @@
             "11 à 20 Prospection",
             "5 à 7% Résistance Feu",
             "5 à 7% Résistance Eau",
-            "5 à 7% Résistance Air"
+            "5 à 7% Résistance Air",
+            "Arme de chasse"
         ],
         "recipe": [
             {
@@ -11010,7 +11013,8 @@
         "effects": [
             "251 à 300 Vitalité",
             "41 à 50 Intelligence",
-            "31 à 40 Sagesse"
+            "31 à 40 Sagesse",
+            "Arme de chasse"
         ],
         "recipe": [
             {
@@ -12293,7 +12297,8 @@
             "4 à 5 Dommage",
             "11 à 20 Prospection",
             "5 à 7% Résistance Air",
-            "5 à 7 Résistance Air"
+            "5 à 7 Résistance Air",
+            "Arme de chasse"
         ],
         "recipe": [
             {
@@ -14321,7 +14326,8 @@
             "21 à 40 Sagesse",
             "4 à 5 Soin",
             "11 à 15 Prospection",
-            "301 à 400 Initiative"
+            "301 à 400 Initiative",
+            "Arme de chasse"
         ],
         "recipe": [
             {
@@ -16117,7 +16123,8 @@
             "16 à 30 Sagesse",
             "1 Invocation",
             "4 à 6 Soin",
-            "6 à 10 Prospection"
+            "6 à 10 Prospection",
+            "Arme de chasse"
         ],
         "recipe": [
             {
@@ -18278,7 +18285,8 @@
             "4 à 5% Critique",
             "11 à 15 Prospection",
             "4 à 5% Résistance Neutre",
-            "4 à 5% Résistance Feu"
+            "4 à 5% Résistance Feu",
+            "Arme de chasse"
         ],
         "recipe": [
             {
@@ -18526,7 +18534,8 @@
             "101 à 150 Vitalité",
             "31 à 50 Force",
             "21 à 35 Sagesse",
-            "6 à 10% Résistance Feu"
+            "6 à 10% Résistance Feu",
+            "Arme de chasse"
         ],
         "recipe": [
             {
@@ -19632,7 +19641,8 @@
             "21 à 35 Intelligence",
             "21 à 35 Agilité",
             "1 Invocation",
-            "4 à 5 Dommage"
+            "4 à 5 Dommage",
+            "Arme de chasse"
         ],
         "recipe": [
             {
@@ -21458,7 +21468,8 @@
         "effects": [
             "31 à 50 Vitalité",
             "41 à 80 Force",
-            "16 à 25 Sagesse"
+            "16 à 25 Sagesse",
+            "Arme de chasse"
         ],
         "recipe": [
             {
@@ -22505,7 +22516,8 @@
             "31 à 50 Vitalité",
             "26 à 40 Force",
             "26 à 40 Agilité",
-            "16 à 30 Sagesse"
+            "16 à 30 Sagesse",
+            "Arme de chasse"
         ],
         "recipe": [
             {
@@ -23975,7 +23987,8 @@
         "effects": [
             "21 à 30 Force",
             "21 à 30 Agilité",
-            "3 à 4 Dommage"
+            "3 à 4 Dommage",
+            "Arme de chasse"
         ],
         "recipe": [
             {
@@ -25555,7 +25568,8 @@
         "effects": [
             "5 Sagesse",
             "1 à 3 Résistance Neutre",
-            "1 à 3 Résistance Terre"
+            "1 à 3 Résistance Terre",
+            "Arme de chasse"
         ],
         "recipe": [
             {
@@ -26861,7 +26875,8 @@
         "level": "40",
         "effects": [
             "31 à 40 Vitalité",
-            "31 à 40 Chance"
+            "31 à 40 Chance",
+            "Arme de chasse"
         ],
         "recipe": [
             {
@@ -27940,7 +27955,8 @@
         "level": "30",
         "effects": [
             "11 à 20 Vitalité",
-            "11 à 20 Agilité"
+            "11 à 20 Agilité",
+            "Arme de chasse"
         ],
         "recipe": [
             {
@@ -28218,7 +28234,8 @@
         "set": "Aucune",
         "level": "30",
         "effects": [
-            "1 PO"
+            "1 PO",
+            "Arme de chasse"
         ],
         "recipe": [
             {
@@ -28310,7 +28327,8 @@
         "set": "Aucune",
         "level": "29",
         "effects": [
-            "26 à 40 Chance"
+            "26 à 40 Chance",
+            "Arme de chasse"
         ],
         "recipe": [
             {
@@ -28960,7 +28978,8 @@
         "level": "25",
         "effects": [
             "6 à 10 Agilité",
-            "1 PO"
+            "1 PO",
+            "Arme de chasse"
         ],
         "recipe": [
             {
@@ -29145,7 +29164,8 @@
         "set": "Aucune",
         "level": "22",
         "effects": [
-            "11 à 30 Chance"
+            "11 à 30 Chance",
+            "Arme de chasse"
         ],
         "recipe": [
             {
@@ -29328,7 +29348,8 @@
         "set": "Aucune",
         "level": "21",
         "effects": [
-            "1% Critique"
+            "1% Critique",
+            "Arme de chasse"
         ],
         "recipe": [
             {
@@ -29357,7 +29378,8 @@
         "set": "Aucune",
         "level": "21",
         "effects": [
-            "4 à 6% Critique"
+            "4 à 6% Critique",
+            "Arme de chasse"
         ],
         "recipe": [
             {
@@ -29514,7 +29536,8 @@
         "level": "20",
         "effects": [
             "11 à 15 Agilité",
-            "2 à 3% Critique"
+            "2 à 3% Critique",
+            "Arme de chasse"
         ],
         "recipe": [
             {
@@ -29565,7 +29588,8 @@
         "level": "20",
         "effects": [
             "16 à 25 Vitalité",
-            "2 à 3 Tacle"
+            "2 à 3 Tacle",
+            "Arme de chasse"
         ],
         "recipe": [
             {
@@ -30979,7 +31003,8 @@
         "set": "Panoplie du Boune",
         "level": "1",
         "effects": [
-            "1 Dommage"
+            "1 Dommage",
+            "Arme de chasse"
         ],
         "recipe": [
             {
@@ -31015,6 +31040,54 @@
                 "quantite": 3,
                 "name": "Pétale Diaphane",
                 "image": "https://www.dofusbook.net/static/items/35642_0.png"
+            }
+        ]
+    },
+    {
+        "id": "3479",
+        "link": "https://www.dofusbook.net/fr/encyclopedie/objet/3479",
+        "name": "Arc de Chasse",
+        "image": "https://www.dofusbook.net/static/dist/items/20010-70.webp",
+        "type": "Arc",
+        "set": "Aucune",
+        "level": "1",
+        "effects": [
+            "Arme de chasse"
+        ],
+        "recipe": [
+            {
+                "quantite": 3,
+                "name": "Bois de Frêne",
+                "image": "https://www.dofusbook.net/static/items/38017_0.png"
+            },
+            {
+                "quantite": 3,
+                "name": "Poudre de Perlinpainpain",
+                "image": "https://www.dofusbook.net/static/items/48002_0.png"
+            }
+        ]
+    },
+    {
+        "id": "3478",
+        "link": "https://www.dofusbook.net/fr/encyclopedie/objet/3478",
+        "name": "Couteau de Chasse",
+        "image": "https://www.dofusbook.net/static/dist/items/20014-70.webp",
+        "type": "Dagues",
+        "set": "Aucune",
+        "level": "1",
+        "effects": [
+            "Arme de chasse"
+        ],
+        "recipe": [
+            {
+                "quantite": 3,
+                "name": "Poudre de Perlinpainpain",
+                "image": "https://www.dofusbook.net/static/items/48002_0.png"
+            },
+            {
+                "quantite": 3,
+                "name": "Laine Céleste",
+                "image": "https://www.dofusbook.net/static/items/57662_0.png"
             }
         ]
     },
