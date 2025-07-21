@@ -156,11 +156,6 @@
             },
             {
                 "quantite": 15,
-                "name": "Tourmaline",
-                "image": "https://www.dofusbook.net/static/items/50719_0.png"
-            },
-            {
-                "quantite": 15,
                 "name": "Tête de mort",
                 "image": "https://www.dofusbook.net/static/items/15885_0.png"
             },
@@ -168,6 +163,11 @@
                 "quantite": 5,
                 "name": "Corne de Volkorne",
                 "image": "https://www.dofusbook.net/static/items/47864_0.png"
+            },
+            {
+                "quantite": 3,
+                "name": "Galet brasillant",
+                "image": "https://www.dofusbook.net/static/items/15289_0.png"
             },
             {
                 "quantite": 2,

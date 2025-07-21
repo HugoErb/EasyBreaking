@@ -20412,9 +20412,9 @@
                 "image": "https://www.dofusbook.net/static/items/54696_0.png"
             },
             {
-                "quantite": 2,
-                "name": "Galet brasillant",
-                "image": "https://www.dofusbook.net/static/items/15289_0.png"
+                "quantite": 1,
+                "name": "Ardonite",
+                "image": "https://www.dofusbook.net/static/items/40710_0.png"
             },
             {
                 "quantite": 1,
@@ -20549,9 +20549,9 @@
                 "image": "https://www.dofusbook.net/static/items/15901_0.png"
             },
             {
-                "quantite": 2,
-                "name": "Galet brasillant",
-                "image": "https://www.dofusbook.net/static/items/15289_0.png"
+                "quantite": 1,
+                "name": "Ardonite",
+                "image": "https://www.dofusbook.net/static/items/40710_0.png"
             },
             {
                 "quantite": 1,
@@ -21424,13 +21424,13 @@
             },
             {
                 "quantite": 2,
-                "name": "Galet brasillant",
-                "image": "https://www.dofusbook.net/static/items/15289_0.png"
-            },
-            {
-                "quantite": 2,
                 "name": "Queue de Brikoglours",
                 "image": "https://www.dofusbook.net/static/items/65763_0.png"
+            },
+            {
+                "quantite": 1,
+                "name": "Ardonite",
+                "image": "https://www.dofusbook.net/static/items/40710_0.png"
             },
             {
                 "quantite": 1,
@@ -22647,6 +22647,11 @@
         ],
         "recipe": [
             {
+                "quantite": 12,
+                "name": "Tourmaline",
+                "image": "https://www.dofusbook.net/static/items/50719_0.png"
+            },
+            {
                 "quantite": 8,
                 "name": "Iris de Boulglours",
                 "image": "https://www.dofusbook.net/static/items/109598_0.png"
@@ -22675,11 +22680,6 @@
                 "quantite": 2,
                 "name": "Queue de Glourséleste",
                 "image": "https://www.dofusbook.net/static/items/65761_0.png"
-            },
-            {
-                "quantite": 2,
-                "name": "Galet brasillant",
-                "image": "https://www.dofusbook.net/static/items/15289_0.png"
             },
             {
                 "quantite": 1,
@@ -59147,14 +59147,14 @@
                 "image": "https://www.dofusbook.net/static/items/15583_0.png"
             },
             {
+                "quantite": 3,
+                "name": "Groin de Dragon Cochon",
+                "image": "https://www.dofusbook.net/static/items/15620_0.png"
+            },
+            {
                 "quantite": 2,
                 "name": "Substrat de Bosquet",
                 "image": "https://www.dofusbook.net/static/items/12728_0.png"
-            },
-            {
-                "quantite": 1,
-                "name": "Galet rutilant",
-                "image": "https://www.dofusbook.net/static/items/15291_0.png"
             }
         ]
     },
@@ -104919,6 +104919,72 @@
         ]
     },
     {
+        "id": "316",
+        "link": "https://www.dofusbook.net/fr/encyclopedie/objet/316",
+        "name": "Grenouillette",
+        "image": "https://www.dofusbook.net/static/dist/items/1002-70.webp",
+        "type": "Amulette",
+        "set": "Aucune",
+        "level": "1",
+        "effects": [
+            "1 Agilité"
+        ],
+        "recipe": []
+    },
+    {
+        "id": "1478",
+        "link": "https://www.dofusbook.net/fr/encyclopedie/objet/1478",
+        "name": "Le S'Mesme",
+        "image": "https://www.dofusbook.net/static/dist/items/1120-70.webp",
+        "type": "Amulette",
+        "set": "Panoplie du Boune",
+        "level": "1",
+        "effects": [
+            "7 à 10 Vitalité",
+            "4 à 6 Chance"
+        ],
+        "recipe": [
+            {
+                "quantite": 2,
+                "name": "Goujon",
+                "image": "https://www.dofusbook.net/static/items/41294_0.png"
+            },
+            {
+                "quantite": 2,
+                "name": "Plume Chimérique",
+                "image": "https://www.dofusbook.net/static/items/53661_0.png"
+            }
+        ]
+    },
+    {
+        "id": "1983",
+        "link": "https://www.dofusbook.net/fr/encyclopedie/objet/1983",
+        "name": "Amulette de l'intrépide",
+        "image": "https://www.dofusbook.net/static/dist/items/1163-70.webp",
+        "type": "Amulette",
+        "set": "Panoplie de l'intrépide",
+        "level": "1",
+        "effects": [
+            "1 Vitalité",
+            "1 Initiative"
+        ],
+        "recipe": []
+    },
+    {
+        "id": "2972",
+        "link": "https://www.dofusbook.net/fr/encyclopedie/objet/2972",
+        "name": "Amulette Tude",
+        "image": "https://www.dofusbook.net/static/dist/items/1019-70.webp",
+        "type": "Amulette",
+        "set": "Aucune",
+        "level": "1",
+        "effects": [
+            "1 Intelligence",
+            "5 Initiative"
+        ],
+        "recipe": []
+    },
+    {
         "id": "286",
         "link": "https://www.dofusbook.net/fr/encyclopedie/objet/286",
         "name": "Anneau Rexik",
@@ -104941,19 +105007,6 @@
                 "image": "https://www.dofusbook.net/static/items/164066_0.png"
             }
         ]
-    },
-    {
-        "id": "287",
-        "link": "https://www.dofusbook.net/fr/encyclopedie/objet/287",
-        "name": "Ceinture du Kobeer",
-        "image": "https://www.dofusbook.net/static/dist/items/10009-70.webp",
-        "type": "Ceinture",
-        "set": "Aucune",
-        "level": "1",
-        "effects": [
-            "2 Force"
-        ],
-        "recipe": []
     },
     {
         "id": "313",
@@ -105000,92 +105053,6 @@
                 "quantite": 3,
                 "name": "Queue de Chapardam",
                 "image": "https://www.dofusbook.net/static/items/65767_0.png"
-            }
-        ]
-    },
-    {
-        "id": "316",
-        "link": "https://www.dofusbook.net/fr/encyclopedie/objet/316",
-        "name": "Grenouillette",
-        "image": "https://www.dofusbook.net/static/dist/items/1002-70.webp",
-        "type": "Amulette",
-        "set": "Aucune",
-        "level": "1",
-        "effects": [
-            "1 Agilité"
-        ],
-        "recipe": []
-    },
-    {
-        "id": "318",
-        "link": "https://www.dofusbook.net/fr/encyclopedie/objet/318",
-        "name": "Ceinture de Chance",
-        "image": "https://www.dofusbook.net/static/dist/items/10003-70.webp",
-        "type": "Ceinture",
-        "set": "Aucune",
-        "level": "1",
-        "effects": [
-            "4 à 7 Chance"
-        ],
-        "recipe": [
-            {
-                "quantite": 3,
-                "name": "Ortie",
-                "image": "https://www.dofusbook.net/static/items/36642_0.png"
-            },
-            {
-                "quantite": 3,
-                "name": "Feu Intérieur",
-                "image": "https://www.dofusbook.net/static/items/164067_0.png"
-            }
-        ]
-    },
-    {
-        "id": "319",
-        "link": "https://www.dofusbook.net/fr/encyclopedie/objet/319",
-        "name": "Bottes de Force",
-        "image": "https://www.dofusbook.net/static/dist/items/11003-70.webp",
-        "type": "Bottes",
-        "set": "Aucune",
-        "level": "1",
-        "effects": [
-            "4 à 6 Force"
-        ],
-        "recipe": [
-            {
-                "quantite": 3,
-                "name": "Pétale Diaphane",
-                "image": "https://www.dofusbook.net/static/items/35642_0.png"
-            },
-            {
-                "quantite": 3,
-                "name": "Queue de Chapardam",
-                "image": "https://www.dofusbook.net/static/items/65767_0.png"
-            }
-        ]
-    },
-    {
-        "id": "362",
-        "link": "https://www.dofusbook.net/fr/encyclopedie/objet/362",
-        "name": "Louffeur",
-        "image": "https://www.dofusbook.net/static/dist/items/16020-70.webp",
-        "type": "Chapeau",
-        "set": "Aucune",
-        "level": "1",
-        "effects": [
-            "1 Résistance Neutre",
-            "1 Résistance Terre"
-        ],
-        "recipe": [
-            {
-                "quantite": 3,
-                "name": "Queue de Chapardam",
-                "image": "https://www.dofusbook.net/static/items/65767_0.png"
-            },
-            {
-                "quantite": 3,
-                "name": "Feu Intérieur",
-                "image": "https://www.dofusbook.net/static/items/164067_0.png"
             }
         ]
     },
@@ -105168,15 +105135,171 @@
         "recipe": []
     },
     {
-        "id": "629",
-        "link": "https://www.dofusbook.net/fr/encyclopedie/objet/629",
-        "name": "Petit Sac en Laine de Boufton",
-        "image": "https://www.dofusbook.net/static/dist/items/81025-70.webp",
-        "type": "Cape",
+        "id": "1477",
+        "link": "https://www.dofusbook.net/fr/encyclopedie/objet/1477",
+        "name": "Le Plussain",
+        "image": "https://www.dofusbook.net/static/dist/items/9125-70.webp",
+        "type": "Anneau",
+        "set": "Panoplie du Boune",
+        "level": "1",
+        "effects": [
+            "4 à 6 Force",
+            "4 à 6 Agilité"
+        ],
+        "recipe": [
+            {
+                "quantite": 2,
+                "name": "Blé",
+                "image": "https://www.dofusbook.net/static/items/34009_0.png"
+            },
+            {
+                "quantite": 2,
+                "name": "Feu Intérieur",
+                "image": "https://www.dofusbook.net/static/items/164067_0.png"
+            }
+        ]
+    },
+    {
+        "id": "1984",
+        "link": "https://www.dofusbook.net/fr/encyclopedie/objet/1984",
+        "name": "Anneau de l'intrépide",
+        "image": "https://www.dofusbook.net/static/dist/items/9190-70.webp",
+        "type": "Anneau",
+        "set": "Panoplie de l'intrépide",
+        "level": "1",
+        "effects": [
+            "1 Vitalité",
+            "1 Initiative"
+        ],
+        "recipe": []
+    },
+    {
+        "id": "4318",
+        "link": "https://www.dofusbook.net/fr/encyclopedie/objet/4318",
+        "name": "Anneau de l'Audacieux",
+        "image": "https://www.dofusbook.net/static/dist/items/9332-70.webp",
+        "type": "Anneau",
         "set": "Aucune",
         "level": "1",
         "effects": [
-            "71 à 100 Pods"
+            "3 à 4 Puissance"
+        ],
+        "recipe": [
+            {
+                "quantite": 1,
+                "name": "Blé",
+                "image": "https://www.dofusbook.net/static/items/34009_0.png"
+            },
+            {
+                "quantite": 1,
+                "name": "Bois de Frêne",
+                "image": "https://www.dofusbook.net/static/items/38017_0.png"
+            },
+            {
+                "quantite": 1,
+                "name": "Fer",
+                "image": "https://www.dofusbook.net/static/items/39024_0.png"
+            },
+            {
+                "quantite": 1,
+                "name": "Ortie",
+                "image": "https://www.dofusbook.net/static/items/36642_0.png"
+            },
+            {
+                "quantite": 1,
+                "name": "Goujon",
+                "image": "https://www.dofusbook.net/static/items/41294_0.png"
+            }
+        ]
+    },
+    {
+        "id": "1987",
+        "link": "https://www.dofusbook.net/fr/encyclopedie/objet/1987",
+        "name": "Bouclier de l'intrépide",
+        "image": "https://www.dofusbook.net/static/dist/items/82055-70.webp",
+        "type": "Bouclier",
+        "set": "Panoplie de l'intrépide",
+        "level": "1",
+        "effects": [
+            "3 Vitalité"
+        ],
+        "recipe": []
+    },
+    {
+        "id": "3820",
+        "link": "https://www.dofusbook.net/fr/encyclopedie/objet/3820",
+        "name": "Bouclier du Bûcheron",
+        "image": "https://www.dofusbook.net/static/dist/items/82004-70.webp",
+        "type": "Bouclier",
+        "set": "Aucune",
+        "level": "1",
+        "effects": [
+            "5 à 7 Vitalité"
+        ],
+        "recipe": [
+            {
+                "quantite": 1,
+                "name": "Planche Agglomérée",
+                "image": "https://www.dofusbook.net/static/items/95093_0.png"
+            },
+            {
+                "quantite": 1,
+                "name": "Eau Ferrugineuse",
+                "image": "https://www.dofusbook.net/static/items/39404_0.png"
+            }
+        ]
+    },
+    {
+        "id": "6356",
+        "link": "https://www.dofusbook.net/fr/encyclopedie/objet/6356",
+        "name": "La Halte Efkat",
+        "image": "https://www.dofusbook.net/static/dist/items/82519-70.webp",
+        "type": "Bouclier",
+        "set": "Panoplie du Boune",
+        "level": "1",
+        "effects": [
+            "1 Résistance Neutre",
+            "1 Résistance Terre",
+            "1 Résistance Feu",
+            "1 Résistance Eau",
+            "1 Résistance Air"
+        ],
+        "recipe": [
+            {
+                "quantite": 2,
+                "name": "Viande Intangible",
+                "image": "https://www.dofusbook.net/static/items/63407_0.png"
+            },
+            {
+                "quantite": 1,
+                "name": "Planche Agglomérée",
+                "image": "https://www.dofusbook.net/static/items/95093_0.png"
+            }
+        ]
+    },
+    {
+        "id": "287",
+        "link": "https://www.dofusbook.net/fr/encyclopedie/objet/287",
+        "name": "Ceinture du Kobeer",
+        "image": "https://www.dofusbook.net/static/dist/items/10009-70.webp",
+        "type": "Ceinture",
+        "set": "Aucune",
+        "level": "1",
+        "effects": [
+            "2 Force"
+        ],
+        "recipe": []
+    },
+    {
+        "id": "318",
+        "link": "https://www.dofusbook.net/fr/encyclopedie/objet/318",
+        "name": "Ceinture de Chance",
+        "image": "https://www.dofusbook.net/static/dist/items/10003-70.webp",
+        "type": "Ceinture",
+        "set": "Aucune",
+        "level": "1",
+        "effects": [
+            "4 à 7 Chance"
         ],
         "recipe": [
             {
@@ -105185,9 +105308,97 @@
                 "image": "https://www.dofusbook.net/static/items/36642_0.png"
             },
             {
+                "quantite": 3,
+                "name": "Feu Intérieur",
+                "image": "https://www.dofusbook.net/static/items/164067_0.png"
+            }
+        ]
+    },
+    {
+        "id": "1476",
+        "link": "https://www.dofusbook.net/fr/encyclopedie/objet/1476",
+        "name": "La Spamette",
+        "image": "https://www.dofusbook.net/static/dist/items/10114-70.webp",
+        "type": "Ceinture",
+        "set": "Panoplie du Boune",
+        "level": "1",
+        "effects": [
+            "7 à 10 Vitalité",
+            "4 à 6 Intelligence"
+        ],
+        "recipe": [
+            {
                 "quantite": 2,
-                "name": "Laine Céleste",
-                "image": "https://www.dofusbook.net/static/items/57662_0.png"
+                "name": "Ortie",
+                "image": "https://www.dofusbook.net/static/items/36642_0.png"
+            },
+            {
+                "quantite": 2,
+                "name": "Peau de Gloot",
+                "image": "https://www.dofusbook.net/static/items/164066_0.png"
+            }
+        ]
+    },
+    {
+        "id": "1988",
+        "link": "https://www.dofusbook.net/fr/encyclopedie/objet/1988",
+        "name": "Ceinture de l'intrépide",
+        "image": "https://www.dofusbook.net/static/dist/items/10161-70.webp",
+        "type": "Ceinture",
+        "set": "Panoplie de l'intrépide",
+        "level": "1",
+        "effects": [
+            "1 Vitalité",
+            "1 Initiative"
+        ],
+        "recipe": []
+    },
+    {
+        "id": "3198",
+        "link": "https://www.dofusbook.net/fr/encyclopedie/objet/3198",
+        "name": "Kamature",
+        "image": "https://www.dofusbook.net/static/dist/items/10267-70.webp",
+        "type": "Ceinture",
+        "set": "Aucune",
+        "level": "1",
+        "effects": [
+            "5 Prospection"
+        ],
+        "recipe": [
+            {
+                "quantite": 3,
+                "name": "Feu Intérieur",
+                "image": "https://www.dofusbook.net/static/items/164067_0.png"
+            },
+            {
+                "quantite": 3,
+                "name": "Relique d'Incarnam",
+                "image": "https://www.dofusbook.net/static/items/164068_0.png"
+            }
+        ]
+    },
+    {
+        "id": "362",
+        "link": "https://www.dofusbook.net/fr/encyclopedie/objet/362",
+        "name": "Louffeur",
+        "image": "https://www.dofusbook.net/static/dist/items/16020-70.webp",
+        "type": "Chapeau",
+        "set": "Aucune",
+        "level": "1",
+        "effects": [
+            "1 Résistance Neutre",
+            "1 Résistance Terre"
+        ],
+        "recipe": [
+            {
+                "quantite": 3,
+                "name": "Queue de Chapardam",
+                "image": "https://www.dofusbook.net/static/items/65767_0.png"
+            },
+            {
+                "quantite": 3,
+                "name": "Feu Intérieur",
+                "image": "https://www.dofusbook.net/static/items/164067_0.png"
             }
         ]
     },
@@ -105231,6 +105442,57 @@
         ]
     },
     {
+        "id": "1990",
+        "link": "https://www.dofusbook.net/fr/encyclopedie/objet/1990",
+        "name": "Chapeau de l'intrépide",
+        "image": "https://www.dofusbook.net/static/dist/items/16264-70.webp",
+        "type": "Chapeau",
+        "set": "Panoplie de l'intrépide",
+        "level": "1",
+        "effects": [
+            "1 Vitalité",
+            "1 Initiative"
+        ],
+        "recipe": []
+    },
+    {
+        "id": "3008",
+        "link": "https://www.dofusbook.net/fr/encyclopedie/objet/3008",
+        "name": "Crack Sparrow's Own Withered Hat",
+        "image": "https://www.dofusbook.net/static/dist/items/16005-70.webp",
+        "type": "Chapeau",
+        "set": "Aucune",
+        "level": "1",
+        "effects": [
+            "61 Vitalité"
+        ],
+        "recipe": []
+    },
+    {
+        "id": "629",
+        "link": "https://www.dofusbook.net/fr/encyclopedie/objet/629",
+        "name": "Petit Sac en Laine de Boufton",
+        "image": "https://www.dofusbook.net/static/dist/items/81025-70.webp",
+        "type": "Cape",
+        "set": "Aucune",
+        "level": "1",
+        "effects": [
+            "71 à 100 Pods"
+        ],
+        "recipe": [
+            {
+                "quantite": 3,
+                "name": "Ortie",
+                "image": "https://www.dofusbook.net/static/items/36642_0.png"
+            },
+            {
+                "quantite": 2,
+                "name": "Laine Céleste",
+                "image": "https://www.dofusbook.net/static/items/57662_0.png"
+            }
+        ]
+    },
+    {
         "id": "1474",
         "link": "https://www.dofusbook.net/fr/encyclopedie/objet/1474",
         "name": "La Cape S'loque",
@@ -105252,6 +105514,44 @@
                 "quantite": 2,
                 "name": "Cendres Éternelles",
                 "image": "https://www.dofusbook.net/static/items/48671_0.png"
+            }
+        ]
+    },
+    {
+        "id": "1989",
+        "link": "https://www.dofusbook.net/fr/encyclopedie/objet/1989",
+        "name": "Cape de l'intrépide",
+        "image": "https://www.dofusbook.net/static/dist/items/17201-70.webp",
+        "type": "Cape",
+        "set": "Panoplie de l'intrépide",
+        "level": "1",
+        "effects": [
+            "1 Vitalité",
+            "1 Initiative"
+        ],
+        "recipe": []
+    },
+    {
+        "id": "319",
+        "link": "https://www.dofusbook.net/fr/encyclopedie/objet/319",
+        "name": "Bottes de Force",
+        "image": "https://www.dofusbook.net/static/dist/items/11003-70.webp",
+        "type": "Bottes",
+        "set": "Aucune",
+        "level": "1",
+        "effects": [
+            "4 à 6 Force"
+        ],
+        "recipe": [
+            {
+                "quantite": 3,
+                "name": "Pétale Diaphane",
+                "image": "https://www.dofusbook.net/static/items/35642_0.png"
+            },
+            {
+                "quantite": 3,
+                "name": "Queue de Chapardam",
+                "image": "https://www.dofusbook.net/static/items/65767_0.png"
             }
         ]
     },
@@ -105281,109 +105581,6 @@
         ]
     },
     {
-        "id": "1476",
-        "link": "https://www.dofusbook.net/fr/encyclopedie/objet/1476",
-        "name": "La Spamette",
-        "image": "https://www.dofusbook.net/static/dist/items/10114-70.webp",
-        "type": "Ceinture",
-        "set": "Panoplie du Boune",
-        "level": "1",
-        "effects": [
-            "7 à 10 Vitalité",
-            "4 à 6 Intelligence"
-        ],
-        "recipe": [
-            {
-                "quantite": 2,
-                "name": "Ortie",
-                "image": "https://www.dofusbook.net/static/items/36642_0.png"
-            },
-            {
-                "quantite": 2,
-                "name": "Peau de Gloot",
-                "image": "https://www.dofusbook.net/static/items/164066_0.png"
-            }
-        ]
-    },
-    {
-        "id": "1477",
-        "link": "https://www.dofusbook.net/fr/encyclopedie/objet/1477",
-        "name": "Le Plussain",
-        "image": "https://www.dofusbook.net/static/dist/items/9125-70.webp",
-        "type": "Anneau",
-        "set": "Panoplie du Boune",
-        "level": "1",
-        "effects": [
-            "4 à 6 Force",
-            "4 à 6 Agilité"
-        ],
-        "recipe": [
-            {
-                "quantite": 2,
-                "name": "Blé",
-                "image": "https://www.dofusbook.net/static/items/34009_0.png"
-            },
-            {
-                "quantite": 2,
-                "name": "Feu Intérieur",
-                "image": "https://www.dofusbook.net/static/items/164067_0.png"
-            }
-        ]
-    },
-    {
-        "id": "1478",
-        "link": "https://www.dofusbook.net/fr/encyclopedie/objet/1478",
-        "name": "Le S'Mesme",
-        "image": "https://www.dofusbook.net/static/dist/items/1120-70.webp",
-        "type": "Amulette",
-        "set": "Panoplie du Boune",
-        "level": "1",
-        "effects": [
-            "7 à 10 Vitalité",
-            "4 à 6 Chance"
-        ],
-        "recipe": [
-            {
-                "quantite": 2,
-                "name": "Goujon",
-                "image": "https://www.dofusbook.net/static/items/41294_0.png"
-            },
-            {
-                "quantite": 2,
-                "name": "Plume Chimérique",
-                "image": "https://www.dofusbook.net/static/items/53661_0.png"
-            }
-        ]
-    },
-    {
-        "id": "1983",
-        "link": "https://www.dofusbook.net/fr/encyclopedie/objet/1983",
-        "name": "Amulette de l'intrépide",
-        "image": "https://www.dofusbook.net/static/dist/items/1163-70.webp",
-        "type": "Amulette",
-        "set": "Panoplie de l'intrépide",
-        "level": "1",
-        "effects": [
-            "1 Vitalité",
-            "1 Initiative"
-        ],
-        "recipe": []
-    },
-    {
-        "id": "1984",
-        "link": "https://www.dofusbook.net/fr/encyclopedie/objet/1984",
-        "name": "Anneau de l'intrépide",
-        "image": "https://www.dofusbook.net/static/dist/items/9190-70.webp",
-        "type": "Anneau",
-        "set": "Panoplie de l'intrépide",
-        "level": "1",
-        "effects": [
-            "1 Vitalité",
-            "1 Initiative"
-        ],
-        "recipe": []
-    },
-    {
         "id": "1985",
         "link": "https://www.dofusbook.net/fr/encyclopedie/objet/1985",
         "name": "Bottes de l'intrépide",
@@ -105394,88 +105591,6 @@
         "effects": [
             "1 Vitalité",
             "1 Initiative"
-        ],
-        "recipe": []
-    },
-    {
-        "id": "1987",
-        "link": "https://www.dofusbook.net/fr/encyclopedie/objet/1987",
-        "name": "Bouclier de l'intrépide",
-        "image": "https://www.dofusbook.net/static/dist/items/82055-70.webp",
-        "type": "Bouclier",
-        "set": "Panoplie de l'intrépide",
-        "level": "1",
-        "effects": [
-            "3 Vitalité"
-        ],
-        "recipe": []
-    },
-    {
-        "id": "1988",
-        "link": "https://www.dofusbook.net/fr/encyclopedie/objet/1988",
-        "name": "Ceinture de l'intrépide",
-        "image": "https://www.dofusbook.net/static/dist/items/10161-70.webp",
-        "type": "Ceinture",
-        "set": "Panoplie de l'intrépide",
-        "level": "1",
-        "effects": [
-            "1 Vitalité",
-            "1 Initiative"
-        ],
-        "recipe": []
-    },
-    {
-        "id": "1989",
-        "link": "https://www.dofusbook.net/fr/encyclopedie/objet/1989",
-        "name": "Cape de l'intrépide",
-        "image": "https://www.dofusbook.net/static/dist/items/17201-70.webp",
-        "type": "Cape",
-        "set": "Panoplie de l'intrépide",
-        "level": "1",
-        "effects": [
-            "1 Vitalité",
-            "1 Initiative"
-        ],
-        "recipe": []
-    },
-    {
-        "id": "1990",
-        "link": "https://www.dofusbook.net/fr/encyclopedie/objet/1990",
-        "name": "Chapeau de l'intrépide",
-        "image": "https://www.dofusbook.net/static/dist/items/16264-70.webp",
-        "type": "Chapeau",
-        "set": "Panoplie de l'intrépide",
-        "level": "1",
-        "effects": [
-            "1 Vitalité",
-            "1 Initiative"
-        ],
-        "recipe": []
-    },
-    {
-        "id": "2972",
-        "link": "https://www.dofusbook.net/fr/encyclopedie/objet/2972",
-        "name": "Amulette Tude",
-        "image": "https://www.dofusbook.net/static/dist/items/1019-70.webp",
-        "type": "Amulette",
-        "set": "Aucune",
-        "level": "1",
-        "effects": [
-            "1 Intelligence",
-            "5 Initiative"
-        ],
-        "recipe": []
-    },
-    {
-        "id": "3008",
-        "link": "https://www.dofusbook.net/fr/encyclopedie/objet/3008",
-        "name": "Crack Sparrow's Own Withered Hat",
-        "image": "https://www.dofusbook.net/static/dist/items/16005-70.webp",
-        "type": "Chapeau",
-        "set": "Aucune",
-        "level": "1",
-        "effects": [
-            "61 Vitalité"
         ],
         "recipe": []
     },
@@ -105500,121 +105615,6 @@
                 "quantite": 3,
                 "name": "Pétale Diaphane",
                 "image": "https://www.dofusbook.net/static/items/35642_0.png"
-            }
-        ]
-    },
-    {
-        "id": "3198",
-        "link": "https://www.dofusbook.net/fr/encyclopedie/objet/3198",
-        "name": "Kamature",
-        "image": "https://www.dofusbook.net/static/dist/items/10267-70.webp",
-        "type": "Ceinture",
-        "set": "Aucune",
-        "level": "1",
-        "effects": [
-            "5 Prospection"
-        ],
-        "recipe": [
-            {
-                "quantite": 3,
-                "name": "Feu Intérieur",
-                "image": "https://www.dofusbook.net/static/items/164067_0.png"
-            },
-            {
-                "quantite": 3,
-                "name": "Relique d'Incarnam",
-                "image": "https://www.dofusbook.net/static/items/164068_0.png"
-            }
-        ]
-    },
-    {
-        "id": "3820",
-        "link": "https://www.dofusbook.net/fr/encyclopedie/objet/3820",
-        "name": "Bouclier du Bûcheron",
-        "image": "https://www.dofusbook.net/static/dist/items/82004-70.webp",
-        "type": "Bouclier",
-        "set": "Aucune",
-        "level": "1",
-        "effects": [
-            "5 à 7 Vitalité"
-        ],
-        "recipe": [
-            {
-                "quantite": 1,
-                "name": "Planche Agglomérée",
-                "image": "https://www.dofusbook.net/static/items/95093_0.png"
-            },
-            {
-                "quantite": 1,
-                "name": "Eau Ferrugineuse",
-                "image": "https://www.dofusbook.net/static/items/39404_0.png"
-            }
-        ]
-    },
-    {
-        "id": "4318",
-        "link": "https://www.dofusbook.net/fr/encyclopedie/objet/4318",
-        "name": "Anneau de l'Audacieux",
-        "image": "https://www.dofusbook.net/static/dist/items/9332-70.webp",
-        "type": "Anneau",
-        "set": "Aucune",
-        "level": "1",
-        "effects": [
-            "3 à 4 Puissance"
-        ],
-        "recipe": [
-            {
-                "quantite": 1,
-                "name": "Blé",
-                "image": "https://www.dofusbook.net/static/items/34009_0.png"
-            },
-            {
-                "quantite": 1,
-                "name": "Bois de Frêne",
-                "image": "https://www.dofusbook.net/static/items/38017_0.png"
-            },
-            {
-                "quantite": 1,
-                "name": "Fer",
-                "image": "https://www.dofusbook.net/static/items/39024_0.png"
-            },
-            {
-                "quantite": 1,
-                "name": "Ortie",
-                "image": "https://www.dofusbook.net/static/items/36642_0.png"
-            },
-            {
-                "quantite": 1,
-                "name": "Goujon",
-                "image": "https://www.dofusbook.net/static/items/41294_0.png"
-            }
-        ]
-    },
-    {
-        "id": "6356",
-        "link": "https://www.dofusbook.net/fr/encyclopedie/objet/6356",
-        "name": "La Halte Efkat",
-        "image": "https://www.dofusbook.net/static/dist/items/82519-70.webp",
-        "type": "Bouclier",
-        "set": "Panoplie du Boune",
-        "level": "1",
-        "effects": [
-            "1 Résistance Neutre",
-            "1 Résistance Terre",
-            "1 Résistance Feu",
-            "1 Résistance Eau",
-            "1 Résistance Air"
-        ],
-        "recipe": [
-            {
-                "quantite": 2,
-                "name": "Viande Intangible",
-                "image": "https://www.dofusbook.net/static/items/63407_0.png"
-            },
-            {
-                "quantite": 1,
-                "name": "Planche Agglomérée",
-                "image": "https://www.dofusbook.net/static/items/95093_0.png"
             }
         ]
     },
