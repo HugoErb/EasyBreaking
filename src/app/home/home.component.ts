@@ -64,7 +64,7 @@ export class HomeComponent implements OnInit, OnDestroy {
     recipe: any[] = [];
 
     // Paramètres utilisateur
-    tauxBrisage: number | null = null;
+    tauxBrisage: number | null = 100;
     prixCraft?: number | null = null;
     tauxRentabiliteVise: number = 25;
 
@@ -171,7 +171,7 @@ export class HomeComponent implements OnInit, OnDestroy {
     onItemSelect(): void {
         if (!this.selectedItem) return;
         this.unVanishDiv();
-        this.tauxBrisage = null;
+        this.tauxBrisage = 100;
         const level = this.selectedItem.level;
 
         this._cachedRunes = this.selectedItem.effects.map((effect: string) => {

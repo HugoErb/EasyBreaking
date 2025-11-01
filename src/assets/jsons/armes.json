@@ -1,5 +1,191 @@
 [
     {
+        "id": "6701",
+        "link": "https://www.dofusbook.net/fr/encyclopedie/objet/6701",
+        "name": "Ferveur d'Amayiro",
+        "image": "https://www.dofusbook.net/static/dist/items/6760-70.webp",
+        "type": "Épée",
+        "set": "Aucune",
+        "level": "200",
+        "effects": [
+            "451 à 500 Vitalité",
+            "41 à 50 Sagesse",
+            "61 à 80 Puissance",
+            "3 à 4% Critique",
+            "401 à 500 Initiative",
+            "11 à 15 Tacle",
+            "11 à 15 Esquive PA",
+            "16 à 20 Dommage Poussée",
+            "4 à 5% Résistance Terre",
+            "4 à 5% Résistance Air"
+        ],
+        "recipe": [
+            {
+                "quantite": 7500,
+                "name": "Pépite",
+                "image": "https://www.dofusbook.net/static/dist/items/50718-50.webp"
+            },
+            {
+                "quantite": 5000,
+                "name": "Reflet onirique",
+                "image": "https://www.dofusbook.net/static/dist/items/164149-50.webp"
+            },
+            {
+                "quantite": 15,
+                "name": "Lame tranchante",
+                "image": "https://www.dofusbook.net/static/dist/items/24279-50.webp"
+            },
+            {
+                "quantite": 4,
+                "name": "Galet brasillant",
+                "image": "https://www.dofusbook.net/static/dist/items/15289-50.webp"
+            },
+            {
+                "quantite": 2,
+                "name": "Ardonite",
+                "image": "https://www.dofusbook.net/static/dist/items/40710-50.webp"
+            },
+            {
+                "quantite": 1,
+                "name": "Essence de Bethel Akarna",
+                "image": "https://www.dofusbook.net/static/dist/items/167001-50.webp"
+            },
+            {
+                "quantite": 1,
+                "name": "Essence de l'Éternel Conflit",
+                "image": "https://www.dofusbook.net/static/dist/items/165045-50.webp"
+            },
+            {
+                "quantite": 1,
+                "name": "Légende d'Amayiro",
+                "image": "https://www.dofusbook.net/static/dist/items/164602-50.webp"
+            }
+        ]
+    },
+    {
+        "id": "6688",
+        "link": "https://www.dofusbook.net/fr/encyclopedie/objet/6688",
+        "name": "Jugement de Thanatena",
+        "image": "https://www.dofusbook.net/static/dist/items/22014-70.webp",
+        "type": "Faux",
+        "set": "Aucune",
+        "level": "200",
+        "effects": [
+            "41 à 60 Sagesse",
+            "81 à 120 Puissance",
+            "3 à 4% Critique",
+            "9 à 12 Dommage",
+            "16 à 20 Tacle",
+            "16 à 20 Fuite",
+            "31 à 40 Résistance Poussée",
+            "3 à 4% Résistance Mêlée",
+            "3 à 4% Résistance Distance"
+        ],
+        "recipe": [
+            {
+                "quantite": 5000,
+                "name": "Reflet onirique",
+                "image": "https://www.dofusbook.net/static/dist/items/164149-50.webp"
+            },
+            {
+                "quantite": 15,
+                "name": "Tête de mort",
+                "image": "https://www.dofusbook.net/static/dist/items/15885-50.webp"
+            },
+            {
+                "quantite": 15,
+                "name": "Brûlâme encapsulé",
+                "image": "https://www.dofusbook.net/static/dist/items/15984-50.webp"
+            },
+            {
+                "quantite": 15,
+                "name": "Lame tranchante",
+                "image": "https://www.dofusbook.net/static/dist/items/24279-50.webp"
+            },
+            {
+                "quantite": 4,
+                "name": "Griffe de la Déchireuse",
+                "image": "https://www.dofusbook.net/static/dist/items/44788-50.webp"
+            },
+            {
+                "quantite": 2,
+                "name": "Substrat Astral",
+                "image": "https://www.dofusbook.net/static/dist/items/164833-50.webp"
+            },
+            {
+                "quantite": 1,
+                "name": "Essence d'Ilyzaelle",
+                "image": "https://www.dofusbook.net/static/dist/items/167001-50.webp"
+            },
+            {
+                "quantite": 1,
+                "name": "Légende de Thanatena",
+                "image": "https://www.dofusbook.net/static/dist/items/164607-50.webp"
+            }
+        ]
+    },
+    {
+        "id": "6687",
+        "link": "https://www.dofusbook.net/fr/encyclopedie/objet/6687",
+        "name": "Lance-Éclair de Menalt",
+        "image": "https://www.dofusbook.net/static/dist/items/183011-70.webp",
+        "type": "Lance",
+        "set": "Aucune",
+        "level": "200",
+        "effects": [
+            "451 à 500 Vitalité",
+            "41 à 50 Sagesse",
+            "81 à 100 Puissance",
+            "401 à 500 Initiative",
+            "16 à 20 Esquive PA",
+            "21 à 30 Dommage Poussée",
+            "3 à 5% Résistance Mêlée",
+            "3 à 5% Résistance Distance"
+        ],
+        "recipe": [
+            {
+                "quantite": 7500,
+                "name": "Pépite",
+                "image": "https://www.dofusbook.net/static/dist/items/50718-50.webp"
+            },
+            {
+                "quantite": 5000,
+                "name": "Reflet onirique",
+                "image": "https://www.dofusbook.net/static/dist/items/164149-50.webp"
+            },
+            {
+                "quantite": 25,
+                "name": "Fragment d'anomalie",
+                "image": "https://www.dofusbook.net/static/dist/items/176051-50.webp"
+            },
+            {
+                "quantite": 10,
+                "name": "Corne de Volkorne",
+                "image": "https://www.dofusbook.net/static/dist/items/47864-50.webp"
+            },
+            {
+                "quantite": 4,
+                "name": "Galet brasillant",
+                "image": "https://www.dofusbook.net/static/dist/items/15289-50.webp"
+            },
+            {
+                "quantite": 1,
+                "name": "Essence de l'Éternel Conflit",
+                "image": "https://www.dofusbook.net/static/dist/items/165045-50.webp"
+            },
+            {
+                "quantite": 1,
+                "name": "Corne du Vénérable Endormi",
+                "image": "https://www.dofusbook.net/static/dist/items/47891-50.webp"
+            },
+            {
+                "quantite": 1,
+                "name": "Légende de Menalt",
+                "image": "https://www.dofusbook.net/static/dist/items/164606-50.webp"
+            }
+        ]
+    },
+    {
         "id": "6625",
         "link": "https://www.dofusbook.net/fr/encyclopedie/objet/6625",
         "name": "Arc du Vénérable Endormi",
@@ -895,14 +1081,14 @@
         ],
         "recipe": [
             {
-                "quantite": 9000,
-                "name": "Reflet onirique",
-                "image": "https://www.dofusbook.net/static/dist/items/164149-50.webp"
-            },
-            {
                 "quantite": 7500,
                 "name": "Pépite",
                 "image": "https://www.dofusbook.net/static/dist/items/50718-50.webp"
+            },
+            {
+                "quantite": 5000,
+                "name": "Reflet onirique",
+                "image": "https://www.dofusbook.net/static/dist/items/164149-50.webp"
             },
             {
                 "quantite": 15,
@@ -955,14 +1141,14 @@
         ],
         "recipe": [
             {
-                "quantite": 9000,
-                "name": "Reflet onirique",
-                "image": "https://www.dofusbook.net/static/dist/items/164149-50.webp"
-            },
-            {
                 "quantite": 7500,
                 "name": "Pépite",
                 "image": "https://www.dofusbook.net/static/dist/items/50718-50.webp"
+            },
+            {
+                "quantite": 5000,
+                "name": "Reflet onirique",
+                "image": "https://www.dofusbook.net/static/dist/items/164149-50.webp"
             },
             {
                 "quantite": 20,
@@ -2059,14 +2245,14 @@
         ],
         "recipe": [
             {
-                "quantite": 9000,
-                "name": "Reflet onirique",
-                "image": "https://www.dofusbook.net/static/dist/items/164149-50.webp"
-            },
-            {
                 "quantite": 7500,
                 "name": "Pépite",
                 "image": "https://www.dofusbook.net/static/dist/items/50718-50.webp"
+            },
+            {
+                "quantite": 5000,
+                "name": "Reflet onirique",
+                "image": "https://www.dofusbook.net/static/dist/items/164149-50.webp"
             },
             {
                 "quantite": 20,
@@ -2121,7 +2307,7 @@
         ],
         "recipe": [
             {
-                "quantite": 9000,
+                "quantite": 5000,
                 "name": "Reflet onirique",
                 "image": "https://www.dofusbook.net/static/dist/items/164149-50.webp"
             },
@@ -2442,14 +2628,14 @@
         ],
         "recipe": [
             {
-                "quantite": 9000,
-                "name": "Reflet onirique",
-                "image": "https://www.dofusbook.net/static/dist/items/164149-50.webp"
-            },
-            {
                 "quantite": 7500,
                 "name": "Pépite",
                 "image": "https://www.dofusbook.net/static/dist/items/50718-50.webp"
+            },
+            {
+                "quantite": 5000,
+                "name": "Reflet onirique",
+                "image": "https://www.dofusbook.net/static/dist/items/164149-50.webp"
             },
             {
                 "quantite": 25,
@@ -2507,7 +2693,7 @@
         ],
         "recipe": [
             {
-                "quantite": 9000,
+                "quantite": 5000,
                 "name": "Reflet onirique",
                 "image": "https://www.dofusbook.net/static/dist/items/164149-50.webp"
             },
