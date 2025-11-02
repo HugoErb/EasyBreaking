@@ -678,21 +678,6 @@ export class HomeComponent implements OnInit, OnDestroy {
     }
 
     /**
-     * Retourne le chemin local de l'image d'un ingrédient à partir de son URL distante en se basant sur son ID.
-     * @param ingredient - L'objet ingrédient contenant une propriété 'image' (URL distante).
-     * @returns Le chemin local de l'image correspondante dans le dossier assets.
-     */
-    getLocalIngredientImage(ingredient: any): string {
-        const url = ingredient.image;
-        const match = url.match(/\/(\d+_\d+)\.png$/);
-        if (match && match[1]) {
-            const id = match[1];
-            return `assets/imgs/ingredients/${id}.png`;
-        }
-        return '';
-    }
-
-    /**
      * Copie le nom de l'ingrédient dans le presse-papiers et affiche une tooltip.
      *
      * @param ingredientName Le nom de l'ingrédient à copier.

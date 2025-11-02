@@ -99,7 +99,7 @@
                 </div>
                 <div class="ingredientContainer">
                     <div tabindex="0" *ngFor="let ingredient of recipe" class="ingredient" pTooltip="Ingrédient copié" tooltipEvent="focus" tooltipPosition="top" (click)="copyToClipboard($event, ingredient.name)">
-                        <img class="ingredientImage" [src]="getLocalIngredientImage(ingredient)" alt="{{ ingredient.name }}" />
+                        <img class="ingredientImage" [src]="ingredient.image" alt="{{ ingredient.name }}" />
                         <div class="ingredientText">
                             <p class="ingredientName bold">{{ ingredient.name }}</p>
                             <p>Quantité pour 1 objet : x{{ ingredient.quantite }}</p>
