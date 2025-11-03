@@ -183,7 +183,7 @@
         "name": "Arc du Vénérable Endormi",
         "image": "https://www.dofusbook.net/static/dist/items/2093-70.webp",
         "type": "Arc",
-        "set": "Aucune",
+        "set": "Panoplie du Vénérable Endormi",
         "level": "200",
         "effects": [
             "401 à 450 Vitalité",
@@ -312,7 +312,7 @@
         "name": "Fureur de Gargandyas",
         "image": "https://www.dofusbook.net/static/dist/items/7091-70.webp",
         "type": "Marteau",
-        "set": "Aucune",
+        "set": "Panoplie de Gargandyas",
         "level": "200",
         "effects": [
             "451 à 500 Vitalité",
@@ -379,7 +379,7 @@
         "name": "Griffe de Gargandyas",
         "image": "https://www.dofusbook.net/static/dist/items/6114-70.webp",
         "type": "Épée",
-        "set": "Aucune",
+        "set": "Panoplie de Gargandyas",
         "level": "200",
         "effects": [
             "451 à 500 Vitalité",
@@ -514,7 +514,7 @@
         "name": "Faux've",
         "image": "https://www.dofusbook.net/static/dist/items/7094-70.webp",
         "type": "Faux",
-        "set": "Aucune",
+        "set": "Panoplie Rhoarim",
         "level": "200",
         "effects": [
             "351 à 400 Vitalité",
@@ -581,7 +581,7 @@
         "name": "Masse Osseuse",
         "image": "https://www.dofusbook.net/static/dist/items/7093-70.webp",
         "type": "Marteau",
-        "set": "Aucune",
+        "set": "Panoplie Rhoarim",
         "level": "200",
         "effects": [
             "351 à 400 Vitalité",
@@ -648,7 +648,7 @@
         "name": "Griffes de la Déchireuse",
         "image": "https://www.dofusbook.net/static/dist/items/5105-70.webp",
         "type": "Dagues",
-        "set": "Aucune",
+        "set": "Panoplie de la Déchireuse",
         "level": "200",
         "effects": [
             "301 à 350 Vitalité",
@@ -715,7 +715,7 @@
         "name": "Hachoir de la Déchireuse",
         "image": "https://www.dofusbook.net/static/dist/items/20025-70.webp",
         "type": "Hache",
-        "set": "Aucune",
+        "set": "Panoplie de la Déchireuse",
         "level": "200",
         "effects": [
             "351 à 400 Vitalité",
@@ -781,7 +781,7 @@
         "name": "Flamberge du Dark Vlad",
         "image": "https://www.dofusbook.net/static/dist/items/6758-70.webp",
         "type": "Épée",
-        "set": "Aucune",
+        "set": "Panoplie du Dark Vlad",
         "level": "200",
         "effects": [
             "301 à 350 Vitalité",
@@ -841,7 +841,7 @@
         "name": "Rouleau de Mama Ayuto",
         "image": "https://www.dofusbook.net/static/dist/items/7746-70.webp",
         "type": "Marteau",
-        "set": "Aucune",
+        "set": "Panoplie de Mama Ayuto",
         "level": "200",
         "effects": [
             "401 à 450 Vitalité",
@@ -903,7 +903,7 @@
         "name": "Poignards du Captain Chafer",
         "image": "https://www.dofusbook.net/static/dist/items/5103-70.webp",
         "type": "Dagues",
-        "set": "Aucune",
+        "set": "Panoplie du Captain Chafer",
         "level": "200",
         "effects": [
             "301 à 350 Vitalité",
@@ -967,7 +967,7 @@
         "name": "Masse Étacée",
         "image": "https://www.dofusbook.net/static/dist/items/7732-70.webp",
         "type": "Marteau",
-        "set": "Aucune",
+        "set": "Panoplie de la Baleine",
         "level": "200",
         "effects": [
             "351 à 400 Vitalité",
@@ -1150,7 +1150,7 @@
         "name": "Pilier d'Ephedrya",
         "image": "https://www.dofusbook.net/static/dist/items/183003-70.webp",
         "type": "Lance",
-        "set": "Aucune",
+        "set": "Maléfices d'Ephedrya",
         "level": "200",
         "effects": [
             "401 à 450 Vitalité",
@@ -1277,7 +1277,7 @@
         "name": "Potence d'Ephedrya",
         "image": "https://www.dofusbook.net/static/dist/items/19084-70.webp",
         "type": "Hache",
-        "set": "Aucune",
+        "set": "Maléfices d'Ephedrya",
         "level": "200",
         "effects": [
             "451 à 500 Vitalité",
@@ -1338,7 +1338,7 @@
         "name": "Claymomore",
         "image": "https://www.dofusbook.net/static/dist/items/6755-70.webp",
         "type": "Épée",
-        "set": "Aucune",
+        "set": "Malédiction de Cire Momore",
         "level": "200",
         "effects": [
             "451 à 500 Vitalité",
@@ -1595,7 +1595,7 @@
         "name": "Hachoir de Ravageur",
         "image": "https://www.dofusbook.net/static/dist/items/19083-70.webp",
         "type": "Hache",
-        "set": "Aucune",
+        "set": "Panoplie des Ravageurs",
         "level": "200",
         "effects": [
             "301 à 350 Vitalité",
@@ -1723,7 +1723,7 @@
         "name": "Baguette du Pandamonium",
         "image": "https://www.dofusbook.net/static/dist/items/3091-70.webp",
         "type": "Baguette",
-        "set": "Aucune",
+        "set": "Panoplie du Pandamonium",
         "level": "200",
         "effects": [
             "301 à 350 Vitalité",
@@ -2036,7 +2036,7 @@
         "name": "Arc de Wulan",
         "image": "https://www.dofusbook.net/static/dist/items/2090-70.webp",
         "type": "Arc",
-        "set": "Aucune",
+        "set": "Panoplie de Wulan",
         "level": "200",
         "effects": [
             "301 à 350 Vitalité",
@@ -2099,7 +2099,7 @@
         "name": "Faux Nème",
         "image": "https://www.dofusbook.net/static/dist/items/22007-70.webp",
         "type": "Faux",
-        "set": "Aucune",
+        "set": "Panoplie du Wukang",
         "level": "200",
         "effects": [
             "401 à 500 Vitalité",
@@ -2343,7 +2343,7 @@
         "name": "Baguette de Torkélonia",
         "image": "https://www.dofusbook.net/static/dist/items/4137-70.webp",
         "type": "Baguette",
-        "set": "Aucune",
+        "set": "Panoplie de Torkélonia",
         "level": "200",
         "effects": [
             "301 à 350 Vitalité",
@@ -2470,7 +2470,7 @@
         "name": "Couteaux Sacrificiels",
         "image": "https://www.dofusbook.net/static/dist/items/5098-70.webp",
         "type": "Dagues",
-        "set": "Aucune",
+        "set": "Panoplie Paztek",
         "level": "200",
         "effects": [
             "351 à 400 Vitalité",
@@ -2654,7 +2654,7 @@
         "name": "Arc Volkorne",
         "image": "https://www.dofusbook.net/static/dist/items/2086-70.webp",
         "type": "Arc",
-        "set": "Aucune",
+        "set": "Panoplie Volkorne",
         "level": "200",
         "effects": [
             "301 à 350 Vitalité",
@@ -2716,7 +2716,7 @@
         "name": "Lance Horselé",
         "image": "https://www.dofusbook.net/static/dist/items/4134-70.webp",
         "type": "Lance",
-        "set": "Aucune",
+        "set": "Panoplie Submergée",
         "level": "200",
         "effects": [
             "301 à 350 Vitalité",
@@ -2778,7 +2778,7 @@
         "name": "Baguette Héroclite",
         "image": "https://www.dofusbook.net/static/dist/items/3089-70.webp",
         "type": "Baguette",
-        "set": "Aucune",
+        "set": "Panoplie Ensevelie",
         "level": "200",
         "effects": [
             "301 à 350 Vitalité",
@@ -2838,7 +2838,7 @@
         "name": "Massier",
         "image": "https://www.dofusbook.net/static/dist/items/7742-70.webp",
         "type": "Marteau",
-        "set": "Aucune",
+        "set": "Panoplie de la Fournaise",
         "level": "200",
         "effects": [
             "301 à 350 Vitalité",
@@ -2898,7 +2898,7 @@
         "name": "Lav'Hache",
         "image": "https://www.dofusbook.net/static/dist/items/19079-70.webp",
         "type": "Hache",
-        "set": "Aucune",
+        "set": "Panoplie du Fourneau",
         "level": "200",
         "effects": [
             "301 à 350 Vitalité",
@@ -3340,7 +3340,7 @@
         "name": "Pyraguette",
         "image": "https://www.dofusbook.net/static/dist/items/3088-70.webp",
         "type": "Baguette",
-        "set": "Aucune",
+        "set": "Panoplie des Maudits",
         "level": "200",
         "effects": [
             "301 à 350 Vitalité",
@@ -3403,7 +3403,7 @@
         "name": "Héqache",
         "image": "https://www.dofusbook.net/static/dist/items/19078-70.webp",
         "type": "Hache",
-        "set": "Aucune",
+        "set": "Panoplie de la Pyramide",
         "level": "200",
         "effects": [
             "301 à 350 Vitalité",
@@ -3468,7 +3468,7 @@
         "name": "Marteau R'ture",
         "image": "https://www.dofusbook.net/static/dist/items/7738-70.webp",
         "type": "Marteau",
-        "set": "Aucune",
+        "set": "Panoplie des Tréfonds",
         "level": "200",
         "effects": [
             "301 à 400 Vitalité",
@@ -3529,7 +3529,7 @@
         "name": "Dagoulinantes",
         "image": "https://www.dofusbook.net/static/dist/items/5094-70.webp",
         "type": "Dagues",
-        "set": "Aucune",
+        "set": "Panoplie de la Fosse",
         "level": "200",
         "effects": [
             "301 à 400 Vitalité",
@@ -3652,7 +3652,7 @@
         "name": "Manthache",
         "image": "https://www.dofusbook.net/static/dist/items/19076-70.webp",
         "type": "Hache",
-        "set": "Aucune",
+        "set": "Panoplie des Abîmes",
         "level": "200",
         "effects": [
             "301 à 400 Vitalité",
@@ -3711,7 +3711,7 @@
         "name": "Harpelle",
         "image": "https://www.dofusbook.net/static/dist/items/8078-70.webp",
         "type": "Pelle",
-        "set": "Aucune",
+        "set": "Panoplie des Profondeurs",
         "level": "200",
         "effects": [
             "301 à 400 Vitalité",
@@ -4154,7 +4154,7 @@
         "name": "Sabres d'Atcham",
         "image": "https://www.dofusbook.net/static/dist/items/6732-70.webp",
         "type": "Épée",
-        "set": "Aucune",
+        "set": "Panoplie d'Atcham",
         "level": "200",
         "effects": [
             "301 à 350 Vitalité",
@@ -5101,7 +5101,7 @@
         "name": "Épée du Granduk",
         "image": "https://www.dofusbook.net/static/dist/items/6721-70.webp",
         "type": "Épée",
-        "set": "Aucune",
+        "set": "Panoplie du Granduk",
         "level": "200",
         "effects": [
             "301 à 350 Vitalité",
@@ -5436,7 +5436,7 @@
         "name": "Épée Gloursonne",
         "image": "https://www.dofusbook.net/static/dist/items/6111-70.webp",
         "type": "Épée",
-        "set": "Aucune",
+        "set": "Panoplie Gloursonne",
         "level": "199",
         "effects": [
             "251 à 300 Vitalité",
@@ -5499,7 +5499,7 @@
         "name": "Bâtonnet Ronien",
         "image": "https://www.dofusbook.net/static/dist/items/3080-70.webp",
         "type": "Baguette",
-        "set": "Aucune",
+        "set": "Panoplie Quartzésienne",
         "level": "198",
         "effects": [
             "251 à 300 Vitalité",
@@ -5626,7 +5626,7 @@
         "name": "Nev'Arc",
         "image": "https://www.dofusbook.net/static/dist/items/2094-70.webp",
         "type": "Arc",
-        "set": "Aucune",
+        "set": "Panoplie de Nevark",
         "level": "197",
         "effects": [
             "301 à 350 Vitalité",
@@ -5689,7 +5689,7 @@
         "name": "Zarbappeau",
         "image": "https://www.dofusbook.net/static/dist/items/3093-70.webp",
         "type": "Baguette",
-        "set": "Aucune",
+        "set": "Zarbinoplie",
         "level": "197",
         "effects": [
             "251 à 300 Vitalité",
@@ -6196,7 +6196,7 @@
         "name": "Masse Clochecuivre",
         "image": "https://www.dofusbook.net/static/dist/items/7090-70.webp",
         "type": "Marteau",
-        "set": "Aucune",
+        "set": "Panoplie Clochecuivre",
         "level": "196",
         "effects": [
             "251 à 300 Vitalité",
@@ -6261,7 +6261,7 @@
         "name": "Épée d'Otomaï",
         "image": "https://www.dofusbook.net/static/dist/items/6719-70.webp",
         "type": "Épée",
-        "set": "Aucune",
+        "set": "Panoplie d'Otomaï",
         "level": "196",
         "effects": [
             "251 à 300 Vitalité",
@@ -6707,7 +6707,7 @@
         "name": "Tonfas de Barbéryl",
         "image": "https://www.dofusbook.net/static/dist/items/5102-70.webp",
         "type": "Dagues",
-        "set": "Aucune",
+        "set": "Panoplie de Barbéryl Clochecuivre",
         "level": "194",
         "effects": [
             "301 à 350 Vitalité",
@@ -6769,7 +6769,7 @@
         "name": "Rouleau à Pâtisserie d'Aermyne",
         "image": "https://www.dofusbook.net/static/dist/items/4113-70.webp",
         "type": "Bâton",
-        "set": "Aucune",
+        "set": "Panoplie d'Aermyne",
         "level": "194",
         "effects": [
             "301 à 350 Vitalité",
@@ -6896,7 +6896,7 @@
         "name": "Marteau d'Henual",
         "image": "https://www.dofusbook.net/static/dist/items/7727-70.webp",
         "type": "Marteau",
-        "set": "Aucune",
+        "set": "Panoplie d'Henual",
         "level": "193",
         "effects": [
             "201 à 250 Vitalité",
@@ -7146,7 +7146,7 @@
         "name": "Pelle du Professeur Xa",
         "image": "https://www.dofusbook.net/static/dist/items/8063-70.webp",
         "type": "Pelle",
-        "set": "Aucune",
+        "set": "Panoplie du Professeur Xa",
         "level": "191",
         "effects": [
             "151 à 200 Vitalité",
@@ -7328,7 +7328,7 @@
         "name": "Marteau Aigri",
         "image": "https://www.dofusbook.net/static/dist/items/7089-70.webp",
         "type": "Marteau",
-        "set": "Aucune",
+        "set": "Panoplie des Marteaux-Aigris",
         "level": "190",
         "effects": [
             "251 à 300 Vitalité",
@@ -7389,7 +7389,7 @@
         "name": "Serpe Aigrie",
         "image": "https://www.dofusbook.net/static/dist/items/22013-70.webp",
         "type": "Faux",
-        "set": "Aucune",
+        "set": "Panoplie des Marteaux-Aigris",
         "level": "190",
         "effects": [
             "251 à 300 Vitalité",
@@ -7512,7 +7512,7 @@
         "name": "Hache du Korriandre",
         "image": "https://www.dofusbook.net/static/dist/items/19061-70.webp",
         "type": "Hache",
-        "set": "Aucune",
+        "set": "Panoplie du Korriandre",
         "level": "188",
         "effects": [
             "201 à 250 Vitalité",
@@ -7701,7 +7701,7 @@
         "name": "Couteaux à Champignons",
         "image": "https://www.dofusbook.net/static/dist/items/5069-70.webp",
         "type": "Dagues",
-        "set": "Aucune",
+        "set": "Panoplignon",
         "level": "187",
         "effects": [
             "201 à 250 Vitalité",
@@ -8245,7 +8245,7 @@
         "name": "Lame Assacre",
         "image": "https://www.dofusbook.net/static/dist/items/5070-70.webp",
         "type": "Dagues",
-        "set": "Aucune",
+        "set": "Panoplie du Bworker Gladiateur",
         "level": "182",
         "effects": [
             "251 à 300 Vitalité",
@@ -8303,7 +8303,7 @@
         "name": "Dard du Supervizœuf",
         "image": "https://www.dofusbook.net/static/dist/items/183010-70.webp",
         "type": "Lance",
-        "set": "Aucune",
+        "set": "Panoplie du Supervizœuf",
         "level": "181",
         "effects": [
             "201 à 250 Vitalité",
@@ -8488,7 +8488,7 @@
         "name": "Ougarteau",
         "image": "https://www.dofusbook.net/static/dist/items/7067-70.webp",
         "type": "Marteau",
-        "set": "Aucune",
+        "set": "Panoplie du Ougah",
         "level": "180",
         "effects": [
             "301 à 400 Vitalité",
@@ -8726,7 +8726,7 @@
         "name": "Baguette Nolog",
         "image": "https://www.dofusbook.net/static/dist/items/3075-70.webp",
         "type": "Baguette",
-        "set": "Aucune",
+        "set": "Panoplie du frigostien curieux",
         "level": "177",
         "effects": [
             "201 à 250 Vitalité",
@@ -9160,7 +9160,7 @@
         "name": "Arc de Guten Tak",
         "image": "https://www.dofusbook.net/static/dist/items/2074-70.webp",
         "type": "Arc",
-        "set": "Aucune",
+        "set": "Panoplie de Guten Tak",
         "level": "173",
         "effects": [
             "201 à 250 Vitalité",
@@ -9534,7 +9534,7 @@
         "name": "Dagues de Kabombz",
         "image": "https://www.dofusbook.net/static/dist/items/5104-70.webp",
         "type": "Dagues",
-        "set": "Aucune",
+        "set": "Panoplie des Kabombz",
         "level": "170",
         "effects": [
             "151 à 200 Vitalité",
@@ -9665,7 +9665,7 @@
         "name": "Bâton des Prophètes",
         "image": "https://www.dofusbook.net/static/dist/items/4105-70.webp",
         "type": "Bâton",
-        "set": "Aucune",
+        "set": "Panoplie des Prophètes",
         "level": "169",
         "effects": [
             "151 à 200 Vitalité",
@@ -9914,7 +9914,7 @@
         "name": "Épée de Ush",
         "image": "https://www.dofusbook.net/static/dist/items/6735-70.webp",
         "type": "Épée",
-        "set": "Aucune",
+        "set": "Panoplie de Ush Galesh",
         "level": "165",
         "effects": [
             "201 à 250 Vitalité",
@@ -10104,7 +10104,7 @@
         "name": "Rhizome du Tynril",
         "image": "https://www.dofusbook.net/static/dist/items/4077-70.webp",
         "type": "Bâton",
-        "set": "Aucune",
+        "set": "Panoplie du Tynril",
         "level": "164",
         "effects": [
             "201 à 250 Vitalité",
@@ -10473,7 +10473,7 @@
         "name": "Épée du Bretteur Céleste",
         "image": "https://www.dofusbook.net/static/dist/items/6731-70.webp",
         "type": "Épée",
-        "set": "Aucune",
+        "set": "Panoplie du Bretteur Céleste",
         "level": "160",
         "effects": [
             "201 à 250 Vitalité",
@@ -10657,7 +10657,7 @@
         "name": "Bâton du Maître Zoth",
         "image": "https://www.dofusbook.net/static/dist/items/4076-70.webp",
         "type": "Bâton",
-        "set": "Aucune",
+        "set": "Panoplie du Zothuliste",
         "level": "158",
         "effects": [
             "151 à 200 Vitalité",
@@ -10773,7 +10773,7 @@
         "name": "Katana de Spiritueur",
         "image": "https://www.dofusbook.net/static/dist/items/6749-70.webp",
         "type": "Épée",
-        "set": "Aucune",
+        "set": "Panoplie des Spiritueurs",
         "level": "157",
         "effects": [
             "101 à 150 Vitalité",
@@ -10837,7 +10837,7 @@
         "name": "Hache à Lamelles",
         "image": "https://www.dofusbook.net/static/dist/items/19051-70.webp",
         "type": "Hache",
-        "set": "Aucune",
+        "set": "Panoplie des Sous-bois",
         "level": "157",
         "effects": [
             "201 à 250 Vitalité",
@@ -10896,7 +10896,7 @@
         "name": "Marteau de la Vigie Pirate",
         "image": "https://www.dofusbook.net/static/dist/items/7076-70.webp",
         "type": "Marteau",
-        "set": "Aucune",
+        "set": "Panoplie du Grolandais",
         "level": "156",
         "effects": [
             "201 à 250 Vitalité",
@@ -11019,7 +11019,7 @@
         "name": "Lance du Harpirate",
         "image": "https://www.dofusbook.net/static/dist/items/4096-70.webp",
         "type": "Lance",
-        "set": "Aucune",
+        "set": "Panoplie du Harpirate",
         "level": "154",
         "effects": [
             "151 à 200 Vitalité",
@@ -11145,7 +11145,7 @@
         "name": "Hache du Fancrôme",
         "image": "https://www.dofusbook.net/static/dist/items/19060-70.webp",
         "type": "Hache",
-        "set": "Aucune",
+        "set": "Panoplie du Grolandais",
         "level": "153",
         "effects": [
             "151 à 200 Vitalité",
@@ -11209,7 +11209,7 @@
         "name": "Sabre de Ben le Ripate",
         "image": "https://www.dofusbook.net/static/dist/items/6100-70.webp",
         "type": "Épée",
-        "set": "Aucune",
+        "set": "Panoplie de Ben le Ripate",
         "level": "152",
         "effects": [
             "201 à 250 Vitalité",
@@ -11334,7 +11334,7 @@
         "name": "Sceptre du Minotot",
         "image": "https://www.dofusbook.net/static/dist/items/4067-70.webp",
         "type": "Bâton",
-        "set": "Aucune",
+        "set": "Panoplie du Minotot",
         "level": "151",
         "effects": [
             "71 à 120 Vitalité",
@@ -11392,7 +11392,7 @@
         "name": "Pertuisane d'Hell Mina",
         "image": "https://www.dofusbook.net/static/dist/items/4142-70.webp",
         "type": "Lance",
-        "set": "Aucune",
+        "set": "Panoplie d'Hell Mina",
         "level": "150",
         "effects": [
             "251 à 300 Vitalité",
@@ -11451,7 +11451,7 @@
         "name": "Faux Enracinée de Malter",
         "image": "https://www.dofusbook.net/static/dist/items/22010-70.webp",
         "type": "Faux",
-        "set": "Aucune",
+        "set": "Panoplie des Malters",
         "level": "150",
         "effects": [
             "201 à 250 Vitalité",
@@ -11511,7 +11511,7 @@
         "name": "Bâton de Zatoïshwan",
         "image": "https://www.dofusbook.net/static/dist/items/4126-70.webp",
         "type": "Bâton",
-        "set": "Aucune",
+        "set": "Panoplie de Zatoïshwan",
         "level": "150",
         "effects": [
             "151 à 200 Vitalité",
@@ -11634,7 +11634,7 @@
         "name": "Baguette de Frigostine",
         "image": "https://www.dofusbook.net/static/dist/items/3078-70.webp",
         "type": "Baguette",
-        "set": "Aucune",
+        "set": "Panoplie de Frigostine",
         "level": "149",
         "effects": [
             "101 à 150 Vitalité",
@@ -12639,7 +12639,7 @@
         "name": "Vieille Branche du Chêne Mou",
         "image": "https://www.dofusbook.net/static/dist/items/4125-70.webp",
         "type": "Bâton",
-        "set": "Aucune",
+        "set": "Panoplie du Chêne Mou",
         "level": "140",
         "effects": [
             "151 à 200 Vitalité",
@@ -12759,7 +12759,7 @@
         "name": "Kalypsoton",
         "image": "https://www.dofusbook.net/static/dist/items/4120-70.webp",
         "type": "Bâton",
-        "set": "Aucune",
+        "set": "Panoplie Engloutie",
         "level": "139",
         "effects": [
             "101 à 150 Vitalité",
@@ -12821,7 +12821,7 @@
         "name": "Hache du Guerrier Zoth",
         "image": "https://www.dofusbook.net/static/dist/items/19047-70.webp",
         "type": "Hache",
-        "set": "Aucune",
+        "set": "Panoplie du Zothicien",
         "level": "139",
         "effects": [
             "251 à 300 Vitalité",
@@ -12938,7 +12938,7 @@
         "name": "Poolache",
         "image": "https://www.dofusbook.net/static/dist/items/19048-70.webp",
         "type": "Hache",
-        "set": "Aucune",
+        "set": "Panoplie du Poolay",
         "level": "137",
         "effects": [
             "101 à 150 Vitalité",
@@ -13422,7 +13422,7 @@
         "name": "Branche de l'Abrakleur clair",
         "image": "https://www.dofusbook.net/static/dist/items/3065-70.webp",
         "type": "Baguette",
-        "set": "Aucune",
+        "set": "Panoplie Claire",
         "level": "132",
         "effects": [
             "101 à 150 Vitalité",
@@ -13480,7 +13480,7 @@
         "name": "Marteau de la Gamine Zoth",
         "image": "https://www.dofusbook.net/static/dist/items/7064-70.webp",
         "type": "Marteau",
-        "set": "Aucune",
+        "set": "Panoplie du Zoth Zotheur",
         "level": "132",
         "effects": [
             "91 à 120 Vitalité",
@@ -13598,7 +13598,7 @@
         "name": "Kwache",
         "image": "https://www.dofusbook.net/static/dist/items/19082-70.webp",
         "type": "Hache",
-        "set": "Aucune",
+        "set": "Panoplie Kwapa",
         "level": "130",
         "effects": [
             "151 à 200 Vitalité",
@@ -13844,7 +13844,7 @@
         "name": "Branche de l'Abrakleur sombre",
         "image": "https://www.dofusbook.net/static/dist/items/3064-70.webp",
         "type": "Baguette",
-        "set": "Aucune",
+        "set": "Panoplie Sombre",
         "level": "130",
         "effects": [
             "101 à 150 Vitalité",
@@ -14190,7 +14190,7 @@
         "name": "Dagues du Dragoeuf",
         "image": "https://www.dofusbook.net/static/dist/items/5058-70.webp",
         "type": "Dagues",
-        "set": "Aucune",
+        "set": "Panoplie du Dragoeuf Vagabond",
         "level": "128",
         "effects": [
             "81 à 130 Vitalité",
@@ -14365,7 +14365,7 @@
         "name": "Pelle Dragoeuf",
         "image": "https://www.dofusbook.net/static/dist/items/8045-70.webp",
         "type": "Pelle",
-        "set": "Aucune",
+        "set": "Panoplie du Dragoeuf Cuirassé",
         "level": "127",
         "effects": [
             "101 à 150 Vitalité",
@@ -14429,7 +14429,7 @@
         "name": "Épée du Dragoeuf",
         "image": "https://www.dofusbook.net/static/dist/items/6068-70.webp",
         "type": "Épée",
-        "set": "Aucune",
+        "set": "Panoplie du Dragoeuf Cuirassé",
         "level": "127",
         "effects": [
             "71 à 100 Vitalité",
@@ -14604,7 +14604,7 @@
         "name": "Nun-Charang",
         "image": "https://www.dofusbook.net/static/dist/items/4140-70.webp",
         "type": "Bâton",
-        "set": "Aucune",
+        "set": "Panoplie Kozaru",
         "level": "126",
         "effects": [
             "151 à 200 Vitalité",
@@ -14729,7 +14729,7 @@
         "name": "Hache du Dragoeuf",
         "image": "https://www.dofusbook.net/static/dist/items/19043-70.webp",
         "type": "Hache",
-        "set": "Aucune",
+        "set": "Panoplie du Dragoeuf Cuirassé",
         "level": "126",
         "effects": [
             "91 à 130 Vitalité",
@@ -15021,7 +15021,7 @@
         "name": "Couteau de Mer",
         "image": "https://www.dofusbook.net/static/dist/items/5085-70.webp",
         "type": "Dagues",
-        "set": "Aucune",
+        "set": "Panoplie Autochtone",
         "level": "124",
         "effects": [
             "101 à 150 Vitalité",
@@ -15083,7 +15083,7 @@
         "name": "Bâton du Dragoeuf",
         "image": "https://www.dofusbook.net/static/dist/items/4066-70.webp",
         "type": "Bâton",
-        "set": "Aucune",
+        "set": "Panoplie du Dragoeuf Vagabond",
         "level": "124",
         "effects": [
             "151 à 200 Vitalité",
@@ -15145,7 +15145,7 @@
         "name": "Baguette du Dragoeuf",
         "image": "https://www.dofusbook.net/static/dist/items/3060-70.webp",
         "type": "Baguette",
-        "set": "Aucune",
+        "set": "Panoplie du Dragoeuf Vagabond",
         "level": "124",
         "effects": [
             "151 à 200 Vitalité",
@@ -15319,7 +15319,7 @@
         "name": "Marteau du Dragoeuf",
         "image": "https://www.dofusbook.net/static/dist/items/7059-70.webp",
         "type": "Marteau",
-        "set": "Aucune",
+        "set": "Panoplie du Dragoeuf Cuirassé",
         "level": "123",
         "effects": [
             "101 à 150 Vitalité",
@@ -15437,7 +15437,7 @@
         "name": "Mourtheau",
         "image": "https://www.dofusbook.net/static/dist/items/7084-70.webp",
         "type": "Marteau",
-        "set": "Aucune",
+        "set": "Panoplie Moutheuze",
         "level": "122",
         "effects": [
             "151 à 200 Vitalité",
@@ -15498,7 +15498,7 @@
         "name": "Kask'Arc Go",
         "image": "https://www.dofusbook.net/static/dist/items/2058-70.webp",
         "type": "Arc",
-        "set": "Aucune",
+        "set": "Panoplie Baveuse",
         "level": "122",
         "effects": [
             "101 à 150 Vitalité",
@@ -16266,7 +16266,7 @@
         "name": "Arc du Dragoeuf",
         "image": "https://www.dofusbook.net/static/dist/items/2055-70.webp",
         "type": "Arc",
-        "set": "Aucune",
+        "set": "Panoplie du Dragoeuf Vagabond",
         "level": "118",
         "effects": [
             "151 à 200 Vitalité",
@@ -16378,7 +16378,7 @@
         "name": "Baguette d'Elya Wood",
         "image": "https://www.dofusbook.net/static/dist/items/3039-70.webp",
         "type": "Baguette",
-        "set": "Aucune",
+        "set": "Panoplie d'Elya Wood",
         "level": "117",
         "effects": [
             "21 à 40 Intelligence",
@@ -16950,7 +16950,7 @@
         "name": "Marteau du Mominotor",
         "image": "https://www.dofusbook.net/static/dist/items/7060-70.webp",
         "type": "Marteau",
-        "set": "Aucune",
+        "set": "Panoplie du Mominotor",
         "level": "112",
         "effects": [
             "101 à 150 Vitalité",
@@ -17161,7 +17161,7 @@
         "name": "Corbalame",
         "image": "https://www.dofusbook.net/static/dist/items/6032-70.webp",
         "type": "Épée",
-        "set": "Aucune",
+        "set": "Panoplie du Corbac",
         "level": "110",
         "effects": [
             "101 à 150 Vitalité",
@@ -17371,7 +17371,7 @@
         "name": "Rapière du Rat Blanc",
         "image": "https://www.dofusbook.net/static/dist/items/6071-70.webp",
         "type": "Épée",
-        "set": "Aucune",
+        "set": "Panoplie du Rat Blanc",
         "level": "109",
         "effects": [
             "81 à 150 Vitalité",
@@ -17428,7 +17428,7 @@
         "name": "Hache du Minotoror",
         "image": "https://www.dofusbook.net/static/dist/items/19044-70.webp",
         "type": "Hache",
-        "set": "Aucune",
+        "set": "Panoplie du Minotoror",
         "level": "109",
         "effects": [
             "101 à 150 Vitalité",
@@ -17484,7 +17484,7 @@
         "name": "Dagues du Rat Noir",
         "image": "https://www.dofusbook.net/static/dist/items/5059-70.webp",
         "type": "Dagues",
-        "set": "Aucune",
+        "set": "Panoplie du Rat Noir",
         "level": "108",
         "effects": [
             "81 à 150 Vitalité",
@@ -17542,7 +17542,7 @@
         "name": "Arc de Flèche Mauve",
         "image": "https://www.dofusbook.net/static/dist/items/2078-70.webp",
         "type": "Arc",
-        "set": "Aucune",
+        "set": "Panoplie de Flèche Mauve",
         "level": "107",
         "effects": [
             "151 à 200 Vitalité",
@@ -17954,7 +17954,7 @@
         "name": "Arc Lequin",
         "image": "https://www.dofusbook.net/static/dist/items/2076-70.webp",
         "type": "Arc",
-        "set": "Aucune",
+        "set": "Panoplie Talienne",
         "level": "104",
         "effects": [
             "101 à 150 Vitalité",
@@ -18009,7 +18009,7 @@
         "name": "Kaiser",
         "image": "https://www.dofusbook.net/static/dist/items/7010-70.webp",
         "type": "Marteau",
-        "set": "Aucune",
+        "set": "Panoplie du Dragon Cochon",
         "level": "104",
         "effects": [
             "101 à 150 Vitalité",
@@ -18113,7 +18113,7 @@
         "name": "Marteau de Moon",
         "image": "https://www.dofusbook.net/static/dist/items/7736-70.webp",
         "type": "Marteau",
-        "set": "Aucune",
+        "set": "Panoplie de Moon",
         "level": "103",
         "effects": [
             "31 à 40 Intelligence",
@@ -18218,7 +18218,7 @@
         "name": "Fourbasse-Ton",
         "image": "https://www.dofusbook.net/static/dist/items/4044-70.webp",
         "type": "Lance",
-        "set": "Aucune",
+        "set": "Panoplie Fourbasse",
         "level": "102",
         "effects": [
             "71 à 100 Vitalité",
@@ -18275,7 +18275,7 @@
         "name": "Râtrouille",
         "image": "https://www.dofusbook.net/static/dist/items/8066-70.webp",
         "type": "Pelle",
-        "set": "Aucune",
+        "set": "Panoplitrouille",
         "level": "102",
         "effects": [
             "71 à 100 Vitalité",
@@ -18439,7 +18439,7 @@
         "name": "Lame du Chef Bwork",
         "image": "https://www.dofusbook.net/static/dist/items/6048-70.webp",
         "type": "Épée",
-        "set": "Aucune",
+        "set": "Panoplie du Chef Bwork",
         "level": "100",
         "effects": [
             "71 à 100 Vitalité",
@@ -19912,7 +19912,7 @@
         "name": "Bâton de Daïgoro",
         "image": "https://www.dofusbook.net/static/dist/items/4108-70.webp",
         "type": "Bâton",
-        "set": "Aucune",
+        "set": "Panoplie de Daïgoro",
         "level": "88",
         "effects": [
             "101 à 150 Vitalité",
@@ -19961,7 +19961,7 @@
         "name": "Marteau du Boufcoul",
         "image": "https://www.dofusbook.net/static/dist/items/7054-70.webp",
         "type": "Marteau",
-        "set": "Aucune",
+        "set": "Panoplie du Boufcoul",
         "level": "88",
         "effects": [
             "51 à 70 Vitalité",
@@ -20862,7 +20862,7 @@
         "name": "Hache Terrdala",
         "image": "https://www.dofusbook.net/static/dist/items/19032-70.webp",
         "type": "Hache",
-        "set": "Aucune",
+        "set": "Panoplie Terrdala",
         "level": "83",
         "effects": [
             "71 à 100 Vitalité",
@@ -21333,7 +21333,7 @@
         "name": "Marteau du Craqueleur Légendaire",
         "image": "https://www.dofusbook.net/static/dist/items/7058-70.webp",
         "type": "Marteau",
-        "set": "Aucune",
+        "set": "Panoplie du Craqueleur Légendaire",
         "level": "81",
         "effects": [
             "61 à 80 Vitalité",
@@ -21771,7 +21771,7 @@
         "name": "Binette de Shika",
         "image": "https://www.dofusbook.net/static/dist/items/4069-70.webp",
         "type": "Lance",
-        "set": "Aucune",
+        "set": "Panoplie de Shika Ingalsse",
         "level": "80",
         "effects": [
             "51 à 70 Vitalité",
@@ -21979,7 +21979,7 @@
         "name": "Kidorteau",
         "image": "https://www.dofusbook.net/static/dist/items/7066-70.webp",
         "type": "Marteau",
-        "set": "Aucune",
+        "set": "Panoplie des Herboricoles",
         "level": "77",
         "effects": [
             "31 à 40 Vitalité",
@@ -22062,7 +22062,7 @@
         "name": "Fourche de Farle",
         "image": "https://www.dofusbook.net/static/dist/items/4043-70.webp",
         "type": "Lance",
-        "set": "Aucune",
+        "set": "Panoplie de Farle Ingalsse",
         "level": "76",
         "effects": [
             "51 à 70 Vitalité",
@@ -22104,7 +22104,7 @@
         "name": "Sabre Feudala",
         "image": "https://www.dofusbook.net/static/dist/items/6064-70.webp",
         "type": "Épée",
-        "set": "Aucune",
+        "set": "Panoplie Feudala",
         "level": "76",
         "effects": [
             "56 à 75 Vitalité",
@@ -22355,7 +22355,7 @@
         "name": "Bâton du Koulosse",
         "image": "https://www.dofusbook.net/static/dist/items/4062-70.webp",
         "type": "Bâton",
-        "set": "Aucune",
+        "set": "Panoplie du Koulosse",
         "level": "73",
         "effects": [
             "251 à 300 Vitalité",
@@ -22605,7 +22605,7 @@
         "name": "Lame du Chef Crocodaille",
         "image": "https://www.dofusbook.net/static/dist/items/6049-70.webp",
         "type": "Épée",
-        "set": "Aucune",
+        "set": "Panoplie du Chef Crocodaille",
         "level": "70",
         "effects": [
             "46 à 55 Vitalité",
@@ -22854,7 +22854,7 @@
         "name": "Kryst O'Boul",
         "image": "https://www.dofusbook.net/static/dist/items/4063-70.webp",
         "type": "Bâton",
-        "set": "Aucune",
+        "set": "Panoplie O'Boul",
         "level": "68",
         "effects": [
             "21 à 30 Intelligence",
@@ -23468,7 +23468,7 @@
         "name": "Lame du Craqueleur",
         "image": "https://www.dofusbook.net/static/dist/items/6054-70.webp",
         "type": "Épée",
-        "set": "Aucune",
+        "set": "Panoplie du Craqueleur",
         "level": "64",
         "effects": [
             "41 à 60 Vitalité",
@@ -23676,7 +23676,7 @@
         "name": "Dagues Aerdala",
         "image": "https://www.dofusbook.net/static/dist/items/5051-70.webp",
         "type": "Dagues",
-        "set": "Aucune",
+        "set": "Panoplie Aerdala",
         "level": "62",
         "effects": [
             "51 à 70 Vitalité",
@@ -23839,7 +23839,7 @@
         "name": "Arc du Koalak",
         "image": "https://www.dofusbook.net/static/dist/items/2052-70.webp",
         "type": "Arc",
-        "set": "Aucune",
+        "set": "Panoplie du Koalak",
         "level": "61",
         "effects": [
             "41 à 60 Agilité",
@@ -23879,7 +23879,7 @@
         "name": "Taille-haie primitif du Wobot",
         "image": "https://www.dofusbook.net/static/dist/items/4037-70.webp",
         "type": "Lance",
-        "set": "Aucune",
+        "set": "Panoplie du Wabbit",
         "level": "60",
         "effects": [
             "41 à 50 Vitalité",
@@ -24104,7 +24104,7 @@
         "name": "Bâton du Wa Wabbit",
         "image": "https://www.dofusbook.net/static/dist/items/4021-70.webp",
         "type": "Bâton",
-        "set": "Aucune",
+        "set": "Panoplie du Wa",
         "level": "60",
         "effects": [
             "71 à 100 Vitalité",
@@ -24179,7 +24179,7 @@
         "name": "Baguette du Scarabosse Doré",
         "image": "https://www.dofusbook.net/static/dist/items/3059-70.webp",
         "type": "Baguette",
-        "set": "Aucune",
+        "set": "Panoplie du Scarabosse Doré",
         "level": "59",
         "effects": [
             "21 à 30 Intelligence",
@@ -24543,7 +24543,7 @@
         "name": "Kwakwalame",
         "image": "https://www.dofusbook.net/static/dist/items/6109-70.webp",
         "type": "Épée",
-        "set": "Aucune",
+        "set": "Panoplie du Kwakwa",
         "level": "56",
         "effects": [
             "4 à 5 Dommage Terre",
@@ -24764,7 +24764,7 @@
         "name": "Hache du Mulou",
         "image": "https://www.dofusbook.net/static/dist/items/19042-70.webp",
         "type": "Hache",
-        "set": "Aucune",
+        "set": "Panoplie du Mulou",
         "level": "55",
         "effects": [
             "46 à 65 Vitalité",
@@ -25161,7 +25161,7 @@
         "name": "Serpe de Rakoopeur",
         "image": "https://www.dofusbook.net/static/dist/items/22012-70.webp",
         "type": "Faux",
-        "set": "Aucune",
+        "set": "Panoplie de Rakoopeur",
         "level": "52",
         "effects": [
             "31 à 50 Vitalité",
@@ -25412,7 +25412,7 @@
         "name": "Lance de trappeur albueran",
         "image": "https://www.dofusbook.net/static/dist/items/183002-70.webp",
         "type": "Lance",
-        "set": "Aucune",
+        "set": "Panoplie de trappeur albueran",
         "level": "50",
         "effects": [
             "21 à 40 Vitalité",
@@ -25448,7 +25448,7 @@
         "name": "Lance de guerrier albueran",
         "image": "https://www.dofusbook.net/static/dist/items/183001-70.webp",
         "type": "Lance",
-        "set": "Aucune",
+        "set": "Panoplie de guerrier albueran",
         "level": "50",
         "effects": [
             "31 à 40 Vitalité",
@@ -25889,7 +25889,7 @@
         "name": "Sceptre du Kanniboul Ebil",
         "image": "https://www.dofusbook.net/static/dist/items/4103-70.webp",
         "type": "Bâton",
-        "set": "Aucune",
+        "set": "Panoplie du Kanniboul Ebil",
         "level": "47",
         "effects": [
             "16 à 20 Force",
@@ -26134,7 +26134,7 @@
         "name": "Abraton",
         "image": "https://www.dofusbook.net/static/dist/items/4023-70.webp",
         "type": "Bâton",
-        "set": "Aucune",
+        "set": "Panoplie de l'Abraknyde",
         "level": "45",
         "effects": [
             "41 à 60 Vitalité",
@@ -26381,7 +26381,7 @@
         "name": "Marteau du Chafer Draugr",
         "image": "https://www.dofusbook.net/static/dist/items/7726-70.webp",
         "type": "Marteau",
-        "set": "Aucune",
+        "set": "Panoplie des Anciens Chafers",
         "level": "43",
         "effects": [
             "26 à 35 Vitalité",
@@ -26417,7 +26417,7 @@
         "name": "Bâton Akwadala",
         "image": "https://www.dofusbook.net/static/dist/items/4061-70.webp",
         "type": "Bâton",
-        "set": "Aucune",
+        "set": "Panoplie Akwadala",
         "level": "43",
         "effects": [
             "16 à 20 Vitalité",
@@ -26523,7 +26523,7 @@
         "name": "Kwaklame de Vent",
         "image": "https://www.dofusbook.net/static/dist/items/6050-70.webp",
         "type": "Épée",
-        "set": "Aucune",
+        "set": "Panoplie du Kwak de Vent",
         "level": "41",
         "effects": [
             "21 à 30 Vitalité",
@@ -26558,7 +26558,7 @@
         "name": "Kwaklame de Terre",
         "image": "https://www.dofusbook.net/static/dist/items/6053-70.webp",
         "type": "Épée",
-        "set": "Aucune",
+        "set": "Panoplie du Kwak de Terre",
         "level": "41",
         "effects": [
             "21 à 30 Vitalité",
@@ -26593,7 +26593,7 @@
         "name": "Kwaklame de Glace",
         "image": "https://www.dofusbook.net/static/dist/items/6051-70.webp",
         "type": "Épée",
-        "set": "Aucune",
+        "set": "Panoplie du Kwak de Glace",
         "level": "41",
         "effects": [
             "21 à 30 Vitalité",
@@ -26628,7 +26628,7 @@
         "name": "Kwaklame de Flammes",
         "image": "https://www.dofusbook.net/static/dist/items/6052-70.webp",
         "type": "Épée",
-        "set": "Aucune",
+        "set": "Panoplie du Kwak de Flammes",
         "level": "41",
         "effects": [
             "21 à 30 Vitalité",
@@ -27046,7 +27046,7 @@
         "name": "Baguette Larvesque",
         "image": "https://www.dofusbook.net/static/dist/items/3019-70.webp",
         "type": "Baguette",
-        "set": "Aucune",
+        "set": "Panoplie Larvesque",
         "level": "40",
         "effects": [
             "31 à 40 Vitalité",
@@ -27106,7 +27106,7 @@
         "name": "Abrarc",
         "image": "https://www.dofusbook.net/static/dist/items/2024-70.webp",
         "type": "Arc",
-        "set": "Aucune",
+        "set": "Abranoplie",
         "level": "39",
         "effects": [
             "21 à 30 Chance",
@@ -27165,7 +27165,7 @@
         "name": "Faux du Directeur Grunob",
         "image": "https://www.dofusbook.net/static/dist/items/22011-70.webp",
         "type": "Faux",
-        "set": "Aucune",
+        "set": "Panoplie du Directeur Grunob",
         "level": "38",
         "effects": [
             "31 à 40 Vitalité",
@@ -27899,7 +27899,7 @@
         "name": "Bâton Carnivore",
         "image": "https://www.dofusbook.net/static/dist/items/4024-70.webp",
         "type": "Bâton",
-        "set": "Aucune",
+        "set": "Panoplie de Toady",
         "level": "30",
         "effects": [
             "21 à 30 Vitalité",
@@ -27929,7 +27929,7 @@
         "name": "Épée Royale du Bouftou",
         "image": "https://www.dofusbook.net/static/dist/items/6030-70.webp",
         "type": "Épée",
-        "set": "Aucune",
+        "set": "Panoplie du Bouftou Royal",
         "level": "30",
         "effects": [
             "31 à 40 Vitalité",
@@ -28915,7 +28915,7 @@
         "name": "Baguette du Tofu",
         "image": "https://www.dofusbook.net/static/dist/items/3058-70.webp",
         "type": "Baguette",
-        "set": "Aucune",
+        "set": "Panoplie du Tofu",
         "level": "25",
         "effects": [
             "6 à 10 Agilité",
@@ -29318,7 +29318,7 @@
         "name": "Bâton de l'Homme Ours",
         "image": "https://www.dofusbook.net/static/dist/items/4046-70.webp",
         "type": "Bâton",
-        "set": "Aucune",
+        "set": "Panoplie de l'Homme Ours",
         "level": "20",
         "effects": [
             "5 à 7 Intelligence",
@@ -29341,7 +29341,7 @@
         "name": "Marteau du Bouftou",
         "image": "https://www.dofusbook.net/static/dist/items/7023-70.webp",
         "type": "Marteau",
-        "set": "Aucune",
+        "set": "Panoplie du Bouftou",
         "level": "20",
         "effects": [
             "16 à 20 Vitalité",
@@ -29459,7 +29459,7 @@
         "name": "Pelle en Mousse",
         "image": "https://www.dofusbook.net/static/dist/items/8044-70.webp",
         "type": "Pelle",
-        "set": "Aucune",
+        "set": "Panoplie en Mousse",
         "level": "20",
         "effects": [
             "7 à 10 Vitalité",
@@ -29722,7 +29722,7 @@
         "name": "Faux usée du Paysan",
         "image": "https://www.dofusbook.net/static/dist/items/22002-70.webp",
         "type": "Faux",
-        "set": "Aucune",
+        "set": "Panoplie du Paysan",
         "level": "17",
         "effects": [
             "16 à 20 Vitalité",
@@ -29862,7 +29862,7 @@
         "name": "La Plantouze des Champs",
         "image": "https://www.dofusbook.net/static/dist/items/4045-70.webp",
         "type": "Bâton",
-        "set": "Aucune",
+        "set": "Panoplie Champêtre",
         "level": "15",
         "effects": [
             "21 à 25 Vitalité",
@@ -30278,7 +30278,7 @@
         "name": "Dagues du Bandit",
         "image": "https://www.dofusbook.net/static/dist/items/5009-70.webp",
         "type": "Dagues",
-        "set": "Aucune",
+        "set": "Panoplie du Bandit",
         "level": "12",
         "effects": [
             "16 à 20 Vitalité",
@@ -30301,7 +30301,7 @@
         "name": "La Trancheuse d'Arakne",
         "image": "https://www.dofusbook.net/static/dist/items/19031-70.webp",
         "type": "Hache",
-        "set": "Aucune",
+        "set": "Panoplie Arakne",
         "level": "11",
         "effects": [
             "11 à 15 Vitalité",
@@ -30777,7 +30777,7 @@
         "name": "Bounihimée",
         "image": "https://www.dofusbook.net/static/dist/items/6757-70.webp",
         "type": "Épée",
-        "set": "Aucune",
+        "set": "Panoplie du Boune",
         "level": "1",
         "effects": [
             "1 Dommage",
@@ -30866,7 +30866,7 @@
         "name": "Épée Tulante",
         "image": "https://www.dofusbook.net/static/dist/items/6096-70.webp",
         "type": "Épée",
-        "set": "Aucune",
+        "set": "Panoplie de l'intrépide",
         "level": "1",
         "effects": [
             "1 Vitalité",
