@@ -171,7 +171,8 @@ export class HomeComponent implements OnInit, OnDestroy {
     @LogExecution
     onItemSelect(): void {
         if (!this.selectedItem) return;
-        this.unVanishDiv();
+        this.cdr.detectChanges();
+		this.unVanishDiv();
         this.tauxBrisage = 100;
         const level = this.selectedItem.level;
 
