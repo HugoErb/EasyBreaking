@@ -1,7 +1,3 @@
-Voici un exemple de README pour votre projet Angular/Node.js de gestion des items et des runes pour optimiser le brisage dans Dofus.
-
----
-
 # Easy Breaking - Optimisation du Brisage pour Dofus
 
 ## Description
