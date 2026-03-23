@@ -1,6 +1,8 @@
 import { NgModule, LOCALE_ID } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { providePrimeNG } from 'primeng/config';
+import Lara from '@primeng/themes/lara';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -18,17 +20,19 @@ import { RunesManagerComponent } from './runes-manager/runes-manager.component';
 
 registerLocaleData(localeFr, 'fr');
 
-@NgModule({ declarations: [
-        AppComponent,
-        HomeComponent,
-        RunesManagerComponent
-    ],
-    bootstrap: [AppComponent], imports: [BrowserModule,
-        BrowserAnimationsModule,
-        FormsModule,
-        AppRoutingModule,
-        AutoCompleteModule,
-        DialogModule,
-        TooltipModule,
-        InputNumberModule], providers: [{ provide: LOCALE_ID, useValue: 'fr' }, provideHttpClient(withInterceptorsFromDi())] })
-export class AppModule { }
+@NgModule({
+	declarations: [AppComponent, HomeComponent, RunesManagerComponent],
+	bootstrap: [AppComponent],
+	imports: [
+		BrowserModule,
+		BrowserAnimationsModule,
+		FormsModule,
+		AppRoutingModule,
+		AutoCompleteModule,
+		DialogModule,
+		TooltipModule,
+		InputNumberModule,
+	],
+	providers: [{ provide: LOCALE_ID, useValue: 'fr' }, provideHttpClient(withInterceptorsFromDi()), providePrimeNG({ theme: { preset: Lara } })],
+})
+export class AppModule {}
