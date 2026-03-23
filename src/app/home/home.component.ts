@@ -112,7 +112,9 @@ export class HomeComponent implements OnInit {
 
 		// forkJoin pour charger les deux listes en parallèle
 		forkJoin([armes$, equipements$]).subscribe(([armesData, equipementsData]) => {
-			this.items = [...this.processData(armesData), ...this.processData(equipementsData)].sort((a, b) => a.name.localeCompare(b.name));
+			this.items = [...this.processData(armesData), ...this.processData(equipementsData)]
+				.sort((a, b) => a.name.localeCompare(b.name))
+				.map((item) => ({ ...item, nameLower: item.name.toLowerCase() }));
 			this.cdr.markForCheck(); // Permet à Angular de revérifier le composant pour màj le DOM avec vos nouvelles valeurs.
 		});
 	}
@@ -124,12 +126,12 @@ export class HomeComponent implements OnInit {
 	private loadRunes(): void {
 		const stored = localStorage.getItem('runesData');
 		if (stored) {
-			this.runes = JSON.parse(stored);
+			this.runes = JSON.parse(stored).map((r: any) => ({ ...r, normalizedStat: this.normalizeStat(r.stat) }));
 		} else {
 			this.http.get<any[]>('assets/jsons/runes.json').subscribe((data) => {
 				localStorage.setItem('runesData', JSON.stringify(data));
-				this.runes = data;
-				this.cdr.markForCheck(); // Permet à Angular de revérifier le composant pour màj le DOM avec vos nouvelles valeurs.
+				this.runes = data.map((r) => ({ ...r, normalizedStat: this.normalizeStat(r.stat) }));
+				this.cdr.markForCheck();
 			});
 		}
 	}
@@ -159,7 +161,7 @@ export class HomeComponent implements OnInit {
 	 */
 	filterItem(event: any): void {
 		const q = event.query.toLowerCase();
-		this.filteredItems = this.items.filter((i) => i.name.toLowerCase().includes(q));
+		this.filteredItems = q.length === 0 ? this.items : this.items.filter((i) => i.nameLower.includes(q));
 	}
 
 	/**
@@ -242,10 +244,18 @@ export class HomeComponent implements OnInit {
 		}
 		this.sumKamasEarned = 0;
 
-		this.tableauEffects = this._cachedRunes.map(({ effect, rune }) => {
+		this.tableauEffects = this._cachedRunes.map(({ effect, rune, runeNumerator, runeRealWeight, runePrice, paRunePrice, raRunePrice }) => {
 			// quantités brutes et focus
-			const baseQty = this.calculateRuneQuantity(this.tauxBrisage, rune, effect);
-			const focQty = this.calculateRuneQuantityFocused(this.tauxBrisage, effect, this.selectedItem.effects);
+			const baseQty = this.calculateRuneQuantity(this.tauxBrisage, {
+				effect,
+				rune,
+				runeNumerator,
+				runeRealWeight,
+				runePrice,
+				paRunePrice,
+				raRunePrice,
+			});
+			const focQty = this.calculateRuneQuantityFocused(this.tauxBrisage, effect);
 			// quantités PA/RA
 			const paQty = rune.paPrice ? focQty / 3 : 0;
 			const raQty = rune.raPrice ? focQty / 6 : 0;
@@ -428,12 +438,13 @@ export class HomeComponent implements OnInit {
 			const runeObj = this.findMatchingRune(effect);
 
 			// Calcul pour les runes "standard"
-			const qty = this.calculateRuneQuantity(tauxBrisage, runeObj, effect);
+			const cached = this._cachedRunes.find((c) => c.rune === runeObj);
+			const qty = cached ? this.calculateRuneQuantity(tauxBrisage, cached) : 0;
 			const earned = Math.round(qty * Number.parseFloat(runeObj.price)) * 0.98;
 			sumKamasEarned += earned;
 
 			// Calcul pour le focus sur cet effet
-			const qtyFoc = this.calculateRuneQuantityFocused(tauxBrisage, effect, this.selectedItem.effects);
+			const qtyFoc = this.calculateRuneQuantityFocused(this.tauxBrisage, effect);
 			const earnedFoc = Math.round(qtyFoc * Number.parseFloat(runeObj.price)) * 0.98;
 			if (earnedFoc > maxFocusedKamasEarned) {
 				maxFocusedKamasEarned = earnedFoc;
@@ -545,7 +556,7 @@ export class HomeComponent implements OnInit {
 		const normalizedItemStat = this.normalizeStat(itemStatistic);
 
 		const filteredRunes = this.runes.filter((rune: any) => {
-			const normalizedRuneStat = this.normalizeStat(rune.stat);
+			const normalizedRuneStat = rune.normalizedStat;
 
 			// Cas particulier : différencier résistance fixe et %
 			if (normalizedItemStat.includes('résistance')) {
@@ -651,9 +662,8 @@ export class HomeComponent implements OnInit {
 	 * @returns La quantité de runes calculée.
 	 */
 	@LogExecution
-	calculateRuneQuantity(taux: any, rune: any, effect: any) {
-		let realRuneWeight = this.getRealRuneWeight(rune);
-		return (((3 * rune.weight * this.calculateAverage(effect) * this.selectedItem.level) / 200 + 1) * taux) / 100 / realRuneWeight;
+	calculateRuneQuantity(taux: any, cached: CachedRune): number {
+		return (cached.runeNumerator * taux) / 100 / cached.runeRealWeight;
 	}
 
 	/**
@@ -665,22 +675,18 @@ export class HomeComponent implements OnInit {
 	 * @returns La quantité de runes calculée pour la statistique ciblée.
 	 */
 	@LogExecution
-	calculateRuneQuantityFocused(taux: any, statFocused: any, effectsList: any[]): number {
+	calculateRuneQuantityFocused(taux: any, statFocused: any): number {
+		const cachedFocused = this._cachedRunes.find((c) => c.effect === statFocused);
+		if (!cachedFocused) return 0;
+
 		let runeQuantityFocused = 0;
-		let runeFocused = this.findMatchingRune(statFocused);
-		let realRuneWeight = this.getRealRuneWeight(runeFocused);
-
-		effectsList.forEach((effect) => {
-			let effectRune = this.findMatchingRune(effect);
-
-			let res = (3 * effectRune.weight * this.calculateAverage(effect) * this.selectedItem.level) / 200 + 1;
-			if (effect !== statFocused) {
-				res /= 2;
-			}
+		for (const cached of this._cachedRunes) {
+			let res = cached.runeNumerator;
+			if (cached.effect !== statFocused) res /= 2;
 			runeQuantityFocused += res;
-		});
+		}
 
-		return (runeQuantityFocused / realRuneWeight) * (taux / 100);
+		return (runeQuantityFocused / cachedFocused.runeRealWeight) * (taux / 100);
 	}
 
 	/**

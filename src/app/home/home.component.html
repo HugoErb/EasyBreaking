@@ -11,6 +11,10 @@
 				(onSelect)="onItemSelect()"
 				(input)="vanishDiv()"
 				placeholder="Entrez le nom d'un item..."
+				[virtualScroll]="true"
+				[virtualScrollItemSize]="38"
+                (onHide)="filteredItems = []"
+                [showEmptyMessage]="false"
 			>
 				<ng-template #item let-item>{{ item.name }}</ng-template>
 			</p-autoComplete>
