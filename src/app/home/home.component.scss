@@ -57,6 +57,25 @@ main .select {
 
 ::ng-deep .p-button {
     background-color: #366cff;
+    border-color: #366cff;
+    color: white !important;
+}
+
+::ng-deep .p-autocomplete-dropdown {
+    background-color: #366cff !important;
+    border-color: #366cff !important;
+    color: white !important;
+    width: 50px !important;
+}
+
+::ng-deep .p-autocomplete-dropdown .p-icon {
+    width: 1.2rem !important;
+    height: 1.2rem !important;
+}
+
+::ng-deep .p-inputnumber-button {
+    background-color: #366cff !important;
+    color: white !important;
 }
 
 .inputTexts ::ng-deep .p-inputtext {
