@@ -46,8 +46,7 @@
 								</td>
 								<td>{{ row.runeName }}</td>
 								<td>
-									<span class="p-input-icon-right">
-										<i class="fa-solid fa-k"></i>
+									<p-iconfield iconPosition="right">
 										<p-inputNumber
 											class="runePriceInput"
 											[(ngModel)]="row.runePrice"
@@ -55,7 +54,8 @@
 											[max]="999999999"
 											(onInput)="updateRunePrice(row.runeName, row.runePrice)"
 										/>
-									</span>
+                                        <p-inputicon><i class="fa-solid fa-k"></i></p-inputicon>
+									</p-iconfield>
 								</td>
 								<td>{{ row.runeQuantity | number: "1.0-2" }}</td>
 								<td>{{ row.kamasEarned | number: "1.0-0" }}</td>
@@ -85,8 +85,7 @@
 					</tfoot>
 				</table>
 				<div class="inputTexts">
-					<span class="p-input-icon-right">
-						<i class="fa-solid fa-percent"></i>
+					<p-iconfield iconPosition="right">
 						<p-inputNumber
 							inputId="tauxBrisage"
 							placeholder="Taux de brisage"
@@ -96,9 +95,9 @@
 							[max]="4000"
 							[allowEmpty]="true"
 						></p-inputNumber>
-					</span>
-					<span class="p-input-icon-right">
-						<i class="fa-solid fa-k"></i>
+						<p-inputicon><i class="fa-solid fa-percent"></i></p-inputicon>
+					</p-iconfield>
+					<p-iconfield iconPosition="right">
 						<p-inputNumber
 							inputId="prixCraft"
 							placeholder="Prix du craft"
@@ -107,9 +106,9 @@
 							[min]="1"
 							[max]="999999999"
 						></p-inputNumber>
-					</span>
-					<span class="p-input-icon-right">
-						<i class="fa-solid fa-percent"></i>
+						<p-inputicon><i class="fa-solid fa-k"></i></p-inputicon>
+					</p-iconfield>
+					<p-iconfield iconPosition="right">
 						<p-inputNumber
 							inputId="tauxRentabiliteVise"
 							placeholder="Taux de rentabilité"
@@ -118,7 +117,8 @@
 							[min]="0"
 							[max]="9999"
 						></p-inputNumber>
-					</span>
+						<p-inputicon><i class="fa-solid fa-percent"></i></p-inputicon>
+					</p-iconfield>
 				</div>
 				<div class="rentabilite">
 					<h2 class="sectionH2">Rentabilité</h2>

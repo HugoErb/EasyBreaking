@@ -12,6 +12,8 @@ import { providePrimeNG } from 'primeng/config';
 import { DialogModule } from 'primeng/dialog';
 import { InputNumberModule } from 'primeng/inputnumber';
 import { TooltipModule } from 'primeng/tooltip';
+import { IconFieldModule } from 'primeng/iconfield';
+import { InputIconModule } from 'primeng/inputicon';
 
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
@@ -50,6 +52,8 @@ const MyPreset = definePreset(Lara, {
 		DialogModule,
 		TooltipModule,
 		InputNumberModule,
+		IconFieldModule,
+		InputIconModule,
 	],
 	providers: [
 		{ provide: LOCALE_ID, useValue: 'fr' },
