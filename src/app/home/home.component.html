@@ -7,7 +7,7 @@
 				[dropdown]="true"
 				[suggestions]="filteredItems"
 				(completeMethod)="filterItem($event)"
-				field="name"
+				optionLabel="name"
 				(onSelect)="onItemSelect()"
 				(input)="vanishDiv()"
 				placeholder="Entrez le nom d'un item..."
@@ -54,7 +54,7 @@
 											[max]="999999999"
 											(onInput)="updateRunePrice(row.runeName, row.runePrice)"
 										/>
-                                        <p-inputicon><i class="fa-solid fa-k"></i></p-inputicon>
+										<p-inputicon><i class="fa-solid fa-k"></i></p-inputicon>
 									</p-iconfield>
 								</td>
 								<td>{{ row.runeQuantity | number: "1.0-2" }}</td>
