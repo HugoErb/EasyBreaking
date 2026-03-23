@@ -11,7 +11,7 @@ import { Router } from '@angular/router';
 export class RunesManagerComponent implements OnInit {
     runes: any[] = [];
 
-    constructor(private http: HttpClient, private router: Router) {}
+    constructor(private readonly http: HttpClient, private readonly router: Router) {}
 
     ngOnInit() {
         this.loadRunes();
@@ -23,15 +23,15 @@ export class RunesManagerComponent implements OnInit {
             const runesData = JSON.parse(storedRunes);
             this.runes = runesData.map((rune: any) => ({
                 ...rune,
-                paPrice: rune.paPrice !== null ? rune.paPrice : undefined,
-                raPrice: rune.raPrice !== null ? rune.raPrice : undefined,
+                paPrice: rune.paPrice === null ? undefined : rune.paPrice,
+                raPrice: rune.raPrice === null ? undefined : rune.raPrice,
             }));
         } else {
             this.http.get('assets/jsons/runes.json').subscribe((data: any) => {
                 const initializedData = data.map((rune: any) => ({
                     ...rune,
-                    paPrice: rune.paPrice !== null ? rune.paPrice : undefined,
-                    raPrice: rune.raPrice !== null ? rune.raPrice : undefined,
+                    paPrice: rune.paPrice === null ? undefined : rune.paPrice,
+                    raPrice: rune.raPrice === null ? undefined : rune.raPrice,
                 }));
                 localStorage.setItem('runesData', JSON.stringify(initializedData));
                 this.runes = initializedData;
@@ -40,7 +40,7 @@ export class RunesManagerComponent implements OnInit {
     }
 
     onPriceChange(runeIndex: number, priceType: string, event: any) {
-        const newPrice = parseFloat(event.target.value);
+        const newPrice = Number.parseFloat(event.target.value);
         this.runes[runeIndex][priceType] = newPrice;
     }
 
