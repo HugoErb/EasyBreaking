@@ -8,7 +8,7 @@ import { HomeComponent } from './home/home.component';
 import { AutoCompleteModule } from 'primeng/autocomplete';
 import { TooltipModule } from 'primeng/tooltip';
 import { FormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
+import { provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
 import { InputNumberModule } from 'primeng/inputnumber';
 import { DialogModule } from 'primeng/dialog';
 
@@ -18,24 +18,17 @@ import { RunesManagerComponent } from './runes-manager/runes-manager.component';
 
 registerLocaleData(localeFr, 'fr');
 
-@NgModule({
-    declarations: [
+@NgModule({ declarations: [
         AppComponent,
         HomeComponent,
         RunesManagerComponent
     ],
-    imports: [
-        BrowserModule,
+    bootstrap: [AppComponent], imports: [BrowserModule,
         BrowserAnimationsModule,
         FormsModule,
         AppRoutingModule,
         AutoCompleteModule,
         DialogModule,
         TooltipModule,
-        InputNumberModule,
-        HttpClientModule
-    ],
-    providers: [{ provide: LOCALE_ID, useValue: 'fr' }],
-    bootstrap: [AppComponent]
-})
+        InputNumberModule], providers: [{ provide: LOCALE_ID, useValue: 'fr' }, provideHttpClient(withInterceptorsFromDi())] })
 export class AppModule { }

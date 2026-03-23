@@ -51,6 +51,7 @@ function LogExecution(target: any, propertyKey: string, descriptor: PropertyDesc
     templateUrl: './home.component.html',
     styleUrls: ['./home.component.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: false
 })
 export class HomeComponent implements OnInit, OnDestroy {
     // Données de base

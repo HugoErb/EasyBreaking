@@ -6,6 +6,7 @@ import { Router } from '@angular/router';
     selector: 'app-runes-manager',
     templateUrl: './runes-manager.component.html',
     styleUrls: ['./runes-manager.component.scss'],
+    standalone: false
 })
 export class RunesManagerComponent implements OnInit {
     runes: any[] = [];
