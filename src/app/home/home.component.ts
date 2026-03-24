@@ -411,7 +411,7 @@ export class HomeComponent implements OnInit {
 			sumKamasEarned += earned;
 
 			// Calcul pour le focus sur cet effet
-			const qtyFoc = this.calculateRuneQuantityFocused(this.tauxBrisage, effect);
+			const qtyFoc = this.calculateRuneQuantityFocused(tauxBrisage, effect);
 			const earnedFoc = Math.round(qtyFoc * Number.parseFloat(runeObj.price)) * 0.98;
 			if (earnedFoc > maxFocusedKamasEarned) {
 				maxFocusedKamasEarned = earnedFoc;
