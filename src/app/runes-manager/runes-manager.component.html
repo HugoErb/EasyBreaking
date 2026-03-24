@@ -40,51 +40,54 @@
 								<div class="nom-cellule">{{ rune.name }}</div>
 							</td>
 							<td>
-								<p-iconfield iconPosition="right">
-									<p-inputNumber
-										[style]="{ width: '200px', padding: '3px', marginRight: '12px' }"
-										inputId="prixCraft"
-										placeholder="Prix de la rune"
-										[(ngModel)]="rune.price"
-										(change)="onPriceChange(i, 'price', $event)"
-										[min]="1"
-										[max]="999999"
-									></p-inputNumber>
-									<p-inputicon><i class="fa-solid fa-k"></i></p-inputicon>
-								</p-iconfield>
-							</td>
-							<td>
-								@if (rune.paPrice !== undefined) {
+								<div class="cell-center">
 									<p-iconfield iconPosition="right">
 										<p-inputNumber
-											[style]="{ width: '200px', padding: '3px', marginRight: '12px' }"
 											inputId="prixCraft"
 											placeholder="Prix de la rune"
-											[(ngModel)]="rune.paPrice"
-											(change)="onPriceChange(i, 'paPrice', $event)"
+											[(ngModel)]="rune.price"
+											(change)="onPriceChange(i, 'price', $event)"
 											[min]="1"
 											[max]="999999"
 										></p-inputNumber>
 										<p-inputicon><i class="fa-solid fa-k"></i></p-inputicon>
 									</p-iconfield>
+								</div>
+							</td>
+							<td>
+								@if (rune.paPrice !== undefined) {
+									<div class="cell-center">
+										<p-iconfield iconPosition="right">
+											<p-inputNumber
+												inputId="prixCraft"
+												placeholder="Prix de la rune"
+												[(ngModel)]="rune.paPrice"
+												(change)="onPriceChange(i, 'paPrice', $event)"
+												[min]="1"
+												[max]="999999"
+											></p-inputNumber>
+											<p-inputicon><i class="fa-solid fa-k"></i></p-inputicon>
+										</p-iconfield>
+									</div>
 								} @else {
 									<span class="no-price">/</span>
 								}
 							</td>
 							<td>
 								@if (rune.raPrice !== undefined) {
-									<p-iconfield iconPosition="right">
-										<p-inputNumber
-											[style]="{ width: '200px', padding: '3px', marginRight: '12px' }"
-											inputId="prixCraft"
-											placeholder="Prix de la rune"
-											[(ngModel)]="rune.raPrice"
-											(change)="onPriceChange(i, 'raPrice', $event)"
-											[min]="1"
-											[max]="999999"
-										></p-inputNumber>
-										<p-inputicon><i class="fa-solid fa-k"></i></p-inputicon>
-									</p-iconfield>
+									<div class="cell-center">
+										<p-iconfield iconPosition="right">
+											<p-inputNumber
+												inputId="prixCraft"
+												placeholder="Prix de la rune"
+												[(ngModel)]="rune.raPrice"
+												(change)="onPriceChange(i, 'raPrice', $event)"
+												[min]="1"
+												[max]="999999"
+											></p-inputNumber>
+											<p-inputicon><i class="fa-solid fa-k"></i></p-inputicon>
+										</p-iconfield>
+									</div>
 								} @else {
 									<span class="no-price">/</span>
 								}

@@ -120,29 +120,30 @@ td {
   transition: background-color 0.15s ease;
 }
 
-::ng-deep .p-iconfield {
-  display: block;
-  width: fit-content;
-  margin: 0 auto;
-}
-
-td img {
-  vertical-align: middle;
-}
-
 tbody tr:hover td {
   background-color: rgba(255, 255, 255, 0.025);
 }
 
-td.clicable:hover {
-  cursor: pointer;
-  background-color: $hover-bg;
+td.clicable {
+  img {
+    display: block;
+    margin: 0 auto 4px;
+  }
+
+  &:hover {
+    cursor: pointer;
+    background-color: $hover-bg;
+  }
+}
+
+.cell-center {
+  display: flex;
+  justify-content: center;
 }
 
 .nom-cellule {
-  display: inline-block;
-  vertical-align: middle;
-  margin-left: 8px;
+  display: block;
+  text-align: center;
 }
 
 .no-price {
