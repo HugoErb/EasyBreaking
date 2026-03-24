@@ -1,6 +1,8 @@
-import { Component, OnInit, OnDestroy, ChangeDetectionStrategy, ChangeDetectorRef } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy, ChangeDetectorRef } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { forkJoin } from 'rxjs';
+import { ViewChild } from '@angular/core';
+import { AutoComplete } from 'primeng/autocomplete';
 
 /**
  * Représente une rune mise en cache pour accélérer les calculs.
@@ -88,6 +90,7 @@ export class HomeComponent implements OnInit {
 	maxValuePaRa?: number = 0;
 
 	nombreObjets: number = 1;
+	@ViewChild('autoComplete') autoComplete!: AutoComplete;
 
 	// Cache des runes pour éviter les recherches répétées et calculs
 	private _cachedRunes: CachedRune[] = [];
@@ -175,6 +178,7 @@ export class HomeComponent implements OnInit {
 	onItemSelect(): void {
 		if (!this.selectedItem) return;
 		this.cdr.detectChanges();
+		setTimeout(() => this.autoComplete.inputEL?.nativeElement.blur(), 100);
 		this.unVanishDiv();
 		this.tauxBrisage = 100;
 		const level = this.selectedItem.level;

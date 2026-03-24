@@ -15,6 +15,7 @@
 				[virtualScrollItemSize]="38"
                 (onHide)="filteredItems = []"
                 [showEmptyMessage]="false"
+                #autoComplete
 			>
 				<ng-template #item let-item>{{ item.name }}</ng-template>
 			</p-autoComplete>
