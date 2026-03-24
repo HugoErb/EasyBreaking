@@ -70,6 +70,7 @@ main {
 }
 
 ::ng-deep .p-inputtext {
+  width: 200px !important;
   background: rgba(255, 255, 255, 0.06) !important;
   color: $text-primary !important;
   border-color: $border-color !important;
@@ -144,6 +145,7 @@ td.clicable {
 .nom-cellule {
   display: block;
   text-align: center;
+  white-space: nowrap;
 }
 
 .no-price {

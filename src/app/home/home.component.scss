@@ -297,21 +297,6 @@ main {
   margin-left: 6px;
 }
 
-.runePriceInput {
-  ::ng-deep .p-inputnumber {
-    .p-inputtext {
-      width: 110px !important;
-      background: rgba(255, 255, 255, 0.06) !important;
-      color: $text-primary !important;
-      border-color: rgba(255, 255, 255, 0.12) !important;
-
-      &:enabled:focus {
-        box-shadow: 0 0 0 2px rgba(54, 108, 255, 0.3) !important;
-        border-color: rgba($accent, 0.6) !important;
-      }
-    }
-  }
-}
 
 .firstNoBorder {
   border-left: none !important;
