@@ -1,7 +1,28 @@
 <main>
-	<div class="container">
-		<h1>Easy Breaking</h1>
-		<div class="select">
+	<div class="app-wrapper">
+		<div class="app-header">
+			<div class="header-brand">
+				<h1 class="app-title">Easy Breaking</h1>
+				<span class="app-subtitle">Calculateur de brisage Dofus</span>
+			</div>
+			<div class="header-actions">
+				<div class="runeSign" routerLink="/runes-manager" pTooltip="Gérer les runes" tooltipPosition="bottom">
+					<img class="runeImg" src="../../assets/imgs/rune.png" alt="Runes Manager" />
+				</div>
+				<p-button
+					icon="pi pi-question-circle"
+					[rounded]="true"
+					[text]="true"
+					severity="secondary"
+					(click)="showHelp()"
+					pTooltip="Aide"
+					tooltipPosition="bottom"
+					class="help-btn"
+				/>
+			</div>
+		</div>
+
+		<div class="search-section">
 			<p-autoComplete
 				[(ngModel)]="selectedItem"
 				[dropdown]="true"
@@ -13,160 +34,216 @@
 				placeholder="Entrez le nom d'un item..."
 				[virtualScroll]="true"
 				[virtualScrollItemSize]="38"
-                (onHide)="filteredItems = []"
-                [showEmptyMessage]="false"
-                #autoComplete
+				(onHide)="filteredItems = []"
+				[showEmptyMessage]="false"
+				#autoComplete
 			>
 				<ng-template #item let-item>{{ item.name }}</ng-template>
 			</p-autoComplete>
 		</div>
+
 		@if (selectedItem) {
 			<div class="vanishingDiv">
-				<div class="selectedItemInfos">
-					<img class="selectedItemImage" [src]="selectedItem.image" alt="{{ selectedItem.name }}" />
-					<div class="selectedItemText">
-						<div class="selectedItemInfo">Niveau : {{ selectedItem.level }}</div>
-						<div class="selectedItemInfo">Type : {{ selectedItem.type }}</div>
-						<div class="selectedItemInfo">Panoplie : {{ selectedItem.set }}</div>
+				<div class="section-card item-info-card">
+					<div class="item-header">
+						<img class="selectedItemImage" [src]="selectedItem.image" alt="{{ selectedItem.name }}" />
+						<div class="item-details">
+							<h2 class="item-name">{{ selectedItem.name }}</h2>
+							<div class="item-tags">
+								<p-tag value="Niv. {{ selectedItem.level }}" severity="info" [rounded]="true" />
+								<p-tag value="{{ selectedItem.type }}" severity="secondary" [rounded]="true" />
+								@if (selectedItem.set) {
+									<p-tag value="{{ selectedItem.set }}" severity="warn" [rounded]="true" />
+								}
+							</div>
+						</div>
+					</div>
+
+					<p-divider />
+
+					<div class="table-wrapper">
+						<table class="itemTable">
+							<thead>
+								<tr>
+									<th>Caractéristiques</th>
+									<th>Nom des runes</th>
+									<th>Prix unitaire des runes</th>
+									<th>Quantité de runes</th>
+									<th>Kamas obtenus</th>
+									<th>Quantité de runes (focus)</th>
+									<th>Kamas obtenus (focus)</th>
+								</tr>
+							</thead>
+							<tbody>
+								@for (row of tableauEffects; track row) {
+									<tr>
+										<td class="stat-cell">
+											<img [src]="row.runeImg" alt="{{ row.runeName }}" loading="lazy" />
+											<span class="text">{{ row.stat }}</span>
+										</td>
+										<td>{{ row.runeName }}</td>
+										<td>
+											<p-iconfield iconPosition="right">
+												<p-inputNumber
+													class="runePriceInput"
+													[(ngModel)]="row.runePrice"
+													[min]="0"
+													[max]="999999999"
+													(onInput)="updateRunePrice(row.runeName, row.runePrice)"
+												/>
+												<p-inputicon><i class="fa-solid fa-k"></i></p-inputicon>
+											</p-iconfield>
+										</td>
+										<td>{{ row.runeQuantity | number: "1.0-2" }}</td>
+										<td>{{ row.kamasEarned | number: "1.0-0" }}</td>
+										<td>{{ row.runeQuantityFocused | number: "1.0-2" }}</td>
+										<td
+											[style.backgroundColor]="row.focusedKamasEarned === maxValue && row.focusedKamasEarned !== 0 ? maxCellColor : ''"
+											[style.color]="row.focusedKamasEarned === maxValue && row.focusedKamasEarned !== 0 ? maxCellTextColor : ''"
+											[style.fontWeight]="row.focusedKamasEarned === maxValue && row.focusedKamasEarned !== 0 ? 'bold' : ''"
+										>
+											{{ row.focusedKamasEarned | number: "1.0-0" }}
+										</td>
+									</tr>
+								}
+							</tbody>
+							<tfoot>
+								<tr>
+									<td class="firstNoBorder" colspan="4"></td>
+									<td
+										[style.backgroundColor]="sumKamasEarned === maxValue && sumKamasEarned !== 0 ? maxCellColor : ''"
+										[style.color]="sumKamasEarned === maxValue && sumKamasEarned !== 0 ? maxCellTextColor : ''"
+										[style.fontWeight]="sumKamasEarned === maxValue && sumKamasEarned !== 0 ? 'bold' : ''"
+									>
+										{{ sumKamasEarned | number: "1.0-0" }}
+									</td>
+									<td class="lastNoBorder" colspan="2"></td>
+								</tr>
+							</tfoot>
+						</table>
 					</div>
 				</div>
-				<table class="itemTable">
-					<thead class="bold">
-						<tr>
-							<td>Caractéristiques</td>
-							<td>Nom des runes</td>
-							<td>Prix unitaire des runes</td>
-							<td>Quantité de runes</td>
-							<td>Kamas obtenus</td>
-							<td>Quantité de runes (focus)</td>
-							<td>Kamas obtenus (focus)</td>
-						</tr>
-					</thead>
-					<tbody>
-						@for (row of tableauEffects; track row) {
-							<tr>
-								<td>
-									<img [src]="row.runeImg" alt="{{ row.runeName }}" loading="lazy" />
-									<div class="text">{{ row.stat }}</div>
-								</td>
-								<td>{{ row.runeName }}</td>
-								<td>
-									<p-iconfield iconPosition="right">
-										<p-inputNumber
-											class="runePriceInput"
-											[(ngModel)]="row.runePrice"
-											[min]="0"
-											[max]="999999999"
-											(onInput)="updateRunePrice(row.runeName, row.runePrice)"
-										/>
-										<p-inputicon><i class="fa-solid fa-k"></i></p-inputicon>
-									</p-iconfield>
-								</td>
-								<td>{{ row.runeQuantity | number: "1.0-2" }}</td>
-								<td>{{ row.kamasEarned | number: "1.0-0" }}</td>
-								<td>{{ row.runeQuantityFocused | number: "1.0-2" }}</td>
-								<td
-									[style.backgroundColor]="row.focusedKamasEarned === maxValue && row.focusedKamasEarned !== 0 ? maxCellColor : ''"
-									[style.color]="row.focusedKamasEarned === maxValue && row.focusedKamasEarned !== 0 ? maxCellTextColor : ''"
-									[style.fontWeight]="row.focusedKamasEarned === maxValue && row.focusedKamasEarned !== 0 ? 'bold' : ''"
-								>
-									{{ row.focusedKamasEarned | number: "1.0-0" }}
-								</td>
-							</tr>
-						}
-					</tbody>
-					<tfoot>
-						<tr>
-							<td class="firstNoBorder" colspan="4"></td>
-							<td
-								[style.backgroundColor]="sumKamasEarned === maxValue && sumKamasEarned !== 0 ? maxCellColor : ''"
-								[style.color]="sumKamasEarned === maxValue && sumKamasEarned !== 0 ? maxCellTextColor : ''"
-								[style.fontWeight]="sumKamasEarned === maxValue && sumKamasEarned !== 0 ? 'bold' : ''"
-							>
-								{{ sumKamasEarned | number: "1.0-0" }}
-							</td>
-							<td class="lastNoBorder" colspan="2"></td>
-						</tr>
-					</tfoot>
-				</table>
-				<div class="inputTexts">
-					<p-iconfield iconPosition="right">
+
+				<div class="section-card params-card">
+					<h2 class="section-title">
+						<i class="pi pi-sliders-h"></i>
+						Paramètres
+					</h2>
+					<div class="inputTexts">
+						<div class="input-group">
+							<label class="input-label">Taux de brisage</label>
+							<p-iconfield iconPosition="right">
+								<p-inputNumber
+									inputId="tauxBrisage"
+									placeholder="Taux de brisage"
+									[(ngModel)]="tauxBrisage"
+									(onInput)="onInputChange()"
+									[min]="0"
+									[max]="4000"
+									[allowEmpty]="true"
+								></p-inputNumber>
+								<p-inputicon><i class="fa-solid fa-percent"></i></p-inputicon>
+							</p-iconfield>
+						</div>
+						<div class="input-group">
+							<label class="input-label">Prix du craft</label>
+							<p-iconfield iconPosition="right">
+								<p-inputNumber
+									inputId="prixCraft"
+									placeholder="Prix du craft"
+									[(ngModel)]="prixCraft"
+									(onInput)="onEconomicsInputChange()"
+									[min]="1"
+									[max]="999999999"
+								></p-inputNumber>
+								<p-inputicon><i class="fa-solid fa-k"></i></p-inputicon>
+							</p-iconfield>
+						</div>
+						<div class="input-group">
+							<label class="input-label">Taux de rentabilité visé</label>
+							<p-iconfield iconPosition="right">
+								<p-inputNumber
+									inputId="tauxRentabiliteVise"
+									placeholder="Taux de rentabilité"
+									[(ngModel)]="tauxRentabiliteVise"
+									(onInput)="onEconomicsInputChange()"
+									[min]="0"
+									[max]="9999"
+								></p-inputNumber>
+								<p-inputicon><i class="fa-solid fa-percent"></i></p-inputicon>
+							</p-iconfield>
+						</div>
+					</div>
+				</div>
+
+				<div class="section-card rentabilite-card">
+					<h2 class="section-title">
+						<i class="pi pi-chart-line"></i>
+						Rentabilité
+					</h2>
+					<div class="rentabilite-grid">
+						<div class="rentabilite-group">
+							<h3 class="group-title">Brisage standard</h3>
+							<div class="stat-row">
+								<span class="stat-label">Rentabilité (%)</span>
+								<span class="stat-value">{{ tauxRentabilitePourcent }} %</span>
+							</div>
+							<div class="stat-row">
+								<span class="stat-label">Rentabilité (kamas)</span>
+								<span class="stat-value">{{ tauxRentabiliteKamas | number: "1.0-0" }} k</span>
+							</div>
+							<div class="stat-row">
+								<span class="stat-label">{{ tauxRentabilitePourcent < 0 ? "Rentable à partir du taux de brisage" : "Rentable jusqu'au taux de brisage" }}</span>
+								<span class="stat-value">{{ norProfitableBreakRate }} %</span>
+							</div>
+						</div>
+						<div class="vertical-sep"></div>
+						<div class="rentabilite-group">
+							<h3 class="group-title">Fusion de runes</h3>
+							<div class="stat-row">
+								<span class="stat-label">Fusion à faire</span>
+								<span class="stat-value bold">{{ mergeRune }}</span>
+							</div>
+							<div class="stat-row">
+								<span class="stat-label">Kamas en focus après fusion</span>
+								<span class="stat-value">{{ maxValuePaRa | number: "1.0-0" }} k</span>
+							</div>
+							<div class="stat-row">
+								<span class="stat-label">Rentable après fusion jusqu'au taux de brisage</span>
+								<span class="stat-value">{{ norProfitableBreakRatePaRa }} %</span>
+							</div>
+						</div>
+						<div class="vertical-sep"></div>
+						<div class="rentabilite-group">
+							<h3 class="group-title">Rentabilité après fusion</h3>
+							<div class="stat-row">
+								<span class="stat-label">Rentabilité (%)</span>
+								<span class="stat-value">{{ tauxRentabilitePourcentPaRa }} %</span>
+							</div>
+							<div class="stat-row">
+								<span class="stat-label">Rentabilité (kamas)</span>
+								<span class="stat-value">{{ tauxRentabiliteKamasPaRa | number: "1.0-0" }} k</span>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<div class="section-card recipe-card">
+					<h2 class="section-title">
+						<i class="pi pi-list"></i>
+						Recette
+					</h2>
+					<div class="recipe-controls">
+						<label for="nbObjets" class="input-label">Nombre d'objets à créer</label>
 						<p-inputNumber
-							inputId="tauxBrisage"
-							placeholder="Taux de brisage"
-							[(ngModel)]="tauxBrisage"
-							(onInput)="onInputChange()"
-							[min]="0"
-							[max]="4000"
-							[allowEmpty]="true"
-						></p-inputNumber>
-						<p-inputicon><i class="fa-solid fa-percent"></i></p-inputicon>
-					</p-iconfield>
-					<p-iconfield iconPosition="right">
-						<p-inputNumber
-							inputId="prixCraft"
-							placeholder="Prix du craft"
-							[(ngModel)]="prixCraft"
-							(onInput)="onEconomicsInputChange()"
+							class="nbObjetsInput"
+							inputId="nbObjets"
+							placeholder="Nombre d'objets à créer"
+							[(ngModel)]="nombreObjets"
 							[min]="1"
-							[max]="999999999"
-						></p-inputNumber>
-						<p-inputicon><i class="fa-solid fa-k"></i></p-inputicon>
-					</p-iconfield>
-					<p-iconfield iconPosition="right">
-						<p-inputNumber
-							inputId="tauxRentabiliteVise"
-							placeholder="Taux de rentabilité"
-							[(ngModel)]="tauxRentabiliteVise"
-							(onInput)="onEconomicsInputChange()"
-							[min]="0"
 							[max]="9999"
+							[showButtons]="true"
 						></p-inputNumber>
-						<p-inputicon><i class="fa-solid fa-percent"></i></p-inputicon>
-					</p-iconfield>
-				</div>
-				<div class="rentabilite">
-					<h2 class="sectionH2">Rentabilité</h2>
-					<div class="tauxRentabiliteContainer">
-						<div class="tauxRentabilite">
-							<p>Rentabilité (%) : {{ tauxRentabilitePourcent }} %</p>
-							<p>Rentabilité (kamas): {{ tauxRentabiliteKamas | number: "1.0-0" }} k</p>
-							<p>
-								{{
-									tauxRentabilitePourcent < 0 ? "Rentable à partir du taux de brisage : " : "Rentable jusqu' au taux de brisage : "
-								}}
-								{{ norProfitableBreakRate }} %
-							</p>
-						</div>
-						<div class="tauxRentabilite tauxRentabiliteRight">
-							<p>
-								Fusion de runes à faire :
-								<span class="bold">{{ mergeRune }}</span>
-							</p>
-							<p>Kamas en focus après fusion : {{ maxValuePaRa | number: "1.0-0" }} k</p>
-							<p>Rentable après fusion jusqu'au taux de brisage : {{ norProfitableBreakRatePaRa }} %</p>
-						</div>
-						<div class="tauxRentabilite tauxRentabiliteRight">
-							<p>Rentabilité (%) après fusion : {{ tauxRentabilitePourcentPaRa }} %</p>
-							<p>Rentabilité (kamas) après fusion : {{ tauxRentabiliteKamasPaRa | number: "1.0-0" }} k</p>
-						</div>
-					</div>
-				</div>
-				<div class="recipe">
-					<h2 class="sectionH2">Recette</h2>
-					<div>
-						<label for="nbObjets">Nombre d'objets à créer :</label>
-						<span>
-							<p-inputNumber
-								class="nbObjetsInput"
-								inputId="nbObjets"
-								placeholder="Nombre d'objets à créer"
-								[(ngModel)]="nombreObjets"
-								[min]="1"
-								[max]="9999"
-								[showButtons]="true"
-							></p-inputNumber>
-						</span>
 					</div>
 					<div class="ingredientContainer">
 						@for (ingredient of recipe; track ingredient) {
@@ -195,22 +272,50 @@
 			</div>
 		}
 	</div>
-	<div class="helpSign" (click)="showHelp()">
-		<i class="fa-regular fa-circle-question"></i>
-	</div>
-	<p-dialog header="Aide" [(visible)]="helpDivvisible" [style]="{ width: '50vw' }">
-		<p>- Les estimations de kamas affichées prennent déjà en compte la taxe de mise en vente de 2%.</p>
-		<p>
-			- Les estimations de runes et kamas affichées prennent en compte le prix moyen des runes, et les jets moyens d'un item. Elles peuvent donc
-			ne pas être exactes à 100%.
-		</p>
-		<p>- Vous pouvez cliquer sur la case d'un ingrédient pour copier le nom de ce dernier dans votre presse-papier.</p>
-		<p>- Explication des couleurs des cellules :</p>
-		<p class="indent">- Couleur verte : vous êtes rentable au-dessus du pourcentage de rentabilité que vous recherchez</p>
-		<p class="indent">- Couleur jaune : vous êtes rentable mais en dessous du pourcentage de rentabilité que vous recherchez</p>
-		<p class="indent">- Couleur rouge : vous n'êtes pas rentable</p>
+
+	<p-dialog header="Aide" [(visible)]="helpDivvisible" [style]="{ width: '640px' }">
+		<div class="help-content">
+			<div class="help-section">
+				<div class="help-section-title">
+					<i class="pi pi-info-circle"></i>
+					Calculs & estimations
+				</div>
+				<ul class="help-list">
+					<li>Les estimations de kamas prennent déjà en compte la <strong>taxe de mise en vente de 2%</strong>.</li>
+					<li>Les quantités de runes et kamas sont basées sur le <strong>prix moyen des runes</strong> et les <strong>jets moyens</strong> d'un item — elles peuvent ne pas être exactes à 100%.</li>
+				</ul>
+			</div>
+			<div class="help-divider"></div>
+			<div class="help-section">
+				<div class="help-section-title">
+					<i class="pi pi-copy"></i>
+					Interactions
+				</div>
+				<ul class="help-list">
+					<li>Cliquez sur un <strong>ingrédient</strong> pour copier son nom dans le presse-papier.</li>
+				</ul>
+			</div>
+			<div class="help-divider"></div>
+			<div class="help-section">
+				<div class="help-section-title">
+					<i class="pi pi-palette"></i>
+					Code couleur des cellules
+				</div>
+				<div class="help-colors">
+					<div class="help-color-row">
+						<span class="color-dot green"></span>
+						<span><strong>Vert</strong> — rentable au-dessus du taux de rentabilité visé</span>
+					</div>
+					<div class="help-color-row">
+						<span class="color-dot yellow"></span>
+						<span><strong>Jaune</strong> — rentable mais en dessous du taux visé</span>
+					</div>
+					<div class="help-color-row">
+						<span class="color-dot red"></span>
+						<span><strong>Rouge</strong> — non rentable</span>
+					</div>
+				</div>
+			</div>
+		</div>
 	</p-dialog>
-	<div class="runeSign" routerLink="/runes-manager">
-		<img class="runeImg" src="../../assets/imgs/rune.png" alt="Runes Manager" />
-	</div>
 </main>

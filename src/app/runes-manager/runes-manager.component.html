@@ -1,7 +1,19 @@
 <main>
-	<div class="backArrow" (click)="goToHomePage()">
-		<i class="fa-solid fa-arrow-left"></i>
+	<div class="page-header">
+		<p-button
+			icon="pi pi-arrow-left"
+			[rounded]="true"
+			[text]="true"
+			severity="secondary"
+			(click)="goToHomePage()"
+			class="back-btn"
+		/>
+		<div class="header-brand">
+			<h1 class="page-title">Gestionnaire de runes</h1>
+			<span class="page-subtitle">Modifiez les prix des runes</span>
+		</div>
 	</div>
+
 	<div class="runes-table-container">
 		@if (runes.length > 0) {
 			<table>
@@ -56,7 +68,7 @@
 										<p-inputicon><i class="fa-solid fa-k"></i></p-inputicon>
 									</p-iconfield>
 								} @else {
-									/
+									<span class="no-price">/</span>
 								}
 							</td>
 							<td>
@@ -74,7 +86,7 @@
 										<p-inputicon><i class="fa-solid fa-k"></i></p-inputicon>
 									</p-iconfield>
 								} @else {
-									/
+									<span class="no-price">/</span>
 								}
 								<ng-template #noRaPrice>/</ng-template>
 							</td>
@@ -84,7 +96,7 @@
 			</table>
 		}
 		<div class="buttonContainer">
-			<button (click)="saveChanges()">Enregistrer</button>
+			<p-button label="Enregistrer" icon="pi pi-save" (click)="saveChanges()" class="save-btn" />
 		</div>
 	</div>
 </main>

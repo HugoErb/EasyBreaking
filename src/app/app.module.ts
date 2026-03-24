@@ -8,9 +8,12 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { definePreset } from '@primeng/themes';
 import Lara from '@primeng/themes/lara';
 import { AutoCompleteModule } from 'primeng/autocomplete';
+import { ButtonModule } from 'primeng/button';
 import { providePrimeNG } from 'primeng/config';
 import { DialogModule } from 'primeng/dialog';
+import { DividerModule } from 'primeng/divider';
 import { InputNumberModule } from 'primeng/inputnumber';
+import { TagModule } from 'primeng/tag';
 import { TooltipModule } from 'primeng/tooltip';
 import { IconFieldModule } from 'primeng/iconfield';
 import { InputIconModule } from 'primeng/inputicon';
@@ -49,7 +52,10 @@ const MyPreset = definePreset(Lara, {
 		FormsModule,
 		AppRoutingModule,
 		AutoCompleteModule,
+		ButtonModule,
 		DialogModule,
+		DividerModule,
+		TagModule,
 		TooltipModule,
 		InputNumberModule,
 		IconFieldModule,
