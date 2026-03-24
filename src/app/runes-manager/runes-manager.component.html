@@ -1,13 +1,6 @@
 <main>
 	<div class="page-header">
-		<p-button
-			icon="pi pi-arrow-left"
-			[rounded]="true"
-			[text]="true"
-			severity="secondary"
-			(click)="goToHomePage()"
-			class="back-btn"
-		/>
+		<p-button icon="pi pi-arrow-left" [rounded]="true" [text]="true" severity="secondary" (click)="goToHomePage()" class="back-btn" />
 		<div class="header-brand">
 			<h1 class="page-title">Gestionnaire de runes</h1>
 			<span class="page-subtitle">Modifiez les prix des runes</span>
@@ -91,7 +84,6 @@
 								} @else {
 									<span class="no-price">/</span>
 								}
-								<ng-template #noRaPrice>/</ng-template>
 							</td>
 						</tr>
 					}

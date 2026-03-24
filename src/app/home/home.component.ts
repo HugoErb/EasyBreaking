@@ -7,39 +7,13 @@ import { AutoComplete } from 'primeng/autocomplete';
  * Représente une rune mise en cache pour accélérer les calculs.
  */
 interface CachedRune {
-    effect: string;
-    rune: any;
-    runeNumerator: number;
-    runeRealWeight: number;
-    runePrice: number;
-    paRunePrice: number;
-    raRunePrice: number;
-}
-
-/**
- * Décorateur de méthode pour logger l'entrée, la sortie,
- * le temps d'exécution et la mémoire utilisée (si disponible).
- */
-function LogExecution(target: any, propertyKey: string, descriptor: PropertyDescriptor) {
-    // const original = descriptor.value;
-    // descriptor.value = function (...args: any[]) {
-    //     const start = performance.now();
-    //     const result = original.apply(this, args);
-    //     const finish = () => {
-    //         const end = performance.now();
-    //         console.log(
-    //             `[Log] Exiting ${propertyKey}. Execution time: ${(end - start).toFixed(2)} ms`
-    //         );
-    //     };
-    //     if (result instanceof Promise) {
-    //         return result.then((res: any) => {
-    //             finish();
-    //             return res;
-    //         });
-    //     }
-    //     finish();
-    //     return result;
-    // };
+	effect: string;
+	rune: any;
+	runeNumerator: number;
+	runeRealWeight: number;
+	runePrice: number;
+	paRunePrice: number;
+	raRunePrice: number;
 }
 
 /**
@@ -105,7 +79,6 @@ export class HomeComponent implements OnInit {
 	 * - Chargement des items (armes + équipements)
 	 * - Mise en place du debounce des inputs
 	 */
-	@LogExecution
 	ngOnInit(): void {
 		this.loadRunes();
 
@@ -173,7 +146,6 @@ export class HomeComponent implements OnInit {
 	 * - Construit le tableau initial
 	 * - Reset des stats de rentabilité
 	 */
-	@LogExecution
 	onItemSelect(): void {
 		if (!this.selectedItem) return;
 		this.cdr.detectChanges();
@@ -240,7 +212,6 @@ export class HomeComponent implements OnInit {
 	 * Construit le tableau des effets (chaque ligne contient quantités et gains)
 	 * et calcule sumKamasEarned, maxFocusedKamasEarned et maxValue.
 	 */
-	@LogExecution
 	private buildTableAndTotals(): void {
 		if (this.tauxBrisage != null) {
 			this.tauxBrisage = Math.min(this.tauxBrisage, 4000);
@@ -305,7 +276,6 @@ export class HomeComponent implements OnInit {
 			if (!bestRow) {
 				this.mergeRune = 'Aucune';
 				this.maxValuePaRa = 0;
-				this.maxValuePaRa = 0;
 				return;
 			}
 
@@ -320,15 +290,12 @@ export class HomeComponent implements OnInit {
 
 			if (paProfit > raProfit && paProfit > 0) {
 				this.mergeRune = 'Pa ' + bestRow.runeName;
-				this.maxValuePaRa = paProfit;
 				this.maxValuePaRa = paTotalKamas;
 			} else if (raProfit > 0) {
 				this.mergeRune = 'Ra ' + bestRow.runeName;
-				this.maxValuePaRa = raProfit;
 				this.maxValuePaRa = raTotalKamas;
 			} else {
 				this.mergeRune = 'Aucune';
-				this.maxValuePaRa = 0;
 				this.maxValuePaRa = 0;
 			}
 		}
@@ -337,7 +304,6 @@ export class HomeComponent implements OnInit {
 	/**
 	 * Met à jour tous les indicateurs de rentabilité
 	 */
-	@LogExecution
 	private computeRentabilities(): void {
 		if (this.prixCraft == null) {
 			this.resetStats();
@@ -388,7 +354,6 @@ export class HomeComponent implements OnInit {
 	 *
 	 * @returns Le taux de brisage à partir duquel briser l'item est (ou n'est plus) rentable.
 	 */
-	@LogExecution
 	findNorProfitableBreakRate(includePaRa: boolean): number {
 		const MIN_BREAK_RATE = 0;
 		const MAX_BREAK_RATE = 4000;
@@ -426,7 +391,6 @@ export class HomeComponent implements OnInit {
 	 * @returns Le bénéfice total en Kamas après soustraction du coût de production de l'item,
 	 *          ou 0 si le prix de craft n'est pas renseigné.
 	 */
-	@LogExecution
 	calculateBenefit(tauxBrisage: number, includePaRa: boolean): number {
 		// Si le prix de craft n'est pas défini, on ne peut pas calculer de bénéfice
 		if (this.prixCraft == null) {
@@ -529,7 +493,6 @@ export class HomeComponent implements OnInit {
 	 * Détermine la couleur de la cellule en fonction des valeurs de prixCraft, tauxRentabiliteVise et maxValue.
 	 * Met à jour la valeur de maxCellColor correspondante.
 	 */
-	@LogExecution
 	defineCellColor(): void {
 		if (this.prixCraft != undefined && this.tauxRentabiliteVise != undefined) {
 			const valeurRentable: number = this.prixCraft * (1 + Number(this.tauxRentabiliteVise) / 100);
@@ -553,7 +516,6 @@ export class HomeComponent implements OnInit {
 	 * @param itemStatistic - La statistique de l'objet pour laquelle on souhaite trouver la rune correspondante.
 	 * @returns La rune correspondante trouvée, ou undefined si aucune rune correspondante n'est trouvée.
 	 */
-	@LogExecution
 	findMatchingRune(itemStatistic: string): any {
 		const hasPercent = itemStatistic.includes('%');
 		const normalizedItemStat = this.normalizeStat(itemStatistic);
@@ -604,7 +566,6 @@ export class HomeComponent implements OnInit {
 	 * @param strB - La deuxième chaîne de caractères à comparer.
 	 * @returns Un nombre positif si strB est plus longue que strA, un nombre négatif si strA est plus longue que strB, ou 0 si les deux sont de même longueur.
 	 */
-	@LogExecution
 	compareByLength(strA: string, strB: string): number {
 		return strB.length - strA.length;
 	}
@@ -615,7 +576,6 @@ export class HomeComponent implements OnInit {
 	 * @param value - La chaîne de caractères à analyser.
 	 * @returns La moyenne des nombres extraits, ou 0 si aucun nombre n'est trouvé.
 	 */
-	@LogExecution
 	calculateAverage(value: string): number {
 		const numbers: number[] = [];
 		const regex = /\d+/g;
@@ -641,7 +601,6 @@ export class HomeComponent implements OnInit {
 	 * @param rune - La rune dont on souhaite obtenir le poids réel.
 	 * @returns Le poids réel de la rune.
 	 */
-	@LogExecution
 	getRealRuneWeight(rune: any): number {
 		let runeWeight: number;
 
@@ -664,7 +623,6 @@ export class HomeComponent implements OnInit {
 	 * @param effect - L'effet utilisé dans le calcul.
 	 * @returns La quantité de runes calculée.
 	 */
-	@LogExecution
 	calculateRuneQuantity(taux: any, cached: CachedRune): number {
 		return (cached.runeNumerator * taux) / 100 / cached.runeRealWeight;
 	}
@@ -677,7 +635,6 @@ export class HomeComponent implements OnInit {
 	 * @param effectsList - La liste des effets utilisés dans le calcul.
 	 * @returns La quantité de runes calculée pour la statistique ciblée.
 	 */
-	@LogExecution
 	calculateRuneQuantityFocused(taux: any, statFocused: any): number {
 		const cachedFocused = this._cachedRunes.find((c) => c.effect === statFocused);
 		if (!cachedFocused) return 0;
@@ -698,7 +655,6 @@ export class HomeComponent implements OnInit {
 	 * @param ingredientName Le nom de l'ingrédient à copier.
 	 * @param event L'événement MouseEvent associé au clic.
 	 */
-	@LogExecution
 	copyToClipboard(event: MouseEvent, ingredientName: string): void {
 		navigator.clipboard
 			.writeText(ingredientName)
@@ -720,7 +676,6 @@ export class HomeComponent implements OnInit {
 	/**
 	 * Fait apparaître les éléments en les rendant visibles.
 	 */
-	@LogExecution
 	unVanishDiv(): void {
 		const vanishingDiv = document.querySelector('.vanishingDiv') as HTMLElement;
 		const divMainContainer = document.querySelector('.container') as HTMLElement;
@@ -738,7 +693,6 @@ export class HomeComponent implements OnInit {
 	/**
 	 * Masque les éléments en les rendant invisibles.
 	 */
-	@LogExecution
 	vanishDiv(): void {
 		if (this.selectedItem == '') {
 			const vanishingDiv = document.querySelector('.vanishingDiv') as HTMLElement;
@@ -758,7 +712,6 @@ export class HomeComponent implements OnInit {
 	/**
 	 * Affiche la bulle d'aide.
 	 */
-	@LogExecution
 	showHelp() {
 		this.helpDivvisible = true;
 	}
