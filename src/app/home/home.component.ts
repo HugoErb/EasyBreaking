@@ -53,6 +53,9 @@ export class HomeComponent implements OnInit {
 	tauxRentabiliteKamasPaRa: number = 0;
 	norProfitableBreakRatePaRa: number = 0;
 
+	estimatedItemsBeforeNotProfitable: number = 0;
+	estimatedItemsBeforeNotProfitablePaRa: number = 0;
+
 	helpDivvisible: boolean = false;
 	sumKamasEarned: number = 0;
 	maxFocusedKamasEarned?: number;
@@ -319,17 +322,20 @@ export class HomeComponent implements OnInit {
 
 		// Sans fusion
 		[this.tauxRentabiliteKamas, this.tauxRentabilitePourcent, this.norProfitableBreakRate] = computeStats(this.maxValue!, false);
+		this.estimatedItemsBeforeNotProfitable = this.estimateItemsToReachRate(this.tauxBrisage!, this.norProfitableBreakRate);
 
 		// Avec fusion Pa/RA si applicable
 		if (this.mergeRune === 'Aucune') {
 			this.tauxRentabiliteKamasPaRa = 0;
 			this.tauxRentabilitePourcentPaRa = 0;
 			this.norProfitableBreakRatePaRa = 0;
+			this.estimatedItemsBeforeNotProfitablePaRa = 0;
 		} else {
 			[this.tauxRentabiliteKamasPaRa, this.tauxRentabilitePourcentPaRa, this.norProfitableBreakRatePaRa] = computeStats(
 				this.maxValuePaRa!,
 				true,
 			);
+			this.estimatedItemsBeforeNotProfitablePaRa = this.estimateItemsToReachRate(this.tauxBrisage!, this.norProfitableBreakRatePaRa);
 		}
 	}
 
@@ -343,6 +349,8 @@ export class HomeComponent implements OnInit {
 		this.tauxRentabilitePourcentPaRa = 0;
 		this.tauxRentabiliteKamasPaRa = 0;
 		this.norProfitableBreakRatePaRa = 0;
+		this.estimatedItemsBeforeNotProfitable = 0;
+		this.estimatedItemsBeforeNotProfitablePaRa = 0;
 		this.prixCraft = null;
 		this.maxCellColor = 'darkgreen';
 		this.maxCellTextColor = 'rgb(198, 193, 185)';
@@ -380,6 +388,27 @@ export class HomeComponent implements OnInit {
 		}
 
 		return minimalProfitableRate;
+	}
+
+	/**
+	 * Estime le nombre d'items à briser pour passer du taux actuel au taux cible,
+	 * basé sur une formule de machine learning (loi de puissance).
+	 *
+	 * Formule : items_par_point = 11866408.9284 * taux^(-2.4857) * niveau^(-1.1302)
+	 * R² = 0.83, dérivée de 320 observations sur 14 items (niveaux 1-104).
+	 *
+	 * @param startRate  Taux de brisage actuel (en %)
+	 * @param targetRate Taux de brisage cible / seuil de non-rentabilité (en %)
+	 * @returns Nombre total d'items estimés à briser
+	 */
+	private estimateItemsToReachRate(startRate: number, targetRate: number): number {
+		if (startRate <= targetRate || !this.selectedItem) return 0;
+		const niveau = Math.max(this.selectedItem.level, 1);
+		let total = 0;
+		for (let rate = startRate; rate > targetRate; rate--) {
+			total += 11866408.9284 * Math.pow(rate, -2.4857) * Math.pow(niveau, -1.1302);
+		}
+		return Math.round(total);
 	}
 
 	/**

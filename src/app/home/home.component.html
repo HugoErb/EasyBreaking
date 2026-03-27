@@ -197,6 +197,12 @@
 								<span class="stat-label">{{ tauxRentabilitePourcent < 0 ? "Rentable à partir du taux de brisage" : "Rentable jusqu'au taux de brisage" }}</span>
 								<span class="stat-value">{{ norProfitableBreakRate }} %</span>
 							</div>
+							@if (estimatedItemsBeforeNotProfitable > 0) {
+							<div class="stat-row">
+								<span class="stat-label">Nombre d'item à briser avant non-rentabilité</span>
+								<span class="stat-value">~ {{ estimatedItemsBeforeNotProfitable }}</span>
+							</div>
+							}
 						</div>
 						<div class="vertical-sep"></div>
 						<div class="rentabilite-group">
@@ -213,6 +219,12 @@
 								<span class="stat-label">Rentable après fusion jusqu'au taux de brisage</span>
 								<span class="stat-value">{{ norProfitableBreakRatePaRa }} %</span>
 							</div>
+							@if (estimatedItemsBeforeNotProfitablePaRa > 0) {
+							<div class="stat-row">
+								<span class="stat-label">Nombre d'item à briser avant non-rentabilité</span>
+								<span class="stat-value">~ {{ estimatedItemsBeforeNotProfitablePaRa }}</span>
+							</div>
+							}
 						</div>
 						<div class="vertical-sep"></div>
 						<div class="rentabilite-group">
