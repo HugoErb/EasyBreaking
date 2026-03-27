@@ -1,0 +1,746 @@
+Nom item;niveau;taux brisage initial;taux brisage après brisage;nombre d'items brisé en même temps
+Bottes de Nexus;8; 2237 ; 2227 ; 1
+Bottes de Nexus;8; 2227 ; 2220 ; 1
+Bottes de Nexus;8; 2220 ; 1410 ; 23
+Bottes de Nexus;8; 1410 ; 1033 ; 23
+Bottes de Nexus;8; 1033 ; 838 ; 20
+Bottes de Nexus;8; 838 ; 716 ; 18
+Bottes de Nexus;8; 634 ; 548 ; 22
+Bottes de Nexus;8; 548 ; 485 ; 21
+Bottes de Nexus;8; 485 ; 435 ; 21
+Bottes de Nexus;8; 435 ; 398 ; 19
+Bottes de Nexus;8; 398 ; 370 ; 17
+Bottes de Nexus;8; 370 ; 356 ; 9
+Bottes de Nexus;8; 356 ; 348 ; 6
+Bottes de Nexus;8; 348 ; 339 ; 7
+Bottes de Nexus;8; 339 ; 337 ; 1
+Bottes de Nexus;8; 337 ; 325 ; 10
+
+Ceinture de chance;1 ; 319 ; 316 ; 7
+Ceinture de chance;1 ; 316 ; 312 ; 9
+Ceinture de chance;1 ; 312 ; 309 ; 7
+
+Ceinture d'endurance;27; 201 ; 197 ; 4
+Ceinture d'endurance;27; 197 ; 194 ; 3
+Ceinture d'endurance;27; 194 ; 191 ; 3
+Ceinture d'endurance;27; 191 ; 188 ; 3
+Ceinture d'endurance;27; 188 ; 186 ; 2
+Ceinture d'endurance;27; 186 ; 184 ; 2
+Ceinture d'endurance;27; 184 ; 182 ; 2
+Ceinture d'endurance;27; 182 ; 181 ; 2
+Ceinture d'endurance;27; 181 ; 179 ; 2
+Ceinture d'endurance;27; 179 ; 177 ; 2
+Ceinture d'endurance;27; 177 ; 175 ; 2
+Ceinture d'endurance;27; 175 ; 173 ; 2
+Ceinture d'endurance;27; 173 ; 172 ; 2
+Ceinture d'endurance;27; 172 ; 171 ; 1
+Ceinture d'endurance;27; 171 ; 170 ; 1
+Ceinture d'endurance;27; 170 ; 169 ; 1
+Ceinture d'endurance;27; 169 ; 168 ; 1
+Ceinture d'endurance;27; 168 ; 168 ; 1
+Ceinture d'endurance;27; 168 ; 167 ; 1
+Ceinture d'endurance;27; 167 ; 166 ; 1
+Ceinture d'endurance;27; 166 ; 165 ; 1
+Ceinture d'endurance;27; 165 ; 164 ; 1
+Ceinture d'endurance;27; 164 ; 164 ; 1
+Ceinture d'endurance;27; 164 ; 163 ; 1
+Ceinture d'endurance;27; 163 ; 162 ; 1
+Ceinture d'endurance;27; 162 ; 161 ; 1
+Ceinture d'endurance;27; 161 ; 161 ; 1
+Ceinture d'endurance;27; 161 ; 160 ; 1
+Ceinture d'endurance;27; 160 ; 159 ; 1
+Ceinture d'endurance;27; 159 ; 158 ; 1
+Ceinture d'endurance;27; 158 ; 158 ; 1
+Ceinture d'endurance;27; 158 ; 157 ; 1
+Ceinture d'endurance;27; 157 ; 156 ; 1
+Ceinture d'endurance;27; 156 ; 155 ; 1
+Ceinture d'endurance;27; 155 ; 155 ; 1
+Ceinture d'endurance;27; 155 ; 154 ; 1
+Ceinture d'endurance;27; 154 ; 153 ; 1
+Ceinture d'endurance;27; 153 ; 153 ; 1
+Ceinture d'endurance;27; 153 ; 152 ; 1
+Ceinture d'endurance;27; 152 ; 151 ; 1
+Ceinture d'endurance;27; 151 ; 151 ; 1
+Ceinture d'endurance;27; 151 ; 150 ; 1
+Ceinture d'endurance;27; 150 ; 149 ; 1
+Ceinture d'endurance;27; 149 ; 149 ; 1
+Ceinture d'endurance;27; 149 ; 148 ; 1
+Ceinture d'endurance;27; 148 ; 147 ; 1
+Ceinture d'endurance;27; 147 ; 147 ; 1
+Ceinture d'endurance;27; 147 ; 146 ; 1
+Ceinture d'endurance;27; 146 ; 146 ; 1
+Ceinture d'endurance;27; 146 ; 145 ; 1
+Ceinture d'endurance;27; 145 ; 144 ; 1
+Ceinture d'endurance;27; 144 ; 144 ; 1
+Ceinture d'endurance;27; 144 ; 143 ; 1
+Ceinture d'endurance;27; 143 ; 143 ; 1
+Ceinture d'endurance;27; 143 ; 142 ; 1
+Ceinture d'endurance;27; 142 ; 141 ; 1
+Ceinture d'endurance;27; 141 ; 141 ; 1
+Ceinture d'endurance;27; 141 ; 140 ; 1
+Ceinture d'endurance;27; 140 ; 139 ; 1
+Ceinture d'endurance;27; 139 ; 139 ; 1
+Ceinture d'endurance;27; 139 ; 138 ; 1
+Ceinture d'endurance;27; 138 ; 137 ; 1
+Ceinture d'endurance;27; 137 ; 137 ; 1
+Ceinture d'endurance;27; 137 ; 136 ; 1
+Ceinture d'endurance;27; 136 ; 136 ; 1
+Ceinture d'endurance;27; 136 ; 135 ; 1
+Ceinture d'endurance;27; 135 ; 134 ; 1
+Ceinture d'endurance;27; 134 ; 134 ; 1
+Ceinture d'endurance;27; 134 ; 133 ; 1
+Ceinture d'endurance;27; 133 ; 133 ; 1
+Ceinture d'endurance;27; 133 ; 132 ; 1
+Ceinture d'endurance;27; 132 ; 132 ; 1
+Ceinture d'endurance;27; 132 ; 131 ; 1
+Ceinture d'endurance;27; 131 ; 130 ; 1
+Ceinture d'endurance;27; 130 ; 130 ; 1
+Ceinture d'endurance;27; 130 ; 129 ; 1
+Ceinture d'endurance;27; 129 ; 129 ; 1
+
+Ceinture du Directeur Grunob;36; 89 ; 88 ; 1
+Ceinture du Directeur Grunob;36; 88 ; 88 ; 1
+Ceinture du Directeur Grunob;36; 88 ; 88 ; 1
+Ceinture du Directeur Grunob;36; 88 ; 87 ; 1
+Ceinture du Directeur Grunob;36; 87 ; 87 ; 1
+Ceinture du Directeur Grunob;36; 87 ; 87 ; 1
+Ceinture du Directeur Grunob;36; 87 ; 86 ; 1
+Ceinture du Directeur Grunob;36; 86 ; 86 ; 1
+Ceinture du Directeur Grunob;36; 86 ; 86 ; 1
+Ceinture du Directeur Grunob;36; 86 ; 85 ; 1
+Ceinture du Directeur Grunob;36; 85 ; 85 ; 1
+Ceinture du Directeur Grunob;36; 85 ; 85 ; 1
+Ceinture du Directeur Grunob;36; 85 ; 85 ; 1
+Ceinture du Directeur Grunob;36; 85 ; 84 ; 1
+Ceinture du Directeur Grunob;36; 84 ; 84 ; 1
+Ceinture du Directeur Grunob;36; 84 ; 84 ; 1
+Ceinture du Directeur Grunob;36; 84 ; 84 ; 1
+Ceinture du Directeur Grunob;36; 84 ; 84 ; 1
+Ceinture du Directeur Grunob;36; 84 ; 83 ; 1
+Ceinture du Directeur Grunob;36; 83 ; 83 ; 1
+Ceinture du Directeur Grunob;36; 83 ; 83 ; 1
+Ceinture du Directeur Grunob;36; 83 ; 83 ; 1
+Ceinture du Directeur Grunob;36; 83 ; 82 ; 1
+Ceinture du Directeur Grunob;36; 82 ; 82 ; 1
+Ceinture du Directeur Grunob;36; 82 ; 82 ; 1
+Ceinture du Directeur Grunob;36; 82 ; 82 ; 1
+Ceinture du Directeur Grunob;36; 82 ; 81 ; 1
+Ceinture du Directeur Grunob;36; 81 ; 81 ; 1
+Ceinture du Directeur Grunob;36; 81 ; 81 ; 1
+Ceinture du Directeur Grunob;36; 81 ; 81 ; 1
+Ceinture du Directeur Grunob;36; 81 ; 80 ; 1
+Ceinture du Directeur Grunob;36; 80 ; 80 ; 1
+Ceinture du Directeur Grunob;36; 80 ; 80 ; 1
+Ceinture du Directeur Grunob;36; 80 ; 80 ; 1
+Ceinture du Directeur Grunob;36; 80 ; 79 ; 1
+Ceinture du Directeur Grunob;36; 79 ; 79 ; 1
+Ceinture du Directeur Grunob;36; 79 ; 79 ; 1
+Ceinture du Directeur Grunob;36; 79 ; 79 ; 1
+Ceinture du Directeur Grunob;36; 79 ; 78 ; 1
+
+Geta Bernacle;100; 459 ; 253 ; 20
+Chaussures Lepon-Davignon;100; 358 ; 346 ; 1
+Chaussures Lepon-Davignon;100; 346 ; 335 ; 1
+Chaussures Lepon-Davignon;100; 335 ; 325 ; 1
+Chaussures Lepon-Davignon;100; 325 ; 315 ; 1
+Chaussures Lepon-Davignon;100; 315 ; 305 ; 1
+Chaussures Lepon-Davignon;100; 305 ; 297 ; 1
+Chaussures Lepon-Davignon;100; 297 ; 288 ; 1
+Chaussures Lepon-Davignon;100; 288 ; 281 ; 1
+Chaussures Lepon-Davignon;100; 288 ; 281 ; 1
+Chaussures Lepon-Davignon;100; 281 ; 273 ; 1
+Chaussures Lepon-Davignon;100; 273 ; 266 ; 1
+
+
+Pelle de Koutoulou;34; 51 ; 50 ; 2
+Pelle de Koutoulou;34; 50 ; 50 ; 1
+Pelle de Koutoulou;34; 50 ; 50 ; 1
+Pelle de Koutoulou;34; 50 ; 50 ; 1
+Pelle de Koutoulou;34; 50 ; 50 ; 1
+Pelle de Koutoulou;34; 50 ; 50 ; 1
+Pelle de Koutoulou;34; 50 ; 50 ; 1
+Pelle de Koutoulou;34; 50 ; 50 ; 1
+Pelle de Koutoulou;34; 50 ; 50 ; 1
+Pelle de Koutoulou;34; 50 ; 50 ; 1
+Pelle de Koutoulou;34; 50 ; 49 ; 1
+Pelle de Koutoulou;34; 49 ; 49 ; 1
+Pelle de Koutoulou;34; 49 ; 49 ; 1
+Pelle de Koutoulou;34; 49 ; 49 ; 1
+Pelle de Koutoulou;34; 49 ; 49 ; 1
+Pelle de Koutoulou;34; 49 ; 49 ; 1
+Pelle de Koutoulou;34; 49 ; 49 ; 1
+Pelle de Koutoulou;34; 49 ; 49 ; 1
+Pelle de Koutoulou;34; 49 ; 49 ; 1
+Pelle de Koutoulou;34; 49 ; 49 ; 1
+Pelle de Koutoulou;34; 49 ; 49 ; 1
+Pelle de Koutoulou;34; 49 ; 49 ; 1
+Pelle de Koutoulou;34; 49 ; 49 ; 1
+Pelle de Koutoulou;34; 49 ; 48 ; 1
+Pelle de Koutoulou;34; 48 ; 48 ; 1
+Pelle de Koutoulou;34; 48 ; 48 ; 1
+Pelle de Koutoulou;34; 48 ; 48 ; 1
+Pelle de Koutoulou;34; 48 ; 48 ; 1
+Pelle de Koutoulou;34; 48 ; 48 ; 1
+Pelle de Koutoulou;34; 48 ; 48 ; 1
+Pelle de Koutoulou;34; 48 ; 48 ; 1
+Pelle de Koutoulou;34; 48 ; 48 ; 1
+Pelle de Koutoulou;34; 48 ; 48 ; 1
+Pelle de Koutoulou;34; 48 ; 48 ; 1
+Pelle de Koutoulou;34; 48 ; 48 ; 1
+Pelle de Koutoulou;34; 48 ; 47 ; 1
+Pelle de Koutoulou;34; 47 ; 47 ; 1
+Pelle de Koutoulou;34; 47 ; 47 ; 1
+Pelle de Koutoulou;34; 47 ; 47 ; 1
+Pelle de Koutoulou;34; 47 ; 47 ; 1
+Pelle de Koutoulou;34; 47 ; 47 ; 1
+Pelle de Koutoulou;34; 47 ; 47 ; 1
+Pelle de Koutoulou;34; 47 ; 47 ; 1
+Pelle de Koutoulou;34; 47 ; 47 ; 1
+Pelle de Koutoulou;34; 47 ; 47 ; 1
+Pelle de Koutoulou;34; 47 ; 47 ; 1
+Pelle de Koutoulou;34; 47 ; 47 ; 1
+Pelle de Koutoulou;34; 47 ; 47 ; 1
+Pelle de Koutoulou;34; 47 ; 46 ; 1
+Pelle de Koutoulou;34; 46 ; 46 ; 1
+Pelle de Koutoulou;34; 46 ; 46 ; 1
+Pelle de Koutoulou;34; 46 ; 46 ; 1
+Pelle de Koutoulou;34; 46 ; 46 ; 1
+Pelle de Koutoulou;34; 46 ; 46 ; 1
+Pelle de Koutoulou;34; 46 ; 46 ; 1
+Pelle de Koutoulou;34; 46 ; 46 ; 1
+Pelle de Koutoulou;34; 46 ; 46 ; 1
+Pelle de Koutoulou;34; 46 ; 46 ; 1
+Pelle de Koutoulou;34; 46 ; 46 ; 1
+Pelle de Koutoulou;34; 46 ; 46 ; 1
+Pelle de Koutoulou;34; 46 ; 46 ; 1
+Pelle de Koutoulou;34; 46 ; 46 ; 1
+Pelle de Koutoulou;34; 46 ; 45 ; 1
+Pelle de Koutoulou;34; 45 ; 45 ; 1
+Pelle de Koutoulou;34; 45 ; 45 ; 1
+Pelle de Koutoulou;34; 45 ; 45 ; 1
+Pelle de Koutoulou;34; 45 ; 45 ; 1
+Pelle de Koutoulou;34; 45 ; 45 ; 1
+Pelle de Koutoulou;34; 45 ; 45 ; 1
+Pelle de Koutoulou;34; 45 ; 45 ; 1
+Pelle de Koutoulou;34; 45 ; 45 ; 1
+Pelle de Koutoulou;34; 45 ; 45 ; 1
+Pelle de Koutoulou;34; 45 ; 45 ; 1
+Pelle de Koutoulou;34; 45 ; 45 ; 1
+Pelle de Koutoulou;34; 45 ; 45 ; 1
+Pelle de Koutoulou;34; 45 ; 45 ; 1
+Pelle de Koutoulou;34; 45 ; 45 ; 1
+Pelle de Koutoulou;34; 45 ; 44 ; 1
+Pelle de Koutoulou;34; 44 ; 44 ; 1
+Pelle de Koutoulou;34; 44 ; 44 ; 1
+Pelle de Koutoulou;34; 44 ; 44 ; 1
+Pelle de Koutoulou;34; 44 ; 44 ; 1
+Pelle de Koutoulou;34; 44 ; 44 ; 1
+Pelle de Koutoulou;34; 44 ; 44 ; 1
+Pelle de Koutoulou;34; 44 ; 44 ; 1
+Pelle de Koutoulou;34; 44 ; 44 ; 1
+Pelle de Koutoulou;34; 44 ; 44 ; 1
+Pelle de Koutoulou;34; 44 ; 44 ; 1
+Pelle de Koutoulou;34; 44 ; 44 ; 1
+Pelle de Koutoulou;34; 44 ; 44 ; 1
+Pelle de Koutoulou;34; 44 ; 44 ; 1
+Pelle de Koutoulou;34; 44 ; 43 ; 1
+Pelle de Koutoulou;34; 43 ; 43 ; 1
+Pelle de Koutoulou;34; 43 ; 43 ; 1
+Pelle de Koutoulou;34; 43 ; 43 ; 1
+Pelle de Koutoulou;34; 43 ; 43 ; 1
+Pelle de Koutoulou;34; 43 ; 43 ; 1
+Pelle de Koutoulou;34; 43 ; 43 ; 1
+Pelle de Koutoulou;34; 43 ; 43 ; 1
+Pelle de Koutoulou;34; 43 ; 43 ; 1
+Pelle de Koutoulou;34; 43 ; 43 ; 1
+Pelle de Koutoulou;34; 43 ; 43 ; 1
+Pelle de Koutoulou;34; 43 ; 43 ; 1
+Pelle de Koutoulou;34; 43 ; 43 ; 1
+Pelle de Koutoulou;34; 43 ; 37 ; 100
+
+Pelle Hébuse;94; 110 ; 109 ; 1
+Pelle Hébuse;94; 109 ; 107 ; 1
+Pelle Hébuse;94; 107 ; 106 ; 1
+Pelle Hébuse;94; 106 ; 105 ; 1
+Pelle Hébuse;94; 105 ; 104 ; 1
+Pelle Hébuse;94; 104 ; 103 ; 1
+Pelle Hébuse;94; 103 ; 102 ; 1
+Pelle Hébuse;94; 102 ; 101 ; 1
+Pelle Hébuse;94; 101 ; 100 ; 1
+Pelle Hébuse;94; 100 ; 99 ; 1
+Pelle Hébuse;94; 99 ; 98 ; 1
+Pelle Hébuse;94; 98 ; 97 ; 1
+Pelle Hébuse;94; 97 ; 96 ; 1
+Pelle Hébuse;94; 96 ; 95 ; 1
+Pelle Hébuse;94; 95 ; 94 ; 1
+Pelle Hébuse;94; 94 ; 94 ; 1
+Pelle Hébuse;94; 94 ; 93 ; 1
+Pelle Hébuse;94; 93 ; 92 ; 1
+Pelle Hébuse;94; 92 ; 91 ; 1
+Pelle Hébuse;94; 91 ; 90 ; 1
+Pelle Hébuse;94; 90 ; 90 ; 1
+Pelle Hébuse;94; 90 ; 89 ; 1
+Pelle Hébuse;94; 89 ; 88 ; 1
+Pelle Hébuse;94; 88 ; 88 ; 1
+Pelle Hébuse;94; 88 ; 87 ; 1
+Pelle Hébuse;94; 87 ; 86 ; 1
+Pelle Hébuse;94; 86 ; 85 ; 1
+Pelle Hébuse;94; 85 ; 85 ; 1
+Pelle Hébuse;94; 85 ; 84 ; 1
+Pelle Hébuse;94; 84 ; 83 ; 1
+Pelle Hébuse;94; 83 ; 83 ; 1
+Pelle Hébuse;94; 83 ; 82 ; 1
+Pelle Hébuse;94; 82 ; 82 ; 1
+Pelle Hébuse;94; 82 ; 81 ; 1
+Pelle Hébuse;94; 81 ; 80 ; 1
+Pelle Hébuse;94; 80 ; 80 ; 1
+Pelle Hébuse;94; 80 ; 79 ; 1
+Pelle Hébuse;94; 79 ; 79 ; 1
+Pelle Hébuse;94; 79 ; 78 ; 1
+Pelle Hébuse;94; 78 ; 78 ; 1
+Pelle Hébuse;94; 78 ; 77 ; 1
+Pelle Hébuse;94; 77 ; 76 ; 1
+Pelle Hébuse;94; 76 ; 76 ; 1
+Pelle Hébuse;94; 76 ; 75 ; 1
+Pelle Hébuse;94; 75 ; 75 ; 1
+Pelle Hébuse;94; 75 ; 74 ; 1
+Pelle Hébuse;94; 74 ; 74 ; 1
+Pelle Hébuse;94; 74 ; 73 ; 1
+
+Le Ours;35; 73 ; 73 ; 1
+Le Ours;35; 73 ; 73 ; 1
+Le Ours;35; 73 ; 73 ; 1
+Le Ours;35; 73 ; 72 ; 1
+Le Ours;35; 72 ; 72 ; 1
+Le Ours;35; 72 ; 72 ; 1
+Le Ours;35; 72 ; 72 ; 1
+Le Ours;35; 72 ; 72 ; 1
+Le Ours;35; 72 ; 72 ; 1
+Le Ours;35; 72 ; 71 ; 2
+Le Ours;35; 71 ; 71 ; 1
+Le Ours;35; 71 ; 71 ; 1
+Le Ours;35; 71 ; 71 ; 1
+Le Ours;35; 71 ; 70 ; 2
+Le Ours;35; 70 ; 70 ; 1
+Le Ours;35; 70 ; 70 ; 1
+Le Ours;35; 70 ; 70 ; 1
+Le Ours;35; 70 ; 70 ; 1
+Le Ours;35; 70 ; 69 ; 1
+Le Ours;35; 69 ; 69 ; 1
+Le Ours;35; 69 ; 69 ; 1
+Le Ours;35; 69 ; 69 ; 1
+Le Ours;35; 69 ; 69 ; 1
+Le Ours;35; 69 ; 68 ; 1
+Le Ours;35; 68 ; 68 ; 1
+Le Ours;35; 68 ; 68 ; 1
+Le Ours;35; 68 ; 68 ; 1
+Le Ours;35; 68 ; 67 ; 1
+Le Ours;35; 67 ; 67 ; 2
+Le Ours;35; 67 ; 67 ; 1
+Le Ours;35; 67 ; 67 ; 1
+Le Ours;35; 67 ; 67 ; 1
+Le Ours;35; 67 ; 66 ; 2
+Le Ours;35; 66 ; 66 ; 2
+Le Ours;35; 66 ; 66 ; 1
+Le Ours;35; 66 ; 65 ; 3
+Le Ours;35; 65 ; 65 ; 1
+Le Ours;35; 65 ; 65 ; 1
+Le Ours;35; 65 ; 65 ; 1
+Le Ours;35; 65 ; 65 ; 1
+Le Ours;35; 65 ; 65 ; 1
+Le Ours;35; 65 ; 65 ; 1
+Le Ours;35; 65 ; 65 ; 1
+Le Ours;35; 65 ; 64 ; 1
+Le Ours;35; 64 ; 64 ; 3
+Le Ours;35; 64 ; 63 ; 1
+Le Ours;35; 63 ; 63 ; 1
+Le Ours;35; 63 ; 63 ; 1
+Le Ours;35; 63 ; 63 ; 1
+Le Ours;35; 63 ; 63 ; 1
+Le Ours;35; 63 ; 63 ; 1
+Le Ours;35; 63 ; 62 ; 2
+Le Ours;35; 62 ; 62 ; 1
+Le Ours;35; 62 ; 62 ; 1
+Le Ours;35; 62 ; 62 ; 1
+Le Ours;35; 62 ; 62 ; 1
+Le Ours;35; 62 ; 62 ; 1
+Le Ours;35; 62 ; 61 ; 1
+Le Ours;35; 61 ; 61 ; 1
+Le Ours;35; 61 ; 61 ; 1
+Le Ours;35; 61 ; 61 ; 1
+Le Ours;35; 61 ; 61 ; 1
+Le Ours;35; 61 ; 61 ; 1
+Le Ours;35; 61 ; 61 ; 1
+Le Ours;35; 61 ; 60 ; 1
+Le Ours;35; 60 ; 60 ; 1
+Le Ours;35; 60 ; 60 ; 1
+Le Ours;35; 60 ; 60 ; 1
+Le Ours;35; 60 ; 60 ; 1
+Le Ours;35; 60 ; 60 ; 1
+Le Ours;35; 60 ; 60 ; 1
+Le Ours;35; 60 ; 60 ; 1
+Le Ours;35; 60 ; 59 ; 1
+Le Ours;35; 59 ; 59 ; 1
+Le Ours;35; 59 ; 59 ; 1
+Le Ours;35; 59 ; 59 ; 1
+Le Ours;35; 59 ; 59 ; 1
+Le Ours;35; 59 ; 59 ; 1
+Le Ours;35; 59 ; 59 ; 1
+Le Ours;35; 59 ; 59 ; 1
+Le Ours;35; 59 ; 58 ; 1
+Le Ours;35; 58 ; 58 ; 1
+Le Ours;35; 58 ; 58 ; 1
+Le Ours;35; 58 ; 58 ; 1
+Le Ours;35; 58 ; 58 ; 1
+Le Ours;35; 58 ; 58 ; 1
+Le Ours;35; 58 ; 58 ; 1
+Le Ours;35; 58 ; 58 ; 1
+Le Ours;35; 58 ; 58 ; 1
+Le Ours;35; 58 ; 57 ; 2
+Le Ours;35; 57 ; 57 ; 1
+Le Ours;35; 57 ; 57 ; 2
+Le Ours;35; 57 ; 57 ; 1
+Le Ours;35; 57 ; 57 ; 1
+Le Ours;35; 57 ; 57 ; 1
+Le Ours;35; 57 ; 56 ; 1
+Le Ours;35; 56 ; 56 ; 1
+Le Ours;35; 56 ; 56 ; 1
+Le Ours;35; 56 ; 56 ; 1
+Le Ours;35; 56 ; 56 ; 1
+Le Ours;35; 56 ; 56 ; 1
+Le Ours;35; 56 ; 56 ; 1
+Le Ours;35; 56 ; 56 ; 1
+Le Ours;35; 56 ; 56 ; 1
+Le Ours;35; 56 ; 55 ; 1
+Le Ours;35; 55 ; 55 ; 1
+Le Ours;35; 55 ; 55 ; 1
+Le Ours;35; 55 ; 55 ; 1
+Le Ours;35; 55 ; 55 ; 1
+Le Ours;35; 55 ; 55 ; 1
+Le Ours;35; 55 ; 55 ; 1
+Le Ours;35; 55 ; 55 ; 1
+Le Ours;35; 55 ; 55 ; 1
+Le Ours;35; 55 ; 54 ; 2
+Le Ours;35; 54 ; 54 ; 1
+Le Ours;35; 54 ; 54 ; 1
+Le Ours;35; 54 ; 54 ; 1
+Le Ours;35; 54 ; 54 ; 1
+Le Ours;35; 54 ; 54 ; 1
+Le Ours;35; 54 ; 54 ; 1
+Le Ours;35; 54 ; 54 ; 1
+Le Ours;35; 54 ; 53 ; 2
+Le Ours;35; 53 ; 53 ; 1
+Le Ours;35; 53 ; 53 ; 1
+Le Ours;35; 53 ; 53 ; 1
+Le Ours;35; 53 ; 53 ; 1
+Le Ours;35; 53 ; 53 ; 1
+Le Ours;35; 53 ; 53 ; 1
+Le Ours;35; 53 ; 52 ; 2
+Le Ours;35; 52 ; 52 ; 1
+Le Ours;35; 52 ; 52 ; 1
+Le Ours;35; 52 ; 52 ; 1
+Le Ours;35; 52 ; 52 ; 1
+Le Ours;35; 52 ; 52 ; 1
+Le Ours;35; 52 ; 52 ; 1
+Le Ours;35; 52 ; 52 ; 1
+Le Ours;35; 52 ; 52 ; 1
+Le Ours;35; 52 ; 51 ; 1
+Le Ours;35; 51 ; 51 ; 1
+Le Ours;35; 51 ; 51 ; 1
+Le Ours;35; 51 ; 51 ; 2
+Le Ours;35; 51 ; 51 ; 1
+Le Ours;35; 51 ; 51 ; 1
+Le Ours;35; 51 ; 51 ; 1
+Le Ours;35; 51 ; 51 ; 2
+Le Ours;35; 51 ; 51 ; 1
+Le Ours;35; 51 ; 51 ; 1
+Le Ours;35; 51 ; 50 ; 1
+Le Ours;35; 50 ; 50 ; 1
+Le Ours;35; 50 ; 50 ; 2
+Le Ours;35; 50 ; 50 ; 1
+Le Ours;35; 50 ; 50 ; 1
+Le Ours;35; 50 ; 50 ; 1
+Le Ours;35; 50 ; 50 ; 1
+Le Ours;35; 50 ; 50 ; 1
+Le Ours;35; 50 ; 49 ; 2
+Le Ours;35; 49 ; 49 ; 1
+Le Ours;35; 49 ; 49 ; 1
+Le Ours;35; 49 ; 49 ; 1
+Le Ours;35; 49 ; 49 ; 1
+Le Ours;35; 49 ; 49 ; 2
+Le Ours;35; 49 ; 49 ; 1
+Le Ours;35; 49 ; 48 ; 1
+Le Ours;35; 48 ; 48 ; 1
+Le Ours;35; 48 ; 48 ; 1
+Le Ours;35; 48 ; 48 ; 1
+Le Ours;35; 48 ; 48 ; 1
+Le Ours;35; 48 ; 48 ; 1
+Le Ours;35; 48 ; 48 ; 2
+Le Ours;35; 48 ; 48 ; 1
+Le Ours;35; 48 ; 48 ; 1
+Le Ours;35; 48 ; 48 ; 1
+Le Ours;35; 48 ; 47 ; 1
+Le Ours;35; 47 ; 47 ; 1
+Le Ours;35; 47 ; 47 ; 2
+Le Ours;35; 47 ; 47 ; 1
+Le Ours;35; 47 ; 47 ; 1
+Le Ours;35; 47 ; 47 ; 1
+Le Ours;35; 47 ; 47 ; 2
+Le Ours;35; 47 ; 47 ; 1
+Le Ours;35; 47 ; 47 ; 1
+Le Ours;35; 47 ; 46 ; 2
+Le Ours;35; 46 ; 46 ; 1
+Le Ours;35; 46 ; 46 ; 1
+Le Ours;35; 46 ; 46 ; 1
+Le Ours;35; 46 ; 46 ; 1
+Le Ours;35; 46 ; 46 ; 1
+Le Ours;35; 46 ; 46 ; 1
+Le Ours;35; 46 ; 46 ; 1
+Le Ours;35; 46 ; 46 ; 1
+Le Ours;35; 46 ; 46 ; 1
+Le Ours;35; 46 ; 46 ; 1
+Le Ours;35; 46 ; 45 ; 1
+Le Ours;35; 45 ; 45 ; 1
+Le Ours;35; 45 ; 45 ; 1
+Le Ours;35; 45 ; 45 ; 1
+Le Ours;35; 45 ; 45 ; 2
+Le Ours;35; 45 ; 45 ; 1
+Le Ours;35; 45 ; 45 ; 1
+Le Ours;35; 45 ; 45 ; 1
+Le Ours;35; 45 ; 45 ; 1
+Le Ours;35; 45 ; 44 ; 1
+Le Ours;35; 44 ; 44 ; 1
+Le Ours;35; 44 ; 44 ; 1
+Le Ours;35; 44 ; 44 ; 1
+Le Ours;35; 44 ; 44 ; 1
+Le Ours;35; 44 ; 44 ; 1
+Le Ours;35; 44 ; 44 ; 1
+Le Ours;35; 44 ; 44 ; 1
+Le Ours;35; 44 ; 44 ; 1
+Le Ours;35; 44 ; 44 ; 1
+Le Ours;35; 44 ; 44 ; 2
+Le Ours;35; 44 ; 44 ; 1
+Le Ours;35; 44 ; 43 ; 1
+Le Ours;35; 43 ; 43 ; 1
+Le Ours;35; 43 ; 43 ; 1
+Le Ours;35; 43 ; 43 ; 2
+Le Ours;35; 43 ; 43 ; 1
+Le Ours;35; 43 ; 43 ; 1
+Le Ours;35; 43 ; 43 ; 1
+Le Ours;35; 43 ; 43 ; 1
+Le Ours;35; 43 ; 43 ; 1
+Le Ours;35; 43 ; 43 ; 1
+Le Ours;35; 43 ; 43 ; 1
+Le Ours;35; 43 ; 43 ; 1
+Le Ours;35; 43 ; 42 ; 1
+Le Ours;35; 42 ; 42 ; 1
+Le Ours;35; 42 ; 42 ; 1
+Le Ours;35; 42 ; 42 ; 1
+Le Ours;35; 42 ; 42 ; 1
+Le Ours;35; 42 ; 42 ; 1
+Le Ours;35; 42 ; 42 ; 1
+Le Ours;35; 42 ; 42 ; 1
+Le Ours;35; 42 ; 42 ; 1
+Le Ours;35; 42 ; 42 ; 1
+Le Ours;35; 42 ; 42 ; 1
+Le Ours;35; 42 ; 42 ; 2
+Le Ours;35; 42 ; 41 ; 2
+Le Ours;35; 41 ; 41 ; 1
+Le Ours;35; 41 ; 41 ; 1
+Le Ours;35; 41 ; 41 ; 1
+Le Ours;35; 41 ; 41 ; 1
+Le Ours;35; 41 ; 41 ; 1
+Le Ours;35; 41 ; 41 ; 1
+Le Ours;35; 41 ; 41 ; 1
+Le Ours;35; 41 ; 41 ; 1
+Le Ours;35; 41 ; 41 ; 1
+Le Ours;35; 41 ; 41 ; 1
+Le Ours;35; 41 ; 41 ; 1
+Le Ours;35; 41 ; 41 ; 2
+Le Ours;35; 41 ; 41 ; 1
+
+Chapeau de Barbroussa;74; 80 ; 79 ; 1
+Chapeau de Barbroussa;74; 79 ; 78 ; 1
+Chapeau de Barbroussa;74; 78 ; 78 ; 1
+Chapeau de Barbroussa;74; 78 ; 78 ; 1
+Chapeau de Barbroussa;74; 78 ; 77 ; 1
+Chapeau de Barbroussa;74; 77 ; 77 ; 1
+Chapeau de Barbroussa;74; 77 ; 76 ; 1
+Chapeau de Barbroussa;74; 76 ; 76 ; 1
+Chapeau de Barbroussa;74; 76 ; 75 ; 1
+Chapeau de Barbroussa;74; 75 ; 75 ; 1
+Chapeau de Barbroussa;74; 75 ; 75 ; 1
+Chapeau de Barbroussa;74; 75 ; 74 ; 1
+Chapeau de Barbroussa;74; 74 ; 74 ; 1
+Chapeau de Barbroussa;74; 74 ; 73 ; 1
+Chapeau de Barbroussa;74; 73 ; 73 ; 1
+Chapeau de Barbroussa;74; 73 ; 73 ; 1
+Chapeau de Barbroussa;74; 73 ; 72 ; 1
+Chapeau de Barbroussa;74; 72 ; 72 ; 1
+Chapeau de Barbroussa;74; 72 ; 71 ; 1
+Chapeau de Barbroussa;74; 71 ; 71 ; 1
+Chapeau de Barbroussa;74; 71 ; 71 ; 1
+Chapeau de Barbroussa;74; 71 ; 70 ; 1
+Chapeau de Barbroussa;74; 70 ; 70 ; 1
+Chapeau de Barbroussa;74; 70 ; 70 ; 1
+Chapeau de Barbroussa;74; 70 ; 69 ; 1
+Chapeau de Barbroussa;74; 69 ; 69 ; 1
+Chapeau de Barbroussa;74; 69 ; 69 ; 1
+Chapeau de Barbroussa;74; 69 ; 68 ; 1
+Chapeau de Barbroussa;74; 68 ; 68 ; 1
+Chapeau de Barbroussa;74; 68 ; 67 ; 1
+Chapeau de Barbroussa;74; 67 ; 67 ; 1
+Chapeau de Barbroussa;74; 67 ; 67 ; 1
+Chapeau de Barbroussa;74; 67 ; 66 ; 1
+Chapeau de Barbroussa;74; 66 ; 66 ; 1
+Chapeau de Barbroussa;74; 66 ; 65 ; 1
+Chapeau de Barbroussa;74; 65 ; 65 ; 1
+Chapeau de Barbroussa;74; 65 ; 65 ; 1
+Chapeau de Barbroussa;74; 65 ; 64 ; 1
+Chapeau de Barbroussa;74; 64 ; 64 ; 1
+Chapeau de Barbroussa;74; 64 ; 64 ; 1
+Chapeau de Barbroussa;74; 64 ; 64 ; 1
+Chapeau de Barbroussa;74; 64 ; 63 ; 1
+Chapeau de Barbroussa;74; 63 ; 63 ; 1
+Chapeau de Barbroussa;74; 63 ; 63 ; 1
+Chapeau de Barbroussa;74; 63 ; 62 ; 1
+Chapeau de Barbroussa;74; 62 ; 62 ; 1
+Chapeau de Barbroussa;74; 62 ; 62 ; 1
+
+Cape du Capitaine Pirate;92; 81 ; 80 ; 1
+Cape du Capitaine Pirate;92; 80 ; 80 ; 1
+Cape du Capitaine Pirate;92; 80 ; 79 ; 1
+Cape du Capitaine Pirate;92; 79 ; 78 ; 1
+Cape du Capitaine Pirate;92; 78 ; 78 ; 1
+Cape du Capitaine Pirate;92; 78 ; 77 ; 1
+Cape du Capitaine Pirate;92; 77 ; 77 ; 1
+Cape du Capitaine Pirate;92; 77 ; 76 ; 1
+Cape du Capitaine Pirate;92; 76 ; 76 ; 1
+Cape du Capitaine Pirate;92; 76 ; 75 ; 1
+
+Chapitrouille;104; 141 ; 139 ; 1
+Chapitrouille;104; 139 ; 137 ; 1
+Chapitrouille;104; 137 ; 135 ; 1
+Chapitrouille;104; 135 ; 133 ; 1
+Chapitrouille;104; 133 ; 131 ; 1
+Chapitrouille;104; 131 ; 130 ; 1
+Chapitrouille;104; 130 ; 128 ; 1
+Chapitrouille;104; 128 ; 126 ; 1
+Chapitrouille;104; 126 ; 125 ; 1
+Chapitrouille;104; 125 ; 123 ; 1
+Chapitrouille;104; 123 ; 122 ; 1
+Chapitrouille;104; 122 ; 120 ; 1
+Chapitrouille;104; 120 ; 119 ; 1
+Chapitrouille;104; 119 ; 117 ; 1
+Chapitrouille;104; 117 ; 116 ; 1
+Chapitrouille;104; 116 ; 115 ; 1
+Chapitrouille;104; 115 ; 113 ; 1
+Chapitrouille;104; 113 ; 112 ; 1
+Chapitrouille;104; 112 ; 111 ; 1
+Chapitrouille;104; 111 ; 110 ; 1
+Chapitrouille;104; 110 ; 108 ; 1
+Chapitrouille;104; 108 ; 107 ; 1
+Chapitrouille;104; 107 ; 106 ; 1
+Chapitrouille;104; 106 ; 105 ; 1
+Chapitrouille;104; 105 ; 104 ; 1
+Chapitrouille;104; 104 ; 103 ; 1
+Chapitrouille;104; 103 ; 102 ; 1
+Chapitrouille;104; 102 ; 101 ; 1
+Chapitrouille;104; 101 ; 100 ; 1
+Chapitrouille;104; 100 ; 99 ; 1
+Chapitrouille;104; 99 ; 98 ; 1
+Chapitrouille;104; 98 ; 97 ; 1
+Chapitrouille;104; 97 ; 96 ; 1
+Chapitrouille;104; 96 ; 95 ; 1
+Chapitrouille;104; 95 ; 94 ; 1
+Chapitrouille;104; 94 ; 93 ; 1
+Chapitrouille;104; 93 ; 92 ; 1
+Chapitrouille;104; 92 ; 91 ; 1
+Chapitrouille;104; 91 ; 90 ; 1
+Chapitrouille;104; 90 ; 90 ; 1
+Chapitrouille;104; 90 ; 89 ; 1
+Chapitrouille;104; 89 ; 88 ; 1
+Chapitrouille;104; 88 ; 87 ; 1
+Chapitrouille;104; 87 ; 87 ; 1
+Chapitrouille;104; 87 ; 86 ; 1
+Chapitrouille;104; 86 ; 85 ; 1
+Chapitrouille;104; 85 ; 84 ; 1
+Chapitrouille;104; 84 ; 84 ; 1
+Chapitrouille;104; 84 ; 83 ; 1
+Chapitrouille;104; 83 ; 82 ; 1
+
+Blopture Coco;50; 272 ; 268 ; 1
+Blopture Coco;50; 268 ; 261 ; 2
+Blopture Coco;50; 261 ; 258 ; 1
+Blopture Coco;50; 258 ; 254 ; 1
+Blopture Coco;50; 254 ; 251 ; 1
+Blopture Coco;50; 251 ; 248 ; 1
+Blopture Coco;50; 248 ; 245 ; 1
+Blopture Coco;50; 245 ; 242 ; 1
+Blopture Coco;50; 242 ; 239 ; 1
+Blopture Coco;50; 239 ; 236 ; 1
+Blopture Coco;50; 236 ; 233 ; 1
+Blopture Coco;50; 233 ; 230 ; 1
+Blopture Coco;50; 230 ; 227 ; 1
+Blopture Coco;50; 227 ; 225 ; 1
+Blopture Coco;50; 225 ; 222 ; 1
+Blopture Coco;50; 222 ; 220 ; 1
+Blopture Coco;50; 272 ; 217 ; 1
+Blopture Coco;50; 272 ; 215 ; 1
+Blopture Coco;50; 272 ; 212 ; 1
+Blopture Coco;50; 272 ; 210 ; 1
+Blopture Coco;50; 272 ; 208 ; 1
+Blopture Coco;50; 272 ; 206 ; 1
+Blopture Coco;50; 272 ; 203 ; 1
+Blopture Coco;50; 272 ; 201 ; 1
+Blopture Coco;50; 272 ; 199 ; 1
+Blopture Coco;50; 272 ; 197 ; 1
+Blopture Coco;50; 272 ; 195 ; 1
+Blopture Coco;50; 272 ; 193 ; 1
+Blopture Coco;50; 272 ; 191 ; 1
+Blopture Coco;50; 272 ; 189 ; 1
+Blopture Coco;50; 272 ; 188 ; 1
+Blopture Coco;50; 272 ; 186 ; 1
+Blopture Coco;50; 272 ; 184 ; 1
+Blopture Coco;50; 272 ; 182 ; 1
+Blopture Coco;50; 272 ; 181 ; 1
+Blopture Coco;50; 272 ; 179 ; 1
+Blopture Coco;50; 272 ; 177 ; 1
+Blopture Coco;50; 272 ; 176 ; 1
+Blopture Coco;50; 272 ; 174 ; 1
+Blopture Coco;50; 272 ; 173 ; 1
+Blopture Coco;50; 272 ; 171 ; 1
+Blopture Coco;50; 272 ; 170 ; 1
+Blopture Coco;50; 272 ; 168 ; 1
+Blopture Coco;50; 272 ; 167 ; 1
+Blopture Coco;50; 272 ; 165 ; 1
+Blopture Coco;50; 272 ; 164 ; 1
+Blopture Coco;50; 272 ; 162 ; 1
+Blopture Coco;50; 272 ; 161 ; 1
+Blopture Coco;50; 272 ; 160 ; 1
+Blopture Coco;50; 272 ; 158 ; 1
+
+Makiture;10;325;324;1
+Makiture;10;324;321;2
+Makiture;10;321;319;1
+Makiture;10;319;313;4
+Makiture;10;313;308;4
+Makiture;10;308;307;1
+Makiture;10;307;305;1
+Makiture;10;305;303;2
+Makiture;10;303;299;3
+Makiture;10;299;296;2
+Makiture;10;296;293;3
+Makiture;10;293;290;2
+Makiture;10;290;288;2
+Makiture;10;288;284;3
+Makiture;10;284;282;2
+Makiture;10;282;279;3
+Makiture;10;279;277;2
+Makiture;10;277;274;2
+Makiture;10;274;272;2
+Makiture;10;272;271;1
+Makiture;10;271;270;1
+Makiture;10;270;267;3
+Makiture;10;267;265;2
+Makiture;10;265;261;4
