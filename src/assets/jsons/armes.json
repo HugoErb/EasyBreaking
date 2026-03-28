@@ -1,5 +1,379 @@
 [
     {
+        "name": "Arc du Karkanik",
+        "image": "https://www.dofusbook.net/static/dist/items/2098-70.webp",
+        "type": "Arc",
+        "set": "Panoplie des Armutins",
+        "level": "200",
+        "effects": [
+            "451 à 500 Vitalité",
+            "31 à 40 Agilité",
+            "41 à 50 Sagesse",
+            "41 à 50 Puissance",
+            "2 PO",
+            "11 à 15 Esquive PM",
+            "9 à 12% Résistance Neutre",
+            "9 à 12% Résistance Feu"
+        ],
+        "recipe": [
+            {
+                "quantite": 66,
+                "name": "Sang de Ventrublion",
+                "image": "https://www.dofusbook.net/static/dist/items/15824-50.webp"
+            },
+            {
+                "quantite": 13,
+                "name": "Malleus de Karkanik",
+                "image": "https://www.dofusbook.net/static/dist/items/15826-50.webp"
+            },
+            {
+                "quantite": 10,
+                "name": "Neurone de dragodinde",
+                "image": "https://www.dofusbook.net/static/dist/items/15295-50.webp"
+            },
+            {
+                "quantite": 4,
+                "name": "Poil d'aisselle de Missiz Frizz",
+                "image": "https://www.dofusbook.net/static/dist/items/54691-50.webp"
+            },
+            {
+                "quantite": 3,
+                "name": "Broderie de la Reine des Voleurs",
+                "image": "https://www.dofusbook.net/static/dist/items/59643-50.webp"
+            },
+            {
+                "quantite": 2,
+                "name": "Substrat de Sylve",
+                "image": "https://www.dofusbook.net/static/dist/items/177003-50.webp"
+            },
+            {
+                "quantite": 2,
+                "name": "Épaulière de Dazak Martegel",
+                "image": "https://www.dofusbook.net/static/dist/items/25162-50.webp"
+            },
+            {
+                "quantite": 1,
+                "name": "Mycoses gelées",
+                "image": "https://www.dofusbook.net/static/dist/items/119009-50.webp"
+            }
+        ]
+    },
+    {
+        "name": "Aiguille de Psikopompe",
+        "image": "https://www.dofusbook.net/static/dist/items/183012-70.webp",
+        "type": "Lance",
+        "set": "Panoplie de Psikopompe",
+        "level": "200",
+        "effects": [
+            "401 à 450 Vitalité",
+            "31 à 40 Agilité",
+            "21 à 30 Sagesse",
+            "31 à 40 Puissance",
+            "1 PO",
+            "4 à 6 Dommage",
+            "9 à 12 Dommage Air",
+            "11 à 15 Prospection",
+            "4 à 6 Retrait PM",
+            "11 à 15 Résistance Critique",
+            "5 à 7% Résistance Neutre",
+            "5 à 7% Résistance Air"
+        ],
+        "recipe": [
+            {
+                "quantite": 10,
+                "name": "Étoffe de Grodruche",
+                "image": "https://www.dofusbook.net/static/dist/items/55737-50.webp"
+            },
+            {
+                "quantite": 10,
+                "name": "Cœur d'Empaillé",
+                "image": "https://www.dofusbook.net/static/dist/items/15822-50.webp"
+            },
+            {
+                "quantite": 10,
+                "name": "Corne de volkorne",
+                "image": "https://www.dofusbook.net/static/dist/items/47864-50.webp"
+            },
+            {
+                "quantite": 3,
+                "name": "Cervelle de Peunch",
+                "image": "https://www.dofusbook.net/static/dist/items/15821-50.webp"
+            },
+            {
+                "quantite": 2,
+                "name": "Ardonite",
+                "image": "https://www.dofusbook.net/static/dist/items/40710-50.webp"
+            },
+            {
+                "quantite": 1,
+                "name": "Scalp de Klime",
+                "image": "https://www.dofusbook.net/static/dist/items/15823-50.webp"
+            },
+            {
+                "quantite": 1,
+                "name": "Cœur de Cire Momore",
+                "image": "https://www.dofusbook.net/static/dist/items/165067-50.webp"
+            },
+            {
+                "quantite": 1,
+                "name": "Cuir de Psikopompe",
+                "image": "https://www.dofusbook.net/static/dist/items/56015-50.webp"
+            }
+        ]
+    },
+    {
+        "name": "Bêche de Mekamouth",
+        "image": "https://www.dofusbook.net/static/dist/items/8080-70.webp",
+        "type": "Pelle",
+        "set": "Panoplie de Mekamouth",
+        "level": "200",
+        "effects": [
+            "401 à 450 Vitalité",
+            "41 à 60 Force",
+            "41 à 60 Intelligence",
+            "41 à 60 Chance",
+            "21 à 30 Sagesse",
+            "2 à 3% Critique",
+            "11 à 15 Dommage Neutre",
+            "11 à 15 Dommage Terre",
+            "11 à 15 Dommage Feu",
+            "11 à 15 Dommage Eau",
+            "11 à 15 Prospection",
+            "4 à 6 Retrait PA",
+            "7 à 10% Résistance Terre",
+            "4 à 7% Résistance Feu"
+        ],
+        "recipe": [
+            {
+                "quantite": 10,
+                "name": "Oreille de Mécanofoux",
+                "image": "https://www.dofusbook.net/static/dist/items/106636-50.webp"
+            },
+            {
+                "quantite": 10,
+                "name": "Pédoncule de Mérulor",
+                "image": "https://www.dofusbook.net/static/dist/items/119008-50.webp"
+            },
+            {
+                "quantite": 10,
+                "name": "Corne de volkorne",
+                "image": "https://www.dofusbook.net/static/dist/items/47864-50.webp"
+            },
+            {
+                "quantite": 4,
+                "name": "Plume de Misère",
+                "image": "https://www.dofusbook.net/static/dist/items/53666-50.webp"
+            },
+            {
+                "quantite": 3,
+                "name": "Queue de Brikoglours",
+                "image": "https://www.dofusbook.net/static/dist/items/65763-50.webp"
+            },
+            {
+                "quantite": 2,
+                "name": "Ardonite",
+                "image": "https://www.dofusbook.net/static/dist/items/40710-50.webp"
+            },
+            {
+                "quantite": 1,
+                "name": "Incisive de Sylargh",
+                "image": "https://www.dofusbook.net/static/dist/items/47820-50.webp"
+            },
+            {
+                "quantite": 1,
+                "name": "Huile de Mekamouth",
+                "image": "https://www.dofusbook.net/static/dist/items/15704-50.webp"
+            }
+        ]
+    },
+    {
+        "name": "Masse de Glourdorak",
+        "image": "https://www.dofusbook.net/static/dist/items/7749-70.webp",
+        "type": "Marteau",
+        "set": "Panoplie de Glourdorak",
+        "level": "200",
+        "effects": [
+            "451 à 500 Vitalité",
+            "41 à 50 Sagesse",
+            "5 à 8% Critique",
+            "7 à 10 Soin",
+            "21 à 30 Prospection",
+            "7 à 10 Tacle",
+            "4 à 6 Esquive PM",
+            "16 à 20 Dommage Critique",
+            "16 à 20 Dommage Poussée",
+            "11 à 15% Résistance Neutre"
+        ],
+        "recipe": [
+            {
+                "quantite": 10,
+                "name": "Molaire de Nessil",
+                "image": "https://www.dofusbook.net/static/dist/items/47811-50.webp"
+            },
+            {
+                "quantite": 10,
+                "name": "Crinière de Krakal",
+                "image": "https://www.dofusbook.net/static/dist/items/54692-50.webp"
+            },
+            {
+                "quantite": 10,
+                "name": "Sépale de Drosérâle",
+                "image": "https://www.dofusbook.net/static/dist/items/36640-50.webp"
+            },
+            {
+                "quantite": 10,
+                "name": "Corne de volkorne",
+                "image": "https://www.dofusbook.net/static/dist/items/47864-50.webp"
+            },
+            {
+                "quantite": 4,
+                "name": "Verrou de Servitude",
+                "image": "https://www.dofusbook.net/static/dist/items/24268-50.webp"
+            },
+            {
+                "quantite": 3,
+                "name": "Galet brasillant",
+                "image": "https://www.dofusbook.net/static/dist/items/15289-50.webp"
+            },
+            {
+                "quantite": 1,
+                "name": "Braguette de Nileza",
+                "image": "https://www.dofusbook.net/static/dist/items/164013-50.webp"
+            },
+            {
+                "quantite": 1,
+                "name": "Dard d'abeille de Glourdorak",
+                "image": "https://www.dofusbook.net/static/dist/items/80050-50.webp"
+            }
+        ]
+    },
+    {
+        "name": "Arc de Culbutœuf",
+        "image": "https://www.dofusbook.net/static/dist/items/2096-70.webp",
+        "type": "Arc",
+        "set": "Panoplie de Culbutœuf",
+        "level": "200",
+        "effects": [
+            "351 à 400 Vitalité",
+            "51 à 70 Force",
+            "51 à 70 Chance",
+            "51 à 70 Agilité",
+            "21 à 30 Sagesse",
+            "11 à 15 Dommage Neutre",
+            "11 à 15 Dommage Terre",
+            "11 à 15 Dommage Eau",
+            "11 à 15 Dommage Air",
+            "11 à 15 Prospection",
+            "16 à 20 Dommage Poussée",
+            "7 à 10% Résistance Air"
+        ],
+        "recipe": [
+            {
+                "quantite": 10,
+                "name": "Bec de Granduk",
+                "image": "https://www.dofusbook.net/static/dist/items/47821-50.webp"
+            },
+            {
+                "quantite": 10,
+                "name": "Pic du Nocturlabe",
+                "image": "https://www.dofusbook.net/static/dist/items/47823-50.webp"
+            },
+            {
+                "quantite": 10,
+                "name": "Ambre de muldo",
+                "image": "https://www.dofusbook.net/static/dist/items/164094-50.webp"
+            },
+            {
+                "quantite": 3,
+                "name": "Bec de Strigide",
+                "image": "https://www.dofusbook.net/static/dist/items/47822-50.webp"
+            },
+            {
+                "quantite": 2,
+                "name": "Substrat de Sylve",
+                "image": "https://www.dofusbook.net/static/dist/items/177003-50.webp"
+            },
+            {
+                "quantite": 1,
+                "name": "Bandelette du Comte Harebourg",
+                "image": "https://www.dofusbook.net/static/dist/items/15831-50.webp"
+            },
+            {
+                "quantite": 1,
+                "name": "Corne du Vénérable Endormi",
+                "image": "https://www.dofusbook.net/static/dist/items/47891-50.webp"
+            },
+            {
+                "quantite": 1,
+                "name": "Cœur de Culbutœuf",
+                "image": "https://www.dofusbook.net/static/dist/items/15699-50.webp"
+            }
+        ]
+    },
+    {
+        "name": "Lame givrée du Chevalier de Glace",
+        "image": "https://www.dofusbook.net/static/dist/items/6761-70.webp",
+        "type": "Épée",
+        "set": "Panoplie du Chevalier de Glace",
+        "level": "200",
+        "effects": [
+            "401 à 450 Vitalité",
+            "31 à 40 Chance",
+            "31 à 40 Sagesse",
+            "31 à 40 Puissance",
+            "1 PO",
+            "4 à 6 Dommage",
+            "9 à 12 Dommage Eau",
+            "11 à 15 Prospection",
+            "5 à 7 Fuite",
+            "5 à 7 Retrait PM",
+            "5 à 8% Résistance Feu",
+            "5 à 8% Résistance Eau"
+        ],
+        "recipe": [
+            {
+                "quantite": 2000,
+                "name": "Pépite",
+                "image": "https://www.dofusbook.net/static/dist/items/50718-50.webp"
+            },
+            {
+                "quantite": 10,
+                "name": "Molaire de Ventrublion",
+                "image": "https://www.dofusbook.net/static/dist/items/47806-50.webp"
+            },
+            {
+                "quantite": 10,
+                "name": "Ethmoïde de Stalak",
+                "image": "https://www.dofusbook.net/static/dist/items/47808-50.webp"
+            },
+            {
+                "quantite": 4,
+                "name": "Masque cauchemardesque de l'Éternel Conflit",
+                "image": "https://www.dofusbook.net/static/dist/items/165044-50.webp"
+            },
+            {
+                "quantite": 3,
+                "name": "Moustache de Frimar",
+                "image": "https://www.dofusbook.net/static/dist/items/54690-50.webp"
+            },
+            {
+                "quantite": 2,
+                "name": "Ardonite",
+                "image": "https://www.dofusbook.net/static/dist/items/40710-50.webp"
+            },
+            {
+                "quantite": 1,
+                "name": "Culotte de Missiz Frizz",
+                "image": "https://www.dofusbook.net/static/dist/items/164011-50.webp"
+            },
+            {
+                "quantite": 1,
+                "name": "Âme glacée du Chevalier de Glace",
+                "image": "https://www.dofusbook.net/static/dist/items/80049-50.webp"
+            }
+        ]
+    },
+    {
         "name": "Ferveur d'Amayiro",
         "image": "https://www.dofusbook.net/static/dist/items/6760-70.webp",
         "type": "Épée",
@@ -19,14 +393,14 @@
         ],
         "recipe": [
             {
-                "quantite": 7500,
-                "name": "Pépite",
-                "image": "https://www.dofusbook.net/static/dist/items/50718-50.webp"
-            },
-            {
                 "quantite": 5000,
                 "name": "Reflet onirique",
                 "image": "https://www.dofusbook.net/static/dist/items/164149-50.webp"
+            },
+            {
+                "quantite": 20,
+                "name": "Neurone de dragodinde",
+                "image": "https://www.dofusbook.net/static/dist/items/15295-50.webp"
             },
             {
                 "quantite": 15,
@@ -84,9 +458,9 @@
                 "image": "https://www.dofusbook.net/static/dist/items/164149-50.webp"
             },
             {
-                "quantite": 15,
-                "name": "Tête de mort",
-                "image": "https://www.dofusbook.net/static/dist/items/15885-50.webp"
+                "quantite": 25,
+                "name": "Fragment d'anomalie",
+                "image": "https://www.dofusbook.net/static/dist/items/176051-50.webp"
             },
             {
                 "quantite": 15,
@@ -94,9 +468,9 @@
                 "image": "https://www.dofusbook.net/static/dist/items/15984-50.webp"
             },
             {
-                "quantite": 15,
-                "name": "Lame tranchante",
-                "image": "https://www.dofusbook.net/static/dist/items/24279-50.webp"
+                "quantite": 4,
+                "name": "Galet brasillant",
+                "image": "https://www.dofusbook.net/static/dist/items/15289-50.webp"
             },
             {
                 "quantite": 4,
@@ -130,37 +504,37 @@
             "451 à 500 Vitalité",
             "41 à 50 Sagesse",
             "81 à 100 Puissance",
+            "1 PM",
             "401 à 500 Initiative",
             "16 à 20 Esquive PA",
             "21 à 30 Dommage Poussée",
-            "3 à 5% Résistance Mêlée",
-            "3 à 5% Résistance Distance"
+            "3 à 5% Résistance Mêlée"
         ],
         "recipe": [
-            {
-                "quantite": 7500,
-                "name": "Pépite",
-                "image": "https://www.dofusbook.net/static/dist/items/50718-50.webp"
-            },
             {
                 "quantite": 5000,
                 "name": "Reflet onirique",
                 "image": "https://www.dofusbook.net/static/dist/items/164149-50.webp"
             },
             {
-                "quantite": 25,
-                "name": "Fragment d'anomalie",
-                "image": "https://www.dofusbook.net/static/dist/items/176051-50.webp"
+                "quantite": 3000,
+                "name": "Pépite",
+                "image": "https://www.dofusbook.net/static/dist/items/50718-50.webp"
+            },
+            {
+                "quantite": 15,
+                "name": "Pic de Ravageur",
+                "image": "https://www.dofusbook.net/static/dist/items/165038-50.webp"
             },
             {
                 "quantite": 10,
-                "name": "Corne de Volkorne",
+                "name": "Corne de volkorne",
                 "image": "https://www.dofusbook.net/static/dist/items/47864-50.webp"
             },
             {
-                "quantite": 4,
-                "name": "Galet brasillant",
-                "image": "https://www.dofusbook.net/static/dist/items/15289-50.webp"
+                "quantite": 2,
+                "name": "Ardonite",
+                "image": "https://www.dofusbook.net/static/dist/items/40710-50.webp"
             },
             {
                 "quantite": 1,
@@ -278,11 +652,6 @@
             },
             {
                 "quantite": 15,
-                "name": "Fragment d'anomalie",
-                "image": "https://www.dofusbook.net/static/dist/items/176051-50.webp"
-            },
-            {
-                "quantite": 15,
                 "name": "Squame du Graogarm",
                 "image": "https://www.dofusbook.net/static/dist/items/59680-50.webp"
             },
@@ -290,6 +659,11 @@
                 "quantite": 10,
                 "name": "Tresse de Domptueuse",
                 "image": "https://www.dofusbook.net/static/dist/items/54721-50.webp"
+            },
+            {
+                "quantite": 10,
+                "name": "Neurone de dragodinde",
+                "image": "https://www.dofusbook.net/static/dist/items/15295-50.webp"
             },
             {
                 "quantite": 4,
@@ -552,13 +926,13 @@
             },
             {
                 "quantite": 10,
-                "name": "Mise en plis de Voracle",
-                "image": "https://www.dofusbook.net/static/dist/items/54719-50.webp"
+                "name": "Corne de volkorne",
+                "image": "https://www.dofusbook.net/static/dist/items/47864-50.webp"
             },
             {
-                "quantite": 5,
-                "name": "Corne de Volkorne",
-                "image": "https://www.dofusbook.net/static/dist/items/47864-50.webp"
+                "quantite": 10,
+                "name": "Mise en plis de Voracle",
+                "image": "https://www.dofusbook.net/static/dist/items/54719-50.webp"
             },
             {
                 "quantite": 4,
@@ -757,7 +1131,7 @@
             },
             {
                 "quantite": 10,
-                "name": "Ambre gris",
+                "name": "Ambre de muldo",
                 "image": "https://www.dofusbook.net/static/dist/items/164094-50.webp"
             },
             {
@@ -796,7 +1170,7 @@
         ],
         "recipe": [
             {
-                "quantite": 3000,
+                "quantite": 2000,
                 "name": "Pépite",
                 "image": "https://www.dofusbook.net/static/dist/items/50718-50.webp"
             },
@@ -811,14 +1185,14 @@
                 "image": "https://www.dofusbook.net/static/dist/items/176031-50.webp"
             },
             {
-                "quantite": 15,
-                "name": "Tourmaline",
-                "image": "https://www.dofusbook.net/static/dist/items/50719-50.webp"
-            },
-            {
                 "quantite": 8,
                 "name": "Mèche Rebelle d'Hell Mina",
                 "image": "https://www.dofusbook.net/static/dist/items/54715-50.webp"
+            },
+            {
+                "quantite": 2,
+                "name": "Ardonite",
+                "image": "https://www.dofusbook.net/static/dist/items/40710-50.webp"
             },
             {
                 "quantite": 2,
@@ -858,7 +1232,7 @@
         ],
         "recipe": [
             {
-                "quantite": 5000,
+                "quantite": 2000,
                 "name": "Pépite",
                 "image": "https://www.dofusbook.net/static/dist/items/50718-50.webp"
             },
@@ -932,8 +1306,8 @@
                 "image": "https://www.dofusbook.net/static/dist/items/15885-50.webp"
             },
             {
-                "quantite": 5,
-                "name": "Corne de Volkorne",
+                "quantite": 10,
+                "name": "Corne de volkorne",
                 "image": "https://www.dofusbook.net/static/dist/items/47864-50.webp"
             },
             {
@@ -1047,14 +1421,14 @@
         ],
         "recipe": [
             {
-                "quantite": 7500,
-                "name": "Pépite",
-                "image": "https://www.dofusbook.net/static/dist/items/50718-50.webp"
-            },
-            {
                 "quantite": 5000,
                 "name": "Reflet onirique",
                 "image": "https://www.dofusbook.net/static/dist/items/164149-50.webp"
+            },
+            {
+                "quantite": 3000,
+                "name": "Pépite",
+                "image": "https://www.dofusbook.net/static/dist/items/50718-50.webp"
             },
             {
                 "quantite": 15,
@@ -1063,7 +1437,7 @@
             },
             {
                 "quantite": 10,
-                "name": "Corne de Volkorne",
+                "name": "Corne de volkorne",
                 "image": "https://www.dofusbook.net/static/dist/items/47864-50.webp"
             },
             {
@@ -1096,8 +1470,8 @@
         "level": "200",
         "effects": [
             "401 à 450 Vitalité",
-            "81 à 120 Force",
             "41 à 50 Sagesse",
+            "81 à 120 Puissance",
             "301 à 400 Initiative",
             "16 à 20 Tacle",
             "16 à 20 Esquive PM",
@@ -1105,14 +1479,14 @@
         ],
         "recipe": [
             {
-                "quantite": 7500,
-                "name": "Pépite",
-                "image": "https://www.dofusbook.net/static/dist/items/50718-50.webp"
-            },
-            {
                 "quantite": 5000,
                 "name": "Reflet onirique",
                 "image": "https://www.dofusbook.net/static/dist/items/164149-50.webp"
+            },
+            {
+                "quantite": 3000,
+                "name": "Pépite",
+                "image": "https://www.dofusbook.net/static/dist/items/50718-50.webp"
             },
             {
                 "quantite": 20,
@@ -1126,8 +1500,8 @@
             },
             {
                 "quantite": 2,
-                "name": "Substrat de Sylve",
-                "image": "https://www.dofusbook.net/static/dist/items/177003-50.webp"
+                "name": "Substrat Astral",
+                "image": "https://www.dofusbook.net/static/dist/items/164833-50.webp"
             },
             {
                 "quantite": 1,
@@ -1247,9 +1621,9 @@
                 "image": "https://www.dofusbook.net/static/dist/items/36662-50.webp"
             },
             {
-                "quantite": 5,
-                "name": "Corne de Volkorne",
-                "image": "https://www.dofusbook.net/static/dist/items/47864-50.webp"
+                "quantite": 10,
+                "name": "Neurone de dragodinde",
+                "image": "https://www.dofusbook.net/static/dist/items/15295-50.webp"
             },
             {
                 "quantite": 4,
@@ -1501,8 +1875,8 @@
                 "image": "https://www.dofusbook.net/static/dist/items/165038-50.webp"
             },
             {
-                "quantite": 5,
-                "name": "Corne de Volkorne",
+                "quantite": 10,
+                "name": "Corne de volkorne",
                 "image": "https://www.dofusbook.net/static/dist/items/47864-50.webp"
             },
             {
@@ -1566,7 +1940,7 @@
             },
             {
                 "quantite": 10,
-                "name": "Ambre gris",
+                "name": "Ambre de muldo",
                 "image": "https://www.dofusbook.net/static/dist/items/164094-50.webp"
             },
             {
@@ -1614,11 +1988,6 @@
         ],
         "recipe": [
             {
-                "quantite": 5000,
-                "name": "Pépite",
-                "image": "https://www.dofusbook.net/static/dist/items/50718-50.webp"
-            },
-            {
                 "quantite": 84,
                 "name": "Tentacule de Démoloch",
                 "image": "https://www.dofusbook.net/static/dist/items/165042-50.webp"
@@ -1632,6 +2001,11 @@
                 "quantite": 12,
                 "name": "Pic de Ravageur",
                 "image": "https://www.dofusbook.net/static/dist/items/165038-50.webp"
+            },
+            {
+                "quantite": 10,
+                "name": "Neurone de dragodinde",
+                "image": "https://www.dofusbook.net/static/dist/items/15295-50.webp"
             },
             {
                 "quantite": 4,
@@ -1693,8 +2067,8 @@
                 "image": "https://www.dofusbook.net/static/dist/items/176029-50.webp"
             },
             {
-                "quantite": 5,
-                "name": "Corne de Volkorne",
+                "quantite": 10,
+                "name": "Corne de volkorne",
                 "image": "https://www.dofusbook.net/static/dist/items/47864-50.webp"
             },
             {
@@ -1741,11 +2115,6 @@
         ],
         "recipe": [
             {
-                "quantite": 5000,
-                "name": "Pépite",
-                "image": "https://www.dofusbook.net/static/dist/items/50718-50.webp"
-            },
-            {
                 "quantite": 84,
                 "name": "Groin de Porkzebuth",
                 "image": "https://www.dofusbook.net/static/dist/items/176033-50.webp"
@@ -1759,6 +2128,11 @@
                 "quantite": 12,
                 "name": "Appendice Démoniaque",
                 "image": "https://www.dofusbook.net/static/dist/items/176029-50.webp"
+            },
+            {
+                "quantite": 10,
+                "name": "Neurone de dragodinde",
+                "image": "https://www.dofusbook.net/static/dist/items/15295-50.webp"
             },
             {
                 "quantite": 4,
@@ -1819,7 +2193,7 @@
             },
             {
                 "quantite": 10,
-                "name": "Ambre gris",
+                "name": "Ambre de muldo",
                 "image": "https://www.dofusbook.net/static/dist/items/164094-50.webp"
             },
             {
@@ -1882,7 +2256,7 @@
             },
             {
                 "quantite": 10,
-                "name": "Ambre gris",
+                "name": "Ambre de muldo",
                 "image": "https://www.dofusbook.net/static/dist/items/164094-50.webp"
             },
             {
@@ -1944,8 +2318,8 @@
                 "image": "https://www.dofusbook.net/static/dist/items/164854-50.webp"
             },
             {
-                "quantite": 5,
-                "name": "Corne de Volkorne",
+                "quantite": 10,
+                "name": "Corne de volkorne",
                 "image": "https://www.dofusbook.net/static/dist/items/47864-50.webp"
             },
             {
@@ -2131,8 +2505,8 @@
                 "image": "https://www.dofusbook.net/static/dist/items/164861-50.webp"
             },
             {
-                "quantite": 5,
-                "name": "Corne de Volkorne",
+                "quantite": 10,
+                "name": "Corne de volkorne",
                 "image": "https://www.dofusbook.net/static/dist/items/47864-50.webp"
             },
             {
@@ -2175,18 +2549,18 @@
         ],
         "recipe": [
             {
-                "quantite": 7500,
-                "name": "Pépite",
-                "image": "https://www.dofusbook.net/static/dist/items/50718-50.webp"
-            },
-            {
                 "quantite": 5000,
                 "name": "Reflet onirique",
                 "image": "https://www.dofusbook.net/static/dist/items/164149-50.webp"
             },
             {
+                "quantite": 3000,
+                "name": "Pépite",
+                "image": "https://www.dofusbook.net/static/dist/items/50718-50.webp"
+            },
+            {
                 "quantite": 20,
-                "name": "Ambre gris",
+                "name": "Ambre de muldo",
                 "image": "https://www.dofusbook.net/static/dist/items/164094-50.webp"
             },
             {
@@ -2240,8 +2614,8 @@
                 "image": "https://www.dofusbook.net/static/dist/items/164149-50.webp"
             },
             {
-                "quantite": 15,
-                "name": "Corne de Volkorne",
+                "quantite": 20,
+                "name": "Corne de volkorne",
                 "image": "https://www.dofusbook.net/static/dist/items/47864-50.webp"
             },
             {
@@ -2314,7 +2688,7 @@
             },
             {
                 "quantite": 10,
-                "name": "Ambre gris",
+                "name": "Ambre de muldo",
                 "image": "https://www.dofusbook.net/static/dist/items/164094-50.webp"
             },
             {
@@ -2541,24 +2915,25 @@
             "41 à 60 Sagesse",
             "7 à 10% Critique",
             "1 PO",
+            "7 à 10 Dommage Air",
             "21 à 30 Dommage Poussée",
             "7 à 10% Résistance Air"
         ],
         "recipe": [
-            {
-                "quantite": 7500,
-                "name": "Pépite",
-                "image": "https://www.dofusbook.net/static/dist/items/50718-50.webp"
-            },
             {
                 "quantite": 5000,
                 "name": "Reflet onirique",
                 "image": "https://www.dofusbook.net/static/dist/items/164149-50.webp"
             },
             {
-                "quantite": 25,
-                "name": "Tourmaline",
-                "image": "https://www.dofusbook.net/static/dist/items/50719-50.webp"
+                "quantite": 3000,
+                "name": "Pépite",
+                "image": "https://www.dofusbook.net/static/dist/items/50718-50.webp"
+            },
+            {
+                "quantite": 20,
+                "name": "Étoffe Mystérieuse",
+                "image": "https://www.dofusbook.net/static/dist/items/15848-50.webp"
             },
             {
                 "quantite": 15,
@@ -2567,8 +2942,8 @@
             },
             {
                 "quantite": 2,
-                "name": "Substrat de Sylve",
-                "image": "https://www.dofusbook.net/static/dist/items/177003-50.webp"
+                "name": "Substrat Astral",
+                "image": "https://www.dofusbook.net/static/dist/items/164833-50.webp"
             },
             {
                 "quantite": 1,
@@ -2595,11 +2970,8 @@
         "level": "200",
         "effects": [
             "451 à 500 Vitalité",
-            "71 à 100 Force",
-            "41 à 50 Intelligence",
-            "51 à 70 Chance",
-            "51 à 70 Agilité",
             "31 à 40 Sagesse",
+            "71 à 100 Puissance",
             "16 à 20 Dommage Neutre",
             "16 à 20 Dommage Terre",
             "16 à 20 Dommage Feu",
@@ -2614,7 +2986,7 @@
                 "image": "https://www.dofusbook.net/static/dist/items/164149-50.webp"
             },
             {
-                "quantite": 25,
+                "quantite": 20,
                 "name": "Tourmaline",
                 "image": "https://www.dofusbook.net/static/dist/items/50719-50.webp"
             },
@@ -2691,8 +3063,8 @@
                 "image": "https://www.dofusbook.net/static/dist/items/37002-50.webp"
             },
             {
-                "quantite": 5,
-                "name": "Corne de Volkorne",
+                "quantite": 10,
+                "name": "Corne de volkorne",
                 "image": "https://www.dofusbook.net/static/dist/items/47864-50.webp"
             },
             {
@@ -2799,8 +3171,8 @@
             },
             {
                 "quantite": 15,
-                "name": "Tourmaline",
-                "image": "https://www.dofusbook.net/static/dist/items/50719-50.webp"
+                "name": "Fragment d'anomalie",
+                "image": "https://www.dofusbook.net/static/dist/items/176051-50.webp"
             },
             {
                 "quantite": 13,
@@ -2853,7 +3225,7 @@
         ],
         "recipe": [
             {
-                "quantite": 5000,
+                "quantite": 2000,
                 "name": "Pépite",
                 "image": "https://www.dofusbook.net/static/dist/items/50718-50.webp"
             },
@@ -2926,14 +3298,14 @@
                 "image": "https://www.dofusbook.net/static/dist/items/109618-50.webp"
             },
             {
-                "quantite": 15,
-                "name": "Tourmaline",
-                "image": "https://www.dofusbook.net/static/dist/items/50719-50.webp"
-            },
-            {
                 "quantite": 12,
                 "name": "Sang de Calciné",
                 "image": "https://www.dofusbook.net/static/dist/items/12771-50.webp"
+            },
+            {
+                "quantite": 10,
+                "name": "Tourmaline",
+                "image": "https://www.dofusbook.net/static/dist/items/50719-50.webp"
             },
             {
                 "quantite": 3,
@@ -2994,8 +3366,8 @@
                 "image": "https://www.dofusbook.net/static/dist/items/15984-50.webp"
             },
             {
-                "quantite": 5,
-                "name": "Corne de Volkorne",
+                "quantite": 10,
+                "name": "Corne de volkorne",
                 "image": "https://www.dofusbook.net/static/dist/items/47864-50.webp"
             },
             {
@@ -3058,8 +3430,8 @@
                 "image": "https://www.dofusbook.net/static/dist/items/15984-50.webp"
             },
             {
-                "quantite": 5,
-                "name": "Corne de Volkorne",
+                "quantite": 10,
+                "name": "Corne de volkorne",
                 "image": "https://www.dofusbook.net/static/dist/items/47864-50.webp"
             },
             {
@@ -3121,8 +3493,8 @@
             },
             {
                 "quantite": 10,
-                "name": "Étoffe Mystérieuse",
-                "image": "https://www.dofusbook.net/static/dist/items/15848-50.webp"
+                "name": "Neurone de dragodinde",
+                "image": "https://www.dofusbook.net/static/dist/items/15295-50.webp"
             },
             {
                 "quantite": 4,
@@ -3247,8 +3619,8 @@
                 "image": "https://www.dofusbook.net/static/dist/items/164139-50.webp"
             },
             {
-                "quantite": 5,
-                "name": "Corne de Volkorne",
+                "quantite": 10,
+                "name": "Corne de volkorne",
                 "image": "https://www.dofusbook.net/static/dist/items/47864-50.webp"
             },
             {
@@ -3368,11 +3740,6 @@
                 "image": "https://www.dofusbook.net/static/dist/items/15952-50.webp"
             },
             {
-                "quantite": 15,
-                "name": "Tourmaline",
-                "image": "https://www.dofusbook.net/static/dist/items/50719-50.webp"
-            },
-            {
                 "quantite": 12,
                 "name": "Scarabée Chrysonéfritin",
                 "image": "https://www.dofusbook.net/static/dist/items/15954-50.webp"
@@ -3391,6 +3758,11 @@
                 "quantite": 3,
                 "name": "Aile de Larve de Koutoulou",
                 "image": "https://www.dofusbook.net/static/dist/items/104749-50.webp"
+            },
+            {
+                "quantite": 2,
+                "name": "Substrat de Sylve",
+                "image": "https://www.dofusbook.net/static/dist/items/177003-50.webp"
             },
             {
                 "quantite": 1,
@@ -3438,8 +3810,8 @@
                 "image": "https://www.dofusbook.net/static/dist/items/15954-50.webp"
             },
             {
-                "quantite": 5,
-                "name": "Corne de Volkorne",
+                "quantite": 10,
+                "name": "Corne de volkorne",
                 "image": "https://www.dofusbook.net/static/dist/items/47864-50.webp"
             },
             {
@@ -3628,7 +4000,7 @@
             },
             {
                 "quantite": 10,
-                "name": "Ambre gris",
+                "name": "Ambre de muldo",
                 "image": "https://www.dofusbook.net/static/dist/items/164094-50.webp"
             },
             {
@@ -3811,7 +4183,7 @@
             },
             {
                 "quantite": 10,
-                "name": "Ambre gris",
+                "name": "Ambre de muldo",
                 "image": "https://www.dofusbook.net/static/dist/items/164094-50.webp"
             },
             {
@@ -3874,7 +4246,7 @@
             },
             {
                 "quantite": 10,
-                "name": "Ambre gris",
+                "name": "Ambre de muldo",
                 "image": "https://www.dofusbook.net/static/dist/items/164094-50.webp"
             },
             {
@@ -3939,7 +4311,7 @@
             },
             {
                 "quantite": 10,
-                "name": "Ambre gris",
+                "name": "Ambre de muldo",
                 "image": "https://www.dofusbook.net/static/dist/items/164094-50.webp"
             },
             {
@@ -4004,9 +4376,9 @@
                 "image": "https://www.dofusbook.net/static/dist/items/164085-50.webp"
             },
             {
-                "quantite": 15,
-                "name": "Fragment d'anomalie",
-                "image": "https://www.dofusbook.net/static/dist/items/176051-50.webp"
+                "quantite": 10,
+                "name": "Neurone de dragodinde",
+                "image": "https://www.dofusbook.net/static/dist/items/15295-50.webp"
             },
             {
                 "quantite": 4,
@@ -4257,8 +4629,8 @@
                 "image": "https://www.dofusbook.net/static/dist/items/15913-50.webp"
             },
             {
-                "quantite": 5,
-                "name": "Corne de Volkorne",
+                "quantite": 10,
+                "name": "Corne de volkorne",
                 "image": "https://www.dofusbook.net/static/dist/items/47864-50.webp"
             },
             {
@@ -4386,8 +4758,8 @@
                 "image": "https://www.dofusbook.net/static/dist/items/15913-50.webp"
             },
             {
-                "quantite": 5,
-                "name": "Corne de Volkorne",
+                "quantite": 10,
+                "name": "Corne de volkorne",
                 "image": "https://www.dofusbook.net/static/dist/items/47864-50.webp"
             },
             {
@@ -4444,13 +4816,13 @@
             },
             {
                 "quantite": 15,
-                "name": "Tourmaline",
-                "image": "https://www.dofusbook.net/static/dist/items/50719-50.webp"
+                "name": "Tête de mort",
+                "image": "https://www.dofusbook.net/static/dist/items/15885-50.webp"
             },
             {
                 "quantite": 15,
-                "name": "Tête de mort",
-                "image": "https://www.dofusbook.net/static/dist/items/15885-50.webp"
+                "name": "Fragment d'anomalie",
+                "image": "https://www.dofusbook.net/static/dist/items/176051-50.webp"
             },
             {
                 "quantite": 4,
@@ -4507,13 +4879,13 @@
             },
             {
                 "quantite": 15,
-                "name": "Tourmaline",
-                "image": "https://www.dofusbook.net/static/dist/items/50719-50.webp"
+                "name": "Tête de mort",
+                "image": "https://www.dofusbook.net/static/dist/items/15885-50.webp"
             },
             {
                 "quantite": 15,
-                "name": "Tête de mort",
-                "image": "https://www.dofusbook.net/static/dist/items/15885-50.webp"
+                "name": "Fragment d'anomalie",
+                "image": "https://www.dofusbook.net/static/dist/items/176051-50.webp"
             },
             {
                 "quantite": 3,
@@ -4569,13 +4941,13 @@
             },
             {
                 "quantite": 15,
-                "name": "Tourmaline",
-                "image": "https://www.dofusbook.net/static/dist/items/50719-50.webp"
-            },
-            {
-                "quantite": 15,
                 "name": "Tête de mort",
                 "image": "https://www.dofusbook.net/static/dist/items/15885-50.webp"
+            },
+            {
+                "quantite": 10,
+                "name": "Tourmaline",
+                "image": "https://www.dofusbook.net/static/dist/items/50719-50.webp"
             },
             {
                 "quantite": 4,
@@ -4634,8 +5006,8 @@
                 "image": "https://www.dofusbook.net/static/dist/items/15885-50.webp"
             },
             {
-                "quantite": 5,
-                "name": "Corne de Volkorne",
+                "quantite": 10,
+                "name": "Corne de volkorne",
                 "image": "https://www.dofusbook.net/static/dist/items/47864-50.webp"
             },
             {
@@ -4700,8 +5072,8 @@
             },
             {
                 "quantite": 15,
-                "name": "Tourmaline",
-                "image": "https://www.dofusbook.net/static/dist/items/50719-50.webp"
+                "name": "Fragment d'anomalie",
+                "image": "https://www.dofusbook.net/static/dist/items/176051-50.webp"
             },
             {
                 "quantite": 4,
@@ -4762,9 +5134,9 @@
                 "image": "https://www.dofusbook.net/static/dist/items/59642-50.webp"
             },
             {
-                "quantite": 15,
-                "name": "Tourmaline",
-                "image": "https://www.dofusbook.net/static/dist/items/50719-50.webp"
+                "quantite": 10,
+                "name": "Corne de volkorne",
+                "image": "https://www.dofusbook.net/static/dist/items/47864-50.webp"
             },
             {
                 "quantite": 2,
@@ -4824,7 +5196,7 @@
                 "image": "https://www.dofusbook.net/static/dist/items/59642-50.webp"
             },
             {
-                "quantite": 15,
+                "quantite": 10,
                 "name": "Tourmaline",
                 "image": "https://www.dofusbook.net/static/dist/items/50719-50.webp"
             },
@@ -4945,8 +5317,8 @@
                 "image": "https://www.dofusbook.net/static/dist/items/47823-50.webp"
             },
             {
-                "quantite": 5,
-                "name": "Corne de Volkorne",
+                "quantite": 10,
+                "name": "Corne de volkorne",
                 "image": "https://www.dofusbook.net/static/dist/items/47864-50.webp"
             },
             {
@@ -5003,7 +5375,7 @@
             },
             {
                 "quantite": 10,
-                "name": "Ambre gris",
+                "name": "Ambre de muldo",
                 "image": "https://www.dofusbook.net/static/dist/items/164094-50.webp"
             },
             {
@@ -5124,7 +5496,7 @@
             },
             {
                 "quantite": 10,
-                "name": "Ambre gris",
+                "name": "Ambre de muldo",
                 "image": "https://www.dofusbook.net/static/dist/items/164094-50.webp"
             },
             {
@@ -5192,8 +5564,8 @@
                 "image": "https://www.dofusbook.net/static/dist/items/15830-50.webp"
             },
             {
-                "quantite": 5,
-                "name": "Corne de Volkorne",
+                "quantite": 10,
+                "name": "Corne de volkorne",
                 "image": "https://www.dofusbook.net/static/dist/items/47864-50.webp"
             },
             {
@@ -5339,11 +5711,6 @@
                 "image": "https://www.dofusbook.net/static/dist/items/56665-50.webp"
             },
             {
-                "quantite": 12,
-                "name": "Tourmaline",
-                "image": "https://www.dofusbook.net/static/dist/items/50719-50.webp"
-            },
-            {
                 "quantite": 8,
                 "name": "Étoffe Mystérieuse",
                 "image": "https://www.dofusbook.net/static/dist/items/15848-50.webp"
@@ -5367,6 +5734,11 @@
                 "quantite": 1,
                 "name": "Fermeture éclair",
                 "image": "https://www.dofusbook.net/static/dist/items/15833-50.webp"
+            },
+            {
+                "quantite": 1,
+                "name": "Substrat de Sylve",
+                "image": "https://www.dofusbook.net/static/dist/items/177003-50.webp"
             }
         ]
     },
@@ -5397,18 +5769,18 @@
             },
             {
                 "quantite": 12,
-                "name": "Trame Dimensionnelle",
-                "image": "https://www.dofusbook.net/static/dist/items/59642-50.webp"
-            },
-            {
-                "quantite": 12,
-                "name": "Tourmaline",
-                "image": "https://www.dofusbook.net/static/dist/items/50719-50.webp"
+                "name": "Fragment d'anomalie",
+                "image": "https://www.dofusbook.net/static/dist/items/176051-50.webp"
             },
             {
                 "quantite": 8,
                 "name": "Dent de Cuirboule",
                 "image": "https://www.dofusbook.net/static/dist/items/47805-50.webp"
+            },
+            {
+                "quantite": 8,
+                "name": "Ambre de muldo",
+                "image": "https://www.dofusbook.net/static/dist/items/164094-50.webp"
             },
             {
                 "quantite": 3,
@@ -5464,11 +5836,6 @@
                 "image": "https://www.dofusbook.net/static/dist/items/56663-50.webp"
             },
             {
-                "quantite": 12,
-                "name": "Tourmaline",
-                "image": "https://www.dofusbook.net/static/dist/items/50719-50.webp"
-            },
-            {
                 "quantite": 8,
                 "name": "Aile de Gloursaya",
                 "image": "https://www.dofusbook.net/static/dist/items/104217-50.webp"
@@ -5492,6 +5859,11 @@
                 "quantite": 1,
                 "name": "Hamatum de Glourséleste",
                 "image": "https://www.dofusbook.net/static/dist/items/47687-50.webp"
+            },
+            {
+                "quantite": 1,
+                "name": "Substrat de Sylve",
+                "image": "https://www.dofusbook.net/static/dist/items/177003-50.webp"
             }
         ]
     },
@@ -5592,8 +5964,8 @@
             },
             {
                 "quantite": 8,
-                "name": "Étoffe Mystérieuse",
-                "image": "https://www.dofusbook.net/static/dist/items/15848-50.webp"
+                "name": "Neurone de dragodinde",
+                "image": "https://www.dofusbook.net/static/dist/items/15295-50.webp"
             },
             {
                 "quantite": 3,
@@ -5649,11 +6021,6 @@
                 "image": "https://www.dofusbook.net/static/dist/items/47678-50.webp"
             },
             {
-                "quantite": 12,
-                "name": "Trame Dimensionnelle",
-                "image": "https://www.dofusbook.net/static/dist/items/59642-50.webp"
-            },
-            {
                 "quantite": 8,
                 "name": "Oreille de Blérice",
                 "image": "https://www.dofusbook.net/static/dist/items/106633-50.webp"
@@ -5662,6 +6029,11 @@
                 "quantite": 8,
                 "name": "Calcanéus de Meliglours",
                 "image": "https://www.dofusbook.net/static/dist/items/47688-50.webp"
+            },
+            {
+                "quantite": 8,
+                "name": "Corne de volkorne",
+                "image": "https://www.dofusbook.net/static/dist/items/47864-50.webp"
             },
             {
                 "quantite": 3,
@@ -5905,8 +6277,8 @@
             },
             {
                 "quantite": 12,
-                "name": "Tourmaline",
-                "image": "https://www.dofusbook.net/static/dist/items/50719-50.webp"
+                "name": "Fragment d'anomalie",
+                "image": "https://www.dofusbook.net/static/dist/items/176051-50.webp"
             },
             {
                 "quantite": 9,
@@ -5966,14 +6338,14 @@
                 "image": "https://www.dofusbook.net/static/dist/items/36639-50.webp"
             },
             {
-                "quantite": 12,
-                "name": "Tourmaline",
-                "image": "https://www.dofusbook.net/static/dist/items/50719-50.webp"
-            },
-            {
                 "quantite": 9,
                 "name": "Ethmoïde de Stalak",
                 "image": "https://www.dofusbook.net/static/dist/items/47808-50.webp"
+            },
+            {
+                "quantite": 8,
+                "name": "Tourmaline",
+                "image": "https://www.dofusbook.net/static/dist/items/50719-50.webp"
             },
             {
                 "quantite": 3,
@@ -6030,14 +6402,14 @@
                 "image": "https://www.dofusbook.net/static/dist/items/47817-50.webp"
             },
             {
-                "quantite": 12,
-                "name": "Tourmaline",
-                "image": "https://www.dofusbook.net/static/dist/items/50719-50.webp"
-            },
-            {
                 "quantite": 8,
                 "name": "Cœur d'Empaillé",
                 "image": "https://www.dofusbook.net/static/dist/items/15822-50.webp"
+            },
+            {
+                "quantite": 8,
+                "name": "Tourmaline",
+                "image": "https://www.dofusbook.net/static/dist/items/50719-50.webp"
             },
             {
                 "quantite": 3,
@@ -6076,7 +6448,7 @@
             "251 à 300 Vitalité",
             "41 à 60 Chance",
             "31 à 50 Sagesse",
-            "1 à 2 Invocation",
+            "2 Invocation",
             "7 à 10 Dommage Neutre",
             "7 à 10 Dommage Eau",
             "21 à 30 Prospection",
@@ -6098,8 +6470,8 @@
             },
             {
                 "quantite": 12,
-                "name": "Tourmaline",
-                "image": "https://www.dofusbook.net/static/dist/items/50719-50.webp"
+                "name": "Fragment d'anomalie",
+                "image": "https://www.dofusbook.net/static/dist/items/176051-50.webp"
             },
             {
                 "quantite": 10,
@@ -6161,9 +6533,9 @@
                 "image": "https://www.dofusbook.net/static/dist/items/119002-50.webp"
             },
             {
-                "quantite": 12,
-                "name": "Trame Dimensionnelle",
-                "image": "https://www.dofusbook.net/static/dist/items/59642-50.webp"
+                "quantite": 8,
+                "name": "Neurone de dragodinde",
+                "image": "https://www.dofusbook.net/static/dist/items/15295-50.webp"
             },
             {
                 "quantite": 3,
@@ -6285,14 +6657,14 @@
                 "image": "https://www.dofusbook.net/static/dist/items/36639-50.webp"
             },
             {
-                "quantite": 12,
-                "name": "Tourmaline",
-                "image": "https://www.dofusbook.net/static/dist/items/50719-50.webp"
-            },
-            {
                 "quantite": 8,
                 "name": "Molaire de Nessil",
                 "image": "https://www.dofusbook.net/static/dist/items/47811-50.webp"
+            },
+            {
+                "quantite": 8,
+                "name": "Tourmaline",
+                "image": "https://www.dofusbook.net/static/dist/items/50719-50.webp"
             },
             {
                 "quantite": 3,
@@ -6451,6 +6823,69 @@
         ]
     },
     {
+        "name": "Fléau du Docteur Eggob",
+        "image": "https://www.dofusbook.net/static/dist/items/3095-70.webp",
+        "type": "Baguette",
+        "set": "Panoplie du Docteur Eggob",
+        "level": "195",
+        "effects": [
+            "251 à 300 Vitalité",
+            "41 à 50 Force",
+            "41 à 50 Chance",
+            "41 à 50 Sagesse",
+            "1 PO",
+            "11 à 15 Dommage Neutre",
+            "11 à 15 Dommage Terre",
+            "11 à 15 Dommage Eau",
+            "11 à 15 Prospection",
+            "11 à 15 Dommage Poussée",
+            "4 à 7% Résistance Terre",
+            "4 à 7% Résistance Feu"
+        ],
+        "recipe": [
+            {
+                "quantite": 48,
+                "name": "Oreille de Gobosteur",
+                "image": "https://www.dofusbook.net/static/dist/items/106628-50.webp"
+            },
+            {
+                "quantite": 13,
+                "name": "Pierre du Courtilieur",
+                "image": "https://www.dofusbook.net/static/dist/items/51466-50.webp"
+            },
+            {
+                "quantite": 10,
+                "name": "Fragment de pépite de Sakaï",
+                "image": "https://www.dofusbook.net/static/dist/items/51467-50.webp"
+            },
+            {
+                "quantite": 8,
+                "name": "Corne de volkorne",
+                "image": "https://www.dofusbook.net/static/dist/items/47864-50.webp"
+            },
+            {
+                "quantite": 1,
+                "name": "Fragment d'Ougalurette",
+                "image": "https://www.dofusbook.net/static/dist/items/15041-50.webp"
+            },
+            {
+                "quantite": 1,
+                "name": "Eclat temporel",
+                "image": "https://www.dofusbook.net/static/dist/items/50708-50.webp"
+            },
+            {
+                "quantite": 1,
+                "name": "Substrat de Sylve",
+                "image": "https://www.dofusbook.net/static/dist/items/177003-50.webp"
+            },
+            {
+                "quantite": 1,
+                "name": "Moustache du Docteur Eggob",
+                "image": "https://www.dofusbook.net/static/dist/items/54016-50.webp"
+            }
+        ]
+    },
+    {
         "name": "Kornzbz Chzazzzbz",
         "image": "https://www.dofusbook.net/static/dist/items/7095-70.webp",
         "type": "Marteau",
@@ -6545,14 +6980,14 @@
                 "image": "https://www.dofusbook.net/static/dist/items/15956-50.webp"
             },
             {
-                "quantite": 12,
-                "name": "Tourmaline",
-                "image": "https://www.dofusbook.net/static/dist/items/50719-50.webp"
-            },
-            {
                 "quantite": 10,
                 "name": "Bouteille de Bouchonnois",
                 "image": "https://www.dofusbook.net/static/dist/items/15962-50.webp"
+            },
+            {
+                "quantite": 8,
+                "name": "Tourmaline",
+                "image": "https://www.dofusbook.net/static/dist/items/50719-50.webp"
             },
             {
                 "quantite": 3,
@@ -6678,8 +7113,8 @@
             },
             {
                 "quantite": 12,
-                "name": "Tourmaline",
-                "image": "https://www.dofusbook.net/static/dist/items/50719-50.webp"
+                "name": "Fragment d'anomalie",
+                "image": "https://www.dofusbook.net/static/dist/items/176051-50.webp"
             },
             {
                 "quantite": 3,
@@ -6704,10 +7139,73 @@
         ]
     },
     {
+        "name": "Faux de San Jifu",
+        "image": "https://www.dofusbook.net/static/dist/items/22015-70.webp",
+        "type": "Faux",
+        "set": "Panoplie de San Jifu",
+        "level": "194",
+        "effects": [
+            "201 à 250 Vitalité",
+            "41 à 60 Intelligence",
+            "41 à 60 Chance",
+            "31 à 40 Sagesse",
+            "3 à 4% Critique",
+            "11 à 15 Dommage Feu",
+            "11 à 15 Dommage Eau",
+            "11 à 15 Prospection",
+            "4 à 5 Fuite",
+            "4 à 5 Retrait PA",
+            "5 à 7% Résistance Feu",
+            "5 à 7% Résistance Eau"
+        ],
+        "recipe": [
+            {
+                "quantite": 10,
+                "name": "Larme de Givrefoux",
+                "image": "https://www.dofusbook.net/static/dist/items/24871-50.webp"
+            },
+            {
+                "quantite": 9,
+                "name": "Queue de Yomi Givrefoux",
+                "image": "https://www.dofusbook.net/static/dist/items/65758-50.webp"
+            },
+            {
+                "quantite": 4,
+                "name": "Galet rayonnant",
+                "image": "https://www.dofusbook.net/static/dist/items/152001-50.webp"
+            },
+            {
+                "quantite": 2,
+                "name": "Cornée de Kami Givrefoux",
+                "image": "https://www.dofusbook.net/static/dist/items/109599-50.webp"
+            },
+            {
+                "quantite": 1,
+                "name": "Condyle de Fuji Givrefoux",
+                "image": "https://www.dofusbook.net/static/dist/items/47677-50.webp"
+            },
+            {
+                "quantite": 1,
+                "name": "Ardonite",
+                "image": "https://www.dofusbook.net/static/dist/items/40710-50.webp"
+            },
+            {
+                "quantite": 1,
+                "name": "Carapace de Supervizœuf",
+                "image": "https://www.dofusbook.net/static/dist/items/107440-50.webp"
+            },
+            {
+                "quantite": 1,
+                "name": "Laine de Fuji Givrefoux",
+                "image": "https://www.dofusbook.net/static/dist/items/57216-50.webp"
+            }
+        ]
+    },
+    {
         "name": "Tonfas de Barbéryl",
         "image": "https://www.dofusbook.net/static/dist/items/5102-70.webp",
         "type": "Dagues",
-        "set": "Panoplie de Barbéryl Clochecuivre",
+        "set": "Panoplie de Barbéryl",
         "level": "194",
         "effects": [
             "301 à 350 Vitalité",
@@ -6734,14 +7232,14 @@
                 "image": "https://www.dofusbook.net/static/dist/items/165062-50.webp"
             },
             {
-                "quantite": 12,
-                "name": "Tourmaline",
-                "image": "https://www.dofusbook.net/static/dist/items/50719-50.webp"
-            },
-            {
                 "quantite": 10,
                 "name": "Poils de barbe de Marteau-Aigri",
                 "image": "https://www.dofusbook.net/static/dist/items/165064-50.webp"
+            },
+            {
+                "quantite": 8,
+                "name": "Tourmaline",
+                "image": "https://www.dofusbook.net/static/dist/items/50719-50.webp"
             },
             {
                 "quantite": 4,
@@ -6840,7 +7338,7 @@
             "21 à 30 Sagesse",
             "21 à 30 Puissance",
             "3 à 4% Critique",
-            "1 à 2 Invocation",
+            "2 Invocation",
             "7 à 10 Prospection",
             "5 à 7 Esquive PA",
             "4 à 5% Résistance Feu",
@@ -6850,11 +7348,6 @@
             "4 à 5 Résistance Eau"
         ],
         "recipe": [
-            {
-                "quantite": 12,
-                "name": "Trame Dimensionnelle",
-                "image": "https://www.dofusbook.net/static/dist/items/59642-50.webp"
-            },
             {
                 "quantite": 9,
                 "name": "Œil de Fleuro",
@@ -6869,6 +7362,11 @@
                 "quantite": 8,
                 "name": "Étoffe de Croleur",
                 "image": "https://www.dofusbook.net/static/dist/items/55734-50.webp"
+            },
+            {
+                "quantite": 8,
+                "name": "Corne de volkorne",
+                "image": "https://www.dofusbook.net/static/dist/items/47864-50.webp"
             },
             {
                 "quantite": 4,
@@ -6915,7 +7413,7 @@
         ],
         "recipe": [
             {
-                "quantite": 2500,
+                "quantite": 1500,
                 "name": "Pépite",
                 "image": "https://www.dofusbook.net/static/dist/items/50718-50.webp"
             },
@@ -6994,9 +7492,9 @@
                 "image": "https://www.dofusbook.net/static/dist/items/65759-50.webp"
             },
             {
-                "quantite": 12,
-                "name": "Trame Dimensionnelle",
-                "image": "https://www.dofusbook.net/static/dist/items/59642-50.webp"
+                "quantite": 8,
+                "name": "Ambre de muldo",
+                "image": "https://www.dofusbook.net/static/dist/items/164094-50.webp"
             },
             {
                 "quantite": 2,
@@ -7085,12 +7583,12 @@
         "name": "Grésilosceptre",
         "image": "https://www.dofusbook.net/static/dist/items/4094-70.webp",
         "type": "Bâton",
-        "set": "Aucune",
+        "set": "Panoplie Grésil",
         "level": "192",
         "effects": [
             "301 à 350 Vitalité",
-            "41 à 60 Intelligence",
-            "41 à 60 Agilité",
+            "41 à 60 Force",
+            "41 à 60 Chance",
             "31 à 50 Sagesse",
             "1 PO",
             "5 à 7 Dommage",
@@ -7111,14 +7609,14 @@
                 "image": "https://www.dofusbook.net/static/dist/items/109593-50.webp"
             },
             {
-                "quantite": 12,
-                "name": "Trame Dimensionnelle",
-                "image": "https://www.dofusbook.net/static/dist/items/59642-50.webp"
-            },
-            {
                 "quantite": 10,
                 "name": "Fragment de pépite de Sakaï",
                 "image": "https://www.dofusbook.net/static/dist/items/51467-50.webp"
+            },
+            {
+                "quantite": 8,
+                "name": "Ambre de muldo",
+                "image": "https://www.dofusbook.net/static/dist/items/164094-50.webp"
             },
             {
                 "quantite": 3,
@@ -7166,7 +7664,7 @@
         ],
         "recipe": [
             {
-                "quantite": 2500,
+                "quantite": 1500,
                 "name": "Pépite",
                 "image": "https://www.dofusbook.net/static/dist/items/50718-50.webp"
             },
@@ -7293,14 +7791,14 @@
                 "image": "https://www.dofusbook.net/static/dist/items/96109-50.webp"
             },
             {
-                "quantite": 12,
-                "name": "Trame Dimensionnelle",
-                "image": "https://www.dofusbook.net/static/dist/items/59642-50.webp"
-            },
-            {
                 "quantite": 10,
                 "name": "Fibre de Chanvre",
                 "image": "https://www.dofusbook.net/static/dist/items/55123-50.webp"
+            },
+            {
+                "quantite": 8,
+                "name": "Ambre de muldo",
+                "image": "https://www.dofusbook.net/static/dist/items/164094-50.webp"
             },
             {
                 "quantite": 3,
@@ -7321,6 +7819,68 @@
                 "quantite": 1,
                 "name": "Substrat de Sylve",
                 "image": "https://www.dofusbook.net/static/dist/items/177003-50.webp"
+            }
+        ]
+    },
+    {
+        "name": "Flashaux",
+        "image": "https://www.dofusbook.net/static/dist/items/22016-70.webp",
+        "type": "Faux",
+        "set": "Panoplie de Flasho",
+        "level": "190",
+        "effects": [
+            "301 à 350 Vitalité",
+            "31 à 40 Intelligence",
+            "31 à 40 Sagesse",
+            "31 à 40 Puissance",
+            "4 à 6% Critique",
+            "1 Invocation",
+            "11 à 15 Dommage Feu",
+            "11 à 15 Prospection",
+            "4 à 6 Retrait PA",
+            "5 à 8% Résistance Feu",
+            "5 à 8% Résistance Air"
+        ],
+        "recipe": [
+            {
+                "quantite": 9,
+                "name": "Manubrium de Wolvero",
+                "image": "https://www.dofusbook.net/static/dist/items/47679-50.webp"
+            },
+            {
+                "quantite": 9,
+                "name": "Poil de Blérauve",
+                "image": "https://www.dofusbook.net/static/dist/items/54681-50.webp"
+            },
+            {
+                "quantite": 4,
+                "name": "Galet rayonnant",
+                "image": "https://www.dofusbook.net/static/dist/items/152001-50.webp"
+            },
+            {
+                "quantite": 2,
+                "name": "Queue de Blérom",
+                "image": "https://www.dofusbook.net/static/dist/items/65760-50.webp"
+            },
+            {
+                "quantite": 1,
+                "name": "Étoffe de Kolosso",
+                "image": "https://www.dofusbook.net/static/dist/items/55735-50.webp"
+            },
+            {
+                "quantite": 1,
+                "name": "Ardonite",
+                "image": "https://www.dofusbook.net/static/dist/items/40710-50.webp"
+            },
+            {
+                "quantite": 1,
+                "name": "Carapace de Supervizœuf",
+                "image": "https://www.dofusbook.net/static/dist/items/107440-50.webp"
+            },
+            {
+                "quantite": 1,
+                "name": "Éclair de Flasho",
+                "image": "https://www.dofusbook.net/static/dist/items/80047-50.webp"
             }
         ]
     },
@@ -7416,8 +7976,8 @@
             },
             {
                 "quantite": 12,
-                "name": "Tourmaline",
-                "image": "https://www.dofusbook.net/static/dist/items/50719-50.webp"
+                "name": "Fragment d'anomalie",
+                "image": "https://www.dofusbook.net/static/dist/items/176051-50.webp"
             },
             {
                 "quantite": 10,
@@ -7478,8 +8038,8 @@
             },
             {
                 "quantite": 12,
-                "name": "Tourmaline",
-                "image": "https://www.dofusbook.net/static/dist/items/50719-50.webp"
+                "name": "Fragment d'anomalie",
+                "image": "https://www.dofusbook.net/static/dist/items/176051-50.webp"
             },
             {
                 "quantite": 2,
@@ -7603,9 +8163,9 @@
                 "image": "https://www.dofusbook.net/static/dist/items/119003-50.webp"
             },
             {
-                "quantite": 12,
-                "name": "Trame Dimensionnelle",
-                "image": "https://www.dofusbook.net/static/dist/items/59642-50.webp"
+                "quantite": 8,
+                "name": "Neurone de dragodinde",
+                "image": "https://www.dofusbook.net/static/dist/items/15295-50.webp"
             },
             {
                 "quantite": 4,
@@ -7661,9 +8221,9 @@
                 "image": "https://www.dofusbook.net/static/dist/items/119002-50.webp"
             },
             {
-                "quantite": 12,
-                "name": "Trame Dimensionnelle",
-                "image": "https://www.dofusbook.net/static/dist/items/59642-50.webp"
+                "quantite": 8,
+                "name": "Corne de volkorne",
+                "image": "https://www.dofusbook.net/static/dist/items/47864-50.webp"
             },
             {
                 "quantite": 6,
@@ -7726,8 +8286,8 @@
             },
             {
                 "quantite": 12,
-                "name": "Tourmaline",
-                "image": "https://www.dofusbook.net/static/dist/items/50719-50.webp"
+                "name": "Fragment d'anomalie",
+                "image": "https://www.dofusbook.net/static/dist/items/176051-50.webp"
             },
             {
                 "quantite": 9,
@@ -7780,14 +8340,14 @@
                 "image": "https://www.dofusbook.net/static/dist/items/164003-50.webp"
             },
             {
-                "quantite": 12,
-                "name": "Trame Dimensionnelle",
-                "image": "https://www.dofusbook.net/static/dist/items/59642-50.webp"
-            },
-            {
                 "quantite": 9,
                 "name": "String en Cuir de la Mama Bwork",
                 "image": "https://www.dofusbook.net/static/dist/items/164000-50.webp"
+            },
+            {
+                "quantite": 8,
+                "name": "Corne de volkorne",
+                "image": "https://www.dofusbook.net/static/dist/items/47864-50.webp"
             },
             {
                 "quantite": 4,
@@ -7843,14 +8403,14 @@
                 "image": "https://www.dofusbook.net/static/dist/items/119001-50.webp"
             },
             {
-                "quantite": 12,
-                "name": "Trame Dimensionnelle",
-                "image": "https://www.dofusbook.net/static/dist/items/59642-50.webp"
-            },
-            {
                 "quantite": 9,
                 "name": "Racine d'Abrazif",
                 "image": "https://www.dofusbook.net/static/dist/items/98669-50.webp"
+            },
+            {
+                "quantite": 8,
+                "name": "Neurone de dragodinde",
+                "image": "https://www.dofusbook.net/static/dist/items/15295-50.webp"
             },
             {
                 "quantite": 4,
@@ -7909,14 +8469,14 @@
                 "image": "https://www.dofusbook.net/static/dist/items/15764-50.webp"
             },
             {
-                "quantite": 12,
-                "name": "Tourmaline",
-                "image": "https://www.dofusbook.net/static/dist/items/50719-50.webp"
-            },
-            {
                 "quantite": 10,
                 "name": "Fibre de Chanvre",
                 "image": "https://www.dofusbook.net/static/dist/items/55123-50.webp"
+            },
+            {
+                "quantite": 8,
+                "name": "Tourmaline",
+                "image": "https://www.dofusbook.net/static/dist/items/50719-50.webp"
             },
             {
                 "quantite": 4,
@@ -7967,11 +8527,6 @@
                 "image": "https://www.dofusbook.net/static/dist/items/119003-50.webp"
             },
             {
-                "quantite": 12,
-                "name": "Trame Dimensionnelle",
-                "image": "https://www.dofusbook.net/static/dist/items/59642-50.webp"
-            },
-            {
                 "quantite": 9,
                 "name": "Oreille de Fistulor",
                 "image": "https://www.dofusbook.net/static/dist/items/106630-50.webp"
@@ -7980,6 +8535,11 @@
                 "quantite": 9,
                 "name": "Racine d'Abrazif",
                 "image": "https://www.dofusbook.net/static/dist/items/98669-50.webp"
+            },
+            {
+                "quantite": 8,
+                "name": "Neurone de dragodinde",
+                "image": "https://www.dofusbook.net/static/dist/items/15295-50.webp"
             },
             {
                 "quantite": 4,
@@ -8024,11 +8584,6 @@
                 "image": "https://www.dofusbook.net/static/dist/items/119002-50.webp"
             },
             {
-                "quantite": 12,
-                "name": "Trame Dimensionnelle",
-                "image": "https://www.dofusbook.net/static/dist/items/59642-50.webp"
-            },
-            {
                 "quantite": 11,
                 "name": "Lamelle de Mérulette",
                 "image": "https://www.dofusbook.net/static/dist/items/119003-50.webp"
@@ -8037,6 +8592,11 @@
                 "quantite": 9,
                 "name": "Pédoncule de Fongeur",
                 "image": "https://www.dofusbook.net/static/dist/items/119005-50.webp"
+            },
+            {
+                "quantite": 8,
+                "name": "Corne de volkorne",
+                "image": "https://www.dofusbook.net/static/dist/items/47864-50.webp"
             },
             {
                 "quantite": 4,
@@ -8089,14 +8649,14 @@
                 "image": "https://www.dofusbook.net/static/dist/items/15045-50.webp"
             },
             {
-                "quantite": 12,
-                "name": "Trame Dimensionnelle",
-                "image": "https://www.dofusbook.net/static/dist/items/59642-50.webp"
-            },
-            {
                 "quantite": 10,
                 "name": "Fibre de Chanvre",
                 "image": "https://www.dofusbook.net/static/dist/items/55123-50.webp"
+            },
+            {
+                "quantite": 8,
+                "name": "Corne de volkorne",
+                "image": "https://www.dofusbook.net/static/dist/items/47864-50.webp"
             },
             {
                 "quantite": 4,
@@ -8151,14 +8711,14 @@
                 "image": "https://www.dofusbook.net/static/dist/items/119003-50.webp"
             },
             {
-                "quantite": 12,
-                "name": "Tourmaline",
-                "image": "https://www.dofusbook.net/static/dist/items/50719-50.webp"
-            },
-            {
                 "quantite": 8,
                 "name": "Oreille de Fistulor",
                 "image": "https://www.dofusbook.net/static/dist/items/106630-50.webp"
+            },
+            {
+                "quantite": 8,
+                "name": "Tourmaline",
+                "image": "https://www.dofusbook.net/static/dist/items/50719-50.webp"
             },
             {
                 "quantite": 4,
@@ -8205,9 +8765,9 @@
                 "image": "https://www.dofusbook.net/static/dist/items/15765-50.webp"
             },
             {
-                "quantite": 12,
-                "name": "Trame Dimensionnelle",
-                "image": "https://www.dofusbook.net/static/dist/items/59642-50.webp"
+                "quantite": 8,
+                "name": "Neurone de dragodinde",
+                "image": "https://www.dofusbook.net/static/dist/items/15295-50.webp"
             },
             {
                 "quantite": 6,
@@ -8245,12 +8805,12 @@
         "name": "Lame Assacre",
         "image": "https://www.dofusbook.net/static/dist/items/5070-70.webp",
         "type": "Dagues",
-        "set": "Panoplie du Bworker Gladiateur",
+        "set": "Panoplie du Bworker Berserker",
         "level": "182",
         "effects": [
             "251 à 300 Vitalité",
-            "31 à 50 Intelligence",
-            "31 à 50 Chance",
+            "31 à 50 Force",
+            "31 à 50 Agilité",
             "2 à 3% Critique",
             "4 à 6 Dommage",
             "6 à 10% Résistance Air",
@@ -8389,14 +8949,14 @@
                 "image": "https://www.dofusbook.net/static/dist/items/119002-50.webp"
             },
             {
-                "quantite": 12,
-                "name": "Tourmaline",
-                "image": "https://www.dofusbook.net/static/dist/items/50719-50.webp"
-            },
-            {
                 "quantite": 8,
                 "name": "Pédoncule de Fongeur",
                 "image": "https://www.dofusbook.net/static/dist/items/119005-50.webp"
+            },
+            {
+                "quantite": 8,
+                "name": "Tourmaline",
+                "image": "https://www.dofusbook.net/static/dist/items/50719-50.webp"
             },
             {
                 "quantite": 2,
@@ -8458,9 +9018,9 @@
                 "image": "https://www.dofusbook.net/static/dist/items/55123-50.webp"
             },
             {
-                "quantite": 9,
-                "name": "Trame Dimensionnelle",
-                "image": "https://www.dofusbook.net/static/dist/items/59642-50.webp"
+                "quantite": 6,
+                "name": "Neurone de dragodinde",
+                "image": "https://www.dofusbook.net/static/dist/items/15295-50.webp"
             },
             {
                 "quantite": 3,
@@ -8681,11 +9241,6 @@
         ],
         "recipe": [
             {
-                "quantite": 45,
-                "name": "Corne de Gamino",
-                "image": "https://www.dofusbook.net/static/dist/items/47699-50.webp"
-            },
-            {
                 "quantite": 10,
                 "name": "Bandelette du Mominotor",
                 "image": "https://www.dofusbook.net/static/dist/items/15734-50.webp"
@@ -8697,8 +9252,13 @@
             },
             {
                 "quantite": 9,
-                "name": "Tourmaline",
-                "image": "https://www.dofusbook.net/static/dist/items/50719-50.webp"
+                "name": "Fragment d'anomalie",
+                "image": "https://www.dofusbook.net/static/dist/items/176051-50.webp"
+            },
+            {
+                "quantite": 8,
+                "name": "Corne de Gamino",
+                "image": "https://www.dofusbook.net/static/dist/items/47699-50.webp"
             },
             {
                 "quantite": 4,
@@ -9121,8 +9681,8 @@
             },
             {
                 "quantite": 9,
-                "name": "Tourmaline",
-                "image": "https://www.dofusbook.net/static/dist/items/50719-50.webp"
+                "name": "Fragment d'anomalie",
+                "image": "https://www.dofusbook.net/static/dist/items/176051-50.webp"
             },
             {
                 "quantite": 8,
@@ -9809,11 +10369,6 @@
                 "image": "https://www.dofusbook.net/static/dist/items/51474-50.webp"
             },
             {
-                "quantite": 9,
-                "name": "Trame Dimensionnelle",
-                "image": "https://www.dofusbook.net/static/dist/items/59642-50.webp"
-            },
-            {
                 "quantite": 8,
                 "name": "Ulna de Solfataré",
                 "image": "https://www.dofusbook.net/static/dist/items/47674-50.webp"
@@ -9822,6 +10377,11 @@
                 "quantite": 7,
                 "name": "Œuf de Crapeur",
                 "image": "https://www.dofusbook.net/static/dist/items/105645-50.webp"
+            },
+            {
+                "quantite": 6,
+                "name": "Corne de volkorne",
+                "image": "https://www.dofusbook.net/static/dist/items/47864-50.webp"
             },
             {
                 "quantite": 4,
@@ -10011,9 +10571,9 @@
                 "image": "https://www.dofusbook.net/static/dist/items/164035-50.webp"
             },
             {
-                "quantite": 9,
-                "name": "Trame Dimensionnelle",
-                "image": "https://www.dofusbook.net/static/dist/items/59642-50.webp"
+                "quantite": 6,
+                "name": "Corne de volkorne",
+                "image": "https://www.dofusbook.net/static/dist/items/47864-50.webp"
             },
             {
                 "quantite": 2,
@@ -10124,7 +10684,7 @@
         ],
         "recipe": [
             {
-                "quantite": 1000,
+                "quantite": 750,
                 "name": "Pépite",
                 "image": "https://www.dofusbook.net/static/dist/items/50718-50.webp"
             },
@@ -10268,8 +10828,8 @@
             },
             {
                 "quantite": 9,
-                "name": "Tourmaline",
-                "image": "https://www.dofusbook.net/static/dist/items/50719-50.webp"
+                "name": "Fragment d'anomalie",
+                "image": "https://www.dofusbook.net/static/dist/items/176051-50.webp"
             },
             {
                 "quantite": 2,
@@ -10374,8 +10934,8 @@
             },
             {
                 "quantite": 9,
-                "name": "Tourmaline",
-                "image": "https://www.dofusbook.net/static/dist/items/50719-50.webp"
+                "name": "Fragment d'anomalie",
+                "image": "https://www.dofusbook.net/static/dist/items/176051-50.webp"
             },
             {
                 "quantite": 7,
@@ -10989,9 +11549,9 @@
                 "image": "https://www.dofusbook.net/static/dist/items/15870-50.webp"
             },
             {
-                "quantite": 6,
-                "name": "Trame Dimensionnelle",
-                "image": "https://www.dofusbook.net/static/dist/items/59642-50.webp"
+                "quantite": 4,
+                "name": "Neurone de dragodinde",
+                "image": "https://www.dofusbook.net/static/dist/items/15295-50.webp"
             },
             {
                 "quantite": 3,
@@ -11053,8 +11613,8 @@
             },
             {
                 "quantite": 6,
-                "name": "Tourmaline",
-                "image": "https://www.dofusbook.net/static/dist/items/50719-50.webp"
+                "name": "Fragment d'anomalie",
+                "image": "https://www.dofusbook.net/static/dist/items/176051-50.webp"
             },
             {
                 "quantite": 3,
@@ -11116,8 +11676,8 @@
             },
             {
                 "quantite": 6,
-                "name": "Tourmaline",
-                "image": "https://www.dofusbook.net/static/dist/items/50719-50.webp"
+                "name": "Fragment d'anomalie",
+                "image": "https://www.dofusbook.net/static/dist/items/176051-50.webp"
             },
             {
                 "quantite": 3,
@@ -11481,14 +12041,14 @@
                 "image": "https://www.dofusbook.net/static/dist/items/36655-50.webp"
             },
             {
-                "quantite": 6,
-                "name": "Tourmaline",
-                "image": "https://www.dofusbook.net/static/dist/items/50719-50.webp"
-            },
-            {
                 "quantite": 4,
                 "name": "Mèche Rebelle d'Hell Mina",
                 "image": "https://www.dofusbook.net/static/dist/items/54715-50.webp"
+            },
+            {
+                "quantite": 4,
+                "name": "Tourmaline",
+                "image": "https://www.dofusbook.net/static/dist/items/50719-50.webp"
             },
             {
                 "quantite": 3,
@@ -11604,9 +12164,9 @@
                 "image": "https://www.dofusbook.net/static/dist/items/24284-50.webp"
             },
             {
-                "quantite": 6,
-                "name": "Trame Dimensionnelle",
-                "image": "https://www.dofusbook.net/static/dist/items/59642-50.webp"
+                "quantite": 4,
+                "name": "Corne de volkorne",
+                "image": "https://www.dofusbook.net/static/dist/items/47864-50.webp"
             },
             {
                 "quantite": 3,
@@ -11670,8 +12230,8 @@
             },
             {
                 "quantite": 6,
-                "name": "Tourmaline",
-                "image": "https://www.dofusbook.net/static/dist/items/50719-50.webp"
+                "name": "Fragment d'anomalie",
+                "image": "https://www.dofusbook.net/static/dist/items/176051-50.webp"
             },
             {
                 "quantite": 4,
@@ -11731,9 +12291,9 @@
                 "image": "https://www.dofusbook.net/static/dist/items/111002-50.webp"
             },
             {
-                "quantite": 6,
-                "name": "Trame Dimensionnelle",
-                "image": "https://www.dofusbook.net/static/dist/items/59642-50.webp"
+                "quantite": 4,
+                "name": "Neurone de dragodinde",
+                "image": "https://www.dofusbook.net/static/dist/items/15295-50.webp"
             },
             {
                 "quantite": 3,
@@ -11777,13 +12337,13 @@
             },
             {
                 "quantite": 6,
-                "name": "Tourmaline",
-                "image": "https://www.dofusbook.net/static/dist/items/50719-50.webp"
+                "name": "Œil de Rat du Gang",
+                "image": "https://www.dofusbook.net/static/dist/items/109610-50.webp"
             },
             {
                 "quantite": 6,
-                "name": "Œil de Rat du Gang",
-                "image": "https://www.dofusbook.net/static/dist/items/109610-50.webp"
+                "name": "Fragment d'anomalie",
+                "image": "https://www.dofusbook.net/static/dist/items/176051-50.webp"
             },
             {
                 "quantite": 4,
@@ -11936,6 +12496,68 @@
         ]
     },
     {
+        "name": "Épée de Fojumo",
+        "image": "https://www.dofusbook.net/static/dist/items/6763-70.webp",
+        "type": "Épée",
+        "set": "Panoplie de Fojumo",
+        "level": "146",
+        "effects": [
+            "151 à 200 Vitalité",
+            "41 à 50 Agilité",
+            "26 à 35 Sagesse",
+            "1 Invocation",
+            "9 à 12 Dommage Air",
+            "7 à 10 Prospection",
+            "101 à 200 Initiative",
+            "3 à 5 Tacle",
+            "7 à 10 Esquive PA",
+            "7 à 10 Dommage Critique",
+            "5 à 7% Résistance Terre"
+        ],
+        "recipe": [
+            {
+                "quantite": 29,
+                "name": "Œil de Truchtine",
+                "image": "https://www.dofusbook.net/static/dist/items/109607-50.webp"
+            },
+            {
+                "quantite": 28,
+                "name": "Croupion de Truchmuche",
+                "image": "https://www.dofusbook.net/static/dist/items/164039-50.webp"
+            },
+            {
+                "quantite": 6,
+                "name": "Morpion de Truchideur",
+                "image": "https://www.dofusbook.net/static/dist/items/164041-50.webp"
+            },
+            {
+                "quantite": 4,
+                "name": "Tourmaline",
+                "image": "https://www.dofusbook.net/static/dist/items/50719-50.webp"
+            },
+            {
+                "quantite": 3,
+                "name": "Écharpe de Hanshi",
+                "image": "https://www.dofusbook.net/static/dist/items/164672-50.webp"
+            },
+            {
+                "quantite": 2,
+                "name": "Kobalite",
+                "image": "https://www.dofusbook.net/static/dist/items/40704-50.webp"
+            },
+            {
+                "quantite": 1,
+                "name": "Œuf de Haute Truche",
+                "image": "https://www.dofusbook.net/static/dist/items/105647-50.webp"
+            },
+            {
+                "quantite": 1,
+                "name": "Langue de Fojumo",
+                "image": "https://www.dofusbook.net/static/dist/items/15134-50.webp"
+            }
+        ]
+    },
+    {
         "name": "Griffe Pourpre",
         "image": "https://www.dofusbook.net/static/dist/items/6072-70.webp",
         "type": "Épée",
@@ -11966,9 +12588,9 @@
                 "image": "https://www.dofusbook.net/static/dist/items/164678-50.webp"
             },
             {
-                "quantite": 6,
-                "name": "Trame Dimensionnelle",
-                "image": "https://www.dofusbook.net/static/dist/items/59642-50.webp"
+                "quantite": 4,
+                "name": "Corne de volkorne",
+                "image": "https://www.dofusbook.net/static/dist/items/47864-50.webp"
             },
             {
                 "quantite": 3,
@@ -12017,14 +12639,14 @@
                 "image": "https://www.dofusbook.net/static/dist/items/36015-50.webp"
             },
             {
-                "quantite": 6,
-                "name": "Trame Dimensionnelle",
-                "image": "https://www.dofusbook.net/static/dist/items/59642-50.webp"
-            },
-            {
                 "quantite": 4,
                 "name": "Racine du Chêne Mou",
                 "image": "https://www.dofusbook.net/static/dist/items/98667-50.webp"
+            },
+            {
+                "quantite": 4,
+                "name": "Neurone de dragodinde",
+                "image": "https://www.dofusbook.net/static/dist/items/15295-50.webp"
             },
             {
                 "quantite": 3,
@@ -12086,14 +12708,14 @@
                 "image": "https://www.dofusbook.net/static/dist/items/47663-50.webp"
             },
             {
-                "quantite": 6,
-                "name": "Trame Dimensionnelle",
-                "image": "https://www.dofusbook.net/static/dist/items/59642-50.webp"
-            },
-            {
                 "quantite": 4,
                 "name": "Koinkoin de bain de Nagate",
                 "image": "https://www.dofusbook.net/static/dist/items/164657-50.webp"
+            },
+            {
+                "quantite": 4,
+                "name": "Neurone de dragodinde",
+                "image": "https://www.dofusbook.net/static/dist/items/15295-50.webp"
             },
             {
                 "quantite": 2,
@@ -12142,14 +12764,14 @@
                 "image": "https://www.dofusbook.net/static/dist/items/96002-50.webp"
             },
             {
-                "quantite": 6,
-                "name": "Trame Dimensionnelle",
-                "image": "https://www.dofusbook.net/static/dist/items/59642-50.webp"
-            },
-            {
                 "quantite": 4,
                 "name": "Pistil du Tynril",
                 "image": "https://www.dofusbook.net/static/dist/items/36007-50.webp"
+            },
+            {
+                "quantite": 4,
+                "name": "Neurone de dragodinde",
+                "image": "https://www.dofusbook.net/static/dist/items/15295-50.webp"
             },
             {
                 "quantite": 3,
@@ -12199,9 +12821,9 @@
                 "image": "https://www.dofusbook.net/static/dist/items/54204-50.webp"
             },
             {
-                "quantite": 6,
-                "name": "Trame Dimensionnelle",
-                "image": "https://www.dofusbook.net/static/dist/items/59642-50.webp"
+                "quantite": 4,
+                "name": "Neurone de dragodinde",
+                "image": "https://www.dofusbook.net/static/dist/items/15295-50.webp"
             },
             {
                 "quantite": 2,
@@ -12247,13 +12869,13 @@
             },
             {
                 "quantite": 6,
-                "name": "Tourmaline",
-                "image": "https://www.dofusbook.net/static/dist/items/50719-50.webp"
+                "name": "Patte d'Abrakne Irascible",
+                "image": "https://www.dofusbook.net/static/dist/items/103725-50.webp"
             },
             {
                 "quantite": 6,
-                "name": "Patte d'Abrakne Irascible",
-                "image": "https://www.dofusbook.net/static/dist/items/103725-50.webp"
+                "name": "Fragment d'anomalie",
+                "image": "https://www.dofusbook.net/static/dist/items/176051-50.webp"
             },
             {
                 "quantite": 3,
@@ -12300,11 +12922,6 @@
         "recipe": [
             {
                 "quantite": 6,
-                "name": "Trame Dimensionnelle",
-                "image": "https://www.dofusbook.net/static/dist/items/59642-50.webp"
-            },
-            {
-                "quantite": 6,
                 "name": "Patte d'Abrakne Irascible",
                 "image": "https://www.dofusbook.net/static/dist/items/103725-50.webp"
             },
@@ -12322,6 +12939,11 @@
                 "quantite": 4,
                 "name": "Racine du Chêne Mou",
                 "image": "https://www.dofusbook.net/static/dist/items/98667-50.webp"
+            },
+            {
+                "quantite": 4,
+                "name": "Neurone de dragodinde",
+                "image": "https://www.dofusbook.net/static/dist/items/15295-50.webp"
             },
             {
                 "quantite": 2,
@@ -12549,8 +13171,8 @@
             },
             {
                 "quantite": 6,
-                "name": "Tourmaline",
-                "image": "https://www.dofusbook.net/static/dist/items/50719-50.webp"
+                "name": "Fragment d'anomalie",
+                "image": "https://www.dofusbook.net/static/dist/items/176051-50.webp"
             },
             {
                 "quantite": 4,
@@ -12604,14 +13226,14 @@
                 "image": "https://www.dofusbook.net/static/dist/items/15744-50.webp"
             },
             {
-                "quantite": 6,
-                "name": "Tourmaline",
-                "image": "https://www.dofusbook.net/static/dist/items/50719-50.webp"
-            },
-            {
                 "quantite": 5,
                 "name": "Agathe",
                 "image": "https://www.dofusbook.net/static/dist/items/50103-50.webp"
+            },
+            {
+                "quantite": 4,
+                "name": "Neurone de dragodinde",
+                "image": "https://www.dofusbook.net/static/dist/items/15295-50.webp"
             },
             {
                 "quantite": 2,
@@ -12730,11 +13352,6 @@
             },
             {
                 "quantite": 3,
-                "name": "Trame Dimensionnelle",
-                "image": "https://www.dofusbook.net/static/dist/items/59642-50.webp"
-            },
-            {
-                "quantite": 3,
                 "name": "Cœur du Capitaine Ekarlatte",
                 "image": "https://www.dofusbook.net/static/dist/items/15891-50.webp"
             },
@@ -12749,9 +13366,75 @@
                 "image": "https://www.dofusbook.net/static/dist/items/12726-50.webp"
             },
             {
+                "quantite": 2,
+                "name": "Neurone de dragodinde",
+                "image": "https://www.dofusbook.net/static/dist/items/15295-50.webp"
+            },
+            {
                 "quantite": 1,
                 "name": "Testicules du Tanukouï San",
                 "image": "https://www.dofusbook.net/static/dist/items/164679-50.webp"
+            }
+        ]
+    },
+    {
+        "name": "Épée des Demoël",
+        "image": "https://www.dofusbook.net/static/dist/items/6764-70.webp",
+        "type": "Épée",
+        "set": "Panoplie des Demoël",
+        "level": "139",
+        "effects": [
+            "41 à 70 Vitalité",
+            "41 à 50 Force",
+            "41 à 50 Chance",
+            "31 à 40 Sagesse",
+            "5 à 8% Critique",
+            "5 à 7 Dommage Terre",
+            "5 à 7 Dommage Eau",
+            "11 à 15 Prospection",
+            "5 à 8 Fuite",
+            "11 à 15 Dommage Critique"
+        ],
+        "recipe": [
+            {
+                "quantite": 300,
+                "name": "Pépite",
+                "image": "https://www.dofusbook.net/static/dist/items/50718-50.webp"
+            },
+            {
+                "quantite": 25,
+                "name": "Gratrooll",
+                "image": "https://www.dofusbook.net/static/dist/items/60001-50.webp"
+            },
+            {
+                "quantite": 6,
+                "name": "Bracelet de Force de Trooll",
+                "image": "https://www.dofusbook.net/static/dist/items/15571-50.webp"
+            },
+            {
+                "quantite": 5,
+                "name": "Épaulière de Troolligark",
+                "image": "https://www.dofusbook.net/static/dist/items/15570-50.webp"
+            },
+            {
+                "quantite": 4,
+                "name": "Paire de boules de Haute Truche",
+                "image": "https://www.dofusbook.net/static/dist/items/164038-50.webp"
+            },
+            {
+                "quantite": 3,
+                "name": "Picot d'El Piko",
+                "image": "https://www.dofusbook.net/static/dist/items/47856-50.webp"
+            },
+            {
+                "quantite": 1,
+                "name": "Kobalite",
+                "image": "https://www.dofusbook.net/static/dist/items/40704-50.webp"
+            },
+            {
+                "quantite": 1,
+                "name": "Moelle de Demoël",
+                "image": "https://www.dofusbook.net/static/dist/items/24524-50.webp"
             }
         ]
     },
@@ -12801,11 +13484,6 @@
                 "image": "https://www.dofusbook.net/static/dist/items/53647-50.webp"
             },
             {
-                "quantite": 3,
-                "name": "Trame Dimensionnelle",
-                "image": "https://www.dofusbook.net/static/dist/items/59642-50.webp"
-            },
-            {
                 "quantite": 2,
                 "name": "Kobalite",
                 "image": "https://www.dofusbook.net/static/dist/items/40704-50.webp"
@@ -12814,6 +13492,11 @@
                 "quantite": 2,
                 "name": "Peau de Crocabulia",
                 "image": "https://www.dofusbook.net/static/dist/items/59612-50.webp"
+            },
+            {
+                "quantite": 2,
+                "name": "Neurone de dragodinde",
+                "image": "https://www.dofusbook.net/static/dist/items/15295-50.webp"
             }
         ]
     },
@@ -12831,11 +13514,6 @@
             "11 à 15 Prospection"
         ],
         "recipe": [
-            {
-                "quantite": 300,
-                "name": "Pépite",
-                "image": "https://www.dofusbook.net/static/dist/items/50718-50.webp"
-            },
             {
                 "quantite": 7,
                 "name": "Étoffe Zoth",
@@ -12855,6 +13533,11 @@
                 "quantite": 2,
                 "name": "Kristalite",
                 "image": "https://www.dofusbook.net/static/dist/items/50705-50.webp"
+            },
+            {
+                "quantite": 2,
+                "name": "Corne de volkorne",
+                "image": "https://www.dofusbook.net/static/dist/items/47864-50.webp"
             },
             {
                 "quantite": 1,
@@ -12908,14 +13591,14 @@
                 "image": "https://www.dofusbook.net/static/dist/items/53413-50.webp"
             },
             {
-                "quantite": 3,
-                "name": "Tourmaline",
-                "image": "https://www.dofusbook.net/static/dist/items/50719-50.webp"
-            },
-            {
                 "quantite": 2,
                 "name": "Kristalite",
                 "image": "https://www.dofusbook.net/static/dist/items/50705-50.webp"
+            },
+            {
+                "quantite": 2,
+                "name": "Tourmaline",
+                "image": "https://www.dofusbook.net/static/dist/items/50719-50.webp"
             },
             {
                 "quantite": 1,
@@ -13038,9 +13721,9 @@
                 "image": "https://www.dofusbook.net/static/dist/items/53647-50.webp"
             },
             {
-                "quantite": 3,
-                "name": "Trame Dimensionnelle",
-                "image": "https://www.dofusbook.net/static/dist/items/59642-50.webp"
+                "quantite": 2,
+                "name": "Neurone de dragodinde",
+                "image": "https://www.dofusbook.net/static/dist/items/15295-50.webp"
             },
             {
                 "quantite": 1,
@@ -13095,14 +13778,14 @@
                 "image": "https://www.dofusbook.net/static/dist/items/36007-50.webp"
             },
             {
-                "quantite": 3,
-                "name": "Trame Dimensionnelle",
-                "image": "https://www.dofusbook.net/static/dist/items/59642-50.webp"
-            },
-            {
                 "quantite": 2,
                 "name": "Picot d'El Piko",
                 "image": "https://www.dofusbook.net/static/dist/items/47856-50.webp"
+            },
+            {
+                "quantite": 2,
+                "name": "Neurone de dragodinde",
+                "image": "https://www.dofusbook.net/static/dist/items/15295-50.webp"
             },
             {
                 "quantite": 1,
@@ -13158,14 +13841,14 @@
                 "image": "https://www.dofusbook.net/static/dist/items/164038-50.webp"
             },
             {
-                "quantite": 3,
-                "name": "Trame Dimensionnelle",
-                "image": "https://www.dofusbook.net/static/dist/items/59642-50.webp"
-            },
-            {
                 "quantite": 2,
                 "name": "Testicules du Tanukouï San",
                 "image": "https://www.dofusbook.net/static/dist/items/164679-50.webp"
+            },
+            {
+                "quantite": 2,
+                "name": "Neurone de dragodinde",
+                "image": "https://www.dofusbook.net/static/dist/items/15295-50.webp"
             },
             {
                 "quantite": 1,
@@ -13186,7 +13869,7 @@
             "31 à 40 Agilité",
             "16 à 25 Sagesse",
             "4 à 5% Critique",
-            "1 à 2 Invocation",
+            "2 Invocation",
             "6 à 8 Dommage Eau",
             "6 à 8 Dommage Air",
             "7 à 10 Soin",
@@ -13275,7 +13958,7 @@
                 "image": "https://www.dofusbook.net/static/dist/items/164038-50.webp"
             },
             {
-                "quantite": 3,
+                "quantite": 2,
                 "name": "Tourmaline",
                 "image": "https://www.dofusbook.net/static/dist/items/50719-50.webp"
             },
@@ -13333,7 +14016,7 @@
                 "image": "https://www.dofusbook.net/static/dist/items/53647-50.webp"
             },
             {
-                "quantite": 3,
+                "quantite": 2,
                 "name": "Tourmaline",
                 "image": "https://www.dofusbook.net/static/dist/items/50719-50.webp"
             },
@@ -13513,14 +14196,14 @@
                 "image": "https://www.dofusbook.net/static/dist/items/164657-50.webp"
             },
             {
-                "quantite": 3,
-                "name": "Tourmaline",
-                "image": "https://www.dofusbook.net/static/dist/items/50719-50.webp"
-            },
-            {
                 "quantite": 2,
                 "name": "Kristalite",
                 "image": "https://www.dofusbook.net/static/dist/items/50705-50.webp"
+            },
+            {
+                "quantite": 2,
+                "name": "Neurone de dragodinde",
+                "image": "https://www.dofusbook.net/static/dist/items/15295-50.webp"
             },
             {
                 "quantite": 1,
@@ -13568,14 +14251,14 @@
                 "image": "https://www.dofusbook.net/static/dist/items/36014-50.webp"
             },
             {
-                "quantite": 3,
-                "name": "Tourmaline",
-                "image": "https://www.dofusbook.net/static/dist/items/50719-50.webp"
-            },
-            {
                 "quantite": 2,
                 "name": "Aile de Gruche",
                 "image": "https://www.dofusbook.net/static/dist/items/104747-50.webp"
+            },
+            {
+                "quantite": 2,
+                "name": "Tourmaline",
+                "image": "https://www.dofusbook.net/static/dist/items/50719-50.webp"
             },
             {
                 "quantite": 1,
@@ -13694,7 +14377,7 @@
                 "image": "https://www.dofusbook.net/static/dist/items/53413-50.webp"
             },
             {
-                "quantite": 3,
+                "quantite": 2,
                 "name": "Tourmaline",
                 "image": "https://www.dofusbook.net/static/dist/items/50719-50.webp"
             },
@@ -13752,8 +14435,8 @@
             },
             {
                 "quantite": 3,
-                "name": "Tourmaline",
-                "image": "https://www.dofusbook.net/static/dist/items/50719-50.webp"
+                "name": "Fragment d'anomalie",
+                "image": "https://www.dofusbook.net/static/dist/items/176051-50.webp"
             },
             {
                 "quantite": 2,
@@ -13819,14 +14502,14 @@
                 "image": "https://www.dofusbook.net/static/dist/items/36007-50.webp"
             },
             {
-                "quantite": 3,
-                "name": "Tourmaline",
-                "image": "https://www.dofusbook.net/static/dist/items/50719-50.webp"
-            },
-            {
                 "quantite": 2,
                 "name": "Plume de Tofu Royal",
                 "image": "https://www.dofusbook.net/static/dist/items/53413-50.webp"
+            },
+            {
+                "quantite": 2,
+                "name": "Tourmaline",
+                "image": "https://www.dofusbook.net/static/dist/items/50719-50.webp"
             },
             {
                 "quantite": 1,
@@ -13858,11 +14541,6 @@
         ],
         "recipe": [
             {
-                "quantite": 300,
-                "name": "Pépite",
-                "image": "https://www.dofusbook.net/static/dist/items/50718-50.webp"
-            },
-            {
                 "quantite": 26,
                 "name": "Graine de l'Abrakleur sombre",
                 "image": "https://www.dofusbook.net/static/dist/items/58001-50.webp"
@@ -13881,6 +14559,11 @@
                 "quantite": 3,
                 "name": "Plume du Rasboul Majeur",
                 "image": "https://www.dofusbook.net/static/dist/items/53650-50.webp"
+            },
+            {
+                "quantite": 2,
+                "name": "Neurone de dragodinde",
+                "image": "https://www.dofusbook.net/static/dist/items/15295-50.webp"
             },
             {
                 "quantite": 1,
@@ -13936,9 +14619,9 @@
                 "image": "https://www.dofusbook.net/static/dist/items/164038-50.webp"
             },
             {
-                "quantite": 3,
-                "name": "Tourmaline",
-                "image": "https://www.dofusbook.net/static/dist/items/50719-50.webp"
+                "quantite": 2,
+                "name": "Corne de volkorne",
+                "image": "https://www.dofusbook.net/static/dist/items/47864-50.webp"
             },
             {
                 "quantite": 1,
@@ -13985,11 +14668,6 @@
                 "image": "https://www.dofusbook.net/static/dist/items/47021-50.webp"
             },
             {
-                "quantite": 3,
-                "name": "Trame Dimensionnelle",
-                "image": "https://www.dofusbook.net/static/dist/items/59642-50.webp"
-            },
-            {
                 "quantite": 2,
                 "name": "Koinkoin de bain de Nagate",
                 "image": "https://www.dofusbook.net/static/dist/items/164657-50.webp"
@@ -13998,6 +14676,11 @@
                 "quantite": 2,
                 "name": "Pistil du Tynril",
                 "image": "https://www.dofusbook.net/static/dist/items/36007-50.webp"
+            },
+            {
+                "quantite": 2,
+                "name": "Neurone de dragodinde",
+                "image": "https://www.dofusbook.net/static/dist/items/15295-50.webp"
             },
             {
                 "quantite": 1,
@@ -14069,6 +14752,67 @@
         ]
     },
     {
+        "name": "Nenufaur",
+        "image": "https://www.dofusbook.net/static/dist/items/22017-70.webp",
+        "type": "Faux",
+        "set": "Panoplie de Nenufor Tilotus",
+        "level": "129",
+        "effects": [
+            "101 à 150 Vitalité",
+            "31 à 40 Intelligence",
+            "31 à 40 Chance",
+            "31 à 40 Agilité",
+            "16 à 25 Sagesse",
+            "7 à 10 Dommage Feu",
+            "7 à 10 Dommage Eau",
+            "7 à 10 Dommage Air",
+            "11 à 15 Prospection",
+            "101 à 200 Initiative"
+        ],
+        "recipe": [
+            {
+                "quantite": 25,
+                "name": "Vieille Ventouse de Kralamoure",
+                "image": "https://www.dofusbook.net/static/dist/items/15817-50.webp"
+            },
+            {
+                "quantite": 7,
+                "name": "Étoffe de Ouassingue",
+                "image": "https://www.dofusbook.net/static/dist/items/55018-50.webp"
+            },
+            {
+                "quantite": 6,
+                "name": "Faux menton du Bourbassingue",
+                "image": "https://www.dofusbook.net/static/dist/items/15761-50.webp"
+            },
+            {
+                "quantite": 3,
+                "name": "Laine du Royalmouth",
+                "image": "https://www.dofusbook.net/static/dist/items/57213-50.webp"
+            },
+            {
+                "quantite": 2,
+                "name": "Tourmaline",
+                "image": "https://www.dofusbook.net/static/dist/items/50719-50.webp"
+            },
+            {
+                "quantite": 2,
+                "name": "Substrat de Fourré",
+                "image": "https://www.dofusbook.net/static/dist/items/12748-50.webp"
+            },
+            {
+                "quantite": 1,
+                "name": "Queue emplumée du Rasboul Majeur",
+                "image": "https://www.dofusbook.net/static/dist/items/65001-50.webp"
+            },
+            {
+                "quantite": 1,
+                "name": "Fleur de Nenufor Tilotus",
+                "image": "https://www.dofusbook.net/static/dist/items/35014-50.webp"
+            }
+        ]
+    },
+    {
         "name": "Arc Chtelion",
         "image": "https://www.dofusbook.net/static/dist/items/2054-70.webp",
         "type": "Arc",
@@ -14101,9 +14845,9 @@
                 "image": "https://www.dofusbook.net/static/dist/items/50102-50.webp"
             },
             {
-                "quantite": 3,
-                "name": "Tourmaline",
-                "image": "https://www.dofusbook.net/static/dist/items/50719-50.webp"
+                "quantite": 2,
+                "name": "Étoffe Mystérieuse",
+                "image": "https://www.dofusbook.net/static/dist/items/15848-50.webp"
             },
             {
                 "quantite": 2,
@@ -14160,11 +14904,6 @@
                 "image": "https://www.dofusbook.net/static/dist/items/50102-50.webp"
             },
             {
-                "quantite": 3,
-                "name": "Tourmaline",
-                "image": "https://www.dofusbook.net/static/dist/items/50719-50.webp"
-            },
-            {
                 "quantite": 2,
                 "name": "Kriptonite",
                 "image": "https://www.dofusbook.net/static/dist/items/40706-50.webp"
@@ -14173,6 +14912,11 @@
                 "quantite": 2,
                 "name": "Testicules du Tanukouï San",
                 "image": "https://www.dofusbook.net/static/dist/items/164679-50.webp"
+            },
+            {
+                "quantite": 2,
+                "name": "Tourmaline",
+                "image": "https://www.dofusbook.net/static/dist/items/50719-50.webp"
             },
             {
                 "quantite": 1,
@@ -14206,7 +14950,7 @@
         ],
         "recipe": [
             {
-                "quantite": 200,
+                "quantite": 250,
                 "name": "Pépite",
                 "image": "https://www.dofusbook.net/static/dist/items/50718-50.webp"
             },
@@ -14279,8 +15023,8 @@
             },
             {
                 "quantite": 3,
-                "name": "Tourmaline",
-                "image": "https://www.dofusbook.net/static/dist/items/50719-50.webp"
+                "name": "Fragment d'anomalie",
+                "image": "https://www.dofusbook.net/static/dist/items/176051-50.webp"
             },
             {
                 "quantite": 2,
@@ -14340,14 +15084,14 @@
                 "image": "https://www.dofusbook.net/static/dist/items/53413-50.webp"
             },
             {
-                "quantite": 3,
-                "name": "Tourmaline",
-                "image": "https://www.dofusbook.net/static/dist/items/50719-50.webp"
-            },
-            {
                 "quantite": 2,
                 "name": "Aile Atrophiée de Tofu Dodu",
                 "image": "https://www.dofusbook.net/static/dist/items/104744-50.webp"
+            },
+            {
+                "quantite": 2,
+                "name": "Étoffe Mystérieuse",
+                "image": "https://www.dofusbook.net/static/dist/items/15848-50.webp"
             },
             {
                 "quantite": 2,
@@ -14384,11 +15128,6 @@
         ],
         "recipe": [
             {
-                "quantite": 200,
-                "name": "Pépite",
-                "image": "https://www.dofusbook.net/static/dist/items/50718-50.webp"
-            },
-            {
                 "quantite": 19,
                 "name": "Corne de Dragacé",
                 "image": "https://www.dofusbook.net/static/dist/items/47650-50.webp"
@@ -14407,6 +15146,11 @@
                 "quantite": 4,
                 "name": "Duvet du Maître Corbac",
                 "image": "https://www.dofusbook.net/static/dist/items/53651-50.webp"
+            },
+            {
+                "quantite": 3,
+                "name": "Fragment d'anomalie",
+                "image": "https://www.dofusbook.net/static/dist/items/176051-50.webp"
             },
             {
                 "quantite": 2,
@@ -14445,11 +15189,6 @@
         ],
         "recipe": [
             {
-                "quantite": 200,
-                "name": "Pépite",
-                "image": "https://www.dofusbook.net/static/dist/items/50718-50.webp"
-            },
-            {
                 "quantite": 19,
                 "name": "Peau de Dragnarok",
                 "image": "https://www.dofusbook.net/static/dist/items/59611-50.webp"
@@ -14473,6 +15212,11 @@
                 "quantite": 2,
                 "name": "Kriptonite",
                 "image": "https://www.dofusbook.net/static/dist/items/40706-50.webp"
+            },
+            {
+                "quantite": 2,
+                "name": "Corne de volkorne",
+                "image": "https://www.dofusbook.net/static/dist/items/47864-50.webp"
             },
             {
                 "quantite": 1,
@@ -14747,11 +15491,6 @@
         ],
         "recipe": [
             {
-                "quantite": 200,
-                "name": "Pépite",
-                "image": "https://www.dofusbook.net/static/dist/items/50718-50.webp"
-            },
-            {
                 "quantite": 21,
                 "name": "Corne de Dragacé",
                 "image": "https://www.dofusbook.net/static/dist/items/47650-50.webp"
@@ -14775,6 +15514,11 @@
                 "quantite": 3,
                 "name": "Cœur du Capitaine Ekarlatte",
                 "image": "https://www.dofusbook.net/static/dist/items/15891-50.webp"
+            },
+            {
+                "quantite": 3,
+                "name": "Fragment d'anomalie",
+                "image": "https://www.dofusbook.net/static/dist/items/176051-50.webp"
             },
             {
                 "quantite": 2,
@@ -14877,8 +15621,8 @@
             },
             {
                 "quantite": 3,
-                "name": "Tourmaline",
-                "image": "https://www.dofusbook.net/static/dist/items/50719-50.webp"
+                "name": "Fragment d'anomalie",
+                "image": "https://www.dofusbook.net/static/dist/items/176051-50.webp"
             },
             {
                 "quantite": 2,
@@ -14934,8 +15678,8 @@
             },
             {
                 "quantite": 3,
-                "name": "Tourmaline",
-                "image": "https://www.dofusbook.net/static/dist/items/50719-50.webp"
+                "name": "Fragment d'anomalie",
+                "image": "https://www.dofusbook.net/static/dist/items/176051-50.webp"
             },
             {
                 "quantite": 2,
@@ -15001,7 +15745,7 @@
                 "image": "https://www.dofusbook.net/static/dist/items/15907-50.webp"
             },
             {
-                "quantite": 3,
+                "quantite": 2,
                 "name": "Tourmaline",
                 "image": "https://www.dofusbook.net/static/dist/items/50719-50.webp"
             },
@@ -15100,11 +15844,6 @@
         ],
         "recipe": [
             {
-                "quantite": 200,
-                "name": "Pépite",
-                "image": "https://www.dofusbook.net/static/dist/items/50718-50.webp"
-            },
-            {
                 "quantite": 25,
                 "name": "Peau de Draguaindrop",
                 "image": "https://www.dofusbook.net/static/dist/items/59610-50.webp"
@@ -15135,6 +15874,11 @@
                 "image": "https://www.dofusbook.net/static/dist/items/40706-50.webp"
             },
             {
+                "quantite": 2,
+                "name": "Ambre de muldo",
+                "image": "https://www.dofusbook.net/static/dist/items/164094-50.webp"
+            },
+            {
                 "quantite": 1,
                 "name": "Corne brisée de Crocabulia",
                 "image": "https://www.dofusbook.net/static/dist/items/47652-50.webp"
@@ -15163,11 +15907,6 @@
         ],
         "recipe": [
             {
-                "quantite": 200,
-                "name": "Pépite",
-                "image": "https://www.dofusbook.net/static/dist/items/50718-50.webp"
-            },
-            {
                 "quantite": 24,
                 "name": "Corne de Dragacé",
                 "image": "https://www.dofusbook.net/static/dist/items/47650-50.webp"
@@ -15181,6 +15920,11 @@
                 "quantite": 5,
                 "name": "Aile de Draguaindrop",
                 "image": "https://www.dofusbook.net/static/dist/items/104743-50.webp"
+            },
+            {
+                "quantite": 3,
+                "name": "Fragment d'anomalie",
+                "image": "https://www.dofusbook.net/static/dist/items/176051-50.webp"
             },
             {
                 "quantite": 2,
@@ -15290,8 +16034,8 @@
             },
             {
                 "quantite": 3,
-                "name": "Tourmaline",
-                "image": "https://www.dofusbook.net/static/dist/items/50719-50.webp"
+                "name": "Fragment d'anomalie",
+                "image": "https://www.dofusbook.net/static/dist/items/176051-50.webp"
             },
             {
                 "quantite": 2,
@@ -15336,7 +16080,7 @@
         ],
         "recipe": [
             {
-                "quantite": 200,
+                "quantite": 250,
                 "name": "Pépite",
                 "image": "https://www.dofusbook.net/static/dist/items/50718-50.webp"
             },
@@ -15392,14 +16136,14 @@
         ],
         "recipe": [
             {
-                "quantite": 21,
-                "name": "Corne de Gamino",
-                "image": "https://www.dofusbook.net/static/dist/items/47699-50.webp"
-            },
-            {
                 "quantite": 19,
                 "name": "Crinière de Troollaraj",
                 "image": "https://www.dofusbook.net/static/dist/items/15569-50.webp"
+            },
+            {
+                "quantite": 6,
+                "name": "Corne de Gamino",
+                "image": "https://www.dofusbook.net/static/dist/items/47699-50.webp"
             },
             {
                 "quantite": 4,
@@ -15473,14 +16217,14 @@
                 "image": "https://www.dofusbook.net/static/dist/items/57213-50.webp"
             },
             {
-                "quantite": 3,
-                "name": "Trame Dimensionnelle",
-                "image": "https://www.dofusbook.net/static/dist/items/59642-50.webp"
-            },
-            {
                 "quantite": 2,
                 "name": "Galet rutilant",
                 "image": "https://www.dofusbook.net/static/dist/items/15291-50.webp"
+            },
+            {
+                "quantite": 2,
+                "name": "Neurone de dragodinde",
+                "image": "https://www.dofusbook.net/static/dist/items/15295-50.webp"
             },
             {
                 "quantite": 1,
@@ -15529,11 +16273,6 @@
             },
             {
                 "quantite": 3,
-                "name": "Trame Dimensionnelle",
-                "image": "https://www.dofusbook.net/static/dist/items/59642-50.webp"
-            },
-            {
-                "quantite": 3,
                 "name": "Bourgeon explosif de Damadrya",
                 "image": "https://www.dofusbook.net/static/dist/items/164664-50.webp"
             },
@@ -15546,6 +16285,11 @@
                 "quantite": 2,
                 "name": "Galet Lunaire",
                 "image": "https://www.dofusbook.net/static/dist/items/152005-50.webp"
+            },
+            {
+                "quantite": 2,
+                "name": "Neurone de dragodinde",
+                "image": "https://www.dofusbook.net/static/dist/items/15295-50.webp"
             },
             {
                 "quantite": 1,
@@ -15580,11 +16324,6 @@
                 "image": "https://www.dofusbook.net/static/dist/items/103717-50.webp"
             },
             {
-                "quantite": 3,
-                "name": "Tourmaline",
-                "image": "https://www.dofusbook.net/static/dist/items/50719-50.webp"
-            },
-            {
                 "quantite": 2,
                 "name": "Crinière de Rat Blanc",
                 "image": "https://www.dofusbook.net/static/dist/items/165028-50.webp"
@@ -15593,6 +16332,11 @@
                 "quantite": 2,
                 "name": "Substrat de Fourré",
                 "image": "https://www.dofusbook.net/static/dist/items/12748-50.webp"
+            },
+            {
+                "quantite": 2,
+                "name": "Neurone de dragodinde",
+                "image": "https://www.dofusbook.net/static/dist/items/15295-50.webp"
             },
             {
                 "quantite": 1,
@@ -15702,11 +16446,6 @@
             },
             {
                 "quantite": 3,
-                "name": "Tourmaline",
-                "image": "https://www.dofusbook.net/static/dist/items/50719-50.webp"
-            },
-            {
-                "quantite": 3,
                 "name": "Soie Baveuse",
                 "image": "https://www.dofusbook.net/static/dist/items/164060-50.webp"
             },
@@ -15714,6 +16453,11 @@
                 "quantite": 2,
                 "name": "Substrat de Fourré",
                 "image": "https://www.dofusbook.net/static/dist/items/12748-50.webp"
+            },
+            {
+                "quantite": 2,
+                "name": "Ambre de muldo",
+                "image": "https://www.dofusbook.net/static/dist/items/164094-50.webp"
             },
             {
                 "quantite": 1,
@@ -15738,7 +16482,7 @@
             "16 à 30 Force",
             "21 à 35 Sagesse",
             "1 PO",
-            "5 à 6 Invocation",
+            "6 Invocation",
             "6 à 10 Dommage",
             "151 à 250 Initiative"
         ],
@@ -15765,8 +16509,8 @@
             },
             {
                 "quantite": 3,
-                "name": "Tourmaline",
-                "image": "https://www.dofusbook.net/static/dist/items/50719-50.webp"
+                "name": "Plume de Tofu Royal",
+                "image": "https://www.dofusbook.net/static/dist/items/53413-50.webp"
             },
             {
                 "quantite": 2,
@@ -15789,7 +16533,7 @@
         "effects": [
             "16 à 35 Sagesse",
             "1 PO",
-            "2 à 3 Invocation",
+            "3 Invocation",
             "6 à 9 Dommage",
             "3 à 5 Prospection",
             "3 à 5% Résistance Feu"
@@ -16094,9 +16838,9 @@
                 "image": "https://www.dofusbook.net/static/dist/items/164657-50.webp"
             },
             {
-                "quantite": 3,
-                "name": "Tourmaline",
-                "image": "https://www.dofusbook.net/static/dist/items/50719-50.webp"
+                "quantite": 2,
+                "name": "Étoffe Mystérieuse",
+                "image": "https://www.dofusbook.net/static/dist/items/15848-50.webp"
             },
             {
                 "quantite": 2,
@@ -16136,11 +16880,6 @@
                 "image": "https://www.dofusbook.net/static/dist/items/104743-50.webp"
             },
             {
-                "quantite": 3,
-                "name": "Tourmaline",
-                "image": "https://www.dofusbook.net/static/dist/items/50719-50.webp"
-            },
-            {
                 "quantite": 2,
                 "name": "Crinière de Rat Noir",
                 "image": "https://www.dofusbook.net/static/dist/items/165027-50.webp"
@@ -16154,6 +16893,11 @@
                 "quantite": 1,
                 "name": "Corne brisée de Crocabulia",
                 "image": "https://www.dofusbook.net/static/dist/items/47652-50.webp"
+            },
+            {
+                "quantite": 1,
+                "name": "Fleur de Blop Multicolore Royal",
+                "image": "https://www.dofusbook.net/static/dist/items/35013-50.webp"
             }
         ]
     },
@@ -16189,9 +16933,9 @@
                 "image": "https://www.dofusbook.net/static/dist/items/53653-50.webp"
             },
             {
-                "quantite": 3,
-                "name": "Trame Dimensionnelle",
-                "image": "https://www.dofusbook.net/static/dist/items/59642-50.webp"
+                "quantite": 2,
+                "name": "Ambre de muldo",
+                "image": "https://www.dofusbook.net/static/dist/items/164094-50.webp"
             },
             {
                 "quantite": 1,
@@ -16231,6 +16975,11 @@
                 "image": "https://www.dofusbook.net/static/dist/items/150006-50.webp"
             },
             {
+                "quantite": 12,
+                "name": "Antenne de Trésantène",
+                "image": "https://www.dofusbook.net/static/dist/items/15866-50.webp"
+            },
+            {
                 "quantite": 6,
                 "name": "Cawotte Transgénique",
                 "image": "https://www.dofusbook.net/static/dist/items/68013-50.webp"
@@ -16239,11 +16988,6 @@
                 "quantite": 4,
                 "name": "Peau de Crocabulia",
                 "image": "https://www.dofusbook.net/static/dist/items/59612-50.webp"
-            },
-            {
-                "quantite": 3,
-                "name": "Tourmaline",
-                "image": "https://www.dofusbook.net/static/dist/items/50719-50.webp"
             },
             {
                 "quantite": 2,
@@ -16304,8 +17048,8 @@
             },
             {
                 "quantite": 3,
-                "name": "Tourmaline",
-                "image": "https://www.dofusbook.net/static/dist/items/50719-50.webp"
+                "name": "Fragment d'anomalie",
+                "image": "https://www.dofusbook.net/static/dist/items/176051-50.webp"
             },
             {
                 "quantite": 1,
@@ -16338,14 +17082,14 @@
         ],
         "recipe": [
             {
-                "quantite": 17,
-                "name": "Corne de Gamino",
-                "image": "https://www.dofusbook.net/static/dist/items/47699-50.webp"
-            },
-            {
                 "quantite": 6,
                 "name": "Peau de Minos",
                 "image": "https://www.dofusbook.net/static/dist/items/56655-50.webp"
+            },
+            {
+                "quantite": 5,
+                "name": "Corne de Gamino",
+                "image": "https://www.dofusbook.net/static/dist/items/47699-50.webp"
             },
             {
                 "quantite": 4,
@@ -16353,14 +17097,14 @@
                 "image": "https://www.dofusbook.net/static/dist/items/54201-50.webp"
             },
             {
-                "quantite": 3,
-                "name": "Tourmaline",
-                "image": "https://www.dofusbook.net/static/dist/items/50719-50.webp"
-            },
-            {
-                "quantite": 2,
+                "quantite": 4,
                 "name": "Langue de Kraméléhon",
                 "image": "https://www.dofusbook.net/static/dist/items/15856-50.webp"
+            },
+            {
+                "quantite": 3,
+                "name": "Poil de Skeunk",
+                "image": "https://www.dofusbook.net/static/dist/items/54669-50.webp"
             },
             {
                 "quantite": 1,
@@ -16513,8 +17257,8 @@
             },
             {
                 "quantite": 3,
-                "name": "Tourmaline",
-                "image": "https://www.dofusbook.net/static/dist/items/50719-50.webp"
+                "name": "Fragment d'anomalie",
+                "image": "https://www.dofusbook.net/static/dist/items/176051-50.webp"
             },
             {
                 "quantite": 2,
@@ -16570,8 +17314,8 @@
             },
             {
                 "quantite": 2,
-                "name": "Étoffe Mystérieuse",
-                "image": "https://www.dofusbook.net/static/dist/items/15848-50.webp"
+                "name": "Neurone de dragodinde",
+                "image": "https://www.dofusbook.net/static/dist/items/15295-50.webp"
             },
             {
                 "quantite": 1,
@@ -16620,9 +17364,9 @@
                 "image": "https://www.dofusbook.net/static/dist/items/47870-50.webp"
             },
             {
-                "quantite": 3,
-                "name": "Tourmaline",
-                "image": "https://www.dofusbook.net/static/dist/items/50719-50.webp"
+                "quantite": 2,
+                "name": "Ambre de muldo",
+                "image": "https://www.dofusbook.net/static/dist/items/164094-50.webp"
             },
             {
                 "quantite": 1,
@@ -16728,8 +17472,8 @@
             },
             {
                 "quantite": 3,
-                "name": "Tourmaline",
-                "image": "https://www.dofusbook.net/static/dist/items/50719-50.webp"
+                "name": "Groin de Dragon Cochon",
+                "image": "https://www.dofusbook.net/static/dist/items/15620-50.webp"
             },
             {
                 "quantite": 1,
@@ -16779,9 +17523,9 @@
                 "image": "https://www.dofusbook.net/static/dist/items/50025-50.webp"
             },
             {
-                "quantite": 3,
-                "name": "Trame Dimensionnelle",
-                "image": "https://www.dofusbook.net/static/dist/items/59642-50.webp"
+                "quantite": 2,
+                "name": "Corne de volkorne",
+                "image": "https://www.dofusbook.net/static/dist/items/47864-50.webp"
             },
             {
                 "quantite": 1,
@@ -17091,8 +17835,8 @@
             },
             {
                 "quantite": 3,
-                "name": "Tourmaline",
-                "image": "https://www.dofusbook.net/static/dist/items/50719-50.webp"
+                "name": "Broderie de Malléfisk",
+                "image": "https://www.dofusbook.net/static/dist/items/15863-50.webp"
             },
             {
                 "quantite": 1,
@@ -17137,8 +17881,8 @@
             },
             {
                 "quantite": 3,
-                "name": "Tourmaline",
-                "image": "https://www.dofusbook.net/static/dist/items/50719-50.webp"
+                "name": "Broderie de Malléfisk",
+                "image": "https://www.dofusbook.net/static/dist/items/15863-50.webp"
             },
             {
                 "quantite": 2,
@@ -17177,14 +17921,14 @@
         ],
         "recipe": [
             {
-                "quantite": 14,
-                "name": "Patte de Corbac",
-                "image": "https://www.dofusbook.net/static/dist/items/103330-50.webp"
+                "quantite": 5,
+                "name": "Corbac Mort",
+                "image": "https://www.dofusbook.net/static/dist/items/15329-50.webp"
             },
             {
-                "quantite": 8,
-                "name": "Plume de Corbac Apprivoisé",
-                "image": "https://www.dofusbook.net/static/dist/items/53003-50.webp"
+                "quantite": 4,
+                "name": "Plume Pointue de Renarbo",
+                "image": "https://www.dofusbook.net/static/dist/items/53393-50.webp"
             },
             {
                 "quantite": 4,
@@ -17198,18 +17942,18 @@
             },
             {
                 "quantite": 3,
-                "name": "Tourmaline",
-                "image": "https://www.dofusbook.net/static/dist/items/50719-50.webp"
-            },
-            {
-                "quantite": 1,
-                "name": "Clakoss",
-                "image": "https://www.dofusbook.net/static/dist/items/15558-50.webp"
+                "name": "Broderie de Malléfisk",
+                "image": "https://www.dofusbook.net/static/dist/items/15863-50.webp"
             },
             {
                 "quantite": 1,
                 "name": "Kriptonite",
                 "image": "https://www.dofusbook.net/static/dist/items/40706-50.webp"
+            },
+            {
+                "quantite": 1,
+                "name": "Poil de Dragon Cochon",
+                "image": "https://www.dofusbook.net/static/dist/items/54666-50.webp"
             }
         ]
     },
@@ -17357,13 +18101,67 @@
             },
             {
                 "quantite": 2,
-                "name": "Étoffe Mystérieuse",
-                "image": "https://www.dofusbook.net/static/dist/items/15848-50.webp"
+                "name": "Neurone de dragodinde",
+                "image": "https://www.dofusbook.net/static/dist/items/15295-50.webp"
             },
             {
                 "quantite": 1,
                 "name": "Scalp du Meulou",
                 "image": "https://www.dofusbook.net/static/dist/items/15583-50.webp"
+            }
+        ]
+    },
+    {
+        "name": "Naginata de Naganita",
+        "image": "https://www.dofusbook.net/static/dist/items/183015-70.webp",
+        "type": "Lance",
+        "set": "Panoplie de Naganita",
+        "level": "109",
+        "effects": [
+            "101 à 130 Vitalité",
+            "41 à 50 Chance",
+            "16 à 20 Sagesse",
+            "3 à 4% Critique",
+            "5 à 8 Dommage Eau",
+            "3 à 4 Soin",
+            "5 à 8 Tacle",
+            "7 à 10% Résistance Eau"
+        ],
+        "recipe": [
+            {
+                "quantite": 150,
+                "name": "Pépite",
+                "image": "https://www.dofusbook.net/static/dist/items/50718-50.webp"
+            },
+            {
+                "quantite": 19,
+                "name": "Oreille de Rhinoféroce",
+                "image": "https://www.dofusbook.net/static/dist/items/106638-50.webp"
+            },
+            {
+                "quantite": 17,
+                "name": "Dent de Molette",
+                "image": "https://www.dofusbook.net/static/dist/items/47830-50.webp"
+            },
+            {
+                "quantite": 5,
+                "name": "Élastique de Gobvious",
+                "image": "https://www.dofusbook.net/static/dist/items/15838-50.webp"
+            },
+            {
+                "quantite": 2,
+                "name": "Kouartz",
+                "image": "https://www.dofusbook.net/static/dist/items/40664-50.webp"
+            },
+            {
+                "quantite": 1,
+                "name": "Slip troué de Dramak",
+                "image": "https://www.dofusbook.net/static/dist/items/164026-50.webp"
+            },
+            {
+                "quantite": 1,
+                "name": "Cheveux de Naganita",
+                "image": "https://www.dofusbook.net/static/dist/items/54017-50.webp"
             }
         ]
     },
@@ -17404,13 +18202,13 @@
             },
             {
                 "quantite": 3,
-                "name": "Tourmaline",
-                "image": "https://www.dofusbook.net/static/dist/items/50719-50.webp"
+                "name": "Glande du Pounicheur",
+                "image": "https://www.dofusbook.net/static/dist/items/164086-50.webp"
             },
             {
                 "quantite": 3,
-                "name": "Glande du Pounicheur",
-                "image": "https://www.dofusbook.net/static/dist/items/164086-50.webp"
+                "name": "Dent du Kharnozor",
+                "image": "https://www.dofusbook.net/static/dist/items/47870-50.webp"
             },
             {
                 "quantite": 2,
@@ -17523,13 +18321,13 @@
             },
             {
                 "quantite": 3,
-                "name": "Tourmaline",
-                "image": "https://www.dofusbook.net/static/dist/items/50719-50.webp"
+                "name": "Glande du Pounicheur",
+                "image": "https://www.dofusbook.net/static/dist/items/164086-50.webp"
             },
             {
                 "quantite": 3,
-                "name": "Glande du Pounicheur",
-                "image": "https://www.dofusbook.net/static/dist/items/164086-50.webp"
+                "name": "Fragment d'anomalie",
+                "image": "https://www.dofusbook.net/static/dist/items/176051-50.webp"
             },
             {
                 "quantite": 2,
@@ -17635,8 +18433,8 @@
             },
             {
                 "quantite": 3,
-                "name": "Tourmaline",
-                "image": "https://www.dofusbook.net/static/dist/items/50719-50.webp"
+                "name": "Dent du Kharnozor",
+                "image": "https://www.dofusbook.net/static/dist/items/47870-50.webp"
             },
             {
                 "quantite": 1,
@@ -17696,6 +18494,62 @@
         ]
     },
     {
+        "name": "Tromblon de Carlita",
+        "image": "https://www.dofusbook.net/static/dist/items/183016-70.webp",
+        "type": "Marteau",
+        "set": "Panoplie de l'Aguerfelde",
+        "level": "106",
+        "effects": [
+            "81 à 100 Vitalité",
+            "31 à 40 Force",
+            "31 à 40 Intelligence",
+            "11 à 15 Sagesse",
+            "2 à 3% Critique",
+            "16 à 25 Prospection",
+            "3 à 4 Retrait PM",
+            "7 à 10 Dommage Critique",
+            "3 à 5% Résistance Neutre",
+            "3 à 5% Résistance Terre"
+        ],
+        "recipe": [
+            {
+                "quantite": 150,
+                "name": "Pépite",
+                "image": "https://www.dofusbook.net/static/dist/items/50718-50.webp"
+            },
+            {
+                "quantite": 19,
+                "name": "Œil de Cocholou",
+                "image": "https://www.dofusbook.net/static/dist/items/109584-50.webp"
+            },
+            {
+                "quantite": 6,
+                "name": "Dents de Mulou",
+                "image": "https://www.dofusbook.net/static/dist/items/47587-50.webp"
+            },
+            {
+                "quantite": 2,
+                "name": "Scalp de Mulounoké",
+                "image": "https://www.dofusbook.net/static/dist/items/15581-50.webp"
+            },
+            {
+                "quantite": 2,
+                "name": "Substrat de Bosquet",
+                "image": "https://www.dofusbook.net/static/dist/items/12728-50.webp"
+            },
+            {
+                "quantite": 1,
+                "name": "Testicules Magiques du Meulou",
+                "image": "https://www.dofusbook.net/static/dist/items/15651-50.webp"
+            },
+            {
+                "quantite": 1,
+                "name": "Poudre à canon de Carlita",
+                "image": "https://www.dofusbook.net/static/dist/items/24523-50.webp"
+            }
+        ]
+    },
+    {
         "name": "Clef à Molette",
         "image": "https://www.dofusbook.net/static/dist/items/8069-70.webp",
         "type": "Pelle",
@@ -17736,8 +18590,8 @@
             },
             {
                 "quantite": 3,
-                "name": "Tourmaline",
-                "image": "https://www.dofusbook.net/static/dist/items/50719-50.webp"
+                "name": "Dent du Kharnozor",
+                "image": "https://www.dofusbook.net/static/dist/items/47870-50.webp"
             },
             {
                 "quantite": 1,
@@ -17951,6 +18805,59 @@
         ]
     },
     {
+        "name": "Martokipik",
+        "image": "https://www.dofusbook.net/static/dist/items/7752-70.webp",
+        "type": "Marteau",
+        "set": "Panokipik",
+        "level": "104",
+        "effects": [
+            "101 à 130 Vitalité",
+            "21 à 30 Sagesse",
+            "21 à 30 Puissance",
+            "7 à 10 Dommage",
+            "11 à 15 Prospection",
+            "7 à 10 Résistance Critique",
+            "7 à 10 Résistance Poussée"
+        ],
+        "recipe": [
+            {
+                "quantite": 150,
+                "name": "Pépite",
+                "image": "https://www.dofusbook.net/static/dist/items/50718-50.webp"
+            },
+            {
+                "quantite": 17,
+                "name": "Fleur de Gloutovore",
+                "image": "https://www.dofusbook.net/static/dist/items/35420-50.webp"
+            },
+            {
+                "quantite": 6,
+                "name": "Kole",
+                "image": "https://www.dofusbook.net/static/dist/items/15171-50.webp"
+            },
+            {
+                "quantite": 3,
+                "name": "Scalp du Meulou",
+                "image": "https://www.dofusbook.net/static/dist/items/15583-50.webp"
+            },
+            {
+                "quantite": 2,
+                "name": "Kouartz",
+                "image": "https://www.dofusbook.net/static/dist/items/40664-50.webp"
+            },
+            {
+                "quantite": 1,
+                "name": "Étoffe Magique de Moon",
+                "image": "https://www.dofusbook.net/static/dist/items/55722-50.webp"
+            },
+            {
+                "quantite": 1,
+                "name": "Pic de Trukipik",
+                "image": "https://www.dofusbook.net/static/dist/items/36665-50.webp"
+            }
+        ]
+    },
+    {
         "name": "Arc Lequin",
         "image": "https://www.dofusbook.net/static/dist/items/2076-70.webp",
         "type": "Arc",
@@ -17989,9 +18896,9 @@
                 "image": "https://www.dofusbook.net/static/dist/items/164060-50.webp"
             },
             {
-                "quantite": 3,
-                "name": "Tourmaline",
-                "image": "https://www.dofusbook.net/static/dist/items/50719-50.webp"
+                "quantite": 2,
+                "name": "Neurone de dragodinde",
+                "image": "https://www.dofusbook.net/static/dist/items/15295-50.webp"
             },
             {
                 "quantite": 1,
@@ -18069,7 +18976,7 @@
             "151 à 200 Vitalité",
             "26 à 40 Intelligence",
             "26 à 40 Sagesse",
-            "1 à 2 Invocation"
+            "2 Invocation"
         ],
         "recipe": [
             {
@@ -18193,11 +19100,6 @@
                 "image": "https://www.dofusbook.net/static/dist/items/111739-50.webp"
             },
             {
-                "quantite": 3,
-                "name": "Tourmaline",
-                "image": "https://www.dofusbook.net/static/dist/items/50719-50.webp"
-            },
-            {
                 "quantite": 2,
                 "name": "Tresse du Koulosse",
                 "image": "https://www.dofusbook.net/static/dist/items/15753-50.webp"
@@ -18206,6 +19108,11 @@
                 "quantite": 2,
                 "name": "Substrat de Bosquet",
                 "image": "https://www.dofusbook.net/static/dist/items/12728-50.webp"
+            },
+            {
+                "quantite": 2,
+                "name": "Ambre de muldo",
+                "image": "https://www.dofusbook.net/static/dist/items/164094-50.webp"
             },
             {
                 "quantite": 1,
@@ -18364,8 +19271,8 @@
             },
             {
                 "quantite": 3,
-                "name": "Tourmaline",
-                "image": "https://www.dofusbook.net/static/dist/items/50719-50.webp"
+                "name": "Fragment d'anomalie",
+                "image": "https://www.dofusbook.net/static/dist/items/176051-50.webp"
             },
             {
                 "quantite": 2,
@@ -18535,8 +19442,8 @@
             },
             {
                 "quantite": 3,
-                "name": "Tourmaline",
-                "image": "https://www.dofusbook.net/static/dist/items/50719-50.webp"
+                "name": "Dent du Kharnozor",
+                "image": "https://www.dofusbook.net/static/dist/items/47870-50.webp"
             },
             {
                 "quantite": 2,
@@ -18749,8 +19656,8 @@
             },
             {
                 "quantite": 1,
-                "name": "Tourmaline",
-                "image": "https://www.dofusbook.net/static/dist/items/50719-50.webp"
+                "name": "Poil de Dragon Cochon",
+                "image": "https://www.dofusbook.net/static/dist/items/54666-50.webp"
             }
         ]
     },
@@ -18797,8 +19704,8 @@
             },
             {
                 "quantite": 1,
-                "name": "Tourmaline",
-                "image": "https://www.dofusbook.net/static/dist/items/50719-50.webp"
+                "name": "Galet Lunaire",
+                "image": "https://www.dofusbook.net/static/dist/items/152005-50.webp"
             }
         ]
     },
@@ -18894,8 +19801,8 @@
             },
             {
                 "quantite": 1,
-                "name": "Tourmaline",
-                "image": "https://www.dofusbook.net/static/dist/items/50719-50.webp"
+                "name": "Fragment d'anomalie",
+                "image": "https://www.dofusbook.net/static/dist/items/176051-50.webp"
             }
         ]
     },
@@ -18941,8 +19848,8 @@
             },
             {
                 "quantite": 1,
-                "name": "Tourmaline",
-                "image": "https://www.dofusbook.net/static/dist/items/50719-50.webp"
+                "name": "Cœur du Mantiscore",
+                "image": "https://www.dofusbook.net/static/dist/items/164118-50.webp"
             }
         ]
     },
@@ -19085,8 +19992,59 @@
             },
             {
                 "quantite": 1,
-                "name": "Trame Dimensionnelle",
-                "image": "https://www.dofusbook.net/static/dist/items/59642-50.webp"
+                "name": "Fragment d'anomalie",
+                "image": "https://www.dofusbook.net/static/dist/items/176051-50.webp"
+            }
+        ]
+    },
+    {
+        "name": "Le Rok Gnorok",
+        "image": "https://www.dofusbook.net/static/dist/items/7751-70.webp",
+        "type": "Marteau",
+        "set": "Panoplie de Rok Gnorok",
+        "level": "96",
+        "effects": [
+            "71 à 90 Vitalité",
+            "21 à 30 Puissance",
+            "7 à 10 Prospection",
+            "3 à 4 Tacle",
+            "3 à 4 Retrait PA",
+            "3 à 4 Retrait PM",
+            "1 à 2% Résistance Terre",
+            "1 à 2% Résistance Feu",
+            "1 à 2% Résistance Eau",
+            "1 à 2% Résistance Air"
+        ],
+        "recipe": [
+            {
+                "quantite": 13,
+                "name": "Peau de Piralak",
+                "image": "https://www.dofusbook.net/static/dist/items/59008-50.webp"
+            },
+            {
+                "quantite": 4,
+                "name": "Boomerang du Dok Alako",
+                "image": "https://www.dofusbook.net/static/dist/items/15722-50.webp"
+            },
+            {
+                "quantite": 4,
+                "name": "Galet cramoisi",
+                "image": "https://www.dofusbook.net/static/dist/items/15290-50.webp"
+            },
+            {
+                "quantite": 1,
+                "name": "Méga Pierre du Craqueleur Légendaire",
+                "image": "https://www.dofusbook.net/static/dist/items/51464-50.webp"
+            },
+            {
+                "quantite": 1,
+                "name": "Pierre du Koulosse",
+                "image": "https://www.dofusbook.net/static/dist/items/51465-50.webp"
+            },
+            {
+                "quantite": 1,
+                "name": "Dent en or de Rok Gnorok",
+                "image": "https://www.dofusbook.net/static/dist/items/24522-50.webp"
             }
         ]
     },
@@ -19182,8 +20140,8 @@
             },
             {
                 "quantite": 1,
-                "name": "Tourmaline",
-                "image": "https://www.dofusbook.net/static/dist/items/50719-50.webp"
+                "name": "Fragment d'anomalie",
+                "image": "https://www.dofusbook.net/static/dist/items/176051-50.webp"
             }
         ]
     },
@@ -19563,8 +20521,8 @@
             },
             {
                 "quantite": 1,
-                "name": "Tourmaline",
-                "image": "https://www.dofusbook.net/static/dist/items/50719-50.webp"
+                "name": "Fragment d'anomalie",
+                "image": "https://www.dofusbook.net/static/dist/items/176051-50.webp"
             }
         ]
     },
@@ -19779,14 +20737,14 @@
         ],
         "recipe": [
             {
-                "quantite": 150,
-                "name": "Rose des sables",
-                "image": "https://www.dofusbook.net/static/dist/items/50720-50.webp"
-            },
-            {
                 "quantite": 20,
                 "name": "Canif Rouillé",
                 "image": "https://www.dofusbook.net/static/dist/items/164078-50.webp"
+            },
+            {
+                "quantite": 3,
+                "name": "Soie Baveuse",
+                "image": "https://www.dofusbook.net/static/dist/items/164060-50.webp"
             },
             {
                 "quantite": 2,
@@ -19877,11 +20835,6 @@
         ],
         "recipe": [
             {
-                "quantite": 150,
-                "name": "Rose des sables",
-                "image": "https://www.dofusbook.net/static/dist/items/50720-50.webp"
-            },
-            {
                 "quantite": 13,
                 "name": "Racine d'Abraknyde Sombre",
                 "image": "https://www.dofusbook.net/static/dist/items/98232-50.webp"
@@ -19895,6 +20848,11 @@
                 "quantite": 4,
                 "name": "Carapace du Mantiscore",
                 "image": "https://www.dofusbook.net/static/dist/items/107738-50.webp"
+            },
+            {
+                "quantite": 3,
+                "name": "Duvet de Nelween",
+                "image": "https://www.dofusbook.net/static/dist/items/54683-50.webp"
             },
             {
                 "quantite": 3,
@@ -19926,11 +20884,6 @@
         ],
         "recipe": [
             {
-                "quantite": 150,
-                "name": "Rose des sables",
-                "image": "https://www.dofusbook.net/static/dist/items/50720-50.webp"
-            },
-            {
                 "quantite": 11,
                 "name": "Œuf de Dragoeuf Ardoise",
                 "image": "https://www.dofusbook.net/static/dist/items/105204-50.webp"
@@ -19944,6 +20897,11 @@
                 "quantite": 2,
                 "name": "Substrat de Fascine",
                 "image": "https://www.dofusbook.net/static/dist/items/26018-50.webp"
+            },
+            {
+                "quantite": 1,
+                "name": "Bwak Squelettique",
+                "image": "https://www.dofusbook.net/static/dist/items/15608-50.webp"
             },
             {
                 "quantite": 1,
@@ -20073,11 +21031,6 @@
         ],
         "recipe": [
             {
-                "quantite": 150,
-                "name": "Rose des sables",
-                "image": "https://www.dofusbook.net/static/dist/items/50720-50.webp"
-            },
-            {
                 "quantite": 12,
                 "name": "Écailles d'Ouroboulos",
                 "image": "https://www.dofusbook.net/static/dist/items/59653-50.webp"
@@ -20096,6 +21049,11 @@
                 "quantite": 1,
                 "name": "Ambre d'Abraknyde Sombre",
                 "image": "https://www.dofusbook.net/static/dist/items/50638-50.webp"
+            },
+            {
+                "quantite": 1,
+                "name": "Fiole de fumée de Nelween",
+                "image": "https://www.dofusbook.net/static/dist/items/71059-50.webp"
             },
             {
                 "quantite": 1,
@@ -20217,11 +21175,6 @@
         ],
         "recipe": [
             {
-                "quantite": 150,
-                "name": "Rose des sables",
-                "image": "https://www.dofusbook.net/static/dist/items/50720-50.webp"
-            },
-            {
                 "quantite": 9,
                 "name": "Étoffe de Dok Alako",
                 "image": "https://www.dofusbook.net/static/dist/items/55720-50.webp"
@@ -20230,6 +21183,11 @@
                 "quantite": 4,
                 "name": "Racine d'Abraknyde Ancestral",
                 "image": "https://www.dofusbook.net/static/dist/items/98668-50.webp"
+            },
+            {
+                "quantite": 4,
+                "name": "Étoffe de Draegnerys",
+                "image": "https://www.dofusbook.net/static/dist/items/55739-50.webp"
             },
             {
                 "quantite": 3,
@@ -20400,15 +21358,10 @@
             "41 à 50 Agilité",
             "11 à 15 Puissance",
             "4 à 5% Critique",
-            "2 à 3 Invocation",
+            "3 Invocation",
             "2 à 3 Dommage"
         ],
         "recipe": [
-            {
-                "quantite": 150,
-                "name": "Rose des sables",
-                "image": "https://www.dofusbook.net/static/dist/items/50720-50.webp"
-            },
             {
                 "quantite": 8,
                 "name": "Racine d'Abraknyde Sombre",
@@ -20433,6 +21386,11 @@
                 "quantite": 2,
                 "name": "Bakélélite",
                 "image": "https://www.dofusbook.net/static/dist/items/40487-50.webp"
+            },
+            {
+                "quantite": 1,
+                "name": "Cheveux de Draegnerys",
+                "image": "https://www.dofusbook.net/static/dist/items/54714-50.webp"
             }
         ]
     },
@@ -20452,14 +21410,14 @@
         ],
         "recipe": [
             {
-                "quantite": 150,
-                "name": "Rose des sables",
-                "image": "https://www.dofusbook.net/static/dist/items/50720-50.webp"
-            },
-            {
                 "quantite": 9,
                 "name": "Coccyx du Corailleur",
                 "image": "https://www.dofusbook.net/static/dist/items/47012-50.webp"
+            },
+            {
+                "quantite": 3,
+                "name": "Étoffe de Draegnerys",
+                "image": "https://www.dofusbook.net/static/dist/items/55739-50.webp"
             },
             {
                 "quantite": 2,
@@ -20874,7 +21832,7 @@
         ],
         "recipe": [
             {
-                "quantite": 50,
+                "quantite": 70,
                 "name": "Pépite",
                 "image": "https://www.dofusbook.net/static/dist/items/50718-50.webp"
             },
@@ -20967,11 +21925,6 @@
         ],
         "recipe": [
             {
-                "quantite": 150,
-                "name": "Rose des sables",
-                "image": "https://www.dofusbook.net/static/dist/items/50720-50.webp"
-            },
-            {
                 "quantite": 13,
                 "name": "Étoffe de Dok Alako",
                 "image": "https://www.dofusbook.net/static/dist/items/55720-50.webp"
@@ -20985,6 +21938,11 @@
                 "quantite": 2,
                 "name": "Bakélélite",
                 "image": "https://www.dofusbook.net/static/dist/items/40487-50.webp"
+            },
+            {
+                "quantite": 2,
+                "name": "Pierre du Craqueleur Légendaire",
+                "image": "https://www.dofusbook.net/static/dist/items/51457-50.webp"
             },
             {
                 "quantite": 2,
@@ -21014,11 +21972,6 @@
         ],
         "recipe": [
             {
-                "quantite": 150,
-                "name": "Rose des sables",
-                "image": "https://www.dofusbook.net/static/dist/items/50720-50.webp"
-            },
-            {
                 "quantite": 13,
                 "name": "Étoffe de Dok Alako",
                 "image": "https://www.dofusbook.net/static/dist/items/55720-50.webp"
@@ -21042,6 +21995,11 @@
                 "quantite": 1,
                 "name": "Ambre d'Abraknyde Sombre",
                 "image": "https://www.dofusbook.net/static/dist/items/50638-50.webp"
+            },
+            {
+                "quantite": 1,
+                "name": "Fiole de fumée de Nelween",
+                "image": "https://www.dofusbook.net/static/dist/items/71059-50.webp"
             }
         ]
     },
@@ -21252,11 +22210,6 @@
         ],
         "recipe": [
             {
-                "quantite": 150,
-                "name": "Rose des sables",
-                "image": "https://www.dofusbook.net/static/dist/items/50720-50.webp"
-            },
-            {
                 "quantite": 9,
                 "name": "Œuf de Dragoeuf Argile",
                 "image": "https://www.dofusbook.net/static/dist/items/105205-50.webp"
@@ -21280,6 +22233,11 @@
                 "quantite": 2,
                 "name": "Boulon Wabbit",
                 "image": "https://www.dofusbook.net/static/dist/items/150007-50.webp"
+            },
+            {
+                "quantite": 1,
+                "name": "Fiole de fumée de Nelween",
+                "image": "https://www.dofusbook.net/static/dist/items/71059-50.webp"
             }
         ]
     },
@@ -21345,7 +22303,7 @@
         ],
         "recipe": [
             {
-                "quantite": 50,
+                "quantite": 70,
                 "name": "Pépite",
                 "image": "https://www.dofusbook.net/static/dist/items/50718-50.webp"
             },
@@ -21976,6 +22934,48 @@
         ]
     },
     {
+        "name": "Tonfas de Qil Bil",
+        "image": "https://www.dofusbook.net/static/dist/items/5109-70.webp",
+        "type": "Dagues",
+        "set": "Panoplie de Qil Bil",
+        "level": "77",
+        "effects": [
+            "51 à 80 Vitalité",
+            "16 à 25 Sagesse",
+            "21 à 30 Puissance",
+            "5 à 7% Critique",
+            "7 à 10 Prospection",
+            "11 à 15 Dommage Poussée"
+        ],
+        "recipe": [
+            {
+                "quantite": 8,
+                "name": "Coquille de Dragoeuf Argile",
+                "image": "https://www.dofusbook.net/static/dist/items/111202-50.webp"
+            },
+            {
+                "quantite": 1,
+                "name": "Substrat de Fascine",
+                "image": "https://www.dofusbook.net/static/dist/items/26018-50.webp"
+            },
+            {
+                "quantite": 1,
+                "name": "Tourmaline",
+                "image": "https://www.dofusbook.net/static/dist/items/50719-50.webp"
+            },
+            {
+                "quantite": 1,
+                "name": "Cheveux de Draegnerys",
+                "image": "https://www.dofusbook.net/static/dist/items/54714-50.webp"
+            },
+            {
+                "quantite": 1,
+                "name": "Rouage de Qil Bil",
+                "image": "https://www.dofusbook.net/static/dist/items/24519-50.webp"
+            }
+        ]
+    },
+    {
         "name": "Kidorteau",
         "image": "https://www.dofusbook.net/static/dist/items/7066-70.webp",
         "type": "Marteau",
@@ -21985,7 +22985,7 @@
             "31 à 40 Vitalité",
             "21 à 25 Sagesse",
             "11 à 15 Puissance",
-            "2 à 3 Invocation",
+            "3 Invocation",
             "2 à 3 Dommage"
         ],
         "recipe": [
@@ -23175,6 +24175,48 @@
                 "quantite": 1,
                 "name": "Griffe de Dragoeuf Albâtre",
                 "image": "https://www.dofusbook.net/static/dist/items/47701-50.webp"
+            }
+        ]
+    },
+    {
+        "name": "Javeline de Marzwel",
+        "image": "https://www.dofusbook.net/static/dist/items/183014-70.webp",
+        "type": "Lance",
+        "set": "Panoplie de Marzwel",
+        "level": "66",
+        "effects": [
+            "31 à 50 Vitalité",
+            "21 à 30 Intelligence",
+            "21 à 30 Agilité",
+            "1 PO",
+            "3 à 4 Tacle",
+            "3 à 4 Retrait PM"
+        ],
+        "recipe": [
+            {
+                "quantite": 8,
+                "name": "Griffe de Robionicle",
+                "image": "https://www.dofusbook.net/static/dist/items/47855-50.webp"
+            },
+            {
+                "quantite": 4,
+                "name": "Feuille de Blop Royal",
+                "image": "https://www.dofusbook.net/static/dist/items/36013-50.webp"
+            },
+            {
+                "quantite": 2,
+                "name": "Magnésite",
+                "image": "https://www.dofusbook.net/static/dist/items/40659-50.webp"
+            },
+            {
+                "quantite": 1,
+                "name": "Manuel du Directeur Grunob",
+                "image": "https://www.dofusbook.net/static/dist/items/24289-50.webp"
+            },
+            {
+                "quantite": 1,
+                "name": "Dent de Marzwel",
+                "image": "https://www.dofusbook.net/static/dist/items/47899-50.webp"
             }
         ]
     },
@@ -24645,6 +25687,43 @@
                 "quantite": 1,
                 "name": "Magnésite",
                 "image": "https://www.dofusbook.net/static/dist/items/40659-50.webp"
+            }
+        ]
+    },
+    {
+        "name": "Dagu'os des Scalarcin",
+        "image": "https://www.dofusbook.net/static/dist/items/5107-70.webp",
+        "type": "Dagues",
+        "set": "Panoplie des Scalarcin",
+        "level": "55",
+        "effects": [
+            "16 à 25 Vitalité",
+            "16 à 20 Force",
+            "16 à 20 Puissance",
+            "3 à 5% Critique",
+            "1 à 2 Dommage Neutre",
+            "1 à 2 Dommage Terre"
+        ],
+        "recipe": [
+            {
+                "quantite": 4,
+                "name": "Fémur du Chafer Rōnin",
+                "image": "https://www.dofusbook.net/static/dist/items/47696-50.webp"
+            },
+            {
+                "quantite": 1,
+                "name": "Osier Sombre",
+                "image": "https://www.dofusbook.net/static/dist/items/15123-50.webp"
+            },
+            {
+                "quantite": 1,
+                "name": "Galet cramoisi",
+                "image": "https://www.dofusbook.net/static/dist/items/15290-50.webp"
+            },
+            {
+                "quantite": 1,
+                "name": "Os de Scalarcin",
+                "image": "https://www.dofusbook.net/static/dist/items/47898-50.webp"
             }
         ]
     },
@@ -26392,11 +27471,6 @@
         ],
         "recipe": [
             {
-                "quantite": 40,
-                "name": "Rose des sables",
-                "image": "https://www.dofusbook.net/static/dist/items/50720-50.webp"
-            },
-            {
                 "quantite": 7,
                 "name": "Flèche du Chafer Archer",
                 "image": "https://www.dofusbook.net/static/dist/items/15125-50.webp"
@@ -26410,6 +27484,11 @@
                 "quantite": 3,
                 "name": "Fémur du Chafer Rōnin",
                 "image": "https://www.dofusbook.net/static/dist/items/47696-50.webp"
+            },
+            {
+                "quantite": 2,
+                "name": "Substrat de Bocage",
+                "image": "https://www.dofusbook.net/static/dist/items/12729-50.webp"
             }
         ]
     },
@@ -26533,11 +27612,6 @@
         ],
         "recipe": [
             {
-                "quantite": 40,
-                "name": "Rose des sables",
-                "image": "https://www.dofusbook.net/static/dist/items/50720-50.webp"
-            },
-            {
                 "quantite": 5,
                 "name": "Bec du Kwak de Vent",
                 "image": "https://www.dofusbook.net/static/dist/items/47110-50.webp"
@@ -26546,6 +27620,11 @@
                 "quantite": 5,
                 "name": "Plume du Kwak de Vent",
                 "image": "https://www.dofusbook.net/static/dist/items/53113-50.webp"
+            },
+            {
+                "quantite": 2,
+                "name": "Ébonite",
+                "image": "https://www.dofusbook.net/static/dist/items/40658-50.webp"
             },
             {
                 "quantite": 2,
@@ -26568,11 +27647,6 @@
         ],
         "recipe": [
             {
-                "quantite": 40,
-                "name": "Rose des sables",
-                "image": "https://www.dofusbook.net/static/dist/items/50720-50.webp"
-            },
-            {
                 "quantite": 5,
                 "name": "Plume du Kwak de Terre",
                 "image": "https://www.dofusbook.net/static/dist/items/53223-50.webp"
@@ -26581,6 +27655,11 @@
                 "quantite": 5,
                 "name": "Bec du Kwak de Terre",
                 "image": "https://www.dofusbook.net/static/dist/items/47222-50.webp"
+            },
+            {
+                "quantite": 2,
+                "name": "Ébonite",
+                "image": "https://www.dofusbook.net/static/dist/items/40658-50.webp"
             },
             {
                 "quantite": 2,
@@ -26603,11 +27682,6 @@
         ],
         "recipe": [
             {
-                "quantite": 40,
-                "name": "Rose des sables",
-                "image": "https://www.dofusbook.net/static/dist/items/50720-50.webp"
-            },
-            {
                 "quantite": 5,
                 "name": "Bec du Kwak de Glace",
                 "image": "https://www.dofusbook.net/static/dist/items/47133-50.webp"
@@ -26616,6 +27690,11 @@
                 "quantite": 5,
                 "name": "Plume du Kwak de Glace",
                 "image": "https://www.dofusbook.net/static/dist/items/53112-50.webp"
+            },
+            {
+                "quantite": 2,
+                "name": "Ébonite",
+                "image": "https://www.dofusbook.net/static/dist/items/40658-50.webp"
             },
             {
                 "quantite": 2,
@@ -26638,11 +27717,6 @@
         ],
         "recipe": [
             {
-                "quantite": 40,
-                "name": "Rose des sables",
-                "image": "https://www.dofusbook.net/static/dist/items/50720-50.webp"
-            },
-            {
                 "quantite": 5,
                 "name": "Bec du Kwak de Flamme",
                 "image": "https://www.dofusbook.net/static/dist/items/47132-50.webp"
@@ -26651,6 +27725,11 @@
                 "quantite": 5,
                 "name": "Plume du Kwak de Flamme",
                 "image": "https://www.dofusbook.net/static/dist/items/53111-50.webp"
+            },
+            {
+                "quantite": 2,
+                "name": "Ébonite",
+                "image": "https://www.dofusbook.net/static/dist/items/40658-50.webp"
             },
             {
                 "quantite": 2,
@@ -30310,8 +31389,8 @@
         "recipe": [
             {
                 "quantite": 3,
-                "name": "Œuf Chimérique",
-                "image": "https://www.dofusbook.net/static/dist/items/105651-50.webp"
+                "name": "Plume Chimérique",
+                "image": "https://www.dofusbook.net/static/dist/items/53661-50.webp"
             },
             {
                 "quantite": 2,
