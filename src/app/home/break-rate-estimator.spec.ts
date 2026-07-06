@@ -20,4 +20,8 @@ describe('estimateItemsToReachRate', () => {
 	it('rounds the final estimated item count', () => {
 		expect(estimateItemsToReachRate(105, 100, 104)).toBe(5);
 	});
+
+	it('uses max-level CSV data to estimate level 200 item counts', () => {
+		expect(estimateItemsToReachRate(288, 189, 200)).toBe(19);
+	});
 });
