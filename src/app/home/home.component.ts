@@ -667,7 +667,7 @@ export class HomeComponent implements OnInit {
 	 */
 	calculateRuneQuantityFocused(taux: any, statFocused: any): number {
 		const cachedFocused = this._cachedRunes.find((c) => c.effect === statFocused);
-		if (!cachedFocused) return 0;
+		if (!cachedFocused || cachedFocused.rune.stat === 'Arme de chasse') return 0;
 
 		let runeQuantityFocused = 0;
 		for (const cached of this._cachedRunes) {
