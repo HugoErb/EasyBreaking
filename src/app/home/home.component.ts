@@ -2,6 +2,7 @@ import { Component, OnInit, ChangeDetectionStrategy, ChangeDetectorRef, ViewChil
 import { HttpClient } from '@angular/common/http';
 import { forkJoin } from 'rxjs';
 import { AutoComplete } from 'primeng/autocomplete';
+import { estimateItemsToReachRate } from './break-rate-estimator';
 
 /**
  * Représente une rune mise en cache pour accélérer les calculs.
@@ -322,7 +323,11 @@ export class HomeComponent implements OnInit {
 
 		// Sans fusion
 		[this.tauxRentabiliteKamas, this.tauxRentabilitePourcent, this.norProfitableBreakRate] = computeStats(this.maxValue!, false);
-		this.estimatedItemsBeforeNotProfitable = this.estimateItemsToReachRate(this.tauxBrisage!, this.norProfitableBreakRate);
+		this.estimatedItemsBeforeNotProfitable = estimateItemsToReachRate(
+			this.tauxBrisage!,
+			this.norProfitableBreakRate,
+			this.selectedItem.level,
+		);
 
 		// Avec fusion Pa/RA si applicable
 		if (this.mergeRune === 'Aucune') {
@@ -335,7 +340,24 @@ export class HomeComponent implements OnInit {
 				this.maxValuePaRa!,
 				true,
 			);
-			this.estimatedItemsBeforeNotProfitablePaRa = this.estimateItemsToReachRate(this.tauxBrisage!, this.norProfitableBreakRatePaRa);
+			this.estimatedItemsBeforeNotProfitablePaRa = estimateItemsToReachRate(
+				this.tauxBrisage!,
+				this.norProfitableBreakRatePaRa,
+				this.selectedItem.level,
+			);
+		}
+
+		this.updateRecipeItemCountFromEstimate();
+	}
+
+	private updateRecipeItemCountFromEstimate(): void {
+		const estimatedItems =
+			this.estimatedItemsBeforeNotProfitablePaRa > 0
+				? this.estimatedItemsBeforeNotProfitablePaRa
+				: this.estimatedItemsBeforeNotProfitable;
+
+		if (estimatedItems > 0) {
+			this.nombreObjets = estimatedItems;
 		}
 	}
 
@@ -388,27 +410,6 @@ export class HomeComponent implements OnInit {
 		}
 
 		return minimalProfitableRate;
-	}
-
-	/**
-	 * Estime le nombre d'items à briser pour passer du taux actuel au taux cible,
-	 * basé sur une formule de machine learning (loi de puissance).
-	 *
-	 * Formule : items_par_point = 11866408.9284 * taux^(-2.4857) * niveau^(-1.1302)
-	 * R² = 0.83, dérivée de 320 observations sur 14 items (niveaux 1-104).
-	 *
-	 * @param startRate  Taux de brisage actuel (en %)
-	 * @param targetRate Taux de brisage cible / seuil de non-rentabilité (en %)
-	 * @returns Nombre total d'items estimés à briser
-	 */
-	private estimateItemsToReachRate(startRate: number, targetRate: number): number {
-		if (startRate <= targetRate || !this.selectedItem) return 0;
-		const niveau = Math.max(this.selectedItem.level, 1);
-		let total = 0;
-		for (let rate = startRate; rate > targetRate; rate--) {
-			total += 11866408.9284 * Math.pow(rate, -2.4857) * Math.pow(niveau, -1.1302);
-		}
-		return Math.round(total);
 	}
 
 	/**

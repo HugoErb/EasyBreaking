@@ -160,26 +160,17 @@ td.clicable {
   display: flex;
   justify-content: center;
   align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
   margin-top: 28px;
 }
 
-.save-btn {
+.reset-btn,
+.delete-btn {
   ::ng-deep .p-button {
-    background-color: $accent !important;
-    border-color: $accent !important;
-    padding: 12px 32px !important;
+    padding: 12px 24px !important;
     font-size: 1em !important;
     font-family: "Enriqueta", arial, serif !important;
     border-radius: 8px !important;
-    transition: background-color 0.2s ease, transform 0.1s ease !important;
-
-    &:hover {
-      background-color: #2a5ae0 !important;
-      border-color: #2a5ae0 !important;
-    }
-
-    &:active {
-      transform: scale(0.98) !important;
-    }
   }
 }

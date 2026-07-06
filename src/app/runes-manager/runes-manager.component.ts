@@ -39,14 +39,24 @@ export class RunesManagerComponent implements OnInit {
         }
     }
 
-    onPriceChange(runeIndex: number, priceType: string, event: any) {
-        const newPrice = Number.parseFloat(event.target.value);
+    onPriceChange(runeIndex: number, priceType: string, newPrice: number) {
         this.runes[runeIndex][priceType] = newPrice;
+        localStorage.setItem('runesData', JSON.stringify(this.runes));
     }
 
-    saveChanges(): void {
+    resetAllPrices(): void {
+        this.runes = this.runes.map((rune: any) => ({
+            ...rune,
+            price: 1,
+            paPrice: rune.paPrice !== undefined ? 1 : undefined,
+            raPrice: rune.raPrice !== undefined ? 1 : undefined,
+        }));
         localStorage.setItem('runesData', JSON.stringify(this.runes));
-        this.goToHomePage();
+    }
+
+    deleteLocalStorage(): void {
+        localStorage.clear();
+        this.loadRunes();
     }
 
     goToHomePage() {

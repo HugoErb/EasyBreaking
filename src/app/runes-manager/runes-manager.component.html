@@ -39,7 +39,7 @@
 											inputId="prixCraft"
 											placeholder="Prix de la rune"
 											[(ngModel)]="rune.price"
-											(change)="onPriceChange(i, 'price', $event)"
+											(ngModelChange)="onPriceChange(i, 'price', $event)"
 											[min]="1"
 											[max]="999999"
 										></p-inputNumber>
@@ -55,7 +55,7 @@
 												inputId="prixCraft"
 												placeholder="Prix de la rune"
 												[(ngModel)]="rune.paPrice"
-												(change)="onPriceChange(i, 'paPrice', $event)"
+												(ngModelChange)="onPriceChange(i, 'paPrice', $event)"
 												[min]="1"
 												[max]="999999"
 											></p-inputNumber>
@@ -74,7 +74,7 @@
 												inputId="prixCraft"
 												placeholder="Prix de la rune"
 												[(ngModel)]="rune.raPrice"
-												(change)="onPriceChange(i, 'raPrice', $event)"
+												(ngModelChange)="onPriceChange(i, 'raPrice', $event)"
 												[min]="1"
 												[max]="999999"
 											></p-inputNumber>
@@ -91,7 +91,8 @@
 			</table>
 		}
 		<div class="buttonContainer">
-			<p-button label="Enregistrer" icon="pi pi-save" (click)="saveChanges()" class="save-btn" />
+			<p-button label="Reset des prix" icon="pi pi-refresh" severity="secondary" (click)="resetAllPrices()" class="reset-btn" />
+			<p-button label="Supprimer le localStorage" icon="pi pi-trash" severity="danger" (click)="deleteLocalStorage()" class="delete-btn" />
 		</div>
 	</div>
 </main>
