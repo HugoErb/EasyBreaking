@@ -272,11 +272,13 @@
 								<div class="ingredientText">
 									<p class="ingredientName bold">{{ ingredient.name }}</p>
 									<p>Quantité pour 1 objet : x{{ ingredient.quantite }}</p>
-									<p>
-										Quantité pour {{ nombreObjets | number: "1.0-0" }} objet{{ nombreObjets > 1 ? "s" : "" }} : x{{
-											ingredient.quantite * nombreObjets | number: "1.0-0"
-										}}
-									</p>
+									@if (nombreObjets > 1) {
+										<p>
+											Quantité pour {{ nombreObjets | number: "1.0-0" }} objets : x{{
+												ingredient.quantite * nombreObjets | number: "1.0-0"
+											}}
+										</p>
+									}
 								</div>
 							</div>
 						}
