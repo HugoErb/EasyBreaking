@@ -57,7 +57,6 @@ export class HomeComponent implements OnInit {
 	estimatedItemsBeforeNotProfitable: number = 0;
 	estimatedItemsBeforeNotProfitablePaRa: number = 0;
 
-	helpDivvisible: boolean = false;
 	sumKamasEarned: number = 0;
 	maxFocusedKamasEarned?: number;
 	maxValue?: number;
@@ -742,7 +741,37 @@ export class HomeComponent implements OnInit {
 	/**
 	 * Affiche la bulle d'aide.
 	 */
-	showHelp() {
-		this.helpDivvisible = true;
+	async showHelp(): Promise<void> {
+		const { default: Swal } = await import('sweetalert2/dist/sweetalert2.esm.all.js');
+		void Swal.fire({
+			title: 'Aide',
+			width: 640,
+			html: `
+				<div class="help-swal-content">
+					<section class="help-swal-section">
+						<h3 class="help-swal-title"><i class="pi pi-calculator" aria-hidden="true"></i>Calculs & estimations</h3>
+						<ul>
+							<li>Les estimations de kamas prennent d&eacute;j&agrave; en compte la taxe de mise en vente de 2%.</li>
+							<li>Les quantit&eacute;s de runes et kamas sont bas&eacute;es sur le prix moyen des runes et les jets moyens d'un item.</li>
+						</ul>
+					</section>
+					<section class="help-swal-section">
+						<h3 class="help-swal-title"><i class="pi pi-copy" aria-hidden="true"></i>Interactions</h3>
+						<ul>
+							<li>Cliquez sur un ingr&eacute;dient pour copier son nom dans le presse-papier.</li>
+						</ul>
+					</section>
+					<section class="help-swal-section">
+						<h3 class="help-swal-title"><i class="pi pi-palette" aria-hidden="true"></i>Code couleur des cellules</h3>
+						<div class="help-swal-color-list">
+							<div class="help-swal-color-item"><span class="help-swal-dot green"></span><span>Vert : rentable au-dessus du taux vis&eacute;</span></div>
+							<div class="help-swal-color-item"><span class="help-swal-dot yellow"></span><span>Jaune : rentable mais en dessous du taux vis&eacute;</span></div>
+							<div class="help-swal-color-item"><span class="help-swal-dot red"></span><span>Rouge : non rentable</span></div>
+						</div>
+					</section>
+				</div>
+			`,
+			confirmButtonText: 'Fermer',
+		});
 	}
 }

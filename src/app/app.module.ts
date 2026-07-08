@@ -10,7 +10,6 @@ import Lara from '@primeng/themes/lara';
 import { AutoCompleteModule } from 'primeng/autocomplete';
 import { ButtonModule } from 'primeng/button';
 import { providePrimeNG } from 'primeng/config';
-import { DialogModule } from 'primeng/dialog';
 import { DividerModule } from 'primeng/divider';
 import { InputNumberModule } from 'primeng/inputnumber';
 import { TagModule } from 'primeng/tag';
@@ -53,7 +52,6 @@ const MyPreset = definePreset(Lara, {
 		AppRoutingModule,
 		AutoCompleteModule,
 		ButtonModule,
-		DialogModule,
 		DividerModule,
 		TagModule,
 		TooltipModule,

@@ -10,8 +10,6 @@ import { Router } from '@angular/router';
 })
 export class RunesManagerComponent implements OnInit {
     runes: any[] = [];
-    showResetPricesDialog = false;
-    showDeleteLocalStorageDialog = false;
 
     constructor(private readonly http: HttpClient, private readonly router: Router) {}
 
@@ -46,8 +44,23 @@ export class RunesManagerComponent implements OnInit {
         localStorage.setItem('runesData', JSON.stringify(this.runes));
     }
 
+    async confirmResetAllPrices(): Promise<void> {
+        const { default: Swal } = await import('sweetalert2/dist/sweetalert2.esm.all.js');
+        const result = await Swal.fire({
+            title: 'Reset des prix',
+            text: 'Tous les prix des runes seront remis a 1.',
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonText: 'Confirmer',
+            cancelButtonText: 'Annuler',
+        });
+
+        if (result.isConfirmed) {
+            this.resetAllPrices();
+        }
+    }
+
     resetAllPrices(): void {
-        this.showResetPricesDialog = false;
         this.runes = this.runes.map((rune: any) => ({
             ...rune,
             price: 1,
@@ -57,8 +70,23 @@ export class RunesManagerComponent implements OnInit {
         localStorage.setItem('runesData', JSON.stringify(this.runes));
     }
 
+    async confirmDeleteLocalStorage(): Promise<void> {
+        const { default: Swal } = await import('sweetalert2/dist/sweetalert2.esm.all.js');
+        const result = await Swal.fire({
+            title: 'Hard reset',
+            text: 'Toutes les donnees du localStorage seront supprimees.',
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonText: 'Supprimer',
+            cancelButtonText: 'Annuler',
+        });
+
+        if (result.isConfirmed) {
+            this.deleteLocalStorage();
+        }
+    }
+
     deleteLocalStorage(): void {
-        this.showDeleteLocalStorageDialog = false;
         localStorage.clear();
         this.loadRunes();
     }

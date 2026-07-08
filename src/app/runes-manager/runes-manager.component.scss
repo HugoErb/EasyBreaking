@@ -174,15 +174,37 @@ td.clicable {
 .reset-btn,
 .delete-btn {
   ::ng-deep .p-button {
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    gap: 10px !important;
+    width: 188px !important;
+    height: 44px !important;
     padding: 12px 24px !important;
     font-size: 1em !important;
     font-family: "Enriqueta", arial, serif !important;
     border-radius: 8px !important;
+    line-height: 1 !important;
+  }
+
+  ::ng-deep .p-button-icon {
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    width: 1.1rem !important;
+    height: 1.1rem !important;
+    margin: 0 !important;
+    line-height: 1 !important;
+    flex-shrink: 0 !important;
+  }
+
+  ::ng-deep .p-button-label {
+    flex: 0 0 auto !important;
+    line-height: 1 !important;
   }
 }
 
-.reset-btn,
-.confirm-reset-btn {
+.reset-btn {
   ::ng-deep .p-button {
     background-color: #d97706 !important;
     border-color: #d97706 !important;
@@ -195,8 +217,7 @@ td.clicable {
   }
 }
 
-.delete-btn,
-.confirm-delete-btn {
+.delete-btn {
   ::ng-deep .p-button {
     background-color: #7f1d1d !important;
     border-color: #7f1d1d !important;
@@ -206,62 +227,5 @@ td.clicable {
       background-color: #6f1717 !important;
       border-color: #6f1717 !important;
     }
-  }
-}
-
-.confirm-dialog-content {
-  display: flex;
-  align-items: flex-start;
-  gap: 16px;
-  color: $text-primary;
-}
-
-.confirm-dialog-icon {
-  width: 42px;
-  height: 42px;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-shrink: 0;
-  background: rgba(255, 255, 255, 0.04);
-}
-
-.reset-dialog-icon {
-  color: #f59e0b;
-  background: rgba(245, 158, 11, 0.12);
-}
-
-.delete-dialog-icon {
-  color: #f87171;
-  background: rgba(127, 29, 29, 0.22);
-}
-
-.confirm-dialog-message {
-  margin: 6px 0 0;
-  color: $text-muted;
-}
-
-.confirm-dialog-actions {
-  display: flex;
-  justify-content: flex-end;
-  gap: 10px;
-}
-
-::ng-deep .confirm-dialog {
-  width: min(420px, calc(100vw - 32px));
-  border: 1px solid $border-color;
-  border-radius: 12px;
-
-  .p-dialog-header,
-  .p-dialog-content,
-  .p-dialog-footer {
-    background: #101a27;
-    color: $text-primary;
-    border-color: $border-color;
-  }
-
-  .p-dialog-footer {
-    border-top: 1px solid $border-color;
   }
 }

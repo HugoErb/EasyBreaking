@@ -1,4 +1,5 @@
 @import "primeicons/primeicons.css";
+@import "sweetalert2/dist/sweetalert2.min.css";
 
 * {
     margin: 0;
@@ -23,4 +24,92 @@
 
 .itemTable .p-iconfield .p-inputnumber {
     width: 100%;
+}
+
+.swal2-popup,
+.swal2-popup .swal2-styled {
+    font-family: "Enriqueta", arial, serif;
+}
+
+.swal2-popup .swal2-confirm.swal2-styled {
+    background-color: #366cff;
+}
+
+.swal2-popup .swal2-confirm.swal2-styled:focus {
+    box-shadow: 0 0 0 3px rgba(54, 108, 255, 0.35);
+}
+
+.help-swal-content {
+    color: #2f3a4a;
+    font-size: 1rem;
+    line-height: 1.45;
+    text-align: left;
+}
+
+.help-swal-section {
+    border-top: 1px solid #e5e7eb;
+    padding: 16px 0;
+}
+
+.help-swal-section:first-child {
+    border-top: 0;
+    padding-top: 0;
+}
+
+.help-swal-section:last-child {
+    padding-bottom: 0;
+}
+
+.help-swal-title {
+    align-items: center;
+    color: #1f2937;
+    display: flex;
+    font-size: 1.08rem;
+    gap: 8px;
+    margin: 0 0 10px;
+}
+
+.help-swal-title .pi {
+    color: #366cff;
+    font-size: 1rem;
+}
+
+.help-swal-content ul {
+    margin: 0;
+    padding-left: 1.2rem;
+}
+
+.help-swal-content li {
+    margin: 6px 0;
+}
+
+.help-swal-color-list {
+    display: grid;
+    gap: 8px;
+}
+
+.help-swal-color-item {
+    align-items: center;
+    display: flex;
+    gap: 10px;
+}
+
+.help-swal-dot {
+    border: 1px solid rgba(0, 0, 0, 0.12);
+    border-radius: 50%;
+    flex: 0 0 11px;
+    height: 11px;
+    width: 11px;
+}
+
+.help-swal-dot.green {
+    background: darkgreen;
+}
+
+.help-swal-dot.yellow {
+    background: #e6d600;
+}
+
+.help-swal-dot.red {
+    background: darkred;
 }
