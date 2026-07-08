@@ -10,6 +10,8 @@ import { Router } from '@angular/router';
 })
 export class RunesManagerComponent implements OnInit {
     runes: any[] = [];
+    showResetPricesDialog = false;
+    showDeleteLocalStorageDialog = false;
 
     constructor(private readonly http: HttpClient, private readonly router: Router) {}
 
@@ -45,6 +47,7 @@ export class RunesManagerComponent implements OnInit {
     }
 
     resetAllPrices(): void {
+        this.showResetPricesDialog = false;
         this.runes = this.runes.map((rune: any) => ({
             ...rune,
             price: 1,
@@ -55,8 +58,48 @@ export class RunesManagerComponent implements OnInit {
     }
 
     deleteLocalStorage(): void {
+        this.showDeleteLocalStorageDialog = false;
         localStorage.clear();
         this.loadRunes();
+    }
+
+    exportRunesData(): void {
+        const runesData = localStorage.getItem('runesData') ?? JSON.stringify(this.runes);
+        const blob = new Blob([JSON.stringify(JSON.parse(runesData), null, 2)], { type: 'application/json' });
+        const url = URL.createObjectURL(blob);
+        const link = document.createElement('a');
+
+        link.href = url;
+        link.download = 'runesData.json';
+        link.click();
+        URL.revokeObjectURL(url);
+    }
+
+    importRunesData(event: Event): void {
+        const input = event.target as HTMLInputElement;
+        const file = input.files?.[0];
+
+        if (!file) {
+            return;
+        }
+
+        const reader = new FileReader();
+        reader.onload = () => {
+            try {
+                const importedRunes = JSON.parse(String(reader.result));
+                if (!Array.isArray(importedRunes)) {
+                    throw new Error('Le fichier importe doit contenir une liste de runes.');
+                }
+
+                localStorage.setItem('runesData', JSON.stringify(importedRunes));
+                this.loadRunes();
+            } catch (error) {
+                console.error("Erreur lors de l'import du fichier runesData JSON", error);
+            } finally {
+                input.value = '';
+            }
+        };
+        reader.readAsText(file);
     }
 
     goToHomePage() {

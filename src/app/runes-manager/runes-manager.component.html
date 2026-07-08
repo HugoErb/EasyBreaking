@@ -91,8 +91,48 @@
 			</table>
 		}
 		<div class="buttonContainer">
-			<p-button label="Reset des prix" icon="pi pi-refresh" severity="secondary" (click)="resetAllPrices()" class="reset-btn" />
-			<p-button label="Supprimer le localStorage" icon="pi pi-trash" severity="danger" (click)="deleteLocalStorage()" class="delete-btn" />
+			<input #runesDataImportInput type="file" accept=".json,application/json" hidden (change)="importRunesData($event)" />
+			<p-button label="Exporter JSON" icon="pi pi-upload" severity="secondary" (click)="exportRunesData()" class="export-btn" />
+			<p-button label="Importer JSON" icon="pi pi-download" severity="secondary" (click)="runesDataImportInput.click()" class="import-btn" />
+			<span class="button-break"></span>
+			<p-button label="Reset des prix" icon="pi pi-refresh" severity="secondary" (click)="showResetPricesDialog = true" class="reset-btn" />
+			<p-button label="Hard reset" icon="pi pi-trash" severity="danger" (click)="showDeleteLocalStorageDialog = true" class="delete-btn" />
 		</div>
 	</div>
+
+	<p-dialog header="Reset des prix" [(visible)]="showResetPricesDialog" [modal]="true" [draggable]="false" [resizable]="false" styleClass="confirm-dialog">
+		<div class="confirm-dialog-content">
+			<span class="confirm-dialog-icon reset-dialog-icon">
+				<i class="pi pi-refresh"></i>
+			</span>
+			<div>
+				<strong>Remettre les prix a zero</strong>
+				<p class="confirm-dialog-message">Tous les prix des runes seront remis a 1.</p>
+			</div>
+		</div>
+		<ng-template pTemplate="footer">
+			<div class="confirm-dialog-actions">
+				<p-button label="Annuler" icon="pi pi-times" severity="secondary" [text]="true" (click)="showResetPricesDialog = false" />
+				<p-button label="Confirmer" icon="pi pi-check" (click)="resetAllPrices()" class="confirm-reset-btn" />
+			</div>
+		</ng-template>
+	</p-dialog>
+
+	<p-dialog header="Supprimer le localStorage" [(visible)]="showDeleteLocalStorageDialog" [modal]="true" [draggable]="false" [resizable]="false" styleClass="confirm-dialog">
+		<div class="confirm-dialog-content">
+			<span class="confirm-dialog-icon delete-dialog-icon">
+				<i class="pi pi-trash"></i>
+			</span>
+			<div>
+				<strong>Supprimer les donnees locales</strong>
+				<p class="confirm-dialog-message">Toutes les donnees du localStorage seront supprimees.</p>
+			</div>
+		</div>
+		<ng-template pTemplate="footer">
+			<div class="confirm-dialog-actions">
+				<p-button label="Annuler" icon="pi pi-times" severity="secondary" [text]="true" (click)="showDeleteLocalStorageDialog = false" />
+				<p-button label="Supprimer" icon="pi pi-trash" (click)="deleteLocalStorage()" class="confirm-delete-btn" />
+			</div>
+		</ng-template>
+	</p-dialog>
 </main>
