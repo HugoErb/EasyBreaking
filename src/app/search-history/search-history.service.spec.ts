@@ -17,26 +17,49 @@ describe('SearchHistoryService', () => {
 
 	afterEach(() => localStorage.removeItem('searchHistory'));
 
-	it('records a selected item without a break rate', () => {
+	it('keeps every search, including repeated searches for the same item', () => {
+		service.recordSearch(item);
 		service.recordSearch(item);
 
+		expect(service.getEntries().length).toBe(2);
+		expect(service.getEntries()[0].historyId).not.toBe(service.getEntries()[1].historyId);
+	});
+
+	it('updates only the active history entry with all calculation details', () => {
+		const firstHistoryId = service.recordSearch(item);
+		const secondHistoryId = service.recordSearch(item);
+
+		service.updateEntry(secondHistoryId, {
+			breakRate: 125,
+			craftPrice: 50_000,
+			profitable: true,
+			focus: 'Rune Fo',
+		});
+
+		const entries = service.getEntries();
+		expect(entries.find((entry) => entry.historyId === secondHistoryId)).toEqual(
+			jasmine.objectContaining({ breakRate: 125, craftPrice: 50_000, profitable: true, focus: 'Rune Fo' }),
+		);
+		expect(entries.find((entry) => entry.historyId === firstHistoryId)?.breakRate).toBeNull();
+	});
+
+	it('retains entries written by the previous history format', () => {
+		localStorage.setItem(
+			'searchHistory',
+			JSON.stringify([{ ...item, id: undefined, level: '100', breakRate: 110, updatedAt: '2026-08-15T10:00:00.000Z' }]),
+		);
+
 		expect(service.getEntries()[0]).toEqual(
-			jasmine.objectContaining({ id: item.id, name: item.name, breakRate: null }),
+			jasmine.objectContaining({ name: item.name, level: 100, breakRate: 110, craftPrice: null }),
 		);
 	});
 
-	it('updates the break rate without creating a duplicate', () => {
-		service.recordSearch(item);
-		service.recordBreakRate(item, 125);
+	it('deletes only the selected history entry', () => {
+		const firstHistoryId = service.recordSearch(item);
+		const secondHistoryId = service.recordSearch(item);
 
-		expect(service.getEntries().length).toBe(1);
-		expect(service.getEntries()[0].breakRate).toBe(125);
-	});
+		service.deleteEntry(secondHistoryId);
 
-	it('keeps the recorded break rate when the item is selected again', () => {
-		service.recordBreakRate(item, 125);
-		service.recordSearch(item);
-
-		expect(service.getEntries()[0].breakRate).toBe(125);
+		expect(service.getEntries().map((entry) => entry.historyId)).toEqual([firstHistoryId]);
 	});
 });

@@ -12,10 +12,18 @@
 			<table>
 				<thead>
 					<tr>
-						<th>Nom</th>
-						<th>Prix</th>
-						<th>Prix Rune Pa</th>
-						<th>Prix Rune Ra</th>
+						<th class="sortable" [attr.aria-sort]="getAriaSort('name')">
+							<button type="button" class="sort-button" (click)="sortBy('name')">Nom <i [class]="getSortIcon('name')"></i></button>
+						</th>
+						<th class="sortable" [attr.aria-sort]="getAriaSort('price')">
+							<button type="button" class="sort-button" (click)="sortBy('price')">Prix <i [class]="getSortIcon('price')"></i></button>
+						</th>
+						<th class="sortable" [attr.aria-sort]="getAriaSort('paPrice')">
+							<button type="button" class="sort-button" (click)="sortBy('paPrice')">Prix Rune Pa <i [class]="getSortIcon('paPrice')"></i></button>
+						</th>
+						<th class="sortable" [attr.aria-sort]="getAriaSort('raPrice')">
+							<button type="button" class="sort-button" (click)="sortBy('raPrice')">Prix Rune Ra <i [class]="getSortIcon('raPrice')"></i></button>
+						</th>
 					</tr>
 				</thead>
 				<tbody>

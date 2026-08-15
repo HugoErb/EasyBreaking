@@ -71,6 +71,7 @@ export class HomeComponent implements OnInit {
 
 	// Cache des runes pour éviter les recherches répétées et calculs
 	private _cachedRunes: CachedRune[] = [];
+	private currentHistoryId: string | null = null;
 
 	constructor(
 		private readonly http: HttpClient,
@@ -153,7 +154,7 @@ export class HomeComponent implements OnInit {
 	 */
 	onItemSelect(): void {
 		if (!this.selectedItem) return;
-		this.searchHistoryService.recordSearch(this.selectedItem);
+		this.currentHistoryId = this.searchHistoryService.recordSearch(this.selectedItem);
 		this.cdr.detectChanges();
 		setTimeout(() => this.autoComplete.inputEL?.nativeElement.blur(), 100);
 		this.unVanishDiv();
@@ -197,10 +198,10 @@ export class HomeComponent implements OnInit {
 	 */
 	onInputChange(): void {
 		if (!this.selectedItem) return;
-		this.searchHistoryService.recordBreakRate(this.selectedItem, this.tauxBrisage);
 		this.buildTableAndTotals();
 		this.computeRentabilities();
 		this.defineCellColor();
+		this.updateCurrentHistory();
 		this.cdr.markForCheck(); // Permet à Angular de revérifier le composant pour màj le DOM avec vos nouvelles valeurs.
 	}
 
@@ -212,7 +213,33 @@ export class HomeComponent implements OnInit {
 		if (!this.selectedItem) return;
 		this.computeRentabilities();
 		this.defineCellColor();
+		this.updateCurrentHistory();
 		this.cdr.markForCheck(); // Permet à Angular de revérifier le composant pour màj le DOM avec vos nouvelles valeurs.
+	}
+
+	private updateCurrentHistory(): void {
+		if (!this.currentHistoryId) return;
+
+		const bestFocusedRow = this.tableauEffects.find((row) => row.focusedKamasEarned === this.maxFocusedKamasEarned);
+		let bestValue = this.sumKamasEarned;
+		let focus = 'Sans focus';
+
+		if (this.maxFocusedKamasEarned != null && this.maxFocusedKamasEarned > bestValue) {
+			bestValue = this.maxFocusedKamasEarned;
+			focus = bestFocusedRow?.runeName ?? 'Non déterminé';
+		}
+
+		if (this.mergeRune !== 'Aucune' && this.maxValuePaRa != null && this.maxValuePaRa > bestValue) {
+			bestValue = this.maxValuePaRa;
+			focus = this.mergeRune;
+		}
+
+		this.searchHistoryService.updateEntry(this.currentHistoryId, {
+			breakRate: this.tauxBrisage,
+			craftPrice: this.prixCraft ?? null,
+			profitable: this.prixCraft == null ? null : bestValue > this.prixCraft,
+			focus,
+		});
 	}
 
 	/**
@@ -513,8 +540,10 @@ export class HomeComponent implements OnInit {
 				this.sumKamasEarned = this.tableauEffects.reduce((sum, r) => sum + (r.kamasEarned || 0), 0);
 				this.maxFocusedKamasEarned = Math.max(...this.tableauEffects.map((r) => r.focusedKamasEarned), 0);
 				this.maxValue = Math.max(this.maxFocusedKamasEarned, this.sumKamasEarned);
+				this.determineBestMergeRune();
 				this.computeRentabilities();
 				this.defineCellColor();
+				this.updateCurrentHistory();
 				this.cdr.markForCheck();
 			}
 		} catch (e) {

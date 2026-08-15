@@ -12,8 +12,8 @@ describe('HomeComponent', () => {
 				markForCheck: () => undefined,
 			} as unknown as ChangeDetectorRef,
 			{
-				recordSearch: () => undefined,
-				recordBreakRate: () => undefined,
+				recordSearch: () => 'history-id',
+				updateEntry: () => undefined,
 			} as unknown as SearchHistoryService,
 		);
 	}

@@ -2,6 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
 
+type RuneSortColumn = 'name' | 'price' | 'paPrice' | 'raPrice';
+type SortDirection = 'asc' | 'desc';
+
 @Component({
     selector: 'app-runes-manager',
     templateUrl: './runes-manager.component.html',
@@ -10,6 +13,8 @@ import { Router } from '@angular/router';
 })
 export class RunesManagerComponent implements OnInit {
     runes: any[] = [];
+    sortColumn: RuneSortColumn = 'name';
+    sortDirection: SortDirection = 'asc';
 
     constructor(private readonly http: HttpClient, private readonly router: Router) {}
 
@@ -26,6 +31,7 @@ export class RunesManagerComponent implements OnInit {
                 paPrice: rune.paPrice === null ? undefined : rune.paPrice,
                 raPrice: rune.raPrice === null ? undefined : rune.raPrice,
             }));
+            this.applySort();
         } else {
             this.http.get('assets/jsons/runes.json').subscribe((data: any) => {
                 const initializedData = data.map((rune: any) => ({
@@ -35,6 +41,7 @@ export class RunesManagerComponent implements OnInit {
                 }));
                 localStorage.setItem('runesData', JSON.stringify(initializedData));
                 this.runes = initializedData;
+                this.applySort();
             });
         }
     }
@@ -42,6 +49,42 @@ export class RunesManagerComponent implements OnInit {
     onPriceChange(runeIndex: number, priceType: string, newPrice: number) {
         this.runes[runeIndex][priceType] = newPrice;
         localStorage.setItem('runesData', JSON.stringify(this.runes));
+    }
+
+    sortBy(column: RuneSortColumn): void {
+        this.sortDirection = this.sortColumn === column && this.sortDirection === 'asc' ? 'desc' : 'asc';
+        this.sortColumn = column;
+		this.applySort();
+	}
+
+	private applySort(): void {
+		const column = this.sortColumn;
+        this.runes = [...this.runes].sort((firstRune, secondRune) => {
+            const firstValue = firstRune[column];
+            const secondValue = secondRune[column];
+
+            if (firstValue == null && secondValue == null) return 0;
+            if (firstValue == null) return 1;
+            if (secondValue == null) return -1;
+
+            const firstNumber = Number(firstValue);
+            const secondNumber = Number(secondValue);
+            const comparison =
+                column !== 'name' && Number.isFinite(firstNumber) && Number.isFinite(secondNumber)
+                    ? firstNumber - secondNumber
+                    : String(firstValue).localeCompare(String(secondValue), 'fr', { numeric: true, sensitivity: 'base' });
+            return this.sortDirection === 'asc' ? comparison : -comparison;
+        });
+    }
+
+    getSortIcon(column: RuneSortColumn): string {
+        if (this.sortColumn !== column) return 'pi pi-sort-alt';
+        return this.sortDirection === 'asc' ? 'pi pi-sort-amount-up' : 'pi pi-sort-amount-down';
+    }
+
+    getAriaSort(column: RuneSortColumn): 'ascending' | 'descending' | 'none' {
+        if (this.sortColumn !== column) return 'none';
+        return this.sortDirection === 'asc' ? 'ascending' : 'descending';
     }
 
     async confirmResetAllPrices(): Promise<void> {

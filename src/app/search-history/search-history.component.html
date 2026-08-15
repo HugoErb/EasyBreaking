@@ -3,7 +3,7 @@
 		<p-button icon="pi pi-arrow-left" [rounded]="true" [text]="true" severity="secondary" (click)="goToHomePage()" class="back-btn" />
 		<div class="header-brand">
 			<h1 class="page-title">Historique de recherche</h1>
-			<span class="page-subtitle">Retrouvez les items consultés et leurs taux de brisage</span>
+			<span class="page-subtitle">Retrouvez toutes vos recherches et leurs résultats de brisage</span>
 		</div>
 	</div>
 
@@ -13,15 +13,35 @@
 				<table>
 					<thead>
 						<tr>
-							<th>Item</th>
-							<th>Niveau</th>
-							<th>Type</th>
-							<th>Taux de brisage</th>
-							<th>Dernière consultation</th>
+							<th class="sortable" [attr.aria-sort]="getAriaSort('name')">
+								<button type="button" class="sort-button" (click)="sortBy('name')">Item <i [class]="getSortIcon('name')"></i></button>
+							</th>
+							<th class="sortable" [attr.aria-sort]="getAriaSort('level')">
+								<button type="button" class="sort-button" (click)="sortBy('level')">Niveau <i [class]="getSortIcon('level')"></i></button>
+							</th>
+							<th class="sortable" [attr.aria-sort]="getAriaSort('type')">
+								<button type="button" class="sort-button" (click)="sortBy('type')">Type <i [class]="getSortIcon('type')"></i></button>
+							</th>
+							<th class="sortable" [attr.aria-sort]="getAriaSort('breakRate')">
+								<button type="button" class="sort-button" (click)="sortBy('breakRate')">Taux de brisage <i [class]="getSortIcon('breakRate')"></i></button>
+							</th>
+							<th class="sortable" [attr.aria-sort]="getAriaSort('craftPrice')">
+								<button type="button" class="sort-button" (click)="sortBy('craftPrice')">Prix du craft <i [class]="getSortIcon('craftPrice')"></i></button>
+							</th>
+							<th class="sortable" [attr.aria-sort]="getAriaSort('profitable')">
+								<button type="button" class="sort-button" (click)="sortBy('profitable')">Rentabilité <i [class]="getSortIcon('profitable')"></i></button>
+							</th>
+							<th class="sortable" [attr.aria-sort]="getAriaSort('focus')">
+								<button type="button" class="sort-button" (click)="sortBy('focus')">Meilleur focus <i [class]="getSortIcon('focus')"></i></button>
+							</th>
+							<th class="sortable" [attr.aria-sort]="getAriaSort('updatedAt')">
+								<button type="button" class="sort-button" (click)="sortBy('updatedAt')">Date <i [class]="getSortIcon('updatedAt')"></i></button>
+							</th>
+							<th aria-label="Actions"></th>
 						</tr>
 					</thead>
 					<tbody>
-						@for (entry of history; track entry.id) {
+						@for (entry of history; track entry.historyId) {
 							<tr>
 								<td class="item-cell">
 									<img [src]="entry.image" [alt]="entry.name" />
@@ -36,7 +56,36 @@
 										<span class="empty-value">Non renseigné</span>
 									}
 								</td>
+								<td>
+									@if (entry.craftPrice !== null) {
+										{{ entry.craftPrice | number: "1.0-0" }} k
+									} @else {
+										<span class="empty-value">Non renseigné</span>
+									}
+								</td>
+								<td>
+									@if (entry.profitable === true) {
+										<span class="profitability profitable"><i class="pi pi-check"></i> Rentable</span>
+									} @else if (entry.profitable === false) {
+										<span class="profitability unprofitable"><i class="pi pi-times"></i> Non rentable</span>
+									} @else {
+										<span class="empty-value">Non déterminée</span>
+									}
+								</td>
+								<td>{{ entry.focus ?? "Non déterminé" }}</td>
 								<td>{{ entry.updatedAt | date: "dd/MM/yyyy HH:mm" }}</td>
+								<td class="action-cell">
+									<p-button
+										icon="pi pi-trash"
+										[rounded]="true"
+										[text]="true"
+										severity="danger"
+										(click)="deleteEntry(entry.historyId)"
+										pTooltip="Supprimer cette ligne"
+										tooltipPosition="left"
+										ariaLabel="Supprimer cette ligne"
+									/>
+								</td>
 							</tr>
 						}
 					</tbody>

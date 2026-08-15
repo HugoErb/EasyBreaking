@@ -21,7 +21,7 @@ main {
 .page-header,
 .history-container {
 	width: 100%;
-	max-width: 1100px;
+	max-width: 1600px;
 }
 
 .page-header {
@@ -93,6 +93,35 @@ th {
 	white-space: nowrap;
 }
 
+th.sortable {
+	padding: 0;
+}
+
+.sort-button {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	gap: 8px;
+	width: 100%;
+	padding: 12px 16px;
+	border: 0;
+	background: transparent;
+	color: inherit;
+	font: inherit;
+	font-weight: bold;
+	white-space: nowrap;
+	cursor: pointer;
+
+	&:hover,
+	&:focus-visible {
+		background: rgba(54, 108, 255, 0.16);
+	}
+
+	.pi {
+		font-size: 0.78rem;
+	}
+}
+
 td {
 	color: $text-primary;
 	padding: 10px 16px;
@@ -123,6 +152,26 @@ tbody tr:hover td {
 	color: $accent-light;
 	font-weight: bold;
 	white-space: nowrap;
+}
+
+.profitability {
+	display: inline-flex;
+	align-items: center;
+	gap: 6px;
+	font-weight: bold;
+	white-space: nowrap;
+}
+
+.profitable {
+	color: #58c878;
+}
+
+.unprofitable {
+	color: #e36b6b;
+}
+
+.action-cell {
+	padding: 4px 8px;
 }
 
 .empty-value {
