@@ -1,6 +1,7 @@
 import { ChangeDetectorRef } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { HomeComponent } from './home.component';
+import { SearchHistoryService } from '../search-history/search-history.service';
 
 describe('HomeComponent', () => {
 	function createComponent(): HomeComponent {
@@ -10,6 +11,10 @@ describe('HomeComponent', () => {
 				detectChanges: () => undefined,
 				markForCheck: () => undefined,
 			} as unknown as ChangeDetectorRef,
+			{
+				recordSearch: () => undefined,
+				recordBreakRate: () => undefined,
+			} as unknown as SearchHistoryService,
 		);
 	}
 

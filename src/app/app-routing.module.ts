@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { HomeComponent } from './home/home.component';
 import { RunesManagerComponent } from './runes-manager/runes-manager.component';
+import { SearchHistoryComponent } from './search-history/search-history.component';
 
 
 const routes: Routes = [
@@ -12,6 +13,10 @@ const routes: Routes = [
   {
     path: 'runes-manager',
     component: RunesManagerComponent
+  },
+  {
+    path: 'search-history',
+    component: SearchHistoryComponent
   }
 ];
 

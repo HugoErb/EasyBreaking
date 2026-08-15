@@ -6,6 +6,16 @@
 				<span class="app-subtitle">Calculateur de brisage Dofus</span>
 			</div>
 			<div class="header-actions">
+				<p-button
+					icon="pi pi-history"
+					[rounded]="true"
+					[text]="true"
+					severity="secondary"
+					routerLink="/search-history"
+					pTooltip="Historique de recherche"
+					tooltipPosition="bottom"
+					class="history-btn"
+				/>
 				<div class="runeSign" routerLink="/runes-manager" pTooltip="Gérer les runes" tooltipPosition="bottom">
 					<img class="runeImg" src="../../assets/imgs/rune.png" alt="Runes Manager" />
 				</div>

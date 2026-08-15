@@ -1,0 +1,53 @@
+<main>
+	<div class="page-header">
+		<p-button icon="pi pi-arrow-left" [rounded]="true" [text]="true" severity="secondary" (click)="goToHomePage()" class="back-btn" />
+		<div class="header-brand">
+			<h1 class="page-title">Historique de recherche</h1>
+			<span class="page-subtitle">Retrouvez les items consultés et leurs taux de brisage</span>
+		</div>
+	</div>
+
+	<div class="history-container">
+		@if (history.length > 0) {
+			<div class="table-wrapper">
+				<table>
+					<thead>
+						<tr>
+							<th>Item</th>
+							<th>Niveau</th>
+							<th>Type</th>
+							<th>Taux de brisage</th>
+							<th>Dernière consultation</th>
+						</tr>
+					</thead>
+					<tbody>
+						@for (entry of history; track entry.id) {
+							<tr>
+								<td class="item-cell">
+									<img [src]="entry.image" [alt]="entry.name" />
+									<span>{{ entry.name }}</span>
+								</td>
+								<td>{{ entry.level }}</td>
+								<td>{{ entry.type }}</td>
+								<td>
+									@if (entry.breakRate !== null) {
+										<span class="break-rate">{{ entry.breakRate | number: "1.0-2" }} %</span>
+									} @else {
+										<span class="empty-value">Non renseigné</span>
+									}
+								</td>
+								<td>{{ entry.updatedAt | date: "dd/MM/yyyy HH:mm" }}</td>
+							</tr>
+						}
+					</tbody>
+				</table>
+			</div>
+		} @else {
+			<div class="empty-state">
+				<i class="pi pi-history"></i>
+				<h2>Aucun historique</h2>
+				<p>Les items sélectionnés apparaîtront ici.</p>
+			</div>
+		}
+	</div>
+</main>

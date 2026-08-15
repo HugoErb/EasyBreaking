@@ -21,6 +21,7 @@ import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { HomeComponent } from './home/home.component';
 import { RunesManagerComponent } from './runes-manager/runes-manager.component';
+import { SearchHistoryComponent } from './search-history/search-history.component';
 
 registerLocaleData(localeFr, 'fr');
 
@@ -43,7 +44,7 @@ const MyPreset = definePreset(Lara, {
 });
 
 @NgModule({
-	declarations: [AppComponent, HomeComponent, RunesManagerComponent],
+	declarations: [AppComponent, HomeComponent, RunesManagerComponent, SearchHistoryComponent],
 	bootstrap: [AppComponent],
 	imports: [
 		BrowserModule,

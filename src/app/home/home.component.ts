@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { forkJoin } from 'rxjs';
 import { AutoComplete } from 'primeng/autocomplete';
 import { estimateItemsToReachRate } from './break-rate-estimator';
+import { SearchHistoryService } from '../search-history/search-history.service';
 
 /**
  * Représente une rune mise en cache pour accélérer les calculs.
@@ -74,6 +75,7 @@ export class HomeComponent implements OnInit {
 	constructor(
 		private readonly http: HttpClient,
 		private readonly cdr: ChangeDetectorRef,
+		private readonly searchHistoryService: SearchHistoryService,
 	) {}
 
 	/**
@@ -151,6 +153,7 @@ export class HomeComponent implements OnInit {
 	 */
 	onItemSelect(): void {
 		if (!this.selectedItem) return;
+		this.searchHistoryService.recordSearch(this.selectedItem);
 		this.cdr.detectChanges();
 		setTimeout(() => this.autoComplete.inputEL?.nativeElement.blur(), 100);
 		this.unVanishDiv();
@@ -194,6 +197,7 @@ export class HomeComponent implements OnInit {
 	 */
 	onInputChange(): void {
 		if (!this.selectedItem) return;
+		this.searchHistoryService.recordBreakRate(this.selectedItem, this.tauxBrisage);
 		this.buildTableAndTotals();
 		this.computeRentabilities();
 		this.defineCellColor();
