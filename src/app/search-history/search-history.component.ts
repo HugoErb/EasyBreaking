@@ -39,6 +39,32 @@ export class SearchHistoryComponent implements OnInit {
 		this.sortColumn = column;
 
 		this.history = [...this.history].sort((firstEntry, secondEntry) => {
+			if (column === 'profitable') {
+				const firstProfit =
+					firstEntry.profitPercentage != null
+						? firstEntry.profitPercentage
+						: firstEntry.profitable === true
+							? Number.MAX_SAFE_INTEGER
+							: firstEntry.profitable === false
+								? -Number.MAX_SAFE_INTEGER
+								: null;
+				const secondProfit =
+					secondEntry.profitPercentage != null
+						? secondEntry.profitPercentage
+						: secondEntry.profitable === true
+							? Number.MAX_SAFE_INTEGER
+							: secondEntry.profitable === false
+								? -Number.MAX_SAFE_INTEGER
+								: null;
+
+				if (firstProfit == null && secondProfit == null) return 0;
+				if (firstProfit == null) return 1;
+				if (secondProfit == null) return -1;
+
+				const profitComp = firstProfit - secondProfit;
+				return this.sortDirection === 'asc' ? profitComp : -profitComp;
+			}
+
 			const firstValue = firstEntry[column];
 			const secondValue = secondEntry[column];
 

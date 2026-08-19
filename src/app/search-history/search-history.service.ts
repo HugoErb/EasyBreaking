@@ -9,11 +9,16 @@ export interface SearchHistoryEntry {
 	breakRate: number | null;
 	craftPrice: number | null;
 	profitable: boolean | null;
+	kamasEarned: number | null;
+	profitPercentage: number | null;
 	focus: string | null;
 	updatedAt: string;
 }
 
-export type SearchHistoryUpdate = Pick<SearchHistoryEntry, 'breakRate' | 'craftPrice' | 'profitable' | 'focus'>;
+export type SearchHistoryUpdate = Pick<
+	SearchHistoryEntry,
+	'breakRate' | 'craftPrice' | 'profitable' | 'kamasEarned' | 'profitPercentage' | 'focus'
+>;
 
 type SearchHistoryItem = Pick<SearchHistoryEntry, 'name' | 'image' | 'type'> & { level: number | string };
 
@@ -48,6 +53,8 @@ export class SearchHistoryService {
 			breakRate: null,
 			craftPrice: null,
 			profitable: null,
+			kamasEarned: null,
+			profitPercentage: null,
 			focus: null,
 			updatedAt: new Date().toISOString(),
 		};
@@ -100,6 +107,8 @@ export class SearchHistoryService {
 			breakRate: typeof entry['breakRate'] === 'number' ? entry['breakRate'] : null,
 			craftPrice: typeof entry['craftPrice'] === 'number' ? entry['craftPrice'] : null,
 			profitable: typeof entry['profitable'] === 'boolean' ? entry['profitable'] : null,
+			kamasEarned: typeof entry['kamasEarned'] === 'number' ? entry['kamasEarned'] : null,
+			profitPercentage: typeof entry['profitPercentage'] === 'number' ? entry['profitPercentage'] : null,
 			focus: typeof entry['focus'] === 'string' ? entry['focus'] : null,
 			updatedAt: typeof entry['updatedAt'] === 'string' ? entry['updatedAt'] : new Date().toISOString(),
 		};

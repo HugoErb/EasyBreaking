@@ -187,6 +187,7 @@ export class HomeComponent implements OnInit {
 
 		this.resetStats();
 		this.buildTableAndTotals();
+		this.updateCurrentHistory();
 		this.cdr.markForCheck();
 	}
 
@@ -234,10 +235,23 @@ export class HomeComponent implements OnInit {
 			focus = this.mergeRune;
 		}
 
+		const hasValidKamas = this.tauxBrisage != null && Number.isFinite(bestValue);
+		const kamasEarned = hasValidKamas ? bestValue : null;
+
+		let profitPercentage: number | null = null;
+		let profitable: boolean | null = null;
+
+		if (this.prixCraft != null && this.prixCraft > 0 && hasValidKamas) {
+			profitPercentage = Number.parseFloat((((bestValue - this.prixCraft) / this.prixCraft) * 100).toFixed(2));
+			profitable = bestValue > this.prixCraft;
+		}
+
 		this.searchHistoryService.updateEntry(this.currentHistoryId, {
 			breakRate: this.tauxBrisage,
 			craftPrice: this.prixCraft ?? null,
-			profitable: this.prixCraft == null ? null : bestValue > this.prixCraft,
+			profitable,
+			kamasEarned,
+			profitPercentage,
 			focus,
 		});
 	}

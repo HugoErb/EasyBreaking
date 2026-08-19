@@ -32,4 +32,41 @@ describe('HomeComponent', () => {
 		expect(component.estimatedItemsBeforeNotProfitable).toBe(5);
 		expect(component.nombreObjets).toBe(5);
 	});
+
+	it('records kamasEarned and profitPercentage in history update when prices and break rate are present', () => {
+		const searchHistoryService = {
+			recordSearch: () => 'history-123',
+			updateEntry: jasmine.createSpy('updateEntry'),
+		} as unknown as SearchHistoryService;
+
+		const component = new HomeComponent(
+			{} as HttpClient,
+			{
+				detectChanges: () => undefined,
+				markForCheck: () => undefined,
+			} as unknown as ChangeDetectorRef,
+			searchHistoryService,
+		);
+
+		component['currentHistoryId'] = 'history-123';
+		component.tauxBrisage = 150;
+		component.prixCraft = 100_000;
+		component.sumKamasEarned = 120_000;
+		component.maxFocusedKamasEarned = 150_000;
+		component.tableauEffects = [
+			{ focusedKamasEarned: 150_000, runeName: 'Rune Fo' },
+		];
+		component.mergeRune = 'Aucune';
+
+		(component as unknown as { updateCurrentHistory: () => void })['updateCurrentHistory']();
+
+		expect(searchHistoryService.updateEntry).toHaveBeenCalledWith('history-123', {
+			breakRate: 150,
+			craftPrice: 100_000,
+			profitable: true,
+			kamasEarned: 150_000,
+			profitPercentage: 50,
+			focus: 'Rune Fo',
+		});
+	});
 });

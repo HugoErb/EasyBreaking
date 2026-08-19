@@ -65,9 +65,44 @@
 								</td>
 								<td>
 									@if (entry.profitable === true) {
-										<span class="profitability profitable"><i class="pi pi-check"></i> Rentable</span>
+										<div class="profitability-cell">
+											<span class="profitability profitable"><i class="pi pi-check"></i> Rentable</span>
+											@if (entry.kamasEarned !== null || entry.profitPercentage !== null) {
+												<div class="profitability-details">
+													@if (entry.kamasEarned !== null) {
+														<span class="kamas-amount">{{ entry.kamasEarned | number: "1.0-0" }} k</span>
+													}
+													@if (entry.profitPercentage !== null) {
+														<span class="profit-percentage profitable">
+															({{ entry.profitPercentage > 0 ? '+' : '' }}{{ entry.profitPercentage | number: "1.0-2" }} %)
+														</span>
+													}
+												</div>
+											}
+										</div>
 									} @else if (entry.profitable === false) {
-										<span class="profitability unprofitable"><i class="pi pi-times"></i> Non rentable</span>
+										<div class="profitability-cell">
+											<span class="profitability unprofitable"><i class="pi pi-times"></i> Non rentable</span>
+											@if (entry.kamasEarned !== null || entry.profitPercentage !== null) {
+												<div class="profitability-details">
+													@if (entry.kamasEarned !== null) {
+														<span class="kamas-amount">{{ entry.kamasEarned | number: "1.0-0" }} k</span>
+													}
+													@if (entry.profitPercentage !== null) {
+														<span class="profit-percentage unprofitable">
+															({{ entry.profitPercentage > 0 ? '+' : '' }}{{ entry.profitPercentage | number: "1.0-2" }} %)
+														</span>
+													}
+												</div>
+											}
+										</div>
+									} @else if (entry.kamasEarned !== null) {
+										<div class="profitability-cell">
+											<span class="empty-value">Non déterminée</span>
+											<div class="profitability-details">
+												<span class="kamas-amount">{{ entry.kamasEarned | number: "1.0-0" }} k</span>
+											</div>
+										</div>
 									} @else {
 										<span class="empty-value">Non déterminée</span>
 									}

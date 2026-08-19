@@ -33,14 +33,25 @@ describe('SearchHistoryService', () => {
 			breakRate: 125,
 			craftPrice: 50_000,
 			profitable: true,
+			kamasEarned: 75_000,
+			profitPercentage: 50,
 			focus: 'Rune Fo',
 		});
 
 		const entries = service.getEntries();
 		expect(entries.find((entry) => entry.historyId === secondHistoryId)).toEqual(
-			jasmine.objectContaining({ breakRate: 125, craftPrice: 50_000, profitable: true, focus: 'Rune Fo' }),
+			jasmine.objectContaining({
+				breakRate: 125,
+				craftPrice: 50_000,
+				profitable: true,
+				kamasEarned: 75_000,
+				profitPercentage: 50,
+				focus: 'Rune Fo',
+			}),
 		);
 		expect(entries.find((entry) => entry.historyId === firstHistoryId)?.breakRate).toBeNull();
+		expect(entries.find((entry) => entry.historyId === firstHistoryId)?.kamasEarned).toBeNull();
+		expect(entries.find((entry) => entry.historyId === firstHistoryId)?.profitPercentage).toBeNull();
 	});
 
 	it('retains entries written by the previous history format', () => {
@@ -50,7 +61,14 @@ describe('SearchHistoryService', () => {
 		);
 
 		expect(service.getEntries()[0]).toEqual(
-			jasmine.objectContaining({ name: item.name, level: 100, breakRate: 110, craftPrice: null }),
+			jasmine.objectContaining({
+				name: item.name,
+				level: 100,
+				breakRate: 110,
+				craftPrice: null,
+				kamasEarned: null,
+				profitPercentage: null,
+			}),
 		);
 	});
 

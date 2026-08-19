@@ -154,6 +154,13 @@ tbody tr:hover td {
 	white-space: nowrap;
 }
 
+.profitability-cell {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	gap: 4px;
+}
+
 .profitability {
 	display: inline-flex;
 	align-items: center;
@@ -168,6 +175,32 @@ tbody tr:hover td {
 
 .unprofitable {
 	color: #e36b6b;
+}
+
+.profitability-details {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	gap: 6px;
+	font-size: 0.86em;
+	white-space: nowrap;
+}
+
+.kamas-amount {
+	color: $text-primary;
+	font-weight: 500;
+}
+
+.profit-percentage {
+	font-weight: 600;
+
+	&.profitable {
+		color: #58c878;
+	}
+
+	&.unprofitable {
+		color: #e36b6b;
+	}
 }
 
 .action-cell {
