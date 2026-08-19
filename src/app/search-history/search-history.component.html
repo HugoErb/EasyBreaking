@@ -110,16 +110,28 @@
 								<td>{{ entry.focus ?? "Non déterminé" }}</td>
 								<td>{{ entry.updatedAt | date: "dd/MM/yyyy HH:mm" }}</td>
 								<td class="action-cell">
-									<p-button
-										icon="pi pi-trash"
-										[rounded]="true"
-										[text]="true"
-										severity="danger"
-										(click)="deleteEntry(entry.historyId)"
-										pTooltip="Supprimer cette ligne"
-										tooltipPosition="left"
-										ariaLabel="Supprimer cette ligne"
-									/>
+									<div class="action-buttons">
+										<p-button
+											icon="pi pi-external-link"
+											[rounded]="true"
+											[text]="true"
+											severity="info"
+											(click)="launchWithEntry(entry)"
+											pTooltip="Ouvrir dans le calculateur"
+											tooltipPosition="left"
+											ariaLabel="Ouvrir dans le calculateur"
+										/>
+										<p-button
+											icon="pi pi-trash"
+											[rounded]="true"
+											[text]="true"
+											severity="danger"
+											(click)="deleteEntry(entry.historyId)"
+											pTooltip="Supprimer cette ligne"
+											tooltipPosition="left"
+											ariaLabel="Supprimer cette ligne"
+										/>
+									</div>
 								</td>
 							</tr>
 						}

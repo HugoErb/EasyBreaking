@@ -205,6 +205,14 @@ tbody tr:hover td {
 
 .action-cell {
 	padding: 4px 8px;
+	white-space: nowrap;
+
+	.action-buttons {
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		gap: 4px;
+	}
 }
 
 .empty-value {

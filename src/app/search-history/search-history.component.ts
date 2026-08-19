@@ -29,6 +29,11 @@ export class SearchHistoryComponent implements OnInit {
 		void this.router.navigate(['']);
 	}
 
+	launchWithEntry(entry: SearchHistoryEntry): void {
+		this.searchHistoryService.setPrefilledEntry(entry);
+		void this.router.navigate(['']);
+	}
+
 	deleteEntry(historyId: string): void {
 		this.searchHistoryService.deleteEntry(historyId);
 		this.history = this.history.filter((entry) => entry.historyId !== historyId);

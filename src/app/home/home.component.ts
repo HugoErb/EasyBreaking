@@ -1,6 +1,6 @@
 import { Component, OnInit, ChangeDetectionStrategy, ChangeDetectorRef, ViewChild } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { forkJoin } from 'rxjs';
+import { forkJoin, of, tap } from 'rxjs';
 import { AutoComplete } from 'primeng/autocomplete';
 import { estimateItemsToReachRate } from './break-rate-estimator';
 import { SearchHistoryService } from '../search-history/search-history.service';
@@ -86,35 +86,26 @@ export class HomeComponent implements OnInit {
 	 * - Mise en place du debounce des inputs
 	 */
 	ngOnInit(): void {
-		this.loadRunes();
+		const storedRunes = localStorage.getItem('runesData');
+		const runes$ = storedRunes
+			? of(JSON.parse(storedRunes))
+			: this.http.get<any[]>('assets/jsons/runes.json').pipe(
+					tap((data) => localStorage.setItem('runesData', JSON.stringify(data))),
+				);
 
 		const armes$ = this.http.get<any[]>('assets/jsons/armes.json');
 		const equipements$ = this.http.get<any[]>('assets/jsons/equipements.json');
 
-		// forkJoin pour charger les deux listes en parallèle
-		forkJoin([armes$, equipements$]).subscribe(([armesData, equipementsData]) => {
+		// forkJoin pour charger les runes et les deux listes en parallèle
+		forkJoin([runes$, armes$, equipements$]).subscribe(([runesData, armesData, equipementsData]) => {
+			this.runes = runesData.map((r: any) => ({ ...r, normalizedStat: this.normalizeStat(r.stat) }));
 			this.items = [...this.processData(armesData), ...this.processData(equipementsData)]
 				.sort((a, b) => a.name.localeCompare(b.name))
 				.map((item) => ({ ...item, nameLower: item.name.toLowerCase() }));
+
+			this.checkAndApplyPrefilledEntry();
 			this.cdr.markForCheck(); // Permet à Angular de revérifier le composant pour màj le DOM avec vos nouvelles valeurs.
 		});
-	}
-
-	/**
-	 * Charge les runes depuis le localStorage ou depuis le JSON
-	 * et met à jour this.runes.
-	 */
-	private loadRunes(): void {
-		const stored = localStorage.getItem('runesData');
-		if (stored) {
-			this.runes = JSON.parse(stored).map((r: any) => ({ ...r, normalizedStat: this.normalizeStat(r.stat) }));
-		} else {
-			this.http.get<any[]>('assets/jsons/runes.json').subscribe((data) => {
-				localStorage.setItem('runesData', JSON.stringify(data));
-				this.runes = data.map((r) => ({ ...r, normalizedStat: this.normalizeStat(r.stat) }));
-				this.cdr.markForCheck();
-			});
-		}
 	}
 
 	/**
@@ -159,6 +150,15 @@ export class HomeComponent implements OnInit {
 		setTimeout(() => this.autoComplete.inputEL?.nativeElement.blur(), 100);
 		this.unVanishDiv();
 		this.tauxBrisage = 100;
+		this.initCachedRunes();
+		this.resetStats();
+		this.buildTableAndTotals();
+		this.updateCurrentHistory();
+		this.cdr.markForCheck();
+	}
+
+	private initCachedRunes(): void {
+		if (!this.selectedItem) return;
 		const level = this.selectedItem.level;
 
 		this._cachedRunes = this.selectedItem.effects.map((effect: string) => {
@@ -183,11 +183,27 @@ export class HomeComponent implements OnInit {
 				paRunePrice,
 				raRunePrice,
 			};
-		});
+		}).filter((r: CachedRune | null): r is CachedRune => r !== null);
+	}
 
-		this.resetStats();
+	private checkAndApplyPrefilledEntry(): void {
+		const entry = this.searchHistoryService.consumePrefilledEntry();
+		if (!entry) return;
+
+		const targetItem = this.items.find((item) => item.name.toLowerCase() === entry.name.toLowerCase());
+		if (!targetItem) return;
+
+		this.selectedItem = targetItem;
+		this.currentHistoryId = entry.historyId;
+		this.tauxBrisage = entry.breakRate ?? 100;
+		this.prixCraft = entry.craftPrice ?? null;
+
+		this.initCachedRunes();
 		this.buildTableAndTotals();
-		this.updateCurrentHistory();
+		this.computeRentabilities();
+		this.defineCellColor();
+		this.cdr.detectChanges();
+		this.unVanishDiv();
 		this.cdr.markForCheck();
 	}
 

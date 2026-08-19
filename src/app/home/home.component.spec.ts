@@ -69,4 +69,68 @@ describe('HomeComponent', () => {
 			focus: 'Rune Fo',
 		});
 	});
+
+	it('pre-fills item and economic parameters when a prefilled history entry is consumed', () => {
+		const prefilled = {
+			historyId: 'history-voile',
+			name: "Voile d'encre",
+			image: 'voile.png',
+			level: 200,
+			type: 'Cape',
+			breakRate: 180,
+			craftPrice: 1_200_000,
+			profitable: true,
+			kamasEarned: 1_800_000,
+			profitPercentage: 50,
+			focus: 'Rune Fo',
+			updatedAt: '2026-08-19T10:00:00.000Z',
+		};
+
+		const searchHistoryService = {
+			consumePrefilledEntry: () => prefilled,
+			recordSearch: () => 'history-voile',
+			updateEntry: jasmine.createSpy('updateEntry'),
+		} as unknown as SearchHistoryService;
+
+		const component = new HomeComponent(
+			{} as HttpClient,
+			{
+				detectChanges: () => undefined,
+				markForCheck: () => undefined,
+			} as unknown as ChangeDetectorRef,
+			searchHistoryService,
+		);
+
+		component.items = [
+			{
+				id: 1,
+				name: "Voile d'encre",
+				nameLower: "voile d'encre",
+				level: 200,
+				effects: ['100 Force'],
+				recipe: [],
+				type: 'Cape',
+			},
+		];
+		component.runes = [
+			{
+				name: 'Rune Fo',
+				stat: 'Force',
+				normalizedStat: 'force',
+				price: '100',
+				weight: 1,
+			},
+		];
+
+		spyOn(component, 'unVanishDiv').and.stub();
+		spyOn(component, 'findNorProfitableBreakRate').and.returnValue(100);
+
+		(component as unknown as { checkAndApplyPrefilledEntry: () => void })['checkAndApplyPrefilledEntry']();
+
+		expect(component.selectedItem?.name).toBe("Voile d'encre");
+		expect(component['currentHistoryId']).toBe('history-voile');
+		expect(component.tauxBrisage).toBe(180);
+		expect(component.prixCraft).toBe(1_200_000);
+		expect(component.unVanishDiv).toHaveBeenCalled();
+	});
 });

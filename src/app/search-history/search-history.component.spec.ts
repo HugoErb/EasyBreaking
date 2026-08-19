@@ -1,4 +1,4 @@
-﻿import { TestBed } from '@angular/core/testing';
+import { TestBed } from '@angular/core/testing';
 import { Router } from '@angular/router';
 import { ButtonModule } from 'primeng/button';
 import { TooltipModule } from 'primeng/tooltip';
@@ -43,7 +43,7 @@ describe('SearchHistoryComponent', () => {
 
 	beforeEach(() => {
 		const routerSpy = jasmine.createSpyObj('Router', ['navigate']);
-		const serviceSpy = jasmine.createSpyObj('SearchHistoryService', ['getEntries', 'deleteEntry']);
+		const serviceSpy = jasmine.createSpyObj('SearchHistoryService', ['getEntries', 'deleteEntry', 'setPrefilledEntry']);
 		serviceSpy.getEntries.and.returnValue([...mockEntries]);
 
 		TestBed.configureTestingModule({
@@ -93,5 +93,13 @@ describe('SearchHistoryComponent', () => {
 		component.sortBy('name');
 		expect(component.history[0].name).toBe('Coiffe du Bouftou');
 		expect(component.history[1].name).toBe("Voile d'encre");
+	});
+
+	it('sets prefilled entry and navigates to home on launchWithEntry', () => {
+		const entry = mockEntries[0];
+		component.launchWithEntry(entry);
+
+		expect(service.setPrefilledEntry).toHaveBeenCalledWith(entry);
+		expect(router.navigate).toHaveBeenCalledWith(['']);
 	});
 });

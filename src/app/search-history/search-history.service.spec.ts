@@ -80,4 +80,30 @@ describe('SearchHistoryService', () => {
 
 		expect(service.getEntries().map((entry) => entry.historyId)).toEqual([firstHistoryId]);
 	});
+
+	it('stores and consumes prefilled entry correctly', () => {
+		const entry = service.getEntries()[0];
+		const dummyEntry = {
+			historyId: 'test-id',
+			name: 'Test Item',
+			image: 'test.png',
+			level: 150,
+			type: 'Bague',
+			breakRate: 120,
+			craftPrice: 80_000,
+			profitable: true,
+			kamasEarned: 110_000,
+			profitPercentage: 37.5,
+			focus: 'Sans focus',
+			updatedAt: '2026-08-19T10:00:00.000Z',
+		};
+
+		service.setPrefilledEntry(dummyEntry);
+		expect(service.getPrefilledEntry()).toEqual(dummyEntry);
+
+		const consumed = service.consumePrefilledEntry();
+		expect(consumed).toEqual(dummyEntry);
+		expect(service.getPrefilledEntry()).toBeNull();
+		expect(service.consumePrefilledEntry()).toBeNull();
+	});
 });

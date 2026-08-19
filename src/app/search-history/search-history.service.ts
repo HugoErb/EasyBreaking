@@ -25,6 +25,21 @@ type SearchHistoryItem = Pick<SearchHistoryEntry, 'name' | 'image' | 'type'> & {
 @Injectable({ providedIn: 'root' })
 export class SearchHistoryService {
 	private readonly storageKey = 'searchHistory';
+	private prefilledEntry: SearchHistoryEntry | null = null;
+
+	setPrefilledEntry(entry: SearchHistoryEntry): void {
+		this.prefilledEntry = entry;
+	}
+
+	consumePrefilledEntry(): SearchHistoryEntry | null {
+		const entry = this.prefilledEntry;
+		this.prefilledEntry = null;
+		return entry;
+	}
+
+	getPrefilledEntry(): SearchHistoryEntry | null {
+		return this.prefilledEntry;
+	}
 
 	getEntries(): SearchHistoryEntry[] {
 		const storedHistory = localStorage.getItem(this.storageKey);
