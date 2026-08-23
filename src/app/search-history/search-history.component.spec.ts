@@ -120,11 +120,12 @@ describe('SearchHistoryComponent', () => {
 		const dateTooltip = fixture.debugElement
 			.queryAll(By.directive(Tooltip))
 			.map((element) => element.injector.get(Tooltip))
-			.find((tooltip) => String(tooltip.content).startsWith('Chaque nouvelle sélection crée une ligne.'));
+			.find((tooltip) => String(tooltip.content).startsWith('Un même item reste sur une seule ligne'));
 
 		expect(dateTooltip?.content).toBe(
-			'Chaque nouvelle sélection crée une ligne. Les modifications suivantes la mettent à jour pendant 5 minutes, puis créent une nouvelle ligne.',
+			'Un même item reste sur une seule ligne pendant 5 min après sa dernière mise à jour. Passé ce délai, une nouvelle ligne est créée.',
 		);
+		expect(dateTooltip?.tooltipStyleClass).toBe('history-date-tooltip');
 		expect(dateTooltip?.tooltipPosition).toBe('top');
 	});
 });

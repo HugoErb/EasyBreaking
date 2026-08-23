@@ -22,16 +22,26 @@ describe('SearchHistoryService', () => {
 		localStorage.removeItem('searchHistory');
 	});
 
-	it('keeps every search, including repeated searches for the same item', () => {
-		service.recordSearch(item);
-		service.recordSearch(item);
+	it('reuses the latest line when the same item is selected within five minutes', () => {
+		const firstHistoryId = service.recordSearch(item);
+		const secondHistoryId = service.recordSearch(item);
 
+		expect(secondHistoryId).toBe(firstHistoryId);
+		expect(service.getEntries().length).toBe(1);
+	});
+
+	it('creates a new line when the same item is selected after five minutes', () => {
+		const firstHistoryId = service.recordSearch(item);
+		jasmine.clock().mockDate(new Date('2026-08-23T10:05:00.000Z'));
+		const secondHistoryId = service.recordSearch(item);
+
+		expect(secondHistoryId).not.toBe(firstHistoryId);
 		expect(service.getEntries().length).toBe(2);
-		expect(service.getEntries()[0].historyId).not.toBe(service.getEntries()[1].historyId);
 	});
 
 	it('updates only the active history entry with all calculation details', () => {
 		const firstHistoryId = service.recordSearch(item);
+		jasmine.clock().mockDate(new Date('2026-08-23T10:05:00.000Z'));
 		const secondHistoryId = service.recordSearch(item);
 
 		const updatedHistoryId = service.updateEntry(secondHistoryId, {
@@ -136,6 +146,7 @@ describe('SearchHistoryService', () => {
 
 	it('deletes only the selected history entry', () => {
 		const firstHistoryId = service.recordSearch(item);
+		jasmine.clock().mockDate(new Date('2026-08-23T10:05:00.000Z'));
 		const secondHistoryId = service.recordSearch(item);
 
 		service.deleteEntry(secondHistoryId);

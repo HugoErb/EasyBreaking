@@ -59,7 +59,8 @@
 									type="button"
 									class="sort-button"
 									(click)="sortBy('updatedAt')"
-									pTooltip="Chaque nouvelle sélection crée une ligne. Les modifications suivantes la mettent à jour pendant 5 minutes, puis créent une nouvelle ligne."
+									pTooltip="Un même item reste sur une seule ligne pendant 5 min après sa dernière mise à jour. Passé ce délai, une nouvelle ligne est créée."
+									tooltipStyleClass="history-date-tooltip"
 									tooltipPosition="top"
 								>
 									Date <i class="pi pi-info-circle date-info-icon" aria-hidden="true"></i> <i [class]="getSortIcon('updatedAt')"></i>

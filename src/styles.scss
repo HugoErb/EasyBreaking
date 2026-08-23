@@ -19,6 +19,15 @@
     white-space: nowrap;
 }
 
+.history-date-tooltip {
+    max-width: 19rem !important;
+}
+
+.history-date-tooltip .p-tooltip-text {
+    line-height: 1.35;
+    text-align: left;
+}
+
 .p-inputicon {
     color: rgba(198, 193, 185, 0.5) !important;
 }

@@ -60,12 +60,27 @@ export class SearchHistoryService {
 	}
 
 	recordSearch(item: SearchHistoryItem): string {
+		const entries = this.getEntries();
+		const itemLevel = Number(item.level);
+		const now = Date.now();
+		const recentEntry = entries
+			.filter(
+				(entry) =>
+					entry.name.localeCompare(item.name, 'fr', { sensitivity: 'base' }) === 0 &&
+					entry.type === item.type &&
+					entry.level === itemLevel &&
+					this.canUpdateEntry(entry, now),
+			)
+			.sort((firstEntry, secondEntry) => new Date(secondEntry.updatedAt).getTime() - new Date(firstEntry.updatedAt).getTime())[0];
+
+		if (recentEntry) return recentEntry.historyId;
+
 		const historyId = crypto.randomUUID();
 		const entry: SearchHistoryEntry = {
 			historyId,
 			name: item.name,
 			image: item.image,
-			level: Number(item.level),
+			level: itemLevel,
 			type: item.type,
 			breakRate: null,
 			craftPrice: null,
@@ -73,10 +88,10 @@ export class SearchHistoryService {
 			kamasEarned: null,
 			profitPercentage: null,
 			focus: null,
-			updatedAt: new Date().toISOString(),
+			updatedAt: new Date(now).toISOString(),
 		};
 
-		this.saveEntries([entry, ...this.getEntries()]);
+		this.saveEntries([entry, ...entries]);
 		return historyId;
 	}
 
@@ -86,12 +101,9 @@ export class SearchHistoryService {
 		if (entryIndex === -1) return historyId;
 
 		const now = Date.now();
-		const previousUpdateTime = new Date(entries[entryIndex].updatedAt).getTime();
-		const entryAge = now - previousUpdateTime;
-		const canUpdateExistingEntry = Number.isFinite(previousUpdateTime) && entryAge >= 0 && entryAge < HISTORY_UPDATE_WINDOW_MS;
 		const updatedAt = new Date(now).toISOString();
 
-		if (!canUpdateExistingEntry) {
+		if (!this.canUpdateEntry(entries[entryIndex], now)) {
 			const newHistoryId = crypto.randomUUID();
 			const newEntry: SearchHistoryEntry = {
 				...entries[entryIndex],
@@ -119,6 +131,12 @@ export class SearchHistoryService {
 
 	private saveEntries(entries: SearchHistoryEntry[]): void {
 		localStorage.setItem(this.storageKey, JSON.stringify(entries));
+	}
+
+	private canUpdateEntry(entry: SearchHistoryEntry, now: number): boolean {
+		const previousUpdateTime = new Date(entry.updatedAt).getTime();
+		const entryAge = now - previousUpdateTime;
+		return Number.isFinite(previousUpdateTime) && entryAge >= 0 && entryAge < HISTORY_UPDATE_WINDOW_MS;
 	}
 
 	private normalizeEntry(value: unknown, index: number): SearchHistoryEntry | null {
