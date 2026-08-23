@@ -123,7 +123,8 @@ describe('HomeComponent', () => {
 				name: 'Rune Fo',
 				stat: 'Force',
 				normalizedStat: 'force',
-				price: '100',
+				img: 'force.png',
+				price: 100,
 				weight: 1,
 			},
 		];
@@ -138,6 +139,36 @@ describe('HomeComponent', () => {
 		expect(component.tauxBrisage).toBe(180);
 		expect(component.prixCraft).toBe(1_200_000);
 		expect(component.unVanishDiv).toHaveBeenCalled();
+	});
+
+	it('pre-fills an item and break rate from ranking query parameters', () => {
+		const searchHistoryService = {
+			recordSearch: jasmine.createSpy('recordSearch').and.returnValue('ranking-history'),
+			updateEntry: jasmine.createSpy('updateEntry'),
+			consumePrefilledEntry: () => null,
+		} as unknown as SearchHistoryService;
+		const route = {
+			snapshot: {
+				queryParamMap: {
+					get: (key: string) => ({ item: 'Anneau test', breakRate: '275' })[key as 'item' | 'breakRate'] ?? null,
+				},
+			},
+		} as unknown as ActivatedRoute;
+		const component = new HomeComponent(
+			{} as HttpClient,
+			{ detectChanges: () => undefined, markForCheck: () => undefined } as unknown as ChangeDetectorRef,
+			searchHistoryService,
+			route,
+		);
+		component.items = [{ name: 'Anneau test', image: 'item.png', type: 'Anneau', level: 50, effects: ['10 Force'], recipe: [] }];
+		component.runes = [{ name: 'Fo', stat: 'Force', img: 'force.png', price: 100, weight: 1 }];
+		spyOn(component, 'unVanishDiv').and.stub();
+
+		(component as unknown as { checkAndApplyPrefilledEntry: () => void }).checkAndApplyPrefilledEntry();
+
+		expect(component.selectedItem?.name).toBe('Anneau test');
+		expect(component.tauxBrisage).toBe(275);
+		expect(searchHistoryService.recordSearch).toHaveBeenCalled();
 	});
 
 	it('selects the most valuable profitable merge across every effect', () => {

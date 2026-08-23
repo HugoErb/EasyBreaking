@@ -5,22 +5,14 @@ import { forkJoin, map, of, tap } from 'rxjs';
 import { AutoComplete } from 'primeng/autocomplete';
 import { estimateItemsToReachRate } from './break-rate-estimator';
 import { SearchHistoryService } from '../search-history/search-history.service';
-import { isUnsupportedRuneStat, parseRunesData, readStoredRunes, storeRunes } from '../rune-data';
+import { isUnsupportedRuneStat, parseRunesData, readStoredRunes, RuneData, storeRunes } from '../rune-data';
+import { calculateBreaking } from '../breaking-calculator';
 
-const PA_RUNE_RATIO = 3;
-const RA_RUNE_RATIO = 9;
-
-/**
- * Représente une rune mise en cache pour accélérer les calculs.
- */
 interface CachedRune {
 	effect: string;
-	rune: any;
+	rune: RuneData;
 	runeNumerator: number;
 	runeRealWeight: number;
-	runePrice: number;
-	paRunePrice: number;
-	raRunePrice: number;
 }
 
 /**
@@ -38,7 +30,7 @@ interface CachedRune {
 export class HomeComponent implements OnInit {
 	// Données de base
 	items: any[] = [];
-	runes: any[] = [];
+	runes: Array<RuneData & { normalizedStat?: string }> = [];
 	selectedItem: any = null;
 	filteredItems: any[] = [];
 
@@ -75,10 +67,9 @@ export class HomeComponent implements OnInit {
 	nombreObjets: number = 1;
 	@ViewChild('autoComplete') autoComplete!: AutoComplete;
 
-	// Cache des runes pour éviter les recherches répétées et calculs
-	private _cachedRunes: CachedRune[] = [];
 	private currentHistoryId: string | null = null;
 	private bestNonFocusedMerges: string[] = [];
+	private _cachedRunes: CachedRune[] = [];
 
 	constructor(
 		private readonly http: HttpClient,
@@ -111,7 +102,7 @@ export class HomeComponent implements OnInit {
 
 		// forkJoin pour charger les runes et les deux listes en parallèle
 		forkJoin([runes$, armes$, equipements$]).subscribe(([runesData, armesData, equipementsData]) => {
-			this.runes = runesData.map((r: any) => ({ ...r, normalizedStat: this.normalizeStat(r.stat) }));
+			this.runes = runesData.map((rune) => ({ ...rune, normalizedStat: this.normalizeStat(rune.stat) }));
 			this.items = [...this.processData(armesData), ...this.processData(equipementsData)]
 				.sort((a, b) => a.name.localeCompare(b.name))
 				.map((item) => ({ ...item, nameLower: item.name.toLowerCase() }));
@@ -170,52 +161,42 @@ export class HomeComponent implements OnInit {
 		this.cdr.markForCheck();
 	}
 
-	private initCachedRunes(): void {
-		if (!this.selectedItem) return;
-		const level = this.selectedItem.level;
-
-		this._cachedRunes = this.selectedItem.effects
-			.filter((effect: string) => !isUnsupportedRuneStat(effect))
-			.map((effect: string) => {
-				const rune = this.findMatchingRune(effect);
-				if (!rune) {
-					console.error("[findMatchingRune] Rune introuvable pour l'effet :", effect);
-					return null;
-				}
-				const averageEffectValue = this.calculateAverage(effect);
-				const runeNumerator = (3 * rune.weight * averageEffectValue * level) / 200 + 1;
-				const runeRealWeight = this.getRealRuneWeight(rune);
-				const runePrice = Number.parseFloat(rune.price);
-				const paRunePrice = rune.paPrice ? Number.parseFloat(rune.paPrice) : 0;
-				const raRunePrice = rune.raPrice ? Number.parseFloat(rune.raPrice) : 0;
-
-				return {
-					effect,
-					rune,
-					runeNumerator,
-					runeRealWeight,
-					runePrice,
-					paRunePrice,
-					raRunePrice,
-				};
-			})
-			.filter((r: CachedRune | null): r is CachedRune => r !== null);
-	}
+	private initCachedRunes(): void {}
 
 	private checkAndApplyPrefilledEntry(): void {
 		const requestedHistoryId = this.route?.snapshot.queryParamMap.get('historyId');
-		const entry = requestedHistoryId
-			? this.searchHistoryService.getEntries().find((historyEntry) => historyEntry.historyId === requestedHistoryId) ?? null
-			: this.searchHistoryService.consumePrefilledEntry();
-		if (!entry) return;
+		const historyEntry = requestedHistoryId
+			? this.searchHistoryService.getEntries().find((entry) => entry.historyId === requestedHistoryId) ?? null
+			: null;
+		if (historyEntry) {
+			this.applyPrefilledItem(historyEntry.name, historyEntry.breakRate, historyEntry.craftPrice, historyEntry.historyId);
+			return;
+		}
 
-		const targetItem = this.items.find((item) => item.name.toLowerCase() === entry.name.toLowerCase());
+		const requestedItemName = this.route?.snapshot.queryParamMap.get('item');
+		if (requestedItemName) {
+			const requestedBreakRateParam = this.route?.snapshot.queryParamMap.get('breakRate');
+			const requestedBreakRate = requestedBreakRateParam === null ? Number.NaN : Number(requestedBreakRateParam);
+			this.applyPrefilledItem(
+				requestedItemName,
+				Number.isFinite(requestedBreakRate) ? Math.min(Math.max(requestedBreakRate, 0), 4000) : 100,
+				null,
+			);
+			return;
+		}
+
+		const entry = this.searchHistoryService.consumePrefilledEntry();
+		if (entry) this.applyPrefilledItem(entry.name, entry.breakRate, entry.craftPrice, entry.historyId);
+	}
+
+	private applyPrefilledItem(itemName: string, breakRate: number | null, craftPrice: number | null, historyId?: string): void {
+		const targetItem = this.items.find((item) => item.name.localeCompare(itemName, 'fr', { sensitivity: 'base' }) === 0);
 		if (!targetItem) return;
 
 		this.selectedItem = targetItem;
-		this.currentHistoryId = entry.historyId;
-		this.tauxBrisage = entry.breakRate ?? 100;
-		this.prixCraft = entry.craftPrice ?? null;
+		this.currentHistoryId = historyId ?? this.searchHistoryService.recordSearch(targetItem);
+		this.tauxBrisage = breakRate ?? 100;
+		this.prixCraft = craftPrice;
 
 		this.initCachedRunes();
 		this.buildTableAndTotals();
@@ -297,60 +278,18 @@ export class HomeComponent implements OnInit {
 	 */
 	private buildTableAndTotals(): void {
 		if (this.tauxBrisage != null) {
-			this.tauxBrisage = Math.min(this.tauxBrisage, 4000);
+			this.tauxBrisage = Math.min(Math.max(this.tauxBrisage, 0), 4000);
 		}
-		this.sumKamasEarned = 0;
-
-		this.tableauEffects = this._cachedRunes.map(({ effect, rune, runeNumerator, runeRealWeight, runePrice, paRunePrice, raRunePrice }) => {
-			// quantités brutes et focus
-			const baseQty = this.calculateRuneQuantity(this.tauxBrisage, {
-				effect,
-				rune,
-				runeNumerator,
-				runeRealWeight,
-				runePrice,
-				paRunePrice,
-				raRunePrice,
-			});
-			const focQty = this.calculateRuneQuantityFocused(this.tauxBrisage, effect);
-			// quantités PA/RA
-			const basePaQty = rune.paPrice ? baseQty / PA_RUNE_RATIO : 0;
-			const baseRaQty = rune.raPrice ? baseQty / RA_RUNE_RATIO : 0;
-			const paQty = rune.paPrice ? focQty / PA_RUNE_RATIO : 0;
-			const raQty = rune.raPrice ? focQty / RA_RUNE_RATIO : 0;
-
-			// fonction utilitaire pour arrondir et appliquer taxe
-			const calc = (qty: number, price?: string | number) => Math.round(qty * (price ? Number(price) : 0)) * 0.98;
-
-			const row = {
-				stat: effect,
-				runeName: rune.name,
-				runePrice: rune.price,
-				paPrice: rune.paPrice,
-				raPrice: rune.raPrice,
-				runeImg: rune.img,
-				runeQuantity: baseQty.toFixed(2),
-				kamasEarned: calc(baseQty, rune.price),
-				basePaKamasEarned: calc(basePaQty, rune.paPrice),
-				baseRaKamasEarned: calc(baseRaQty, rune.raPrice),
-				runeQuantityFocused: focQty.toFixed(2),
-				focusedKamasEarned: calc(focQty, rune.price),
-				paRuneQuantity: paQty.toFixed(2),
-				paKamasEarned: calc(paQty, rune.paPrice),
-				raRuneQuantity: raQty.toFixed(2),
-				raKamasEarned: calc(raQty, rune.raPrice),
-			};
-
-			this.sumKamasEarned += row.kamasEarned;
-			return row;
-		});
-
+		const calculation = calculateBreaking(this.selectedItem, this.runes, this.tauxBrisage ?? 0);
+		this.tableauEffects = calculation.rows;
 		this.recipe = this.selectedItem.recipe;
-		this.maxFocusedKamasEarned = Math.max(...this.tableauEffects.map((r) => r.focusedKamasEarned), 0);
-		this.maxValue = Math.max(this.maxFocusedKamasEarned, this.sumKamasEarned);
-		this.updateBestNonFocusedChoices();
-
-		this.determineBestMergeRune();
+		this.sumKamasEarned = calculation.standardKamas;
+		this.sumBestChoicesKamasEarned = calculation.bestNonFocusedKamas;
+		this.maxFocusedKamasEarned = calculation.bestFocusedKamas;
+		this.maxValue = calculation.bestWithoutFusionKamas;
+		this.bestNonFocusedMerges = calculation.nonFocusedMerges;
+		this.mergeRune = calculation.mergeName;
+		this.maxValuePaRa = calculation.fusionKamas;
 	}
 
 	private updateBestNonFocusedChoices(): void {
@@ -380,7 +319,7 @@ export class HomeComponent implements OnInit {
 		}
 
 		const nonFocusedMergeLabel =
-			this.bestNonFocusedMerges.length > 1 ? 'Plusieurs (voir tableau)' : this.bestNonFocusedMerges[0];
+			this.bestNonFocusedMerges.length > 1 ? 'plusieurs (voir tableau)' : this.bestNonFocusedMerges[0];
 		let bestMerge: { name: string; value: number } | null =
 			nonFocusedMergeLabel && this.sumBestChoicesKamasEarned > (this.maxValue ?? 0)
 				? { name: nonFocusedMergeLabel, value: this.sumBestChoicesKamasEarned }
@@ -516,63 +455,10 @@ export class HomeComponent implements OnInit {
 	 *          ou 0 si le prix de craft n'est pas renseigné.
 	 */
 	calculateBenefit(tauxBrisage: number, includePaRa: boolean): number {
-		// Si le prix de craft n'est pas défini, on ne peut pas calculer de bénéfice
-		if (this.prixCraft == null) {
-			return 0;
-		}
-
-		let sumKamasEarned = 0;
-		let sumBestChoicesKamasEarned = 0;
-		let maxFocusedKamasEarned = 0;
-		let maxPaRaKamasEarned = 0;
-
-		for (const effect of this.selectedItem.effects) {
-			if (isUnsupportedRuneStat(effect)) continue;
-
-			const runeObj = this.findMatchingRune(effect);
-			if (!runeObj) continue;
-
-			// Calcul pour les runes "standard"
-			const cached = this._cachedRunes.find((c) => c.rune === runeObj);
-			const qty = cached ? this.calculateRuneQuantity(tauxBrisage, cached) : 0;
-			const earned = Math.round(qty * Number.parseFloat(runeObj.price)) * 0.98;
-			sumKamasEarned += earned;
-			let bestBaseValue = earned;
-
-			// Calcul pour le focus sur cet effet
-			const qtyFoc = this.calculateRuneQuantityFocused(tauxBrisage, effect);
-			const earnedFoc = Math.round(qtyFoc * Number.parseFloat(runeObj.price)) * 0.98;
-			if (earnedFoc > maxFocusedKamasEarned) {
-				maxFocusedKamasEarned = earnedFoc;
-			}
-
-			// Si on inclut PA/RA, vérifie quelle fusion rapporte le plus
-			if (includePaRa) {
-				const paPrice = runeObj.paPrice ? Number.parseFloat(runeObj.paPrice) : 0;
-				const raPrice = runeObj.raPrice ? Number.parseFloat(runeObj.raPrice) : 0;
-				const basePaEarned = Math.round((qty / PA_RUNE_RATIO) * paPrice) * 0.98;
-				const baseRaEarned = Math.round((qty / RA_RUNE_RATIO) * raPrice) * 0.98;
-				bestBaseValue = Math.max(earned, basePaEarned, baseRaEarned);
-				const paQty = paPrice > 0 ? qtyFoc / PA_RUNE_RATIO : 0;
-				const raQty = raPrice > 0 ? qtyFoc / RA_RUNE_RATIO : 0;
-				const paEarned = Math.round(paQty * paPrice) * 0.98;
-				const raEarned = Math.round(raQty * raPrice) * 0.98;
-				const bestPaRa = Math.max(paEarned > earnedFoc ? paEarned : 0, raEarned > earnedFoc ? raEarned : 0);
-				if (bestPaRa > maxPaRaKamasEarned) {
-					maxPaRaKamasEarned = bestPaRa;
-				}
-			}
-
-			sumBestChoicesKamasEarned += bestBaseValue;
-		}
-
-		// Détermine la meilleure valeur à soustraire du coût de craft
-		const maxValue = includePaRa
-			? Math.max(sumBestChoicesKamasEarned, maxPaRaKamasEarned)
-			: Math.max(sumKamasEarned, maxFocusedKamasEarned);
-
-		// Retourne le bénéfice net arrondi
-		return Math.round(maxValue - this.prixCraft);
+		if (this.prixCraft == null) return 0;
+		const calculation = calculateBreaking(this.selectedItem, this.runes, tauxBrisage);
+		const earnedKamas = includePaRa ? calculation.bestKamas : calculation.bestWithoutFusionKamas;
+		return Math.round(earnedKamas - this.prixCraft);
 	}
 
 	/**
@@ -583,48 +469,15 @@ export class HomeComponent implements OnInit {
 	 * @param newPrice - Le nouveau prix saisi.
 	 */
 	updateRunePrice(runeName: string, newPrice: number): void {
-		const storedRunes = localStorage.getItem('runesData');
-		if (!storedRunes) return;
-
-		try {
-			const runeList = JSON.parse(storedRunes);
-			const runeIndex = runeList.findIndex((r: any) => r.name === runeName);
-			if (runeIndex !== -1) {
-				runeList[runeIndex].price = newPrice;
-				localStorage.setItem('runesData', JSON.stringify(runeList));
-
-				// Met à jour le cache local aussi
-				const cacheIndex = this._cachedRunes.findIndex((r) => r.rune.name === runeName);
-				if (cacheIndex !== -1) {
-					this._cachedRunes[cacheIndex].rune.price = newPrice;
-				}
-
-				// Met à jour la ligne concernée dans tableauEffects
-				const row = this.tableauEffects.find((r) => r.runeName === runeName);
-				if (row) {
-					const qty = Number.parseFloat(row.runeQuantity);
-					const qtyFocus = Number.parseFloat(row.runeQuantityFocused);
-					const price = Number.parseFloat(newPrice.toString());
-
-					row.runePrice = newPrice;
-					row.kamasEarned = Math.round(qty * price * 0.98);
-					row.focusedKamasEarned = Math.round(qtyFocus * price * 0.98);
-				}
-
-				// Recalcule les totaux et couleurs
-				this.sumKamasEarned = this.tableauEffects.reduce((sum, r) => sum + (r.kamasEarned || 0), 0);
-				this.maxFocusedKamasEarned = Math.max(...this.tableauEffects.map((r) => r.focusedKamasEarned), 0);
-				this.maxValue = Math.max(this.maxFocusedKamasEarned, this.sumKamasEarned);
-				this.updateBestNonFocusedChoices();
-				this.determineBestMergeRune();
-				this.computeRentabilities();
-				this.defineCellColor();
-				this.updateCurrentHistory();
-				this.cdr.markForCheck();
-			}
-		} catch (e) {
-			console.error('Erreur lors de la mise à jour du prix des runes dans le localStorage', e);
-		}
+		const rune = this.runes.find((candidate) => candidate.name === runeName);
+		if (!rune) return;
+		rune.price = newPrice;
+		storeRunes(this.runes);
+		this.buildTableAndTotals();
+		this.computeRentabilities();
+		this.defineCellColor();
+		this.updateCurrentHistory();
+		this.cdr.markForCheck();
 	}
 
 	/**
@@ -659,7 +512,7 @@ export class HomeComponent implements OnInit {
 		const normalizedItemStat = this.normalizeStat(itemStatistic);
 
 		const filteredRunes = this.runes.filter((rune: any) => {
-			const normalizedRuneStat = rune.normalizedStat;
+			const normalizedRuneStat = rune.normalizedStat ?? this.normalizeStat(rune.stat);
 
 			// Cas particulier : différencier résistance fixe et %
 			if (normalizedItemStat.includes('résistance')) {

@@ -1,0 +1,63 @@
+import { BreakingItem, calculateBreaking } from './breaking-calculator';
+import { RuneData } from './rune-data';
+
+describe('calculateBreaking', () => {
+	const forceRune: RuneData = {
+		name: 'Fo',
+		stat: 'Force',
+		img: 'force.png',
+		price: 100,
+		weight: 1,
+		paPrice: null,
+		raPrice: null,
+	};
+	const baseItem: BreakingItem = {
+		name: 'Objet test',
+		image: 'item.png',
+		type: 'Anneau',
+		level: 100,
+		effects: ['10 Force'],
+	};
+
+	it('applies the 2% sale tax and keeps standard strategy on a tie', () => {
+		const result = calculateBreaking(baseItem, [forceRune], 100);
+
+		expect(result.standardKamas).toBe(1568);
+		expect(result.bestKamas).toBe(1568);
+		expect(result.strategyKind).toBe('standard');
+		expect(result.strategyLabel).toBe('Sans focus');
+	});
+
+	it('selects focus when it produces more value than the standard break', () => {
+		const paRune: RuneData = {
+			name: 'Ga Pa',
+			stat: 'PA',
+			img: 'pa.png',
+			price: 100,
+			weight: 100,
+		};
+		const result = calculateBreaking({ ...baseItem, effects: ['10 Force', '1 PA'] }, [forceRune, paRune], 100);
+
+		expect(result.bestFocusedKamas).toBeGreaterThan(result.standardKamas);
+		expect(result.strategyKind).toBe('focus');
+		expect(result.strategyLabel).toBe('Focus : Fo');
+	});
+
+	it('selects a profitable Pa fusion', () => {
+		const result = calculateBreaking(baseItem, [{ ...forceRune, paPrice: 400 }], 100);
+
+		expect(result.bestNonFocusedKamas).toBeGreaterThan(result.standardKamas);
+		expect(result.bestKamas).toBe(result.bestNonFocusedKamas);
+		expect(result.mergeName).toBe('Pa Fo');
+		expect(result.strategyLabel).toBe('Fusion : Pa Fo');
+	});
+
+	it('ignores hunting effects and clamps the break rate to 4000%', () => {
+		const withHunting = { ...baseItem, effects: ['Arme de chasse', '10 Force'] };
+		const cappedResult = calculateBreaking(withHunting, [forceRune], 5000);
+		const expectedResult = calculateBreaking(baseItem, [forceRune], 4000);
+
+		expect(cappedResult.rows.length).toBe(1);
+		expect(cappedResult.bestKamas).toBe(expectedResult.bestKamas);
+	});
+});

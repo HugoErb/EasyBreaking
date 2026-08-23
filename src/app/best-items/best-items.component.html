@@ -1,0 +1,107 @@
+<main>
+	<div class="page-shell">
+		<header class="page-header">
+			<a routerLink="/" class="back-btn" aria-label="Retour à l'accueil"><i class="pi pi-arrow-left" aria-hidden="true"></i></a>
+			<div class="header-brand">
+				<h1 class="page-title">Meilleurs items</h1>
+				<span class="page-subtitle">Classement des revenus estimés au brisage</span>
+			</div>
+		</header>
+
+		<section class="filters-card" aria-label="Filtres du classement">
+			<div class="filter-group rate-filter">
+				<label for="rankingBreakRate">Taux de brisage</label>
+				<p-iconfield iconPosition="right">
+					<p-inputNumber
+						inputId="rankingBreakRate"
+						[(ngModel)]="breakRate"
+						(onInput)="onBreakRateChange()"
+						[min]="0"
+						[max]="4000"
+					></p-inputNumber>
+					<p-inputicon><i class="fa-solid fa-percent"></i></p-inputicon>
+				</p-iconfield>
+			</div>
+			<div class="filter-group search-filter">
+				<label for="itemSearch">Nom</label>
+				<input id="itemSearch" type="search" [(ngModel)]="searchTerm" (ngModelChange)="onFiltersChange()" placeholder="Rechercher un item" />
+			</div>
+			<div class="filter-group level-filter">
+				<label for="minimumLevel">Niveau min.</label>
+				<input id="minimumLevel" type="number" [(ngModel)]="minimumLevel" (ngModelChange)="onFiltersChange()" min="1" max="200" />
+			</div>
+			<div class="filter-group level-filter">
+				<label for="maximumLevel">Niveau max.</label>
+				<input id="maximumLevel" type="number" [(ngModel)]="maximumLevel" (ngModelChange)="onFiltersChange()" min="1" max="200" />
+			</div>
+			<div class="filter-group type-filter">
+				<label for="itemType">Type</label>
+				<select id="itemType" [(ngModel)]="selectedType" (ngModelChange)="onFiltersChange()">
+					<option value="">Tous les types</option>
+					@for (type of types; track type) {
+						<option [value]="type">{{ type }}</option>
+					}
+				</select>
+			</div>
+		</section>
+
+		<p class="calculation-notice">
+			<i class="pi pi-info-circle" aria-hidden="true"></i>
+			Revenu brut estimé après taxe de 2 %, hors coût d'achat ou de craft.
+		</p>
+
+		<section class="results-card">
+			@if (loading) {
+				<div class="state-message"><i class="pi pi-spin pi-spinner" aria-hidden="true"></i> Calcul du classement…</div>
+			} @else if (loadError) {
+				<div class="state-message error-message">Impossible de charger les données du classement.</div>
+			} @else if (displayedResults.length === 0) {
+				<div class="state-message">Aucun item ne correspond aux filtres.</div>
+			} @else {
+				<div class="results-summary">
+					<span>Top {{ displayedResults.length }} sur {{ filteredTotal | number: "1.0-0" }} items filtrés</span>
+					<span>Taux appliqué : {{ breakRate ?? 0 | number: "1.0-2" }} %</span>
+				</div>
+				<div class="table-wrapper">
+					<table>
+						<thead>
+							<tr>
+								<th>Rang</th>
+								<th class="sortable" [attr.aria-sort]="getAriaSort('name')">
+									<button type="button" class="sort-button" (click)="sortBy('name')">Item <i [class]="getSortIcon('name')"></i></button>
+								</th>
+								<th class="sortable" [attr.aria-sort]="getAriaSort('level')">
+									<button type="button" class="sort-button" (click)="sortBy('level')">Niveau <i [class]="getSortIcon('level')"></i></button>
+								</th>
+								<th>Type</th>
+								<th class="sortable" [attr.aria-sort]="getAriaSort('gain')">
+									<button type="button" class="sort-button" (click)="sortBy('gain')">Revenu estimé <i [class]="getSortIcon('gain')"></i></button>
+								</th>
+								<th>Meilleure stratégie</th>
+							</tr>
+						</thead>
+						<tbody>
+							@for (result of displayedResults; track result.item.name + result.item.image) {
+								<tr
+									class="result-row"
+									tabindex="0"
+									role="link"
+									(click)="openItem(result)"
+									(keydown.enter)="openItem(result)"
+									[attr.aria-label]="'Ouvrir le détail de ' + result.item.name"
+								>
+									<td class="rank-cell">#{{ result.profitRank }}</td>
+									<td class="item-cell"><img [src]="result.item.image" [alt]="result.item.name" loading="lazy" /><span>{{ result.item.name }}</span></td>
+									<td>{{ result.item.level }}</td>
+									<td>{{ result.item.type }}</td>
+									<td class="gain-cell">{{ result.calculation.bestKamas | number: "1.0-0" }} k</td>
+									<td>{{ result.calculation.strategyLabel }}</td>
+								</tr>
+							}
+						</tbody>
+					</table>
+				</div>
+			}
+		</section>
+	</div>
+</main>
