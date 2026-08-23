@@ -138,6 +138,7 @@ describe('HomeComponent', () => {
 	it('selects the most valuable profitable merge across every effect', () => {
 		const component = createComponent();
 		component.tauxBrisage = 100;
+		component.maxValue = 250;
 		component.tableauEffects = [
 			{ runeName: 'Rune A', focusedKamasEarned: 200, paKamasEarned: 250, raKamasEarned: 220 },
 			{ runeName: 'Rune B', focusedKamasEarned: 180, paKamasEarned: 190, raKamasEarned: 320 },
@@ -147,6 +148,20 @@ describe('HomeComponent', () => {
 
 		expect(component.mergeRune).toBe('Ra Rune B');
 		expect(component.maxValuePaRa).toBe(320);
+	});
+
+	it('does not recommend a merge when the standard total is more valuable', () => {
+		const component = createComponent();
+		component.tauxBrisage = 100;
+		component.maxValue = 500;
+		component.tableauEffects = [
+			{ runeName: 'Rune A', focusedKamasEarned: 200, paKamasEarned: 300, raKamasEarned: 250 },
+		];
+
+		(component as unknown as { determineBestMergeRune: () => void }).determineBestMergeRune();
+
+		expect(component.mergeRune).toBe('Aucune');
+		expect(component.maxValuePaRa).toBe(0);
 	});
 
 	it('uses nine standard runes for one Ra rune', () => {
@@ -173,7 +188,7 @@ describe('HomeComponent', () => {
 		expect(row.baseRaKamasEarned).toBeGreaterThan(0);
 		expect(row.paKamasEarned).toBeGreaterThan(0);
 		expect(row.raKamasEarned).toBeGreaterThan(0);
-		expect(component.sumBestMergeKamasEarned).toBe(Math.max(row.kamasEarned, row.basePaKamasEarned, row.baseRaKamasEarned));
+		expect(component.sumBestChoicesKamasEarned).toBe(Math.max(row.kamasEarned, row.basePaKamasEarned, row.baseRaKamasEarned));
 		expect(Number.parseFloat(row.raRuneQuantity)).toBeCloseTo(Number.parseFloat(row.runeQuantityFocused) / 9, 2);
 	});
 
@@ -196,7 +211,42 @@ describe('HomeComponent', () => {
 		(component as unknown as { initCachedRunes: () => void }).initCachedRunes();
 		(component as unknown as { buildTableAndTotals: () => void }).buildTableAndTotals();
 
-		expect(component.sumBestMergeKamasEarned).toBe(component.tableauEffects[0].kamasEarned);
+		expect(component.sumBestChoicesKamasEarned).toBe(component.tableauEffects[0].kamasEarned);
+	});
+
+	it('recommends profitable merges without focus when their combined value is the best strategy', () => {
+		const component = createComponent();
+		component.prixCraft = 100;
+		component.selectedItem = { level: 100, effects: ['10 Force', '10 Chance'], recipe: [] };
+		component.runes = [
+			{
+				name: 'Fo',
+				stat: 'Force',
+				normalizedStat: 'force',
+				price: 100,
+				paPrice: 400,
+				raPrice: null,
+				weight: 1,
+				img: 'force.png',
+			},
+			{
+				name: 'Cha',
+				stat: 'Chance',
+				normalizedStat: 'chance',
+				price: 100,
+				paPrice: null,
+				raPrice: null,
+				weight: 1,
+				img: 'chance.png',
+			},
+		];
+
+		(component as unknown as { initCachedRunes: () => void }).initCachedRunes();
+		(component as unknown as { buildTableAndTotals: () => void }).buildTableAndTotals();
+
+		expect(component.mergeRune).toBe('Sans focus : Pa Fo');
+		expect(component.maxValuePaRa).toBe(component.sumBestChoicesKamasEarned);
+		expect(component.calculateBenefit(100, true)).toBe(Math.round(component.sumBestChoicesKamasEarned - component.prixCraft));
 	});
 
 	it('returns null when no break rate is profitable', () => {

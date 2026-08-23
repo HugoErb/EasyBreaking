@@ -63,7 +63,7 @@ export class HomeComponent implements OnInit {
 	estimatedItemsBeforeNotProfitablePaRa: number = 0;
 
 	sumKamasEarned: number = 0;
-	sumBestMergeKamasEarned: number = 0;
+	sumBestChoicesKamasEarned: number = 0;
 	maxFocusedKamasEarned?: number;
 	maxValue?: number;
 	maxCellColor: string = 'darkgreen';
@@ -77,6 +77,7 @@ export class HomeComponent implements OnInit {
 	// Cache des runes pour éviter les recherches répétées et calculs
 	private _cachedRunes: CachedRune[] = [];
 	private currentHistoryId: string | null = null;
+	private bestNonFocusedMerges: string[] = [];
 
 	constructor(
 		private readonly http: HttpClient,
@@ -291,7 +292,6 @@ export class HomeComponent implements OnInit {
 			this.tauxBrisage = Math.min(this.tauxBrisage, 4000);
 		}
 		this.sumKamasEarned = 0;
-		this.sumBestMergeKamasEarned = 0;
 
 		this.tableauEffects = this._cachedRunes.map(({ effect, rune, runeNumerator, runeRealWeight, runePrice, paRunePrice, raRunePrice }) => {
 			// quantités brutes et focus
@@ -334,15 +334,30 @@ export class HomeComponent implements OnInit {
 			};
 
 			this.sumKamasEarned += row.kamasEarned;
-			this.sumBestMergeKamasEarned += Math.max(row.kamasEarned, row.basePaKamasEarned, row.baseRaKamasEarned);
 			return row;
 		});
 
 		this.recipe = this.selectedItem.recipe;
 		this.maxFocusedKamasEarned = Math.max(...this.tableauEffects.map((r) => r.focusedKamasEarned), 0);
 		this.maxValue = Math.max(this.maxFocusedKamasEarned, this.sumKamasEarned);
+		this.updateBestNonFocusedChoices();
 
 		this.determineBestMergeRune();
+	}
+
+	private updateBestNonFocusedChoices(): void {
+		this.sumBestChoicesKamasEarned = 0;
+		this.bestNonFocusedMerges = [];
+
+		for (const row of this.tableauEffects) {
+			const bestBaseValue = Math.max(row.kamasEarned, row.basePaKamasEarned, row.baseRaKamasEarned);
+			this.sumBestChoicesKamasEarned += bestBaseValue;
+			if (row.basePaKamasEarned > row.kamasEarned && row.basePaKamasEarned >= row.baseRaKamasEarned) {
+				this.bestNonFocusedMerges.push(`Pa ${row.runeName}`);
+			} else if (row.baseRaKamasEarned > row.kamasEarned) {
+				this.bestNonFocusedMerges.push(`Ra ${row.runeName}`);
+			}
+		}
 	}
 
 	/**
@@ -356,7 +371,10 @@ export class HomeComponent implements OnInit {
 			return;
 		}
 
-		let bestMerge: { name: string; value: number } | null = null;
+		let bestMerge: { name: string; value: number } | null =
+			this.bestNonFocusedMerges.length > 0 && this.sumBestChoicesKamasEarned > (this.maxValue ?? 0)
+				? { name: `Sans focus : ${this.bestNonFocusedMerges.join(', ')}`, value: this.sumBestChoicesKamasEarned }
+				: null;
 		for (const row of this.tableauEffects) {
 			const candidates = [
 				{ name: `Pa ${row.runeName}`, value: row.paKamasEarned },
@@ -364,7 +382,7 @@ export class HomeComponent implements OnInit {
 			];
 
 			for (const candidate of candidates) {
-				if (candidate.value <= row.focusedKamasEarned) continue;
+				if (candidate.value <= row.focusedKamasEarned || candidate.value <= (this.maxValue ?? 0)) continue;
 				if (!bestMerge || candidate.value > bestMerge.value) bestMerge = candidate;
 			}
 		}
@@ -494,6 +512,7 @@ export class HomeComponent implements OnInit {
 		}
 
 		let sumKamasEarned = 0;
+		let sumBestChoicesKamasEarned = 0;
 		let maxFocusedKamasEarned = 0;
 		let maxPaRaKamasEarned = 0;
 
@@ -505,6 +524,7 @@ export class HomeComponent implements OnInit {
 			const qty = cached ? this.calculateRuneQuantity(tauxBrisage, cached) : 0;
 			const earned = Math.round(qty * Number.parseFloat(runeObj.price)) * 0.98;
 			sumKamasEarned += earned;
+			let bestBaseValue = earned;
 
 			// Calcul pour le focus sur cet effet
 			const qtyFoc = this.calculateRuneQuantityFocused(tauxBrisage, effect);
@@ -517,6 +537,9 @@ export class HomeComponent implements OnInit {
 			if (includePaRa) {
 				const paPrice = runeObj.paPrice ? Number.parseFloat(runeObj.paPrice) : 0;
 				const raPrice = runeObj.raPrice ? Number.parseFloat(runeObj.raPrice) : 0;
+				const basePaEarned = Math.round((qty / PA_RUNE_RATIO) * paPrice) * 0.98;
+				const baseRaEarned = Math.round((qty / RA_RUNE_RATIO) * raPrice) * 0.98;
+				bestBaseValue = Math.max(earned, basePaEarned, baseRaEarned);
 				const paQty = paPrice > 0 ? qtyFoc / PA_RUNE_RATIO : 0;
 				const raQty = raPrice > 0 ? qtyFoc / RA_RUNE_RATIO : 0;
 				const paEarned = Math.round(paQty * paPrice) * 0.98;
@@ -526,10 +549,14 @@ export class HomeComponent implements OnInit {
 					maxPaRaKamasEarned = bestPaRa;
 				}
 			}
+
+			sumBestChoicesKamasEarned += bestBaseValue;
 		}
 
 		// Détermine la meilleure valeur à soustraire du coût de craft
-		const maxValue = includePaRa ? maxPaRaKamasEarned : Math.max(sumKamasEarned, maxFocusedKamasEarned);
+		const maxValue = includePaRa
+			? Math.max(sumBestChoicesKamasEarned, maxPaRaKamasEarned)
+			: Math.max(sumKamasEarned, maxFocusedKamasEarned);
 
 		// Retourne le bénéfice net arrondi
 		return Math.round(maxValue - this.prixCraft);
@@ -575,6 +602,7 @@ export class HomeComponent implements OnInit {
 				this.sumKamasEarned = this.tableauEffects.reduce((sum, r) => sum + (r.kamasEarned || 0), 0);
 				this.maxFocusedKamasEarned = Math.max(...this.tableauEffects.map((r) => r.focusedKamasEarned), 0);
 				this.maxValue = Math.max(this.maxFocusedKamasEarned, this.sumKamasEarned);
+				this.updateBestNonFocusedChoices();
 				this.determineBestMergeRune();
 				this.computeRentabilities();
 				this.defineCellColor();
