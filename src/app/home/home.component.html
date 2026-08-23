@@ -2,11 +2,14 @@
 	<div class="app-wrapper">
 		<div class="app-header">
 			<div class="header-brand">
-				<h1 class="app-title">Easy Breaking</h1>
+				<a class="app-title-link" routerLink="/" aria-label="Ouvrir un calculateur vide">
+					<h1 class="app-title">Easy Breaking</h1>
+				</a>
 				<span class="app-subtitle">Calculateur de brisage Dofus</span>
 			</div>
 			<div class="header-actions">
-				<p-button
+				<a
+					pButton
 					icon="pi pi-history"
 					[rounded]="true"
 					[text]="true"
@@ -15,10 +18,11 @@
 					pTooltip="Historique de recherche"
 					tooltipPosition="bottom"
 					class="history-btn"
-				/>
-				<div class="runeSign" routerLink="/runes-manager" pTooltip="Gérer les runes" tooltipPosition="bottom">
+					aria-label="Historique de recherche"
+				></a>
+				<a class="runeSign" routerLink="/runes-manager" pTooltip="Gérer les runes" tooltipPosition="bottom" aria-label="Gérer les runes">
 					<img class="runeImg" src="../../assets/imgs/rune.png" alt="Runes Manager" />
-				</div>
+				</a>
 				<p-button
 					icon="pi pi-question-circle"
 					[rounded]="true"

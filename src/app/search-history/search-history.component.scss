@@ -33,9 +33,26 @@ main {
 	margin-bottom: 32px;
 }
 
-.back-btn ::ng-deep .p-button {
+.back-btn {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	width: 2.75rem;
+	height: 2.75rem;
+	flex: 0 0 2.75rem;
+	box-sizing: border-box;
+	border: 1px solid transparent;
+	border-radius: 50%;
+	background: transparent;
 	color: $text-muted !important;
-	font-size: 1.2rem;
+	text-decoration: none !important;
+	cursor: pointer;
+	transition: background-color 0.2s ease, color 0.2s ease;
+
+	.pi {
+		font-size: 1.2rem !important;
+		line-height: 1;
+	}
 
 	&:hover {
 		background-color: $hover-bg !important;
@@ -236,6 +253,14 @@ tbody tr:hover td {
 		align-items: center;
 		justify-content: center;
 		gap: 10px;
+
+		a.p-button {
+			text-decoration: none !important;
+
+			&::after {
+				content: none !important;
+			}
+		}
 	}
 }
 

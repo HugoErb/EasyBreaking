@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Router } from '@angular/router';
 import { parseRunesData, readStoredRunes, RuneData, storeRunes } from '../rune-data';
 
 type RuneSortColumn = 'name' | 'price' | 'paPrice' | 'raPrice';
@@ -18,7 +17,7 @@ export class RunesManagerComponent implements OnInit {
     sortColumn: RuneSortColumn = 'name';
     sortDirection: SortDirection = 'asc';
 
-    constructor(private readonly http: HttpClient, private readonly router: Router) {}
+    constructor(private readonly http: HttpClient) {}
 
     ngOnInit() {
         this.loadRunes();
@@ -187,10 +186,6 @@ export class RunesManagerComponent implements OnInit {
 			confirmButtonText: 'Fermer',
 		});
 	}
-
-    goToHomePage() {
-        this.router.navigate(['']);
-    }
 
     /**
      * Copie le nom de la rune dans le presse-papiers et affiche une tooltip.

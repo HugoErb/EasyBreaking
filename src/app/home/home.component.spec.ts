@@ -1,5 +1,6 @@
 import { ChangeDetectorRef } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { ActivatedRoute } from '@angular/router';
 import { HomeComponent } from './home.component';
 import { SearchHistoryService } from '../search-history/search-history.service';
 
@@ -71,7 +72,7 @@ describe('HomeComponent', () => {
 		expect(component['currentHistoryId']).toBe('history-456');
 	});
 
-	it('pre-fills item and economic parameters when a prefilled history entry is consumed', () => {
+	it('pre-fills item and economic parameters from the history identifier in the URL', () => {
 		const prefilled = {
 			historyId: 'history-voile',
 			name: "Voile d'encre",
@@ -88,10 +89,13 @@ describe('HomeComponent', () => {
 		};
 
 		const searchHistoryService = {
-			consumePrefilledEntry: () => prefilled,
+			getEntries: () => [prefilled],
 			recordSearch: () => 'history-voile',
 			updateEntry: jasmine.createSpy('updateEntry'),
 		} as unknown as SearchHistoryService;
+		const route = {
+			snapshot: { queryParamMap: { get: () => 'history-voile' } },
+		} as unknown as ActivatedRoute;
 
 		const component = new HomeComponent(
 			{} as HttpClient,
@@ -100,6 +104,7 @@ describe('HomeComponent', () => {
 				markForCheck: () => undefined,
 			} as unknown as ChangeDetectorRef,
 			searchHistoryService,
+			route,
 		);
 
 		component.items = [

@@ -1,5 +1,4 @@
 import { HttpClient } from '@angular/common/http';
-import { Router } from '@angular/router';
 import { of } from 'rxjs';
 import { RunesManagerComponent } from './runes-manager.component';
 
@@ -19,7 +18,7 @@ describe('RunesManagerComponent', () => {
 	it('restores bundled rune data when local storage is corrupted', () => {
 		localStorage.setItem('runesData', '{invalid-json');
 		const http = { get: () => of([defaultRune]) } as unknown as HttpClient;
-		const component = new RunesManagerComponent(http, {} as Router);
+		const component = new RunesManagerComponent(http);
 
 		component.loadRunes();
 

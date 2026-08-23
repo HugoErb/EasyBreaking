@@ -41,6 +41,12 @@ main {
   gap: 4px;
 }
 
+.app-title-link {
+  display: block;
+  width: fit-content;
+  text-decoration: none;
+}
+
 .app-title {
   background-image: linear-gradient(90deg, $accent, $accent-light);
   background-clip: text;
@@ -76,6 +82,8 @@ main {
   align-items: center;
   justify-content: center;
   flex-shrink: 0;
+  color: inherit;
+  text-decoration: none;
 
   &:hover {
     background-color: $hover-bg;
@@ -89,23 +97,35 @@ main {
   display: block;
 }
 
-.history-btn,
-.help-btn {
-  ::ng-deep .p-button {
+.history-btn.p-button,
+.help-btn ::ng-deep .p-button {
     margin-top: 1px;
     color: rgba(255, 255, 255, 0.75) !important;
     width: 42px !important;
     height: 42px !important;
 
-    .p-button-icon {
-      font-size: 1.55rem !important;
-    }
-
     &:hover {
       background-color: $hover-bg !important;
       color: white !important;
     }
+}
+
+.history-btn.p-button {
+  width: 38px !important;
+  height: 38px !important;
+  text-decoration: none !important;
+
+  &::after {
+    content: none !important;
   }
+}
+
+.history-btn.p-button ::ng-deep .p-button-icon {
+  font-size: 1.4rem !important;
+}
+
+.help-btn ::ng-deep .p-button-icon {
+  font-size: 1.55rem !important;
 }
 
 // ─── Search ───────────────────────────────────────────────────────────────────

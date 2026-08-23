@@ -1,6 +1,6 @@
 <main>
 	<div class="page-header">
-		<p-button icon="pi pi-arrow-left" [rounded]="true" [text]="true" severity="secondary" (click)="goToHomePage()" class="back-btn" />
+		<a routerLink="/" class="back-btn" aria-label="Retour à l'accueil"><i class="pi pi-arrow-left" aria-hidden="true"></i></a>
 		<div class="header-brand">
 			<h1 class="page-title">Historique de recherche</h1>
 			<span class="page-subtitle">Retrouvez toutes vos recherches et leurs résultats de brisage</span>
@@ -139,17 +139,19 @@
 								<td>{{ entry.updatedAt | date: "dd/MM/yyyy HH:mm" }}</td>
 								<td class="action-cell">
 									<div class="action-buttons">
-										<p-button
+										<a
+											pButton
 											icon="pi pi-external-link"
 											[rounded]="true"
 											[text]="true"
 											severity="info"
-											(click)="launchWithEntry(entry)"
+											routerLink="/"
+											[queryParams]="{ historyId: entry.historyId }"
 											pTooltip="Ouvrir dans le calculateur"
 											tooltipStyleClass="history-action-tooltip"
 											tooltipPosition="top"
-											ariaLabel="Ouvrir dans le calculateur"
-										/>
+											aria-label="Ouvrir dans le calculateur"
+										></a>
 										<p-button
 											icon="pi pi-trash"
 											[rounded]="true"

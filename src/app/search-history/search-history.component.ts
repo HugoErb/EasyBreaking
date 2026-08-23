@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
 import { SearchHistoryEntry, SearchHistoryService } from './search-history.service';
 
 type HistorySortColumn = 'name' | 'level' | 'type' | 'breakRate' | 'craftPrice' | 'profitable' | 'focus' | 'updatedAt';
@@ -18,23 +17,11 @@ export class SearchHistoryComponent implements OnInit {
 	sortDirection: SortDirection = 'asc';
 	private allHistory: SearchHistoryEntry[] = [];
 
-	constructor(
-		private readonly searchHistoryService: SearchHistoryService,
-		private readonly router: Router,
-	) {}
+	constructor(private readonly searchHistoryService: SearchHistoryService) {}
 
 	ngOnInit(): void {
 		this.allHistory = this.searchHistoryService.getEntries();
 		this.refreshDisplayedHistory();
-	}
-
-	goToHomePage(): void {
-		void this.router.navigate(['']);
-	}
-
-	launchWithEntry(entry: SearchHistoryEntry): void {
-		this.searchHistoryService.setPrefilledEntry(entry);
-		void this.router.navigate(['']);
 	}
 
 	deleteEntry(historyId: string): void {

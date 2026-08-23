@@ -1,6 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
-import { Router } from '@angular/router';
+import { RouterTestingModule } from '@angular/router/testing';
 import { ButtonModule } from 'primeng/button';
 import { Tooltip, TooltipModule } from 'primeng/tooltip';
 import { SearchHistoryComponent } from './search-history.component';
@@ -10,7 +10,6 @@ describe('SearchHistoryComponent', () => {
 	let component: SearchHistoryComponent;
 	let fixture: ComponentFixture<SearchHistoryComponent>;
 	let service: SearchHistoryService;
-	let router: jasmine.SpyObj<Router>;
 
 	const mockEntries: SearchHistoryEntry[] = [
 		{
@@ -44,21 +43,18 @@ describe('SearchHistoryComponent', () => {
 	];
 
 	beforeEach(() => {
-		const routerSpy = jasmine.createSpyObj('Router', ['navigate']);
-		const serviceSpy = jasmine.createSpyObj('SearchHistoryService', ['getEntries', 'deleteEntry', 'setPrefilledEntry']);
+		const serviceSpy = jasmine.createSpyObj('SearchHistoryService', ['getEntries', 'deleteEntry']);
 		serviceSpy.getEntries.and.returnValue([...mockEntries]);
 
 		TestBed.configureTestingModule({
 			declarations: [SearchHistoryComponent],
-			imports: [ButtonModule, TooltipModule],
+			imports: [ButtonModule, TooltipModule, RouterTestingModule],
 			providers: [
 				{ provide: SearchHistoryService, useValue: serviceSpy },
-				{ provide: Router, useValue: routerSpy },
 			],
 		});
 
 		service = TestBed.inject(SearchHistoryService);
-		router = TestBed.inject(Router) as jasmine.SpyObj<Router>;
 		fixture = TestBed.createComponent(SearchHistoryComponent);
 		component = fixture.componentInstance;
 		component.ngOnInit();
@@ -67,11 +63,6 @@ describe('SearchHistoryComponent', () => {
 	it('loads entries on init', () => {
 		expect(component.history.length).toBe(2);
 		expect(component.history[0].name).toBe("Voile d'encre");
-	});
-
-	it('navigates to home page on goToHomePage', () => {
-		component.goToHomePage();
-		expect(router.navigate).toHaveBeenCalledWith(['']);
 	});
 
 	it('deletes entry from service and local state', () => {
@@ -117,12 +108,11 @@ describe('SearchHistoryComponent', () => {
 		expect(component.history.length).toBe(3);
 	});
 
-	it('sets prefilled entry and navigates to home on launchWithEntry', () => {
-		const entry = mockEntries[0];
-		component.launchWithEntry(entry);
+	it('exposes calculator navigation as a link containing the history identifier', () => {
+		fixture.detectChanges();
+		const calculatorLink = fixture.nativeElement.querySelector('a[aria-label="Ouvrir dans le calculateur"]') as HTMLAnchorElement;
 
-		expect(service.setPrefilledEntry).toHaveBeenCalledWith(entry);
-		expect(router.navigate).toHaveBeenCalledWith(['']);
+		expect(calculatorLink.getAttribute('href')).toContain('historyId=1');
 	});
 
 	it('explains the five-minute history rule on the date column', () => {

@@ -1,5 +1,6 @@
 import { Component, OnInit, ChangeDetectionStrategy, ChangeDetectorRef, ViewChild } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { ActivatedRoute } from '@angular/router';
 import { forkJoin, map, of, tap } from 'rxjs';
 import { AutoComplete } from 'primeng/autocomplete';
 import { estimateItemsToReachRate } from './break-rate-estimator';
@@ -83,6 +84,7 @@ export class HomeComponent implements OnInit {
 		private readonly http: HttpClient,
 		private readonly cdr: ChangeDetectorRef,
 		private readonly searchHistoryService: SearchHistoryService,
+		private readonly route?: ActivatedRoute,
 	) {}
 
 	/**
@@ -198,7 +200,10 @@ export class HomeComponent implements OnInit {
 	}
 
 	private checkAndApplyPrefilledEntry(): void {
-		const entry = this.searchHistoryService.consumePrefilledEntry();
+		const requestedHistoryId = this.route?.snapshot.queryParamMap.get('historyId');
+		const entry = requestedHistoryId
+			? this.searchHistoryService.getEntries().find((historyEntry) => historyEntry.historyId === requestedHistoryId) ?? null
+			: this.searchHistoryService.consumePrefilledEntry();
 		if (!entry) return;
 
 		const targetItem = this.items.find((item) => item.name.toLowerCase() === entry.name.toLowerCase());

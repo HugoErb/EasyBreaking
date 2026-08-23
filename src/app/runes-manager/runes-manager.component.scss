@@ -36,14 +36,29 @@ main {
 }
 
 .back-btn {
-  ::ng-deep .p-button {
-    color: $text-muted !important;
-    font-size: 1.2rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.75rem;
+  height: 2.75rem;
+  flex: 0 0 2.75rem;
+  box-sizing: border-box;
+  border: 1px solid transparent;
+  border-radius: 50%;
+  background: transparent;
+  color: $text-muted !important;
+  text-decoration: none !important;
+  cursor: pointer;
+  transition: background-color 0.2s ease, color 0.2s ease;
 
-    &:hover {
-      background-color: $hover-bg !important;
-      color: $text-primary !important;
-    }
+  .pi {
+    font-size: 1.2rem !important;
+    line-height: 1;
+  }
+
+  &:hover {
+    background-color: $hover-bg !important;
+    color: $text-primary !important;
   }
 }
 
