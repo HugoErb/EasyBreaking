@@ -222,6 +222,7 @@ main {
   display: flex;
   align-items: center;
   gap: 20px;
+  flex-wrap: wrap;
   margin-bottom: 4px;
 }
 
@@ -342,14 +343,14 @@ main {
   border-bottom: none !important;
 }
 
-// ─── Parameters ───────────────────────────────────────────────────────────────
-
-.inputTexts {
+.item-parameters {
   display: flex;
-  justify-content: space-around;
+  flex: 1 1 600px;
+  justify-content: flex-end;
   align-items: flex-end;
   gap: 24px;
   flex-wrap: wrap;
+  margin-left: auto;
 }
 
 .input-group {
@@ -364,12 +365,8 @@ main {
   letter-spacing: 0.3px;
 }
 
-.inputTexts ::ng-deep .p-inputtext {
-  width: 200px !important;
-  background: rgba(255, 255, 255, 0.06) !important;
-  border-color: $border-color !important;
-  color: $text-primary !important;
-  font-family: "Enriqueta", arial, serif;
+.item-parameters ::ng-deep .p-inputtext {
+  width: 180px !important;
 }
 
 ::ng-deep .p-inputtext {

@@ -71,6 +71,51 @@
 								}
 							</div>
 						</div>
+						<div class="item-parameters">
+							<div class="input-group">
+								<label class="input-label">Taux de brisage</label>
+								<p-iconfield iconPosition="right">
+									<p-inputNumber
+										inputId="tauxBrisage"
+										placeholder="Taux de brisage"
+										[(ngModel)]="tauxBrisage"
+										(onInput)="onInputChange()"
+										[min]="0"
+										[max]="4000"
+										[allowEmpty]="true"
+									></p-inputNumber>
+									<p-inputicon><i class="fa-solid fa-percent"></i></p-inputicon>
+								</p-iconfield>
+							</div>
+							<div class="input-group">
+								<label class="input-label">Prix du craft</label>
+								<p-iconfield iconPosition="right">
+									<p-inputNumber
+										inputId="prixCraft"
+										placeholder="Prix du craft"
+										[(ngModel)]="prixCraft"
+										(onInput)="onEconomicsInputChange()"
+										[min]="1"
+										[max]="999999999"
+									></p-inputNumber>
+									<p-inputicon><i class="fa-solid fa-k"></i></p-inputicon>
+								</p-iconfield>
+							</div>
+							<div class="input-group">
+								<label class="input-label">Taux de rentabilité visé</label>
+								<p-iconfield iconPosition="right">
+									<p-inputNumber
+										inputId="tauxRentabiliteVise"
+										placeholder="Taux de rentabilité"
+										[(ngModel)]="tauxRentabiliteVise"
+										(onInput)="onEconomicsInputChange()"
+										[min]="0"
+										[max]="9999"
+									></p-inputNumber>
+									<p-inputicon><i class="fa-solid fa-percent"></i></p-inputicon>
+								</p-iconfield>
+							</div>
+						</div>
 					</div>
 
 					<p-divider />
@@ -157,58 +202,6 @@
 								</tr>
 							</tfoot>
 						</table>
-					</div>
-				</div>
-
-				<div class="section-card params-card">
-					<h2 class="section-title">
-						<i class="pi pi-sliders-h"></i>
-						Paramètres
-					</h2>
-					<div class="inputTexts">
-						<div class="input-group">
-							<label class="input-label">Taux de brisage</label>
-							<p-iconfield iconPosition="right">
-								<p-inputNumber
-									inputId="tauxBrisage"
-									placeholder="Taux de brisage"
-									[(ngModel)]="tauxBrisage"
-									(onInput)="onInputChange()"
-									[min]="0"
-									[max]="4000"
-									[allowEmpty]="true"
-								></p-inputNumber>
-								<p-inputicon><i class="fa-solid fa-percent"></i></p-inputicon>
-							</p-iconfield>
-						</div>
-						<div class="input-group">
-							<label class="input-label">Prix du craft</label>
-							<p-iconfield iconPosition="right">
-								<p-inputNumber
-									inputId="prixCraft"
-									placeholder="Prix du craft"
-									[(ngModel)]="prixCraft"
-									(onInput)="onEconomicsInputChange()"
-									[min]="1"
-									[max]="999999999"
-								></p-inputNumber>
-								<p-inputicon><i class="fa-solid fa-k"></i></p-inputicon>
-							</p-iconfield>
-						</div>
-						<div class="input-group">
-							<label class="input-label">Taux de rentabilité visé</label>
-							<p-iconfield iconPosition="right">
-								<p-inputNumber
-									inputId="tauxRentabiliteVise"
-									placeholder="Taux de rentabilité"
-									[(ngModel)]="tauxRentabiliteVise"
-									(onInput)="onEconomicsInputChange()"
-									[min]="0"
-									[max]="9999"
-								></p-inputNumber>
-								<p-inputicon><i class="fa-solid fa-percent"></i></p-inputicon>
-							</p-iconfield>
-						</div>
 					</div>
 				</div>
 
