@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
+import { parseRunesData, readStoredRunes, RuneData, storeRunes } from '../rune-data';
 
 type RuneSortColumn = 'name' | 'price' | 'paPrice' | 'raPrice';
+type RunePriceColumn = Exclude<RuneSortColumn, 'name'>;
 type SortDirection = 'asc' | 'desc';
 
 @Component({
@@ -12,7 +14,7 @@ type SortDirection = 'asc' | 'desc';
     standalone: false
 })
 export class RunesManagerComponent implements OnInit {
-    runes: any[] = [];
+    runes: RuneData[] = [];
     sortColumn: RuneSortColumn = 'name';
     sortDirection: SortDirection = 'asc';
 
@@ -23,32 +25,37 @@ export class RunesManagerComponent implements OnInit {
     }
 
     loadRunes() {
-        const storedRunes = localStorage.getItem('runesData');
+        const storedRunes = readStoredRunes();
         if (storedRunes) {
-            const runesData = JSON.parse(storedRunes);
-            this.runes = runesData.map((rune: any) => ({
+            this.runes = storedRunes.map((rune) => ({
                 ...rune,
                 paPrice: rune.paPrice === null ? undefined : rune.paPrice,
                 raPrice: rune.raPrice === null ? undefined : rune.raPrice,
             }));
             this.applySort();
         } else {
-            this.http.get('assets/jsons/runes.json').subscribe((data: any) => {
-                const initializedData = data.map((rune: any) => ({
+            this.http.get<unknown>('assets/jsons/runes.json').subscribe((data) => {
+                const defaultRunes = parseRunesData(data);
+                if (!defaultRunes) {
+                    console.error('Le fichier de runes par défaut est invalide.');
+                    return;
+                }
+
+                const initializedData = defaultRunes.map((rune) => ({
                     ...rune,
                     paPrice: rune.paPrice === null ? undefined : rune.paPrice,
                     raPrice: rune.raPrice === null ? undefined : rune.raPrice,
                 }));
-                localStorage.setItem('runesData', JSON.stringify(initializedData));
+                storeRunes(initializedData);
                 this.runes = initializedData;
                 this.applySort();
             });
         }
     }
 
-    onPriceChange(runeIndex: number, priceType: string, newPrice: number) {
+    onPriceChange(runeIndex: number, priceType: RunePriceColumn, newPrice: number) {
         this.runes[runeIndex][priceType] = newPrice;
-        localStorage.setItem('runesData', JSON.stringify(this.runes));
+        storeRunes(this.runes);
     }
 
     sortBy(column: RuneSortColumn): void {
@@ -104,13 +111,13 @@ export class RunesManagerComponent implements OnInit {
     }
 
     resetAllPrices(): void {
-        this.runes = this.runes.map((rune: any) => ({
+        this.runes = this.runes.map((rune) => ({
             ...rune,
             price: 1,
             paPrice: rune.paPrice !== undefined ? 1 : undefined,
             raPrice: rune.raPrice !== undefined ? 1 : undefined,
         }));
-        localStorage.setItem('runesData', JSON.stringify(this.runes));
+        storeRunes(this.runes);
     }
 
     async confirmDeleteLocalStorage(): Promise<void> {
@@ -135,8 +142,7 @@ export class RunesManagerComponent implements OnInit {
     }
 
     exportRunesData(): void {
-        const runesData = localStorage.getItem('runesData') ?? JSON.stringify(this.runes);
-        const blob = new Blob([JSON.stringify(JSON.parse(runesData), null, 2)], { type: 'application/json' });
+        const blob = new Blob([JSON.stringify(this.runes, null, 2)], { type: 'application/json' });
         const url = URL.createObjectURL(blob);
         const link = document.createElement('a');
 
@@ -157,21 +163,30 @@ export class RunesManagerComponent implements OnInit {
         const reader = new FileReader();
         reader.onload = () => {
             try {
-                const importedRunes = JSON.parse(String(reader.result));
-                if (!Array.isArray(importedRunes)) {
-                    throw new Error('Le fichier importe doit contenir une liste de runes.');
-                }
+				const importedRunes = parseRunesData(JSON.parse(String(reader.result)));
+				if (!importedRunes) throw new Error('Le fichier doit contenir une liste de runes valide.');
 
-                localStorage.setItem('runesData', JSON.stringify(importedRunes));
-                this.loadRunes();
-            } catch (error) {
-                console.error("Erreur lors de l'import du fichier runesData JSON", error);
+				storeRunes(importedRunes);
+				this.loadRunes();
+			} catch (error) {
+				console.error("Erreur lors de l'import du fichier runesData JSON", error);
+				void this.showImportError();
             } finally {
                 input.value = '';
             }
         };
         reader.readAsText(file);
     }
+
+	private async showImportError(): Promise<void> {
+		const { default: Swal } = await import('sweetalert2/dist/sweetalert2.esm.all.js');
+		await Swal.fire({
+			title: 'Import impossible',
+			text: 'Le fichier sélectionné ne contient pas une liste de runes valide.',
+			icon: 'error',
+			confirmButtonText: 'Fermer',
+		});
+	}
 
     goToHomePage() {
         this.router.navigate(['']);

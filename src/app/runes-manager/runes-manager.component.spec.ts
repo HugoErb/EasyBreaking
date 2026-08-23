@@ -1,0 +1,29 @@
+import { HttpClient } from '@angular/common/http';
+import { Router } from '@angular/router';
+import { of } from 'rxjs';
+import { RunesManagerComponent } from './runes-manager.component';
+
+describe('RunesManagerComponent', () => {
+	const defaultRune = {
+		name: 'Fo',
+		stat: 'Force',
+		img: 'force.png',
+		price: 100,
+		weight: 1,
+		paPrice: 350,
+		raPrice: 1000,
+	};
+
+	afterEach(() => localStorage.removeItem('runesData'));
+
+	it('restores bundled rune data when local storage is corrupted', () => {
+		localStorage.setItem('runesData', '{invalid-json');
+		const http = { get: () => of([defaultRune]) } as unknown as HttpClient;
+		const component = new RunesManagerComponent(http, {} as Router);
+
+		component.loadRunes();
+
+		expect(component.runes).toEqual([defaultRune]);
+		expect(JSON.parse(localStorage.getItem('runesData') ?? '[]')).toEqual([defaultRune]);
+	});
+});

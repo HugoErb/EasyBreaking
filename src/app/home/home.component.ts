@@ -1,9 +1,13 @@
 import { Component, OnInit, ChangeDetectionStrategy, ChangeDetectorRef, ViewChild } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { forkJoin, of, tap } from 'rxjs';
+import { forkJoin, map, of, tap } from 'rxjs';
 import { AutoComplete } from 'primeng/autocomplete';
 import { estimateItemsToReachRate } from './break-rate-estimator';
 import { SearchHistoryService } from '../search-history/search-history.service';
+import { parseRunesData, readStoredRunes, storeRunes } from '../rune-data';
+
+const PA_RUNE_RATIO = 3;
+const RA_RUNE_RATIO = 9;
 
 /**
  * Représente une rune mise en cache pour accélérer les calculs.
@@ -49,11 +53,11 @@ export class HomeComponent implements OnInit {
 	// Résultats de calculs
 	tauxRentabilitePourcent: number = 0;
 	tauxRentabiliteKamas: number = 0;
-	norProfitableBreakRate: number = 0;
+	norProfitableBreakRate: number | null = 0;
 
 	tauxRentabilitePourcentPaRa: number = 0;
 	tauxRentabiliteKamasPaRa: number = 0;
-	norProfitableBreakRatePaRa: number = 0;
+	norProfitableBreakRatePaRa: number | null = 0;
 
 	estimatedItemsBeforeNotProfitable: number = 0;
 	estimatedItemsBeforeNotProfitablePaRa: number = 0;
@@ -86,11 +90,16 @@ export class HomeComponent implements OnInit {
 	 * - Mise en place du debounce des inputs
 	 */
 	ngOnInit(): void {
-		const storedRunes = localStorage.getItem('runesData');
+		const storedRunes = readStoredRunes();
 		const runes$ = storedRunes
-			? of(JSON.parse(storedRunes))
-			: this.http.get<any[]>('assets/jsons/runes.json').pipe(
-					tap((data) => localStorage.setItem('runesData', JSON.stringify(data))),
+			? of(storedRunes)
+			: this.http.get<unknown>('assets/jsons/runes.json').pipe(
+					map((data) => {
+						const runes = parseRunesData(data);
+						if (!runes) throw new Error('Le fichier de runes par défaut est invalide.');
+						return runes;
+					}),
+					tap((data) => storeRunes(data)),
 				);
 
 		const armes$ = this.http.get<any[]>('assets/jsons/armes.json');
@@ -295,11 +304,11 @@ export class HomeComponent implements OnInit {
 			});
 			const focQty = this.calculateRuneQuantityFocused(this.tauxBrisage, effect);
 			// quantités PA/RA
-			const paQty = rune.paPrice ? focQty / 3 : 0;
-			const raQty = rune.raPrice ? focQty / 6 : 0;
+			const paQty = rune.paPrice ? focQty / PA_RUNE_RATIO : 0;
+			const raQty = rune.raPrice ? focQty / RA_RUNE_RATIO : 0;
 
 			// fonction utilitaire pour arrondir et appliquer taxe
-			const calc = (qty: number, priceStr?: string) => Math.round(qty * (priceStr ? Number.parseFloat(priceStr) : 0)) * 0.98;
+			const calc = (qty: number, price?: string | number) => Math.round(qty * (price ? Number(price) : 0)) * 0.98;
 
 			const row = {
 				stat: effect,
@@ -334,35 +343,27 @@ export class HomeComponent implements OnInit {
 	 * et met à jour mergeRune et maxValuePaRa en conséquence.
 	 */
 	private determineBestMergeRune(): void {
-		if (this.tauxBrisage != null) {
-			const bestRow = this.tableauEffects.find((row) => row.focusedKamasEarned === this.maxFocusedKamasEarned);
+		if (this.tauxBrisage == null) {
+			this.mergeRune = 'Aucune';
+			this.maxValuePaRa = 0;
+			return;
+		}
 
-			if (!bestRow) {
-				this.mergeRune = 'Aucune';
-				this.maxValuePaRa = 0;
-				return;
-			}
+		let bestMerge: { name: string; value: number } | null = null;
+		for (const row of this.tableauEffects) {
+			const candidates = [
+				{ name: `Pa ${row.runeName}`, value: row.paKamasEarned },
+				{ name: `Ra ${row.runeName}`, value: row.raKamasEarned },
+			];
 
-			const costPA = bestRow.runePrice * 3;
-			const costRA = bestRow.runePrice * 9;
-
-			const paProfit = bestRow.paPrice - costPA;
-			const raProfit = bestRow.raPrice - costRA;
-
-			const paTotalKamas = Math.round(Number.parseFloat(bestRow.paRuneQuantity) * bestRow.paPrice * 0.98);
-			const raTotalKamas = Math.round(Number.parseFloat(bestRow.raRuneQuantity) * bestRow.raPrice * 0.98);
-
-			if (paProfit > raProfit && paProfit > 0) {
-				this.mergeRune = 'Pa ' + bestRow.runeName;
-				this.maxValuePaRa = paTotalKamas;
-			} else if (raProfit > 0) {
-				this.mergeRune = 'Ra ' + bestRow.runeName;
-				this.maxValuePaRa = raTotalKamas;
-			} else {
-				this.mergeRune = 'Aucune';
-				this.maxValuePaRa = 0;
+			for (const candidate of candidates) {
+				if (candidate.value <= row.focusedKamasEarned) continue;
+				if (!bestMerge || candidate.value > bestMerge.value) bestMerge = candidate;
 			}
 		}
+
+		this.mergeRune = bestMerge?.name ?? 'Aucune';
+		this.maxValuePaRa = bestMerge?.value ?? 0;
 	}
 
 	/**
@@ -374,7 +375,7 @@ export class HomeComponent implements OnInit {
 			return;
 		}
 
-		const computeStats = (totalKamas: number, includePaRa: boolean): [number, number, number] => {
+		const computeStats = (totalKamas: number, includePaRa: boolean): [number, number, number | null] => {
 			const profit = Math.round(totalKamas - this.prixCraft!);
 			const percent = Number.parseFloat(((profit / this.prixCraft!) * 100).toFixed(2));
 			const breakRate = this.findNorProfitableBreakRate(includePaRa);
@@ -383,11 +384,10 @@ export class HomeComponent implements OnInit {
 
 		// Sans fusion
 		[this.tauxRentabiliteKamas, this.tauxRentabilitePourcent, this.norProfitableBreakRate] = computeStats(this.maxValue!, false);
-		this.estimatedItemsBeforeNotProfitable = estimateItemsToReachRate(
-			this.tauxBrisage!,
-			this.norProfitableBreakRate,
-			this.selectedItem.level,
-		);
+		this.estimatedItemsBeforeNotProfitable =
+			this.norProfitableBreakRate === null
+				? 0
+				: estimateItemsToReachRate(this.tauxBrisage!, this.norProfitableBreakRate, this.selectedItem.level);
 
 		// Avec fusion Pa/RA si applicable
 		if (this.mergeRune === 'Aucune') {
@@ -400,11 +400,10 @@ export class HomeComponent implements OnInit {
 				this.maxValuePaRa!,
 				true,
 			);
-			this.estimatedItemsBeforeNotProfitablePaRa = estimateItemsToReachRate(
-				this.tauxBrisage!,
-				this.norProfitableBreakRatePaRa,
-				this.selectedItem.level,
-			);
+			this.estimatedItemsBeforeNotProfitablePaRa =
+				this.norProfitableBreakRatePaRa === null
+					? 0
+					: estimateItemsToReachRate(this.tauxBrisage!, this.norProfitableBreakRatePaRa, this.selectedItem.level);
 		}
 
 		this.updateRecipeItemCountFromEstimate();
@@ -444,7 +443,7 @@ export class HomeComponent implements OnInit {
 	 *
 	 * @returns Le taux de brisage à partir duquel briser l'item est (ou n'est plus) rentable.
 	 */
-	findNorProfitableBreakRate(includePaRa: boolean): number {
+	findNorProfitableBreakRate(includePaRa: boolean): number | null {
 		const MIN_BREAK_RATE = 0;
 		const MAX_BREAK_RATE = 4000;
 
@@ -452,7 +451,7 @@ export class HomeComponent implements OnInit {
 		let high = MAX_BREAK_RATE;
 
 		// Ce sera notre meilleur taux trouvé (rentable), initialisé à une valeur impossible
-		let minimalProfitableRate = MAX_BREAK_RATE;
+		let minimalProfitableRate: number | null = null;
 
 		// Recherche binaire classique
 		while (low <= high) {
@@ -509,11 +508,13 @@ export class HomeComponent implements OnInit {
 
 			// Si on inclut PA/RA, vérifie quelle fusion rapporte le plus
 			if (includePaRa) {
-				const paQty = runeObj.paPrice ? qtyFoc / 3 : 0;
-				const raQty = runeObj.raPrice ? qtyFoc / 6 : 0;
-				const paEarned = Math.round(paQty * (runeObj.paPrice ? Number.parseFloat(runeObj.paPrice) : 0)) * 0.98;
-				const raEarned = Math.round(raQty * (runeObj.raPrice ? Number.parseFloat(runeObj.raPrice) : 0)) * 0.98;
-				const bestPaRa = Math.max(paEarned, raEarned);
+				const paPrice = runeObj.paPrice ? Number.parseFloat(runeObj.paPrice) : 0;
+				const raPrice = runeObj.raPrice ? Number.parseFloat(runeObj.raPrice) : 0;
+				const paQty = paPrice > 0 ? qtyFoc / PA_RUNE_RATIO : 0;
+				const raQty = raPrice > 0 ? qtyFoc / RA_RUNE_RATIO : 0;
+				const paEarned = Math.round(paQty * paPrice) * 0.98;
+				const raEarned = Math.round(raQty * raPrice) * 0.98;
+				const bestPaRa = Math.max(paEarned > earnedFoc ? paEarned : 0, raEarned > earnedFoc ? raEarned : 0);
 				if (bestPaRa > maxPaRaKamasEarned) {
 					maxPaRaKamasEarned = bestPaRa;
 				}
@@ -521,10 +522,7 @@ export class HomeComponent implements OnInit {
 		}
 
 		// Détermine la meilleure valeur à soustraire du coût de craft
-		let maxValue = Math.max(sumKamasEarned, maxFocusedKamasEarned);
-		if (includePaRa && maxPaRaKamasEarned > maxValue) {
-			maxValue = maxPaRaKamasEarned;
-		}
+		const maxValue = includePaRa ? maxPaRaKamasEarned : Math.max(sumKamasEarned, maxFocusedKamasEarned);
 
 		// Retourne le bénéfice net arrondi
 		return Math.round(maxValue - this.prixCraft);

@@ -204,8 +204,13 @@
 								<span class="stat-value">{{ tauxRentabiliteKamas | number: "1.0-0" }} k</span>
 							</div>
 							<div class="stat-row">
-								<span class="stat-label">{{ tauxRentabilitePourcent < 0 ? "Rentable à partir du taux de brisage" : "Rentable jusqu'au taux de brisage" }}</span>
-								<span class="stat-value">{{ norProfitableBreakRate }} %</span>
+								@if (norProfitableBreakRate === null) {
+									<span class="stat-label">Seuil de rentabilité</span>
+									<span class="stat-value">Non rentable jusqu'à 4 000 %</span>
+								} @else {
+									<span class="stat-label">{{ tauxRentabilitePourcent < 0 ? "Rentable à partir du taux de brisage" : "Rentable jusqu'au taux de brisage" }}</span>
+									<span class="stat-value">{{ norProfitableBreakRate }} %</span>
+								}
 							</div>
 							@if (estimatedItemsBeforeNotProfitable > 0) {
 							<div class="stat-row">
@@ -226,8 +231,13 @@
 								<span class="stat-value">{{ maxValuePaRa | number: "1.0-0" }} k</span>
 							</div>
 							<div class="stat-row">
-								<span class="stat-label">Rentable après fusion jusqu'au taux de brisage</span>
-								<span class="stat-value">{{ norProfitableBreakRatePaRa }} %</span>
+								@if (norProfitableBreakRatePaRa === null) {
+									<span class="stat-label">Seuil de rentabilité après fusion</span>
+									<span class="stat-value">Non rentable jusqu'à 4 000 %</span>
+								} @else {
+									<span class="stat-label">Rentable après fusion jusqu'au taux de brisage</span>
+									<span class="stat-value">{{ norProfitableBreakRatePaRa }} %</span>
+								}
 							</div>
 							@if (estimatedItemsBeforeNotProfitablePaRa > 0) {
 							<div class="stat-row">

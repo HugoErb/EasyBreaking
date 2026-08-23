@@ -133,4 +133,48 @@ describe('HomeComponent', () => {
 		expect(component.prixCraft).toBe(1_200_000);
 		expect(component.unVanishDiv).toHaveBeenCalled();
 	});
+
+	it('selects the most valuable profitable merge across every effect', () => {
+		const component = createComponent();
+		component.tauxBrisage = 100;
+		component.tableauEffects = [
+			{ runeName: 'Rune A', focusedKamasEarned: 200, paKamasEarned: 250, raKamasEarned: 220 },
+			{ runeName: 'Rune B', focusedKamasEarned: 180, paKamasEarned: 190, raKamasEarned: 320 },
+		];
+
+		(component as unknown as { determineBestMergeRune: () => void }).determineBestMergeRune();
+
+		expect(component.mergeRune).toBe('Ra Rune B');
+		expect(component.maxValuePaRa).toBe(320);
+	});
+
+	it('uses nine standard runes for one Ra rune', () => {
+		const component = createComponent();
+		component.selectedItem = { level: 100, effects: ['10 Force'], recipe: [] };
+		component.runes = [
+			{
+				name: 'Fo',
+				stat: 'Force',
+				normalizedStat: 'force',
+				price: 1,
+				paPrice: 4,
+				raPrice: 10,
+				weight: 1,
+				img: 'force.png',
+			},
+		];
+
+		(component as unknown as { initCachedRunes: () => void }).initCachedRunes();
+		(component as unknown as { buildTableAndTotals: () => void }).buildTableAndTotals();
+
+		const row = component.tableauEffects[0];
+		expect(Number.parseFloat(row.raRuneQuantity)).toBeCloseTo(Number.parseFloat(row.runeQuantityFocused) / 9, 2);
+	});
+
+	it('returns null when no break rate is profitable', () => {
+		const component = createComponent();
+		spyOn(component, 'calculateBenefit').and.returnValue(-1);
+
+		expect(component.findNorProfitableBreakRate(false)).toBeNull();
+	});
 });

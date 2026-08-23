@@ -44,7 +44,8 @@
 								<div class="cell-center">
 									<p-iconfield iconPosition="right">
 										<p-inputNumber
-											inputId="prixCraft"
+											[inputId]="'rune-price-' + i"
+											[ariaLabel]="'Prix de la rune ' + rune.name"
 											placeholder="Prix de la rune"
 											[(ngModel)]="rune.price"
 											(ngModelChange)="onPriceChange(i, 'price', $event)"
@@ -60,7 +61,8 @@
 									<div class="cell-center">
 										<p-iconfield iconPosition="right">
 											<p-inputNumber
-												inputId="prixCraft"
+												[inputId]="'rune-pa-price-' + i"
+												[ariaLabel]="'Prix de la rune Pa ' + rune.name"
 												placeholder="Prix de la rune"
 												[(ngModel)]="rune.paPrice"
 												(ngModelChange)="onPriceChange(i, 'paPrice', $event)"
@@ -79,7 +81,8 @@
 									<div class="cell-center">
 										<p-iconfield iconPosition="right">
 											<p-inputNumber
-												inputId="prixCraft"
+												[inputId]="'rune-ra-price-' + i"
+												[ariaLabel]="'Prix de la rune Ra ' + rune.name"
 												placeholder="Prix de la rune"
 												[(ngModel)]="rune.raPrice"
 												(ngModelChange)="onPriceChange(i, 'raPrice', $event)"
