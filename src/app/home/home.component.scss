@@ -298,6 +298,18 @@ main {
   margin-left: 6px;
 }
 
+.kamas-values {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.fusion-value {
+  color: $text-muted;
+  font-size: 0.78em;
+  font-weight: normal;
+}
+
 
 .firstNoBorder {
   border-left: none !important;

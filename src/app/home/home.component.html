@@ -106,14 +106,32 @@
 											</p-iconfield>
 										</td>
 										<td>{{ row.runeQuantity | number: "1.0-2" }}</td>
-										<td>{{ row.kamasEarned | number: "1.0-0" }}</td>
+										<td>
+											<div class="kamas-values">
+												<span>{{ row.kamasEarned | number: "1.0-0" }}</span>
+												@if (row.paPrice != null) {
+													<span class="fusion-value">Pa : {{ row.basePaKamasEarned | number: "1.0-0" }}</span>
+												}
+												@if (row.raPrice != null) {
+													<span class="fusion-value">Ra : {{ row.baseRaKamasEarned | number: "1.0-0" }}</span>
+												}
+											</div>
+										</td>
 										<td>{{ row.runeQuantityFocused | number: "1.0-2" }}</td>
 										<td
 											[style.backgroundColor]="row.focusedKamasEarned === maxValue && row.focusedKamasEarned !== 0 ? maxCellColor : ''"
 											[style.color]="row.focusedKamasEarned === maxValue && row.focusedKamasEarned !== 0 ? maxCellTextColor : ''"
 											[style.fontWeight]="row.focusedKamasEarned === maxValue && row.focusedKamasEarned !== 0 ? 'bold' : ''"
 										>
-											{{ row.focusedKamasEarned | number: "1.0-0" }}
+											<div class="kamas-values">
+												<span>{{ row.focusedKamasEarned | number: "1.0-0" }}</span>
+												@if (row.paPrice != null) {
+													<span class="fusion-value">Pa : {{ row.paKamasEarned | number: "1.0-0" }}</span>
+												}
+												@if (row.raPrice != null) {
+													<span class="fusion-value">Ra : {{ row.raKamasEarned | number: "1.0-0" }}</span>
+												}
+											</div>
 										</td>
 									</tr>
 								}
@@ -126,7 +144,10 @@
 										[style.color]="sumKamasEarned === maxValue && sumKamasEarned !== 0 ? maxCellTextColor : ''"
 										[style.fontWeight]="sumKamasEarned === maxValue && sumKamasEarned !== 0 ? 'bold' : ''"
 									>
-										{{ sumKamasEarned | number: "1.0-0" }}
+										<div class="kamas-values">
+											<span>{{ sumKamasEarned | number: "1.0-0" }}</span>
+											<span class="fusion-value">Meilleurs choix : {{ sumBestMergeKamasEarned | number: "1.0-0" }}</span>
+										</div>
 									</td>
 									<td class="lastNoBorder" colspan="2"></td>
 								</tr>

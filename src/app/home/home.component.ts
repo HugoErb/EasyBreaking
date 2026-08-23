@@ -63,6 +63,7 @@ export class HomeComponent implements OnInit {
 	estimatedItemsBeforeNotProfitablePaRa: number = 0;
 
 	sumKamasEarned: number = 0;
+	sumBestMergeKamasEarned: number = 0;
 	maxFocusedKamasEarned?: number;
 	maxValue?: number;
 	maxCellColor: string = 'darkgreen';
@@ -290,6 +291,7 @@ export class HomeComponent implements OnInit {
 			this.tauxBrisage = Math.min(this.tauxBrisage, 4000);
 		}
 		this.sumKamasEarned = 0;
+		this.sumBestMergeKamasEarned = 0;
 
 		this.tableauEffects = this._cachedRunes.map(({ effect, rune, runeNumerator, runeRealWeight, runePrice, paRunePrice, raRunePrice }) => {
 			// quantités brutes et focus
@@ -304,6 +306,8 @@ export class HomeComponent implements OnInit {
 			});
 			const focQty = this.calculateRuneQuantityFocused(this.tauxBrisage, effect);
 			// quantités PA/RA
+			const basePaQty = rune.paPrice ? baseQty / PA_RUNE_RATIO : 0;
+			const baseRaQty = rune.raPrice ? baseQty / RA_RUNE_RATIO : 0;
 			const paQty = rune.paPrice ? focQty / PA_RUNE_RATIO : 0;
 			const raQty = rune.raPrice ? focQty / RA_RUNE_RATIO : 0;
 
@@ -319,6 +323,8 @@ export class HomeComponent implements OnInit {
 				runeImg: rune.img,
 				runeQuantity: baseQty.toFixed(2),
 				kamasEarned: calc(baseQty, rune.price),
+				basePaKamasEarned: calc(basePaQty, rune.paPrice),
+				baseRaKamasEarned: calc(baseRaQty, rune.raPrice),
 				runeQuantityFocused: focQty.toFixed(2),
 				focusedKamasEarned: calc(focQty, rune.price),
 				paRuneQuantity: paQty.toFixed(2),
@@ -328,6 +334,7 @@ export class HomeComponent implements OnInit {
 			};
 
 			this.sumKamasEarned += row.kamasEarned;
+			this.sumBestMergeKamasEarned += Math.max(row.kamasEarned, row.basePaKamasEarned, row.baseRaKamasEarned);
 			return row;
 		});
 

@@ -169,7 +169,34 @@ describe('HomeComponent', () => {
 		(component as unknown as { buildTableAndTotals: () => void }).buildTableAndTotals();
 
 		const row = component.tableauEffects[0];
+		expect(row.basePaKamasEarned).toBeGreaterThan(0);
+		expect(row.baseRaKamasEarned).toBeGreaterThan(0);
+		expect(row.paKamasEarned).toBeGreaterThan(0);
+		expect(row.raKamasEarned).toBeGreaterThan(0);
+		expect(component.sumBestMergeKamasEarned).toBe(Math.max(row.kamasEarned, row.basePaKamasEarned, row.baseRaKamasEarned));
 		expect(Number.parseFloat(row.raRuneQuantity)).toBeCloseTo(Number.parseFloat(row.runeQuantityFocused) / 9, 2);
+	});
+
+	it('keeps the standard value in the best choices sum when both merges are lower', () => {
+		const component = createComponent();
+		component.selectedItem = { level: 100, effects: ['10 Force'], recipe: [] };
+		component.runes = [
+			{
+				name: 'Fo',
+				stat: 'Force',
+				normalizedStat: 'force',
+				price: 100,
+				paPrice: 100,
+				raPrice: 100,
+				weight: 1,
+				img: 'force.png',
+			},
+		];
+
+		(component as unknown as { initCachedRunes: () => void }).initCachedRunes();
+		(component as unknown as { buildTableAndTotals: () => void }).buildTableAndTotals();
+
+		expect(component.sumBestMergeKamasEarned).toBe(component.tableauEffects[0].kamasEarned);
 	});
 
 	it('returns null when no break rate is profitable', () => {
