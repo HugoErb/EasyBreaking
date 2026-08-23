@@ -319,7 +319,7 @@ export class HomeComponent implements OnInit {
 		}
 
 		const nonFocusedMergeLabel =
-			this.bestNonFocusedMerges.length > 1 ? 'plusieurs (voir tableau)' : this.bestNonFocusedMerges[0];
+			this.bestNonFocusedMerges.length > 1 ? 'Plusieurs (voir tableau)' : this.bestNonFocusedMerges[0];
 		let bestMerge: { name: string; value: number } | null =
 			nonFocusedMergeLabel && this.sumBestChoicesKamasEarned > (this.maxValue ?? 0)
 				? { name: nonFocusedMergeLabel, value: this.sumBestChoicesKamasEarned }

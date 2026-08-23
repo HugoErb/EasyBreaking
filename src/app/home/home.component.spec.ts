@@ -321,7 +321,7 @@ describe('HomeComponent', () => {
 
 		(component as unknown as { determineBestMergeRune: () => void }).determineBestMergeRune();
 
-		expect(component.mergeRune).toBe('plusieurs (voir tableau)');
+		expect(component.mergeRune).toBe('Plusieurs (voir tableau)');
 		expect(component.maxValuePaRa).toBe(700);
 	});
 

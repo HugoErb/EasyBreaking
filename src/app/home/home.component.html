@@ -186,11 +186,17 @@
 										>
 											<div class="kamas-values">
 												<span>{{ row.focusedKamasEarned | number: "1.0-0" }}</span>
-												@if (row.paPrice != null) {
-													<span class="fusion-value">Pa : {{ row.paKamasEarned | number: "1.0-0" }}</span>
-												}
-												@if (row.raPrice != null) {
-													<span class="fusion-value">Ra : {{ row.raKamasEarned | number: "1.0-0" }}</span>
+											@if (row.paPrice != null) {
+												<span
+													class="fusion-value"
+													[style.color]="row.focusedKamasEarned === maxValue && maxCellColor === '#e6d600' ? maxCellTextColor : ''"
+												>Pa : {{ row.paKamasEarned | number: "1.0-0" }}</span>
+											}
+											@if (row.raPrice != null) {
+												<span
+													class="fusion-value"
+													[style.color]="row.focusedKamasEarned === maxValue && maxCellColor === '#e6d600' ? maxCellTextColor : ''"
+												>Ra : {{ row.raKamasEarned | number: "1.0-0" }}</span>
 												}
 											</div>
 										</td>
@@ -207,7 +213,10 @@
 									>
 										<div class="kamas-values">
 											<span>{{ sumKamasEarned | number: "1.0-0" }}</span>
-											<span class="fusion-value">Meilleurs choix : {{ sumBestChoicesKamasEarned | number: "1.0-0" }}</span>
+										<span
+											class="fusion-value"
+											[style.color]="sumKamasEarned === maxValue && maxCellColor === '#e6d600' ? maxCellTextColor : ''"
+										>Meilleurs choix : {{ sumBestChoicesKamasEarned | number: "1.0-0" }}</span>
 										</div>
 									</td>
 									<td class="lastNoBorder" colspan="2"></td>

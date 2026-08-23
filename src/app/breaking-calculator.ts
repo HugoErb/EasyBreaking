@@ -96,7 +96,7 @@ export function calculateBreaking(item: BreakingItem, runes: RuneData[], request
 		}
 	}
 
-	const nonFocusedMergeLabel = nonFocusedMerges.length > 1 ? 'plusieurs (voir tableau)' : nonFocusedMerges[0];
+	const nonFocusedMergeLabel = nonFocusedMerges.length > 1 ? 'Plusieurs (voir tableau)' : nonFocusedMerges[0];
 	let bestMerge: { name: string; value: number; focused: boolean } | null =
 		nonFocusedMergeLabel && bestNonFocusedKamas > bestWithoutFusionKamas
 			? { name: nonFocusedMergeLabel, value: bestNonFocusedKamas, focused: false }
