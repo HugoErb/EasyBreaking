@@ -39,6 +39,42 @@ export class SearchHistoryComponent implements OnInit {
 		this.history = this.history.filter((entry) => entry.historyId !== historyId);
 	}
 
+	exportToCsv(): void {
+		const headers = [
+			'Item',
+			'Niveau',
+			'Type',
+			'Taux de brisage (%)',
+			'Prix du craft (k)',
+			'Rentabilité',
+			'Kamas gagnés (k)',
+			'Bénéfice (%)',
+			'Meilleur focus',
+			'Date',
+		];
+		const rows = this.history.map((entry) => [
+			entry.name,
+			entry.level,
+			entry.type,
+			entry.breakRate,
+			entry.craftPrice,
+			entry.profitable === true ? 'Rentable' : entry.profitable === false ? 'Non rentable' : 'Non déterminée',
+			entry.kamasEarned,
+			entry.profitPercentage,
+			entry.focus,
+			this.formatCsvDate(entry.updatedAt),
+		]);
+		const csv = [headers, ...rows].map((row) => row.map((value) => this.escapeCsvValue(value)).join(';')).join('\r\n');
+		const blob = new Blob(['\uFEFF', csv], { type: 'text/csv;charset=utf-8' });
+		const url = URL.createObjectURL(blob);
+		const link = document.createElement('a');
+
+		link.href = url;
+		link.download = `historique-brisage-${new Date().toISOString().slice(0, 10)}.csv`;
+		link.click();
+		URL.revokeObjectURL(url);
+	}
+
 	sortBy(column: HistorySortColumn): void {
 		this.sortDirection = this.sortColumn === column && this.sortDirection === 'asc' ? 'desc' : 'asc';
 		this.sortColumn = column;
@@ -93,5 +129,23 @@ export class SearchHistoryComponent implements OnInit {
 	getAriaSort(column: HistorySortColumn): 'ascending' | 'descending' | 'none' {
 		if (this.sortColumn !== column) return 'none';
 		return this.sortDirection === 'asc' ? 'ascending' : 'descending';
+	}
+
+	private escapeCsvValue(value: string | number | null): string {
+		if (value === null) return '';
+		if (typeof value === 'number') return String(value).replace('.', ',');
+
+		const safeValue = /^[=+\-@\t\r]/.test(value) ? `'${value}` : value;
+		return `"${safeValue.replace(/"/g, '""')}"`;
+	}
+
+	private formatCsvDate(date: string): string {
+		return new Intl.DateTimeFormat('fr-FR', {
+			day: '2-digit',
+			month: '2-digit',
+			year: 'numeric',
+			hour: '2-digit',
+			minute: '2-digit',
+		}).format(new Date(date));
 	}
 }

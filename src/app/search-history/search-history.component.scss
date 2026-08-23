@@ -49,6 +49,22 @@ main {
 	gap: 4px;
 }
 
+.export-btn {
+	margin-left: auto;
+}
+
+.export-btn ::ng-deep .p-button {
+	border-color: rgba(137, 164, 253, 0.55);
+	color: $accent-light;
+	white-space: nowrap;
+
+	&:not(:disabled):hover {
+		background: rgba(54, 108, 255, 0.12);
+		border-color: $accent-light;
+		color: $accent-light !important;
+	}
+}
+
 .page-title {
 	background-image: linear-gradient(90deg, $accent, $accent-light);
 	background-clip: text;
@@ -211,7 +227,7 @@ tbody tr:hover td {
 		display: inline-flex;
 		align-items: center;
 		justify-content: center;
-		gap: 4px;
+		gap: 10px;
 	}
 }
 
@@ -247,6 +263,14 @@ tbody tr:hover td {
 
 	.page-title {
 		font-size: 1.55em;
+	}
+
+	.page-header {
+		flex-wrap: wrap;
+	}
+
+	.export-btn {
+		margin-left: 56px;
 	}
 
 	.history-container {

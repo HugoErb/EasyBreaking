@@ -9,6 +9,16 @@
     font-family: "Enriqueta", arial, serif !important;
 }
 
+.history-action-tooltip {
+    max-width: none !important;
+    width: max-content;
+}
+
+.history-action-tooltip .p-tooltip-text {
+    width: max-content;
+    white-space: nowrap;
+}
+
 .p-inputicon {
     color: rgba(198, 193, 185, 0.5) !important;
 }

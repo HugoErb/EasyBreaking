@@ -5,6 +5,15 @@
 			<h1 class="page-title">Historique de recherche</h1>
 			<span class="page-subtitle">Retrouvez toutes vos recherches et leurs résultats de brisage</span>
 		</div>
+		<p-button
+			label="Exporter en CSV"
+			icon="pi pi-download"
+			severity="secondary"
+			[outlined]="true"
+			[disabled]="history.length === 0"
+			(click)="exportToCsv()"
+			class="export-btn"
+		/>
 	</div>
 
 	<div class="history-container">
@@ -118,7 +127,8 @@
 											severity="info"
 											(click)="launchWithEntry(entry)"
 											pTooltip="Ouvrir dans le calculateur"
-											tooltipPosition="left"
+											tooltipStyleClass="history-action-tooltip"
+											tooltipPosition="top"
 											ariaLabel="Ouvrir dans le calculateur"
 										/>
 										<p-button
@@ -128,7 +138,7 @@
 											severity="danger"
 											(click)="deleteEntry(entry.historyId)"
 											pTooltip="Supprimer cette ligne"
-											tooltipPosition="left"
+											tooltipPosition="top"
 											ariaLabel="Supprimer cette ligne"
 										/>
 									</div>
