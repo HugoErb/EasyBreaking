@@ -27,6 +27,25 @@ describe('Rune data', () => {
 		expect(parseRunesData([{ ...validRune, paPrice: -1 }])).toBeNull();
 	});
 
+	it('removes hunting runes from parsed data', () => {
+		const runes = parseRunesData([
+			validRune,
+			{ ...validRune, name: 'Chasse', stat: 'Arme de chasse' },
+		]);
+
+		expect(runes).toEqual([validRune]);
+	});
+
+	it('removes hunting runes from stored data and persists the migration', () => {
+		localStorage.setItem(
+			'runesData',
+			JSON.stringify([validRune, { ...validRune, name: 'Chasse', stat: 'Arme de chasse' }]),
+		);
+
+		expect(readStoredRunes()).toEqual([validRune]);
+		expect(JSON.parse(localStorage.getItem('runesData') ?? '[]')).toEqual([validRune]);
+	});
+
 	it('ignores corrupted stored data', () => {
 		localStorage.setItem('runesData', '{invalid-json');
 

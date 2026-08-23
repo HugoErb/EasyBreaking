@@ -219,6 +219,29 @@ describe('HomeComponent', () => {
 		expect(component.sumBestChoicesKamasEarned).toBe(component.tableauEffects[0].kamasEarned);
 	});
 
+	it('excludes hunting runes from every calculation while keeping supported runes', () => {
+		const component = createComponent();
+		component.prixCraft = 100;
+		component.selectedItem = { level: 100, effects: ['Arme de chasse', '10 Force'], recipe: [] };
+		component.runes = [
+			{
+				name: 'Fo',
+				stat: 'Force',
+				normalizedStat: 'force',
+				price: 100,
+				weight: 1,
+				img: 'force.png',
+			},
+		];
+
+		(component as unknown as { initCachedRunes: () => void }).initCachedRunes();
+		(component as unknown as { buildTableAndTotals: () => void }).buildTableAndTotals();
+
+		expect(component.tableauEffects.length).toBe(1);
+		expect(component.tableauEffects[0].runeName).toBe('Fo');
+		expect(component.calculateBenefit(100, false)).toBe(Math.round(component.maxValue! - component.prixCraft));
+	});
+
 	it('recommends profitable merges without focus when their combined value is the best strategy', () => {
 		const component = createComponent();
 		component.prixCraft = 100;

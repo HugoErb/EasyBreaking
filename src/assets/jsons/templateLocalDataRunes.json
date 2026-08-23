@@ -232,13 +232,6 @@
     "paPrice": 967
   },
   {
-    "name": "Chasse",
-    "stat": "Arme de chasse",
-    "img": "assets/imgs/invo.png",
-    "price": 1536,
-    "weight": 5
-  },
-  {
     "name": "Tac",
     "stat": "Tacle",
     "img": "assets/imgs/tacle.png",

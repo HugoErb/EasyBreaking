@@ -5,7 +5,7 @@ import { forkJoin, map, of, tap } from 'rxjs';
 import { AutoComplete } from 'primeng/autocomplete';
 import { estimateItemsToReachRate } from './break-rate-estimator';
 import { SearchHistoryService } from '../search-history/search-history.service';
-import { parseRunesData, readStoredRunes, storeRunes } from '../rune-data';
+import { isUnsupportedRuneStat, parseRunesData, readStoredRunes, storeRunes } from '../rune-data';
 
 const PA_RUNE_RATIO = 3;
 const RA_RUNE_RATIO = 9;
@@ -174,29 +174,32 @@ export class HomeComponent implements OnInit {
 		if (!this.selectedItem) return;
 		const level = this.selectedItem.level;
 
-		this._cachedRunes = this.selectedItem.effects.map((effect: string) => {
-			const rune = this.findMatchingRune(effect);
-			if (!rune) {
-				console.error("[findMatchingRune] Rune introuvable pour l'effet :", effect);
-				return null;
-			}
-			const averageEffectValue = this.calculateAverage(effect);
-			const runeNumerator = (3 * rune.weight * averageEffectValue * level) / 200 + 1;
-			const runeRealWeight = this.getRealRuneWeight(rune);
-			const runePrice = Number.parseFloat(rune.price);
-			const paRunePrice = rune.paPrice ? Number.parseFloat(rune.paPrice) : 0;
-			const raRunePrice = rune.raPrice ? Number.parseFloat(rune.raPrice) : 0;
+		this._cachedRunes = this.selectedItem.effects
+			.filter((effect: string) => !isUnsupportedRuneStat(effect))
+			.map((effect: string) => {
+				const rune = this.findMatchingRune(effect);
+				if (!rune) {
+					console.error("[findMatchingRune] Rune introuvable pour l'effet :", effect);
+					return null;
+				}
+				const averageEffectValue = this.calculateAverage(effect);
+				const runeNumerator = (3 * rune.weight * averageEffectValue * level) / 200 + 1;
+				const runeRealWeight = this.getRealRuneWeight(rune);
+				const runePrice = Number.parseFloat(rune.price);
+				const paRunePrice = rune.paPrice ? Number.parseFloat(rune.paPrice) : 0;
+				const raRunePrice = rune.raPrice ? Number.parseFloat(rune.raPrice) : 0;
 
-			return {
-				effect,
-				rune,
-				runeNumerator,
-				runeRealWeight,
-				runePrice,
-				paRunePrice,
-				raRunePrice,
-			};
-		}).filter((r: CachedRune | null): r is CachedRune => r !== null);
+				return {
+					effect,
+					rune,
+					runeNumerator,
+					runeRealWeight,
+					runePrice,
+					paRunePrice,
+					raRunePrice,
+				};
+			})
+			.filter((r: CachedRune | null): r is CachedRune => r !== null);
 	}
 
 	private checkAndApplyPrefilledEntry(): void {
@@ -524,7 +527,10 @@ export class HomeComponent implements OnInit {
 		let maxPaRaKamasEarned = 0;
 
 		for (const effect of this.selectedItem.effects) {
+			if (isUnsupportedRuneStat(effect)) continue;
+
 			const runeObj = this.findMatchingRune(effect);
+			if (!runeObj) continue;
 
 			// Calcul pour les runes "standard"
 			const cached = this._cachedRunes.find((c) => c.rune === runeObj);
@@ -769,7 +775,7 @@ export class HomeComponent implements OnInit {
 	 */
 	calculateRuneQuantityFocused(taux: any, statFocused: any): number {
 		const cachedFocused = this._cachedRunes.find((c) => c.effect === statFocused);
-		if (!cachedFocused || cachedFocused.rune.stat === 'Arme de chasse') return 0;
+		if (!cachedFocused || isUnsupportedRuneStat(cachedFocused.rune.stat)) return 0;
 
 		let runeQuantityFocused = 0;
 		for (const cached of this._cachedRunes) {

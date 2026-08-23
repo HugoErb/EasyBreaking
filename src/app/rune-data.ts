@@ -8,6 +8,12 @@ export interface RuneData {
 	raPrice?: number | null;
 }
 
+const UNSUPPORTED_RUNE_STATS = new Set(['arme de chasse']);
+
+export function isUnsupportedRuneStat(stat: string): boolean {
+	return UNSUPPORTED_RUNE_STATS.has(stat.trim().toLocaleLowerCase('fr-FR'));
+}
+
 function parseRequiredNumber(value: unknown, minimum: number): number | null {
 	const parsedValue = typeof value === 'number' || typeof value === 'string' ? Number(value) : Number.NaN;
 	return Number.isFinite(parsedValue) && parsedValue >= minimum ? parsedValue : null;
@@ -39,16 +45,36 @@ export function parseRunesData(value: unknown): RuneData[] | null {
 		if (rune['paPrice'] !== null && rune['paPrice'] !== undefined && paPrice === undefined) return null;
 		if (rune['raPrice'] !== null && rune['raPrice'] !== undefined && raPrice === undefined) return null;
 
-		runes.push({ name, stat, img, price, weight, paPrice, raPrice });
+		if (!isUnsupportedRuneStat(stat)) {
+			runes.push({ name, stat, img, price, weight, paPrice, raPrice });
+		}
 	}
 
-	return runes;
+	return runes.length > 0 ? runes : null;
 }
 
 export function readStoredRunes(): RuneData[] | null {
 	try {
 		const storedRunes = localStorage.getItem('runesData');
-		return storedRunes ? parseRunesData(JSON.parse(storedRunes)) : null;
+		if (!storedRunes) return null;
+
+		const rawRunes = JSON.parse(storedRunes);
+		const runes = parseRunesData(rawRunes);
+		if (
+			runes &&
+			Array.isArray(rawRunes) &&
+			rawRunes.some(
+				(candidate) =>
+					typeof candidate === 'object' &&
+					candidate !== null &&
+					typeof candidate.stat === 'string' &&
+					isUnsupportedRuneStat(candidate.stat),
+			)
+		) {
+			storeRunes(runes);
+		}
+
+		return runes;
 	} catch {
 		return null;
 	}
