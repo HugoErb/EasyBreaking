@@ -376,9 +376,11 @@ export class HomeComponent implements OnInit {
 			return;
 		}
 
+		const nonFocusedMergeLabel =
+			this.bestNonFocusedMerges.length > 1 ? 'Plusieurs (voir tableau)' : this.bestNonFocusedMerges[0];
 		let bestMerge: { name: string; value: number } | null =
-			this.bestNonFocusedMerges.length > 0 && this.sumBestChoicesKamasEarned > (this.maxValue ?? 0)
-				? { name: `Sans focus : ${this.bestNonFocusedMerges.join(', ')}`, value: this.sumBestChoicesKamasEarned }
+			nonFocusedMergeLabel && this.sumBestChoicesKamasEarned > (this.maxValue ?? 0)
+				? { name: nonFocusedMergeLabel, value: this.sumBestChoicesKamasEarned }
 				: null;
 		for (const row of this.tableauEffects) {
 			const candidates = [

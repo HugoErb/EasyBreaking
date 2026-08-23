@@ -249,9 +249,26 @@ describe('HomeComponent', () => {
 		(component as unknown as { initCachedRunes: () => void }).initCachedRunes();
 		(component as unknown as { buildTableAndTotals: () => void }).buildTableAndTotals();
 
-		expect(component.mergeRune).toBe('Sans focus : Pa Fo');
+		expect(component.mergeRune).toBe('Pa Fo');
 		expect(component.maxValuePaRa).toBe(component.sumBestChoicesKamasEarned);
 		expect(component.calculateBenefit(100, true)).toBe(Math.round(component.sumBestChoicesKamasEarned - component.prixCraft));
+	});
+
+	it('uses a concise label when several different merges form the best strategy', () => {
+		const component = createComponent();
+		component.tauxBrisage = 100;
+		component.maxValue = 500;
+		component.sumBestChoicesKamasEarned = 700;
+		component.tableauEffects = [
+			{ runeName: 'Rune A', focusedKamasEarned: 200, paKamasEarned: 300, raKamasEarned: 250 },
+			{ runeName: 'Rune B', focusedKamasEarned: 180, paKamasEarned: 190, raKamasEarned: 320 },
+		];
+		component['bestNonFocusedMerges'] = ['Pa Rune A', 'Ra Rune B'];
+
+		(component as unknown as { determineBestMergeRune: () => void }).determineBestMergeRune();
+
+		expect(component.mergeRune).toBe('plusieurs (voir tableau)');
+		expect(component.maxValuePaRa).toBe(700);
 	});
 
 	it('returns null when no break rate is profitable', () => {
