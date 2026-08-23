@@ -22,6 +22,8 @@ export type SearchHistoryUpdate = Pick<
 
 type SearchHistoryItem = Pick<SearchHistoryEntry, 'name' | 'image' | 'type'> & { level: number | string };
 
+const HISTORY_UPDATE_WINDOW_MS = 5 * 60 * 1000;
+
 @Injectable({ providedIn: 'root' })
 export class SearchHistoryService {
 	private readonly storageKey = 'searchHistory';
@@ -78,17 +80,37 @@ export class SearchHistoryService {
 		return historyId;
 	}
 
-	updateEntry(historyId: string, update: SearchHistoryUpdate): void {
+	updateEntry(historyId: string, update: SearchHistoryUpdate): string {
 		const entries = this.getEntries();
 		const entryIndex = entries.findIndex((entry) => entry.historyId === historyId);
-		if (entryIndex === -1) return;
+		if (entryIndex === -1) return historyId;
+
+		const now = Date.now();
+		const previousUpdateTime = new Date(entries[entryIndex].updatedAt).getTime();
+		const entryAge = now - previousUpdateTime;
+		const canUpdateExistingEntry = Number.isFinite(previousUpdateTime) && entryAge >= 0 && entryAge < HISTORY_UPDATE_WINDOW_MS;
+		const updatedAt = new Date(now).toISOString();
+
+		if (!canUpdateExistingEntry) {
+			const newHistoryId = crypto.randomUUID();
+			const newEntry: SearchHistoryEntry = {
+				...entries[entryIndex],
+				...update,
+				historyId: newHistoryId,
+				updatedAt,
+			};
+
+			this.saveEntries([newEntry, ...entries]);
+			return newHistoryId;
+		}
 
 		entries[entryIndex] = {
 			...entries[entryIndex],
 			...update,
-			updatedAt: new Date().toISOString(),
+			updatedAt,
 		};
 		this.saveEntries(entries);
+		return historyId;
 	}
 
 	deleteEntry(historyId: string): void {

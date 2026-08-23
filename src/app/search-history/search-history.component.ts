@@ -13,8 +13,10 @@ type SortDirection = 'asc' | 'desc';
 })
 export class SearchHistoryComponent implements OnInit {
 	history: SearchHistoryEntry[] = [];
+	showDistinctItems = false;
 	sortColumn: HistorySortColumn | null = null;
 	sortDirection: SortDirection = 'asc';
+	private allHistory: SearchHistoryEntry[] = [];
 
 	constructor(
 		private readonly searchHistoryService: SearchHistoryService,
@@ -22,7 +24,8 @@ export class SearchHistoryComponent implements OnInit {
 	) {}
 
 	ngOnInit(): void {
-		this.history = this.searchHistoryService.getEntries();
+		this.allHistory = this.searchHistoryService.getEntries();
+		this.refreshDisplayedHistory();
 	}
 
 	goToHomePage(): void {
@@ -36,7 +39,13 @@ export class SearchHistoryComponent implements OnInit {
 
 	deleteEntry(historyId: string): void {
 		this.searchHistoryService.deleteEntry(historyId);
-		this.history = this.history.filter((entry) => entry.historyId !== historyId);
+		this.allHistory = this.allHistory.filter((entry) => entry.historyId !== historyId);
+		this.refreshDisplayedHistory();
+	}
+
+	toggleDistinctItems(): void {
+		this.showDistinctItems = !this.showDistinctItems;
+		this.refreshDisplayedHistory();
 	}
 
 	exportToCsv(): void {
@@ -78,8 +87,11 @@ export class SearchHistoryComponent implements OnInit {
 	sortBy(column: HistorySortColumn): void {
 		this.sortDirection = this.sortColumn === column && this.sortDirection === 'asc' ? 'desc' : 'asc';
 		this.sortColumn = column;
+		this.refreshDisplayedHistory();
+	}
 
-		this.history = [...this.history].sort((firstEntry, secondEntry) => {
+	private sortEntries(entries: SearchHistoryEntry[], column: HistorySortColumn): SearchHistoryEntry[] {
+		return [...entries].sort((firstEntry, secondEntry) => {
 			if (column === 'profitable') {
 				const firstProfit =
 					firstEntry.profitPercentage != null
@@ -119,6 +131,33 @@ export class SearchHistoryComponent implements OnInit {
 					: String(firstValue).localeCompare(String(secondValue), 'fr', { numeric: true, sensitivity: 'base' });
 			return this.sortDirection === 'asc' ? comparison : -comparison;
 		});
+	}
+
+	private refreshDisplayedHistory(): void {
+		let displayedHistory = this.showDistinctItems ? this.getDistinctHistory() : [...this.allHistory];
+		if (this.sortColumn) displayedHistory = this.sortEntries(displayedHistory, this.sortColumn);
+		this.history = displayedHistory;
+	}
+
+	private getDistinctHistory(): SearchHistoryEntry[] {
+		const latestEntryByItem = new Map<string, SearchHistoryEntry>();
+
+		for (const entry of this.allHistory) {
+			const itemKey = entry.name.trim().toLocaleLowerCase('fr-FR');
+			const latestEntry = latestEntryByItem.get(itemKey);
+			if (!latestEntry || this.getEntryTimestamp(entry) > this.getEntryTimestamp(latestEntry)) {
+				latestEntryByItem.set(itemKey, entry);
+			}
+		}
+
+		return [...latestEntryByItem.values()].sort(
+			(firstEntry, secondEntry) => this.getEntryTimestamp(secondEntry) - this.getEntryTimestamp(firstEntry),
+		);
+	}
+
+	private getEntryTimestamp(entry: SearchHistoryEntry): number {
+		const timestamp = new Date(entry.updatedAt).getTime();
+		return Number.isFinite(timestamp) ? timestamp : Number.NEGATIVE_INFINITY;
 	}
 
 	getSortIcon(column: HistorySortColumn): string {

@@ -49,11 +49,15 @@ main {
 	gap: 4px;
 }
 
-.export-btn {
+.header-actions {
+	display: flex;
+	align-items: center;
+	gap: 10px;
 	margin-left: auto;
 }
 
-.export-btn ::ng-deep .p-button {
+.export-btn ::ng-deep .p-button,
+.distinct-btn ::ng-deep .p-button {
 	border-color: rgba(137, 164, 253, 0.55);
 	color: $accent-light;
 	white-space: nowrap;
@@ -135,6 +139,10 @@ th.sortable {
 
 	.pi {
 		font-size: 0.78rem;
+	}
+
+	.date-info-icon {
+		color: $text-muted;
 	}
 }
 
@@ -269,7 +277,8 @@ tbody tr:hover td {
 		flex-wrap: wrap;
 	}
 
-	.export-btn {
+	.header-actions {
+		flex-wrap: wrap;
 		margin-left: 56px;
 	}
 

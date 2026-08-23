@@ -271,7 +271,7 @@ export class HomeComponent implements OnInit {
 			profitable = bestValue > this.prixCraft;
 		}
 
-		this.searchHistoryService.updateEntry(this.currentHistoryId, {
+		this.currentHistoryId = this.searchHistoryService.updateEntry(this.currentHistoryId, {
 			breakRate: this.tauxBrisage,
 			craftPrice: this.prixCraft ?? null,
 			profitable,

@@ -1,12 +1,14 @@
-import { TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { By } from '@angular/platform-browser';
 import { Router } from '@angular/router';
 import { ButtonModule } from 'primeng/button';
-import { TooltipModule } from 'primeng/tooltip';
+import { Tooltip, TooltipModule } from 'primeng/tooltip';
 import { SearchHistoryComponent } from './search-history.component';
 import { SearchHistoryEntry, SearchHistoryService } from './search-history.service';
 
 describe('SearchHistoryComponent', () => {
 	let component: SearchHistoryComponent;
+	let fixture: ComponentFixture<SearchHistoryComponent>;
 	let service: SearchHistoryService;
 	let router: jasmine.SpyObj<Router>;
 
@@ -57,7 +59,7 @@ describe('SearchHistoryComponent', () => {
 
 		service = TestBed.inject(SearchHistoryService);
 		router = TestBed.inject(Router) as jasmine.SpyObj<Router>;
-		const fixture = TestBed.createComponent(SearchHistoryComponent);
+		fixture = TestBed.createComponent(SearchHistoryComponent);
 		component = fixture.componentInstance;
 		component.ngOnInit();
 	});
@@ -95,11 +97,44 @@ describe('SearchHistoryComponent', () => {
 		expect(component.history[1].name).toBe("Voile d'encre");
 	});
 
+	it('shows only the most recently updated line for each distinct item', () => {
+		const latestVoileEntry: SearchHistoryEntry = {
+			...mockEntries[0],
+			historyId: '3',
+			breakRate: 175,
+			updatedAt: '2026-08-20T10:00:00.000Z',
+		};
+		(service.getEntries as jasmine.Spy).and.returnValue([mockEntries[0], mockEntries[1], latestVoileEntry]);
+		component.ngOnInit();
+
+		component.toggleDistinctItems();
+
+		expect(component.showDistinctItems).toBeTrue();
+		expect(component.history.length).toBe(2);
+		expect(component.history.find((entry) => entry.name === "Voile d'encre")?.historyId).toBe('3');
+
+		component.toggleDistinctItems();
+		expect(component.history.length).toBe(3);
+	});
+
 	it('sets prefilled entry and navigates to home on launchWithEntry', () => {
 		const entry = mockEntries[0];
 		component.launchWithEntry(entry);
 
 		expect(service.setPrefilledEntry).toHaveBeenCalledWith(entry);
 		expect(router.navigate).toHaveBeenCalledWith(['']);
+	});
+
+	it('explains the five-minute history rule on the date column', () => {
+		fixture.detectChanges();
+		const dateTooltip = fixture.debugElement
+			.queryAll(By.directive(Tooltip))
+			.map((element) => element.injector.get(Tooltip))
+			.find((tooltip) => String(tooltip.content).startsWith('Chaque nouvelle sélection crée une ligne.'));
+
+		expect(dateTooltip?.content).toBe(
+			'Chaque nouvelle sélection crée une ligne. Les modifications suivantes la mettent à jour pendant 5 minutes, puis créent une nouvelle ligne.',
+		);
+		expect(dateTooltip?.tooltipPosition).toBe('top');
 	});
 });

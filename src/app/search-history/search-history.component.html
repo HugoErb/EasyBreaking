@@ -5,15 +5,26 @@
 			<h1 class="page-title">Historique de recherche</h1>
 			<span class="page-subtitle">Retrouvez toutes vos recherches et leurs résultats de brisage</span>
 		</div>
-		<p-button
-			label="Exporter en CSV"
-			icon="pi pi-download"
-			severity="secondary"
-			[outlined]="true"
-			[disabled]="history.length === 0"
-			(click)="exportToCsv()"
-			class="export-btn"
-		/>
+		<div class="header-actions">
+			<p-button
+				[label]="showDistinctItems ? 'Afficher toutes les lignes' : 'Items distincts'"
+				icon="pi pi-filter"
+				[severity]="showDistinctItems ? 'info' : 'secondary'"
+				[outlined]="!showDistinctItems"
+				[disabled]="history.length === 0"
+				(click)="toggleDistinctItems()"
+				class="distinct-btn"
+			/>
+			<p-button
+				label="Exporter en CSV"
+				icon="pi pi-download"
+				severity="secondary"
+				[outlined]="true"
+				[disabled]="history.length === 0"
+				(click)="exportToCsv()"
+				class="export-btn"
+			/>
+		</div>
 	</div>
 
 	<div class="history-container">
@@ -44,7 +55,15 @@
 								<button type="button" class="sort-button" (click)="sortBy('focus')">Meilleur focus <i [class]="getSortIcon('focus')"></i></button>
 							</th>
 							<th class="sortable" [attr.aria-sort]="getAriaSort('updatedAt')">
-								<button type="button" class="sort-button" (click)="sortBy('updatedAt')">Date <i [class]="getSortIcon('updatedAt')"></i></button>
+								<button
+									type="button"
+									class="sort-button"
+									(click)="sortBy('updatedAt')"
+									pTooltip="Chaque nouvelle sélection crée une ligne. Les modifications suivantes la mettent à jour pendant 5 minutes, puis créent une nouvelle ligne."
+									tooltipPosition="top"
+								>
+									Date <i class="pi pi-info-circle date-info-icon" aria-hidden="true"></i> <i [class]="getSortIcon('updatedAt')"></i>
+								</button>
 							</th>
 							<th aria-label="Actions"></th>
 						</tr>

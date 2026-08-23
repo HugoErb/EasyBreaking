@@ -36,7 +36,7 @@ describe('HomeComponent', () => {
 	it('records kamasEarned and profitPercentage in history update when prices and break rate are present', () => {
 		const searchHistoryService = {
 			recordSearch: () => 'history-123',
-			updateEntry: jasmine.createSpy('updateEntry'),
+			updateEntry: jasmine.createSpy('updateEntry').and.returnValue('history-456'),
 		} as unknown as SearchHistoryService;
 
 		const component = new HomeComponent(
@@ -68,6 +68,7 @@ describe('HomeComponent', () => {
 			profitPercentage: 50,
 			focus: 'Rune Fo',
 		});
+		expect(component['currentHistoryId']).toBe('history-456');
 	});
 
 	it('pre-fills item and economic parameters when a prefilled history entry is consumed', () => {
