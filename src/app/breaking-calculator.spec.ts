@@ -67,6 +67,7 @@ describe('calculateBreaking', () => {
 
 		expect(result.rows.length).toBe(2);
 		expect(result.standardKamas).toBeGreaterThan(withoutHunting.standardKamas);
+		expect(huntingRow?.canFocus).toBeFalse();
 		expect(huntingRow?.runeQuantity).not.toBe('0.00');
 		expect(huntingRow?.runeQuantityFocused).toBe('0.00');
 		expect(huntingRow?.focusedKamasEarned).toBe(0);

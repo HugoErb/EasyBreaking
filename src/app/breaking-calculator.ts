@@ -18,6 +18,7 @@ export interface BreakingItem {
 export interface BreakingEffectResult {
 	stat: string;
 	runeName: string;
+	canFocus: boolean;
 	runePrice: number;
 	paPrice?: number | null;
 	raPrice?: number | null;
@@ -165,7 +166,8 @@ function buildCachedRunes(item: BreakingItem, runes: RuneData[]): CachedRune[] {
 
 function buildEffectResult(cached: CachedRune, cachedRunes: CachedRune[], breakRate: number): BreakingEffectResult {
 	const baseQuantity = (cached.runeNumerator * breakRate) / 100 / cached.runeRealWeight;
-	const focusedQuantity = isUnfocusableRuneStat(cached.rune.stat)
+	const canFocus = !isUnfocusableRuneStat(cached.rune.stat);
+	const focusedQuantity = !canFocus
 		? 0
 		: (cachedRunes.reduce(
 				(sum, candidate) => sum + (candidate.effect === cached.effect ? candidate.runeNumerator : candidate.runeNumerator / 2),
@@ -181,6 +183,7 @@ function buildEffectResult(cached: CachedRune, cachedRunes: CachedRune[], breakR
 	return {
 		stat: cached.effect,
 		runeName: cached.rune.name,
+		canFocus,
 		runePrice: cached.rune.price,
 		paPrice: cached.rune.paPrice,
 		raPrice: cached.rune.raPrice,

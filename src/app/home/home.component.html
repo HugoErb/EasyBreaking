@@ -178,27 +178,37 @@
 												}
 											</div>
 										</td>
-										<td>{{ row.runeQuantityFocused | number: "1.0-2" }}</td>
+										<td>
+											@if (row.canFocus) {
+												{{ row.runeQuantityFocused | number: "1.0-2" }}
+											} @else {
+												/
+											}
+										</td>
 										<td
 											[style.backgroundColor]="row.focusedKamasEarned === maxValue && row.focusedKamasEarned !== 0 ? maxCellColor : ''"
 											[style.color]="row.focusedKamasEarned === maxValue && row.focusedKamasEarned !== 0 ? maxCellTextColor : ''"
 											[style.fontWeight]="row.focusedKamasEarned === maxValue && row.focusedKamasEarned !== 0 ? 'bold' : ''"
 										>
-											<div class="kamas-values">
-												<span>{{ row.focusedKamasEarned | number: "1.0-0" }}</span>
-											@if (row.paPrice != null) {
-												<span
-													class="fusion-value"
-													[style.color]="row.focusedKamasEarned === maxValue && maxCellColor === '#e6d600' ? maxCellTextColor : ''"
-												>Pa : {{ row.paKamasEarned | number: "1.0-0" }}</span>
+											@if (row.canFocus) {
+												<div class="kamas-values">
+													<span>{{ row.focusedKamasEarned | number: "1.0-0" }}</span>
+													@if (row.paPrice != null) {
+														<span
+															class="fusion-value"
+															[style.color]="row.focusedKamasEarned === maxValue && maxCellColor === '#e6d600' ? maxCellTextColor : ''"
+														>Pa : {{ row.paKamasEarned | number: "1.0-0" }}</span>
+													}
+													@if (row.raPrice != null) {
+														<span
+															class="fusion-value"
+															[style.color]="row.focusedKamasEarned === maxValue && maxCellColor === '#e6d600' ? maxCellTextColor : ''"
+														>Ra : {{ row.raKamasEarned | number: "1.0-0" }}</span>
+													}
+												</div>
+											} @else {
+												/
 											}
-											@if (row.raPrice != null) {
-												<span
-													class="fusion-value"
-													[style.color]="row.focusedKamasEarned === maxValue && maxCellColor === '#e6d600' ? maxCellTextColor : ''"
-												>Ra : {{ row.raKamasEarned | number: "1.0-0" }}</span>
-												}
-											</div>
 										</td>
 									</tr>
 								}

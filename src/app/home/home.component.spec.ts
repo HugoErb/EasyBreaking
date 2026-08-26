@@ -278,6 +278,7 @@ describe('HomeComponent', () => {
 
 		expect(component.tableauEffects.length).toBe(2);
 		const huntingRow = component.tableauEffects.find((row) => row.runeName === 'Chasse');
+		expect(huntingRow.canFocus).toBeFalse();
 		expect(huntingRow.runeQuantity).not.toBe('0.00');
 		expect(huntingRow.runeQuantityFocused).toBe('0.00');
 		expect(component.calculateBenefit(100, false)).toBe(Math.round(component.maxValue! - component.prixCraft));
