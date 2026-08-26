@@ -85,7 +85,9 @@
 								<th class="sortable" [attr.aria-sort]="getAriaSort('gain')">
 									<button type="button" class="sort-button" (click)="sortBy('gain')">Revenu estimé <i [class]="getSortIcon('gain')"></i></button>
 								</th>
-								<th>Meilleure stratégie</th>
+								<th>Dernier brisage</th>
+								<th>Taux renseigné</th>
+								<th>Prix du craft</th>
 							</tr>
 						</thead>
 						<tbody>
@@ -103,7 +105,27 @@
 									<td>{{ result.item.level }}</td>
 									<td>{{ result.item.type }}</td>
 									<td class="gain-cell">{{ result.calculation.bestKamas | number: "1.0-0" }} k</td>
-									<td>{{ result.calculation.strategyLabel }}</td>
+									<td class="history-cell">
+										@if (result.latestHistory) {
+											{{ result.latestHistory.updatedAt | date: "dd/MM/yyyy HH:mm" }}
+										} @else {
+											<span class="empty-value">Jamais</span>
+										}
+									</td>
+									<td class="history-cell">
+										@if (result.latestHistory?.breakRate != null) {
+											{{ result.latestHistory!.breakRate | number: "1.0-2" }} %
+										} @else {
+											<span class="empty-value">—</span>
+										}
+									</td>
+									<td class="history-cell">
+										@if (result.latestHistory?.craftPrice != null) {
+											{{ result.latestHistory!.craftPrice | number: "1.0-0" }} k
+										} @else {
+											<span class="empty-value">—</span>
+										}
+									</td>
 								</tr>
 							}
 						</tbody>

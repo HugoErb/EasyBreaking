@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { forkJoin, map, of, tap } from 'rxjs';
 import { BreakingCalculationResult, BreakingItem, calculateBreaking } from '../breaking-calculator';
 import { parseRunesData, readStoredRunes, RuneData, storeRunes } from '../rune-data';
+import { SearchHistoryEntry, SearchHistoryService } from '../search-history/search-history.service';
 
 type SortColumn = 'gain' | 'level' | 'name';
 type SortDirection = 'asc' | 'desc';
@@ -12,6 +13,7 @@ export interface RankedBreakingItem {
 	item: BreakingItem;
 	calculation: BreakingCalculationResult;
 	profitRank: number;
+	latestHistory: SearchHistoryEntry | null;
 }
 
 @Component({
@@ -38,14 +40,17 @@ export class BestItemsComponent implements OnInit {
 	private items: BreakingItem[] = [];
 	private runes: RuneData[] = [];
 	private calculatedItems: RankedBreakingItem[] = [];
+	private latestHistoryByItem = new Map<string, SearchHistoryEntry>();
 
 	constructor(
 		private readonly http: HttpClient,
 		private readonly router: Router,
 		private readonly cdr: ChangeDetectorRef,
+		private readonly searchHistoryService: SearchHistoryService,
 	) {}
 
 	ngOnInit(): void {
+		this.indexLatestHistory();
 		const storedRunes = readStoredRunes();
 		const runes$ = storedRunes
 			? of(storedRunes)
@@ -122,6 +127,7 @@ export class BestItemsComponent implements OnInit {
 			item,
 			calculation: calculateBreaking(item, this.runes, breakRate),
 			profitRank: 0,
+			latestHistory: this.latestHistoryByItem.get(this.getItemKey(item)) ?? null,
 		}));
 		this.refreshDisplayedResults();
 		this.cdr.markForCheck();
@@ -164,6 +170,27 @@ export class BestItemsComponent implements OnInit {
 	private compareByGain(first: RankedBreakingItem, second: RankedBreakingItem): number {
 		const gainDifference = second.calculation.bestKamas - first.calculation.bestKamas;
 		return gainDifference || first.item.name.localeCompare(second.item.name, 'fr', { sensitivity: 'base' });
+	}
+
+	private indexLatestHistory(): void {
+		this.latestHistoryByItem.clear();
+
+		for (const entry of this.searchHistoryService.getEntries()) {
+			const key = this.getItemKey(entry);
+			const currentEntry = this.latestHistoryByItem.get(key);
+			if (!currentEntry || this.getHistoryTimestamp(entry) > this.getHistoryTimestamp(currentEntry)) {
+				this.latestHistoryByItem.set(key, entry);
+			}
+		}
+	}
+
+	private getItemKey(item: Pick<BreakingItem, 'name' | 'type' | 'level'>): string {
+		return JSON.stringify([item.name.trim().toLocaleLowerCase('fr-FR'), item.type, Number(item.level)]);
+	}
+
+	private getHistoryTimestamp(entry: SearchHistoryEntry): number {
+		const timestamp = new Date(entry.updatedAt).getTime();
+		return Number.isFinite(timestamp) ? timestamp : Number.NEGATIVE_INFINITY;
 	}
 
 	private deduplicateItems(items: BreakingItem[]): BreakingItem[] {

@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { of } from 'rxjs';
 import { BreakingItem } from '../breaking-calculator';
 import { RuneData } from '../rune-data';
+import { SearchHistoryEntry, SearchHistoryService } from '../search-history/search-history.service';
 import { BestItemsComponent } from './best-items.component';
 
 describe('BestItemsComponent', () => {
@@ -26,7 +27,7 @@ describe('BestItemsComponent', () => {
 		};
 	}
 
-	function createComponent(items: BreakingItem[]) {
+	function createComponent(items: BreakingItem[], history: SearchHistoryEntry[] = []) {
 		const http = {
 			get: jasmine.createSpy('get').and.callFake((url: string) => {
 				if (url.endsWith('runes.json')) return of([rune]);
@@ -39,7 +40,8 @@ describe('BestItemsComponent', () => {
 			serializeUrl: jasmine.createSpy('serializeUrl').and.returnValue('/?item=Alpha&breakRate=100'),
 		} as unknown as Router;
 		const cdr = { markForCheck: () => undefined } as unknown as ChangeDetectorRef;
-		return { component: new BestItemsComponent(http, router, cdr), router };
+		const searchHistoryService = { getEntries: () => history } as unknown as SearchHistoryService;
+		return { component: new BestItemsComponent(http, router, cdr, searchHistoryService), router };
 	}
 
 	afterEach(() => localStorage.clear());
@@ -89,5 +91,32 @@ describe('BestItemsComponent', () => {
 			queryParams: { item: 'Alpha', breakRate: 100 },
 		});
 		expect(window.open).toHaveBeenCalledWith('/?item=Alpha&breakRate=100', '_blank', 'noopener,noreferrer');
+	});
+
+	it('shows the latest history entry for each ranked item', () => {
+		const historyItem = item('Anneau Alpha', 50);
+		const createHistoryEntry = (updatedAt: string, breakRate: number, craftPrice: number): SearchHistoryEntry => ({
+			historyId: updatedAt,
+			name: historyItem.name,
+			image: historyItem.image,
+			level: Number(historyItem.level),
+			type: historyItem.type,
+			breakRate,
+			craftPrice,
+			profitable: null,
+			kamasEarned: null,
+			profitPercentage: null,
+			focus: null,
+			updatedAt,
+		});
+		const { component } = createComponent([historyItem], [
+			createHistoryEntry('2026-08-20T10:00:00.000Z', 100, 10_000),
+			createHistoryEntry('2026-08-25T10:00:00.000Z', 150, 12_000),
+		]);
+
+		component.ngOnInit();
+
+		expect(component.displayedResults[0].latestHistory?.breakRate).toBe(150);
+		expect(component.displayedResults[0].latestHistory?.craftPrice).toBe(12_000);
 	});
 });

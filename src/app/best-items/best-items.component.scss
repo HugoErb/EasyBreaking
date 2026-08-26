@@ -16,7 +16,7 @@ main {
 }
 
 .page-shell {
-	max-width: 1200px;
+	max-width: 1450px;
 	margin: 0 auto;
 	padding: 0 30px 60px;
 }
@@ -278,6 +278,14 @@ th.sortable {
 	color: $accent-light;
 	font-weight: bold;
 	white-space: nowrap;
+}
+
+.history-cell {
+	white-space: nowrap;
+}
+
+.empty-value {
+	color: $text-muted;
 }
 
 .state-message {
