@@ -84,8 +84,8 @@ export class BestItemsComponent implements OnInit {
 		});
 	}
 
-	onBreakRateChange(): void {
-		this.breakRate = Math.min(Math.max(this.breakRate ?? 0, 0), 4000);
+	onBreakRateChange(value: number | null): void {
+		this.breakRate = Math.min(Math.max(value ?? 0, 0), 4000);
 		this.recalculateItems();
 	}
 
@@ -150,7 +150,7 @@ export class BestItemsComponent implements OnInit {
 
 		this.displayedResults = [...filtered]
 			.sort((first, second) => this.compareByGain(first, second))
-			.slice(0, 50)
+			.slice(0, 25)
 			.map((result, index) => ({ ...result, profitRank: index + 1 }));
 		this.applyDisplaySort();
 		this.cdr.markForCheck();

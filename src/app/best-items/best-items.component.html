@@ -14,8 +14,8 @@
 				<p-iconfield iconPosition="right">
 					<p-inputNumber
 						inputId="rankingBreakRate"
-						[(ngModel)]="breakRate"
-						(onInput)="onBreakRateChange()"
+						[ngModel]="breakRate"
+						(ngModelChange)="onBreakRateChange($event)"
 						[min]="0"
 						[max]="4000"
 					></p-inputNumber>

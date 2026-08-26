@@ -46,7 +46,7 @@ describe('BestItemsComponent', () => {
 
 	afterEach(() => localStorage.clear());
 
-	it('loads bundled runes, deduplicates items and keeps the 50 best results', () => {
+	it('loads bundled runes, deduplicates items and keeps the 25 best results', () => {
 		const items = Array.from({ length: 101 }, (_, index) => item(`Item ${index + 1}`, index + 1));
 		items.push({ ...items[0], effects: [...items[0].effects], recipe: [] });
 		const { component } = createComponent(items);
@@ -54,7 +54,7 @@ describe('BestItemsComponent', () => {
 		component.ngOnInit();
 
 		expect(component.filteredTotal).toBe(101);
-		expect(component.displayedResults.length).toBe(50);
+		expect(component.displayedResults.length).toBe(25);
 		expect(component.displayedResults[0].item.level).toBe(101);
 		expect(JSON.parse(localStorage.getItem('runesData') ?? '[]')).toEqual([rune]);
 	});
