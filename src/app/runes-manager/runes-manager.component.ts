@@ -78,7 +78,7 @@ export class RunesManagerComponent implements OnInit {
             const comparison =
                 column !== 'name' && Number.isFinite(firstNumber) && Number.isFinite(secondNumber)
                     ? firstNumber - secondNumber
-                    : String(firstValue).localeCompare(String(secondValue), 'fr', { numeric: true, sensitivity: 'base' });
+                    : String(firstValue).localeCompare(String(secondValue), 'fr', { numeric: true, sensitivity: 'accent' });
             return this.sortDirection === 'asc' ? comparison : -comparison;
         });
     }

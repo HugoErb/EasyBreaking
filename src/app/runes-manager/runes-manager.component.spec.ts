@@ -25,4 +25,18 @@ describe('RunesManagerComponent', () => {
 		expect(component.runes).toEqual([defaultRune]);
 		expect(JSON.parse(localStorage.getItem('runesData') ?? '[]')).toEqual([defaultRune]);
 	});
+
+	it('takes accents into account when sorting rune names', () => {
+		const http = {} as HttpClient;
+		const component = new RunesManagerComponent(http);
+		component.runes = [
+			{ ...defaultRune, name: 'Ré' },
+			{ ...defaultRune, name: 'Re' },
+		];
+
+		component.sortBy('name');
+		component.sortBy('name');
+
+		expect(component.runes.map((rune) => rune.name)).toEqual(['Re', 'Ré']);
+	});
 });
