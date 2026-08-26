@@ -119,18 +119,56 @@ main {
 	}
 }
 
+.filters-card input[type="number"] {
+	appearance: textfield;
+	-moz-appearance: textfield;
+}
+
+.filters-card input[type="number"]::-webkit-inner-spin-button,
+.filters-card input[type="number"]::-webkit-outer-spin-button {
+	margin: 0;
+	-webkit-appearance: none;
+}
+
 .rate-filter ::ng-deep .p-inputnumber,
 .rate-filter ::ng-deep .p-inputtext {
 	width: 100% !important;
 }
 
-.type-filter select {
-	appearance: none;
-	padding-right: 36px;
-	background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath fill='%2389a4fd' d='M1.4.6 6 5.2 10.6.6 12 2l-6 6-6-6z'/%3E%3C/svg%3E");
-	background-repeat: no-repeat;
-	background-position: right 12px center;
-	background-size: 12px 8px;
+.type-filter ::ng-deep .p-multiselect {
+	height: 42px;
+	background: rgba(255, 255, 255, 0.06);
+	border-color: $border-color;
+	color: $text-primary;
+	font-family: "Enriqueta", arial, serif;
+}
+
+.type-filter ::ng-deep .p-multiselect:not(.p-disabled):hover {
+	border-color: rgba(54, 108, 255, 0.6);
+}
+
+.type-filter ::ng-deep .p-multiselect:not(.p-disabled).p-focus {
+	border-color: #366cff;
+	box-shadow: 0 0 0 2px rgba(54, 108, 255, 0.35);
+	outline: none;
+}
+
+.type-filter ::ng-deep .p-multiselect-label-container {
+	display: flex;
+	align-items: center;
+}
+
+.type-filter ::ng-deep .p-multiselect-label {
+	display: flex;
+	align-items: center;
+	height: 100%;
+	padding: 0 12px;
+	color: $text-primary;
+	font-family: "Enriqueta", arial, serif;
+}
+
+.type-filter ::ng-deep .p-multiselect-label.p-placeholder {
+	color: $text-muted;
 }
 
 .rate-filter ::ng-deep .p-inputtext {

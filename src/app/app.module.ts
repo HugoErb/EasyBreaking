@@ -16,6 +16,7 @@ import { TagModule } from 'primeng/tag';
 import { TooltipModule } from 'primeng/tooltip';
 import { IconFieldModule } from 'primeng/iconfield';
 import { InputIconModule } from 'primeng/inputicon';
+import { MultiSelectModule } from 'primeng/multiselect';
 
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
@@ -60,6 +61,7 @@ const MyPreset = definePreset(Lara, {
 		InputNumberModule,
 		IconFieldModule,
 		InputIconModule,
+		MultiSelectModule,
 	],
 	providers: [
 		{ provide: LOCALE_ID, useValue: 'fr' },

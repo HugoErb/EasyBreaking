@@ -26,7 +26,7 @@ export class BestItemsComponent implements OnInit {
 	searchTerm = '';
 	minimumLevel: number | null = 1;
 	maximumLevel: number | null = 200;
-	selectedType = '';
+	selectedTypes: string[] = [];
 	types: string[] = [];
 	displayedResults: RankedBreakingItem[] = [];
 	filteredTotal = 0;
@@ -109,9 +109,10 @@ export class BestItemsComponent implements OnInit {
 	}
 
 	openItem(result: RankedBreakingItem): void {
-		void this.router.navigate(['/'], {
+		const url = this.router.serializeUrl(this.router.createUrlTree(['/'], {
 			queryParams: { item: result.item.name, breakRate: this.breakRate ?? 0 },
-		});
+		}));
+		window.open(url, '_blank', 'noopener,noreferrer');
 	}
 
 	private recalculateItems(): void {
@@ -136,7 +137,7 @@ export class BestItemsComponent implements OnInit {
 				item.name.toLocaleLowerCase('fr-FR').includes(query) &&
 				level >= minimumLevel &&
 				level <= maximumLevel &&
-				(!this.selectedType || item.type === this.selectedType)
+				(this.selectedTypes.length === 0 || this.selectedTypes.includes(item.type))
 			);
 		});
 		this.filteredTotal = filtered.length;

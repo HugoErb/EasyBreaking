@@ -36,12 +36,20 @@
 			</div>
 			<div class="filter-group type-filter">
 				<label for="itemType">Type</label>
-				<select id="itemType" [(ngModel)]="selectedType" (ngModelChange)="onFiltersChange()">
-					<option value="">Tous les types</option>
-					@for (type of types; track type) {
-						<option [value]="type">{{ type }}</option>
-					}
-				</select>
+				<p-multiselect
+					inputId="itemType"
+					[options]="types"
+					[(ngModel)]="selectedTypes"
+					(ngModelChange)="onFiltersChange()"
+					placeholder="Tous les types"
+					selectedItemsLabel="{0} types sélectionnés"
+					[maxSelectedLabels]="1"
+					[filter]="true"
+					[showClear]="true"
+					[fluid]="true"
+					appendTo="body"
+					panelStyleClass="best-items-type-panel"
+				></p-multiselect>
 			</div>
 		</section>
 
@@ -88,7 +96,7 @@
 									role="link"
 									(click)="openItem(result)"
 									(keydown.enter)="openItem(result)"
-									[attr.aria-label]="'Ouvrir le détail de ' + result.item.name"
+									[attr.aria-label]="'Ouvrir le détail de ' + result.item.name + ' dans un nouvel onglet'"
 								>
 									<td class="rank-cell">#{{ result.profitRank }}</td>
 									<td class="item-cell"><img [src]="result.item.image" [alt]="result.item.name" loading="lazy" /><span>{{ result.item.name }}</span></td>

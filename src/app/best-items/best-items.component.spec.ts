@@ -34,7 +34,10 @@ describe('BestItemsComponent', () => {
 				return of([]);
 			}),
 		} as unknown as HttpClient;
-		const router = { navigate: jasmine.createSpy('navigate') } as unknown as Router;
+		const router = {
+			createUrlTree: jasmine.createSpy('createUrlTree').and.returnValue({}),
+			serializeUrl: jasmine.createSpy('serializeUrl').and.returnValue('/?item=Alpha&breakRate=100'),
+		} as unknown as Router;
 		const cdr = { markForCheck: () => undefined } as unknown as ChangeDetectorRef;
 		return { component: new BestItemsComponent(http, router, cdr), router };
 	}
@@ -54,30 +57,37 @@ describe('BestItemsComponent', () => {
 		expect(JSON.parse(localStorage.getItem('runesData') ?? '[]')).toEqual([rune]);
 	});
 
-	it('uses stored rune prices and filters by name, level and type', () => {
+	it('uses stored rune prices and filters by name, level and multiple types', () => {
 		localStorage.setItem('runesData', JSON.stringify([{ ...rune, price: 250 }]));
-		const { component } = createComponent([item('Anneau Alpha', 50), item('Épée Beta', 120, 'Épée')]);
+		const { component } = createComponent([
+			item('Anneau Alpha', 50),
+			item('Épée Beta', 120, 'Épée'),
+			item('Marteau Beta', 130, 'Marteau'),
+			item('Cape Beta', 140, 'Cape'),
+		]);
 		component.ngOnInit();
 		component.searchTerm = 'beta';
 		component.minimumLevel = 100;
 		component.maximumLevel = 150;
-		component.selectedType = 'Épée';
+		component.selectedTypes = ['Épée', 'Marteau'];
 
 		component.onFiltersChange();
 
-		expect(component.displayedResults.map((result) => result.item.name)).toEqual(['Épée Beta']);
-		expect(component.displayedResults[0].calculation.rows[0].runePrice).toBe(250);
+		expect(component.displayedResults.map((result) => result.item.name)).toEqual(['Marteau Beta', 'Épée Beta']);
+		expect(component.displayedResults.every((result) => result.calculation.rows[0].runePrice === 250)).toBeTrue();
 	});
 
 	it('sorts the top results and opens the calculator with query parameters', () => {
 		const { component, router } = createComponent([item('Zulu', 10), item('Alpha', 20)]);
+		spyOn(window, 'open');
 		component.ngOnInit();
 		component.sortBy('name');
 
 		expect(component.displayedResults.map((result) => result.item.name)).toEqual(['Alpha', 'Zulu']);
 		component.openItem(component.displayedResults[0]);
-		expect(router.navigate).toHaveBeenCalledWith(['/'], {
+		expect(router.createUrlTree).toHaveBeenCalledWith(['/'], {
 			queryParams: { item: 'Alpha', breakRate: 100 },
 		});
+		expect(window.open).toHaveBeenCalledWith('/?item=Alpha&breakRate=100', '_blank', 'noopener,noreferrer');
 	});
 });
