@@ -199,8 +199,8 @@
 											}
 										</td>
 										<td
-											[style.backgroundColor]="row.focusedKamasEarned === maxValue && row.focusedKamasEarned !== 0 ? maxCellColor : ''"
-											[style.color]="row.focusedKamasEarned === maxValue && row.focusedKamasEarned !== 0 ? maxCellTextColor : ''"
+											[style.backgroundColor]="isBestFocusedCell(row) ? maxCellColor : ''"
+											[style.color]="isBestFocusedCell(row) ? maxCellTextColor : ''"
 										>
 											@if (row.canFocus) {
 												<div class="kamas-values">
@@ -211,14 +211,14 @@
 														<span
 															class="fusion-value"
 															[class.best-value]="row.paKamasEarned > row.focusedKamasEarned && row.paKamasEarned >= row.raKamasEarned"
-															[style.color]="row.focusedKamasEarned === maxValue && maxCellColor === '#e6d600' ? maxCellTextColor : ''"
+															[style.color]="isBestFocusedCell(row) && maxCellColor === '#e6d600' ? maxCellTextColor : ''"
 														>Pa : {{ row.paKamasEarned | number: "1.0-0" }}</span>
 													}
 													@if (row.raPrice != null) {
 														<span
 															class="fusion-value"
 															[class.best-value]="row.raKamasEarned > row.focusedKamasEarned && row.raKamasEarned > row.paKamasEarned"
-															[style.color]="row.focusedKamasEarned === maxValue && maxCellColor === '#e6d600' ? maxCellTextColor : ''"
+															[style.color]="isBestFocusedCell(row) && maxCellColor === '#e6d600' ? maxCellTextColor : ''"
 														>Ra : {{ row.raKamasEarned | number: "1.0-0" }}</span>
 													}
 												</div>
@@ -233,15 +233,15 @@
 								<tr>
 									<td class="firstNoBorder" colspan="4"></td>
 									<td
-										[style.backgroundColor]="sumKamasEarned === maxValue && sumKamasEarned !== 0 ? maxCellColor : ''"
-										[style.color]="sumKamasEarned === maxValue && sumKamasEarned !== 0 ? maxCellTextColor : ''"
+										[style.backgroundColor]="isBestTotalCell() ? maxCellColor : ''"
+										[style.color]="isBestTotalCell() ? maxCellTextColor : ''"
 									>
 										<div class="kamas-values">
 											<span [class.best-value]="sumKamasEarned >= sumBestChoicesKamasEarned">{{ sumKamasEarned | number: "1.0-0" }}</span>
 										<span
 											class="fusion-value"
 											[class.best-value]="sumBestChoicesKamasEarned > sumKamasEarned"
-											[style.color]="sumKamasEarned === maxValue && maxCellColor === '#e6d600' ? maxCellTextColor : ''"
+											[style.color]="isBestTotalCell() && maxCellColor === '#e6d600' ? maxCellTextColor : ''"
 										>Meilleures fusions : {{ sumBestChoicesKamasEarned | number: "1.0-0" }}</span>
 										</div>
 									</td>

@@ -495,12 +495,13 @@ export class HomeComponent implements OnInit {
 		}
 
 		const valeurRentable = this.prixCraft * (1 + Number(this.tauxRentabiliteVise) / 100);
+		const bestValue = Math.max(this.maxValue, this.maxValuePaRa ?? 0);
 
-		if (this.maxValue < this.prixCraft) {
+		if (bestValue < this.prixCraft) {
 			this.maxCellColor = 'darkred';
 			this.maxCellTextColor = 'rgb(198, 193, 185)';
 			this.profitabilityFocusState = 'unprofitable';
-		} else if (this.maxValue < valeurRentable) {
+		} else if (bestValue < valeurRentable) {
 			this.maxCellColor = '#e6d600';
 			this.maxCellTextColor = '#404d5c';
 			this.profitabilityFocusState = 'target';
@@ -509,6 +510,23 @@ export class HomeComponent implements OnInit {
 			this.maxCellTextColor = 'rgb(198, 193, 185)';
 			this.profitabilityFocusState = 'profitable';
 		}
+	}
+
+	isBestFocusedCell(row: any): boolean {
+		if ((this.maxValuePaRa ?? 0) > (this.maxValue ?? 0)) {
+			if (this.sumBestChoicesKamasEarned === this.maxValuePaRa) return false;
+			return row.paKamasEarned === this.maxValuePaRa || row.raKamasEarned === this.maxValuePaRa;
+		}
+
+		return row.focusedKamasEarned === this.maxValue && row.focusedKamasEarned !== 0;
+	}
+
+	isBestTotalCell(): boolean {
+		if ((this.maxValuePaRa ?? 0) > (this.maxValue ?? 0)) {
+			return this.sumBestChoicesKamasEarned === this.maxValuePaRa;
+		}
+
+		return this.sumKamasEarned === this.maxValue && this.sumKamasEarned !== 0;
 	}
 
 	/**

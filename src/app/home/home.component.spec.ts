@@ -342,4 +342,25 @@ describe('HomeComponent', () => {
 
 		expect(component.findNorProfitableBreakRate(false)).toBeNull();
 	});
+
+	it('uses the fusion gain to display a below-target profitable strategy in yellow', () => {
+		const component = createComponent();
+		component.prixCraft = 15_220;
+		component.tauxRentabiliteVise = 25;
+		component.maxValue = 14_195;
+		component.maxValuePaRa = 16_365;
+
+		component.defineCellColor();
+
+		expect(component.maxCellColor).toBe('#e6d600');
+		expect(component.profitabilityFocusState).toBe('target');
+	});
+
+	it('highlights the focused cell containing the best fusion', () => {
+		const component = createComponent();
+		component.maxValue = 14_195;
+		component.maxValuePaRa = 16_365;
+
+		expect(component.isBestFocusedCell({ focusedKamasEarned: 14_195, paKamasEarned: 16_365, raKamasEarned: 0 })).toBeTrue();
+	});
 });
