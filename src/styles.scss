@@ -41,6 +41,21 @@
     padding-inline-end: 2.5rem !important;
 }
 
+.item-parameters.profitability-profitable .p-inputtext:enabled:focus {
+    border-color: #366cff !important;
+    box-shadow: 0 0 0 2px rgba(54, 108, 255, 0.35) !important;
+}
+
+.item-parameters.profitability-target .p-inputtext:enabled:focus {
+    border-color: #e6d600 !important;
+    box-shadow: 0 0 0 2px rgba(230, 214, 0, 0.3) !important;
+}
+
+.item-parameters.profitability-unprofitable .p-inputtext:enabled:focus {
+    border-color: #e5484d !important;
+    box-shadow: 0 0 0 2px rgba(229, 72, 77, 0.3) !important;
+}
+
 .itemTable .p-iconfield .p-inputnumber {
     width: 100%;
 }

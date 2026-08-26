@@ -83,7 +83,12 @@
 								}
 							</div>
 						</div>
-						<div class="item-parameters">
+						<div
+							class="item-parameters"
+							[class.profitability-profitable]="profitabilityFocusState === 'profitable'"
+							[class.profitability-target]="profitabilityFocusState === 'target'"
+							[class.profitability-unprofitable]="profitabilityFocusState === 'unprofitable'"
+						>
 							<div class="input-group">
 								<label class="input-label">Taux de brisage</label>
 								<p-iconfield iconPosition="right">

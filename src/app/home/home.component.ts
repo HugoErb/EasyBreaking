@@ -15,6 +15,8 @@ interface CachedRune {
 	runeRealWeight: number;
 }
 
+type ProfitabilityFocusState = 'neutral' | 'profitable' | 'target' | 'unprofitable';
+
 /**
  * Composant principal de l'application Easy Breaking.
  * Gère la sélection d'un item, l'affichage de ses effets,
@@ -61,6 +63,7 @@ export class HomeComponent implements OnInit {
 	maxValue?: number;
 	maxCellColor: string = 'darkgreen';
 	maxCellTextColor: string = 'rgb(198, 193, 185)';
+	profitabilityFocusState: ProfitabilityFocusState = 'neutral';
 	mergeRune: string = 'Aucune';
 	maxValuePaRa?: number = 0;
 
@@ -409,6 +412,7 @@ export class HomeComponent implements OnInit {
 		this.prixCraft = null;
 		this.maxCellColor = 'darkgreen';
 		this.maxCellTextColor = 'rgb(198, 193, 185)';
+		this.profitabilityFocusState = 'neutral';
 		this.nombreObjets = 1;
 	}
 
@@ -485,19 +489,25 @@ export class HomeComponent implements OnInit {
 	 * Met à jour la valeur de maxCellColor correspondante.
 	 */
 	defineCellColor(): void {
-		if (this.prixCraft != undefined && this.tauxRentabiliteVise != undefined) {
-			const valeurRentable: number = this.prixCraft * (1 + Number(this.tauxRentabiliteVise) / 100);
+		if (this.prixCraft == null || this.tauxRentabiliteVise == null || this.maxValue == null) {
+			this.profitabilityFocusState = 'neutral';
+			return;
+		}
 
-			if (valeurRentable >= this.maxValue! && this.maxValue! < this.prixCraft) {
-				this.maxCellColor = 'darkred';
-				this.maxCellTextColor = 'rgb(198, 193, 185)';
-			} else if (this.maxValue! > this.prixCraft && this.maxValue! < valeurRentable) {
-				this.maxCellColor = '#e6d600';
-				this.maxCellTextColor = '#404d5c';
-			} else {
-				this.maxCellColor = 'darkgreen';
-				this.maxCellTextColor = 'rgb(198, 193, 185)';
-			}
+		const valeurRentable = this.prixCraft * (1 + Number(this.tauxRentabiliteVise) / 100);
+
+		if (this.maxValue < this.prixCraft) {
+			this.maxCellColor = 'darkred';
+			this.maxCellTextColor = 'rgb(198, 193, 185)';
+			this.profitabilityFocusState = 'unprofitable';
+		} else if (this.maxValue < valeurRentable) {
+			this.maxCellColor = '#e6d600';
+			this.maxCellTextColor = '#404d5c';
+			this.profitabilityFocusState = 'target';
+		} else {
+			this.maxCellColor = 'darkgreen';
+			this.maxCellTextColor = 'rgb(198, 193, 185)';
+			this.profitabilityFocusState = 'profitable';
 		}
 	}
 
