@@ -279,6 +279,15 @@
     "raPrice": null
   },
   {
+    "name": "Chasse",
+    "stat": "Arme de chasse",
+    "img": "assets/imgs/caracs/invo.png",
+    "price": 1,
+    "weight": 5,
+    "paPrice": null,
+    "raPrice": null
+  },
+  {
     "name": "Tac",
     "stat": "Tacle",
     "img": "assets/imgs/caracs/tacle.png",

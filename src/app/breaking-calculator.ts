@@ -1,4 +1,4 @@
-import { isUnsupportedRuneStat, RuneData } from './rune-data';
+import { isUnfocusableRuneStat, RuneData } from './rune-data';
 
 const PA_RUNE_RATIO = 3;
 const RA_RUNE_RATIO = 9;
@@ -150,7 +150,6 @@ export function calculateBreaking(item: BreakingItem, runes: RuneData[], request
 function buildCachedRunes(item: BreakingItem, runes: RuneData[]): CachedRune[] {
 	const level = Number(item.level);
 	return item.effects
-		.filter((effect) => !isUnsupportedRuneStat(effect))
 		.map((effect) => {
 			const rune = findMatchingRune(effect, runes);
 			if (!rune) return null;
@@ -166,11 +165,14 @@ function buildCachedRunes(item: BreakingItem, runes: RuneData[]): CachedRune[] {
 
 function buildEffectResult(cached: CachedRune, cachedRunes: CachedRune[], breakRate: number): BreakingEffectResult {
 	const baseQuantity = (cached.runeNumerator * breakRate) / 100 / cached.runeRealWeight;
-	const focusedNumerator = cachedRunes.reduce(
-		(sum, candidate) => sum + (candidate.effect === cached.effect ? candidate.runeNumerator : candidate.runeNumerator / 2),
-		0,
-	);
-	const focusedQuantity = (focusedNumerator / cached.runeRealWeight) * (breakRate / 100);
+	const focusedQuantity = isUnfocusableRuneStat(cached.rune.stat)
+		? 0
+		: (cachedRunes.reduce(
+				(sum, candidate) => sum + (candidate.effect === cached.effect ? candidate.runeNumerator : candidate.runeNumerator / 2),
+				0,
+			) /
+				cached.runeRealWeight) *
+			(breakRate / 100);
 	const basePaQuantity = cached.rune.paPrice != null ? baseQuantity / PA_RUNE_RATIO : 0;
 	const baseRaQuantity = cached.rune.raPrice != null ? baseQuantity / RA_RUNE_RATIO : 0;
 	const focusedPaQuantity = cached.rune.paPrice != null ? focusedQuantity / PA_RUNE_RATIO : 0;

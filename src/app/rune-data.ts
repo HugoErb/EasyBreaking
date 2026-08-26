@@ -8,10 +8,19 @@ export interface RuneData {
 	raPrice?: number | null;
 }
 
-const UNSUPPORTED_RUNE_STATS = new Set(['arme de chasse']);
+const UNFOCUSABLE_RUNE_STATS = new Set(['arme de chasse']);
+const DEFAULT_HUNTING_RUNE: RuneData = {
+	name: 'Chasse',
+	stat: 'Arme de chasse',
+	img: 'assets/imgs/caracs/invo.png',
+	price: 1,
+	weight: 5,
+	paPrice: null,
+	raPrice: null,
+};
 
-export function isUnsupportedRuneStat(stat: string): boolean {
-	return UNSUPPORTED_RUNE_STATS.has(stat.trim().toLocaleLowerCase('fr-FR'));
+export function isUnfocusableRuneStat(stat: string): boolean {
+	return UNFOCUSABLE_RUNE_STATS.has(stat.trim().toLocaleLowerCase('fr-FR'));
 }
 
 function parseRequiredNumber(value: unknown, minimum: number): number | null {
@@ -45,12 +54,10 @@ export function parseRunesData(value: unknown): RuneData[] | null {
 		if (rune['paPrice'] !== null && rune['paPrice'] !== undefined && paPrice === undefined) return null;
 		if (rune['raPrice'] !== null && rune['raPrice'] !== undefined && raPrice === undefined) return null;
 
-		if (!isUnsupportedRuneStat(stat)) {
-			runes.push({ name, stat, img, price, weight, paPrice, raPrice });
-		}
+		runes.push({ name, stat, img, price, weight, paPrice, raPrice });
 	}
 
-	return runes.length > 0 ? runes : null;
+	return runes;
 }
 
 export function readStoredRunes(): RuneData[] | null {
@@ -59,18 +66,9 @@ export function readStoredRunes(): RuneData[] | null {
 		if (!storedRunes) return null;
 
 		const rawRunes = JSON.parse(storedRunes);
-		const runes = parseRunesData(rawRunes);
-		if (
-			runes &&
-			Array.isArray(rawRunes) &&
-			rawRunes.some(
-				(candidate) =>
-					typeof candidate === 'object' &&
-					candidate !== null &&
-					typeof candidate.stat === 'string' &&
-					isUnsupportedRuneStat(candidate.stat),
-			)
-		) {
+		let runes = parseRunesData(rawRunes);
+		if (runes && !runes.some((rune) => isUnfocusableRuneStat(rune.stat))) {
+			runes = [...runes, { ...DEFAULT_HUNTING_RUNE }];
 			storeRunes(runes);
 		}
 

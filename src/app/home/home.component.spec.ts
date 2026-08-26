@@ -250,11 +250,19 @@ describe('HomeComponent', () => {
 		expect(component.sumBestChoicesKamasEarned).toBe(component.tableauEffects[0].kamasEarned);
 	});
 
-	it('excludes hunting runes from every calculation while keeping supported runes', () => {
+	it('includes hunting runes in standard gains but prevents hunting focus', () => {
 		const component = createComponent();
 		component.prixCraft = 100;
 		component.selectedItem = { level: 100, effects: ['Arme de chasse', '10 Force'], recipe: [] };
 		component.runes = [
+			{
+				name: 'Chasse',
+				stat: 'Arme de chasse',
+				normalizedStat: 'arme de chasse',
+				price: 100,
+				weight: 5,
+				img: 'hunting.png',
+			},
 			{
 				name: 'Fo',
 				stat: 'Force',
@@ -268,8 +276,10 @@ describe('HomeComponent', () => {
 		(component as unknown as { initCachedRunes: () => void }).initCachedRunes();
 		(component as unknown as { buildTableAndTotals: () => void }).buildTableAndTotals();
 
-		expect(component.tableauEffects.length).toBe(1);
-		expect(component.tableauEffects[0].runeName).toBe('Fo');
+		expect(component.tableauEffects.length).toBe(2);
+		const huntingRow = component.tableauEffects.find((row) => row.runeName === 'Chasse');
+		expect(huntingRow.runeQuantity).not.toBe('0.00');
+		expect(huntingRow.runeQuantityFocused).toBe('0.00');
 		expect(component.calculateBenefit(100, false)).toBe(Math.round(component.maxValue! - component.prixCraft));
 	});
 

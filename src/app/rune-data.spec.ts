@@ -27,23 +27,22 @@ describe('Rune data', () => {
 		expect(parseRunesData([{ ...validRune, paPrice: -1 }])).toBeNull();
 	});
 
-	it('removes hunting runes from parsed data', () => {
+	it('keeps hunting runes in parsed data', () => {
+		const huntingRune = { ...validRune, name: 'Chasse', stat: 'Arme de chasse' };
 		const runes = parseRunesData([
 			validRune,
-			{ ...validRune, name: 'Chasse', stat: 'Arme de chasse' },
+			huntingRune,
 		]);
 
-		expect(runes).toEqual([validRune]);
+		expect(runes).toEqual([validRune, huntingRune]);
 	});
 
-	it('removes hunting runes from stored data and persists the migration', () => {
-		localStorage.setItem(
-			'runesData',
-			JSON.stringify([validRune, { ...validRune, name: 'Chasse', stat: 'Arme de chasse' }]),
-		);
+	it('restores the hunting rune removed from stored data', () => {
+		localStorage.setItem('runesData', JSON.stringify([validRune]));
 
-		expect(readStoredRunes()).toEqual([validRune]);
-		expect(JSON.parse(localStorage.getItem('runesData') ?? '[]')).toEqual([validRune]);
+		const runes = readStoredRunes();
+		expect(runes?.map((rune) => rune.name)).toEqual(['Fo', 'Chasse']);
+		expect(JSON.parse(localStorage.getItem('runesData') ?? '[]')).toEqual(runes);
 	});
 
 	it('ignores corrupted stored data', () => {

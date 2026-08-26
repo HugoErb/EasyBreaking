@@ -52,12 +52,30 @@ describe('calculateBreaking', () => {
 		expect(result.strategyLabel).toBe('Fusion : Pa Fo');
 	});
 
-	it('ignores hunting effects and clamps the break rate to 4000%', () => {
+	it('includes hunting runes in standard gains but prevents hunting focus', () => {
 		const withHunting = { ...baseItem, effects: ['Arme de chasse', '10 Force'] };
-		const cappedResult = calculateBreaking(withHunting, [forceRune], 5000);
+		const huntingRune: RuneData = {
+			name: 'Chasse',
+			stat: 'Arme de chasse',
+			img: 'hunting.png',
+			price: 100,
+			weight: 5,
+		};
+		const result = calculateBreaking(withHunting, [forceRune, huntingRune], 100);
+		const withoutHunting = calculateBreaking(baseItem, [forceRune], 100);
+		const huntingRow = result.rows.find((row) => row.runeName === 'Chasse');
+
+		expect(result.rows.length).toBe(2);
+		expect(result.standardKamas).toBeGreaterThan(withoutHunting.standardKamas);
+		expect(huntingRow?.runeQuantity).not.toBe('0.00');
+		expect(huntingRow?.runeQuantityFocused).toBe('0.00');
+		expect(huntingRow?.focusedKamasEarned).toBe(0);
+	});
+
+	it('clamps the break rate to 4000%', () => {
+		const cappedResult = calculateBreaking(baseItem, [forceRune], 5000);
 		const expectedResult = calculateBreaking(baseItem, [forceRune], 4000);
 
-		expect(cappedResult.rows.length).toBe(1);
 		expect(cappedResult.bestKamas).toBe(expectedResult.bestKamas);
 	});
 });
