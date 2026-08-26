@@ -211,14 +211,12 @@
 														<span
 															class="fusion-value"
 															[class.best-value]="row.paKamasEarned > row.focusedKamasEarned && row.paKamasEarned >= row.raKamasEarned"
-															[style.color]="isBestFocusedCell(row) && maxCellColor === '#e6d600' ? maxCellTextColor : ''"
 														>Pa : {{ row.paKamasEarned | number: "1.0-0" }}</span>
 													}
 													@if (row.raPrice != null) {
 														<span
 															class="fusion-value"
 															[class.best-value]="row.raKamasEarned > row.focusedKamasEarned && row.raKamasEarned > row.paKamasEarned"
-															[style.color]="isBestFocusedCell(row) && maxCellColor === '#e6d600' ? maxCellTextColor : ''"
 														>Ra : {{ row.raKamasEarned | number: "1.0-0" }}</span>
 													}
 												</div>
@@ -241,7 +239,6 @@
 										<span
 											class="fusion-value"
 											[class.best-value]="sumBestChoicesKamasEarned > sumKamasEarned"
-											[style.color]="isBestTotalCell() && maxCellColor === '#e6d600' ? maxCellTextColor : ''"
 										>Meilleures fusions : {{ sumBestChoicesKamasEarned | number: "1.0-0" }}</span>
 										</div>
 									</td>
