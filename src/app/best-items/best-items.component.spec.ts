@@ -119,4 +119,36 @@ describe('BestItemsComponent', () => {
 		expect(component.displayedResults[0].latestHistory?.breakRate).toBe(150);
 		expect(component.displayedResults[0].latestHistory?.craftPrice).toBe(12_000);
 	});
+
+	it('prioritizes the entered item rate over the default rate', () => {
+		const historyItem = item('Anneau Alpha', 50);
+		const history: SearchHistoryEntry = {
+			historyId: 'history-alpha',
+			name: historyItem.name,
+			image: historyItem.image,
+			level: Number(historyItem.level),
+			type: historyItem.type,
+			breakRate: 175,
+			craftPrice: null,
+			profitable: null,
+			kamasEarned: null,
+			profitPercentage: null,
+			focus: null,
+			updatedAt: '2026-08-25T10:00:00.000Z',
+		};
+		const { component, router } = createComponent([historyItem, item('Anneau Beta', 50)], [history]);
+		spyOn(window, 'open');
+
+		component.ngOnInit();
+
+		const alpha = component.displayedResults.find((result) => result.item.name === 'Anneau Alpha')!;
+		const beta = component.displayedResults.find((result) => result.item.name === 'Anneau Beta')!;
+		expect(alpha.appliedBreakRate).toBe(175);
+		expect(beta.appliedBreakRate).toBe(100);
+
+		component.openItem(alpha);
+		expect(router.createUrlTree).toHaveBeenCalledWith(['/'], {
+			queryParams: { item: 'Anneau Alpha', breakRate: 175 },
+		});
+	});
 });

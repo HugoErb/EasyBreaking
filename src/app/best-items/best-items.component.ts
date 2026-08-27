@@ -12,6 +12,7 @@ type SortDirection = 'asc' | 'desc';
 export interface RankedBreakingItem {
 	item: BreakingItem;
 	calculation: BreakingCalculationResult;
+	appliedBreakRate: number;
 	profitRank: number;
 	latestHistory: SearchHistoryEntry | null;
 }
@@ -115,20 +116,25 @@ export class BestItemsComponent implements OnInit {
 
 	openItem(result: RankedBreakingItem): void {
 		const url = this.router.serializeUrl(this.router.createUrlTree(['/'], {
-			queryParams: { item: result.item.name, breakRate: this.breakRate ?? 0 },
+			queryParams: { item: result.item.name, breakRate: result.appliedBreakRate },
 		}));
 		window.open(url, '_blank', 'noopener,noreferrer');
 	}
 
 	private recalculateItems(): void {
 		if (this.items.length === 0 || this.runes.length === 0) return;
-		const breakRate = this.breakRate ?? 0;
-		this.calculatedItems = this.items.map((item) => ({
-			item,
-			calculation: calculateBreaking(item, this.runes, breakRate),
-			profitRank: 0,
-			latestHistory: this.latestHistoryByItem.get(this.getItemKey(item)) ?? null,
-		}));
+		const defaultBreakRate = this.breakRate ?? 0;
+		this.calculatedItems = this.items.map((item) => {
+			const latestHistory = this.latestHistoryByItem.get(this.getItemKey(item)) ?? null;
+			const appliedBreakRate = latestHistory?.breakRate ?? defaultBreakRate;
+			return {
+				item,
+				calculation: calculateBreaking(item, this.runes, appliedBreakRate),
+				appliedBreakRate,
+				profitRank: 0,
+				latestHistory,
+			};
+		});
 		this.refreshDisplayedResults();
 		this.cdr.markForCheck();
 	}

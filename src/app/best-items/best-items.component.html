@@ -10,7 +10,7 @@
 
 		<section class="filters-card" aria-label="Filtres du classement">
 			<div class="filter-group rate-filter">
-				<label for="rankingBreakRate">Taux de brisage</label>
+				<label for="rankingBreakRate">Taux de brisage par défaut</label>
 				<p-iconfield iconPosition="right">
 					<p-inputNumber
 						inputId="rankingBreakRate"
@@ -68,7 +68,7 @@
 			} @else {
 				<div class="results-summary">
 					<span>Top {{ displayedResults.length }} sur {{ filteredTotal | number: "1.0-0" }} items filtrés</span>
-					<span>Taux appliqué : {{ breakRate ?? 0 | number: "1.0-2" }} %</span>
+					<span>Taux par défaut : {{ breakRate ?? 0 | number: "1.0-2" }} %</span>
 				</div>
 				<div class="table-wrapper">
 					<table>
