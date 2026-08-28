@@ -40,6 +40,7 @@ export class SettingsComponent implements OnInit {
 	}
 
 	saveSettings(): void {
+		this.settings.defaultProfitabilityRate = Math.min(Math.max(this.settings.defaultProfitabilityRate ?? 25, 0), 9999);
 		const filters = this.settings.bestItemsDefaultFilters;
 		filters.breakRate = Math.min(Math.max(filters.breakRate ?? 100, 0), 4000);
 		filters.minimumLevel = Math.min(Math.max(filters.minimumLevel ?? 1, 1), 200);

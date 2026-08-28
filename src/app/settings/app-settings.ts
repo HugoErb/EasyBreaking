@@ -10,14 +10,18 @@ export interface BestItemsDefaultFilters {
 export interface AppSettings {
 	simplifiedCalculatorTable: boolean;
 	simplifiedDataView: boolean;
+	defaultProfitabilityRate: number;
 	distinctHistoryByDefault: boolean;
+	saveHistoryOnlyWithCompleteData: boolean;
 	bestItemsDefaultFilters: BestItemsDefaultFilters;
 }
 
 export const DEFAULT_APP_SETTINGS: Readonly<AppSettings> = {
 	simplifiedCalculatorTable: false,
 	simplifiedDataView: false,
+	defaultProfitabilityRate: 25,
 	distinctHistoryByDefault: false,
+	saveHistoryOnlyWithCompleteData: false,
 	bestItemsDefaultFilters: {
 		breakRate: 100,
 		minimumLevel: 1,
@@ -48,10 +52,20 @@ export function readAppSettings(): AppSettings {
 					: defaults.simplifiedCalculatorTable,
 			simplifiedDataView:
 				typeof stored.simplifiedDataView === 'boolean' ? stored.simplifiedDataView : defaults.simplifiedDataView,
+			defaultProfitabilityRate: clampNumber(
+				stored.defaultProfitabilityRate,
+				0,
+				9999,
+				defaults.defaultProfitabilityRate,
+			),
 			distinctHistoryByDefault:
 				typeof stored.distinctHistoryByDefault === 'boolean'
 					? stored.distinctHistoryByDefault
 					: defaults.distinctHistoryByDefault,
+			saveHistoryOnlyWithCompleteData:
+				typeof stored.saveHistoryOnlyWithCompleteData === 'boolean'
+					? stored.saveHistoryOnlyWithCompleteData
+					: defaults.saveHistoryOnlyWithCompleteData,
 			bestItemsDefaultFilters: {
 				breakRate: clampNumber(storedFilters?.breakRate, 0, 4000, defaults.bestItemsDefaultFilters.breakRate),
 				minimumLevel,

@@ -8,6 +8,9 @@
 			</div>
 		</header>
 
+		<section class="page-settings-group" aria-labelledby="calculator-settings-title">
+			<h2 id="calculator-settings-title" class="page-section-title"><i class="pi pi-calculator" aria-hidden="true"></i>Calculateur</h2>
+			<div class="settings-group-content">
 		<section class="setting-card">
 			<div class="setting-copy">
 				<h2>Vue simplifiée du tableau</h2>
@@ -34,6 +37,30 @@
 
 		<section class="setting-card">
 			<div class="setting-copy">
+				<h2>Taux de rentabilité par défaut</h2>
+				<p>Valeur appliquée au champ « Taux de rentabilité visé » du calculateur.</p>
+			</div>
+			<label class="setting-control">
+				<span class="sr-only">Taux de rentabilité par défaut</span>
+				<p-iconfield iconPosition="right">
+					<p-inputNumber
+						[(ngModel)]="settings.defaultProfitabilityRate"
+						(ngModelChange)="saveSettings()"
+						[min]="0"
+						[max]="9999"
+					/>
+					<p-inputicon><i class="fa-solid fa-percent"></i></p-inputicon>
+				</p-iconfield>
+			</label>
+		</section>
+			</div>
+		</section>
+
+		<section class="page-settings-group" aria-labelledby="history-settings-title">
+			<h2 id="history-settings-title" class="page-section-title"><i class="pi pi-history" aria-hidden="true"></i>Historique</h2>
+			<div class="settings-group-content">
+		<section class="setting-card">
+			<div class="setting-copy">
 				<h2>Historique avec items distincts</h2>
 				<p>Affiche par défaut uniquement la ligne la plus récente de chaque item.</p>
 			</div>
@@ -44,6 +71,23 @@
 			</label>
 		</section>
 
+		<section class="setting-card">
+			<div class="setting-copy">
+				<h2>Enregistrer uniquement les données complètes</h2>
+				<p>N’enregistre une ligne que si le taux de brisage et le prix du craft sont tous les deux renseignés.</p>
+			</div>
+			<label class="switch">
+				<input type="checkbox" [(ngModel)]="settings.saveHistoryOnlyWithCompleteData" (ngModelChange)="saveSettings()" />
+				<span class="slider" aria-hidden="true"></span>
+				<span class="sr-only">Enregistrer uniquement les lignes d’historique complètes</span>
+			</label>
+		</section>
+			</div>
+		</section>
+
+		<section class="page-settings-group" aria-labelledby="ranking-settings-title">
+			<h2 id="ranking-settings-title" class="page-section-title"><i class="pi pi-trophy" aria-hidden="true"></i>Meilleurs items</h2>
+			<div class="settings-group-content">
 		<section class="setting-card filters-setting">
 			<div class="setting-copy">
 				<h2>Filtres par défaut des meilleurs items</h2>
@@ -95,13 +139,20 @@
 				</label>
 			</div>
 		</section>
+			</div>
+		</section>
 
+		<section class="page-settings-group" aria-labelledby="general-settings-title">
+			<h2 id="general-settings-title" class="page-section-title"><i class="pi pi-cog" aria-hidden="true"></i>Général</h2>
+			<div class="settings-group-content">
 		<section class="setting-card danger-card">
 			<div class="setting-copy">
 				<h2>Réinitialisation</h2>
 				<p>Rétablit uniquement les réglages de cette page, sans supprimer les prix des runes ni l’historique.</p>
 			</div>
 			<p-button label="Réinitialiser les réglages" icon="pi pi-refresh" severity="danger" (click)="confirmResetSettings()" />
+		</section>
+			</div>
 		</section>
 	</div>
 </main>

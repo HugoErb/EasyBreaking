@@ -64,6 +64,32 @@ main {
 	color: $text-muted;
 }
 
+.page-settings-group {
+	margin-bottom: 30px;
+}
+
+.page-section-title {
+	display: flex;
+	align-items: center;
+	gap: 10px;
+	margin: 0 0 14px;
+	color: $accent-light;
+	font-size: 1.3rem;
+
+	.pi {
+		font-size: 1.05rem;
+	}
+}
+
+.settings-group-content {
+	display: grid;
+	gap: 12px;
+
+	.setting-card {
+		margin-bottom: 0;
+	}
+}
+
 .setting-card {
 	display: flex;
 	align-items: center;
@@ -86,6 +112,31 @@ main {
 		margin: 0;
 		line-height: 1.4;
 	}
+}
+
+.setting-control {
+	flex: 0 0 180px;
+}
+
+.setting-control ::ng-deep .p-inputnumber,
+.setting-control ::ng-deep .p-inputtext {
+	width: 100%;
+}
+
+.setting-control ::ng-deep .p-inputtext {
+	background: rgba(255, 255, 255, 0.06) !important;
+	border-color: $border-color !important;
+	color: $text-primary !important;
+	font-family: "Enriqueta", arial, serif !important;
+
+	&:enabled:focus {
+		border-color: rgba($accent, 0.6) !important;
+		box-shadow: 0 0 0 2px rgba(54, 108, 255, 0.3) !important;
+	}
+}
+
+.setting-control p-iconfield {
+	display: block;
 }
 
 .switch {
@@ -199,6 +250,10 @@ main {
 
 	.setting-card {
 		align-items: flex-start;
+	}
+
+	.setting-control {
+		flex-basis: 180px;
 	}
 
 	.filter-grid {

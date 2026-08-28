@@ -72,6 +72,31 @@ describe('HomeComponent', () => {
 		expect(component['currentHistoryId']).toBe('history-456');
 	});
 
+	it('waits for a break rate and craft price before creating a complete-only history entry', () => {
+		const searchHistoryService = {
+			recordSearch: jasmine.createSpy('recordSearch').and.returnValue('history-complete'),
+			updateEntry: jasmine.createSpy('updateEntry').and.returnValue('history-complete'),
+		} as unknown as SearchHistoryService;
+		const component = new HomeComponent(
+			{} as HttpClient,
+			{ detectChanges: () => undefined, markForCheck: () => undefined } as unknown as ChangeDetectorRef,
+			searchHistoryService,
+		);
+		component.selectedItem = { name: 'Item test', level: 100, type: 'Anneau' };
+		component.saveHistoryOnlyWithCompleteData = true;
+		component.tauxBrisage = 100;
+		component.prixCraft = null;
+
+		(component as unknown as { updateCurrentHistory: () => void }).updateCurrentHistory();
+		expect(searchHistoryService.recordSearch).not.toHaveBeenCalled();
+
+		component.prixCraft = 10_000;
+		(component as unknown as { updateCurrentHistory: () => void }).updateCurrentHistory();
+
+		expect(searchHistoryService.recordSearch).toHaveBeenCalledWith(component.selectedItem);
+		expect(searchHistoryService.updateEntry).toHaveBeenCalled();
+	});
+
 	it('pre-fills item and economic parameters from the history identifier in the URL', () => {
 		const prefilled = {
 			historyId: 'history-voile',

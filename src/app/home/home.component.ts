@@ -71,6 +71,7 @@ export class HomeComponent implements OnInit {
 	nombreObjets: number = 1;
 	simplifiedCalculatorTable = false;
 	simplifiedDataView = false;
+	saveHistoryOnlyWithCompleteData = false;
 	@ViewChild('autoComplete') autoComplete!: AutoComplete;
 
 	private currentHistoryId: string | null = null;
@@ -94,6 +95,8 @@ export class HomeComponent implements OnInit {
 		const settings = readAppSettings();
 		this.simplifiedCalculatorTable = settings.simplifiedCalculatorTable;
 		this.simplifiedDataView = settings.simplifiedDataView;
+		this.tauxRentabiliteVise = settings.defaultProfitabilityRate;
+		this.saveHistoryOnlyWithCompleteData = settings.saveHistoryOnlyWithCompleteData;
 
 		const storedRunes = readStoredRunes();
 		const runes$ = storedRunes
@@ -159,7 +162,7 @@ export class HomeComponent implements OnInit {
 	 */
 	onItemSelect(): void {
 		if (!this.selectedItem) return;
-		this.currentHistoryId = this.searchHistoryService.recordSearch(this.selectedItem);
+		this.currentHistoryId = null;
 		this.cdr.detectChanges();
 		setTimeout(() => this.autoComplete.inputEL?.nativeElement.blur(), 100);
 		this.unVanishDiv();
@@ -204,9 +207,10 @@ export class HomeComponent implements OnInit {
 		if (!targetItem) return;
 
 		this.selectedItem = targetItem;
-		this.currentHistoryId = historyId ?? this.searchHistoryService.recordSearch(targetItem);
+		this.currentHistoryId = historyId ?? null;
 		this.tauxBrisage = breakRate ?? 100;
 		this.prixCraft = craftPrice;
+		this.ensureCurrentHistoryEntry();
 
 		this.initCachedRunes();
 		this.buildTableAndTotals();
@@ -245,6 +249,8 @@ export class HomeComponent implements OnInit {
 	}
 
 	private updateCurrentHistory(): void {
+		if (this.saveHistoryOnlyWithCompleteData && !this.hasCompleteHistoryData()) return;
+		this.ensureCurrentHistoryEntry();
 		if (!this.currentHistoryId) return;
 
 		const bestFocusedRow = this.tableauEffects.find((row) => row.focusedKamasEarned === this.maxFocusedKamasEarned);
@@ -280,6 +286,16 @@ export class HomeComponent implements OnInit {
 			profitPercentage,
 			focus,
 		});
+	}
+
+	private ensureCurrentHistoryEntry(): void {
+		if (this.currentHistoryId || !this.selectedItem) return;
+		if (this.saveHistoryOnlyWithCompleteData && !this.hasCompleteHistoryData()) return;
+		this.currentHistoryId = this.searchHistoryService.recordSearch(this.selectedItem);
+	}
+
+	private hasCompleteHistoryData(): boolean {
+		return this.tauxBrisage != null && this.prixCraft != null && this.prixCraft > 0;
 	}
 
 	/**

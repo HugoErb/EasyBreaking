@@ -17,7 +17,9 @@ describe('App settings', () => {
 		const settings = {
 			simplifiedCalculatorTable: true,
 			simplifiedDataView: true,
+			defaultProfitabilityRate: 40,
 			distinctHistoryByDefault: true,
+			saveHistoryOnlyWithCompleteData: true,
 			bestItemsDefaultFilters: {
 				breakRate: 250,
 				minimumLevel: 100,
