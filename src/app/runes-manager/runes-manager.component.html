@@ -37,7 +37,7 @@
 								tooltipEvent="focus"
 								tooltipPosition="top"
 							>
-								<img [src]="rune.img" />
+								<img [src]="getRuneImagePath(rune.name)" alt="Rune {{ rune.name }}" />
 								<div class="nom-cellule">{{ rune.name }}</div>
 							</td>
 							<td>

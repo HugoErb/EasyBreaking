@@ -93,6 +93,16 @@ export class RunesManagerComponent implements OnInit {
         return this.sortDirection === 'asc' ? 'ascending' : 'descending';
     }
 
+	getRuneImagePath(runeName: string): string {
+		const fileName = runeName
+			.normalize('NFD')
+			.replace(/[\u0300-\u036f]/g, '')
+			.toLowerCase()
+			.replace(/[^a-z0-9]+/g, '-')
+			.replace(/^-|-$/g, '');
+		return `assets/imgs/runes/${fileName}.png`;
+	}
+
     async confirmResetAllPrices(): Promise<void> {
         const { default: Swal } = await import('sweetalert2/dist/sweetalert2.esm.all.js');
         const result = await Swal.fire({

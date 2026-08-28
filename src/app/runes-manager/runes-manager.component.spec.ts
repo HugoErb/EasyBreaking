@@ -39,4 +39,10 @@ describe('RunesManagerComponent', () => {
 
 		expect(component.runes.map((rune) => rune.name)).toEqual(['Re', 'Ré']);
 	});
+
+	it('uses the locally stored rune image', () => {
+		const component = new RunesManagerComponent({} as HttpClient);
+
+		expect(component.getRuneImagePath('Ré Per Terre')).toBe('assets/imgs/runes/re-per-terre.png');
+	});
 });
