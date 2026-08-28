@@ -155,7 +155,7 @@
 								<tr>
 									<th>Caractéristiques</th>
 									@if (!simplifiedCalculatorTable) {
-										<th>Nom des runes</th>
+										<th>Runes</th>
 									}
 									<th>Prix unitaire des runes</th>
 									@if (!simplifiedCalculatorTable) {
@@ -176,7 +176,12 @@
 											<span class="text">{{ row.stat }}</span>
 										</td>
 										@if (!simplifiedCalculatorTable) {
-											<td>{{ row.runeName }}</td>
+											<td>
+												<div class="rune-name-cell">
+													<img [src]="getRuneImagePath(row.runeName)" alt="" aria-hidden="true" loading="lazy" />
+													<span>{{ row.runeName }}</span>
+												</div>
+											</td>
 										}
 										<td>
 											<p-iconfield iconPosition="right">

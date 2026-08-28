@@ -23,6 +23,16 @@ export function isUnfocusableRuneStat(stat: string): boolean {
 	return UNFOCUSABLE_RUNE_STATS.has(stat.trim().toLocaleLowerCase('fr-FR'));
 }
 
+export function getRuneImagePath(runeName: string): string {
+	const fileName = runeName
+		.normalize('NFD')
+		.replace(/[\u0300-\u036f]/g, '')
+		.toLowerCase()
+		.replace(/[^a-z0-9]+/g, '-')
+		.replace(/^-|-$/g, '');
+	return `assets/imgs/runes/${fileName}.png`;
+}
+
 function parseRequiredNumber(value: unknown, minimum: number): number | null {
 	const parsedValue = typeof value === 'number' || typeof value === 'string' ? Number(value) : Number.NaN;
 	return Number.isFinite(parsedValue) && parsedValue >= minimum ? parsedValue : null;

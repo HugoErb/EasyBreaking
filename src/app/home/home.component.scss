@@ -308,14 +308,29 @@ main {
 }
 
 .stat-cell {
-  text-align: left !important;
+  text-align: center !important;
   white-space: nowrap;
+}
+
+.rune-name-cell {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  white-space: nowrap;
+
+  img {
+    width: 32px;
+    height: 32px;
+    object-fit: contain;
+    flex-shrink: 0;
+  }
 }
 
 .text {
   display: inline-block;
   vertical-align: middle;
-  margin-left: 6px;
+  margin-left: 3px;
 }
 
 .kamas-values {

@@ -5,7 +5,7 @@ import { forkJoin, map, of, tap } from 'rxjs';
 import { AutoComplete } from 'primeng/autocomplete';
 import { estimateItemsToReachRate } from './break-rate-estimator';
 import { SearchHistoryService } from '../search-history/search-history.service';
-import { isUnfocusableRuneStat, parseRunesData, readStoredRunes, RuneData, storeRunes } from '../rune-data';
+import { getRuneImagePath as buildRuneImagePath, isUnfocusableRuneStat, parseRunesData, readStoredRunes, RuneData, storeRunes } from '../rune-data';
 import { calculateBreaking } from '../breaking-calculator';
 import { readAppSettings } from '../settings/app-settings';
 
@@ -733,6 +733,10 @@ export class HomeComponent implements OnInit {
 				divMainContainer.style.marginBottom = '6vw';
 			}
 		}
+	}
+
+	getRuneImagePath(runeName: string): string {
+		return buildRuneImagePath(runeName);
 	}
 
 	/**

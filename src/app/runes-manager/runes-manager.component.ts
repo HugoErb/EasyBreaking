@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { parseRunesData, readStoredRunes, RuneData, storeRunes } from '../rune-data';
+import { getRuneImagePath as buildRuneImagePath, parseRunesData, readStoredRunes, RuneData, storeRunes } from '../rune-data';
 
 type RuneSortColumn = 'name' | 'price' | 'paPrice' | 'raPrice';
 type RunePriceColumn = Exclude<RuneSortColumn, 'name'>;
@@ -94,13 +94,7 @@ export class RunesManagerComponent implements OnInit {
     }
 
 	getRuneImagePath(runeName: string): string {
-		const fileName = runeName
-			.normalize('NFD')
-			.replace(/[\u0300-\u036f]/g, '')
-			.toLowerCase()
-			.replace(/[^a-z0-9]+/g, '-')
-			.replace(/^-|-$/g, '');
-		return `assets/imgs/runes/${fileName}.png`;
+		return buildRuneImagePath(runeName);
 	}
 
     async confirmResetAllPrices(): Promise<void> {
