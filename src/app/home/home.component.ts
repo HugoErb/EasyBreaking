@@ -34,6 +34,7 @@ export class HomeComponent implements OnInit {
 	// Données de base
 	items: any[] = [];
 	runes: Array<RuneData & { normalizedStat?: string }> = [];
+	searchValue: any = null;
 	selectedItem: any = null;
 	filteredItems: any[] = [];
 
@@ -160,8 +161,10 @@ export class HomeComponent implements OnInit {
 	 * - Construit le tableau initial
 	 * - Reset des stats de rentabilité
 	 */
-	onItemSelect(): void {
-		if (!this.selectedItem) return;
+	onItemSelect(event?: { value?: any }): void {
+		const selectedItem = event?.value ?? (typeof this.searchValue === 'object' ? this.searchValue : this.selectedItem);
+		if (!selectedItem || typeof selectedItem !== 'object') return;
+		this.selectedItem = selectedItem;
 		this.currentHistoryId = null;
 		this.cdr.detectChanges();
 		setTimeout(() => this.autoComplete.inputEL?.nativeElement.blur(), 100);
@@ -207,6 +210,7 @@ export class HomeComponent implements OnInit {
 		if (!targetItem) return;
 
 		this.selectedItem = targetItem;
+		this.searchValue = targetItem;
 		this.currentHistoryId = historyId ?? null;
 		this.tauxBrisage = breakRate ?? 100;
 		this.prixCraft = craftPrice;
@@ -736,7 +740,7 @@ export class HomeComponent implements OnInit {
 	 * Masque les éléments en les rendant invisibles.
 	 */
 	vanishDiv(): void {
-		if (this.selectedItem == '') {
+		if (this.searchValue === '') {
 			const vanishingDiv = document.querySelector('.vanishingDiv') as HTMLElement;
 			const divMainContainer = document.querySelector('.container') as HTMLElement;
 

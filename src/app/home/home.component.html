@@ -62,12 +62,12 @@
 
 		<div class="search-section">
 			<p-autoComplete
-				[(ngModel)]="selectedItem"
+				[(ngModel)]="searchValue"
 				[dropdown]="true"
 				[suggestions]="filteredItems"
 				(completeMethod)="filterItem($event)"
 				optionLabel="name"
-				(onSelect)="onItemSelect()"
+				(onSelect)="onItemSelect($event)"
 				(input)="vanishDiv()"
 				placeholder="Entrez le nom d'un item..."
 				[virtualScroll]="true"
