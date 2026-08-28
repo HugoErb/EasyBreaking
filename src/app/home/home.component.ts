@@ -763,6 +763,14 @@ export class HomeComponent implements OnInit {
 		void Swal.fire({
 			title: 'Aide',
 			width: 640,
+			background: '#111b28',
+			color: 'rgb(198, 193, 185)',
+			customClass: {
+				popup: 'help-swal-popup',
+				title: 'help-swal-heading',
+				htmlContainer: 'help-swal-html',
+				confirmButton: 'help-swal-confirm',
+			},
 			html: `
 				<div class="help-swal-content">
 					<section class="help-swal-section">

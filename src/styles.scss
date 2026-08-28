@@ -191,29 +191,50 @@
 }
 
 .help-swal-content {
-    color: #2f3a4a;
+    color: rgb(198, 193, 185);
     font-size: 1rem;
     line-height: 1.45;
     text-align: left;
 }
 
+.help-swal-popup {
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 14px;
+    box-shadow: 0 22px 60px rgba(0, 0, 0, 0.55);
+    padding: 26px 30px 22px;
+}
+
+.help-swal-heading {
+    margin: 0;
+    padding: 0 0 20px;
+    background: linear-gradient(90deg, #366cff, #89a4fd);
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent;
+    font-size: 1.8rem;
+    text-align: left;
+}
+
+.help-swal-html {
+    margin: 0;
+    padding: 0;
+}
+
 .help-swal-section {
-    border-top: 1px solid #e5e7eb;
-    padding: 16px 0;
+	margin-top: 12px;
+	padding: 16px 18px;
+	border: 1px solid rgba(255, 255, 255, 0.08);
+	border-radius: 10px;
+	background: rgba(255, 255, 255, 0.035);
 }
 
 .help-swal-section:first-child {
-    border-top: 0;
-    padding-top: 0;
-}
-
-.help-swal-section:last-child {
-    padding-bottom: 0;
+	margin-top: 0;
 }
 
 .help-swal-title {
     align-items: center;
-    color: #1f2937;
+    color: #89a4fd;
     display: flex;
     font-size: 1.08rem;
     gap: 8px;
@@ -221,13 +242,14 @@
 }
 
 .help-swal-title .pi {
-    color: #366cff;
+    color: #89a4fd;
     font-size: 1rem;
 }
 
 .help-swal-content ul {
     margin: 0;
     padding-left: 1.2rem;
+    color: rgba(198, 193, 185, 0.78);
 }
 
 .help-swal-content li {
@@ -254,7 +276,7 @@
 }
 
 .help-swal-dot.green {
-    background: darkgreen;
+	background: #1f8f4a;
 }
 
 .help-swal-dot.yellow {
@@ -262,5 +284,26 @@
 }
 
 .help-swal-dot.red {
-    background: darkred;
+	background: #c43e43;
+}
+
+.help-swal-confirm {
+	min-width: 110px;
+	margin-top: 20px;
+	padding: 10px 22px;
+	border: 0;
+	border-radius: 8px;
+	background: #366cff !important;
+	color: white;
+	font-weight: 600;
+	transition: background-color 0.2s ease, transform 0.2s ease;
+
+	&:hover {
+		background: #2859dc !important;
+	}
+
+	&:focus-visible {
+		outline: 2px solid #89a4fd;
+		outline-offset: 2px;
+	}
 }
