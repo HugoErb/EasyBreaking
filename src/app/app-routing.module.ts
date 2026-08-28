@@ -4,6 +4,7 @@ import { HomeComponent } from './home/home.component';
 import { RunesManagerComponent } from './runes-manager/runes-manager.component';
 import { SearchHistoryComponent } from './search-history/search-history.component';
 import { BestItemsComponent } from './best-items/best-items.component';
+import { SettingsComponent } from './settings/settings.component';
 
 
 const routes: Routes = [
@@ -22,6 +23,10 @@ const routes: Routes = [
   {
     path: 'best-items',
     component: BestItemsComponent
+  },
+  {
+    path: 'settings',
+    component: SettingsComponent
   }
 ];
 

@@ -1,0 +1,107 @@
+<main>
+	<div class="page-shell">
+		<header class="page-header">
+			<a routerLink="/" class="back-btn" aria-label="Retour à l'accueil"><i class="pi pi-arrow-left" aria-hidden="true"></i></a>
+			<div class="header-brand">
+				<h1 class="page-title">Réglages</h1>
+				<span class="page-subtitle">Personnalisez l’affichage et les valeurs par défaut</span>
+			</div>
+		</header>
+
+		<section class="setting-card">
+			<div class="setting-copy">
+				<h2>Vue simplifiée du tableau</h2>
+				<p>Masque le nom des runes et les deux colonnes de quantité.</p>
+			</div>
+			<label class="switch">
+				<input type="checkbox" [(ngModel)]="settings.simplifiedCalculatorTable" (ngModelChange)="saveSettings()" />
+				<span class="slider" aria-hidden="true"></span>
+				<span class="sr-only">Activer la vue simplifiée du tableau</span>
+			</label>
+		</section>
+
+		<section class="setting-card">
+			<div class="setting-copy">
+				<h2>Vue simplifiée des données</h2>
+				<p>N’affiche que la meilleure valeur dans chaque cellule de gains, avec Pa ou Ra si nécessaire.</p>
+			</div>
+			<label class="switch">
+				<input type="checkbox" [(ngModel)]="settings.simplifiedDataView" (ngModelChange)="saveSettings()" />
+				<span class="slider" aria-hidden="true"></span>
+				<span class="sr-only">Activer la vue simplifiée des données</span>
+			</label>
+		</section>
+
+		<section class="setting-card">
+			<div class="setting-copy">
+				<h2>Historique avec items distincts</h2>
+				<p>Affiche par défaut uniquement la ligne la plus récente de chaque item.</p>
+			</div>
+			<label class="switch">
+				<input type="checkbox" [(ngModel)]="settings.distinctHistoryByDefault" (ngModelChange)="saveSettings()" />
+				<span class="slider" aria-hidden="true"></span>
+				<span class="sr-only">Afficher les items distincts par défaut dans l’historique</span>
+			</label>
+		</section>
+
+		<section class="setting-card filters-setting">
+			<div class="setting-copy">
+				<h2>Filtres par défaut des meilleurs items</h2>
+				<p>Ces valeurs seront appliquées à chaque ouverture du classement.</p>
+			</div>
+			<div class="filter-grid">
+				<label>
+					<span>Taux de brisage</span>
+					<p-inputNumber
+						[(ngModel)]="settings.bestItemsDefaultFilters.breakRate"
+						(ngModelChange)="saveSettings()"
+						[min]="0"
+						[max]="4000"
+						suffix=" %"
+					/>
+				</label>
+				<label>
+					<span>Niveau minimum</span>
+					<p-inputNumber
+						[(ngModel)]="settings.bestItemsDefaultFilters.minimumLevel"
+						(ngModelChange)="saveSettings()"
+						[min]="1"
+						[max]="200"
+					/>
+				</label>
+				<label>
+					<span>Niveau maximum</span>
+					<p-inputNumber
+						[(ngModel)]="settings.bestItemsDefaultFilters.maximumLevel"
+						(ngModelChange)="saveSettings()"
+						[min]="1"
+						[max]="200"
+					/>
+				</label>
+				<label class="type-filter">
+					<span>Types d’items</span>
+					<p-multiselect
+						[options]="itemTypes"
+						[(ngModel)]="settings.bestItemsDefaultFilters.selectedTypes"
+						(ngModelChange)="saveSettings()"
+						placeholder="Tous les types"
+						selectedItemsLabel="{0} types sélectionnés"
+						[maxSelectedLabels]="1"
+						[filter]="true"
+						[showClear]="true"
+						appendTo="body"
+						panelStyleClass="best-items-type-panel"
+					/>
+				</label>
+			</div>
+		</section>
+
+		<section class="setting-card danger-card">
+			<div class="setting-copy">
+				<h2>Réinitialisation</h2>
+				<p>Rétablit uniquement les réglages de cette page, sans supprimer les prix des runes ni l’historique.</p>
+			</div>
+			<p-button label="Réinitialiser les réglages" icon="pi pi-refresh" severity="danger" (click)="confirmResetSettings()" />
+		</section>
+	</div>
+</main>

@@ -5,6 +5,7 @@ import { forkJoin, map, of, tap } from 'rxjs';
 import { BreakingCalculationResult, BreakingItem, calculateBreaking } from '../breaking-calculator';
 import { parseRunesData, readStoredRunes, RuneData, storeRunes } from '../rune-data';
 import { SearchHistoryEntry, SearchHistoryService } from '../search-history/search-history.service';
+import { readAppSettings } from '../settings/app-settings';
 
 type SortColumn = 'gain' | 'level' | 'name';
 type SortDirection = 'asc' | 'desc';
@@ -51,6 +52,12 @@ export class BestItemsComponent implements OnInit {
 	) {}
 
 	ngOnInit(): void {
+		const defaultFilters = readAppSettings().bestItemsDefaultFilters;
+		this.breakRate = defaultFilters.breakRate;
+		this.minimumLevel = defaultFilters.minimumLevel;
+		this.maximumLevel = defaultFilters.maximumLevel;
+		this.selectedTypes = [...defaultFilters.selectedTypes];
+
 		this.indexLatestHistory();
 		const storedRunes = readStoredRunes();
 		const runes$ = storedRunes
@@ -73,6 +80,7 @@ export class BestItemsComponent implements OnInit {
 				this.runes = runes;
 				this.items = this.deduplicateItems([...weapons, ...equipment]);
 				this.types = [...new Set(this.items.map((item) => item.type))].sort((a, b) => a.localeCompare(b, 'fr'));
+				this.selectedTypes = this.selectedTypes.filter((type) => this.types.includes(type));
 				this.recalculateItems();
 				this.loading = false;
 				this.cdr.markForCheck();

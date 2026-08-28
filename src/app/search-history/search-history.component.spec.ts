@@ -5,6 +5,7 @@ import { ButtonModule } from 'primeng/button';
 import { Tooltip, TooltipModule } from 'primeng/tooltip';
 import { SearchHistoryComponent } from './search-history.component';
 import { SearchHistoryEntry, SearchHistoryService } from './search-history.service';
+import { APP_SETTINGS_STORAGE_KEY, writeAppSettings, readAppSettings } from '../settings/app-settings';
 
 describe('SearchHistoryComponent', () => {
 	let component: SearchHistoryComponent;
@@ -60,6 +61,8 @@ describe('SearchHistoryComponent', () => {
 		component.ngOnInit();
 	});
 
+	afterEach(() => localStorage.removeItem(APP_SETTINGS_STORAGE_KEY));
+
 	it('loads entries on init', () => {
 		expect(component.history.length).toBe(2);
 		expect(component.history[0].name).toBe("Voile d'encre");
@@ -106,6 +109,16 @@ describe('SearchHistoryComponent', () => {
 
 		component.toggleDistinctItems();
 		expect(component.history.length).toBe(3);
+	});
+
+	it('uses the distinct-items setting as its initial view', () => {
+		const settings = readAppSettings();
+		settings.distinctHistoryByDefault = true;
+		writeAppSettings(settings);
+
+		component.ngOnInit();
+
+		expect(component.showDistinctItems).toBeTrue();
 	});
 
 	it('exposes calculator navigation as a link containing the history identifier', () => {

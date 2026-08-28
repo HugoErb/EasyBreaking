@@ -45,6 +45,18 @@
 					tooltipPosition="bottom"
 					class="help-btn"
 				/>
+				<a
+					pButton
+					icon="pi pi-cog"
+					[rounded]="true"
+					[text]="true"
+					severity="secondary"
+					routerLink="/settings"
+					pTooltip="Réglages"
+					tooltipPosition="bottom"
+					class="history-btn"
+					aria-label="Réglages"
+				></a>
 			</div>
 		</div>
 
@@ -142,11 +154,17 @@
 							<thead>
 								<tr>
 									<th>Caractéristiques</th>
-									<th>Nom des runes</th>
+									@if (!simplifiedCalculatorTable) {
+										<th>Nom des runes</th>
+									}
 									<th>Prix unitaire des runes</th>
-									<th>Quantité de runes</th>
+									@if (!simplifiedCalculatorTable) {
+										<th>Quantité de runes</th>
+									}
 									<th>Kamas obtenus</th>
-									<th>Quantité de runes (focus)</th>
+									@if (!simplifiedCalculatorTable) {
+										<th>Quantité de runes (focus)</th>
+									}
 									<th>Kamas obtenus (focus)</th>
 								</tr>
 							</thead>
@@ -157,7 +175,9 @@
 											<img [src]="row.runeImg" alt="{{ row.runeName }}" loading="lazy" />
 											<span class="text">{{ row.stat }}</span>
 										</td>
-										<td>{{ row.runeName }}</td>
+										@if (!simplifiedCalculatorTable) {
+											<td>{{ row.runeName }}</td>
+										}
 										<td>
 											<p-iconfield iconPosition="right">
 												<p-inputNumber
@@ -171,9 +191,22 @@
 												<p-inputicon><i class="fa-solid fa-k"></i></p-inputicon>
 											</p-iconfield>
 										</td>
-										<td>{{ row.runeQuantity | number: "1.0-2" }}</td>
+										@if (!simplifiedCalculatorTable) {
+											<td>{{ row.runeQuantity | number: "1.0-2" }}</td>
+										}
 										<td>
-											<div class="kamas-values">
+											@if (simplifiedDataView) {
+												<span>
+													@if (row.basePaKamasEarned > row.kamasEarned && row.basePaKamasEarned >= row.baseRaKamasEarned) {
+														Pa : {{ row.basePaKamasEarned | number: "1.0-0" }}
+													} @else if (row.baseRaKamasEarned > row.kamasEarned && row.baseRaKamasEarned > row.basePaKamasEarned) {
+														Ra : {{ row.baseRaKamasEarned | number: "1.0-0" }}
+													} @else {
+														{{ row.kamasEarned | number: "1.0-0" }}
+													}
+												</span>
+											} @else {
+												<div class="kamas-values">
 												<span
 													[class.best-value]="(row.paPrice != null || row.raPrice != null) && row.kamasEarned >= row.basePaKamasEarned && row.kamasEarned >= row.baseRaKamasEarned"
 												>{{ row.kamasEarned | number: "1.0-0" }}</span>
@@ -189,21 +222,35 @@
 														[class.best-value]="row.baseRaKamasEarned > row.kamasEarned && row.baseRaKamasEarned > row.basePaKamasEarned"
 													>Ra : {{ row.baseRaKamasEarned | number: "1.0-0" }}</span>
 												}
-											</div>
-										</td>
-										<td>
-											@if (row.canFocus) {
-												{{ row.runeQuantityFocused | number: "1.0-2" }}
-											} @else {
-												/
+												</div>
 											}
 										</td>
+										@if (!simplifiedCalculatorTable) {
+											<td>
+												@if (row.canFocus) {
+													{{ row.runeQuantityFocused | number: "1.0-2" }}
+												} @else {
+													/
+												}
+											</td>
+										}
 										<td
 											[style.backgroundColor]="isBestFocusedCell(row) ? maxCellColor : ''"
 											[style.color]="isBestFocusedCell(row) ? maxCellTextColor : ''"
 										>
 											@if (row.canFocus) {
-												<div class="kamas-values">
+												@if (simplifiedDataView) {
+													<span>
+														@if (row.paKamasEarned > row.focusedKamasEarned && row.paKamasEarned >= row.raKamasEarned) {
+															Pa : {{ row.paKamasEarned | number: "1.0-0" }}
+														} @else if (row.raKamasEarned > row.focusedKamasEarned && row.raKamasEarned > row.paKamasEarned) {
+															Ra : {{ row.raKamasEarned | number: "1.0-0" }}
+														} @else {
+															{{ row.focusedKamasEarned | number: "1.0-0" }}
+														}
+													</span>
+												} @else {
+													<div class="kamas-values">
 													<span
 														[class.best-value]="(row.paPrice != null || row.raPrice != null) && row.focusedKamasEarned >= row.paKamasEarned && row.focusedKamasEarned >= row.raKamasEarned"
 													>{{ row.focusedKamasEarned | number: "1.0-0" }}</span>
@@ -219,7 +266,8 @@
 															[class.best-value]="row.raKamasEarned > row.focusedKamasEarned && row.raKamasEarned > row.paKamasEarned"
 														>Ra : {{ row.raKamasEarned | number: "1.0-0" }}</span>
 													}
-												</div>
+													</div>
+												}
 											} @else {
 												/
 											}
@@ -229,20 +277,30 @@
 							</tbody>
 							<tfoot>
 								<tr>
-									<td class="firstNoBorder" colspan="4"></td>
+									<td class="firstNoBorder" [attr.colspan]="simplifiedCalculatorTable ? 2 : 4"></td>
 									<td
 										[style.backgroundColor]="isBestTotalCell() ? maxCellColor : ''"
 										[style.color]="isBestTotalCell() ? maxCellTextColor : ''"
 									>
-										<div class="kamas-values">
-											<span [class.best-value]="sumKamasEarned >= sumBestChoicesKamasEarned">{{ sumKamasEarned | number: "1.0-0" }}</span>
-										<span
-											class="fusion-value"
-											[class.best-value]="sumBestChoicesKamasEarned > sumKamasEarned"
-										>Meilleures fusions : {{ sumBestChoicesKamasEarned | number: "1.0-0" }}</span>
-										</div>
+										@if (simplifiedDataView) {
+											<span>
+												@if (sumBestChoicesKamasEarned > sumKamasEarned) {
+													Meilleures fusions : {{ sumBestChoicesKamasEarned | number: "1.0-0" }}
+												} @else {
+													{{ sumKamasEarned | number: "1.0-0" }}
+												}
+											</span>
+										} @else {
+											<div class="kamas-values">
+												<span [class.best-value]="sumKamasEarned >= sumBestChoicesKamasEarned">{{ sumKamasEarned | number: "1.0-0" }}</span>
+												<span
+													class="fusion-value"
+													[class.best-value]="sumBestChoicesKamasEarned > sumKamasEarned"
+												>Meilleures fusions : {{ sumBestChoicesKamasEarned | number: "1.0-0" }}</span>
+											</div>
+										}
 									</td>
-									<td class="lastNoBorder" colspan="2"></td>
+									<td class="lastNoBorder" [attr.colspan]="simplifiedCalculatorTable ? 1 : 2"></td>
 								</tr>
 							</tfoot>
 						</table>

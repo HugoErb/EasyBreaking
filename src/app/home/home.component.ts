@@ -7,6 +7,7 @@ import { estimateItemsToReachRate } from './break-rate-estimator';
 import { SearchHistoryService } from '../search-history/search-history.service';
 import { isUnfocusableRuneStat, parseRunesData, readStoredRunes, RuneData, storeRunes } from '../rune-data';
 import { calculateBreaking } from '../breaking-calculator';
+import { readAppSettings } from '../settings/app-settings';
 
 interface CachedRune {
 	effect: string;
@@ -68,6 +69,8 @@ export class HomeComponent implements OnInit {
 	maxValuePaRa?: number = 0;
 
 	nombreObjets: number = 1;
+	simplifiedCalculatorTable = false;
+	simplifiedDataView = false;
 	@ViewChild('autoComplete') autoComplete!: AutoComplete;
 
 	private currentHistoryId: string | null = null;
@@ -88,6 +91,10 @@ export class HomeComponent implements OnInit {
 	 * - Mise en place du debounce des inputs
 	 */
 	ngOnInit(): void {
+		const settings = readAppSettings();
+		this.simplifiedCalculatorTable = settings.simplifiedCalculatorTable;
+		this.simplifiedDataView = settings.simplifiedDataView;
+
 		const storedRunes = readStoredRunes();
 		const runes$ = storedRunes
 			? of(storedRunes)

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { SearchHistoryEntry, SearchHistoryService } from './search-history.service';
+import { readAppSettings } from '../settings/app-settings';
 
 type HistorySortColumn = 'name' | 'level' | 'type' | 'breakRate' | 'craftPrice' | 'profitable' | 'focus' | 'updatedAt';
 type SortDirection = 'asc' | 'desc';
@@ -20,6 +21,7 @@ export class SearchHistoryComponent implements OnInit {
 	constructor(private readonly searchHistoryService: SearchHistoryService) {}
 
 	ngOnInit(): void {
+		this.showDistinctItems = readAppSettings().distinctHistoryByDefault;
 		this.allHistory = this.searchHistoryService.getEntries();
 		this.refreshDisplayedHistory();
 	}

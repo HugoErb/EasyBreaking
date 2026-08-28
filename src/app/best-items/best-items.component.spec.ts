@@ -6,6 +6,7 @@ import { BreakingItem } from '../breaking-calculator';
 import { RuneData } from '../rune-data';
 import { SearchHistoryEntry, SearchHistoryService } from '../search-history/search-history.service';
 import { BestItemsComponent } from './best-items.component';
+import { readAppSettings, writeAppSettings } from '../settings/app-settings';
 
 describe('BestItemsComponent', () => {
 	const rune: RuneData = {
@@ -77,6 +78,27 @@ describe('BestItemsComponent', () => {
 
 		expect(component.displayedResults.map((result) => result.item.name)).toEqual(['Marteau Beta', 'Épée Beta']);
 		expect(component.displayedResults.every((result) => result.calculation.rows[0].runePrice === 250)).toBeTrue();
+	});
+
+	it('applies the configured default filters', () => {
+		const settings = readAppSettings();
+		settings.bestItemsDefaultFilters = {
+			breakRate: 250,
+			minimumLevel: 100,
+			maximumLevel: 150,
+			selectedTypes: ['Cape'],
+		};
+		writeAppSettings(settings);
+		const { component } = createComponent([
+			item('Anneau bas niveau', 50),
+			item('Cape retenue', 120, 'Cape'),
+			item('Marteau exclu', 120, 'Marteau'),
+		]);
+
+		component.ngOnInit();
+
+		expect(component.breakRate).toBe(250);
+		expect(component.displayedResults.map((result) => result.item.name)).toEqual(['Cape retenue']);
 	});
 
 	it('sorts the top results and opens the calculator with query parameters', () => {
