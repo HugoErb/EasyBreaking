@@ -48,10 +48,9 @@ main {
 }
 
 .app-title {
-  background-image: linear-gradient(90deg, $accent, $accent-light);
-  background-clip: text;
-  -webkit-background-clip: text;
-  color: transparent;
+  color: #527aff;
+  filter: drop-shadow(0 5px 14px rgba(54, 108, 255, 0.2));
+  letter-spacing: -0.025em;
   font-size: 2.8em;
   line-height: 1.1;
   margin: 0;
@@ -125,7 +124,7 @@ main {
 }
 
 .help-btn ::ng-deep .p-button-icon {
-  font-size: 1.55rem !important;
+  font-size: 1.45rem !important;
 }
 
 // ─── Search ───────────────────────────────────────────────────────────────────

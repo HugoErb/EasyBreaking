@@ -80,6 +80,46 @@
 			</p-autoComplete>
 		</div>
 
+		@if (!selectedItem) {
+			<section class="empty-home" aria-labelledby="empty-home-title">
+				<div class="empty-home-intro">
+					<div class="empty-home-icon" aria-hidden="true"><i class="pi pi-chart-line"></i></div>
+					<span class="empty-home-eyebrow">Calculateur de brisage</span>
+					<h2 id="empty-home-title">Quel objet allez-vous briser ?</h2>
+					<p>Sélectionnez un équipement ou une arme pour estimer les runes obtenues et trouver la stratégie la plus rentable.</p>
+				</div>
+
+				<nav class="empty-home-actions" aria-label="Accès rapides">
+					<a class="empty-home-action" routerLink="/best-items">
+						<span class="empty-action-icon"><i class="pi pi-trophy" aria-hidden="true"></i></span>
+						<span class="empty-action-copy">
+							<strong>Meilleurs items</strong>
+							<small>Découvrez les objets les plus intéressants</small>
+						</span>
+						<i class="pi pi-arrow-right empty-action-arrow" aria-hidden="true"></i>
+					</a>
+
+					<a class="empty-home-action" routerLink="/runes-manager">
+						<span class="empty-action-icon rune-action-icon"><img src="../../assets/imgs/rune.png" alt="" /></span>
+						<span class="empty-action-copy">
+							<strong>Prix des runes</strong>
+							<small>Configurez les prix de votre serveur</small>
+						</span>
+						<i class="pi pi-arrow-right empty-action-arrow" aria-hidden="true"></i>
+					</a>
+
+					<a class="empty-home-action" routerLink="/search-history">
+						<span class="empty-action-icon"><i class="pi pi-history" aria-hidden="true"></i></span>
+						<span class="empty-action-copy">
+							<strong>Historique</strong>
+							<small>Reprenez un calcul précédent</small>
+						</span>
+						<i class="pi pi-arrow-right empty-action-arrow" aria-hidden="true"></i>
+					</a>
+				</nav>
+			</section>
+		}
+
 		@if (selectedItem) {
 			<div class="vanishingDiv">
 				<div class="section-card item-info-card">

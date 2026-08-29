@@ -272,10 +272,7 @@
 .help-swal-heading {
     margin: 0;
     padding: 0 0 20px;
-    background: linear-gradient(90deg, #366cff, #89a4fd);
-    background-clip: text;
-    -webkit-background-clip: text;
-    color: transparent;
+    color: #527aff;
     font-size: 1.8rem;
     text-align: left;
 }
@@ -371,4 +368,141 @@
 		outline: 2px solid #89a4fd;
 		outline-offset: 2px;
 	}
+}
+// État d'accueil du calculateur
+.empty-home {
+  position: relative;
+  max-width: 960px;
+  margin: 4px auto 0;
+  padding: 48px;
+  overflow: hidden;
+  background: radial-gradient(circle at 50% 0, rgba(54, 108, 255, 0.16), transparent 42%), rgba(255, 255, 255, 0.025);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 18px;
+}
+
+.empty-home-intro {
+  position: relative;
+  max-width: 660px;
+  margin: 0 auto 36px;
+  text-align: center;
+}
+
+.empty-home-icon {
+  display: grid;
+  place-items: center;
+  width: 58px;
+  height: 58px;
+  margin: 0 auto 18px;
+  color: #89a4fd;
+  font-size: 1.45rem;
+  background: rgba(54, 108, 255, 0.14);
+  border: 1px solid rgba(137, 164, 253, 0.28);
+  border-radius: 16px;
+  box-shadow: 0 12px 32px rgba(25, 64, 180, 0.18);
+}
+
+.empty-home-eyebrow {
+  color: #89a4fd;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.empty-home h2 {
+  margin: 10px 0 12px;
+  color: rgb(198, 193, 185);
+  font-size: clamp(1.55rem, 3vw, 2.1rem);
+}
+
+.empty-home-intro p {
+  margin: 0;
+  color: rgba(198, 193, 185, 0.6);
+  font-size: 1.02rem;
+  line-height: 1.65;
+}
+
+.empty-home-actions {
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+  gap: 12px;
+}
+
+.empty-home-action {
+  display: flex;
+  align-items: center;
+  min-width: 0;
+  padding: 16px;
+  color: rgb(198, 193, 185);
+  text-decoration: none;
+  background: rgba(255, 255, 255, 0.035);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  transition: transform 0.18s ease, background-color 0.18s ease, border-color 0.18s ease;
+}
+
+.empty-home-action:hover {
+  transform: translateY(-2px);
+  background: rgba(54, 108, 255, 0.09);
+  border-color: rgba(137, 164, 253, 0.32);
+}
+
+.empty-home-action:focus-visible {
+  outline: 2px solid #89a4fd;
+  outline-offset: 3px;
+}
+
+.empty-home-action:hover .empty-action-arrow {
+  color: #89a4fd;
+  transform: translateX(2px);
+}
+
+.empty-action-icon {
+  display: grid;
+  place-items: center;
+  flex: 0 0 42px;
+  width: 42px;
+  height: 42px;
+  margin-right: 12px;
+  color: #89a4fd;
+  background: rgba(54, 108, 255, 0.12);
+  border-radius: 10px;
+}
+
+.rune-action-icon img {
+  width: 30px;
+  height: 30px;
+  object-fit: contain;
+}
+
+.empty-action-copy {
+  display: flex;
+  flex: 1;
+  min-width: 0;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.empty-action-copy strong { font-size: 0.98rem; }
+
+.empty-action-copy small {
+  overflow: hidden;
+  color: rgba(198, 193, 185, 0.6);
+  font-size: 0.78rem;
+  line-height: 1.35;
+  text-overflow: ellipsis;
+}
+
+.empty-action-arrow {
+  margin-left: 10px;
+  color: rgba(198, 193, 185, 0.35);
+  font-size: 0.8rem;
+  transition: color 0.18s ease, transform 0.18s ease;
+}
+
+@media (max-width: 640px) {
+  .empty-home { padding: 34px 20px 24px; }
+  .empty-home-intro { margin-bottom: 26px; }
 }
