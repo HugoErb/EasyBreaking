@@ -364,7 +364,7 @@
 														<p-select
 															class="exo-select-field"
 															[style]="{ width: '360px' }"
-															[options]="getAvailableTranscendenceRunes(i)"
+															[options]="getTranscendenceSelectOptions(i)"
 															optionLabel="name"
 															optionValue="id"
 															[ngModel]="effect.transcendenceRuneId ?? ''"
@@ -376,7 +376,13 @@
 															appendTo="body"
 															panelStyleClass="exo-select-panel"
 														>
-															<ng-template #item let-rune>{{ rune.name }} (+{{ rune.value }} {{ rune.stat }})</ng-template>
+															<ng-template #item let-rune>
+																@if (rune.id === mostProfitableTranscendenceId) {
+																	<i class="pi pi-chart-line" aria-hidden="true"></i> La plus rentable
+																} @else {
+																	{{ rune.name }} (+{{ rune.value }} {{ rune.stat }})
+																}
+															</ng-template>
 														</p-select>
 													}
 

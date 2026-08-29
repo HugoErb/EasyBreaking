@@ -50,6 +50,7 @@ export class HomeComponent implements OnInit {
 	filteredItems: any[] = [];
 	transcendenceRunes: TranscendenceRuneData[] = [];
 	readonly isHuntingStat = isHuntingStat;
+	readonly mostProfitableTranscendenceId = -1;
 
 	// Résultats à l'écran
 	tableauEffects: any[] = [];
@@ -339,7 +340,11 @@ export class HomeComponent implements OnInit {
 	}
 
 	onTranscendenceChange(index: number, runeId: number | string): void {
-		const reference = this.transcendenceRunes.find((rune) => rune.id === Number(runeId));
+		const selectedId = Number(runeId);
+		const reference =
+			selectedId === this.mostProfitableTranscendenceId
+				? this.findMostProfitableTranscendence(index)
+				: this.transcendenceRunes.find((rune) => rune.id === selectedId);
 		if (!reference || !this.exoticEffects[index]) return;
 		this.exoticEffects[index] = {
 			kind: 'transcendence',
@@ -403,6 +408,43 @@ export class HomeComponent implements OnInit {
 		return this.transcendenceRunes.filter(
 			(rune) => !naturalStats.has(getRuneStatKey(rune.stat)) && !selectedStats.has(getRuneStatKey(rune.stat)),
 		);
+	}
+
+	getTranscendenceSelectOptions(index: number): TranscendenceRuneData[] {
+		const availableRunes = this.getAvailableTranscendenceRunes(index);
+		if (availableRunes.length === 0) return [];
+		return [
+			{ id: this.mostProfitableTranscendenceId, name: 'La plus rentable', stat: '', value: 0, density: 40 },
+			...availableRunes,
+		];
+	}
+
+	private findMostProfitableTranscendence(index: number): TranscendenceRuneData | undefined {
+		if (!this.selectedItem) return undefined;
+		const breakRate = this.tauxBrisage != null && this.tauxBrisage > 0 ? this.tauxBrisage : 100;
+
+		return this.getAvailableTranscendenceRunes(index)
+			.map((rune) => {
+				const candidateEffects = this.exoticEffects.map((effect, effectIndex) =>
+					effectIndex === index
+						? {
+								kind: 'transcendence' as const,
+								stat: rune.stat,
+								value: rune.value,
+								transcendenceRuneId: rune.id,
+							}
+						: effect,
+				);
+				const exoticEffects = sanitizeExoticEffects(
+					this.selectedItem,
+					candidateEffects,
+					this.runes,
+					this.transcendenceRunes,
+				);
+				const revenue = calculateBreaking(this.selectedItem, this.runes, breakRate, { exoticEffects }).bestKamas;
+				return { rune, revenue };
+			})
+			.sort((first, second) => second.revenue - first.revenue || first.rune.name.localeCompare(second.rune.name, 'fr'))[0]?.rune;
 	}
 
 	getMaxClassicValue(index: number): number {

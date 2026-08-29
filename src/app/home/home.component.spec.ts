@@ -436,4 +436,28 @@ describe('HomeComponent', () => {
 		expect(component.tauxRentabiliteKamas).toBe(0);
 		expect(component.profitabilityFocusState).toBe('neutral');
 	});
+
+	it('selects the transcendence producing the highest breaking revenue', () => {
+		const component = createComponent();
+		component.selectedItem = { level: 100, effects: ['10 Chance'], recipe: [], isWeapon: false };
+		component.runes = [
+			{ name: 'Cha', stat: 'Chance', price: 100, weight: 1, img: 'chance.png' },
+			{ name: 'Fo', stat: 'Force', price: 10, weight: 1, img: 'force.png' },
+			{ name: 'Ine', stat: 'Intelligence', price: 1_000, weight: 1, img: 'intelligence.png' },
+		];
+		component.transcendenceRunes = [
+			{ id: 1, name: 'Rune Ta Fo', stat: 'Force', value: 10, density: 40 },
+			{ id: 2, name: 'Rune Ta Ine', stat: 'Intelligence', value: 10, density: 40 },
+		];
+		component.exoticEffects = [{ kind: 'transcendence', stat: '', value: 0 }];
+
+		component.onTranscendenceChange(0, component.mostProfitableTranscendenceId);
+
+		expect(component.exoticEffects[0]).toEqual({
+			kind: 'transcendence',
+			stat: 'Intelligence',
+			value: 10,
+			transcendenceRuneId: 2,
+		});
+	});
 });
