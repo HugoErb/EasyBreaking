@@ -4,9 +4,13 @@ import { ActivatedRoute } from '@angular/router';
 import { HomeComponent } from './home.component';
 import { SearchHistoryService } from '../search-history/search-history.service';
 import { TRANSCENDENCE_RUNE_PRICES_STORAGE_KEY } from '../transcendence-rune-prices';
+import { ITEM_CRAFT_PRICES_STORAGE_KEY, readStoredItemCraftPrice, storeItemCraftPrice } from '../item-craft-prices';
 
 describe('HomeComponent', () => {
-	afterEach(() => localStorage.removeItem(TRANSCENDENCE_RUNE_PRICES_STORAGE_KEY));
+	afterEach(() => {
+		localStorage.removeItem(TRANSCENDENCE_RUNE_PRICES_STORAGE_KEY);
+		localStorage.removeItem(ITEM_CRAFT_PRICES_STORAGE_KEY);
+	});
 
 	function createComponent(): HomeComponent {
 		return new HomeComponent(
@@ -479,5 +483,29 @@ describe('HomeComponent', () => {
 
 		expect(component.transcendenceRunes[0].price).toBe(456);
 		expect(JSON.parse(localStorage.getItem(TRANSCENDENCE_RUNE_PRICES_STORAGE_KEY) ?? '{}')['1']).toBe(456);
+	});
+
+	it('stores the craft price of the selected item when it changes', () => {
+		const component = createComponent();
+		component.selectedItem = { name: 'Anneau test', type: 'Anneau', level: 100, effects: [], recipe: [] };
+		component.prixCraft = 125_000;
+
+		component.onCraftPriceChange();
+
+		expect(readStoredItemCraftPrice(component.selectedItem)).toBe(125_000);
+	});
+
+	it('restores a stored craft price when an item is prefilled outside history', () => {
+		const component = createComponent();
+		const item = { name: 'Anneau test', type: 'Anneau', level: 100, effects: [], recipe: [] };
+		component.items = [item];
+		storeItemCraftPrice(item, 125_000);
+		spyOn(component, 'unVanishDiv').and.stub();
+
+		(component as unknown as {
+			applyPrefilledItem: (name: string, breakRate: number | null, craftPrice: number | null) => void;
+		}).applyPrefilledItem(item.name, 100, null);
+
+		expect(component.prixCraft).toBe(125_000);
 	});
 });

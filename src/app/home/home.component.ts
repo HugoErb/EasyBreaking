@@ -9,6 +9,7 @@ import { getRuneImagePath as buildRuneImagePath, isUnfocusableRuneStat, parseRun
 import { calculateBreaking } from '../breaking-calculator';
 import { readAppSettings } from '../settings/app-settings';
 import { applyStoredTranscendencePrices, storeTranscendencePrice } from '../transcendence-rune-prices';
+import { readStoredItemCraftPrice, storeItemCraftPrice } from '../item-craft-prices';
 import {
 	ExoticEffectKind,
 	ExoticEffectSelection,
@@ -198,7 +199,10 @@ export class HomeComponent implements OnInit {
 		this.tauxBrisage = 100;
 		this.initCachedRunes();
 		this.resetStats();
+		this.prixCraft = readStoredItemCraftPrice(this.selectedItem);
 		this.buildTableAndTotals();
+		this.computeRentabilities();
+		this.defineCellColor();
 		this.updateCurrentHistory();
 		this.cdr.markForCheck();
 	}
@@ -262,7 +266,7 @@ export class HomeComponent implements OnInit {
 		this.searchValue = targetItem;
 		this.currentHistoryId = historyId ?? null;
 		this.tauxBrisage = breakRate ?? 100;
-		this.prixCraft = craftPrice;
+		this.prixCraft = historyId ? craftPrice : craftPrice ?? readStoredItemCraftPrice(targetItem);
 		this.exoticEffects = sanitizeExoticEffects(targetItem, exoticEffects, this.runes, this.transcendenceRunes);
 		this.exoticCost = this.exoticEffects.length > 0 ? exoticCost : null;
 		this.ensureCurrentHistoryEntry();
@@ -301,6 +305,11 @@ export class HomeComponent implements OnInit {
 		this.defineCellColor();
 		this.updateCurrentHistory();
 		this.cdr.markForCheck(); // Permet à Angular de revérifier le composant pour màj le DOM avec vos nouvelles valeurs.
+	}
+
+	onCraftPriceChange(): void {
+		if (this.selectedItem) storeItemCraftPrice(this.selectedItem, this.prixCraft ?? null);
+		this.onEconomicsInputChange();
 	}
 
 	onExoticCostChange(): void {
