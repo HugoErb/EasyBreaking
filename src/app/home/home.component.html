@@ -378,9 +378,9 @@
 														>
 															<ng-template #item let-rune>
 																@if (rune.id === mostProfitableTranscendenceId) {
-																	<i class="pi pi-chart-line" aria-hidden="true"></i> La plus rentable
+																	La plus rentable
 																} @else {
-																	{{ rune.name }} (+{{ rune.value }} {{ rune.stat }})
+																	{{ formatTranscendenceRuneName(rune.name) }} (+{{ rune.value }} {{ rune.stat }})
 																}
 															</ng-template>
 														</p-select>

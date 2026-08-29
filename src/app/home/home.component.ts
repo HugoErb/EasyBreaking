@@ -8,10 +8,12 @@ import { SearchHistoryService } from '../search-history/search-history.service';
 import { getRuneImagePath as buildRuneImagePath, isUnfocusableRuneStat, parseRunesData, readStoredRunes, RuneData, storeRunes } from '../rune-data';
 import { calculateBreaking } from '../breaking-calculator';
 import { readAppSettings } from '../settings/app-settings';
+import { applyStoredTranscendencePrices } from '../transcendence-rune-prices';
 import {
 	ExoticEffectKind,
 	ExoticEffectSelection,
 	formatExoticEffect,
+	formatTranscendenceRuneName,
 	getMaxClassicExoticValue,
 	getNaturalRuneStatKeys,
 	getRuneStatKey,
@@ -50,6 +52,7 @@ export class HomeComponent implements OnInit {
 	filteredItems: any[] = [];
 	transcendenceRunes: TranscendenceRuneData[] = [];
 	readonly isHuntingStat = isHuntingStat;
+	readonly formatTranscendenceRuneName = formatTranscendenceRuneName;
 	readonly mostProfitableTranscendenceId = -1;
 
 	// Résultats à l'écran
@@ -129,7 +132,9 @@ export class HomeComponent implements OnInit {
 
 		const armes$ = this.http.get<any[]>('assets/jsons/armes.json');
 		const equipements$ = this.http.get<any[]>('assets/jsons/equipements.json');
-		const transcendenceRunes$ = this.http.get<TranscendenceRuneData[]>('assets/jsons/transcendenceRunes.json');
+		const transcendenceRunes$ = this.http
+			.get<TranscendenceRuneData[]>('assets/jsons/transcendenceRunes.json')
+			.pipe(map((runes) => applyStoredTranscendencePrices(runes)));
 
 		// forkJoin pour charger les runes et les deux listes en parallèle
 		forkJoin([runes$, armes$, equipements$, transcendenceRunes$]).subscribe(([runesData, armesData, equipementsData, transData]) => {
@@ -341,8 +346,9 @@ export class HomeComponent implements OnInit {
 
 	onTranscendenceChange(index: number, runeId: number | string): void {
 		const selectedId = Number(runeId);
+		const selectMostProfitable = selectedId === this.mostProfitableTranscendenceId;
 		const reference =
-			selectedId === this.mostProfitableTranscendenceId
+			selectMostProfitable
 				? this.findMostProfitableTranscendence(index)
 				: this.transcendenceRunes.find((rune) => rune.id === selectedId);
 		if (!reference || !this.exoticEffects[index]) return;
@@ -352,6 +358,7 @@ export class HomeComponent implements OnInit {
 			value: reference.value,
 			transcendenceRuneId: reference.id,
 		};
+		if (selectMostProfitable) this.exoticCost = reference.price ?? 1;
 		this.exoticEffects = [...this.exoticEffects];
 		this.onExoticInputChange();
 	}
@@ -442,9 +449,12 @@ export class HomeComponent implements OnInit {
 					this.transcendenceRunes,
 				);
 				const revenue = calculateBreaking(this.selectedItem, this.runes, breakRate, { exoticEffects }).bestKamas;
-				return { rune, revenue };
+				return { rune, netRevenue: revenue - (rune.price ?? 1) };
 			})
-			.sort((first, second) => second.revenue - first.revenue || first.rune.name.localeCompare(second.rune.name, 'fr'))[0]?.rune;
+			.sort(
+				(first, second) =>
+					second.netRevenue - first.netRevenue || first.rune.name.localeCompare(second.rune.name, 'fr'),
+			)[0]?.rune;
 	}
 
 	getMaxClassicValue(index: number): number {

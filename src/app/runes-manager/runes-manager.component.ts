@@ -1,9 +1,16 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { getRuneImagePath as buildRuneImagePath, parseRunesData, readStoredRunes, RuneData, storeRunes } from '../rune-data';
+import { formatTranscendenceRuneName, TranscendenceRuneData } from '../exotic-effects';
+import {
+    applyStoredTranscendencePrices,
+    PricedTranscendenceRuneData,
+    storeTranscendencePrices,
+} from '../transcendence-rune-prices';
 
 type RuneSortColumn = 'name' | 'price' | 'paPrice' | 'raPrice';
 type RunePriceColumn = Exclude<RuneSortColumn, 'name'>;
+type TranscendenceRuneSortColumn = 'name' | 'effect' | 'price';
 type SortDirection = 'asc' | 'desc';
 
 @Component({
@@ -14,13 +21,24 @@ type SortDirection = 'asc' | 'desc';
 })
 export class RunesManagerComponent implements OnInit {
     runes: RuneData[] = [];
+    transcendenceRunes: PricedTranscendenceRuneData[] = [];
     sortColumn: RuneSortColumn = 'name';
     sortDirection: SortDirection = 'asc';
+    transcendenceSortColumn: TranscendenceRuneSortColumn = 'name';
+    transcendenceSortDirection: SortDirection = 'asc';
 
     constructor(private readonly http: HttpClient) {}
 
     ngOnInit() {
         this.loadRunes();
+        this.loadTranscendenceRunes();
+    }
+
+    loadTranscendenceRunes(): void {
+        this.http.get<TranscendenceRuneData[]>('assets/jsons/transcendenceRunes.json').subscribe((runes) => {
+            this.transcendenceRunes = applyStoredTranscendencePrices(runes);
+            this.applyTranscendenceSort();
+        });
     }
 
     loadRunes() {
@@ -55,6 +73,30 @@ export class RunesManagerComponent implements OnInit {
     onPriceChange(runeIndex: number, priceType: RunePriceColumn, newPrice: number) {
         this.runes[runeIndex][priceType] = newPrice;
         storeRunes(this.runes);
+    }
+
+    onTranscendencePriceChange(runeIndex: number, newPrice: number): void {
+        this.transcendenceRunes[runeIndex].price = newPrice;
+        storeTranscendencePrices(this.transcendenceRunes);
+    }
+
+    sortTranscendenceBy(column: TranscendenceRuneSortColumn): void {
+        this.transcendenceSortDirection =
+            this.transcendenceSortColumn === column && this.transcendenceSortDirection === 'asc' ? 'desc' : 'asc';
+        this.transcendenceSortColumn = column;
+        this.applyTranscendenceSort();
+    }
+
+    private applyTranscendenceSort(): void {
+        const direction = this.transcendenceSortDirection === 'asc' ? 1 : -1;
+        this.transcendenceRunes = [...this.transcendenceRunes].sort((first, second) => {
+            if (this.transcendenceSortColumn === 'price') return (first.price - second.price) * direction;
+            if (this.transcendenceSortColumn === 'effect') {
+                const statComparison = first.stat.localeCompare(second.stat, 'fr', { sensitivity: 'accent' });
+                return (statComparison || first.value - second.value) * direction;
+            }
+            return first.name.localeCompare(second.name, 'fr', { sensitivity: 'accent' }) * direction;
+        });
     }
 
     sortBy(column: RuneSortColumn): void {
@@ -93,15 +135,29 @@ export class RunesManagerComponent implements OnInit {
         return this.sortDirection === 'asc' ? 'ascending' : 'descending';
     }
 
-	getRuneImagePath(runeName: string): string {
-		return buildRuneImagePath(runeName);
-	}
+    getTranscendenceSortIcon(column: TranscendenceRuneSortColumn): string {
+        if (this.transcendenceSortColumn !== column) return 'pi pi-sort-alt';
+        return this.transcendenceSortDirection === 'asc' ? 'pi pi-sort-amount-up' : 'pi pi-sort-amount-down';
+    }
+
+    getTranscendenceAriaSort(column: TranscendenceRuneSortColumn): 'ascending' | 'descending' | 'none' {
+        if (this.transcendenceSortColumn !== column) return 'none';
+        return this.transcendenceSortDirection === 'asc' ? 'ascending' : 'descending';
+    }
+
+    getRuneImagePath(runeName: string): string {
+        return buildRuneImagePath(runeName);
+    }
+
+    getTranscendenceRuneName(runeName: string): string {
+        return formatTranscendenceRuneName(runeName);
+    }
 
     async confirmResetAllPrices(): Promise<void> {
         const { default: Swal } = await import('sweetalert2/dist/sweetalert2.esm.all.js');
         const result = await Swal.fire({
             title: 'Reset des prix',
-            text: 'Tous les prix des runes seront remis a 1.',
+            text: 'Tous les prix des runes seront remis à 1.',
             icon: 'warning',
             showCancelButton: true,
             confirmButtonText: 'Confirmer',
@@ -121,6 +177,8 @@ export class RunesManagerComponent implements OnInit {
             raPrice: rune.raPrice !== undefined ? 1 : undefined,
         }));
         storeRunes(this.runes);
+        this.transcendenceRunes = this.transcendenceRunes.map((rune) => ({ ...rune, price: 1 }));
+        storeTranscendencePrices(this.transcendenceRunes);
     }
 
     async confirmDeleteLocalStorage(): Promise<void> {
@@ -142,6 +200,7 @@ export class RunesManagerComponent implements OnInit {
     deleteLocalStorage(): void {
         localStorage.clear();
         this.loadRunes();
+        this.loadTranscendenceRunes();
     }
 
     exportRunesData(): void {

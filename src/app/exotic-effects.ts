@@ -16,6 +16,7 @@ export interface TranscendenceRuneData {
 	stat: string;
 	value: number;
 	density: 40 | 60 | 80;
+	price?: number;
 }
 
 export interface ExoticItemContext {
@@ -28,6 +29,10 @@ const WEIGHT_EPSILON = 1e-9;
 
 export function isHuntingStat(stat: string): boolean {
 	return normalizeStat(stat) === normalizeStat('Arme de chasse');
+}
+
+export function formatTranscendenceRuneName(name: string): string {
+	return name.replace(/^Rune\s+/i, '');
 }
 
 export function getRuneStatKey(stat: string): string {

@@ -21,7 +21,7 @@ main {
 .page-header,
 .runes-table-container {
   width: 100%;
-  max-width: 900px;
+  max-width: 1500px;
 }
 
 // ─── Header ───────────────────────────────────────────────────────────────────
@@ -109,6 +109,31 @@ main {
   border-radius: 12px;
   padding: 24px;
   backdrop-filter: blur(10px);
+}
+
+.rune-section-title {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  margin: 0 0 16px;
+  color: $accent-light;
+  font-size: 1.3rem;
+}
+
+.rune-sections-grid {
+  display: grid;
+  grid-template-columns: minmax(760px, 1.2fr) 1px minmax(520px, 0.8fr);
+  gap: 24px;
+}
+
+.rune-section {
+  min-width: 0;
+  overflow-x: auto;
+}
+
+.rune-section-separator {
+  border-left: 1px solid $border-color;
 }
 
 table {
@@ -247,6 +272,17 @@ th.sortable {
   ::ng-deep .p-button-label {
     flex: 0 0 auto !important;
     line-height: 1 !important;
+  }
+}
+
+@media (max-width: 1250px) {
+  .rune-sections-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .rune-section-separator {
+    border-top: 1px solid $border-color;
+    border-left: 0;
   }
 }
 

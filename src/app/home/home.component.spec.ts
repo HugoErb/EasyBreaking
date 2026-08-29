@@ -437,7 +437,7 @@ describe('HomeComponent', () => {
 		expect(component.profitabilityFocusState).toBe('neutral');
 	});
 
-	it('selects the transcendence producing the highest breaking revenue', () => {
+	it('selects the transcendence producing the highest net breaking revenue', () => {
 		const component = createComponent();
 		component.selectedItem = { level: 100, effects: ['10 Chance'], recipe: [], isWeapon: false };
 		component.runes = [
@@ -446,8 +446,8 @@ describe('HomeComponent', () => {
 			{ name: 'Ine', stat: 'Intelligence', price: 1_000, weight: 1, img: 'intelligence.png' },
 		];
 		component.transcendenceRunes = [
-			{ id: 1, name: 'Rune Ta Fo', stat: 'Force', value: 10, density: 40 },
-			{ id: 2, name: 'Rune Ta Ine', stat: 'Intelligence', value: 10, density: 40 },
+			{ id: 1, name: 'Rune Ta Fo', stat: 'Force', value: 10, density: 40, price: 125 },
+			{ id: 2, name: 'Rune Ta Ine', stat: 'Intelligence', value: 10, density: 40, price: 50_000 },
 		];
 		component.exoticEffects = [{ kind: 'transcendence', stat: '', value: 0 }];
 
@@ -455,9 +455,10 @@ describe('HomeComponent', () => {
 
 		expect(component.exoticEffects[0]).toEqual({
 			kind: 'transcendence',
-			stat: 'Intelligence',
+			stat: 'Force',
 			value: 10,
-			transcendenceRuneId: 2,
+			transcendenceRuneId: 1,
 		});
+		expect(component.exoticCost).toBe(125);
 	});
 });

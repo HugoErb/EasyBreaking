@@ -8,8 +8,11 @@
 	</div>
 
 	<div class="runes-table-container">
-		@if (runes.length > 0) {
-			<table>
+		<div class="rune-sections-grid">
+			<section class="rune-section" aria-labelledby="classic-runes-title">
+				<h2 id="classic-runes-title" class="rune-section-title"><i class="pi pi-box" aria-hidden="true"></i>Runes classiques</h2>
+				@if (runes.length > 0) {
+					<table aria-labelledby="classic-runes-title">
 				<thead>
 					<tr>
 						<th class="sortable" [attr.aria-sort]="getAriaSort('name')">
@@ -99,8 +102,75 @@
 						</tr>
 					}
 				</tbody>
-			</table>
-		}
+					</table>
+				}
+			</section>
+
+			<div class="rune-section-separator" role="separator" aria-orientation="vertical"></div>
+
+		<section class="rune-section" aria-labelledby="transcendence-runes-title">
+			<h2 id="transcendence-runes-title" class="rune-section-title">
+				<i class="pi pi-star" aria-hidden="true"></i>Runes de transcendance
+			</h2>
+			@if (transcendenceRunes.length > 0) {
+				<table aria-labelledby="transcendence-runes-title">
+					<thead>
+						<tr>
+							<th class="sortable" [attr.aria-sort]="getTranscendenceAriaSort('name')">
+								<button type="button" class="sort-button" (click)="sortTranscendenceBy('name')">
+									Nom <i [class]="getTranscendenceSortIcon('name')"></i>
+								</button>
+							</th>
+							<th class="sortable" [attr.aria-sort]="getTranscendenceAriaSort('effect')">
+								<button type="button" class="sort-button" (click)="sortTranscendenceBy('effect')">
+									Effet <i [class]="getTranscendenceSortIcon('effect')"></i>
+								</button>
+							</th>
+							<th class="sortable" [attr.aria-sort]="getTranscendenceAriaSort('price')">
+								<button type="button" class="sort-button" (click)="sortTranscendenceBy('price')">
+									Prix <i [class]="getTranscendenceSortIcon('price')"></i>
+								</button>
+							</th>
+						</tr>
+					</thead>
+					<tbody>
+						@for (rune of transcendenceRunes; track rune.id; let i = $index) {
+							<tr>
+								<td
+									class="clicable"
+									tabindex="0"
+									(click)="copyToClipboard($event, rune.name)"
+									pTooltip="Rune copiée"
+									tooltipEvent="focus"
+									tooltipPosition="top"
+								>
+									<div class="nom-cellule">{{ getTranscendenceRuneName(rune.name) }}</div>
+								</td>
+								<td>+{{ rune.value }} {{ rune.stat }}</td>
+								<td>
+									<div class="cell-center">
+										<p-iconfield iconPosition="right">
+											<p-inputNumber
+												[inputId]="'transcendence-rune-price-' + rune.id"
+												[ariaLabel]="'Prix de la rune ' + rune.name"
+												placeholder="Prix de la rune"
+												[(ngModel)]="rune.price"
+												(ngModelChange)="onTranscendencePriceChange(i, $event)"
+												[min]="1"
+												[max]="999999999"
+											/>
+											<p-inputicon><img class="kamas-input-icon" src="assets/imgs/kamas.png" alt="" aria-hidden="true" /></p-inputicon>
+										</p-iconfield>
+									</div>
+								</td>
+							</tr>
+						}
+					</tbody>
+				</table>
+			}
+		</section>
+		</div>
+
 		<div class="buttonContainer">
 			<input #runesDataImportInput type="file" accept=".json,application/json" hidden (change)="importRunesData($event)" />
 			<p-button label="Exporter JSON" icon="pi pi-upload" severity="secondary" (click)="exportRunesData()" class="export-btn" />
