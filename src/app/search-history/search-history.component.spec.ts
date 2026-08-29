@@ -21,6 +21,8 @@ describe('SearchHistoryComponent', () => {
 			type: 'Cape',
 			breakRate: 150,
 			craftPrice: 1_000_000,
+			exoticEffects: [],
+			exoticCost: null,
 			profitable: true,
 			kamasEarned: 1_500_000,
 			profitPercentage: 50,
@@ -35,6 +37,8 @@ describe('SearchHistoryComponent', () => {
 			type: 'Chapeau',
 			breakRate: 80,
 			craftPrice: 10_000,
+			exoticEffects: [],
+			exoticCost: null,
 			profitable: false,
 			kamasEarned: 7_000,
 			profitPercentage: -30,
@@ -140,5 +144,42 @@ describe('SearchHistoryComponent', () => {
 		);
 		expect(dateTooltip?.tooltipStyleClass).toBe('history-date-tooltip');
 		expect(dateTooltip?.tooltipPosition).toBe('top');
+	});
+
+	it('formats exotic effects for display and CSV export', () => {
+		const entry: SearchHistoryEntry = {
+			...mockEntries[0],
+			exoticEffects: [
+				{ kind: 'classic', stat: 'PA', value: 1 },
+				{ kind: 'transcendence', stat: 'Force', value: 10, transcendenceRuneId: 20558 },
+			],
+			exoticCost: 100_000,
+		};
+
+		expect(component.getExoticSummary(entry)).toBe('+1 PA, Trans : +10 Force');
+	});
+
+	it('exports exotic effects and their cost to CSV', async () => {
+		component.history = [
+			{
+				...mockEntries[0],
+				exoticEffects: [{ kind: 'classic', stat: 'PA', value: 1 }],
+				exoticCost: 100_000,
+			},
+		];
+		let exportedBlob: Blob | undefined;
+		spyOn(URL, 'createObjectURL').and.callFake((blob) => {
+			exportedBlob = blob as Blob;
+			return 'blob:test';
+		});
+		spyOn(URL, 'revokeObjectURL');
+		spyOn(HTMLAnchorElement.prototype, 'click');
+
+		component.exportToCsv();
+
+		const csv = await exportedBlob!.text();
+		expect(csv).toContain('Exos / transcendances');
+		expect(csv).toContain('exo / trans (k)');
+		expect(csv).toContain('"\'+1 PA";100000');
 	});
 });

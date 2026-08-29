@@ -279,6 +279,7 @@ main {
   border-collapse: collapse;
 
   th {
+    height: 58px;
     background: rgba(54, 108, 255, 0.12);
     color: $accent-light;
     font-weight: bold;
@@ -289,6 +290,7 @@ main {
   }
 
   td {
+    height: 58px;
     font-size: 1em;
     padding: 7px 8px;
     border: 1px solid rgba(255, 255, 255, 0.08);
@@ -365,6 +367,10 @@ main {
   border-bottom: none !important;
 }
 
+.exo-add-cell:hover {
+  background: rgba(54, 108, 255, 0.12);
+}
+
 .item-parameters {
   display: flex;
   flex: 1 1 600px;
@@ -389,6 +395,18 @@ main {
 
 .item-parameters ::ng-deep .p-inputtext {
   width: 180px !important;
+}
+
+.exo-badge {
+  margin-left: 8px;
+  padding: 2px 6px;
+  border-radius: 4px;
+  color: $accent-light;
+  background: rgba(54, 108, 255, 0.18);
+}
+
+.exo-stat-label {
+  margin-left: 10px;
 }
 
 ::ng-deep .p-inputtext {

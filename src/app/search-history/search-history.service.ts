@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { ExoticEffectSelection } from '../exotic-effects';
 
 export interface SearchHistoryEntry {
 	historyId: string;
@@ -8,6 +9,8 @@ export interface SearchHistoryEntry {
 	type: string;
 	breakRate: number | null;
 	craftPrice: number | null;
+	exoticEffects: ExoticEffectSelection[];
+	exoticCost: number | null;
 	profitable: boolean | null;
 	kamasEarned: number | null;
 	profitPercentage: number | null;
@@ -18,7 +21,8 @@ export interface SearchHistoryEntry {
 export type SearchHistoryUpdate = Pick<
 	SearchHistoryEntry,
 	'breakRate' | 'craftPrice' | 'profitable' | 'kamasEarned' | 'profitPercentage' | 'focus'
->;
+> &
+	Partial<Pick<SearchHistoryEntry, 'exoticEffects' | 'exoticCost'>>;
 
 type SearchHistoryItem = Pick<SearchHistoryEntry, 'name' | 'image' | 'type'> & { level: number | string };
 
@@ -84,6 +88,8 @@ export class SearchHistoryService {
 			type: item.type,
 			breakRate: null,
 			craftPrice: null,
+			exoticEffects: [],
+			exoticCost: null,
 			profitable: null,
 			kamasEarned: null,
 			profitPercentage: null,
@@ -161,11 +167,42 @@ export class SearchHistoryService {
 			type: entry['type'],
 			breakRate: typeof entry['breakRate'] === 'number' ? entry['breakRate'] : null,
 			craftPrice: typeof entry['craftPrice'] === 'number' ? entry['craftPrice'] : null,
+			exoticEffects: this.normalizeExoticEffects(entry['exoticEffects']),
+			exoticCost: typeof entry['exoticCost'] === 'number' && entry['exoticCost'] >= 0 ? entry['exoticCost'] : null,
 			profitable: typeof entry['profitable'] === 'boolean' ? entry['profitable'] : null,
 			kamasEarned: typeof entry['kamasEarned'] === 'number' ? entry['kamasEarned'] : null,
 			profitPercentage: typeof entry['profitPercentage'] === 'number' ? entry['profitPercentage'] : null,
 			focus: typeof entry['focus'] === 'string' ? entry['focus'] : null,
 			updatedAt: typeof entry['updatedAt'] === 'string' ? entry['updatedAt'] : new Date().toISOString(),
 		};
+	}
+
+	private normalizeExoticEffects(value: unknown): ExoticEffectSelection[] {
+		if (!Array.isArray(value)) return [];
+
+		return value
+			.map((candidate): ExoticEffectSelection | null => {
+				if (typeof candidate !== 'object' || candidate === null) return null;
+				const effect = candidate as Record<string, unknown>;
+				if (effect['kind'] !== 'classic' && effect['kind'] !== 'transcendence') return null;
+				if (typeof effect['stat'] !== 'string' || !effect['stat'].trim()) return null;
+				if (typeof effect['value'] !== 'number' || !Number.isInteger(effect['value']) || effect['value'] <= 0) return null;
+				if (
+					effect['kind'] === 'transcendence' &&
+					(typeof effect['transcendenceRuneId'] !== 'number' || !Number.isInteger(effect['transcendenceRuneId']))
+				) {
+					return null;
+				}
+
+				return {
+					kind: effect['kind'],
+					stat: effect['stat'].trim(),
+					value: effect['value'],
+					...(typeof effect['transcendenceRuneId'] === 'number'
+						? { transcendenceRuneId: effect['transcendenceRuneId'] }
+						: {}),
+				};
+			})
+			.filter((effect): effect is ExoticEffectSelection => effect !== null);
 	}
 }

@@ -64,6 +64,8 @@ describe('HomeComponent', () => {
 		expect(searchHistoryService.updateEntry).toHaveBeenCalledWith('history-123', {
 			breakRate: 150,
 			craftPrice: 100_000,
+			exoticEffects: [],
+			exoticCost: null,
 			profitable: true,
 			kamasEarned: 150_000,
 			profitPercentage: 50,
@@ -106,6 +108,8 @@ describe('HomeComponent', () => {
 			type: 'Cape',
 			breakRate: 180,
 			craftPrice: 1_200_000,
+			exoticEffects: [{ kind: 'classic' as const, stat: 'Chance', value: 5 }],
+			exoticCost: 25_000,
 			profitable: true,
 			kamasEarned: 1_800_000,
 			profitPercentage: 50,
@@ -152,6 +156,14 @@ describe('HomeComponent', () => {
 				price: 100,
 				weight: 1,
 			},
+			{
+				name: 'Rune Cha',
+				stat: 'Chance',
+				normalizedStat: 'chance',
+				img: 'chance.png',
+				price: 100,
+				weight: 1,
+			},
 		];
 
 		spyOn(component, 'unVanishDiv').and.stub();
@@ -163,6 +175,8 @@ describe('HomeComponent', () => {
 		expect(component['currentHistoryId']).toBe('history-voile');
 		expect(component.tauxBrisage).toBe(180);
 		expect(component.prixCraft).toBe(1_200_000);
+		expect(component.exoticEffects).toEqual([{ kind: 'classic', stat: 'Chance', value: 5 }]);
+		expect(component.exoticCost).toBe(25_000);
 		expect(component.unVanishDiv).toHaveBeenCalled();
 	});
 
@@ -387,5 +401,39 @@ describe('HomeComponent', () => {
 		component.maxValuePaRa = 16_365;
 
 		expect(component.isBestFocusedCell({ focusedKamasEarned: 14_195, paKamasEarned: 16_365, raKamasEarned: 0 })).toBeTrue();
+	});
+
+	it('subtracts the exotic cost from profitability', () => {
+		const component = createComponent();
+		component.selectedItem = { level: 100, effects: ['10 Chance'], recipe: [], isWeapon: false };
+		component.runes = [
+			{ name: 'Cha', stat: 'Chance', price: 100, weight: 1, img: 'chance.png' },
+			{ name: 'Fo', stat: 'Force', price: 100, weight: 1, img: 'force.png' },
+		];
+		component.exoticEffects = [{ kind: 'classic', stat: 'Force', value: 5 }];
+		component.prixCraft = 100;
+		component.exoticCost = 50;
+
+		(component as unknown as { buildTableAndTotals: () => void }).buildTableAndTotals();
+
+		expect(component.calculateBenefit(100, false)).toBe(Math.round(component.maxValue! - 150));
+	});
+
+	it('keeps profitability undetermined while an exotic cost is missing', () => {
+		const component = createComponent();
+		component.selectedItem = { level: 100, effects: ['10 Chance'], recipe: [], isWeapon: false };
+		component.runes = [
+			{ name: 'Cha', stat: 'Chance', price: 100, weight: 1, img: 'chance.png' },
+			{ name: 'Fo', stat: 'Force', price: 100, weight: 1, img: 'force.png' },
+		];
+		component.exoticEffects = [{ kind: 'classic', stat: 'Force', value: 5 }];
+		component.prixCraft = 100;
+		component.exoticCost = null;
+		component.tauxRentabiliteKamas = 999;
+
+		(component as unknown as { computeRentabilities: () => void }).computeRentabilities();
+
+		expect(component.tauxRentabiliteKamas).toBe(0);
+		expect(component.profitabilityFocusState).toBe('neutral');
 	});
 });

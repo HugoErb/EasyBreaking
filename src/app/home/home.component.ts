@@ -8,6 +8,17 @@ import { SearchHistoryService } from '../search-history/search-history.service';
 import { getRuneImagePath as buildRuneImagePath, isUnfocusableRuneStat, parseRunesData, readStoredRunes, RuneData, storeRunes } from '../rune-data';
 import { calculateBreaking } from '../breaking-calculator';
 import { readAppSettings } from '../settings/app-settings';
+import {
+	ExoticEffectKind,
+	ExoticEffectSelection,
+	formatExoticEffect,
+	getMaxClassicExoticValue,
+	getNaturalRuneStatKeys,
+	getRuneStatKey,
+	isHuntingStat,
+	sanitizeExoticEffects,
+	TranscendenceRuneData,
+} from '../exotic-effects';
 
 interface CachedRune {
 	effect: string;
@@ -37,6 +48,8 @@ export class HomeComponent implements OnInit {
 	searchValue: any = null;
 	selectedItem: any = null;
 	filteredItems: any[] = [];
+	transcendenceRunes: TranscendenceRuneData[] = [];
+	readonly isHuntingStat = isHuntingStat;
 
 	// Résultats à l'écran
 	tableauEffects: any[] = [];
@@ -46,6 +59,8 @@ export class HomeComponent implements OnInit {
 	tauxBrisage: number | null = 100;
 	prixCraft?: number | null = null;
 	tauxRentabiliteVise: number = 25;
+	exoticEffects: ExoticEffectSelection[] = [];
+	exoticCost: number | null = null;
 
 	// Résultats de calculs
 	tauxRentabilitePourcent: number = 0;
@@ -113,11 +128,13 @@ export class HomeComponent implements OnInit {
 
 		const armes$ = this.http.get<any[]>('assets/jsons/armes.json');
 		const equipements$ = this.http.get<any[]>('assets/jsons/equipements.json');
+		const transcendenceRunes$ = this.http.get<TranscendenceRuneData[]>('assets/jsons/transcendenceRunes.json');
 
 		// forkJoin pour charger les runes et les deux listes en parallèle
-		forkJoin([runes$, armes$, equipements$]).subscribe(([runesData, armesData, equipementsData]) => {
+		forkJoin([runes$, armes$, equipements$, transcendenceRunes$]).subscribe(([runesData, armesData, equipementsData, transData]) => {
 			this.runes = runesData.map((rune) => ({ ...rune, normalizedStat: this.normalizeStat(rune.stat) }));
-			this.items = [...this.processData(armesData), ...this.processData(equipementsData)]
+			this.transcendenceRunes = transData;
+			this.items = [...this.processData(armesData, true), ...this.processData(equipementsData, false)]
 				.sort((a, b) => a.name.localeCompare(b.name))
 				.map((item) => ({ ...item, nameLower: item.name.toLowerCase() }));
 
@@ -131,7 +148,7 @@ export class HomeComponent implements OnInit {
 	 * @param data Liste brute d'items
 	 * @returns Liste d'items formatés
 	 */
-	private processData(data: any[]): any[] {
+	private processData(data: any[], isWeapon: boolean): any[] {
 		return data.map((item) => ({
 			id: item.id,
 			level: item.level,
@@ -142,6 +159,7 @@ export class HomeComponent implements OnInit {
 			set: item.set,
 			link: item.link,
 			image: item.image,
+			isWeapon,
 		}));
 	}
 
@@ -166,6 +184,8 @@ export class HomeComponent implements OnInit {
 		if (!selectedItem || typeof selectedItem !== 'object') return;
 		this.selectedItem = selectedItem;
 		this.currentHistoryId = null;
+		this.exoticEffects = [];
+		this.exoticCost = null;
 		this.cdr.detectChanges();
 		setTimeout(() => this.autoComplete.inputEL?.nativeElement.blur(), 100);
 		this.unVanishDiv();
@@ -185,7 +205,14 @@ export class HomeComponent implements OnInit {
 			? this.searchHistoryService.getEntries().find((entry) => entry.historyId === requestedHistoryId) ?? null
 			: null;
 		if (historyEntry) {
-			this.applyPrefilledItem(historyEntry.name, historyEntry.breakRate, historyEntry.craftPrice, historyEntry.historyId);
+			this.applyPrefilledItem(
+				historyEntry.name,
+				historyEntry.breakRate,
+				historyEntry.craftPrice,
+				historyEntry.historyId,
+				historyEntry.exoticEffects ?? [],
+				historyEntry.exoticCost,
+			);
 			return;
 		}
 
@@ -202,10 +229,26 @@ export class HomeComponent implements OnInit {
 		}
 
 		const entry = this.searchHistoryService.consumePrefilledEntry();
-		if (entry) this.applyPrefilledItem(entry.name, entry.breakRate, entry.craftPrice, entry.historyId);
+		if (entry) {
+			this.applyPrefilledItem(
+				entry.name,
+				entry.breakRate,
+				entry.craftPrice,
+				entry.historyId,
+				entry.exoticEffects ?? [],
+				entry.exoticCost,
+			);
+		}
 	}
 
-	private applyPrefilledItem(itemName: string, breakRate: number | null, craftPrice: number | null, historyId?: string): void {
+	private applyPrefilledItem(
+		itemName: string,
+		breakRate: number | null,
+		craftPrice: number | null,
+		historyId?: string,
+		exoticEffects: ExoticEffectSelection[] = [],
+		exoticCost: number | null = null,
+	): void {
 		const targetItem = this.items.find((item) => item.name.localeCompare(itemName, 'fr', { sensitivity: 'base' }) === 0);
 		if (!targetItem) return;
 
@@ -214,6 +257,8 @@ export class HomeComponent implements OnInit {
 		this.currentHistoryId = historyId ?? null;
 		this.tauxBrisage = breakRate ?? 100;
 		this.prixCraft = craftPrice;
+		this.exoticEffects = sanitizeExoticEffects(targetItem, exoticEffects, this.runes, this.transcendenceRunes);
+		this.exoticCost = this.exoticEffects.length > 0 ? exoticCost : null;
 		this.ensureCurrentHistoryEntry();
 
 		this.initCachedRunes();
@@ -252,6 +297,134 @@ export class HomeComponent implements OnInit {
 		this.cdr.markForCheck(); // Permet à Angular de revérifier le composant pour màj le DOM avec vos nouvelles valeurs.
 	}
 
+	addExoticEffect(): void {
+		this.exoticEffects = [...this.exoticEffects, { kind: 'classic', stat: '', value: 1 }];
+		this.cdr.markForCheck();
+	}
+
+	canAddExoticEffect(): boolean {
+		if (this.exoticEffects.some((effect) => !effect.stat)) return false;
+		return this.getAvailableClassicRunes(-1).length > 0 || this.getAvailableTranscendenceRunes(-1).length > 0;
+	}
+
+	removeExoticEffect(index: number): void {
+		this.exoticEffects = this.exoticEffects.filter((_, effectIndex) => effectIndex !== index);
+		if (this.exoticEffects.length === 0) this.exoticCost = null;
+		this.onExoticInputChange();
+	}
+
+	removeExoticEffectByStat(stat: string): void {
+		const index = this.getExoticEffectIndex(stat);
+		if (index >= 0) this.removeExoticEffect(index);
+	}
+
+	getExoticEffectIndex(stat: string): number {
+		return this.exoticEffects.findIndex((effect) => formatExoticEffect(effect) === stat);
+	}
+
+	onExoticKindChange(index: number, kind: ExoticEffectKind): void {
+		this.exoticEffects[index] = { kind, stat: '', value: kind === 'classic' ? 1 : 0 };
+		this.exoticEffects = [...this.exoticEffects];
+		this.onExoticInputChange();
+	}
+
+	onClassicExoticStatChange(index: number, stat: string): void {
+		const effect = this.exoticEffects[index];
+		if (!effect) return;
+		effect.stat = stat;
+		effect.transcendenceRuneId = undefined;
+		effect.value = 1;
+		this.exoticEffects = [...this.exoticEffects];
+		this.onExoticInputChange();
+	}
+
+	onTranscendenceChange(index: number, runeId: number | string): void {
+		const reference = this.transcendenceRunes.find((rune) => rune.id === Number(runeId));
+		if (!reference || !this.exoticEffects[index]) return;
+		this.exoticEffects[index] = {
+			kind: 'transcendence',
+			stat: reference.stat,
+			value: reference.value,
+			transcendenceRuneId: reference.id,
+		};
+		this.exoticEffects = [...this.exoticEffects];
+		this.onExoticInputChange();
+	}
+
+	onClassicExoticValueChange(index: number): void {
+		const effect = this.exoticEffects[index];
+		if (!effect || !effect.stat) return;
+		effect.value = Math.max(1, Math.min(Math.trunc(Number(effect.value) || 1), this.getMaxClassicValue(index)));
+		this.exoticEffects = [...this.exoticEffects];
+		this.onExoticInputChange();
+	}
+
+	onExoticInputChange(): void {
+		if (!this.selectedItem) return;
+		this.buildTableAndTotals();
+		this.computeRentabilities();
+		this.defineCellColor();
+		this.updateCurrentHistory();
+		this.cdr.markForCheck();
+	}
+
+	getAvailableClassicRunes(index: number): RuneData[] {
+		if (!this.selectedItem) return [];
+		const naturalStats = getNaturalRuneStatKeys(this.selectedItem, this.runes);
+		const selectedStats = new Set(
+			this.exoticEffects
+				.filter((_, effectIndex) => effectIndex !== index)
+				.filter((effect) => effect.stat)
+				.map((effect) => getRuneStatKey(effect.stat)),
+		);
+		const hasTranscendence = this.exoticEffects.some(
+			(effect, effectIndex) => effectIndex !== index && effect.kind === 'transcendence' && effect.transcendenceRuneId != null,
+		);
+
+		return this.runes
+			.filter((rune) => {
+				const statKey = getRuneStatKey(rune.stat);
+				if (naturalStats.has(statKey) || selectedStats.has(statKey)) return false;
+				if (isHuntingStat(rune.stat) && !this.selectedItem.isWeapon) return false;
+				if (hasTranscendence && !isHuntingStat(rune.stat)) return false;
+				return getMaxClassicExoticValue(rune.stat, this.exoticEffects, this.runes, index) >= 1;
+			})
+			.sort((firstRune, secondRune) => firstRune.stat.localeCompare(secondRune.stat, 'fr'));
+	}
+
+	getAvailableTranscendenceRunes(index: number): TranscendenceRuneData[] {
+		if (!this.selectedItem) return [];
+		const otherEffects = this.exoticEffects.filter((_, effectIndex) => effectIndex !== index);
+		if (otherEffects.some((effect) => effect.kind === 'transcendence' && effect.transcendenceRuneId != null)) return [];
+		if (otherEffects.some((effect) => effect.kind === 'classic' && effect.stat && !isHuntingStat(effect.stat))) return [];
+
+		const naturalStats = getNaturalRuneStatKeys(this.selectedItem, this.runes);
+		const selectedStats = new Set(otherEffects.filter((effect) => effect.stat).map((effect) => getRuneStatKey(effect.stat)));
+		return this.transcendenceRunes.filter(
+			(rune) => !naturalStats.has(getRuneStatKey(rune.stat)) && !selectedStats.has(getRuneStatKey(rune.stat)),
+		);
+	}
+
+	getMaxClassicValue(index: number): number {
+		const effect = this.exoticEffects[index];
+		return effect?.stat ? getMaxClassicExoticValue(effect.stat, this.exoticEffects, this.runes, index) : 1;
+	}
+
+	hasExoticEffects(): boolean {
+		return this.getValidExoticEffects().length > 0;
+	}
+
+	private getValidExoticEffects(): ExoticEffectSelection[] {
+		if (!this.selectedItem) return [];
+		return sanitizeExoticEffects(this.selectedItem, this.exoticEffects, this.runes, this.transcendenceRunes);
+	}
+
+	private getTotalCost(): number | null {
+		if (this.prixCraft == null) return null;
+		if (this.hasExoticEffects() && this.exoticCost == null) return null;
+		return this.prixCraft + (this.hasExoticEffects() ? this.exoticCost ?? 0 : 0);
+	}
+
 	private updateCurrentHistory(): void {
 		if (this.saveHistoryOnlyWithCompleteData && !this.hasCompleteHistoryData()) return;
 		this.ensureCurrentHistoryEntry();
@@ -276,15 +449,18 @@ export class HomeComponent implements OnInit {
 
 		let profitPercentage: number | null = null;
 		let profitable: boolean | null = null;
+		const totalCost = this.getTotalCost();
 
-		if (this.prixCraft != null && this.prixCraft > 0 && hasValidKamas) {
-			profitPercentage = Number.parseFloat((((bestValue - this.prixCraft) / this.prixCraft) * 100).toFixed(2));
-			profitable = bestValue > this.prixCraft;
+		if (totalCost != null && totalCost > 0 && hasValidKamas) {
+			profitPercentage = Number.parseFloat((((bestValue - totalCost) / totalCost) * 100).toFixed(2));
+			profitable = bestValue > totalCost;
 		}
 
 		this.currentHistoryId = this.searchHistoryService.updateEntry(this.currentHistoryId, {
 			breakRate: this.tauxBrisage,
 			craftPrice: this.prixCraft ?? null,
+			exoticEffects: this.getValidExoticEffects(),
+			exoticCost: this.hasExoticEffects() ? this.exoticCost : null,
 			profitable,
 			kamasEarned,
 			profitPercentage,
@@ -299,7 +475,12 @@ export class HomeComponent implements OnInit {
 	}
 
 	private hasCompleteHistoryData(): boolean {
-		return this.tauxBrisage != null && this.prixCraft != null && this.prixCraft > 0;
+		return (
+			this.tauxBrisage != null &&
+			this.prixCraft != null &&
+			this.prixCraft > 0 &&
+			(!this.hasExoticEffects() || this.exoticCost != null)
+		);
 	}
 
 	/**
@@ -310,7 +491,9 @@ export class HomeComponent implements OnInit {
 		if (this.tauxBrisage != null) {
 			this.tauxBrisage = Math.min(Math.max(this.tauxBrisage, 0), 4000);
 		}
-		const calculation = calculateBreaking(this.selectedItem, this.runes, this.tauxBrisage ?? 0);
+		const calculation = calculateBreaking(this.selectedItem, this.runes, this.tauxBrisage ?? 0, {
+			exoticEffects: this.getValidExoticEffects(),
+		});
 		this.tableauEffects = calculation.rows;
 		this.recipe = this.selectedItem.recipe;
 		this.sumKamasEarned = calculation.standardKamas;
@@ -374,14 +557,15 @@ export class HomeComponent implements OnInit {
 	 * Met à jour tous les indicateurs de rentabilité
 	 */
 	private computeRentabilities(): void {
-		if (this.prixCraft == null) {
-			this.resetStats();
+		const totalCost = this.getTotalCost();
+		if (totalCost == null || totalCost <= 0) {
+			this.resetProfitabilityResults();
 			return;
 		}
 
 		const computeStats = (totalKamas: number, includePaRa: boolean): [number, number, number | null] => {
-			const profit = Math.round(totalKamas - this.prixCraft!);
-			const percent = Number.parseFloat(((profit / this.prixCraft!) * 100).toFixed(2));
+			const profit = Math.round(totalKamas - totalCost);
+			const percent = Number.parseFloat(((profit / totalCost) * 100).toFixed(2));
 			const breakRate = this.findNorProfitableBreakRate(includePaRa);
 			return [profit, percent, breakRate];
 		};
@@ -428,6 +612,13 @@ export class HomeComponent implements OnInit {
 	 * Remet à zéro les statistiques de la partie "Rentabilité".
 	 */
 	private resetStats(): void {
+		this.resetProfitabilityResults();
+		this.prixCraft = null;
+		this.exoticCost = null;
+		this.nombreObjets = 1;
+	}
+
+	private resetProfitabilityResults(): void {
 		this.tauxRentabilitePourcent = 0;
 		this.tauxRentabiliteKamas = 0;
 		this.norProfitableBreakRate = 0;
@@ -436,7 +627,6 @@ export class HomeComponent implements OnInit {
 		this.norProfitableBreakRatePaRa = 0;
 		this.estimatedItemsBeforeNotProfitable = 0;
 		this.estimatedItemsBeforeNotProfitablePaRa = 0;
-		this.prixCraft = null;
 		this.maxCellColor = 'darkgreen';
 		this.maxCellTextColor = 'rgb(198, 193, 185)';
 		this.profitabilityFocusState = 'neutral';
@@ -486,10 +676,13 @@ export class HomeComponent implements OnInit {
 	 *          ou 0 si le prix de craft n'est pas renseigné.
 	 */
 	calculateBenefit(tauxBrisage: number, includePaRa: boolean): number {
-		if (this.prixCraft == null) return 0;
-		const calculation = calculateBreaking(this.selectedItem, this.runes, tauxBrisage);
+		const totalCost = this.getTotalCost();
+		if (totalCost == null) return 0;
+		const calculation = calculateBreaking(this.selectedItem, this.runes, tauxBrisage, {
+			exoticEffects: this.getValidExoticEffects(),
+		});
 		const earnedKamas = includePaRa ? calculation.bestKamas : calculation.bestWithoutFusionKamas;
-		return Math.round(earnedKamas - this.prixCraft);
+		return Math.round(earnedKamas - totalCost);
 	}
 
 	/**
@@ -516,15 +709,16 @@ export class HomeComponent implements OnInit {
 	 * Met à jour la valeur de maxCellColor correspondante.
 	 */
 	defineCellColor(): void {
-		if (this.prixCraft == null || this.tauxRentabiliteVise == null || this.maxValue == null) {
+		const totalCost = this.getTotalCost();
+		if (totalCost == null || this.tauxRentabiliteVise == null || this.maxValue == null) {
 			this.profitabilityFocusState = 'neutral';
 			return;
 		}
 
-		const valeurRentable = this.prixCraft * (1 + Number(this.tauxRentabiliteVise) / 100);
+		const valeurRentable = totalCost * (1 + Number(this.tauxRentabiliteVise) / 100);
 		const bestValue = Math.max(this.maxValue, this.maxValuePaRa ?? 0);
 
-		if (bestValue < this.prixCraft) {
+		if (bestValue < totalCost) {
 			this.maxCellColor = 'darkred';
 			this.maxCellTextColor = 'rgb(198, 193, 185)';
 			this.profitabilityFocusState = 'unprofitable';

@@ -138,10 +138,29 @@ describe('SearchHistoryService', () => {
 				level: 100,
 				breakRate: 110,
 				craftPrice: null,
+				exoticEffects: [],
+				exoticCost: null,
 				kamasEarned: null,
 				profitPercentage: null,
 			}),
 		);
+	});
+
+	it('stores exotic effects and their cost', () => {
+		const historyId = service.recordSearch(item);
+		service.updateEntry(historyId, {
+			breakRate: 100,
+			craftPrice: 10_000,
+			exoticEffects: [{ kind: 'classic', stat: 'PA', value: 1 }],
+			exoticCost: 25_000,
+			profitable: true,
+			kamasEarned: 50_000,
+			profitPercentage: 42.86,
+			focus: 'Sans focus',
+		});
+
+		expect(service.getEntries()[0].exoticEffects).toEqual([{ kind: 'classic', stat: 'PA', value: 1 }]);
+		expect(service.getEntries()[0].exoticCost).toBe(25_000);
 	});
 
 	it('deletes only the selected history entry', () => {
@@ -164,6 +183,8 @@ describe('SearchHistoryService', () => {
 			type: 'Bague',
 			breakRate: 120,
 			craftPrice: 80_000,
+			exoticEffects: [],
+			exoticCost: null,
 			profitable: true,
 			kamasEarned: 110_000,
 			profitPercentage: 37.5,

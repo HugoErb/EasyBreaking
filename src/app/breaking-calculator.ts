@@ -1,4 +1,5 @@
 import { isUnfocusableRuneStat, RuneData } from './rune-data';
+import type { ExoticEffectSelection } from './exotic-effects';
 
 const PA_RUNE_RATIO = 3;
 const RA_RUNE_RATIO = 9;
@@ -19,6 +20,7 @@ export interface BreakingEffectResult {
 	stat: string;
 	runeName: string;
 	canFocus: boolean;
+	isExotic: boolean;
 	runePrice: number;
 	paPrice?: number | null;
 	raPrice?: number | null;
@@ -56,6 +58,11 @@ interface CachedRune {
 	rune: RuneData;
 	runeNumerator: number;
 	runeRealWeight: number;
+	isExotic: boolean;
+}
+
+export interface BreakingCalculationOptions {
+	exoticEffects?: ExoticEffectSelection[];
 }
 
 export function normalizeStat(stat: string): string {
@@ -74,13 +81,18 @@ export function normalizeStat(stat: string): string {
 		.trim();
 }
 
-export function calculateBreaking(item: BreakingItem, runes: RuneData[], requestedBreakRate: number): BreakingCalculationResult {
+export function calculateBreaking(
+	item: BreakingItem,
+	runes: RuneData[],
+	requestedBreakRate: number,
+	options: BreakingCalculationOptions = {},
+): BreakingCalculationResult {
 	const breakRate = Math.min(Math.max(Number.isFinite(requestedBreakRate) ? requestedBreakRate : 0, 0), 4000);
-	const cachedRunes = buildCachedRunes(item, runes);
+	const cachedRunes = buildCachedRunes(item, runes, options.exoticEffects ?? []);
 	const rows = cachedRunes.map((cached) => buildEffectResult(cached, cachedRunes, breakRate));
 	const standardKamas = rows.reduce((sum, row) => sum + row.kamasEarned, 0);
 	const bestFocusedRow = rows.reduce<BreakingEffectResult | null>(
-		(best, row) => (!best || row.focusedKamasEarned > best.focusedKamasEarned ? row : best),
+		(best, row) => (row.canFocus && (!best || row.focusedKamasEarned > best.focusedKamasEarned) ? row : best),
 		null,
 	);
 	const bestFocusedKamas = bestFocusedRow?.focusedKamasEarned ?? 0;
@@ -148,10 +160,14 @@ export function calculateBreaking(item: BreakingItem, runes: RuneData[], request
 	};
 }
 
-function buildCachedRunes(item: BreakingItem, runes: RuneData[]): CachedRune[] {
+function buildCachedRunes(item: BreakingItem, runes: RuneData[], exoticEffects: ExoticEffectSelection[]): CachedRune[] {
 	const level = Number(item.level);
-	return item.effects
-		.map((effect) => {
+	const effects = [
+		...item.effects.map((effect) => ({ effect, isExotic: false })),
+		...exoticEffects.map((effect) => ({ effect: formatExoticEffect(effect), isExotic: true })),
+	];
+	return effects
+		.map(({ effect, isExotic }) => {
 			const rune = findMatchingRune(effect, runes);
 			if (!rune) return null;
 			return {
@@ -159,6 +175,7 @@ function buildCachedRunes(item: BreakingItem, runes: RuneData[]): CachedRune[] {
 				rune,
 				runeNumerator: (3 * rune.weight * calculateAverage(effect) * level) / 200 + 1,
 				runeRealWeight: getRealRuneWeight(rune),
+				isExotic,
 			};
 		})
 		.filter((cached): cached is CachedRune => cached !== null);
@@ -166,11 +183,11 @@ function buildCachedRunes(item: BreakingItem, runes: RuneData[]): CachedRune[] {
 
 function buildEffectResult(cached: CachedRune, cachedRunes: CachedRune[], breakRate: number): BreakingEffectResult {
 	const baseQuantity = (cached.runeNumerator * breakRate) / 100 / cached.runeRealWeight;
-	const canFocus = !isUnfocusableRuneStat(cached.rune.stat);
+	const canFocus = !cached.isExotic && !isUnfocusableRuneStat(cached.rune.stat);
 	const focusedQuantity = !canFocus
 		? 0
 		: (cachedRunes.reduce(
-				(sum, candidate) => sum + (candidate.effect === cached.effect ? candidate.runeNumerator : candidate.runeNumerator / 2),
+				(sum, candidate) => sum + (candidate === cached ? candidate.runeNumerator : candidate.runeNumerator / 2),
 				0,
 			) /
 				cached.runeRealWeight) *
@@ -184,6 +201,7 @@ function buildEffectResult(cached: CachedRune, cachedRunes: CachedRune[], breakR
 		stat: cached.effect,
 		runeName: cached.rune.name,
 		canFocus,
+		isExotic: cached.isExotic,
 		runePrice: cached.rune.price,
 		paPrice: cached.rune.paPrice,
 		raPrice: cached.rune.raPrice,
@@ -201,7 +219,7 @@ function buildEffectResult(cached: CachedRune, cachedRunes: CachedRune[], breakR
 	};
 }
 
-function findMatchingRune(itemStatistic: string, runes: RuneData[]): RuneData | undefined {
+export function findMatchingRune(itemStatistic: string, runes: RuneData[]): RuneData | undefined {
 	const hasPercent = itemStatistic.includes('%');
 	const normalizedItemStat = normalizeStat(itemStatistic);
 	return runes
@@ -213,6 +231,10 @@ function findMatchingRune(itemStatistic: string, runes: RuneData[]): RuneData | 
 			return normalizedItemStat.includes(normalizeStat(rune.stat));
 		})
 		.sort((firstRune, secondRune) => secondRune.stat.length - firstRune.stat.length)[0];
+}
+
+function formatExoticEffect(effect: ExoticEffectSelection): string {
+	return normalizeStat(effect.stat) === normalizeStat('Arme de chasse') ? 'Arme de chasse' : `${effect.value} ${effect.stat}`;
 }
 
 function calculateAverage(value: string): number {

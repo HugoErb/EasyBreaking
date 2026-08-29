@@ -44,6 +44,8 @@ export class SearchHistoryComponent implements OnInit {
 			'Type',
 			'Taux de brisage (%)',
 			'Prix du craft (k)',
+			'Exos / transcendances',
+			'Coût exo / trans (k)',
 			'Rentabilité',
 			'Kamas gagnés (k)',
 			'Bénéfice (%)',
@@ -56,6 +58,8 @@ export class SearchHistoryComponent implements OnInit {
 			entry.type,
 			entry.breakRate,
 			entry.craftPrice,
+			this.getExoticSummary(entry),
+			entry.exoticCost,
 			entry.profitable === true ? 'Rentable' : entry.profitable === false ? 'Non rentable' : 'Non déterminée',
 			entry.kamasEarned,
 			entry.profitPercentage,
@@ -157,6 +161,17 @@ export class SearchHistoryComponent implements OnInit {
 	getAriaSort(column: HistorySortColumn): 'ascending' | 'descending' | 'none' {
 		if (this.sortColumn !== column) return 'none';
 		return this.sortDirection === 'asc' ? 'ascending' : 'descending';
+	}
+
+	getExoticSummary(entry: SearchHistoryEntry): string {
+		if (entry.exoticEffects.length === 0) return '';
+		return entry.exoticEffects
+			.map((effect) => {
+				if (effect.stat.localeCompare('Arme de chasse', 'fr', { sensitivity: 'base' }) === 0) return 'Arme de chasse';
+				const prefix = effect.kind === 'transcendence' ? 'Trans : ' : '';
+				return `${prefix}+${effect.value} ${effect.stat}`;
+			})
+			.join(', ');
 	}
 
 	private escapeCsvValue(value: string | number | null): string {

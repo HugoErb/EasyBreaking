@@ -269,6 +269,20 @@ tbody tr:hover td {
 	font-style: italic;
 }
 
+.exotic-history-cell {
+	min-width: 180px;
+
+	span {
+		display: block;
+	}
+
+	.exotic-cost {
+		margin-top: 4px;
+		color: $text-muted;
+		font-size: 0.88em;
+	}
+}
+
 .empty-state {
 	color: $text-muted;
 	padding: 56px 20px;

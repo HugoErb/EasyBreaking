@@ -144,6 +144,22 @@
 									<p-inputicon><i class="fa-solid fa-percent"></i></p-inputicon>
 								</p-iconfield>
 							</div>
+							@if (hasExoticEffects()) {
+								<div class="input-group">
+									<label class="input-label">Coût exo / trans</label>
+									<p-iconfield iconPosition="right">
+										<p-inputNumber
+											inputId="exoticCost"
+											placeholder="Coût total"
+											[(ngModel)]="exoticCost"
+											(onInput)="onEconomicsInputChange()"
+											[min]="0"
+											[max]="999999999"
+										/>
+										<p-inputicon><img class="kamas-input-icon" src="assets/imgs/kamas.png" alt="" aria-hidden="true" /></p-inputicon>
+									</p-iconfield>
+								</div>
+							}
 						</div>
 					</div>
 
@@ -173,7 +189,34 @@
 									<tr>
 										<td class="stat-cell">
 											<img [src]="row.runeImg" alt="{{ row.runeName }}" loading="lazy" />
-											<span class="text">{{ row.stat }}</span>
+											@if (row.isExotic) {
+												@let exoticIndex = getExoticEffectIndex(row.stat);
+												@let effect = exoticEffects[exoticIndex];
+												@if (effect?.kind === "classic" && !isHuntingStat(effect.stat)) {
+													<p-inputNumber
+														[(ngModel)]="effect.value"
+														(onInput)="onClassicExoticValueChange(exoticIndex)"
+														[min]="1"
+														[max]="getMaxClassicValue(exoticIndex)"
+														[useGrouping]="false"
+														[inputStyle]="{ width: '64px' }"
+													/>
+													<span class="text exo-stat-label">{{ effect.stat }}</span>
+												} @else {
+													<span class="text">{{ row.stat }}</span>
+												}
+												<span class="exo-badge">Exo</span>
+												<p-button
+													icon="pi pi-trash"
+													[rounded]="true"
+													[text]="true"
+													severity="danger"
+													(click)="removeExoticEffectByStat(row.stat)"
+													ariaLabel="Supprimer cet exo"
+												/>
+											} @else {
+												<span class="text">{{ row.stat }}</span>
+											}
 										</td>
 										@if (!simplifiedCalculatorTable) {
 											<td>
@@ -279,10 +322,95 @@
 										</td>
 									</tr>
 								}
+								@for (effect of exoticEffects; track $index; let i = $index) {
+									@if (!effect.stat) {
+										<tr>
+											<td [attr.colspan]="simplifiedCalculatorTable ? 4 : 7">
+												<div style="display: flex; align-items: center; justify-content: center; gap: 16px">
+													<p-select
+														class="exo-select-field"
+														[style]="{ width: '190px' }"
+														[options]="[
+															{ label: 'Exo classique', value: 'classic', disabled: false },
+															{ label: 'Transcendance', value: 'transcendence', disabled: getAvailableTranscendenceRunes(i).length === 0 },
+														]"
+														optionLabel="label"
+														optionValue="value"
+														optionDisabled="disabled"
+														[ngModel]="effect.kind"
+														(ngModelChange)="onExoticKindChange(i, $event)"
+														aria-label="Type d'exo"
+														appendTo="body"
+														panelStyleClass="exo-select-panel"
+													/>
+
+													@if (effect.kind === "classic") {
+														<p-select
+															class="exo-select-field"
+															[style]="{ width: '240px' }"
+															[options]="getAvailableClassicRunes(i)"
+															optionLabel="stat"
+															optionValue="stat"
+															[ngModel]="effect.stat"
+															(ngModelChange)="onClassicExoticStatChange(i, $event)"
+															placeholder="Choisir une caractéristique"
+															[filter]="true"
+															filterBy="stat"
+															aria-label="Caractéristique exotique"
+															appendTo="body"
+															panelStyleClass="exo-select-panel"
+														/>
+													} @else {
+														<p-select
+															class="exo-select-field"
+															[style]="{ width: '360px' }"
+															[options]="getAvailableTranscendenceRunes(i)"
+															optionLabel="name"
+															optionValue="id"
+															[ngModel]="effect.transcendenceRuneId ?? ''"
+															(ngModelChange)="onTranscendenceChange(i, $event)"
+															placeholder="Choisir une rune"
+															[filter]="true"
+															filterBy="name,stat"
+															aria-label="Rune de transcendance"
+															appendTo="body"
+															panelStyleClass="exo-select-panel"
+														>
+															<ng-template #item let-rune>{{ rune.name }} (+{{ rune.value }} {{ rune.stat }})</ng-template>
+														</p-select>
+													}
+
+													<p-button
+														icon="pi pi-trash"
+														[rounded]="true"
+														[text]="true"
+														severity="danger"
+														(click)="removeExoticEffect(i)"
+														ariaLabel="Supprimer cet exo"
+													/>
+												</div>
+											</td>
+										</tr>
+									}
+								}
 							</tbody>
 							<tfoot>
 								<tr>
-									<td class="firstNoBorder" [attr.colspan]="simplifiedCalculatorTable ? 2 : 4"></td>
+									<td
+										class="exo-add-cell"
+										role="button"
+										[attr.tabindex]="canAddExoticEffect() ? 0 : -1"
+										[attr.aria-disabled]="!canAddExoticEffect()"
+										[style.cursor]="canAddExoticEffect() ? 'pointer' : 'not-allowed'"
+										[style.color]="canAddExoticEffect() ? '#7698ff' : ''"
+										[style.opacity]="canAddExoticEffect() ? 1 : 0.5"
+										(click)="canAddExoticEffect() && addExoticEffect()"
+										(keydown.enter)="canAddExoticEffect() && addExoticEffect()"
+										(keydown.space)="$event.preventDefault(); canAddExoticEffect() && addExoticEffect()"
+									>
+										<i class="pi pi-plus" aria-hidden="true"></i> Ajouter un exo
+									</td>
+									<td class="firstNoBorder" [attr.colspan]="simplifiedCalculatorTable ? 1 : 3"></td>
 									<td
 										[style.backgroundColor]="isBestTotalCell() ? maxCellColor : ''"
 										[style.color]="isBestTotalCell() ? maxCellTextColor : ''"

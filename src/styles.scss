@@ -177,6 +177,71 @@
     border-color: #89a4fd;
 }
 
+.exo-select-field.p-select {
+    height: 42px;
+    background: rgba(255, 255, 255, 0.06);
+    border-color: transparent;
+    color: rgb(198, 193, 185);
+    font-family: "Enriqueta", arial, serif;
+}
+
+.exo-select-field.p-select:not(.p-disabled):hover {
+    border-color: rgba(54, 108, 255, 0.6);
+}
+
+.exo-select-field.p-select.p-focus {
+    border-color: #366cff;
+    box-shadow: 0 0 0 2px rgba(54, 108, 255, 0.35);
+}
+
+.exo-select-field .p-select-label,
+.exo-select-field .p-select-dropdown {
+    color: rgb(198, 193, 185);
+    font-family: "Enriqueta", arial, serif;
+}
+
+.exo-select-field .p-select-label.p-placeholder {
+    color: rgba(198, 193, 185, 0.65);
+}
+
+.exo-select-panel.p-select-overlay,
+.exo-select-panel .p-select-list,
+.exo-select-panel .p-select-option {
+    background: #172231;
+    color: rgb(198, 193, 185);
+    font-family: "Enriqueta", arial, serif;
+}
+
+.exo-select-panel.p-select-overlay {
+    border: 0 !important;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
+}
+
+.exo-select-panel .p-select-header {
+    background: #141f2d;
+    border-color: rgba(255, 255, 255, 0.1);
+}
+
+.exo-select-panel .p-select-filter {
+    background: #0d1520;
+    border-color: rgba(255, 255, 255, 0.1);
+    color: rgb(198, 193, 185);
+}
+
+.exo-select-panel .p-select-option:not(.p-disabled):hover,
+.exo-select-panel .p-select-option.p-focus {
+    background: rgba(54, 108, 255, 0.14);
+}
+
+.exo-select-panel .p-select-option.p-select-option-selected {
+    background: rgba(54, 108, 255, 0.2);
+    color: #89a4fd;
+}
+
+.exo-select-panel .p-select-list-container {
+    scrollbar-color: #4a67a3 #101a27;
+}
+
 .swal2-popup,
 .swal2-popup .swal2-styled {
     font-family: "Enriqueta", arial, serif;

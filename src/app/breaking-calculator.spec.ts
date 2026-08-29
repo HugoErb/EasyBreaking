@@ -79,4 +79,32 @@ describe('calculateBreaking', () => {
 
 		expect(cappedResult.bestKamas).toBe(expectedResult.bestKamas);
 	});
+
+	it('generates standard runes from an exo but prevents focusing it', () => {
+		const chanceRune: RuneData = { ...forceRune, name: 'Cha', stat: 'Chance' };
+		const withExo = calculateBreaking({ ...baseItem, effects: ['10 Chance'] }, [chanceRune, forceRune], 100, {
+			exoticEffects: [{ kind: 'classic', stat: 'Force', value: 5 }],
+		});
+		const exoRow = withExo.rows.find((row) => row.isExotic);
+
+		expect(withExo.rows.length).toBe(2);
+		expect(exoRow?.canFocus).toBeFalse();
+		expect(exoRow?.runeQuantity).not.toBe('0.00');
+		expect(exoRow?.runeQuantityFocused).toBe('0.00');
+	});
+
+	it('adds half of the exotic weight when focusing a natural characteristic', () => {
+		const chanceRune: RuneData = { ...forceRune, name: 'Cha', stat: 'Chance' };
+		const item = { ...baseItem, effects: ['10 Chance'] };
+		const withoutExo = calculateBreaking(item, [chanceRune, forceRune], 100);
+		const withExo = calculateBreaking(item, [chanceRune, forceRune], 100, {
+			exoticEffects: [{ kind: 'classic', stat: 'Force', value: 10 }],
+		});
+		const naturalRowWithoutExo = withoutExo.rows.find((row) => !row.isExotic);
+		const naturalRowWithExo = withExo.rows.find((row) => !row.isExotic);
+
+		expect(Number(naturalRowWithExo?.runeQuantityFocused)).toBeGreaterThan(
+			Number(naturalRowWithoutExo?.runeQuantityFocused),
+		);
+	});
 });

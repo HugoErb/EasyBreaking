@@ -48,6 +48,7 @@
 							<th class="sortable" [attr.aria-sort]="getAriaSort('craftPrice')">
 								<button type="button" class="sort-button" (click)="sortBy('craftPrice')">Prix du craft <i [class]="getSortIcon('craftPrice')"></i></button>
 							</th>
+							<th>Exos / transcendances</th>
 							<th class="sortable" [attr.aria-sort]="getAriaSort('profitable')">
 								<button type="button" class="sort-button" (click)="sortBy('profitable')">Rentabilité <i [class]="getSortIcon('profitable')"></i></button>
 							</th>
@@ -90,6 +91,18 @@
 										{{ entry.craftPrice | number: "1.0-0" }} k
 									} @else {
 										<span class="empty-value">Non renseigné</span>
+									}
+								</td>
+								<td class="exotic-history-cell">
+									@if (entry.exoticEffects.length > 0) {
+										<span>{{ getExoticSummary(entry) }}</span>
+										@if (entry.exoticCost !== null) {
+											<span class="exotic-cost">Coût : {{ entry.exoticCost | number: "1.0-0" }} k</span>
+										} @else {
+											<span class="empty-value">Coût non renseigné</span>
+										}
+									} @else {
+										<span class="empty-value">Aucun</span>
 									}
 								</td>
 								<td>
