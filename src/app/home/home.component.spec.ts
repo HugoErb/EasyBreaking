@@ -3,8 +3,11 @@ import { HttpClient } from '@angular/common/http';
 import { ActivatedRoute } from '@angular/router';
 import { HomeComponent } from './home.component';
 import { SearchHistoryService } from '../search-history/search-history.service';
+import { TRANSCENDENCE_RUNE_PRICES_STORAGE_KEY } from '../transcendence-rune-prices';
 
 describe('HomeComponent', () => {
+	afterEach(() => localStorage.removeItem(TRANSCENDENCE_RUNE_PRICES_STORAGE_KEY));
+
 	function createComponent(): HomeComponent {
 		return new HomeComponent(
 			{} as HttpClient,
@@ -460,5 +463,21 @@ describe('HomeComponent', () => {
 			transcendenceRuneId: 1,
 		});
 		expect(component.exoticCost).toBe(125);
+	});
+
+	it('updates the selected transcendence price when its cost changes', () => {
+		const component = createComponent();
+		component.transcendenceRunes = [
+			{ id: 1, name: 'Rune Ta Fo', stat: 'Force', value: 10, density: 40, price: 125 },
+		];
+		component.exoticEffects = [
+			{ kind: 'transcendence', stat: 'Force', value: 10, transcendenceRuneId: 1 },
+		];
+		component.exoticCost = 456;
+
+		component.onExoticCostChange();
+
+		expect(component.transcendenceRunes[0].price).toBe(456);
+		expect(JSON.parse(localStorage.getItem(TRANSCENDENCE_RUNE_PRICES_STORAGE_KEY) ?? '{}')['1']).toBe(456);
 	});
 });

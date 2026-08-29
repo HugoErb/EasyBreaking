@@ -8,7 +8,7 @@ import { SearchHistoryService } from '../search-history/search-history.service';
 import { getRuneImagePath as buildRuneImagePath, isUnfocusableRuneStat, parseRunesData, readStoredRunes, RuneData, storeRunes } from '../rune-data';
 import { calculateBreaking } from '../breaking-calculator';
 import { readAppSettings } from '../settings/app-settings';
-import { applyStoredTranscendencePrices } from '../transcendence-rune-prices';
+import { applyStoredTranscendencePrices, storeTranscendencePrice } from '../transcendence-rune-prices';
 import {
 	ExoticEffectKind,
 	ExoticEffectSelection,
@@ -301,6 +301,18 @@ export class HomeComponent implements OnInit {
 		this.defineCellColor();
 		this.updateCurrentHistory();
 		this.cdr.markForCheck(); // Permet à Angular de revérifier le composant pour màj le DOM avec vos nouvelles valeurs.
+	}
+
+	onExoticCostChange(): void {
+		const transcendence = this.exoticEffects.find(
+			(effect) => effect.kind === 'transcendence' && effect.transcendenceRuneId != null,
+		);
+		if (transcendence?.transcendenceRuneId != null && this.exoticCost != null) {
+			const reference = this.transcendenceRunes.find((rune) => rune.id === transcendence.transcendenceRuneId);
+			if (reference) reference.price = this.exoticCost;
+			storeTranscendencePrice(transcendence.transcendenceRuneId, this.exoticCost);
+		}
+		this.onEconomicsInputChange();
 	}
 
 	addExoticEffect(): void {

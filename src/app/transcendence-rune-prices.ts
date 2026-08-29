@@ -16,6 +16,12 @@ export function storeTranscendencePrices(runes: PricedTranscendenceRuneData[]): 
 	localStorage.setItem(TRANSCENDENCE_RUNE_PRICES_STORAGE_KEY, JSON.stringify(prices));
 }
 
+export function storeTranscendencePrice(runeId: number, price: number): void {
+	const prices = readStoredTranscendencePrices();
+	prices[runeId] = price;
+	localStorage.setItem(TRANSCENDENCE_RUNE_PRICES_STORAGE_KEY, JSON.stringify(prices));
+}
+
 function readStoredTranscendencePrices(): Record<number, number> {
 	try {
 		const rawPrices: unknown = JSON.parse(localStorage.getItem(TRANSCENDENCE_RUNE_PRICES_STORAGE_KEY) ?? '{}');
