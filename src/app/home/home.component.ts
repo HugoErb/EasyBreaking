@@ -381,7 +381,7 @@ export class HomeComponent implements OnInit {
 			value: reference.value,
 			transcendenceRuneId: reference.id,
 		};
-		if (selectMostProfitable) this.exoticCost = reference.price ?? 1;
+		this.exoticCost = reference.price ?? null;
 		this.exoticEffects = [...this.exoticEffects];
 		this.onExoticInputChange();
 	}
@@ -682,9 +682,7 @@ export class HomeComponent implements OnInit {
 				? this.estimatedItemsBeforeNotProfitablePaRa
 				: this.estimatedItemsBeforeNotProfitable;
 
-		if (estimatedItems > 0) {
-			this.nombreObjets = estimatedItems;
-		}
+		this.nombreObjets = estimatedItems > 0 ? estimatedItems : 1;
 	}
 
 	/**

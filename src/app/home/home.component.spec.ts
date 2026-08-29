@@ -41,6 +41,22 @@ describe('HomeComponent', () => {
 		expect(component.nombreObjets).toBe(5);
 	});
 
+	it('resets the recipe item count when no positive estimate remains', () => {
+		const component = createComponent();
+		component.selectedItem = { level: 104 };
+		component.tauxBrisage = 100;
+		component.prixCraft = 100;
+		component.maxValue = 200;
+		component.mergeRune = 'Aucune';
+		component.nombreObjets = 5;
+		spyOn(component, 'findNorProfitableBreakRate').and.returnValue(100);
+
+		(component as unknown as { computeRentabilities: () => void }).computeRentabilities();
+
+		expect(component.estimatedItemsBeforeNotProfitable).toBe(0);
+		expect(component.nombreObjets).toBe(1);
+	});
+
 	it('records kamasEarned and profitPercentage in history update when prices and break rate are present', () => {
 		const searchHistoryService = {
 			recordSearch: () => 'history-123',
@@ -467,6 +483,22 @@ describe('HomeComponent', () => {
 			transcendenceRuneId: 1,
 		});
 		expect(component.exoticCost).toBe(125);
+	});
+
+	it('loads the stored price when a transcendence rune is selected', () => {
+		const component = createComponent();
+		component.transcendenceRunes = [
+			{ id: 1, name: 'Rune Ta Fo', stat: 'Force', value: 10, density: 40, price: 125 },
+			{ id: 2, name: 'Rune Ta Ine', stat: 'Intelligence', value: 10, density: 40, price: 456 },
+		];
+		component.exoticEffects = [
+			{ kind: 'transcendence', stat: 'Force', value: 10, transcendenceRuneId: 1 },
+		];
+		component.exoticCost = 125;
+
+		component.onTranscendenceChange(0, 2);
+
+		expect(component.exoticCost).toBe(456);
 	});
 
 	it('updates the selected transcendence price when its cost changes', () => {
