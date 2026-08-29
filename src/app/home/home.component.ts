@@ -93,6 +93,7 @@ export class HomeComponent implements OnInit {
 	simplifiedCalculatorTable = false;
 	simplifiedDataView = false;
 	saveHistoryOnlyWithCompleteData = false;
+	applySaleTax = true;
 	@ViewChild('autoComplete') autoComplete!: AutoComplete;
 
 	private currentHistoryId: string | null = null;
@@ -118,6 +119,7 @@ export class HomeComponent implements OnInit {
 		this.simplifiedDataView = settings.simplifiedDataView;
 		this.tauxRentabiliteVise = settings.defaultProfitabilityRate;
 		this.saveHistoryOnlyWithCompleteData = settings.saveHistoryOnlyWithCompleteData;
+		this.applySaleTax = settings.applySaleTaxByDefault;
 
 		const storedRunes = readStoredRunes();
 		const runes$ = storedRunes
@@ -469,7 +471,10 @@ export class HomeComponent implements OnInit {
 					this.runes,
 					this.transcendenceRunes,
 				);
-				const revenue = calculateBreaking(this.selectedItem, this.runes, breakRate, { exoticEffects }).bestKamas;
+				const revenue = calculateBreaking(this.selectedItem, this.runes, breakRate, {
+					exoticEffects,
+					applySaleTax: this.applySaleTax,
+				}).bestKamas;
 				return { rune, netRevenue: revenue - (rune.price ?? 1) };
 			})
 			.sort(
@@ -566,6 +571,7 @@ export class HomeComponent implements OnInit {
 		}
 		const calculation = calculateBreaking(this.selectedItem, this.runes, this.tauxBrisage ?? 0, {
 			exoticEffects: this.getValidExoticEffects(),
+			applySaleTax: this.applySaleTax,
 		});
 		this.tableauEffects = calculation.rows;
 		this.recipe = this.selectedItem.recipe;
@@ -753,6 +759,7 @@ export class HomeComponent implements OnInit {
 		if (totalCost == null) return 0;
 		const calculation = calculateBreaking(this.selectedItem, this.runes, tauxBrisage, {
 			exoticEffects: this.getValidExoticEffects(),
+			applySaleTax: this.applySaleTax,
 		});
 		const earnedKamas = includePaRa ? calculation.bestKamas : calculation.bestWithoutFusionKamas;
 		return Math.round(earnedKamas - totalCost);
@@ -1047,7 +1054,7 @@ export class HomeComponent implements OnInit {
 					<section class="help-swal-section">
 						<h3 class="help-swal-title"><i class="pi pi-calculator" aria-hidden="true"></i>Calculs & estimations</h3>
 						<ul>
-							<li>Les estimations de kamas prennent d&eacute;j&agrave; en compte la taxe de mise en vente de 2%.</li>
+							<li>${this.applySaleTax ? 'Les estimations de kamas prennent en compte la taxe de mise en vente de 2%.' : 'La taxe de mise en vente de 2% est d&eacute;sactiv&eacute;e dans les r&eacute;glages.'}</li>
 							<li>Les quantit&eacute;s de runes et kamas sont bas&eacute;es sur le prix moyen des runes et les jets moyens d'un item.</li>
 						</ul>
 					</section>

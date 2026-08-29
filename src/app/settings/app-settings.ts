@@ -11,6 +11,7 @@ export interface AppSettings {
 	simplifiedCalculatorTable: boolean;
 	simplifiedDataView: boolean;
 	defaultProfitabilityRate: number;
+	applySaleTaxByDefault: boolean;
 	distinctHistoryByDefault: boolean;
 	saveHistoryOnlyWithCompleteData: boolean;
 	bestItemsDefaultFilters: BestItemsDefaultFilters;
@@ -20,6 +21,7 @@ export const DEFAULT_APP_SETTINGS: Readonly<AppSettings> = {
 	simplifiedCalculatorTable: false,
 	simplifiedDataView: false,
 	defaultProfitabilityRate: 25,
+	applySaleTaxByDefault: true,
 	distinctHistoryByDefault: false,
 	saveHistoryOnlyWithCompleteData: false,
 	bestItemsDefaultFilters: {
@@ -58,6 +60,10 @@ export function readAppSettings(): AppSettings {
 				9999,
 				defaults.defaultProfitabilityRate,
 			),
+			applySaleTaxByDefault:
+				typeof stored.applySaleTaxByDefault === 'boolean'
+					? stored.applySaleTaxByDefault
+					: defaults.applySaleTaxByDefault,
 			distinctHistoryByDefault:
 				typeof stored.distinctHistoryByDefault === 'boolean'
 					? stored.distinctHistoryByDefault

@@ -18,6 +18,7 @@ describe('App settings', () => {
 			simplifiedCalculatorTable: true,
 			simplifiedDataView: true,
 			defaultProfitabilityRate: 40,
+			applySaleTaxByDefault: false,
 			distinctHistoryByDefault: true,
 			saveHistoryOnlyWithCompleteData: true,
 			bestItemsDefaultFilters: {

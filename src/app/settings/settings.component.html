@@ -53,6 +53,18 @@
 				</p-iconfield>
 			</label>
 		</section>
+
+		<section class="setting-card">
+			<div class="setting-copy">
+				<h2>Taxe de mise en vente</h2>
+				<p>Déduit par défaut 2 % des gains estimés lors du calcul.</p>
+			</div>
+			<label class="switch">
+				<input type="checkbox" [(ngModel)]="settings.applySaleTaxByDefault" (ngModelChange)="saveSettings()" />
+				<span class="slider" aria-hidden="true"></span>
+				<span class="sr-only">Appliquer par défaut la taxe de mise en vente de 2 %</span>
+			</label>
+		</section>
 			</div>
 		</section>
 

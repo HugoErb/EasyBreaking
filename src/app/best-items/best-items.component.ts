@@ -38,6 +38,7 @@ export class BestItemsComponent implements OnInit {
 	loadError = false;
 	sortColumn: SortColumn = 'gain';
 	sortDirection: SortDirection = 'desc';
+	applySaleTax = true;
 
 	private items: BreakingItem[] = [];
 	private runes: RuneData[] = [];
@@ -52,7 +53,9 @@ export class BestItemsComponent implements OnInit {
 	) {}
 
 	ngOnInit(): void {
-		const defaultFilters = readAppSettings().bestItemsDefaultFilters;
+		const settings = readAppSettings();
+		const defaultFilters = settings.bestItemsDefaultFilters;
+		this.applySaleTax = settings.applySaleTaxByDefault;
 		this.breakRate = defaultFilters.breakRate;
 		this.minimumLevel = defaultFilters.minimumLevel;
 		this.maximumLevel = defaultFilters.maximumLevel;
@@ -137,7 +140,7 @@ export class BestItemsComponent implements OnInit {
 			const appliedBreakRate = latestHistory?.breakRate ?? defaultBreakRate;
 			return {
 				item,
-				calculation: calculateBreaking(item, this.runes, appliedBreakRate),
+				calculation: calculateBreaking(item, this.runes, appliedBreakRate, { applySaleTax: this.applySaleTax }),
 				appliedBreakRate,
 				profitRank: 0,
 				latestHistory,

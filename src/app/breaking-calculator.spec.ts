@@ -28,6 +28,13 @@ describe('calculateBreaking', () => {
 		expect(result.strategyLabel).toBe('Sans focus');
 	});
 
+	it('does not apply the sale tax when it is disabled', () => {
+		const result = calculateBreaking(baseItem, [forceRune], 100, { applySaleTax: false });
+
+		expect(result.standardKamas).toBe(1600);
+		expect(result.bestKamas).toBe(1600);
+	});
+
 	it('selects focus when it produces more value than the standard break', () => {
 		const paRune: RuneData = {
 			name: 'Ga Pa',

@@ -63,6 +63,7 @@ interface CachedRune {
 
 export interface BreakingCalculationOptions {
 	exoticEffects?: ExoticEffectSelection[];
+	applySaleTax?: boolean;
 }
 
 export function normalizeStat(stat: string): string {
@@ -89,7 +90,8 @@ export function calculateBreaking(
 ): BreakingCalculationResult {
 	const breakRate = Math.min(Math.max(Number.isFinite(requestedBreakRate) ? requestedBreakRate : 0, 0), 4000);
 	const cachedRunes = buildCachedRunes(item, runes, options.exoticEffects ?? []);
-	const rows = cachedRunes.map((cached) => buildEffectResult(cached, cachedRunes, breakRate));
+	const saleTaxMultiplier = options.applySaleTax === false ? 1 : SALE_TAX_MULTIPLIER;
+	const rows = cachedRunes.map((cached) => buildEffectResult(cached, cachedRunes, breakRate, saleTaxMultiplier));
 	const standardKamas = rows.reduce((sum, row) => sum + row.kamasEarned, 0);
 	const bestFocusedRow = rows.reduce<BreakingEffectResult | null>(
 		(best, row) => (row.canFocus && (!best || row.focusedKamasEarned > best.focusedKamasEarned) ? row : best),
@@ -181,7 +183,12 @@ function buildCachedRunes(item: BreakingItem, runes: RuneData[], exoticEffects: 
 		.filter((cached): cached is CachedRune => cached !== null);
 }
 
-function buildEffectResult(cached: CachedRune, cachedRunes: CachedRune[], breakRate: number): BreakingEffectResult {
+function buildEffectResult(
+	cached: CachedRune,
+	cachedRunes: CachedRune[],
+	breakRate: number,
+	saleTaxMultiplier: number,
+): BreakingEffectResult {
 	const baseQuantity = (cached.runeNumerator * breakRate) / 100 / cached.runeRealWeight;
 	const canFocus = !cached.isExotic && !isUnfocusableRuneStat(cached.rune.stat);
 	const focusedQuantity = !canFocus
@@ -207,15 +214,15 @@ function buildEffectResult(cached: CachedRune, cachedRunes: CachedRune[], breakR
 		raPrice: cached.rune.raPrice,
 		runeImg: cached.rune.img,
 		runeQuantity: baseQuantity.toFixed(2),
-		kamasEarned: calculateKamas(baseQuantity, cached.rune.price),
-		basePaKamasEarned: calculateKamas(basePaQuantity, cached.rune.paPrice),
-		baseRaKamasEarned: calculateKamas(baseRaQuantity, cached.rune.raPrice),
+		kamasEarned: calculateKamas(baseQuantity, cached.rune.price, saleTaxMultiplier),
+		basePaKamasEarned: calculateKamas(basePaQuantity, cached.rune.paPrice, saleTaxMultiplier),
+		baseRaKamasEarned: calculateKamas(baseRaQuantity, cached.rune.raPrice, saleTaxMultiplier),
 		runeQuantityFocused: focusedQuantity.toFixed(2),
-		focusedKamasEarned: calculateKamas(focusedQuantity, cached.rune.price),
+		focusedKamasEarned: calculateKamas(focusedQuantity, cached.rune.price, saleTaxMultiplier),
 		paRuneQuantity: focusedPaQuantity.toFixed(2),
-		paKamasEarned: calculateKamas(focusedPaQuantity, cached.rune.paPrice),
+		paKamasEarned: calculateKamas(focusedPaQuantity, cached.rune.paPrice, saleTaxMultiplier),
 		raRuneQuantity: focusedRaQuantity.toFixed(2),
-		raKamasEarned: calculateKamas(focusedRaQuantity, cached.rune.raPrice),
+		raKamasEarned: calculateKamas(focusedRaQuantity, cached.rune.raPrice, saleTaxMultiplier),
 	};
 }
 
@@ -249,6 +256,6 @@ function getRealRuneWeight(rune: RuneData): number {
 	return rune.weight;
 }
 
-function calculateKamas(quantity: number, price?: number | null): number {
-	return Math.round(quantity * (price ?? 0)) * SALE_TAX_MULTIPLIER;
+function calculateKamas(quantity: number, price: number | null | undefined, saleTaxMultiplier: number): number {
+	return Math.round(quantity * (price ?? 0)) * saleTaxMultiplier;
 }
